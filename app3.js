@@ -486,8 +486,14 @@ function renderKPIs(positions) {
 
   const longExposure = longs.reduce((sum, p) => sum + p.marketValue, 0);
   const shortExposure = shorts.reduce((sum, p) => sum + p.marketValue, 0);
-  const longPnL = longs.reduce((sum, p) => sum + p.gainLoss, 0);
-  const shortPnL = shorts.reduce((sum, p) => sum + p.gainLoss, 0);
+  const soldLongPnL = (typeof SOLD_POSITIONS !== 'undefined')
+    ? SOLD_POSITIONS.filter(p => p.direction === 'Long').reduce((sum, p) => sum + (p.realizedPnl || 0), 0)
+    : 0;
+  const soldShortPnL = (typeof SOLD_POSITIONS !== 'undefined')
+    ? SOLD_POSITIONS.filter(p => p.direction === 'Short').reduce((sum, p) => sum + (p.realizedPnl || 0), 0)
+    : 0;
+  const longPnL = longs.reduce((sum, p) => sum + p.gainLoss, 0) + soldLongPnL;
+  const shortPnL = shorts.reduce((sum, p) => sum + p.gainLoss, 0) + soldShortPnL;
   const grossExposure = longExposure + shortExposure;
   const netExposure = longExposure - shortExposure;
   const unrealizedPnL = positions.reduce((sum, p) => sum + p.gainLoss, 0);
