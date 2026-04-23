@@ -181,7 +181,7 @@ html, body {
 /* 5 per row on desktop, then wraps to 2nd row of 5 */
 .kpi-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   gap: var(--space-3);
 }
 
@@ -1249,7 +1249,7 @@ html, body {
 /* ---- DESKTOP / LARGE TABLET (1024px - 1399px) ---- */
 @media (max-width: 1399px) {
   .kpi-grid {
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(6, 1fr);
   }
   .picks-grid {
     grid-template-columns: repeat(5, 1fr);
@@ -1264,7 +1264,7 @@ html, body {
   }
 
   .kpi-grid {
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: var(--space-2);
   }
 
