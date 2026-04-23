@@ -248,6 +248,21 @@ html, body {
 .kpi-gain { color: var(--color-gain); }
 .kpi-loss { color: var(--color-loss); }
 
+/* Alpha vs S&P 500 tile — featured/bold treatment */
+.kpi-featured .kpi-label {
+  font-size: var(--text-sm);
+  font-weight: 800;
+  color: var(--color-text);
+}
+.kpi-featured .kpi-value {
+  font-size: var(--text-xl);
+  font-weight: 900;
+}
+.kpi-featured::before {
+  opacity: 0.85;
+  height: 3px;
+}
+
 /* Pulse on price values */
 @keyframes price-pulse {
   0%, 100% { opacity: 1; }
