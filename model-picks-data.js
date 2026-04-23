@@ -1,11 +1,11 @@
 /* ============================================
    MODEL-PICKS-DATA.JS — Shared AI Model Picks
    Included by both index.html and picks-history.html
-   Week 1: March 6, 2026 | Week 2: March 9, 2026 | Week 3: March 10, 2026 | Week 4: March 11, 2026 | Week 5: March 12, 2026 | Week 6: March 13, 2026 | Week 7: March 16, 2026 | Week 8: March 17, 2026 | Week 9: March 18, 2026 | Week 10: March 19, 2026 | Week 11: March 20, 2026 | Week 12: March 24, 2026 | Week 13: March 25, 2026 | Week 14: March 27, 2026 | Week 15: March 30, 2026 | Week 16: April 7, 2026 | Week 17: April 9, 2026 | Week 18: April 10, 2026 | Week 19: April 13, 2026 | Week 20: April 14, 2026 | Week 21: April 16, 2026 | Week 22: April 21, 2026
+   Week 1: March 6, 2026 | Week 2: March 9, 2026 | Week 3: March 10, 2026 | Week 4: March 11, 2026 | Week 5: March 12, 2026 | Week 6: March 13, 2026 | Week 7: March 16, 2026 | Week 8: March 17, 2026 | Week 9: March 18, 2026 | Week 10: March 19, 2026 | Week 11: March 20, 2026 | Week 12: March 24, 2026 | Week 13: March 25, 2026 | Week 14: March 27, 2026 | Week 15: March 30, 2026 | Week 16: April 7, 2026 | Week 17: April 9, 2026 | Week 18: April 10, 2026 | Week 19: April 13, 2026 | Week 20: April 14, 2026 | Week 21: April 16, 2026 | Week 22: April 21, 2026 | Week 23: April 22, 2026
    ============================================ */
 
 const MODEL_PICKS = {
-  date: 'March 6, 9, 10, 11, 12, 13, 16, 17, 18, 19, 20, 24, 25, 27, 30 & April 7, 9, 10, 13, 14, 16, 21, 2026',
+  date: 'March 6, 9, 10, 11, 12, 13, 16, 17, 18, 19, 20, 24, 25, 27, 30 & April 7, 9, 10, 13, 14, 16, 21, 22, 2026',
   models: [
     {
       id: 'gpt54',
@@ -375,6 +375,22 @@ const MODEL_PICKS = {
       totalTrades: 110,
       winRate: 49.1,
       avgReturn: 3.24
+    },
+    {
+      id: 'opus47',
+      name: 'Claude Opus 4.7',
+      icon: '\u{1F31F}',
+      picks: [
+        { symbol: 'VRT', name: 'Vertiv Holdings Co', industry: 'Power & Thermal Infrastructure', marketCap: 45500000000, direction: 'Long', dateChosen: '4/22', qty: 16, price: 304.53, livePrice: 304.53, prevClose: 312.44, rationale: "Vertiv's power and thermal management systems are the backbone of AI data center density upgrades; as GPU rack power draw accelerates past 100kW, VRT's liquid cooling and critical power infrastructure becomes non-negotiable for every hyperscaler expansion. Record order backlog with design wins at Microsoft, Google, and AWS validate the secular demand while NVIDIA partnerships ensure VRT hardware ships pre-integrated with every Blackwell rack deployment." },
+        { symbol: 'TSM', name: 'Taiwan Semiconductor Manufacturing Co', industry: 'Semiconductor Foundry', marketCap: 985000000000, direction: 'Long', dateChosen: '4/22', qty: 13, price: 384.88, livePrice: 384.88, prevClose: 368.11, rationale: "TSMC manufactures 100% of the world's most advanced AI accelerators at 3nm and below; its N2 node ramping in 2026 delivers the performance-per-watt improvements that make next-generation AI training economically viable at scale. Arizona fab expansion de-risks geopolitical concentration while CoWoS advanced packaging capacity directly bottlenecks AI chip supply — TSMC controls the single most irreplaceable chokepoint in the entire AI infrastructure stack with no credible alternative at advanced nodes." },
+        { symbol: 'BAH', name: 'Booz Allen Hamilton Holding Corp', industry: 'Defense & Government AI Consulting', marketCap: 25800000000, direction: 'Long', dateChosen: '4/22', qty: 26, price: 192.50, livePrice: 192.50, prevClose: 192.50, rationale: "Booz Allen's $10B+ government AI transformation backlog positions it as the system integrator of choice for DoD and intelligence community agentic AI deployments; its TS-SCI cleared workforce and FedRAMP-authorized platforms create barriers to entry commercial AI vendors cannot overcome. Unlike IT outsourcers being disrupted by AI coding agents, BAH is the disruptor — deploying autonomous intelligence analysis, battlefield decision support, and logistics optimization at scale with DoD budgets that ensure pipeline visibility for years." },
+        { symbol: 'IBM', name: 'International Business Machines Corp', industry: 'Information Technology Services', marketCap: 238000000000, direction: 'Short', dateChosen: '4/22', qty: 19, price: 258.00, livePrice: 258.00, prevClose: 258.00, rationale: "IBM's $60B global IT services revenue is structurally vulnerable as AI coding agents eliminate the billable consulting hours that powered its growth; Watson has ceded AI leadership to GPT-5 and Claude while its infrastructure services division faces automation from cloud-native rivals. The mainframe revenue moat is deteriorating faster than consensus expects as AI-assisted migration tools enable enterprises to sunset z-series workloads — IBM's 'AI everywhere' rebranding cannot mask accelerating erosion of the human-capital model that defined its last decade." },
+        { symbol: 'FIS', name: 'Fidelity National Information Services Inc', industry: 'Financial Technology Services', marketCap: 41000000000, direction: 'Short', dateChosen: '4/22', qty: 61, price: 83.00, livePrice: 83.00, prevClose: 83.00, rationale: "FIS's legacy payment processing and core banking software face a structural reckoning as AI-native platforms like Thought Machine, Mambu, and 10x Banking threaten its decades-old mainframe-based infrastructure; real-time payment rails (FedNow, RTP) commoditize its processing margins while AI-powered compliance automation erodes the switching-cost moat that justified premium multi-year contracts. The WorldPay spin-off reversed years of strategic misdirection but left FIS with elevated leverage and a commoditizing core business whose competitive positioning weakens with every AI model release." }
+      ],
+      totalPnL: 0,
+      totalTrades: 5,
+      winRate: 0,
+      avgReturn: 0
     }
   ]
 };
