@@ -10,7 +10,7 @@ const FINNHUB_API_KEY = typeof SHARED_FINNHUB_KEY !== 'undefined' ? SHARED_FINNH
 const REFRESH_INTERVAL = 120000; // 2 minutes (51 symbols @ 1.1s = ~56s per cycle)
 
 // ---- FUND CONSTANTS ----
-const CASH = 130000.00; // From Google Sheet cell B2
+const CASH = 140000.00; // From Google Sheet cell B2
 const SPY_INCEPTION_PRICE = 680.28; // SPY close on Mar 3, 2026 (day before fund inception Mar 4)
 let spyCurrentPrice = 704.08; // Updated live via Finnhub
 const MAGS_INCEPTION_PRICE = 61.29; // MAGS (Mag 7 ETF) close on Mar 3, 2026
