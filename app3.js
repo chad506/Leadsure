@@ -486,6 +486,8 @@ function renderKPIs(positions) {
 
   const longExposure = longs.reduce((sum, p) => sum + p.marketValue, 0);
   const shortExposure = shorts.reduce((sum, p) => sum + p.marketValue, 0);
+  const longPnL = longs.reduce((sum, p) => sum + p.gainLoss, 0);
+  const shortPnL = shorts.reduce((sum, p) => sum + p.gainLoss, 0);
   const grossExposure = longExposure + shortExposure;
   const netExposure = longExposure - shortExposure;
   const unrealizedPnL = positions.reduce((sum, p) => sum + p.gainLoss, 0);
@@ -505,8 +507,9 @@ function renderKPIs(positions) {
 
   const grossEl = document.getElementById('kpi-total-value');
   if (grossEl) grossEl.textContent = fmtCurrencyCompact.format(grossExposure);
-  document.getElementById('kpi-long-exposure').textContent = fmtCurrencyCompact.format(longExposure);
-  document.getElementById('kpi-short-exposure').textContent = '-' + fmtCurrencyCompact.format(shortExposure);
+  const fmtSignedPnL = (val) => (val >= 0 ? '+' : '-') + fmtCurrencyCompact.format(Math.abs(val));
+  document.getElementById('kpi-long-exposure').textContent = fmtCurrencyCompact.format(longExposure) + ' (' + fmtSignedPnL(longPnL) + ')';
+  document.getElementById('kpi-short-exposure').textContent = '-' + fmtCurrencyCompact.format(shortExposure) + ' (' + fmtSignedPnL(shortPnL) + ')';
 
   // Cash
   document.getElementById('kpi-cash').textContent = fmtCurrencyCompact.format(CASH);
