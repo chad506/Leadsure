@@ -491,13 +491,17 @@ function renderKPIs(positions) {
   const unrealizedPnL = positions.reduce((sum, p) => sum + p.gainLoss, 0);
   const totalPnL = unrealizedPnL + REALIZED_PNL; // Include closed positions
 
-  // Sharpe Ratio calculation
-  // Using position-level P&L% as "returns", risk-free rate ≈ 0 for simplicity
+  // Sharpe & Sortino — cross-sectional (position P&L% as return distribution)
   const returns = positions.map(p => p.gainLossPct);
   const avgReturn = returns.reduce((s, r) => s + r, 0) / returns.length;
   const variance = returns.reduce((s, r) => s + Math.pow(r - avgReturn, 2), 0) / returns.length;
   const stdDev = Math.sqrt(variance);
   const sharpeRatio = stdDev !== 0 ? avgReturn / stdDev : 0;
+
+  // Sortino: penalizes only downside volatility (losing positions)
+  const losingReturns = returns.filter(r => r < 0);
+  const downsideVariance = losingReturns.reduce((s, r) => s + r * r, 0) / returns.length;
+  const sortinoRatio = downsideVariance > 0 ? avgReturn / Math.sqrt(downsideVariance) : 0;
 
   const grossEl = document.getElementById('kpi-total-value');
   if (grossEl) grossEl.textContent = fmtCurrencyCompact.format(grossExposure);
@@ -554,6 +558,26 @@ function renderKPIs(positions) {
     todayPnLEl.textContent = (todayPnL >= 0 ? '+' : '') + fmtCurrency.format(todayPnL);
     todayPnLEl.classList.toggle('kpi-gain', todayPnL >= 0);
     todayPnLEl.classList.toggle('kpi-loss', todayPnL < 0);
+  }
+
+  // Alpha vs S&P 500 (portfolio ROI minus SPY return since inception)
+  const alpha = roi - spyChange;
+  const alphaEl = document.getElementById('kpi-alpha');
+  if (alphaEl) {
+    const alphaAnnualized = Math.pow(1 + alpha, 365 / daysElapsed) - 1;
+    const alphaAnnSign = alphaAnnualized >= 0 ? '+' : '';
+    alphaEl.textContent = (alpha >= 0 ? '+' : '') + (alpha * 100).toFixed(2) + '%'
+      + ' (' + alphaAnnSign + (alphaAnnualized * 100).toFixed(0) + '% yr)';
+    alphaEl.classList.toggle('kpi-gain', alpha >= 0);
+    alphaEl.classList.toggle('kpi-loss', alpha < 0);
+  }
+
+  // Sortino Ratio
+  const sortinoEl = document.getElementById('kpi-sortino');
+  if (sortinoEl) {
+    sortinoEl.textContent = sortinoRatio.toFixed(2);
+    sortinoEl.classList.toggle('kpi-gain', sortinoRatio >= 0);
+    sortinoEl.classList.toggle('kpi-loss', sortinoRatio < 0);
   }
 
   // Sharpe Ratio
