@@ -7,15 +7,17 @@ const SHARED_FINNHUB_KEY = 'd6kqa11r01qmopd1net0d6kqa11r01qmopd1netg';
 
 // Date when price/prevClose were last set (YYYY-MM-DD in US/Pacific)
 // On a new trading day, pages auto-reset price = prevClose so Today P&L starts at $0
-const PRICES_AS_OF = '2026-04-22';
+const PRICES_AS_OF = '2026-04-30';
 
-// Realized P&L from closed positions (CHGG short: -$449.07, RIOT long: -$1,189.30)
-const SHARED_REALIZED_PNL = -1638.37;
+// Realized P&L from closed positions (CHGG: -$449.07, RIOT: -$1,189.30, U: -$1,336.68, HPP: -$3,496.09)
+const SHARED_REALIZED_PNL = -6471.14;
 
 // Sold positions (closed end of March)
 const SOLD_POSITIONS = [
   {"symbol": "CHGG", "name": "Chegg Inc", "direction": "Short", "qty": 7690, "costBasis": 0.65, "exitPrice": 0.71, "realizedPnl": -449.07, "entryDate": "Mar 4", "exitDate": "Mar 31"},
-  {"symbol": "RIOT", "name": "Riot Platforms Inc", "direction": "Long", "qty": 303, "costBasis": 16.52, "exitPrice": 12.60, "realizedPnl": -1189.30, "entryDate": "Mar 4", "exitDate": "Mar 31"}
+  {"symbol": "RIOT", "name": "Riot Platforms Inc", "direction": "Long", "qty": 303, "costBasis": 16.52, "exitPrice": 12.60, "realizedPnl": -1189.30, "entryDate": "Mar 4", "exitDate": "Mar 31"},
+  {"symbol": "U", "name": "Unity Software Inc", "direction": "Short", "qty": 244, "costBasis": 20.52, "exitPrice": 26.00, "realizedPnl": -1336.68, "entryDate": "Mar 4", "exitDate": "Apr 30"},
+  {"symbol": "HPP", "name": "Hudson Pacific Properties", "direction": "Short", "qty": 1244, "costBasis": 6.39, "exitPrice": 9.20, "realizedPnl": -3496.09, "entryDate": "Mar 4", "exitDate": "Apr 30"}
 ];
 
 // Add-on positions (March rebalance — informational only, already included in POSITIONS totals)
@@ -24,7 +26,7 @@ const ADDON_POSITIONS = [
   {"symbol": "HPP", "name": "Hudson Pacific Properties", "direction": "Short", "qty": 534, "costBasis": 5.51, "entryDate": "Mar 31", "note": "Added to biggest short winner (+13.73%)"}
 ];
 
-// Active positions — THE source of truth (60 positions)
+// Active positions — THE source of truth (61 positions)
 const POSITIONS = [
   {"symbol": "BE", "name": "Bloom Energy Corp", "sector": "Energy", "industry": "Electrical Equipment & Parts", "marketCap": 31512725640, "direction": "Long", "qty": 31, "price": 229.75, "costBasis": 162.62, "prevClose": 220.91},
   {"symbol": "CBRE", "name": "CBRE Group Inc", "sector": "Real Estate", "industry": "Real Estate Services", "marketCap": 39213827897, "direction": "Short", "qty": 35, "price": 153.0, "costBasis": 141.82, "prevClose": 149.85},
@@ -44,7 +46,6 @@ const POSITIONS = [
   {"symbol": "NOW", "name": "ServiceNow Inc", "sector": "Technology", "industry": "Software - Application", "marketCap": 103982860000, "direction": "Short", "qty": 44, "price": 90.09, "costBasis": 114.35, "prevClose": 100.14},
 
   {"symbol": "TSM", "name": "Taiwan Semiconductor", "sector": "Technology", "industry": "Semiconductors", "marketCap": 1694640111089, "direction": "Long", "qty": 14, "price": 384.88, "costBasis": 358.83, "prevClose": 368.11},
-  {"symbol": "U", "name": "Unity Software Inc", "sector": "Technology", "industry": "Software - Application", "marketCap": 8421609034, "direction": "Short", "qty": 244, "price": 25.68, "costBasis": 20.52, "prevClose": 25.41},
   {"symbol": "UPWK", "name": "Upwork Inc", "sector": "Technology", "industry": "Staffing & Employment", "marketCap": 1420218546, "direction": "Short", "qty": 370, "price": 11.34, "costBasis": 13.52, "prevClose": 11.08},
   {"symbol": "VRT", "name": "Vertiv Holdings", "sector": "Industrials", "industry": "Electrical Equipment & Parts", "marketCap": 96058879860, "direction": "Long", "qty": 20, "price": 304.53, "costBasis": 251.97, "prevClose": 312.44},
   {"symbol": "WDAY", "name": "Workday Inc", "sector": "Technology", "industry": "Software - Application", "marketCap": 32919831144, "direction": "Short", "qty": 34, "price": 119.98, "costBasis": 145.57, "prevClose": 129.16},
@@ -55,7 +56,6 @@ const POSITIONS = [
   {"symbol": "REMX", "name": "VanEck Rare Earth ETF", "sector": "Materials", "industry": "Rare Earth & Strategic Metals ETF", "marketCap": 1119500183, "direction": "Long", "qty": 54, "price": 104.02, "costBasis": 92.91, "prevClose": 100.6},
   {"symbol": "COHR", "name": "Coherent Corp", "sector": "Technology", "industry": "Scientific & Technical Instruments", "marketCap": 38609869731, "direction": "Long", "qty": 20, "price": 349.0, "costBasis": 252.4, "prevClose": 343.78},
   {"symbol": "SPG", "name": "Simon Property Group", "sector": "Real Estate", "industry": "REIT - Retail", "marketCap": 58553332604, "direction": "Short", "qty": 26, "price": 201.7, "costBasis": 194.34, "prevClose": 204.76},
-  {"symbol": "HPP", "name": "Hudson Pacific Properties", "sector": "Real Estate", "industry": "REIT - Office", "marketCap": 303755200, "direction": "Short", "qty": 1244, "price": 8.04, "costBasis": 6.39, "prevClose": 8.33},
   {"symbol": "COPX", "name": "Global X Copper Miners ETF", "sector": "Materials", "industry": "Copper Miners ETF", "marketCap": 3232889592, "direction": "Long", "qty": 62, "price": 84.99, "costBasis": 80.22, "prevClose": 81.47},
   {"symbol": "MRVL", "name": "Marvell Technology", "sector": "Technology", "industry": "Semiconductors", "marketCap": 82953584000, "direction": "Long", "qty": 55, "price": 159.26, "costBasis": 91.54, "prevClose": 151.32},
   {"symbol": "PSFE", "name": "Paysafe Ltd", "sector": "Technology", "industry": "IT Services", "marketCap": 380404570, "direction": "Short", "qty": 666, "price": 9.19, "costBasis": 7.5, "prevClose": 9.01},
