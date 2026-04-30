@@ -586,10 +586,15 @@ function renderKPIs(positions) {
     alphaEl.classList.toggle('kpi-loss', alpha < 0);
   }
 
+  // Days live since inception (Mar 4, 2026)
+  const inceptionDate = new Date('2026-03-04');
+  const daysLive = Math.floor((Date.now() - inceptionDate.getTime()) / 86400000);
+  const daysLabel = ` (${daysLive}d)`;
+
   // Sortino Ratio
   const sortinoEl = document.getElementById('kpi-sortino');
   if (sortinoEl) {
-    sortinoEl.textContent = sortinoRatio.toFixed(2);
+    sortinoEl.textContent = sortinoRatio.toFixed(2) + daysLabel;
     sortinoEl.classList.toggle('kpi-gain', sortinoRatio >= 0);
     sortinoEl.classList.toggle('kpi-loss', sortinoRatio < 0);
   }
@@ -597,7 +602,7 @@ function renderKPIs(positions) {
   // Sharpe Ratio
   const sharpeEl = document.getElementById('kpi-sharpe');
   if (sharpeEl) {
-    sharpeEl.textContent = sharpeRatio.toFixed(2);
+    sharpeEl.textContent = sharpeRatio.toFixed(2) + daysLabel;
     sharpeEl.classList.toggle('kpi-gain', sharpeRatio >= 0);
     sharpeEl.classList.toggle('kpi-loss', sharpeRatio < 0);
   }
