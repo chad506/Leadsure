@@ -587,8 +587,7 @@ function renderKPIs(positions) {
   }
 
   // Days live since inception (Mar 4, 2026)
-  const inceptionDate = new Date('2026-03-04');
-  const daysLive = Math.floor((Date.now() - inceptionDate.getTime()) / 86400000);
+  const daysLive = Math.floor((Date.now() - new Date('2026-03-04').getTime()) / 86400000);
   const daysLabel = ` (${daysLive}d)`;
 
   // Sortino Ratio
