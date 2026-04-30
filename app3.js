@@ -22,24 +22,29 @@ const REALIZED_PNL = typeof SHARED_REALIZED_PNL !== 'undefined' ? SHARED_REALIZE
 // ---- POSITION DATA ----
 // POSITIONS array is now in fund-data.js (loaded before app3.js)
 
-// ---- DAILY PICKS (Generated Mon Mar 30, 2026) ----
-// 15 total picks: 5 per model (3 longs + 2 shorts each)
+// ---- DAILY PICKS (Generated Wed Apr 30, 2026) ----
+// 20 total picks: 5 per model × 4 models (3 longs + 2 shorts each)
 const DAILY_PICKS = [
-  {"symbol": "GOOG", "name": "Alphabet Inc", "direction": "Long", "qty": 18, "price": 293.9, "rationale": "Alphabet\'s Gemini AI models, TPU infrastructure, and Google Cloud AI services position it as one of the three dominant AI platform companies; DeepMind breakthroughs and AI-powered Search Overviews drive both revenue growth and competitive moat expansion."},
-  {"symbol": "GE", "name": "GE Aerospace", "direction": "Long", "qty": 18, "price": 295.19, "rationale": "GE Aerospace\'s jet engine fleet generates decades of high-margin aftermarket revenue; AI-powered predictive maintenance and digital twin technology optimize engine performance, creating a durable moat in the aviation infrastructure buildout."},
-  {"symbol": "HPE", "name": "Hewlett Packard Enterprise", "direction": "Long", "qty": 209, "price": 24.25, "rationale": "HPE\'s GreenLake hybrid cloud platform and ProLiant AI servers are capturing enterprise AI infrastructure demand; Juniper Networks acquisition expands its AI networking capabilities to deliver end-to-end AI compute solutions."},
-  {"symbol": "INFY", "name": "Infosys Ltd", "direction": "Short", "qty": 390, "price": 13.38, "rationale": "Infosys\'s IT outsourcing and consulting business faces structural disruption as AI coding agents and autonomous software development tools replace the billable developer hours that drive its revenue."},
-  {"symbol": "PAYX", "name": "Paychex Inc", "direction": "Short", "qty": 55, "price": 91.54, "rationale": "Paychex\'s payroll processing and HR services face automation pressure as AI agents handle tax calculations, benefits administration, and compliance filings autonomously."},
-  {"symbol": "META", "name": "Meta Platforms Inc", "direction": "Long", "qty": 10, "price": 578.91, "rationale": "Meta\'s Llama open-source AI models, massive GPU infrastructure, and AI-powered advertising optimization create a flywheel where better AI drives higher ad revenue which funds more compute."},
-  {"symbol": "AES", "name": "The AES Corp", "direction": "Long", "qty": 357, "price": 14.16, "rationale": "AES Corporation\'s renewable energy portfolio and battery storage capabilities position it to supply clean power for AI data centers; its partnership with Google for 24/7 carbon-free energy directly serves hyperscaler sustainability mandates."},
-  {"symbol": "TEL", "name": "TE Connectivity Ltd", "direction": "Long", "qty": 25, "price": 213.09, "rationale": "TE Connectivity\'s high-speed connectors and sensors are essential building blocks for AI data centers; its power and signal connectivity solutions enable the dense GPU rack architectures."},
-  {"symbol": "NSIT", "name": "Insight Enterprises Inc", "direction": "Short", "qty": 76, "price": 68.05, "rationale": "Insight Enterprises\' IT product distribution and solutions business faces margin compression as AI-powered procurement platforms automate vendor selection, pricing negotiation, and technology stack optimization."},
-  {"symbol": "GRMN", "name": "Garmin Ltd", "direction": "Short", "qty": 22, "price": 235.92, "rationale": "Garmin\'s GPS navigation and fitness wearable business faces disruption as AI-powered smartphone assistants replicate navigation, health tracking, and fitness coaching capabilities."},
-  {"symbol": "CARR", "name": "Carrier Global Corp", "direction": "Long", "qty": 92, "price": 57.46, "rationale": "Carrier\'s HVAC and refrigeration systems are critical for AI data center cooling; its Abound smart building platform integrates AI-driven climate control for high-density compute facilities."},
-  {"symbol": "AR", "name": "Antero Resources Corp", "direction": "Long", "qty": 111, "price": 41.38, "rationale": "Antero Resources is a top-five US natural gas producer with premium Appalachian Basin acreage; as AI data center power demand drives a structural increase in gas-fired generation, Antero benefits from rising natural gas prices."},
-  {"symbol": "VNET", "name": "VNET Group Inc", "direction": "Long", "qty": 592, "price": 8.61, "rationale": "VNET Group operates carrier-neutral data centers across China and is expanding AI-optimized facilities to meet surging demand from Chinese hyperscalers deploying large language models."},
-  {"symbol": "DV", "name": "DoubleVerify Holdings Inc", "direction": "Short", "qty": 537, "price": 9.79, "rationale": "DoubleVerify\'s ad verification and brand safety platform faces disruption as AI-native advertising systems embed fraud detection and viewability measurement directly into programmatic buying."},
-  {"symbol": "LUMN", "name": "Lumen Technologies Inc", "direction": "Short", "qty": 750, "price": 7.0, "rationale": "Lumen\'s legacy telecom and fiber network business faces margin pressure despite AI data center interconnect demand; heavy debt load and declining enterprise revenue constrain its ability to capitalize on the AI infrastructure buildout."}
+  {"symbol": "SOFI", "name": "SoFi Technologies Inc", "direction": "Long", "qty": 256, "price": 19.5, "rationale": "SoFi's AI-driven underwriting engine (Galileo platform) is powering fintech embedded banking for dozens of partners."},
+  {"symbol": "RGTI", "name": "Rigetti Computing Inc", "direction": "Long", "qty": 255, "price": 19.64, "rationale": "Rigetti's 84-qubit Ankaa-3 system doubled fidelity milestones; superconducting quantum positioned for AI co-processing workloads."},
+  {"symbol": "WIT", "name": "Wipro Ltd", "direction": "Short", "qty": 2336, "price": 2.14, "rationale": "Wipro faces AI coding-agent disruption; offshore labor arbitrage erodes as Claude Code and Cursor collapse software delivery costs."},
+  {"symbol": "RCAT", "name": "Red Cat Holdings Inc", "direction": "Long", "qty": 397, "price": 12.595, "rationale": "Red Cat's Teal drone platform won the Army SRR program; AI-powered autonomous reconnaissance drones replacing legacy ISR assets."},
+  {"symbol": "BB", "name": "BlackBerry Ltd", "direction": "Short", "qty": 909, "price": 5.5, "rationale": "BlackBerry's QNX auto OS and Cylance endpoint security face AI-native competition from CrowdStrike Falcon and NVIDIA DRIVE."},
+  {"symbol": "ETR", "name": "Entergy Corp", "direction": "Long", "qty": 44, "price": 113.66, "rationale": "Entergy's Louisiana/Mississippi service territory is ground zero for Meta's $10B Richland Parish AI data center."},
+  {"symbol": "KTOS", "name": "Kratos Defense & Security", "direction": "Long", "qty": 72, "price": 69.83, "rationale": "Kratos's Valkyrie loyal-wingman drones are core to the Collaborative Combat Aircraft program; AI-piloted unmanned systems are the fastest-growing DoD line."},
+  {"symbol": "FORR", "name": "Forrester Research Inc", "direction": "Short", "qty": 820, "price": 6.1, "rationale": "Forrester's syndicated research reports disintermediated by GPT-powered research agents."},
+  {"symbol": "ZM", "name": "Zoom Communications Inc", "direction": "Short", "qty": 55, "price": 90.56, "rationale": "Zoom Workplace commoditized by Teams Copilot and Google Meet AI; AI Companion has not slowed seat attrition."},
+  {"symbol": "AVAV", "name": "AeroVironment Inc", "direction": "Long", "qty": 25, "price": 197.23, "rationale": "AeroVironment's Switchblade loitering munitions and JUMP 20 drones are standard-issue across Ukraine and US Army programs."},
+  {"symbol": "MCHP", "name": "Microchip Technology Inc", "direction": "Long", "qty": 62, "price": 80.39, "rationale": "Microchip exiting a brutal inventory correction; MCU/analog content in AI edge devices bottoming."},
+  {"symbol": "S", "name": "SentinelOne Inc", "direction": "Long", "qty": 349, "price": 14.32, "rationale": "SentinelOne's Purple AI autonomous SOC agent winning displacement deals vs Microsoft Defender."},
+  {"symbol": "TEAM", "name": "Atlassian Corp", "direction": "Short", "qty": 70, "price": 71.48, "rationale": "Atlassian's Jira/Confluence seat model under assault from Linear and Notion AI-native alternatives."},
+  {"symbol": "G", "name": "Genpact Ltd", "direction": "Short", "qty": 136, "price": 36.64, "rationale": "Genpact's BPO and analytics outsourcing structurally threatened by agentic AI."},
+  {"symbol": "QBTS", "name": "D-Wave Quantum Inc", "direction": "Long", "qty": 231, "price": 21.66, "rationale": "D-Wave's annealing quantum systems finding real commercial traction in optimization workloads."},
+  {"symbol": "GOOGL", "name": "Alphabet Inc", "direction": "Long", "qty": 13, "price": 376.23, "rationale": "Alphabet surging 7.5% on Q1 Google Cloud AI beat; Search AI Overviews expanding ad inventory without cannibalizing click revenue."},
+  {"symbol": "AAPL", "name": "Apple Inc", "direction": "Long", "qty": 18, "price": 271.33, "rationale": "Apple reports May 1; Apple Intelligence driving first genuine AI hardware upgrade cycle in a decade."},
+  {"symbol": "PLTR", "name": "Palantir Technologies Inc", "direction": "Long", "qty": 35, "price": 139.06, "rationale": "Palantir reports May 5; AIP bootcamps converting enterprises to production at unprecedented rate."},
+  {"symbol": "SNOW", "name": "Snowflake Inc", "direction": "Short", "qty": 36, "price": 136.93, "rationale": "Snowflake falling 3% as AI-native data stack commoditizes cloud data warehouse moat."},
+  {"symbol": "CRM", "name": "Salesforce Inc", "direction": "Short", "qty": 28, "price": 176.53, "rationale": "Salesforce sliding as Agentforce fails to re-accelerate seat growth; AI-native CRM alternatives capturing new logos."}
 ];
 
 // ---- FORMATTERS ----
@@ -1055,7 +1060,7 @@ function renderLeaderboardFromPrices(priceMap) {
 
   // Sort by totalPnL descending
   const ranked = modelStats.sort((a, b) => b.totalPnL - a.totalPnL);
-  const medals = ['\u{1F947}', '\u{1F948}', '\u{1F949}'];
+  const medals = ['\u{1F947}', '\u{1F948}', '\u{1F949}', '\u{1F3C5}'];
 
   const fmtLbPnL = new Intl.NumberFormat('en-US', {
     style: 'currency', currency: 'USD',
@@ -1105,9 +1110,9 @@ function init() {
     const embeddedPriceMap = {};
     MODEL_PICKS.models.forEach(m => {
       m.picks.forEach(p => {
-        if (p.livePrice && p.livePrice !== p.price) {
-          embeddedPriceMap[p.symbol] = { symbol: p.symbol, price: p.livePrice, prevClose: p.price };
-        }
+        // Include all picks — livePrice === price is valid for new/same-day entries
+        const lp = p.livePrice || p.price;
+        embeddedPriceMap[p.symbol] = { symbol: p.symbol, price: lp, prevClose: p.prevClose || p.price };
       });
     });
     if (Object.keys(embeddedPriceMap).length > 0) {
