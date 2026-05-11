@@ -537,7 +537,7 @@ function renderKPIs(positions) {
   if (heroTodayEl) {
     const sign = todayPnL >= 0 ? '+' : '';
     const pctSign = todayPnLPct >= 0 ? '+' : '';
-    heroTodayEl.textContent = sign + fmtCurrency.format(todayPnL) + ' ' + pctSign + (todayPnLPct * 100).toFixed(2) + '%';
+    heroTodayEl.textContent = sign + fmtCurrency.format(todayPnL) + ' (' + pctSign + (todayPnLPct * 100).toFixed(2) + '%)';
   }
 
   // ROI = Total P&L / Cash
