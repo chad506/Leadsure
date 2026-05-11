@@ -523,10 +523,9 @@ function renderKPIs(positions) {
   document.getElementById('kpi-short-exposure').textContent = '-' + fmtCurrencyCompact.format(shortExposure) + ' (' + fmtSignedPnL(shortPnL) + ')';
 
   // ---- ACCOUNT HERO ----
-  const cashInvested = positions.reduce((sum, p) => sum + p.costTotal, 0);
   const totalAccountValue = CASH + totalPnL;
   const todayPnL = positions.reduce((sum, p) => sum + p.dayPnLDollar, 0);
-  const todayPnLPct = cashInvested !== 0 ? todayPnL / cashInvested : 0;
+  const todayPnLPct = CASH !== 0 ? todayPnL / CASH : 0;
 
   const heroAccountEl = document.getElementById('hero-account-value');
   if (heroAccountEl) {
@@ -535,7 +534,7 @@ function renderKPIs(positions) {
     heroAccountEl.classList.toggle('kpi-loss', totalAccountValue < CASH);
   }
   const heroCashEl = document.getElementById('hero-cash-invested');
-  if (heroCashEl) heroCashEl.textContent = fmtCurrencyCompact.format(cashInvested);
+  if (heroCashEl) heroCashEl.textContent = fmtCurrencyCompact.format(CASH);
 
   const heroTodayEl = document.getElementById('hero-today-pnl');
   if (heroTodayEl) {
