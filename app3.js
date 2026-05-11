@@ -539,19 +539,18 @@ function renderKPIs(positions) {
     const pctSign = todayPnLPct >= 0 ? '+' : '';
     heroTodayEl.textContent = sign + fmtCurrency.format(todayPnL) + ' (' + pctSign + (todayPnLPct * 100).toFixed(2) + '%)';
   }
+  // hero-total-pnl and hero-roi populated further below after roi/totalPnL are computed
 
   // ROI = Total P&L / Cash
   const roi = CASH !== 0 ? totalPnL / CASH : 0;
-  const roiEl = document.getElementById('kpi-roi');
   // Annualized ROI: (1 + roi)^(365/days) - 1
   const inceptionDate = new Date('2026-03-04T00:00:00');
   const now = new Date();
   const daysElapsed = Math.max((now - inceptionDate) / (1000 * 60 * 60 * 24), 1);
   const roiAnnualized = Math.pow(1 + roi, 365 / daysElapsed) - 1;
   const roiAnnSign = roiAnnualized >= 0 ? '+' : '';
-  roiEl.textContent = (roi >= 0 ? '+' : '') + (roi * 100).toFixed(2) + '%' + ' (' + roiAnnSign + (roiAnnualized * 100).toFixed(0) + '% yr)';
-  roiEl.classList.toggle('kpi-gain', roi >= 0);
-  roiEl.classList.toggle('kpi-loss', roi < 0);
+  const heroRoiEl = document.getElementById('hero-roi');
+  if (heroRoiEl) heroRoiEl.textContent = (roi >= 0 ? '+' : '') + (roi * 100).toFixed(2) + '%' + ' (' + roiAnnSign + (roiAnnualized * 100).toFixed(0) + '% yr)';
 
   // S&P 500 % since inception
   const spyChange = SPY_INCEPTION_PRICE !== 0 ? (spyCurrentPrice - SPY_INCEPTION_PRICE) / SPY_INCEPTION_PRICE : 0;
@@ -573,10 +572,8 @@ function renderKPIs(positions) {
     magsEl.classList.toggle('kpi-loss', magsChange < 0);
   }
 
-  const pnlEl = document.getElementById('kpi-total-pnl');
-  pnlEl.textContent = (totalPnL >= 0 ? '+' : '') + fmtCurrency.format(totalPnL);
-  pnlEl.classList.toggle('kpi-gain', totalPnL >= 0);
-  pnlEl.classList.toggle('kpi-loss', totalPnL < 0);
+  const heroTotalPnlEl = document.getElementById('hero-total-pnl');
+  if (heroTotalPnlEl) heroTotalPnlEl.textContent = (totalPnL >= 0 ? '+' : '') + fmtCurrency.format(totalPnL);
 
   document.getElementById('kpi-positions').textContent = `${longs.length}L / ${shorts.length}S`;
 

@@ -265,10 +265,10 @@ html, body {
 }
 
 /* ---- KPI GRID ---- */
-/* 5 per row on desktop (2 rows of 5) */
+/* 4 per row on desktop (2 rows of 4) */
 .kpi-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: var(--space-3);
 }
 
@@ -1336,7 +1336,7 @@ html, body {
 /* ---- DESKTOP / LARGE TABLET (1024px - 1399px) ---- */
 @media (max-width: 1399px) {
   .kpi-grid {
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
   }
   .picks-grid {
     grid-template-columns: repeat(5, 1fr);

@@ -28,12 +28,12 @@
 - `app3.js` — main dashboard JS (Finnhub live prices, P&L, charts)
 
 ## Account Hero (above KPI tiles)
-Total Account Value (large) | Cash Invested | Today's P&L ($ + %)
-IDs: hero-account-value, hero-cash-invested, hero-today-pnl
+Total Account Value | Cash Invested | Today's P&L ($ + %) | Total P&L | ROI
+IDs: hero-account-value, hero-cash-invested, hero-today-pnl, hero-total-pnl, hero-roi
 
-## KPI Tiles (index.html, in order — 10 tiles, 5×2)
-ROI | Alpha vs S&P 500 | S&P 500 % | Mag 7 % | Positions |
-Total P&L | Long Exposure | Short Exposure | Sortino | Sharpe
+## KPI Tiles (index.html, in order — 8 tiles, 4×2)
+Alpha vs S&P 500 | S&P 500 % | Mag 7 % | Positions |
+Long Exposure | Short Exposure | Sortino | Sharpe
 
 ## Deployment
 - DNS: Cloudflare (nameservers), A records point to GitHub Pages IPs
