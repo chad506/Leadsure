@@ -215,7 +215,7 @@ html, body {
 }
 .account-hero-value {
   font-family: var(--font-display);
-  font-size: var(--text-xl);
+  font-size: var(--text-lg);
   font-weight: 700;
   font-variant-numeric: tabular-nums lining-nums;
   color: #ffffff;
