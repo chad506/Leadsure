@@ -528,11 +528,8 @@ function renderKPIs(positions) {
   const todayPnLPct = CASH !== 0 ? todayPnL / CASH : 0;
 
   const heroAccountEl = document.getElementById('hero-account-value');
-  if (heroAccountEl) {
-    heroAccountEl.textContent = fmtCurrency.format(totalAccountValue);
-    heroAccountEl.classList.toggle('kpi-gain', totalAccountValue >= CASH);
-    heroAccountEl.classList.toggle('kpi-loss', totalAccountValue < CASH);
-  }
+  if (heroAccountEl) heroAccountEl.textContent = fmtCurrency.format(totalAccountValue);
+
   const heroCashEl = document.getElementById('hero-cash-invested');
   if (heroCashEl) heroCashEl.textContent = fmtCurrencyCompact.format(CASH);
 
@@ -541,8 +538,6 @@ function renderKPIs(positions) {
     const sign = todayPnL >= 0 ? '+' : '';
     const pctSign = todayPnLPct >= 0 ? '+' : '';
     heroTodayEl.textContent = sign + fmtCurrency.format(todayPnL) + ' ' + pctSign + (todayPnLPct * 100).toFixed(2) + '%';
-    heroTodayEl.classList.toggle('kpi-gain', todayPnL >= 0);
-    heroTodayEl.classList.toggle('kpi-loss', todayPnL < 0);
   }
 
   // ROI = Total P&L / Cash
