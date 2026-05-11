@@ -177,11 +177,85 @@ html, body {
   white-space: nowrap;
 }
 
+/* ---- ACCOUNT HERO ---- */
+.account-hero {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5) var(--space-6);
+  position: relative;
+  overflow: hidden;
+}
+.account-hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent-teal-icon, #2dd4bf));
+  opacity: 0.8;
+}
+.account-hero-primary {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  flex: 0 0 auto;
+}
+.account-hero-label {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--color-text-muted);
+}
+.account-hero-value {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums lining-nums;
+  color: var(--color-text);
+  line-height: 1;
+}
+.account-hero-divider {
+  width: 1px;
+  align-self: stretch;
+  background: var(--color-border);
+  flex: 0 0 auto;
+}
+.account-hero-secondary {
+  display: flex;
+  gap: var(--space-10);
+  flex: 1;
+}
+.account-hero-stat {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+.account-hero-stat-label {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--color-text-muted);
+}
+.account-hero-stat-value {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums lining-nums;
+  color: var(--color-text);
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
 /* ---- KPI GRID ---- */
-/* 5 per row on desktop, then wraps to 2nd row of 5 */
+/* 5 per row on desktop (2 rows of 5) */
 .kpi-grid {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: var(--space-3);
 }
 
@@ -1249,7 +1323,7 @@ html, body {
 /* ---- DESKTOP / LARGE TABLET (1024px - 1399px) ---- */
 @media (max-width: 1399px) {
   .kpi-grid {
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(5, 1fr);
   }
   .picks-grid {
     grid-template-columns: repeat(5, 1fr);
@@ -1261,6 +1335,21 @@ html, body {
   .dash-main {
     padding: var(--space-4) var(--space-4);
     gap: var(--space-4);
+  }
+
+  .account-hero {
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    padding: var(--space-4) var(--space-4);
+  }
+  .account-hero-value {
+    font-size: var(--text-xl);
+  }
+  .account-hero-divider {
+    display: none;
+  }
+  .account-hero-secondary {
+    gap: var(--space-6);
   }
 
   .kpi-grid {
@@ -1310,6 +1399,17 @@ html, body {
 
   .fund-title {
     font-size: var(--text-lg);
+  }
+
+  .account-hero {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-3);
+    padding: var(--space-4) var(--space-4);
+  }
+  .account-hero-secondary {
+    width: 100%;
+    gap: var(--space-8);
   }
 
   .kpi-grid {

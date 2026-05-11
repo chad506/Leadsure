@@ -522,8 +522,29 @@ function renderKPIs(positions) {
   document.getElementById('kpi-long-exposure').textContent = fmtCurrencyCompact.format(longExposure) + ' (' + fmtSignedPnL(longPnL) + ')';
   document.getElementById('kpi-short-exposure').textContent = '-' + fmtCurrencyCompact.format(shortExposure) + ' (' + fmtSignedPnL(shortPnL) + ')';
 
-  // Cash
-  document.getElementById('kpi-cash').textContent = fmtCurrencyCompact.format(CASH);
+  // ---- ACCOUNT HERO ----
+  const cashInvested = positions.reduce((sum, p) => sum + p.costTotal, 0);
+  const totalAccountValue = CASH + totalPnL;
+  const todayPnL = positions.reduce((sum, p) => sum + p.dayPnLDollar, 0);
+  const todayPnLPct = cashInvested !== 0 ? todayPnL / cashInvested : 0;
+
+  const heroAccountEl = document.getElementById('hero-account-value');
+  if (heroAccountEl) {
+    heroAccountEl.textContent = fmtCurrency.format(totalAccountValue);
+    heroAccountEl.classList.toggle('kpi-gain', totalAccountValue >= CASH);
+    heroAccountEl.classList.toggle('kpi-loss', totalAccountValue < CASH);
+  }
+  const heroCashEl = document.getElementById('hero-cash-invested');
+  if (heroCashEl) heroCashEl.textContent = fmtCurrencyCompact.format(cashInvested);
+
+  const heroTodayEl = document.getElementById('hero-today-pnl');
+  if (heroTodayEl) {
+    const sign = todayPnL >= 0 ? '+' : '';
+    const pctSign = todayPnLPct >= 0 ? '+' : '';
+    heroTodayEl.textContent = sign + fmtCurrency.format(todayPnL) + ' ' + pctSign + (todayPnLPct * 100).toFixed(2) + '%';
+    heroTodayEl.classList.toggle('kpi-gain', todayPnL >= 0);
+    heroTodayEl.classList.toggle('kpi-loss', todayPnL < 0);
+  }
 
   // ROI = Total P&L / Cash
   const roi = CASH !== 0 ? totalPnL / CASH : 0;
@@ -564,15 +585,6 @@ function renderKPIs(positions) {
   pnlEl.classList.toggle('kpi-loss', totalPnL < 0);
 
   document.getElementById('kpi-positions').textContent = `${longs.length}L / ${shorts.length}S`;
-
-  // Today's P&L (sum of portfolio-perspective day $ changes)
-  const todayPnL = positions.reduce((sum, p) => sum + p.dayPnLDollar, 0);
-  const todayPnLEl = document.getElementById('kpi-today-pnl');
-  if (todayPnLEl) {
-    todayPnLEl.textContent = (todayPnL >= 0 ? '+' : '') + fmtCurrency.format(todayPnL);
-    todayPnLEl.classList.toggle('kpi-gain', todayPnL >= 0);
-    todayPnLEl.classList.toggle('kpi-loss', todayPnL < 0);
-  }
 
   // Alpha vs S&P 500 (portfolio ROI minus SPY return since inception)
   const alpha = roi - spyChange;

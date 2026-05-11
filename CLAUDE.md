@@ -27,9 +27,13 @@
 - `model-picks-data.js` — all AI model picks (3 models: GPT 5.4, Claude, Gemini)
 - `app3.js` — main dashboard JS (Finnhub live prices, P&L, charts)
 
-## KPI Tiles (index.html, in order)
-Cash | ROI | Alpha vs S&P 500 | S&P 500 % | Mag 7 % | Positions |
-Today's P&L | Total P&L | Long Exposure | Short Exposure | Sortino | Sharpe
+## Account Hero (above KPI tiles)
+Total Account Value (large) | Cash Invested | Today's P&L ($ + %)
+IDs: hero-account-value, hero-cash-invested, hero-today-pnl
+
+## KPI Tiles (index.html, in order — 10 tiles, 5×2)
+ROI | Alpha vs S&P 500 | S&P 500 % | Mag 7 % | Positions |
+Total P&L | Long Exposure | Short Exposure | Sortino | Sharpe
 
 ## Deployment
 - DNS: Cloudflare (nameservers), A records point to GitHub Pages IPs
