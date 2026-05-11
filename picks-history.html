@@ -27,10 +27,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lato:wght@300;400;700;900&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
 <script>
+    var _build = '20260511';
     var _t = Date.now();
-    document.write('<link rel="stylesheet" href="./base.css?v='+_t+'">');
-    document.write('<link rel="stylesheet" href="./style.css?v='+_t+'">');
-    document.write('<link rel="stylesheet" href="./dashboard.css?v='+_t+'">');
+    document.write('<link rel="stylesheet" href="./base.css?v='+_build+'">');
+    document.write('<link rel="stylesheet" href="./style.css?v='+_build+'">');
+    document.write('<link rel="stylesheet" href="./dashboard.css?v='+_build+'">');
   </script>
 </head>
 <body>
@@ -104,7 +105,7 @@
                 <th data-sort="industry" class="col-name">Industry</th>
                 <th data-sort="marketCap" class="col-num">Mkt Cap</th>
                 <th data-sort="model" class="col-model">Model</th>
-                <th data-sort="dateChosen" class="col-dir">Date</th>
+                <th data-sort="sortDate" class="col-dir">Date</th>
                 <th data-sort="direction" class="col-dir">Dir</th>
                 <th data-sort="qty" class="col-num">Qty</th>
                 <th data-sort="entryPrice" class="col-num">Entry</th>
@@ -173,6 +174,13 @@
     };
 
     // ---- BUILD FLAT PICKS ARRAY ----
+    function parseSortDate(d) {
+      // d is like '3/6', '5/11' — convert to numeric MMDD for sort
+      if (!d) return 0;
+      const [m, day] = d.split('/').map(Number);
+      return m * 100 + (day || 0);
+    }
+
     function buildAllPicks() {
       const all = [];
       MODEL_PICKS.models.forEach(model => {
@@ -183,6 +191,7 @@
             livePrice: p.livePrice || null,
             prevClose: p.prevClose || null,
             dateChosen: p.dateChosen || '',
+            sortDate: parseSortDate(p.dateChosen),
             model: model.name,
             modelIcon: model.icon,
             cost: p.qty * (p.livePrice || p.price),
@@ -316,7 +325,7 @@
     }
 
     // ---- SORT STATE ----
-    let currentSort = { key: 'symbol', dir: 'asc' };
+    let currentSort = { key: 'sortDate', dir: 'desc' };
     let allPicks = [];
 
     // ---- RENDER TABLE (desktop) + CARDS (mobile) ----
@@ -481,9 +490,9 @@
       initSort();
       initTheme();
 
-      // Set initial sort indicator
-      const defaultTh = document.querySelector('#history-table th[data-sort="symbol"]');
-      if (defaultTh) defaultTh.classList.add('sort-asc');
+      // Set initial sort indicator (newest first by date)
+      const defaultTh = document.querySelector('#history-table th[data-sort="sortDate"]');
+      if (defaultTh) defaultTh.classList.add('sort-desc');
 
       // Apply any cached prices immediately, then always fetch fresh from Finnhub
       readSharedPrices();
