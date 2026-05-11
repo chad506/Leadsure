@@ -231,33 +231,8 @@
         }
 
         const priceMap = JSON.parse(cached);
-        let updated = 0;
-
-        allPicks.forEach(p => {
-          const live = priceMap[p.symbol];
-          if (live && live.c > 0) {
-            p.livePrice = live.c;
-            p.prevClose = live.pc;
-            p.cost = live.c * p.qty;
-
-            const isLong = p.direction === 'Long';
-            p.gainLoss = isLong
-              ? (live.c - p.entryPrice) * p.qty
-              : (p.entryPrice - live.c) * p.qty;
-            p.gainLossPct = p.entryPrice !== 0
-              ? (isLong
-                ? (live.c - p.entryPrice) / p.entryPrice
-                : (p.entryPrice - live.c) / p.entryPrice)
-              : 0;
-
-            const rawDayPct = live.pc !== 0
-              ? (live.c - live.pc) / live.pc
-              : 0;
-            p.dayChangePct = isLong ? rawDayPct : -rawDayPct;
-            updated++;
-          }
-        });
-
+        applyPriceMap(priceMap);
+        const updated = allPicks.filter(p => p.livePrice !== null).length;
         console.log('[PicksHistory] Read ' + updated + ' prices from localStorage (age: ' + Math.round(ageMs/1000) + 's)');
         return updated > 0;
       } catch (e) {
@@ -266,7 +241,7 @@
       }
     }
 
-    // ---- FALLBACK: Slow Finnhub fetch if localStorage is empty/stale ----
+    // ---- Live Finnhub fetch — runs on every page load, updates table progressively ----
     const FINNHUB_API_KEY = typeof SHARED_FINNHUB_KEY !== 'undefined' ? SHARED_FINNHUB_KEY : 'd6kqa11r01qmopd1net0d6kqa11r01qmopd1netg';
     let finnhubFetched = false;
     async function fetchPickPricesFallback() {
@@ -274,7 +249,7 @@
       finnhubFetched = true;
 
       const uniqueSymbols = [...new Set(allPicks.map(p => p.symbol))];
-      console.log('[PicksHistory] Fallback: fetching ' + uniqueSymbols.length + ' symbols from Finnhub (slow)');
+      console.log('[PicksHistory] Fetching ' + uniqueSymbols.length + ' live prices from Finnhub');
 
       const priceMap = {};
       for (let i = 0; i < uniqueSymbols.length; i++) {
@@ -289,12 +264,31 @@
             }
           }
         } catch (e) { /* skip */ }
+        // Re-render every 30 symbols so user sees prices update progressively
+        if ((i + 1) % 30 === 0) {
+          applyPriceMap(priceMap);
+          renderHistoryTable();
+        }
         if (i < uniqueSymbols.length - 1) {
-          await new Promise(r => setTimeout(r, 2000));
+          await new Promise(r => setTimeout(r, 1100));
         }
       }
 
-      let updated = 0;
+      applyPriceMap(priceMap);
+
+      // Save to localStorage for other pages
+      try {
+        const existing = JSON.parse(localStorage.getItem('finnhub_prices') || '{}');
+        Object.assign(existing, priceMap);
+        localStorage.setItem('finnhub_prices', JSON.stringify(existing));
+        localStorage.setItem('finnhub_prices_ts', Date.now().toString());
+      } catch (e) { /* skip */ }
+
+      console.log('[PicksHistory] Live prices updated: ' + Object.keys(priceMap).length + ' symbols');
+      renderHistoryTable();
+    }
+
+    function applyPriceMap(priceMap) {
       allPicks.forEach(p => {
         const live = priceMap[p.symbol];
         if (live && live.c > 0) {
@@ -310,20 +304,8 @@
             : 0;
           const rawDayPct = live.pc !== 0 ? (live.c - live.pc) / live.pc : 0;
           p.dayChangePct = isLong ? rawDayPct : -rawDayPct;
-          updated++;
         }
       });
-
-      // Save to localStorage
-      try {
-        const existing = JSON.parse(localStorage.getItem('finnhub_prices') || '{}');
-        Object.assign(existing, priceMap);
-        localStorage.setItem('finnhub_prices', JSON.stringify(existing));
-        localStorage.setItem('finnhub_prices_ts', Date.now().toString());
-      } catch (e) { /* skip */ }
-
-      console.log('[PicksHistory] Fallback fetched ' + updated + ' prices');
-      renderHistoryTable();
     }
 
     // Poll localStorage for fresh prices every 10s
@@ -503,14 +485,12 @@
       const defaultTh = document.querySelector('#history-table th[data-sort="symbol"]');
       if (defaultTh) defaultTh.classList.add('sort-asc');
 
-      // Try reading prices from localStorage (shared by positions page)
-      const gotSharedPrices = readSharedPrices();
+      // Apply any cached prices immediately, then always fetch fresh from Finnhub
+      readSharedPrices();
       renderHistoryTable();
 
-      // If no shared prices available, fetch directly from Finnhub (slow, one-time fallback)
-      if (!gotSharedPrices) {
-        fetchPickPricesFallback();
-      }
+      // Always fetch live prices on load (runs in background, updates table progressively)
+      fetchPickPricesFallback();
 
       // Poll localStorage every 10s for updates from positions page
       setInterval(pollSharedPrices, 10000);
