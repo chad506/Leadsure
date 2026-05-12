@@ -538,6 +538,8 @@ function renderKPIs(positions) {
     const sign = todayPnL >= 0 ? '+' : '';
     const pctSign = todayPnLPct >= 0 ? '+' : '';
     heroTodayEl.textContent = sign + fmtCurrency.format(todayPnL) + ' (' + pctSign + (todayPnLPct * 100).toFixed(2) + '%)';
+    heroTodayEl.classList.toggle('kpi-gain', todayPnL >= 0);
+    heroTodayEl.classList.toggle('kpi-loss', todayPnL < 0);
   }
   // hero-total-pnl and hero-roi populated further below after roi/totalPnL are computed
 
@@ -573,7 +575,11 @@ function renderKPIs(positions) {
   }
 
   const heroTotalPnlEl = document.getElementById('hero-total-pnl');
-  if (heroTotalPnlEl) heroTotalPnlEl.textContent = (totalPnL >= 0 ? '+' : '') + fmtCurrency.format(totalPnL);
+  if (heroTotalPnlEl) {
+    heroTotalPnlEl.textContent = (totalPnL >= 0 ? '+' : '') + fmtCurrency.format(totalPnL);
+    heroTotalPnlEl.classList.toggle('kpi-gain', totalPnL >= 0);
+    heroTotalPnlEl.classList.toggle('kpi-loss', totalPnL < 0);
+  }
 
   document.getElementById('kpi-positions').textContent = `${longs.length}L / ${shorts.length}S`;
 
@@ -597,16 +603,14 @@ function renderKPIs(positions) {
   const sortinoEl = document.getElementById('kpi-sortino');
   if (sortinoEl) {
     sortinoEl.textContent = sortinoRatio.toFixed(2) + daysLabel;
-    sortinoEl.classList.toggle('kpi-gain', sortinoRatio >= 0);
-    sortinoEl.classList.toggle('kpi-loss', sortinoRatio < 0);
+    sortinoEl.classList.remove('kpi-gain', 'kpi-loss');
   }
 
   // Sharpe Ratio
   const sharpeEl = document.getElementById('kpi-sharpe');
   if (sharpeEl) {
     sharpeEl.textContent = sharpeRatio.toFixed(2) + daysLabel;
-    sharpeEl.classList.toggle('kpi-gain', sharpeRatio >= 0);
-    sharpeEl.classList.toggle('kpi-loss', sharpeRatio < 0);
+    sharpeEl.classList.remove('kpi-gain', 'kpi-loss');
   }
 
   // Exposure bar
