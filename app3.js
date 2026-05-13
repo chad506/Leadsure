@@ -519,8 +519,10 @@ function renderKPIs(positions) {
   const grossEl = document.getElementById('kpi-total-value');
   if (grossEl) grossEl.textContent = fmtCurrencyCompact.format(grossExposure);
   const fmtSignedPnL = (val) => (val >= 0 ? '+' : '-') + fmtCurrencyCompact.format(Math.abs(val));
-  document.getElementById('kpi-long-exposure').textContent = fmtCurrencyCompact.format(longExposure) + ' (' + fmtSignedPnL(longPnL) + ')';
-  document.getElementById('kpi-short-exposure').textContent = '-' + fmtCurrencyCompact.format(shortExposure) + ' (' + fmtSignedPnL(shortPnL) + ')';
+  const longExpEl = document.getElementById('kpi-long-exposure');
+  if (longExpEl) longExpEl.innerHTML = fmtCurrencyCompact.format(longExposure) + ' (<span class="' + (longPnL >= 0 ? 'kpi-gain' : 'kpi-loss') + '">' + fmtSignedPnL(longPnL) + '</span>)';
+  const shortExpEl = document.getElementById('kpi-short-exposure');
+  if (shortExpEl) shortExpEl.innerHTML = '-' + fmtCurrencyCompact.format(shortExposure) + ' (<span class="' + (shortPnL >= 0 ? 'kpi-gain' : 'kpi-loss') + '">' + fmtSignedPnL(shortPnL) + '</span>)';
 
   // ---- ACCOUNT HERO ----
   const totalAccountValue = CASH + totalPnL;
