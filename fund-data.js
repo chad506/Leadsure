@@ -93,5 +93,7 @@ const POSITIONS = [
   {"symbol": "SITM", "name": "SiTime Corp", "sector": "Technology", "industry": "Semiconductors", "marketCap": 2600000000, "direction": "Long", "qty": 10, "price": 818.11, "costBasis": 525.18, "prevClose": 901.48},
   {"symbol": "WOLF", "name": "Wolfspeed Inc", "sector": "Technology", "industry": "Semiconductors", "marketCap": 4700000000, "direction": "Long", "qty": 138, "price": 46.68, "costBasis": 36.19, "prevClose": 50.31},
   {"symbol": "ON", "name": "ON Semiconductor Corp", "sector": "Technology", "industry": "Semiconductors", "marketCap": 22900000000, "direction": "Long", "qty": 47, "price": 99.42, "costBasis": 105.41, "prevClose": 107.24},
-  {"symbol": "AMD", "name": "Advanced Micro Devices Inc", "sector": "Technology", "industry": "Semiconductors", "marketCap": 683000000000, "direction": "Long", "qty": 15, "price": 438.22, "costBasis": 343.96, "prevClose": 458.79}
+  {"symbol": "AMD", "name": "Advanced Micro Devices Inc", "sector": "Technology", "industry": "Semiconductors", "marketCap": 683000000000, "direction": "Long", "qty": 15, "price": 438.22, "costBasis": 343.96, "prevClose": 458.79},
+  {"symbol": "AXTI", "name": "AXT Inc", "sector": "Technology", "industry": "Compound Semiconductor Substrates", "marketCap": 12000000000, "direction": "Long", "qty": 41, "price": 119.68, "costBasis": 120.85, "prevClose": 122.90},
+  {"symbol": "FLEX", "name": "Flex Ltd", "sector": "Technology", "industry": "Electronic Manufacturing Services", "marketCap": 65700000000, "direction": "Long", "qty": 34, "price": 145.97, "costBasis": 146.38, "prevClose": 139.69}
 ];
