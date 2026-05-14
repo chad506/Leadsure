@@ -1442,6 +1442,9 @@ html, body {
   .account-hero-value,
   .account-hero-stat-value {
     font-size: var(--text-base);
+  }
+  .account-hero-value:not(.kpi-gain):not(.kpi-loss),
+  .account-hero-stat-value:not(.kpi-gain):not(.kpi-loss) {
     color: var(--color-text);
   }
 
@@ -1530,6 +1533,9 @@ html, body {
   .account-hero-value,
   .account-hero-stat-value {
     font-size: var(--text-sm);
+  }
+  .account-hero-value:not(.kpi-gain):not(.kpi-loss),
+  .account-hero-stat-value:not(.kpi-gain):not(.kpi-loss) {
     color: var(--color-text);
   }
 
