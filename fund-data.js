@@ -96,5 +96,5 @@ const POSITIONS = [
   {"symbol": "AMD", "name": "Advanced Micro Devices Inc", "sector": "Technology", "industry": "Semiconductors", "marketCap": 683000000000, "direction": "Long", "qty": 15, "price": 415.01, "costBasis": 343.96, "prevClose": 421.39},
   {"symbol": "AXTI", "name": "AXT Inc", "sector": "Technology", "industry": "Compound Semiconductor Substrates", "marketCap": 12000000000, "direction": "Long", "qty": 41, "price": 120.39, "costBasis": 120.85, "prevClose": 122.9},
   {"symbol": "FLEX", "name": "Flex Ltd", "sector": "Technology", "industry": "Electronic Manufacturing Services", "marketCap": 65700000000, "direction": "Long", "qty": 34, "price": 145.985, "costBasis": 146.38, "prevClose": 139.69},
-  {"symbol": "PL", "name": "Planet Labs PBC", "sector": "Technology", "industry": "Satellite Earth Observation / Space Data Infrastructure", "marketCap": 11500000000, "direction": "Long", "qty": 99, "price": 49.99, "costBasis": 50.50, "prevClose": 44.35}
+  {"symbol": "PL", "name": "Planet Labs PBC", "sector": "Technology", "industry": "Satellite Earth Observation / Space Data Infrastructure", "marketCap": 11500000000, "direction": "Long", "qty": 99, "price": 49.99, "costBasis": 50.50, "prevClose": 50.50, "entryDate": "2026-05-26"}
 ];

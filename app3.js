@@ -134,7 +134,8 @@ const fmtMarketCap = (val) => {
         if (isSameDay) {
           // Same-day cache: restore both price and prevClose
           pos.price = c.c;
-          if (c.pc > 0) pos.prevClose = c.pc;
+          // For positions opened today, keep prevClose = costBasis (don't use market prevClose)
+          if (c.pc > 0 && pos.entryDate !== PRICES_AS_OF) pos.prevClose = c.pc;
         } else {
           // Next-day cache: cached price IS yesterday's close.
           // Use it as today's prevClose (more accurate than embedded).
@@ -275,8 +276,12 @@ async function fetchLivePrices() {
       if (r) {
         const oldPrice = pos.price;
         pos.price = r.price;
-        if (r.prevClose > 0) {
+        // For positions opened today, use costBasis as prevClose so today's P&L reflects
+        // only the move since entry (not the pre-purchase intraday move)
+        if (r.prevClose > 0 && pos.entryDate !== PRICES_AS_OF) {
           pos.prevClose = r.prevClose;
+        } else if (pos.entryDate === PRICES_AS_OF) {
+          pos.prevClose = pos.costBasis;
         }
         pos.priceDirection = (r.price > oldPrice) ? 'up'
           : (r.price < oldPrice) ? 'down' : 'flat';
