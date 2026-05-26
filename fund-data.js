@@ -7,7 +7,7 @@ const SHARED_FINNHUB_KEY = 'd6kqa11r01qmopd1net0d6kqa11r01qmopd1netg';
 
 // Date when price/prevClose were last set (YYYY-MM-DD in US/Pacific)
 // On a new trading day, pages auto-reset price = prevClose so Today P&L starts at $0
-const PRICES_AS_OF = '2026-05-13';
+const PRICES_AS_OF = '2026-05-26';
 
 // Realized P&L from closed positions (CHGG: -$449.07, RIOT: -$1,189.30, U: -$1,336.68, HPP: -$3,496.09)
 const SHARED_REALIZED_PNL = -6471.14;
