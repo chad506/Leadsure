@@ -760,6 +760,14 @@ window.addEventListener('pageshow',function(e){if(e.persisted)location.reload();
         const ts = parseInt(localStorage.getItem('finnhub_prices_ts') || '0');
         if (!cached) return false;
 
+        // Discard cache written before the current data date
+        const cacheWriteDate = new Date(ts).toLocaleDateString('en-CA', { timeZone: 'America/Los_Angeles' });
+        if (cacheWriteDate < PRICES_AS_OF) {
+          localStorage.removeItem('finnhub_prices');
+          localStorage.removeItem('finnhub_prices_ts');
+          return false;
+        }
+
         // Only use if less than 5 minutes old
         const ageMs = Date.now() - ts;
         if (ageMs > 5 * 60 * 1000) {

@@ -117,6 +117,13 @@ const fmtMarketCap = (val) => {
     const ageMs = Date.now() - ts;
     // Only use if less than 18 hours old (covers overnight + pre-market)
     if (ageMs > 18 * 60 * 60 * 1000) return;
+    // Discard cache if it was written before the current data date (stale after a price push)
+    const cacheWriteDate = new Date(ts).toLocaleDateString('en-CA', { timeZone: 'America/Los_Angeles' });
+    if (cacheWriteDate < PRICES_AS_OF) {
+      localStorage.removeItem('finnhub_prices');
+      localStorage.removeItem('finnhub_prices_ts');
+      return;
+    }
 
     const priceMap = JSON.parse(cached);
     const cacheDate = new Date(ts).toLocaleDateString('en-CA', { timeZone: 'America/Los_Angeles' });
