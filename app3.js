@@ -114,16 +114,16 @@ const fmtMarketCap = (val) => {
     const cached = localStorage.getItem('finnhub_prices');
     const ts = parseInt(localStorage.getItem('finnhub_prices_ts') || '0');
     if (!cached) return;
+    // Discard cache if DATA_VERSION changed (cost basis, positions, or prices updated)
+    if (localStorage.getItem('data_version') !== DATA_VERSION) {
+      localStorage.removeItem('finnhub_prices');
+      localStorage.removeItem('finnhub_prices_ts');
+      localStorage.removeItem('data_version');
+      return;
+    }
     const ageMs = Date.now() - ts;
     // Only use if less than 18 hours old (covers overnight + pre-market)
     if (ageMs > 18 * 60 * 60 * 1000) return;
-    // Discard cache if it was written before the current data date (stale after a price push)
-    const cacheWriteDate = new Date(ts).toLocaleDateString('en-CA', { timeZone: 'America/Los_Angeles' });
-    if (cacheWriteDate < PRICES_AS_OF) {
-      localStorage.removeItem('finnhub_prices');
-      localStorage.removeItem('finnhub_prices_ts');
-      return;
-    }
 
     const priceMap = JSON.parse(cached);
     const cacheDate = new Date(ts).toLocaleDateString('en-CA', { timeZone: 'America/Los_Angeles' });
@@ -231,6 +231,7 @@ function broadcastPricesToLocalStorage() {
     });
     localStorage.setItem('finnhub_prices', JSON.stringify(priceCache));
     localStorage.setItem('finnhub_prices_ts', Date.now().toString());
+    localStorage.setItem('data_version', DATA_VERSION);
   } catch (e) { /* localStorage unavailable */ }
 }
 

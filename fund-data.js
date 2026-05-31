@@ -5,6 +5,9 @@
 
 const SHARED_FINNHUB_KEY = 'd6kqa11r01qmopd1net0d6kqa11r01qmopd1netg';
 
+// Bump DATA_VERSION whenever positions, costs, or prices change — invalidates all localStorage caches
+const DATA_VERSION = '20260530-3';
+
 // Date when price/prevClose were last set (YYYY-MM-DD in US/Pacific)
 // On a new trading day, pages auto-reset price = prevClose so Today P&L starts at $0
 const PRICES_AS_OF = '2026-05-30';

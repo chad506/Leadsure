@@ -432,6 +432,12 @@ window.addEventListener('pageshow',function(e){if(e.persisted)location.reload();
     document.write('<scr'+'ipt src="./fund-data.js?v='+_t2+'"></scr'+'ipt>');
   </script>
   <script>
+    // Force reload when restored from bfcache so fresh fund-data.js always executes
+    window.addEventListener('pageshow', function(e) {
+      if (e.persisted) window.location.reload();
+    });
+  </script>
+  <script>
     /* ============================================
        FUND-RESULTS.JS — All positions over time
        Uses fund-data.js as single source of truth
@@ -760,11 +766,11 @@ window.addEventListener('pageshow',function(e){if(e.persisted)location.reload();
         const ts = parseInt(localStorage.getItem('finnhub_prices_ts') || '0');
         if (!cached) return false;
 
-        // Discard cache written before the current data date
-        const cacheWriteDate = new Date(ts).toLocaleDateString('en-CA', { timeZone: 'America/Los_Angeles' });
-        if (cacheWriteDate < PRICES_AS_OF) {
+        // Discard cache if DATA_VERSION changed (cost basis, positions, or prices updated)
+        if (localStorage.getItem('data_version') !== DATA_VERSION) {
           localStorage.removeItem('finnhub_prices');
           localStorage.removeItem('finnhub_prices_ts');
+          localStorage.removeItem('data_version');
           return false;
         }
 

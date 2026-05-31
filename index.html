@@ -339,5 +339,11 @@ window.addEventListener('pageshow',function(e){if(e.persisted)location.reload();
     document.write('<scr'+'ipt src="./model-picks-data.js?v='+_cb+'"></scr'+'ipt>');
     document.write('<scr'+'ipt src="./app3.js?v='+_cb+'"></scr'+'ipt>');
   </script>
+  <script>
+    // Force reload when restored from bfcache so fresh fund-data.js always executes
+    window.addEventListener('pageshow', function(e) {
+      if (e.persisted) window.location.reload();
+    });
+  </script>
 </body>
 </html>
