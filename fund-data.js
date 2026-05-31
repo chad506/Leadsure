@@ -6,7 +6,7 @@
 const SHARED_FINNHUB_KEY = 'd6kqa11r01qmopd1net0d6kqa11r01qmopd1netg';
 
 // Bump DATA_VERSION whenever positions, costs, or prices change — invalidates all localStorage caches
-const DATA_VERSION = '20260530-3';
+const DATA_VERSION = '20260530-4';
 
 // Date when price/prevClose were last set (YYYY-MM-DD in US/Pacific)
 // On a new trading day, pages auto-reset price = prevClose so Today P&L starts at $0
@@ -75,7 +75,7 @@ const POSITIONS = [
   {"symbol": "AMSC", "name": "American Superconductor", "sector": "Technology", "industry": "Power Infrastructure", "marketCap": 1605486250, "direction": "Long", "qty": 163, "price": 50.96, "costBasis": 30.7, "prevClose": 51.33},
   {"symbol": "CIEN", "name": "Ciena Corp", "sector": "Technology", "industry": "Communication Equipment", "marketCap": 56813139769, "direction": "Long", "qty": 14, "price": 580.25, "costBasis": 361.81, "prevClose": 570.18},
   {"symbol": "ADBE", "name": "Adobe Inc", "sector": "Technology", "industry": "Software - Infrastructure", "marketCap": 95729451005, "direction": "Short", "qty": 21, "price": 259.23, "costBasis": 245.24, "prevClose": 241.44},
-  {"symbol": "ARM", "name": "Arm Holdings PLC", "sector": "Technology", "industry": "Semiconductors", "marketCap": 153065853750, "direction": "Long", "qty": 70, "price": 353.31, "costBasis": 136.83, "prevClose": 335.27},
+  {"symbol": "ARM", "name": "Arm Holdings PLC", "sector": "Technology", "industry": "Semiconductors", "marketCap": 153065853750, "direction": "Long", "qty": 70, "price": 353.31, "costBasis": 173.91, "prevClose": 335.27},
   {"symbol": "BMBL", "name": "Bumble Inc", "sector": "Technology", "industry": "Software - Application", "marketCap": 354632607, "direction": "Short", "qty": 1429, "price": 3.18, "costBasis": 3.50, "prevClose": 3.26},
   {"symbol": "AAOI", "name": "Applied Optoelectronics", "sector": "Technology", "industry": "Semiconductors", "marketCap": 3500000000, "direction": "Long", "qty": 43, "price": 158.43, "costBasis": 115.40, "prevClose": 169.02},
   {"symbol": "AEHR", "name": "Aehr Test Systems", "sector": "Technology", "industry": "Semiconductor Equipment", "marketCap": 1500000000, "direction": "Long", "qty": 97, "price": 92.35, "costBasis": 51.29, "prevClose": 99.99},
