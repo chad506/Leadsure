@@ -36,7 +36,7 @@ const ADDON_POSITIONS = [
   {"symbol": "DELL", "name": "Dell Technologies", "direction": "Long", "qty": 10, "costBasis": 317.05, "entryDate": "May 29", "note": "Added to May long winner"}
 ];
 
-// Active positions — THE source of truth (62 positions)
+// Active positions — THE source of truth (63 positions)
 const POSITIONS = [
   {"symbol": "BE", "name": "Bloom Energy Corp", "sector": "Energy", "industry": "Electrical Equipment & Parts", "marketCap": 31512725640, "direction": "Long", "qty": 46, "price": 285.02, "costBasis": 198.60, "prevClose": 290.01},
   {"symbol": "CBRE", "name": "CBRE Group Inc", "sector": "Real Estate", "industry": "Real Estate Services", "marketCap": 39213827897, "direction": "Short", "qty": 35, "price": 125.06, "costBasis": 141.82, "prevClose": 126.42},
