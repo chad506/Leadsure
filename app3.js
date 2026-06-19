@@ -560,11 +560,11 @@ function renderKPIs(positions) {
 
   // ROI = Total P&L / Cash
   const roi = CASH !== 0 ? totalPnL / CASH : 0;
-  // Annualized ROI: (1 + roi)^(365/days) - 1
+  // Annualized ROI (simple): roi × (365/days). Track record is <1yr, so we don't compound.
   const inceptionDate = new Date('2026-03-04T00:00:00');
   const now = new Date();
   const daysElapsed = Math.max((now - inceptionDate) / (1000 * 60 * 60 * 24), 1);
-  const roiAnnualized = Math.pow(1 + roi, 365 / daysElapsed) - 1;
+  const roiAnnualized = roi * (365 / daysElapsed);
   const roiAnnSign = roiAnnualized >= 0 ? '+' : '';
   const heroRoiEl = document.getElementById('hero-roi');
   if (heroRoiEl) heroRoiEl.textContent = (roi >= 0 ? '+' : '') + (roi * 100).toFixed(2) + '%' + ' (' + roiAnnSign + (roiAnnualized * 100).toFixed(0) + '% yr)';
@@ -572,7 +572,7 @@ function renderKPIs(positions) {
   // S&P 500 % since inception
   const spyChange = SPY_INCEPTION_PRICE !== 0 ? (spyCurrentPrice - SPY_INCEPTION_PRICE) / SPY_INCEPTION_PRICE : 0;
   const spyEl = document.getElementById('kpi-spy');
-  const spyAnnualized = Math.pow(1 + spyChange, 365 / daysElapsed) - 1;
+  const spyAnnualized = spyChange * (365 / daysElapsed);
   const spyAnnSign = spyAnnualized >= 0 ? '+' : '';
   spyEl.textContent = (spyChange >= 0 ? '+' : '') + (spyChange * 100).toFixed(2) + '%' + ' (' + spyAnnSign + (spyAnnualized * 100).toFixed(0) + '% yr)';
   spyEl.classList.toggle('kpi-gain', spyChange >= 0);
@@ -582,7 +582,7 @@ function renderKPIs(positions) {
   const magsChange = MAGS_INCEPTION_PRICE !== 0 ? (magsCurrentPrice - MAGS_INCEPTION_PRICE) / MAGS_INCEPTION_PRICE : 0;
   const magsEl = document.getElementById('kpi-mag7');
   if (magsEl) {
-    const magsAnnualized = Math.pow(1 + magsChange, 365 / daysElapsed) - 1;
+    const magsAnnualized = magsChange * (365 / daysElapsed);
     const magsAnnSign = magsAnnualized >= 0 ? '+' : '';
     magsEl.textContent = (magsChange >= 0 ? '+' : '') + (magsChange * 100).toFixed(2) + '%' + ' (' + magsAnnSign + (magsAnnualized * 100).toFixed(0) + '% yr)';
     magsEl.classList.toggle('kpi-gain', magsChange >= 0);
@@ -602,7 +602,8 @@ function renderKPIs(positions) {
   const alpha = roi - spyChange;
   const alphaEl = document.getElementById('kpi-alpha');
   if (alphaEl) {
-    const alphaAnnualized = Math.pow(1 + alpha, 365 / daysElapsed) - 1;
+    // Annualized alpha = annualized portfolio return − annualized benchmark return (never compound a spread)
+    const alphaAnnualized = roiAnnualized - spyAnnualized;
     const alphaAnnSign = alphaAnnualized >= 0 ? '+' : '';
     alphaEl.textContent = (alpha >= 0 ? '+' : '') + (alpha * 100).toFixed(2) + '%'
       + ' (' + alphaAnnSign + (alphaAnnualized * 100).toFixed(0) + '% yr)';
