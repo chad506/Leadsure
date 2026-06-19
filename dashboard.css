@@ -556,15 +556,22 @@ html, body {
 }
 
 .industry-cell {
-  color: var(--color-text-faint);
+  color: var(--color-text-muted);
   font-size: 0.65rem;
+  max-width: 150px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
+/* Cap the Industry column header to match the cell width */
+.history-picks-table th[data-sort="industry"] {
+  width: 150px;
+  max-width: 150px;
+}
+
 .mktcap-cell {
-  color: var(--color-text-faint);
+  color: var(--color-text-muted);
   font-family: var(--font-mono);
   font-variant-numeric: tabular-nums lining-nums;
   font-size: 0.65rem;
