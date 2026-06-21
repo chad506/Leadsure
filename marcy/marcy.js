@@ -78,7 +78,7 @@
               '<div class="listing-spec">' + spec + '</div>' +
               '<div class="listing-actions">' +
                 '<button type="button" class="btn-mortgage" data-id="' + l.id + '">Show Mortgage</button>' +
-                '<a class="listing-link" href="' + zillowUrl(l) + '" target="_blank" rel="noopener">Details &#8599;</a>' +
+                '<a class="listing-link" href="' + zillowUrl(l) + '" target="_blank" rel="noopener">View on Zillow &#8599;</a>' +
               '</div>' +
             '</div>' +
           '</article>';
