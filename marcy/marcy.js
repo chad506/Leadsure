@@ -23,8 +23,11 @@
   function photoUrl(l) {
     var cfg = (typeof MARCY_CONFIG !== 'undefined') ? MARCY_CONFIG : {};
     if (cfg.googleMapsKey) {
+      var loc = (l.lat != null && l.lng != null)
+        ? (l.lat + ',' + l.lng)
+        : (l.address + ', Seattle, WA ' + l.zip);
       return 'https://maps.googleapis.com/maps/api/streetview?size=640x400&location=' +
-        encodeURIComponent(l.address + ', Seattle, WA ' + l.zip) +
+        encodeURIComponent(loc) +
         '&source=outdoor&return_error_code=true&key=' + cfg.googleMapsKey;
     }
     return l.photo || null;
@@ -78,7 +81,7 @@
               '<div class="listing-spec">' + spec + '</div>' +
               '<div class="listing-actions">' +
                 '<button type="button" class="btn-mortgage" data-id="' + l.id + '">Show Mortgage</button>' +
-                '<a class="listing-link" href="' + zillowUrl(l) + '" target="_blank" rel="noopener">View on Zillow &#8599;</a>' +
+                '<a class="listing-link" href="' + (l.url || zillowUrl(l)) + '" target="_blank" rel="noopener">' + (l.url ? 'View on Redfin' : 'View on Zillow') + ' &#8599;</a>' +
               '</div>' +
             '</div>' +
           '</article>';
