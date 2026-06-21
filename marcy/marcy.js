@@ -308,6 +308,7 @@
     renderListings();
     initDonut();
     bind();
-    if (MARCY_LISTINGS && MARCY_LISTINGS.length) applyListing(MARCY_LISTINGS[0], false);
+    var firstSorted = filterAndSort();
+    if (firstSorted.length) applyListing(firstSorted[0], false);
   });
 })();
