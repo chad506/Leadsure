@@ -99,3 +99,31 @@ Week 1 = March 6, 2026. As of 6/17 we are on Week 36. Each set of picks on a new
 - **livePrice ≠ buy price after time passes** — on entry set livePrice = price; never update it manually after that (Finnhub handles it).
 - **prevClose is NOT the same as price** — compute it from actual prior-day close data.
 - **totalTrades must be incremented** — easy to forget; each new pick adds 1 to that model's totalTrades.
+
+---
+
+## Marcy sub-site (leadsure.com/marcy)
+Standalone sub-page: Magnolia, WA homes for sale + a Bankrate-style mortgage calculator. Decoupled from the fund nav (no cross-links between Marcy and the Positions/Picks/Fund pages).
+
+### Files (all in `marcy/`)
+- `index.html` — page shell (reuses shared `../base.css` / `../style.css` / `../dashboard.css` + `marcy.css`)
+- `marcy.css` — Marcy-specific styles
+- `marcy.js` — listings carousel, filters, mortgage calculator, Street View photos
+- `listings.js` — **AUTO-GENERATED** listing data (don't hand-edit; regenerate — see below)
+- `config.js` — `MARCY_CONFIG.googleMapsKey` (Google Street View key)
+
+### Listings data
+- Real Magnolia (zip 98199) for-sale listings from a Redfin **"Download All"** export (`.csv` or `.numbers`).
+- **Refresh = one command:** `scripts/refresh-marcy-listings.sh` — finds the newest `redfin_*` export in `MARCY_EXPORT_DIR` (default: the Ambaum Dropbox "Real Estate" folder), regenerates `marcy/listings.js`, commits + pushes. Pass a path for a specific file; `--no-push` to regenerate only.
+- Reports **added/removed** vs the previous run and flags new listings with `added: true` (shown as a "Just added" badge + filter option).
+- Do NOT scrape Zillow/Redfin programmatically (ToS) — use the user's own export. Photos are NOT MLS photos.
+
+### Photos — Google Street View
+- Each card photo is a **Street View Static** image from the listing's lat/lng, using `MARCY_CONFIG.googleMapsKey`.
+- The key MUST be HTTP-referrer-restricted to `leadsure.com/*` (it's public in `config.js`). Add a daily quota cap on the Street View Static API as a backstop.
+
+### Defaults / behavior
+- Type filter defaults to **Houses** (condos/townhomes/multi-family/land hidden until selected).
+- Sort defaults to **price low→high**; the calculator pre-fills from the cheapest visible listing.
+- "Show Mortgage" loads the calculator at 20% down with auto tax (0.9%/yr) + insurance (0.12%/yr); PMI auto-adds when down < 20%.
+- Calculator terms: **30-year fixed** and **7-year ARM** (ARM amortizes over 30 years at the entered intro rate).

@@ -37,9 +37,11 @@
     var price = ($('f-price') || {}).value || 'any';
     var beds = parseNum(($('f-beds') || {}).value);
     var type = ($('f-type') || {}).value || 'any';
+    var rec = ($('f-new') || {}).value || 'all';
     var sort = ($('listing-sort') || {}).value || 'new';
 
     var list = MARCY_LISTINGS.filter(function (l) {
+      if (rec === 'added' && !l.added) return false;
       if (beds && l.beds < beds) return false;
       if (type !== 'any' && l.type !== type) return false;
       if (price === 'lt1' && l.price >= 1000000) return false;
@@ -66,6 +68,7 @@
         var badge = l.status === 'New'
           ? '<span class="listing-badge badge-new">New</span>'
           : '<span class="listing-badge badge-active">Active</span>';
+        var addedBadge = l.added ? '<span class="listing-badge badge-added">Just added</span>' : '';
         var url = photoUrl(l);
         var photo = HOUSE_SVG + (url
           ? '<img src="' + url + '" alt="' + l.address + '" loading="lazy" onerror="this.remove()">'
@@ -73,7 +76,7 @@
         var spec = l.beds + ' bd · ' + l.baths + ' ba · ' + l.sqft.toLocaleString() + ' sqft';
         return '' +
           '<article class="card listing">' +
-            '<div class="listing-photo">' + photo + badge + '</div>' +
+            '<div class="listing-photo">' + photo + badge + addedBadge + '</div>' +
             '<div class="listing-body">' +
               '<div class="listing-price">' + fmt0.format(l.price) + '</div>' +
               '<div class="listing-addr">' + l.address + '</div>' +
@@ -257,7 +260,7 @@
       if (l) applyListing(l, true);
     });
 
-    ['f-price', 'f-beds', 'f-type', 'listing-sort'].forEach(function (id) {
+    ['f-price', 'f-beds', 'f-type', 'f-new', 'listing-sort'].forEach(function (id) {
       var el = $(id); if (el) el.addEventListener('change', renderListings);
     });
 

@@ -65,14 +65,21 @@
             <option value="5">5+ beds</option>
           </select>
           <select id="f-type" aria-label="Filter by type">
-            <option value="any">Any type</option>
-            <option value="House">House</option>
-            <option value="Townhome">Townhome</option>
+            <option value="House" selected>Houses</option>
+            <option value="any">All types</option>
+            <option value="Townhome">Townhomes</option>
+            <option value="Condo">Condos</option>
+            <option value="Multi-family">Multi-family</option>
+            <option value="Land">Land</option>
           </select>
           <select id="listing-sort" aria-label="Sort listings">
             <option value="price-asc" selected>Price: low to high</option>
             <option value="price-desc">Price: high to low</option>
             <option value="new">Newest</option>
+          </select>
+          <select id="f-new" aria-label="Filter by recency">
+            <option value="all" selected>All listings</option>
+            <option value="added">Just added</option>
           </select>
         </div>
         <div class="listing-note" id="data-note">Listings sourced from a Redfin export &middot; photos via Google Street View.</div>
@@ -101,7 +108,7 @@
             <div class="fld"><span>Loan term</span>
               <div class="seg-group" id="m-term">
                 <button type="button" class="seg term-btn active" data-years="30">30-year fixed</button>
-                <button type="button" class="seg term-btn" data-years="15">15-year fixed</button>
+                <button type="button" class="seg term-btn" data-years="30">7-year ARM</button>
               </div>
             </div>
             <label class="fld"><span>Interest rate</span><input id="m-rate" type="text" inputmode="decimal" value="6.75%" autocomplete="off"></label>
