@@ -11,5 +11,5 @@
    in the Google Cloud console. Street View Static has a monthly free tier.
    ============================================ */
 const MARCY_CONFIG = {
-  googleMapsKey: ''
+  googleMapsKey: 'AIzaSyBixdEbTKyGFEiqtd3YzwRDYNVFRJ6ck04'
 };
