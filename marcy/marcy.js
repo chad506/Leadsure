@@ -18,6 +18,18 @@
     return 'https://www.zillow.com/homes/' + encodeURIComponent(l.address + ', Seattle, WA ' + l.zip) + '_rb/';
   }
 
+  // Google Street View photo of the home (needs a key in config.js). Falls back
+  // to the listing's `photo` field, then to the house-icon placeholder.
+  function photoUrl(l) {
+    var cfg = (typeof MARCY_CONFIG !== 'undefined') ? MARCY_CONFIG : {};
+    if (cfg.googleMapsKey) {
+      return 'https://maps.googleapis.com/maps/api/streetview?size=640x400&location=' +
+        encodeURIComponent(l.address + ', Seattle, WA ' + l.zip) +
+        '&source=outdoor&return_error_code=true&key=' + cfg.googleMapsKey;
+    }
+    return l.photo || null;
+  }
+
   function filterAndSort() {
     var price = ($('f-price') || {}).value || 'any';
     var beds = parseNum(($('f-beds') || {}).value);
@@ -51,8 +63,9 @@
         var badge = l.status === 'New'
           ? '<span class="listing-badge badge-new">New</span>'
           : '<span class="listing-badge badge-active">Active</span>';
-        var photo = HOUSE_SVG + (l.photo
-          ? '<img src="' + l.photo + '" alt="' + l.address + '" loading="lazy" onerror="this.remove()">'
+        var url = photoUrl(l);
+        var photo = HOUSE_SVG + (url
+          ? '<img src="' + url + '" alt="' + l.address + '" loading="lazy" onerror="this.remove()">'
           : '');
         var spec = l.beds + ' bd · ' + l.baths + ' ba · ' + l.sqft.toLocaleString() + ' sqft';
         return '' +
