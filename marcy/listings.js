@@ -1,9 +1,26 @@
-/* AUTO-GENERATED from redfin_2026-06-21-10-48-46.numbers on 2026-06-21 by scripts/refresh-marcy-listings.sh.
+/* AUTO-GENERATED from redfin_2026-06-21-16-20-44.numbers on 2026-06-21 by scripts/refresh-marcy-listings.sh.
    Real Magnolia (98199) for-sale listings. `added:true` = new since the
    previous refresh. Re-run the script to refresh. */
 const MARCY_LISTINGS = [
   {
     "id": "mag-001",
+    "address": "2017 36th Ave W",
+    "zip": "98199",
+    "price": 2850000,
+    "beds": 4,
+    "baths": 3.5,
+    "sqft": 3360,
+    "type": "House",
+    "status": "New",
+    "blurb": "House \u00b7 Magnolia \u00b7 built 1937",
+    "photo": null,
+    "url": "https://www.redfin.com/WA/Seattle/2017-36th-Ave-W-98199/home/125267",
+    "lat": 47.6368327,
+    "lng": -122.40403959999999,
+    "added": true
+  },
+  {
+    "id": "mag-002",
     "address": "3045 20th Ave W #202",
     "zip": "98199",
     "price": 350000,
@@ -19,7 +36,7 @@ const MARCY_LISTINGS = [
     "lng": -122.3824535
   },
   {
-    "id": "mag-002",
+    "id": "mag-003",
     "address": "2500 W Manor Pl #217",
     "zip": "98199",
     "price": 339000,
@@ -35,7 +52,7 @@ const MARCY_LISTINGS = [
     "lng": -122.3894177
   },
   {
-    "id": "mag-003",
+    "id": "mag-004",
     "address": "3228 21st Ave W #300",
     "zip": "98199",
     "price": 545000,
@@ -51,7 +68,7 @@ const MARCY_LISTINGS = [
     "lng": -122.3830053
   },
   {
-    "id": "mag-004",
+    "id": "mag-005",
     "address": "3035 A 21st Ave W",
     "zip": "98199",
     "price": 897000,
@@ -67,7 +84,7 @@ const MARCY_LISTINGS = [
     "lng": -122.3836783
   },
   {
-    "id": "mag-005",
+    "id": "mag-006",
     "address": "2527 Westmont Way W",
     "zip": "98199",
     "price": 2730000,
@@ -83,7 +100,7 @@ const MARCY_LISTINGS = [
     "lng": -122.4088065
   },
   {
-    "id": "mag-006",
+    "id": "mag-007",
     "address": "2334 Thorndyke Ave W #301",
     "zip": "98199",
     "price": 899000,
@@ -99,7 +116,24 @@ const MARCY_LISTINGS = [
     "lng": -122.3864619
   },
   {
-    "id": "mag-007",
+    "id": "mag-008",
+    "address": "2400 W Boston St",
+    "zip": "98199",
+    "price": 680000,
+    "beds": 2,
+    "baths": 2.5,
+    "sqft": 980,
+    "type": "Townhome",
+    "status": "New",
+    "blurb": "Townhome \u00b7 Magnolia \u00b7 built 2006",
+    "photo": null,
+    "url": "https://www.redfin.com/WA/Seattle/2400-W-Boston-St-98199/home/123609",
+    "lat": 47.6385764,
+    "lng": -122.3882939,
+    "added": true
+  },
+  {
+    "id": "mag-009",
     "address": "3011 30th Ave W Unit A",
     "zip": "98199",
     "price": 998500,
@@ -115,7 +149,24 @@ const MARCY_LISTINGS = [
     "lng": -122.3960827
   },
   {
-    "id": "mag-008",
+    "id": "mag-010",
+    "address": "2460 W Lynn St",
+    "zip": "98199",
+    "price": 2999000,
+    "beds": 5,
+    "baths": 3.5,
+    "sqft": 3810,
+    "type": "House",
+    "status": "New",
+    "blurb": "House \u00b7 Magnolia \u00b7 built 2019",
+    "photo": null,
+    "url": "https://www.redfin.com/WA/Seattle/2460-W-Lynn-St-98199/home/123334",
+    "lat": 47.6393048,
+    "lng": -122.390028,
+    "added": true
+  },
+  {
+    "id": "mag-011",
     "address": "3222 21st Ave W Unit A",
     "zip": "98199",
     "price": 598000,
@@ -131,7 +182,7 @@ const MARCY_LISTINGS = [
     "lng": -122.38310489999999
   },
   {
-    "id": "mag-009",
+    "id": "mag-012",
     "address": "3637 22nd Ave W",
     "zip": "98199",
     "price": 629950,
@@ -147,7 +198,7 @@ const MARCY_LISTINGS = [
     "lng": -122.38499949999999
   },
   {
-    "id": "mag-010",
+    "id": "mag-013",
     "address": "2605 22nd AVE W Unit B Unit B",
     "zip": "98199",
     "price": 899000,
@@ -163,7 +214,7 @@ const MARCY_LISTINGS = [
     "lng": -122.384908
   },
   {
-    "id": "mag-011",
+    "id": "mag-014",
     "address": "3033 27th Ave W",
     "zip": "98199",
     "price": 2450000,
@@ -179,7 +230,7 @@ const MARCY_LISTINGS = [
     "lng": -122.3919119
   },
   {
-    "id": "mag-012",
+    "id": "mag-015",
     "address": "3661 24th Pl W #107",
     "zip": "98199",
     "price": 362500,
@@ -195,7 +246,24 @@ const MARCY_LISTINGS = [
     "lng": -122.3885684
   },
   {
-    "id": "mag-013",
+    "id": "mag-016",
+    "address": "2612 W Galer St",
+    "zip": "98199",
+    "price": 1000000,
+    "beds": 3,
+    "baths": 1.5,
+    "sqft": 2770,
+    "type": "House",
+    "status": "New",
+    "blurb": "House \u00b7 Magnolia \u00b7 built 1940",
+    "photo": null,
+    "url": "https://www.redfin.com/WA/Seattle/2612-W-Galer-St-98199/home/126452",
+    "lat": 47.6325419,
+    "lng": -122.39136189999999,
+    "added": true
+  },
+  {
+    "id": "mag-017",
     "address": "3832 32nd Ave W",
     "zip": "98199",
     "price": 2795000,
@@ -211,7 +279,7 @@ const MARCY_LISTINGS = [
     "lng": -122.397937
   },
   {
-    "id": "mag-014",
+    "id": "mag-018",
     "address": "4206 W Glenmont Ln",
     "zip": "98199",
     "price": 1995000,
@@ -227,7 +295,7 @@ const MARCY_LISTINGS = [
     "lng": -122.4111533
   },
   {
-    "id": "mag-015",
+    "id": "mag-019",
     "address": "3216 24th Ave W",
     "zip": "98199",
     "price": 1150000,
@@ -243,7 +311,7 @@ const MARCY_LISTINGS = [
     "lng": -122.38714569999999
   },
   {
-    "id": "mag-016",
+    "id": "mag-020",
     "address": "3423 W Government Way #8",
     "zip": "98199",
     "price": 500000,
@@ -259,7 +327,7 @@ const MARCY_LISTINGS = [
     "lng": -122.4019005
   },
   {
-    "id": "mag-017",
+    "id": "mag-021",
     "address": "3406 B 34th Ave W",
     "zip": "98199",
     "price": 899900,
@@ -275,7 +343,24 @@ const MARCY_LISTINGS = [
     "lng": -122.4003844
   },
   {
-    "id": "mag-018",
+    "id": "mag-022",
+    "address": "2607 W Newton St",
+    "zip": "98199",
+    "price": 2385000,
+    "beds": 4,
+    "baths": 3.5,
+    "sqft": 3430,
+    "type": "House",
+    "status": "Active",
+    "blurb": "House \u00b7 Magnolia \u00b7 built 2008",
+    "photo": null,
+    "url": "https://www.redfin.com/WA/Seattle/2607-W-Newton-St-98199/home/124668",
+    "lat": 47.636773999999996,
+    "lng": -122.3907673,
+    "added": true
+  },
+  {
+    "id": "mag-023",
     "address": "2409 29th Ave W",
     "zip": "98199",
     "price": 3495000,
@@ -291,7 +376,7 @@ const MARCY_LISTINGS = [
     "lng": -122.39449739999999
   },
   {
-    "id": "mag-019",
+    "id": "mag-024",
     "address": "3510 W Elmore St",
     "zip": "98199",
     "price": 2400000,
@@ -307,7 +392,7 @@ const MARCY_LISTINGS = [
     "lng": -122.40280709999999
   },
   {
-    "id": "mag-020",
+    "id": "mag-025",
     "address": "2654 W Dravus St",
     "zip": "98199",
     "price": 1100000,
@@ -323,7 +408,7 @@ const MARCY_LISTINGS = [
     "lng": -122.3912154
   },
   {
-    "id": "mag-021",
+    "id": "mag-026",
     "address": "2600 2634 Thorndyke Ave W",
     "zip": "98199",
     "price": 8325000,
@@ -339,7 +424,7 @@ const MARCY_LISTINGS = [
     "lng": -122.3839874
   },
   {
-    "id": "mag-022",
+    "id": "mag-027",
     "address": "2600 -2626 Thorndyke Ave W",
     "zip": "98119",
     "price": 6225000,
@@ -355,7 +440,7 @@ const MARCY_LISTINGS = [
     "lng": -122.38364229999999
   },
   {
-    "id": "mag-023",
+    "id": "mag-028",
     "address": "2109 W Raye St",
     "zip": "98199",
     "price": 1300000,
@@ -371,7 +456,24 @@ const MARCY_LISTINGS = [
     "lng": -122.38385609999999
   },
   {
-    "id": "mag-024",
+    "id": "mag-029",
+    "address": "4422 Montana Cir W",
+    "zip": "98199",
+    "price": 999000,
+    "beds": 3,
+    "baths": 2.5,
+    "sqft": 1976,
+    "type": "Townhome",
+    "status": "Active",
+    "blurb": "Townhome \u00b7 Magnolia \u00b7 built 1900",
+    "photo": null,
+    "url": "https://www.redfin.com/WA/Seattle/4422-Montana-Cir-98199/home/186035874",
+    "lat": 47.661792999999996,
+    "lng": -122.4154528,
+    "added": true
+  },
+  {
+    "id": "mag-030",
     "address": "3045 20th Ave W #209",
     "zip": "98199",
     "price": 285000,
@@ -387,7 +489,7 @@ const MARCY_LISTINGS = [
     "lng": -122.3824535
   },
   {
-    "id": "mag-025",
+    "id": "mag-031",
     "address": "2904 W Tilden St",
     "zip": "98199",
     "price": 1490000,
@@ -403,7 +505,7 @@ const MARCY_LISTINGS = [
     "lng": -122.39464369999999
   },
   {
-    "id": "mag-026",
+    "id": "mag-032",
     "address": "3443 21st Ave W",
     "zip": "98199",
     "price": 850000,
@@ -419,7 +521,7 @@ const MARCY_LISTINGS = [
     "lng": -122.3836779
   },
   {
-    "id": "mag-027",
+    "id": "mag-033",
     "address": "2651 22nd Ave W Unit A",
     "zip": "98199",
     "price": 759000,
@@ -435,7 +537,7 @@ const MARCY_LISTINGS = [
     "lng": -122.3848677
   },
   {
-    "id": "mag-028",
+    "id": "mag-034",
     "address": "3607 22nd Ave W Unit A",
     "zip": "98199",
     "price": 894950,
@@ -451,7 +553,7 @@ const MARCY_LISTINGS = [
     "lng": -122.38497489999999
   },
   {
-    "id": "mag-029",
+    "id": "mag-035",
     "address": "2830 23rd Ave W",
     "zip": "98199",
     "price": 1420000,
@@ -467,7 +569,7 @@ const MARCY_LISTINGS = [
     "lng": -122.385695
   },
   {
-    "id": "mag-030",
+    "id": "mag-036",
     "address": "3415 24th Ave W",
     "zip": "98199",
     "price": 1150000,
@@ -483,7 +585,24 @@ const MARCY_LISTINGS = [
     "lng": -122.3877661
   },
   {
-    "id": "mag-031",
+    "id": "mag-037",
+    "address": "3113 W Harley St #3115",
+    "zip": "98199",
+    "price": 843000,
+    "beds": 3,
+    "baths": 2,
+    "sqft": 1672,
+    "type": "Condo",
+    "status": "Active",
+    "blurb": "Condo \u00b7 Magnolia \u00b7 built 1973",
+    "photo": null,
+    "url": "https://www.redfin.com/WA/Seattle/3113-W-Harley-St-98199/unit-3115/home/69992",
+    "lat": 47.6633837,
+    "lng": -122.3977845,
+    "added": true
+  },
+  {
+    "id": "mag-038",
     "address": "3406 W Government Way #7",
     "zip": "98199",
     "price": 499950,
@@ -499,7 +618,7 @@ const MARCY_LISTINGS = [
     "lng": -122.40162269999999
   },
   {
-    "id": "mag-032",
+    "id": "mag-039",
     "address": "3509 W Thurman St",
     "zip": "98199",
     "price": 2295000,
@@ -515,7 +634,7 @@ const MARCY_LISTINGS = [
     "lng": -122.40284369999999
   },
   {
-    "id": "mag-033",
+    "id": "mag-040",
     "address": "3425 21st Ave W Unit A",
     "zip": "98199",
     "price": 799000,
@@ -531,7 +650,7 @@ const MARCY_LISTINGS = [
     "lng": -122.3838959
   },
   {
-    "id": "mag-034",
+    "id": "mag-041",
     "address": "2024 W Bertona St",
     "zip": "98199",
     "price": 749950,
@@ -547,7 +666,7 @@ const MARCY_LISTINGS = [
     "lng": -122.38317509999999
   },
   {
-    "id": "mag-035",
+    "id": "mag-042",
     "address": "2562 Thorndyke Ave W #405",
     "zip": "98199",
     "price": 319950,
@@ -563,7 +682,7 @@ const MARCY_LISTINGS = [
     "lng": -122.38425869999999
   },
   {
-    "id": "mag-036",
+    "id": "mag-043",
     "address": "2858 32nd Ave W #106",
     "zip": "98199",
     "price": 498000,
@@ -579,7 +698,7 @@ const MARCY_LISTINGS = [
     "lng": -122.3980031
   },
   {
-    "id": "mag-037",
+    "id": "mag-044",
     "address": "3711 26th Pl W #306",
     "zip": "98199",
     "price": 389000,
@@ -595,7 +714,7 @@ const MARCY_LISTINGS = [
     "lng": -122.3905886
   },
   {
-    "id": "mag-038",
+    "id": "mag-045",
     "address": "3319 W ELMORE St",
     "zip": "98199",
     "price": 1890000,
@@ -611,7 +730,24 @@ const MARCY_LISTINGS = [
     "lng": -122.4005906
   },
   {
-    "id": "mag-039",
+    "id": "mag-046",
+    "address": "4701 W Ruffner St",
+    "zip": "98199",
+    "price": 6750000,
+    "beds": 4,
+    "baths": 4,
+    "sqft": 7230,
+    "type": "House",
+    "status": "Active",
+    "blurb": "House \u00b7 Magnolia \u00b7 built 1929",
+    "photo": null,
+    "url": "https://www.redfin.com/WA/Seattle/4701-W-Ruffner-St-98199/home/125802",
+    "lat": 47.6518041,
+    "lng": -122.4178038,
+    "added": true
+  },
+  {
+    "id": "mag-047",
     "address": "3710 26th Pl W #405",
     "zip": "98199",
     "price": 365000,
@@ -627,7 +763,7 @@ const MARCY_LISTINGS = [
     "lng": -122.39027279999999
   },
   {
-    "id": "mag-040",
+    "id": "mag-048",
     "address": "3030 31st Ave W",
     "zip": "98199",
     "price": 975000,
@@ -643,7 +779,7 @@ const MARCY_LISTINGS = [
     "lng": -122.39665719999999
   },
   {
-    "id": "mag-041",
+    "id": "mag-049",
     "address": "2500 W Manor Pl #216",
     "zip": "98199",
     "price": 427500,
@@ -659,7 +795,24 @@ const MARCY_LISTINGS = [
     "lng": -122.3894177
   },
   {
-    "id": "mag-042",
+    "id": "mag-050",
+    "address": "1560 28th Ave W",
+    "zip": "98199",
+    "price": 1725000,
+    "beds": 4,
+    "baths": 3,
+    "sqft": 2860,
+    "type": "House",
+    "status": "Active",
+    "blurb": "House \u00b7 Magnolia \u00b7 built 1929",
+    "photo": null,
+    "url": "https://www.redfin.com/WA/Seattle/1560-28th-Ave-W-98199/home/126738",
+    "lat": 47.6334498,
+    "lng": -122.392786,
+    "added": true
+  },
+  {
+    "id": "mag-051",
     "address": "3303 37th Ave W",
     "zip": "98199",
     "price": 3200000,
@@ -675,7 +828,7 @@ const MARCY_LISTINGS = [
     "lng": -122.4050324
   },
   {
-    "id": "mag-043",
+    "id": "mag-052",
     "address": "3444 34th Ave W",
     "zip": "98199",
     "price": 849000,
@@ -691,7 +844,24 @@ const MARCY_LISTINGS = [
     "lng": -122.40059099999999
   },
   {
-    "id": "mag-044",
+    "id": "mag-053",
+    "address": "2310 W Newton St",
+    "zip": "98199",
+    "price": 699000,
+    "beds": 2,
+    "baths": 2,
+    "sqft": 965,
+    "type": "Townhome",
+    "status": "Active",
+    "blurb": "Townhome \u00b7 Magnolia \u00b7 built 2020",
+    "photo": null,
+    "url": "https://www.redfin.com/WA/Seattle/2310-W-Newton-St-98199/home/171917051",
+    "lat": 47.6371171,
+    "lng": -122.38663229999999,
+    "added": true
+  },
+  {
+    "id": "mag-054",
     "address": "3601 24th Ave W #207",
     "zip": "98199",
     "price": 329000,
@@ -707,7 +877,7 @@ const MARCY_LISTINGS = [
     "lng": -122.387812
   },
   {
-    "id": "mag-045",
+    "id": "mag-055",
     "address": "3806 35th Ave W Unit 1",
     "zip": "98199",
     "price": 635000,
@@ -723,7 +893,7 @@ const MARCY_LISTINGS = [
     "lng": -122.4019903
   },
   {
-    "id": "mag-046",
+    "id": "mag-056",
     "address": "2518 36th Ave W",
     "zip": "98199",
     "price": 1348000,
@@ -739,7 +909,24 @@ const MARCY_LISTINGS = [
     "lng": -122.4036316
   },
   {
-    "id": "mag-047",
+    "id": "mag-057",
+    "address": "2301 Rosemont Pl W",
+    "zip": "98199",
+    "price": 3400000,
+    "beds": 5,
+    "baths": 3.5,
+    "sqft": 3490,
+    "type": "House",
+    "status": "Active",
+    "blurb": "House \u00b7 Magnolia Bluff \u00b7 built 1932",
+    "photo": null,
+    "url": "https://www.redfin.com/WA/Seattle/2301-Rosemont-Pl-W-98199/home/126386",
+    "lat": 47.639142299999996,
+    "lng": -122.4066912,
+    "added": true
+  },
+  {
+    "id": "mag-058",
     "address": "3920 W Barrett St",
     "zip": "98199",
     "price": 2248000,
@@ -755,7 +942,7 @@ const MARCY_LISTINGS = [
     "lng": -122.4078911
   },
   {
-    "id": "mag-048",
+    "id": "mag-059",
     "address": "3844 30th Ave W",
     "zip": "98199",
     "price": 1150000,
@@ -771,7 +958,7 @@ const MARCY_LISTINGS = [
     "lng": -122.3953653
   },
   {
-    "id": "mag-049",
+    "id": "mag-060",
     "address": "3014 21st Ave W Unit A",
     "zip": "98199",
     "price": 899000,
@@ -787,7 +974,24 @@ const MARCY_LISTINGS = [
     "lng": -122.38314299999999
   },
   {
-    "id": "mag-050",
+    "id": "mag-061",
+    "address": "3215 W Lynn St",
+    "zip": "98199",
+    "price": 1478000,
+    "beds": 3,
+    "baths": 2.5,
+    "sqft": 2915,
+    "type": "Townhome",
+    "status": "Active",
+    "blurb": "Townhome \u00b7 Magnolia \u00b7 built 2009",
+    "photo": null,
+    "url": "https://www.redfin.com/WA/Seattle/3215-W-Lynn-St-98199/home/28581355",
+    "lat": 47.6390355,
+    "lng": -122.3992287,
+    "added": true
+  },
+  {
+    "id": "mag-062",
     "address": "4000 24th Ave W #202",
     "zip": "98199",
     "price": 415000,
@@ -803,7 +1007,7 @@ const MARCY_LISTINGS = [
     "lng": -122.3872147
   },
   {
-    "id": "mag-051",
+    "id": "mag-063",
     "address": "4257 W 33rd Ave W #1",
     "zip": "98199",
     "price": 1165000,
@@ -819,7 +1023,7 @@ const MARCY_LISTINGS = [
     "lng": -122.39981189999999
   },
   {
-    "id": "mag-052",
+    "id": "mag-064",
     "address": "2506 W Halladay St",
     "zip": "98199",
     "price": 3475000,
@@ -835,7 +1039,7 @@ const MARCY_LISTINGS = [
     "lng": -122.3893641
   },
   {
-    "id": "mag-053",
+    "id": "mag-065",
     "address": "3424 25th Ave W #201",
     "zip": "98199",
     "price": 439900,
@@ -851,7 +1055,7 @@ const MARCY_LISTINGS = [
     "lng": -122.38809239999999
   },
   {
-    "id": "mag-054",
+    "id": "mag-066",
     "address": "3045 20th Ave W #409",
     "zip": "98199",
     "price": 275000,
@@ -867,7 +1071,7 @@ const MARCY_LISTINGS = [
     "lng": -122.3824535
   },
   {
-    "id": "mag-055",
+    "id": "mag-067",
     "address": "3037 21st Ave W",
     "zip": "98199",
     "price": 1199950,
@@ -883,7 +1087,7 @@ const MARCY_LISTINGS = [
     "lng": -122.3836091
   },
   {
-    "id": "mag-056",
+    "id": "mag-068",
     "address": "4333 32nd Ave W",
     "zip": "98199",
     "price": 1150000,
@@ -899,7 +1103,7 @@ const MARCY_LISTINGS = [
     "lng": -122.39852739999999
   },
   {
-    "id": "mag-057",
+    "id": "mag-069",
     "address": "3045 20th Ave W #102",
     "zip": "98199",
     "price": 360000,
@@ -915,7 +1119,24 @@ const MARCY_LISTINGS = [
     "lng": -122.3824535
   },
   {
-    "id": "mag-058",
+    "id": "mag-070",
+    "address": "1549 Magnolia Way W",
+    "zip": "98199",
+    "price": 3680000,
+    "beds": 4,
+    "baths": 3.5,
+    "sqft": 4900,
+    "type": "House",
+    "status": "Active",
+    "blurb": "House \u00b7 Magnolia \u00b7 built 1960",
+    "photo": null,
+    "url": "https://www.redfin.com/WA/Seattle/1549-Magnolia-Way-W-98199/home/126240",
+    "lat": 47.6338096,
+    "lng": -122.39099069999999,
+    "added": true
+  },
+  {
+    "id": "mag-071",
     "address": "4047 25TH Ave W",
     "zip": "98199",
     "price": 624950,
@@ -931,7 +1152,7 @@ const MARCY_LISTINGS = [
     "lng": -122.3888758
   },
   {
-    "id": "mag-059",
+    "id": "mag-072",
     "address": "3245 21st Ave W",
     "zip": "98199",
     "price": 825000,
@@ -947,7 +1168,7 @@ const MARCY_LISTINGS = [
     "lng": -122.38395000000001
   },
   {
-    "id": "mag-060",
+    "id": "mag-073",
     "address": "2562 Thorndyke Ave W #303",
     "zip": "98199",
     "price": 410000,
@@ -963,7 +1184,7 @@ const MARCY_LISTINGS = [
     "lng": -122.38425869999999
   },
   {
-    "id": "mag-061",
+    "id": "mag-074",
     "address": "3045 20th Ave W #303",
     "zip": "98199",
     "price": 285000,
@@ -979,7 +1200,7 @@ const MARCY_LISTINGS = [
     "lng": -122.3824535
   },
   {
-    "id": "mag-062",
+    "id": "mag-075",
     "address": "3835 25th Ave W",
     "zip": "98199",
     "price": 799500,
@@ -995,7 +1216,7 @@ const MARCY_LISTINGS = [
     "lng": -122.3890692
   },
   {
-    "id": "mag-063",
+    "id": "mag-076",
     "address": "3601 24th Ave W #306",
     "zip": "98199",
     "price": 315000,
@@ -1011,7 +1232,7 @@ const MARCY_LISTINGS = [
     "lng": -122.387812
   },
   {
-    "id": "mag-064",
+    "id": "mag-077",
     "address": "3045 20th Ave W #403",
     "zip": "98199",
     "price": 299800,
@@ -1027,7 +1248,24 @@ const MARCY_LISTINGS = [
     "lng": -122.3824535
   },
   {
-    "id": "mag-065",
+    "id": "mag-078",
+    "address": "23 XX Perkins Ln W",
+    "zip": "98199",
+    "price": 89975,
+    "beds": 0,
+    "baths": 0,
+    "sqft": 0,
+    "type": "Land",
+    "status": "Active",
+    "blurb": "Land \u00b7 Magnolia",
+    "photo": null,
+    "url": "https://www.redfin.com/WA/Seattle/0-23xx-Perkins-Ln-W-98199/home/175948716",
+    "lat": 47.635017999999995,
+    "lng": -122.404832,
+    "added": true
+  },
+  {
+    "id": "mag-079",
     "address": "3641 22nd Ave W Unit E",
     "zip": "98199",
     "price": 917000,
@@ -1043,7 +1281,24 @@ const MARCY_LISTINGS = [
     "lng": -122.3849685
   },
   {
-    "id": "mag-066",
+    "id": "mag-080",
+    "address": "1914 Magnolia Blvd W",
+    "zip": "98199",
+    "price": 7175000,
+    "beds": 4,
+    "baths": 3.5,
+    "sqft": 5725,
+    "type": "House",
+    "status": "Active",
+    "blurb": "House \u00b7 Magnolia Bluff \u00b7 built 2023",
+    "photo": null,
+    "url": "https://www.redfin.com/WA/Seattle/1914-Magnolia-Blvd-W-98199/home/126358",
+    "lat": 47.6362524,
+    "lng": -122.4050599,
+    "added": true
+  },
+  {
+    "id": "mag-081",
     "address": "3400 25th Ave W #101",
     "zip": "98199",
     "price": 330000,
@@ -1059,7 +1314,7 @@ const MARCY_LISTINGS = [
     "lng": -122.3882275
   },
   {
-    "id": "mag-067",
+    "id": "mag-082",
     "address": "4019 Burton Pl W",
     "zip": "98199",
     "price": 795000,
@@ -1075,7 +1330,41 @@ const MARCY_LISTINGS = [
     "lng": -122.3890713
   },
   {
-    "id": "mag-068",
+    "id": "mag-083",
+    "address": "3253 Perkins Ln W",
+    "zip": "98199",
+    "price": 399000,
+    "beds": 0,
+    "baths": 0,
+    "sqft": 0,
+    "type": "Land",
+    "status": "Active",
+    "blurb": "Land \u00b7 Magnolia",
+    "photo": null,
+    "url": "https://www.redfin.com/WA/Seattle/3253-Perkins-Ln-W-98199/home/195649583",
+    "lat": 47.649924899999995,
+    "lng": -122.41740139999999,
+    "added": true
+  },
+  {
+    "id": "mag-084",
+    "address": "19 XX 32nd Ave W",
+    "zip": "98199",
+    "price": 225000,
+    "beds": 0,
+    "baths": 0,
+    "sqft": 0,
+    "type": "Land",
+    "status": "Active",
+    "blurb": "Land \u00b7 Magnolia",
+    "photo": null,
+    "url": "https://www.redfin.com/WA/Seattle/19-xx-32nd-Ave-W-98199/home/179746177",
+    "lat": 47.632825,
+    "lng": -122.399069,
+    "added": true
+  },
+  {
+    "id": "mag-085",
     "address": "3710 25th Pl W #405",
     "zip": "98199",
     "price": 425000,
@@ -1091,7 +1380,7 @@ const MARCY_LISTINGS = [
     "lng": -122.38883009999999
   },
   {
-    "id": "mag-069",
+    "id": "mag-086",
     "address": "2647 39th Ave W",
     "zip": "98199",
     "price": 2998000,
@@ -1107,7 +1396,7 @@ const MARCY_LISTINGS = [
     "lng": -122.4074455
   },
   {
-    "id": "mag-070",
+    "id": "mag-087",
     "address": "4200 Washington Ave W",
     "zip": "98199",
     "price": 4500000,
@@ -1123,7 +1412,7 @@ const MARCY_LISTINGS = [
     "lng": -122.412853
   },
   {
-    "id": "mag-071",
+    "id": "mag-088",
     "address": "2019 W Bertona",
     "zip": "98199",
     "price": 869950,
@@ -1139,7 +1428,7 @@ const MARCY_LISTINGS = [
     "lng": -122.382959
   },
   {
-    "id": "mag-072",
+    "id": "mag-089",
     "address": "2017 W Bertona",
     "zip": "98199",
     "price": 919000,
@@ -1155,7 +1444,7 @@ const MARCY_LISTINGS = [
     "lng": -122.38286199999999
   },
   {
-    "id": "mag-073",
+    "id": "mag-090",
     "address": "4322 29th Ave W",
     "zip": "98199",
     "price": 1565000,
@@ -1171,7 +1460,7 @@ const MARCY_LISTINGS = [
     "lng": -122.39403709999999
   },
   {
-    "id": "mag-074",
+    "id": "mag-091",
     "address": "2334 Thorndyke Ave W #202",
     "zip": "98199",
     "price": 599999,
@@ -1187,7 +1476,7 @@ const MARCY_LISTINGS = [
     "lng": -122.3864619
   },
   {
-    "id": "mag-075",
+    "id": "mag-092",
     "address": "4051 Gilman Ave W",
     "zip": "98199",
     "price": 2000000,
@@ -1203,7 +1492,7 @@ const MARCY_LISTINGS = [
     "lng": -122.38779699999999
   },
   {
-    "id": "mag-076",
+    "id": "mag-093",
     "address": "3633 40th Ave W",
     "zip": "98199",
     "price": 2613200,
@@ -1219,7 +1508,7 @@ const MARCY_LISTINGS = [
     "lng": -122.40816009999999
   },
   {
-    "id": "mag-077",
+    "id": "mag-094",
     "address": "2017 Elm Plan",
     "zip": "98199",
     "price": 964000,
@@ -1235,7 +1524,7 @@ const MARCY_LISTINGS = [
     "lng": -122.38317599999999
   },
   {
-    "id": "mag-078",
+    "id": "mag-095",
     "address": "2019 Elm Plan",
     "zip": "98199",
     "price": 919950,
