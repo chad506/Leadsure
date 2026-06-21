@@ -90,6 +90,14 @@
     var count = $('listing-count');
     if (count) count.textContent = list.length + (list.length === 1 ? ' home' : ' homes');
     rail.scrollLeft = 0;
+    updateArrows();
+  }
+
+  function updateArrows() {
+    var rail = $('marcy-listings'), prev = $('rail-prev'), next = $('rail-next');
+    if (!rail || !prev || !next) return;
+    prev.disabled = rail.scrollLeft <= 2;
+    next.disabled = rail.scrollLeft >= rail.scrollWidth - rail.clientWidth - 2;
   }
 
   /* ---------- Calculator ---------- */
@@ -253,10 +261,12 @@
       var el = $(id); if (el) el.addEventListener('change', renderListings);
     });
 
-    var amt = 310;
     var prev = $('rail-prev'), next = $('rail-next');
-    if (prev) prev.addEventListener('click', function () { rail.scrollBy({ left: -amt, behavior: 'smooth' }); });
-    if (next) next.addEventListener('click', function () { rail.scrollBy({ left: amt, behavior: 'smooth' }); });
+    function railPage() { return Math.max(rail.clientWidth * 0.9, 280); }
+    if (prev) prev.addEventListener('click', function () { rail.scrollBy({ left: -railPage(), behavior: 'smooth' }); });
+    if (next) next.addEventListener('click', function () { rail.scrollBy({ left: railPage(), behavior: 'smooth' }); });
+    rail.addEventListener('scroll', updateArrows, { passive: true });
+    window.addEventListener('resize', updateArrows);
 
     $('m-price').addEventListener('input', function () {
       var P = parseNum($('m-price').value), pct = parseNum($('m-downp').value);

@@ -36,14 +36,27 @@
 .rail-btn:hover { color: var(--color-primary); border-color: var(--color-primary); }
 
 /* ---- Listings rail (horizontal scroll) ---- */
+.rail-wrap { position: relative; }
 .listing-rail {
   display: flex; gap: var(--space-4); overflow-x: auto; overflow-y: hidden;
   scroll-snap-type: x mandatory; scroll-behavior: smooth;
-  padding-bottom: var(--space-3); scrollbar-width: thin;
+  padding: var(--space-1) 0 var(--space-2);
+  scrollbar-width: none; -ms-overflow-style: none;
 }
-.listing-rail::-webkit-scrollbar { height: 8px; }
-.listing-rail::-webkit-scrollbar-thumb { background: var(--color-surface-dynamic); border-radius: var(--radius-full); }
-.listing-rail::-webkit-scrollbar-track { background: var(--color-surface-2); border-radius: var(--radius-full); }
+.listing-rail::-webkit-scrollbar { display: none; }
+
+.rail-arrow {
+  position: absolute; top: 50%; transform: translateY(-50%); z-index: 3;
+  width: 40px; height: 40px; border-radius: var(--radius-full);
+  display: flex; align-items: center; justify-content: center;
+  background: var(--color-surface); color: var(--color-text);
+  border: 1px solid var(--color-border); box-shadow: var(--shadow-md);
+  font-size: var(--text-xl); line-height: 1; transition: all var(--transition-interactive);
+}
+.rail-arrow:hover { color: var(--color-primary); border-color: var(--color-primary); }
+.rail-arrow:disabled { opacity: 0; pointer-events: none; }
+.rail-arrow-prev { left: -6px; }
+.rail-arrow-next { right: -6px; }
 
 .card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); }
 

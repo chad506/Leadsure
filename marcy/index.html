@@ -74,13 +74,13 @@
             <option value="price-asc">Price: low to high</option>
             <option value="price-desc">Price: high to low</option>
           </select>
-          <div class="rail-nav">
-            <button type="button" class="rail-btn" id="rail-prev" aria-label="Scroll listings left">&#8249;</button>
-            <button type="button" class="rail-btn" id="rail-next" aria-label="Scroll listings right">&#8250;</button>
-          </div>
         </div>
         <div class="listing-note" id="data-note">Listings sourced from a Redfin export &middot; photos via Google Street View.</div>
-        <div class="listing-rail" id="marcy-listings"></div>
+        <div class="rail-wrap">
+          <button type="button" class="rail-arrow rail-arrow-prev" id="rail-prev" aria-label="Scroll listings left">&#8249;</button>
+          <div class="listing-rail" id="marcy-listings"></div>
+          <button type="button" class="rail-arrow rail-arrow-next" id="rail-next" aria-label="Scroll listings right">&#8250;</button>
+        </div>
       </section>
 
       <!-- ===== Mortgage calculator ===== -->
