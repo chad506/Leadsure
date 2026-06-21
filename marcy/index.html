@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>Marcy — Magnolia, WA Homes &amp; Mortgage Calculator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lato:wght@300;400;700;900&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+<script>
+  var _build = Date.now();
+  document.write('<link rel="stylesheet" href="../base.css?v='+_build+'">');
+  document.write('<link rel="stylesheet" href="../style.css?v='+_build+'">');
+  document.write('<link rel="stylesheet" href="../dashboard.css?v='+_build+'">');
+  document.write('<link rel="stylesheet" href="./marcy.css?v='+_build+'">');
+</script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <a href="#main-content" class="sr-only" style="position:absolute;top:0;left:0;z-index:9999;background:var(--color-primary);color:var(--color-text-inverse);padding:var(--space-2) var(--space-4);">Skip to content</a>
+
+  <div class="dashboard">
+    <header class="dash-header">
+      <div class="header-left">
+        <svg class="logo" width="32" height="32" viewBox="0 0 32 32" fill="none" aria-label="Marcy logo">
+          <path d="M6 15L16 7L26 15" stroke="var(--color-primary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M8 14V24H24V14" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/>
+          <path d="M14 24V18H18V24" stroke="var(--color-gain)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div class="header-title-group">
+          <h1 class="header-title">Marcy</h1>
+          <div class="header-meta">
+            <span class="status-dot"></span>
+            <span>Magnolia, WA — homes &amp; mortgage</span>
+          </div>
+        </div>
+      </div>
+      <div class="header-right">
+        <a class="marcy-back" href="../index.html">&larr; Leadsure</a>
+        <button class="btn-icon" data-theme-toggle aria-label="Switch to light mode"></button>
+      </div>
+    </header>
+
+    <main class="dash-main" id="main-content">
+      <!-- ===== Listings ===== -->
+      <section aria-label="Homes for sale in Magnolia">
+        <div class="section-head">
+          <h2 class="section-title">Homes for sale in Magnolia</h2>
+          <div class="listing-tools">
+            <span class="section-meta" id="listing-count"></span>
+            <select id="listing-sort" aria-label="Sort listings">
+              <option value="new">Newest</option>
+              <option value="price-asc">Price: low to high</option>
+              <option value="price-desc">Price: high to low</option>
+            </select>
+          </div>
+        </div>
+        <div class="sample-note">Sample listings — swap in real data in <code>marcy/listings.js</code> (or wire an MLS/IDX feed).</div>
+        <div class="listing-grid" id="marcy-listings"></div>
+      </section>
+
+      <!-- ===== Mortgage calculator ===== -->
+      <section id="calc" aria-label="Mortgage calculator">
+        <div class="section-head">
+          <h2 class="section-title">Mortgage calculator</h2>
+        </div>
+        <p class="calc-source" id="m-source"></p>
+        <div class="calc-grid">
+          <div class="card calc-inputs">
+            <label class="fld"><span>Home price</span><input id="m-price" type="text" inputmode="numeric" autocomplete="off"></label>
+            <div class="fld"><span>Down payment</span>
+              <div class="dual">
+                <input id="m-downd" type="text" inputmode="numeric" autocomplete="off" aria-label="Down payment amount">
+                <input id="m-downp" type="text" inputmode="decimal" autocomplete="off" aria-label="Down payment percent">
+              </div>
+            </div>
+            <div class="fld"><span>Loan term</span>
+              <div class="seg-group" id="m-term">
+                <button type="button" class="seg term-btn active" data-years="30">30-year fixed</button>
+                <button type="button" class="seg term-btn" data-years="15">15-year fixed</button>
+              </div>
+            </div>
+            <label class="fld"><span>Interest rate</span><input id="m-rate" type="text" inputmode="decimal" value="6.75%" autocomplete="off"></label>
+            <div class="adv-head">Taxes, insurance &amp; fees</div>
+            <div class="adv-grid">
+              <label><span>Property tax / yr</span><input id="m-tax" type="text" inputmode="numeric" autocomplete="off"></label>
+              <label><span>Insurance / yr</span><input id="m-ins" type="text" inputmode="numeric" autocomplete="off"></label>
+              <label><span>HOA / mo</span><input id="m-hoa" type="text" inputmode="numeric" value="$0" autocomplete="off"></label>
+              <label><span>PMI / mo</span><input id="m-pmi" type="text" inputmode="numeric" value="$0" autocomplete="off"></label>
+            </div>
+          </div>
+
+          <div class="card calc-results">
+            <div class="res-label">Estimated monthly payment</div>
+            <div class="res-payment"><span id="m-payment">$0</span><span class="res-mo">/mo</span></div>
+            <div class="legend">
+              <span><i class="dot" id="dot-pi"></i>Principal &amp; interest <b id="leg-pi">$0</b></span>
+              <span><i class="dot" id="dot-tax"></i>Property tax <b id="leg-tax">$0</b></span>
+              <span><i class="dot" id="dot-ins"></i>Insurance <b id="leg-ins">$0</b></span>
+              <span><i class="dot" id="dot-ot"></i>HOA + PMI <b id="leg-ot">$0</b></span>
+            </div>
+            <div class="donut-wrap"><canvas id="m-donut" role="img" aria-label="Monthly payment breakdown chart"></canvas></div>
+            <div class="metrics">
+              <div class="metric"><span>Loan amount</span><b id="m-loan">$0</b></div>
+              <div class="metric"><span>Total interest</span><b id="m-interest">$0</b></div>
+              <div class="metric"><span>Total of payments</span><b id="m-totalpaid">$0</b></div>
+            </div>
+            <button type="button" id="m-amort-btn" class="amort-btn">View amortization schedule</button>
+            <div id="m-amort-wrap" class="amort-wrap" hidden>
+              <table class="amort-table">
+                <thead><tr><th>Year</th><th>Principal</th><th>Interest</th><th>Balance</th></tr></thead>
+                <tbody id="m-amort-body"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    var _b = Date.now();
+    document.write('<scr'+'ipt src="./listings.js?v='+_b+'"></scr'+'ipt>');
+    document.write('<scr'+'ipt src="./marcy.js?v='+_b+'"></scr'+'ipt>');
+  </script>
+</body>
+</html>
