@@ -149,9 +149,21 @@ def main():
            "   Real Magnolia (98199) for-sale listings. `added:true` = new since the\n"
            "   previous refresh. Re-run the script to refresh. */\n"
            % (os.path.basename(src), datetime.date.today().isoformat()))
+    # "Last updated" = the export's timestamp (from the redfin_YYYY-MM-DD-HH-MM-SS
+    # filename, falling back to file mtime).
+    import re
+    m = re.search(r'(\d{4})-(\d{2})-(\d{2})-(\d{2})-(\d{2})-(\d{2})', os.path.basename(src))
+    dt = datetime.datetime(*[int(x) for x in m.groups()]) if m else \
+        datetime.datetime.fromtimestamp(os.path.getmtime(src))
+    try:
+        updated = dt.strftime('%b %-d, %Y, %-I:%M %p')
+    except ValueError:
+        updated = dt.strftime('%b %d, %Y, %I:%M %p')
+
     with open(out, 'w', encoding='utf-8') as f:
-        f.write(hdr + 'const MARCY_LISTINGS = ' + json.dumps(listings, indent=2) + ';\n')
-    print('Wrote %d listings to %s' % (len(listings), out))
+        f.write(hdr + 'const MARCY_UPDATED = ' + json.dumps(updated) + ';\n'
+                + 'const MARCY_LISTINGS = ' + json.dumps(listings, indent=2) + ';\n')
+    print('Wrote %d listings to %s (updated %s)' % (len(listings), out, updated))
 
 
 if __name__ == '__main__':

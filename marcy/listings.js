@@ -1,6 +1,7 @@
 /* AUTO-GENERATED from redfin_2026-06-21-16-20-44.numbers on 2026-06-21 by scripts/refresh-marcy-listings.sh.
    Real Magnolia (98199) for-sale listings. `added:true` = new since the
    previous refresh. Re-run the script to refresh. */
+const MARCY_UPDATED = "Jun 21, 2026, 4:20 PM";
 const MARCY_LISTINGS = [
   {
     "id": "mag-001",

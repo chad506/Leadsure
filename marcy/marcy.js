@@ -314,6 +314,9 @@
     renderListings();
     initDonut();
     bind();
+    var totalEl = $('m-total'); if (totalEl) totalEl.textContent = MARCY_LISTINGS.length;
+    var addedEl = $('m-added'); if (addedEl) addedEl.textContent = MARCY_LISTINGS.filter(function (l) { return l.added; }).length;
+    var updEl = $('m-updated'); if (updEl) updEl.textContent = (typeof MARCY_UPDATED !== 'undefined' && MARCY_UPDATED) ? MARCY_UPDATED : '—';
     var firstSorted = filterAndSort();
     if (firstSorted.length) applyListing(firstSorted[0], false);
   });
