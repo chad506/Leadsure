@@ -4,7 +4,7 @@
 (function () {
   'use strict';
 
-  var ASSUME = { downPct: 20, taxRate: 0.009, insRate: 0.0012 }; // 0.9% tax, 0.12% insurance (annual, of price)
+  var ASSUME = { downPct: 20, taxRate: 0.009, insRate: 0.0012, pmiRate: 0.005 }; // annual rates of price/loan
   var fmt0 = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
 
   function parseNum(v) {
@@ -18,8 +18,20 @@
     return 'https://www.zillow.com/homes/' + encodeURIComponent(l.address + ', Seattle, WA ' + l.zip) + '_rb/';
   }
 
-  function sortListings(sort) {
-    var list = MARCY_LISTINGS.slice();
+  function filterAndSort() {
+    var price = ($('f-price') || {}).value || 'any';
+    var beds = parseNum(($('f-beds') || {}).value);
+    var type = ($('f-type') || {}).value || 'any';
+    var sort = ($('listing-sort') || {}).value || 'new';
+
+    var list = MARCY_LISTINGS.filter(function (l) {
+      if (beds && l.beds < beds) return false;
+      if (type !== 'any' && l.type !== type) return false;
+      if (price === 'lt1' && l.price >= 1000000) return false;
+      if (price === '1to2' && (l.price < 1000000 || l.price > 2000000)) return false;
+      if (price === 'gt2' && l.price <= 2000000) return false;
+      return true;
+    });
     if (sort === 'price-asc') list.sort(function (a, b) { return a.price - b.price; });
     else if (sort === 'price-desc') list.sort(function (a, b) { return b.price - a.price; });
     else list.sort(function (a, b) { return (a.status === 'New' ? 0 : 1) - (b.status === 'New' ? 0 : 1); });
@@ -28,38 +40,56 @@
 
   var HOUSE_SVG = '<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg>';
 
-  function renderListings(sort) {
-    var grid = $('marcy-listings');
-    if (!grid) return;
-    var list = sortListings(sort);
-    grid.innerHTML = list.map(function (l) {
-      var badge = l.status === 'New'
-        ? '<span class="listing-badge badge-new">New</span>'
-        : '<span class="listing-badge badge-active">Active</span>';
-      var spec = l.beds + ' bd · ' + l.baths + ' ba · ' + l.sqft.toLocaleString() + ' sqft';
-      return '' +
-        '<article class="card listing">' +
-          '<div class="listing-photo">' + HOUSE_SVG + badge + '</div>' +
-          '<div class="listing-body">' +
-            '<div class="listing-price">' + fmt0.format(l.price) + '</div>' +
-            '<div class="listing-addr">' + l.address + '</div>' +
-            '<div class="listing-blurb">' + (l.blurb || '') + '</div>' +
-            '<div class="listing-spec">' + spec + '</div>' +
-            '<div class="listing-actions">' +
-              '<button type="button" class="btn-mortgage" data-id="' + l.id + '">Show Mortgage</button>' +
-              '<a class="listing-link" href="' + zillowUrl(l) + '" target="_blank" rel="noopener">Details &#8599;</a>' +
+  function renderListings() {
+    var rail = $('marcy-listings');
+    if (!rail) return;
+    var list = filterAndSort();
+    if (!list.length) {
+      rail.innerHTML = '<div class="listing-empty">No listings match these filters.</div>';
+    } else {
+      rail.innerHTML = list.map(function (l) {
+        var badge = l.status === 'New'
+          ? '<span class="listing-badge badge-new">New</span>'
+          : '<span class="listing-badge badge-active">Active</span>';
+        var photo = HOUSE_SVG + (l.photo
+          ? '<img src="' + l.photo + '" alt="' + l.address + '" loading="lazy" onerror="this.remove()">'
+          : '');
+        var spec = l.beds + ' bd · ' + l.baths + ' ba · ' + l.sqft.toLocaleString() + ' sqft';
+        return '' +
+          '<article class="card listing">' +
+            '<div class="listing-photo">' + photo + badge + '</div>' +
+            '<div class="listing-body">' +
+              '<div class="listing-price">' + fmt0.format(l.price) + '</div>' +
+              '<div class="listing-addr">' + l.address + '</div>' +
+              '<div class="listing-blurb">' + (l.blurb || '') + '</div>' +
+              '<div class="listing-spec">' + spec + '</div>' +
+              '<div class="listing-actions">' +
+                '<button type="button" class="btn-mortgage" data-id="' + l.id + '">Show Mortgage</button>' +
+                '<a class="listing-link" href="' + zillowUrl(l) + '" target="_blank" rel="noopener">Details &#8599;</a>' +
+              '</div>' +
             '</div>' +
-          '</div>' +
-        '</article>';
-    }).join('');
+          '</article>';
+      }).join('');
+    }
     var count = $('listing-count');
-    if (count) count.textContent = list.length + ' active';
+    if (count) count.textContent = list.length + (list.length === 1 ? ' home' : ' homes');
+    rail.scrollLeft = 0;
   }
 
   /* ---------- Calculator ---------- */
   function activeTermYears() {
     var btn = document.querySelector('.term-btn.active');
     return btn ? parseNum(btn.getAttribute('data-years')) : 30;
+  }
+
+  // Auto-estimate PMI: ~0.5%/yr of the loan when down payment is under 20%, else 0.
+  function setPMI() {
+    var P = parseNum($('m-price').value);
+    var down = parseNum($('m-downd').value);
+    var pct = P > 0 ? down / P * 100 : 100;
+    var loan = Math.max(P - down, 0);
+    var pmi = pct < 20 ? Math.round(loan * ASSUME.pmiRate / 12) : 0;
+    $('m-pmi').value = fmt0.format(pmi);
   }
 
   function applyListing(l, scroll) {
@@ -69,7 +99,7 @@
     $('m-tax').value = fmt0.format(Math.round(l.price * ASSUME.taxRate));
     $('m-ins').value = fmt0.format(Math.round(l.price * ASSUME.insRate));
     $('m-hoa').value = '$0';
-    $('m-pmi').value = '$0';
+    setPMI();
     var src = $('m-source');
     if (src) src.textContent = 'Estimating ' + l.address + ' · ' + ASSUME.downPct + '% down';
     recalc();
@@ -140,8 +170,9 @@
     ];
   }
   function paintLegendDots(colors) {
-    var ids = ['dot-pi', 'dot-tax', 'dot-ins', 'dot-ot'];
-    ids.forEach(function (id, i) { var el = $(id); if (el) el.style.background = colors[i]; });
+    ['dot-pi', 'dot-tax', 'dot-ins', 'dot-ot'].forEach(function (id, i) {
+      var el = $(id); if (el) el.style.background = colors[i];
+    });
   }
   function initDonut() {
     var ctx = $('m-donut');
@@ -194,31 +225,37 @@
 
   /* ---------- Wiring ---------- */
   function bind() {
-    var grid = $('marcy-listings');
-    if (grid) grid.addEventListener('click', function (e) {
+    var rail = $('marcy-listings');
+    if (rail) rail.addEventListener('click', function (e) {
       var btn = e.target.closest('.btn-mortgage');
       if (!btn) return;
       var l = MARCY_LISTINGS.find(function (x) { return x.id === btn.getAttribute('data-id'); });
       if (l) applyListing(l, true);
     });
 
-    var sort = $('listing-sort');
-    if (sort) sort.addEventListener('change', function () { renderListings(sort.value); });
+    ['f-price', 'f-beds', 'f-type', 'listing-sort'].forEach(function (id) {
+      var el = $(id); if (el) el.addEventListener('change', renderListings);
+    });
+
+    var amt = 310;
+    var prev = $('rail-prev'), next = $('rail-next');
+    if (prev) prev.addEventListener('click', function () { rail.scrollBy({ left: -amt, behavior: 'smooth' }); });
+    if (next) next.addEventListener('click', function () { rail.scrollBy({ left: amt, behavior: 'smooth' }); });
 
     $('m-price').addEventListener('input', function () {
       var P = parseNum($('m-price').value), pct = parseNum($('m-downp').value);
       $('m-downd').value = fmt0.format(Math.round(P * pct / 100));
-      recalc();
+      setPMI(); recalc();
     });
     $('m-downd').addEventListener('input', function () {
       var P = parseNum($('m-price').value), d = parseNum($('m-downd').value);
       $('m-downp').value = (P > 0 ? Math.round(d / P * 1000) / 10 : 0) + '%';
-      recalc();
+      setPMI(); recalc();
     });
     $('m-downp').addEventListener('input', function () {
       var P = parseNum($('m-price').value), pct = parseNum($('m-downp').value);
       $('m-downd').value = fmt0.format(Math.round(P * pct / 100));
-      recalc();
+      setPMI(); recalc();
     });
     ['m-rate', 'm-tax', 'm-ins', 'm-hoa', 'm-pmi'].forEach(function (id) {
       $(id).addEventListener('input', recalc);
@@ -242,7 +279,7 @@
 
   document.addEventListener('DOMContentLoaded', function () {
     initTheme();
-    renderListings('new');
+    renderListings();
     initDonut();
     bind();
     if (MARCY_LISTINGS && MARCY_LISTINGS.length) applyListing(MARCY_LISTINGS[0], false);

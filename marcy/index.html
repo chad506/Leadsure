@@ -55,17 +55,39 @@
       <section aria-label="Homes for sale in Magnolia">
         <div class="section-head">
           <h2 class="section-title">Homes for sale in Magnolia</h2>
-          <div class="listing-tools">
-            <span class="section-meta" id="listing-count"></span>
-            <select id="listing-sort" aria-label="Sort listings">
-              <option value="new">Newest</option>
-              <option value="price-asc">Price: low to high</option>
-              <option value="price-desc">Price: high to low</option>
-            </select>
+          <span class="section-meta" id="listing-count"></span>
+        </div>
+        <div class="filters">
+          <select id="f-price" aria-label="Filter by price">
+            <option value="any">Any price</option>
+            <option value="lt1">Under $1M</option>
+            <option value="1to2">$1M &ndash; $2M</option>
+            <option value="gt2">Over $2M</option>
+          </select>
+          <select id="f-beds" aria-label="Filter by beds">
+            <option value="0">Any beds</option>
+            <option value="2">2+ beds</option>
+            <option value="3">3+ beds</option>
+            <option value="4">4+ beds</option>
+            <option value="5">5+ beds</option>
+          </select>
+          <select id="f-type" aria-label="Filter by type">
+            <option value="any">Any type</option>
+            <option value="House">House</option>
+            <option value="Townhome">Townhome</option>
+          </select>
+          <select id="listing-sort" aria-label="Sort listings">
+            <option value="new">Newest</option>
+            <option value="price-asc">Price: low to high</option>
+            <option value="price-desc">Price: high to low</option>
+          </select>
+          <div class="rail-nav">
+            <button type="button" class="rail-btn" id="rail-prev" aria-label="Scroll listings left">&#8249;</button>
+            <button type="button" class="rail-btn" id="rail-next" aria-label="Scroll listings right">&#8250;</button>
           </div>
         </div>
-        <div class="sample-note">Sample listings — swap in real data in <code>marcy/listings.js</code> (or wire an MLS/IDX feed).</div>
-        <div class="listing-grid" id="marcy-listings"></div>
+        <div class="sample-note" id="data-note">Sample listings with stock photos &mdash; replace via <code>scripts/fetch-marcy-listings.js</code> (needs an API key) or wire an MLS/IDX feed.</div>
+        <div class="listing-rail" id="marcy-listings"></div>
       </section>
 
       <!-- ===== Mortgage calculator ===== -->
