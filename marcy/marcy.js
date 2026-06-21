@@ -292,8 +292,11 @@
 
     document.querySelectorAll('.term-btn').forEach(function (b) {
       b.addEventListener('click', function () {
+        if (b.classList.contains('active')) return;
         document.querySelectorAll('.term-btn').forEach(function (x) { x.classList.remove('active'); });
         b.classList.add('active');
+        var rate = b.getAttribute('data-rate');
+        if (rate) $('m-rate').value = rate + '%';
         recalc();
       });
     });

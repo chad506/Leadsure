@@ -126,4 +126,4 @@ Standalone sub-page: Magnolia, WA homes for sale + a Bankrate-style mortgage cal
 - Type filter defaults to **Houses** (condos/townhomes/multi-family/land hidden until selected).
 - Sort defaults to **price low→high**; the calculator pre-fills from the cheapest visible listing.
 - "Show Mortgage" loads the calculator at 20% down with auto tax (0.9%/yr) + insurance (0.12%/yr); PMI auto-adds when down < 20%.
-- Calculator terms: **30-year fixed** and **7-year ARM** (ARM amortizes over 30 years at the entered intro rate).
+- Calculator terms: **30-year fixed** (6.75% default) and **7-year ARM** (auto-fills a ~6.25% intro rate; amortizes over 30 years). Switching the term writes that product's typical rate (`data-rate` on the button) into the rate box.
