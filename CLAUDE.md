@@ -100,6 +100,8 @@ Week 1 = March 6, 2026. As of 6/17 we are on Week 36. Each set of picks on a new
 - **livePrice ≠ buy price after time passes** — on entry set livePrice = price; never update it manually after that (Finnhub handles it).
 - **prevClose is NOT the same as price** — compute it from actual prior-day close data.
 - **totalTrades must be incremented** — easy to forget; each new pick adds 1 to that model's totalTrades.
+- **Same-day fund entries need `prevClose = costBasis`** — app3.js only keeps a position's stored prevClose (instead of Finnhub's prior-day `pc`) when `entryDate === PRICES_AS_OF`. So when adding a position bought today: (1) set `PRICES_AS_OF` to today, and (2) set its `prevClose = costBasis`. Otherwise Finnhub's prior-day close overwrites it and Today's P&L shows a fake overnight gap (e.g. a position entered today after a +10% move would book that 10% as a phantom day gain).
+- **Cross-model pick uniqueness** — every model pick must be unique across ALL models and not duplicate a current/sold fund holding. A stock the fund later buys is fine (it gets a LIVE badge); two *models* picking the same ticker is the violation to avoid.
 
 ---
 
