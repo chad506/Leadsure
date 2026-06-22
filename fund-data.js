@@ -10,7 +10,7 @@ const DATA_VERSION = '2026-06-19-1';
 
 // Date when price/prevClose were last set (YYYY-MM-DD in US/Pacific)
 // On a new trading day, pages auto-reset price = prevClose so Today P&L starts at $0
-const PRICES_AS_OF = '2026-05-30';
+const PRICES_AS_OF = '2026-06-22';
 
 // Realized P&L from closed positions (CHGG: -$449.07, RIOT: -$1,189.30, U: -$1,336.68, HPP: -$3,496.09, MDB: -$1,301.40, BXP: -$965.15, GPN: -$775.91, AXTI: -$715.96)
 const SHARED_REALIZED_PNL = -10229.56;
@@ -100,5 +100,7 @@ const POSITIONS = [
   {"symbol": "ON", "name": "ON Semiconductor Corp", "sector": "Technology", "industry": "Semiconductors", "marketCap": 47972910063, "direction": "Long", "qty": 47, "price": 120.64, "costBasis": 105.41, "prevClose": 123.77},
   {"symbol": "AMD", "name": "Advanced Micro Devices Inc", "sector": "Technology", "industry": "Semiconductors", "marketCap": 892305418414, "direction": "Long", "qty": 15, "price": 516.12, "costBasis": 343.96, "prevClose": 518.09},  {"symbol": "FLEX", "name": "Flex Ltd", "sector": "Technology", "industry": "Electronic Manufacturing Services", "marketCap": 53637731311, "direction": "Long", "qty": 34, "price": 150.8, "costBasis": 146.38, "prevClose": 144.85},
   {"symbol": "PL", "name": "Planet Labs PBC", "sector": "Technology", "industry": "Satellite Earth Observation / Space Data Infrastructure", "marketCap": 10817137048, "direction": "Long", "qty": 99, "price": 51.16, "costBasis": 50.50, "prevClose": 51.4, "entryDate": "2026-05-26"},
-  {"symbol": "KEEL", "name": "Keel Infrastructure", "sector": "Technology", "industry": "AI/HPC Infrastructure", "marketCap": 3798081955, "direction": "Long", "qty": 721, "price": 6.97, "costBasis": 6.94, "prevClose": 6.29, "entryDate": "2026-06-22"}
+  {"symbol": "KEEL", "name": "Keel Infrastructure", "sector": "Technology", "industry": "AI/HPC Infrastructure", "marketCap": 3798081955, "direction": "Long", "qty": 721, "price": 6.97, "costBasis": 6.94, "prevClose": 6.94, "entryDate": "2026-06-22"},
+  {"symbol": "ACN", "name": "Accenture plc", "sector": "Technology", "industry": "IT Services & Consulting", "marketCap": 78571949838, "direction": "Short", "qty": 42, "price": 120.08, "costBasis": 119.76, "prevClose": 119.76, "entryDate": "2026-06-22"},
+  {"symbol": "CNXC", "name": "Concentrix Corp", "sector": "Technology", "industry": "IT Services / BPO", "marketCap": 1530001021, "direction": "Short", "qty": 208, "price": 24.02, "costBasis": 23.99, "prevClose": 23.99, "entryDate": "2026-06-22"}
 ];
