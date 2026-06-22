@@ -37,6 +37,7 @@ Long Exposure | Short Exposure | Sortino | Sharpe
 | `wildcard` | Gemini 3.1 Pro | 🔮 | Week 1 (3/6) | 111 |
 | `opus47` | Claude Opus 4.7 | 🌟 | Week 23 (4/28) | 70 |
 | `fable5` | Fable 5 | 🪄 | Week 35 (6/12) | 15 |
+| `opus48` | Claude Opus 4.8 | 💎 | Week 38 (6/22) | 5 |
 
 ## Adding New Picks
 
