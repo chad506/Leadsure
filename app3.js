@@ -106,6 +106,10 @@ const fmtMarketCap = (val) => {
   }
 })();
 
+// ---- ADD-ON COUNTS — "+N" badge for positions that have been added to ----
+const ADDON_COUNTS = {};
+if (typeof ADDON_POSITIONS !== 'undefined') ADDON_POSITIONS.forEach(a => { ADDON_COUNTS[a.symbol] = (ADDON_COUNTS[a.symbol] || 0) + 1; });
+
 // ---- RESTORE ALL CACHED PRICES FROM LOCALSTORAGE ----
 // On page load, immediately apply cached prices so KPIs/Today's P&L show
 // realistic values before the ~60s Finnhub fetch completes.
@@ -668,6 +672,8 @@ function renderTable(positions) {
 
     const dirClass = p.direction === 'Long' ? 'dir-long' : 'dir-short';
     const dirLabel = p.direction === 'Long' ? 'LONG' : 'SHORT';
+    const addonN = ADDON_COUNTS[p.symbol] || 0;
+    const addonBadge = addonN > 0 ? ` <span class="addon-badge" title="Added to ${addonN}× — averaged into the position">+${addonN}</span>` : '';
 
     const todayPnlClass = p.dayPnLDollar >= 0 ? 'num-positive' : 'num-negative';
     const todayPnlSign = p.dayPnLDollar >= 0 ? '+' : '';
@@ -691,7 +697,7 @@ function renderTable(positions) {
       <td class="symbol-cell sticky-col">${p.symbol}</td>
       <td class="name-cell" title="${p.name}"><a href="https://www.marketwatch.com/investing/stock/${p.symbol.toLowerCase()}" target="_blank" rel="noopener noreferrer">${p.name}</a></td>
       <td class="industry-cell" title="${p.industry || ''}">${p.industry || ''}</td>
-      <td><span class="dir-badge ${dirClass}">${dirLabel}</span></td>
+      <td><span class="dir-badge ${dirClass}">${dirLabel}</span>${addonBadge}</td>
       <td class="num-cell ${todayPnlClass}">${todayPnlSign}${fmtCurrency.format(p.dayPnLDollar)}</td>
       <td class="num-cell ${pnlClass}">${pnlSign}${fmtCurrency.format(p.gainLoss)}</td>
       <td class="num-cell">${fmtMarketCap(p.marketCap)}</td>
