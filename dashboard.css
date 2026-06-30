@@ -1265,6 +1265,24 @@ html, body {
   background: linear-gradient(135deg, rgb(180, 83, 9), rgb(217, 119, 6));
   color: #fff;
 }
+.closed-badge {
+  display: inline-block;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  padding: 2px 6px;
+  border-radius: 3px;
+  background: linear-gradient(135deg, rgb(71, 85, 105), rgb(100, 116, 139));
+  color: #fff;
+  vertical-align: middle;
+  margin-left: 4px;
+  line-height: 1.3;
+  text-shadow: 0 1px 1px rgba(0,0,0,0.2);
+}
+[data-theme="light"] .closed-badge {
+  background: linear-gradient(135deg, rgb(51, 65, 85), rgb(71, 85, 105));
+  color: #fff;
+}
 
 .history-picks-table .sticky-col {
   position: sticky;
