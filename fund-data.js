@@ -6,11 +6,11 @@
 const SHARED_FINNHUB_KEY = 'd6kqa11r01qmopd1net0d6kqa11r01qmopd1netg';
 
 // Bump DATA_VERSION whenever positions, costs, or prices change — invalidates all localStorage caches
-const DATA_VERSION = '2026-06-29-2';
+const DATA_VERSION = '2026-06-30-1';
 
 // Date when price/prevClose were last set (YYYY-MM-DD in US/Pacific)
 // On a new trading day, pages auto-reset price = prevClose so Today P&L starts at $0
-const PRICES_AS_OF = '2026-06-22';
+const PRICES_AS_OF = '2026-06-30';
 
 // Realized P&L from closed positions (CHGG: -$449.07, RIOT: -$1,189.30, U: -$1,336.68, HPP: -$3,496.09, MDB: -$1,301.40, BXP: -$965.15, GPN: -$775.91, AXTI: -$715.96)
 const SHARED_REALIZED_PNL = -10229.56;
@@ -102,5 +102,7 @@ const POSITIONS = [
   {"symbol": "PL", "name": "Planet Labs PBC", "sector": "Technology", "industry": "Satellite Earth Observation / Space Data Infrastructure", "marketCap": 9647816243, "direction": "Long", "qty": 99, "price": 51.16, "costBasis": 50.50, "prevClose": 51.4, "entryDate": "2026-05-26"},
   {"symbol": "KEEL", "name": "Keel Infrastructure", "sector": "Technology", "industry": "AI/HPC Infrastructure", "marketCap": 3641086467, "direction": "Long", "qty": 721, "price": 6.97, "costBasis": 6.94, "prevClose": 6.94, "entryDate": "2026-06-22"},
   {"symbol": "ACN", "name": "Accenture plc", "sector": "Technology", "industry": "IT Services & Consulting", "marketCap": 78928296854, "direction": "Short", "qty": 42, "price": 120.08, "costBasis": 119.76, "prevClose": 119.76, "entryDate": "2026-06-22"},
-  {"symbol": "CNXC", "name": "Concentrix Corp", "sector": "Technology", "industry": "IT Services / BPO", "marketCap": 1525120670, "direction": "Short", "qty": 208, "price": 24.02, "costBasis": 23.99, "prevClose": 23.99, "entryDate": "2026-06-22"}
+  {"symbol": "CNXC", "name": "Concentrix Corp", "sector": "Technology", "industry": "IT Services / BPO", "marketCap": 1525120670, "direction": "Short", "qty": 208, "price": 24.02, "costBasis": 23.99, "prevClose": 23.99, "entryDate": "2026-06-22"},
+  {"symbol": "WIX", "name": "Wix.com Ltd", "sector": "Technology", "industry": "Website Building / Web SaaS", "marketCap": 1864190000, "direction": "Short", "qty": 112, "price": 45.06, "costBasis": 44.93, "prevClose": 44.93, "entryDate": "2026-06-30"},
+  {"symbol": "GLOB", "name": "Globant SA", "sector": "Technology", "industry": "IT Services / Digital Engineering", "marketCap": 1298841014, "direction": "Short", "qty": 175, "price": 28.81, "costBasis": 28.61, "prevClose": 28.61, "entryDate": "2026-06-30"}
 ];
