@@ -402,9 +402,9 @@ html, body {
 
 /* Column widths — fixed layout for crisp alignment (13 columns) */
 #positions-table col.col-w-symbol    { width: 5.5%; }
-#positions-table col.col-w-name      { width: 10%; }
-#positions-table col.col-w-industry   { width: 9%; }
-#positions-table col.col-w-dir       { width: 5%; }
+#positions-table col.col-w-name      { width: 9%; }
+#positions-table col.col-w-industry   { width: 8%; }
+#positions-table col.col-w-dir       { width: 8%; }
 #positions-table col.col-w-todaypnl  { width: 8%; }
 #positions-table col.col-w-pnl       { width: 8%; }
 #positions-table col.col-w-mktcap    { width: 6%; }
@@ -413,7 +413,7 @@ html, body {
 #positions-table col.col-w-cost      { width: 7.5%; }
 #positions-table col.col-w-mktval    { width: 9%; }
 #positions-table col.col-w-pnlpct    { width: 9.5%; }
-#positions-table col.col-w-day       { width: 10%; }
+#positions-table col.col-w-day       { width: 9%; }
 
 #positions-table th,
 #positions-table td {
