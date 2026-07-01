@@ -669,6 +669,7 @@ function renderTable(positions) {
   sorted.forEach(p => {
     const tr = document.createElement('tr');
     tr.className = p.direction === 'Long' ? 'row-long' : 'row-short';
+    if ((ADDON_COUNTS[p.symbol] || 0) > 0) tr.className += ' row-addon';
 
     const dirClass = p.direction === 'Long' ? 'dir-long' : 'dir-short';
     const dirLabel = p.direction === 'Long' ? 'LONG' : 'SHORT';

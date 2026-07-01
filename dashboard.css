@@ -605,6 +605,33 @@ html, body {
   background: var(--color-surface-dynamic);
 }
 
+/* Added-to positions — green "LIVE"-style whole-row highlight (mirrors .row-in-fund) */
+#positions-table tbody tr.row-addon,
+#positions-table tbody tr.row-addon:nth-child(even) {
+  background: rgba(0, 128, 96, 0.13);
+  box-shadow: inset 0 0 0 1px rgba(0, 128, 96, 0.22);
+}
+#positions-table tbody tr.row-addon .sticky-col,
+#positions-table tbody tr.row-addon:nth-child(even) .sticky-col {
+  background: linear-gradient(rgba(0, 128, 96, 0.13), rgba(0, 128, 96, 0.13)), var(--color-surface);
+}
+#positions-table tbody tr.row-addon:hover,
+#positions-table tbody tr.row-addon:nth-child(even):hover {
+  background: rgba(0, 128, 96, 0.20);
+}
+#positions-table tbody tr.row-addon:hover .sticky-col,
+#positions-table tbody tr.row-addon:nth-child(even):hover .sticky-col {
+  background: linear-gradient(rgba(0, 128, 96, 0.20), rgba(0, 128, 96, 0.20)), var(--color-surface-dynamic);
+}
+[data-theme="light"] #positions-table tbody tr.row-addon,
+[data-theme="light"] #positions-table tbody tr.row-addon:nth-child(even) {
+  background: rgba(0, 128, 96, 0.09);
+}
+[data-theme="light"] #positions-table tbody tr.row-addon .sticky-col,
+[data-theme="light"] #positions-table tbody tr.row-addon:nth-child(even) .sticky-col {
+  background: linear-gradient(rgba(0, 128, 96, 0.09), rgba(0, 128, 96, 0.09)), var(--color-surface);
+}
+
 /* ---- SIDE PANEL ---- */
 .side-panel {
   grid-column: 1 / -1;
