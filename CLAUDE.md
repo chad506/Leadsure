@@ -30,13 +30,13 @@ Long Exposure | Short Exposure | Sortino | Sharpe
 
 ## model-picks-data.js — The 5 Models
 
-| id | name | icon | debut | trades (as of 6/26) |
+| id | name | icon | debut | trades (as of 7/2) |
 |----|------|------|-------|---------------------|
 | `gpt54` | GPT 5.4 | 🧠 | Week 1 (3/6) | 111 |
 | `opus46` | Claude Opus 4.6 | 🎯 | Week 1 (3/6) | 111 |
 | `wildcard` | Gemini 3.1 Pro | 🔮 | Week 1 (3/6) | 111 |
 | `opus47` | Claude Opus 4.7 | 🌟 | Week 23 (4/28) | 35 |
-| `fable5` | Fable 5 | 🪄 | Week 35 (6/12) | 17 |
+| `fable5` | Fable 5 | 🪄 | Week 35 (6/12) | 22 |
 | `opus48` | Claude Opus 4.8 | 💎 | Week 38 (6/22) | 15 |
 
 ## Adding New Picks
