@@ -22,6 +22,7 @@ Alpha vs S&P 500 | S&P 500 % | Mag 7 % | Positions |
 Long Exposure | Short Exposure | Sortino | Sharpe
 
 ## Deployment
+- Domain registrar: GoDaddy (leadsure.com registered/renewed there; nameservers delegated to Cloudflare)
 - DNS: Cloudflare (nameservers), A records point to GitHub Pages IPs
 - HTTPS cert: GitHub Pages Let's Encrypt (may need enabling via API after DNS changes)
 - Enable HTTPS: `curl -X PUT -H "Authorization: token TOKEN" https://api.github.com/repos/chad506/Leadsure/pages -d '{"https_enforced":true}'`
