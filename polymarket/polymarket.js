@@ -74,10 +74,19 @@
   function setText(sel, txt) { $$(sel).forEach(function (el) { el.textContent = txt; }); }
 
   var lastTick = null;
+  function setPills(live) {
+    ['#live-pill', '#live-pill2'].forEach(function (sel) {
+      var p = $(sel); if (!p) return;
+      p.textContent = live ? 'LIVE' : 'SNAPSHOT';
+      p.classList.toggle('is-live', live);
+    });
+  }
   function fmtAgo() {
     if (!lastTick) return;
     var s = Math.round((Date.now() - lastTick) / 1000);
-    $('#last-updated').textContent = 'Updated ' + (s < 5 ? 'just now' : s + 's ago');
+    var ago = s < 5 ? 'just now' : (s < 120 ? s + 's ago' : Math.round(s / 60) + 'm ago');
+    $('#last-updated').textContent = 'Updated ' + ago;
+    var el = $('#sync-ago'); if (el) el.textContent = '(' + ago + ')';
   }
   setInterval(fmtAgo, 1000);
 
@@ -93,7 +102,7 @@
         .then(function (r) { return r.json(); })
         .then(function (j) { if (j.c) caps[sym] = j.c * SHARES[sym]; });
     });
-    Promise.all(midCalls.concat(quoteCalls)).then(function () {
+    return Promise.all(midCalls.concat(quoteCalls)).then(function () {
       /* odds cells + kpis */
       Object.keys(mids).forEach(function (k) {
         if (isNaN(mids[k])) return;
@@ -163,11 +172,14 @@
         if (!isNaN(mids['jul-NVDA'])) setText('#hero-nvda-odds', (mids['jul-NVDA'] * 100).toFixed(0) + '% / ' + (mids['aug-NVDA'] * 100).toFixed(0) + '% / ' + (mids['dec-NVDA'] * 100).toFixed(1) + '%');
       }
       lastTick = Date.now();
-      var pill = $('#live-pill'); pill.textContent = 'LIVE'; pill.classList.add('is-live');
+      var st = $('#sync-time');
+      if (st) st.textContent = new Date(lastTick).toLocaleString([], { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit', second: '2-digit' });
+      setPills(true);
       fmtAgo();
     }).catch(function () {
-      var pill = $('#live-pill'); pill.textContent = 'SNAPSHOT'; pill.classList.remove('is-live');
+      setPills(false);
       $('#last-updated').textContent = 'Snapshot · Jul 26, 2026 17:15 UTC (live APIs unreachable)';
+      var st = $('#sync-time'); if (st) st.textContent = 'Jul 26, 2026 17:15 UTC (baked snapshot — live APIs unreachable)';
     });
   }
 
@@ -319,7 +331,20 @@
     });
   });
 
-  document.getElementById('btn-refresh').addEventListener('click', function () { refresh(); refreshAccount(); });
+  function forceSync() {
+    var btn = document.getElementById('btn-sync');
+    var lbl = document.getElementById('btn-sync-label');
+    if (btn) { btn.disabled = true; btn.classList.add('is-syncing'); }
+    if (lbl) lbl.textContent = 'Syncing…';
+    var done = function () {
+      if (btn) { btn.disabled = false; btn.classList.remove('is-syncing'); }
+      if (lbl) lbl.textContent = 'Sync Now';
+    };
+    Promise.all([refresh(), refreshAccount()]).then(done, done);
+  }
+  document.getElementById('btn-refresh').addEventListener('click', forceSync);
+  var syncBtn = document.getElementById('btn-sync');
+  if (syncBtn) syncBtn.addEventListener('click', forceSync);
   document.getElementById('theme-toggle').addEventListener('click', function () {
     var root = document.documentElement;
     root.setAttribute('data-theme', root.getAttribute('data-theme') === 'light' ? 'dark' : 'light');

@@ -62,6 +62,18 @@
       <a href="#" class="nav-tab" data-view="largest" id="tab-largest">Largest Company</a>
     </nav>
 
+    <div class="pm-syncbar" role="status" aria-live="polite">
+      <div class="pm-sync-left">
+        <span class="status-dot"></span>
+        <span class="pm-sync-text">Data last synced: <strong id="sync-time">Jul 26, 2026 17:15 UTC (baked snapshot)</strong> <span id="sync-ago" class="pm-sync-ago"></span></span>
+        <span class="pm-live-pill" id="live-pill2">SNAPSHOT</span>
+      </div>
+      <button class="pm-sync-btn" id="btn-sync">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+        <span id="btn-sync-label">Sync Now</span>
+      </button>
+    </div>
+
     <main class="dash-main" id="main-content">
       <div class="pm-view" id="view-polymarket">
       <div class="fund-header">
@@ -118,7 +130,7 @@
       <!-- ===================== ADD-ONS ===================== -->
       <section class="table-section" aria-label="Recommended add-ons">
         <div class="table-header-row">
-          <h2 class="section-title">Top 4 Add-Ons — Building on Current Positions</h2>
+          <h2 class="section-title">Top 4 Add-Ons — Largest Company</h2>
           <span class="price-note">Derived from the Largest Company analysis (other tab) · not financial advice</span>
         </div>
         <div class="pm-cards">
@@ -137,6 +149,36 @@
           <div class="panel-card">
             <h3 class="panel-title"><span class="pm-badge pm-watch">#4 ADD · AVERAGE DOWN, CAPPED</span> Add NVDA-Aug NO @ ~26¢ (held: 939 @ 34.1¢, −23.7%)</h3>
             <p>The model says NVDA-August YES is ~17 pts rich — meaning the NO already held is cheap at 26¢ (model-fair NO ≈ 43¢), so averaging down has genuine edge behind it, not just hope. One discipline: the account is short NVDA on all three dates, which is a single correlated bet on the same story — cap the combined NVDA-short book at a fixed share of the portfolio before adding.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== ADD-ONS ALL POSITIONS ===================== -->
+      <section class="table-section" aria-label="Recommended add-ons all positions">
+        <div class="table-header-row">
+          <h2 class="section-title">Top 4 Add-Ons — All Positions</h2>
+          <span class="price-note">Across the whole book, beyond the largest-company race · not financial advice</span>
+        </div>
+        <div class="pm-cards">
+          <div class="panel-card">
+            <h3 class="panel-title"><span class="pm-badge pm-cheap">#1 ADD · SAME THESIS, 2ND VENUE</span> Add NVDA "2nd-largest July" YES @ ~22¢ (held: 1,381 @ 9.8¢, +124%)</h3>
+            <p>If Apple takes #1 by Jul 31, NVIDIA becomes #2 — so this contract is the Apple-flip thesis traded on a different book. It prices at 22¢ while the model puts the Apple flip near 30¢: the same edge as AAPL-Jul YES, in a second venue with its own liquidity. Adding here also splits execution risk across books instead of piling into one thin ask.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> Rest a <strong>$250 limit at 22¢</strong> (≈1,135 shares) rather than crossing — this book is thinner than the main one. Pays $1,135 on an Apple flip. Funded from the WTI sell salvage.</div>
+          </div>
+          <div class="panel-card">
+            <h3 class="panel-title"><span class="pm-badge pm-watch">#2 ADD · THE AUG 1 ROLL</span> Pre-plan rolling the July carry ladder into August</h3>
+            <p>The five near-expiry winners — SPY $770 NO, SPY $700-low NO, and the three Bitcoin NOs at 95–99¢ — hand back ≈<strong>$3,590 in cash on Aug 1</strong>. That ladder has been the book's steadiest earner (~1–2%/month with days of risk, not months). The add-on is the roll itself: the same far-out-of-range strikes exist in the August SPY/BTC books, typically offered at 94–97¢ in week one before decay compresses them.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> On Aug 1, redeploy <strong>≈$3,000 of the $3,590</strong> into the August equivalents at ≥94¢ (equal thirds SPY-high NO / BTC-dip NO / BTC-reach NO), keeping $590 dry for trade #3 fills on the other tab. At 95¢ average, $3,000 → ≈3,158 shares → ≈+$158/month at the same risk profile.</div>
+          </div>
+          <div class="panel-card">
+            <h3 class="panel-title"><span class="pm-badge pm-cheap">#3 ADD · BEST CARRY LEFT IN JULY</span> Top up SPY $770-high July NO @ 97.4¢</h3>
+            <p>Four sessions from resolution, this is the best carry-per-day still open to the account: 2.6¢ of upside in 4 trading days (≈2.7% in a week) for a strike the index would need a violent melt-up to hit. The account already holds 1,211 shares from 94.1¢; the same logic that made that entry good makes 97.4¢ still-good on an annualized basis — and it beats the 99.5¢ Bitcoin legs, whose juice is already squeezed.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> Add <strong>$250 at 97.4¢</strong> → ≈257 shares, +$6.68 by Friday if SPY stays below $770. Small in dollars, ~35% annualized, near-zero thesis risk. Skip if the cash is needed for AAPL-Aug fills instead — that trade dominates this one.</div>
+          </div>
+          <div class="panel-card">
+            <h3 class="panel-title"><span class="pm-badge pm-watch">#4 ADD · RIDE THE WINNER, SMALL</span> Dylan Cease strikeout-leader YES @ 11.4¢ (held: 520 @ 4.0¢, +186%)</h3>
+            <p>The book's second-best percentage winner: bought at 4¢, now 11.4¢ and climbing, with the position's other half (Skenes NO at 95.7¢) hedging the favorite. Honest label: there is no quantitative model behind this one on this page — it's a momentum add on a season-long contract where the market keeps agreeing with the original call. That's a reason to stay small, not a reason to skip it entirely.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> Add <strong>$100 at ≤11.5¢</strong> (≈870 shares) with a mental stop at breakeven on the add. Total Cease exposure stays under 1.6% of the account. Pays ≈$1,390 across both lots if Cease finishes #1 in strikeouts.</div>
           </div>
         </div>
       </section>
