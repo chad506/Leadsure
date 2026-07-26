@@ -444,6 +444,38 @@
     }).catch(function () { /* keep baked snapshot */ });
   }
 
+  /* ---------- decision tracking ledger ---------- */
+  var TRACKED = [
+    { act: 'SELL', tok: '34376240305139645452191650383029377919496221975523712782933090732539681434119', sh: 10645, px: 0.015 },
+    { act: 'SELL', tok: '55689044028128278672494108251217443782536678376777545334307559186551480418539', sh: 508, px: 0.168 },
+    { act: 'SELL', tok: '68452008161654299482599030463898389295546189350452805162817064890126252754664', sh: 903, px: 0.0105 },
+    { act: 'SELL', tok: '53163369856626064559322810866176581747272608812423874664444706765734968500482', sh: 492, px: 0.01 }
+  ];
+  function refreshTracking() {
+    TRACKED.forEach(function (t, i) {
+      fetch('https://clob.polymarket.com/midpoint?token_id=' + t.tok)
+        .then(function (r) { return r.json(); })
+        .then(function (j) {
+          var cur = parseFloat(j.mid);
+          if (isNaN(cur)) return;
+          var nowEl = $('[data-track-now="' + i + '"]');
+          if (nowEl) nowEl.textContent = (cur * 100).toFixed(1) + '\u00A2';
+          var delta = t.act === 'SELL' ? (t.px - cur) * t.sh : (cur - t.px) * t.sh;
+          var dEl = $('[data-track-delta="' + i + '"]');
+          if (dEl) {
+            dEl.textContent = (delta >= 0 ? '+' : '\u2212') + usd(delta) + (t.act === 'SELL' ? ' saved' : '');
+            dEl.className = 'col-num ' + (delta >= 0 ? 'pm-pos' : 'pm-neg');
+          }
+          var vEl = $('[data-track-verdict="' + i + '"]');
+          if (vEl) {
+            if (delta >= 1) { vEl.className = 'pm-badge pm-cheap'; vEl.textContent = t.act === 'SELL' ? 'GOOD SELL' : 'WORKING'; }
+            else if (delta <= -1) { vEl.className = 'pm-badge pm-rich'; vEl.textContent = t.act === 'SELL' ? 'EARLY' : 'UNDERWATER'; }
+            else { vEl.className = 'pm-badge pm-fair'; vEl.textContent = 'FLAT'; }
+          }
+        }).catch(function () {});
+    });
+  }
+
   /* ---------- idea-scroller arrows ---------- */
   var scrollerUpdates = [];
   function initScrollers() {
@@ -487,8 +519,10 @@
       $$('.page-nav .nav-tab[data-view]').forEach(function (t) { t.classList.remove('active'); });
       tab.classList.add('active');
       var view = tab.getAttribute('data-view');
-      document.getElementById('view-polymarket').hidden = view !== 'polymarket';
-      document.getElementById('view-largest').hidden = view !== 'largest';
+      ['polymarket', 'largest', 'tracking'].forEach(function (v) {
+        var el = document.getElementById('view-' + v);
+        if (el) el.hidden = v !== view;
+      });
       if (view === 'largest' && !chartsBuiltVisible) {
         chartsBuiltVisible = true;
         requestAnimationFrame(buildCharts);
@@ -524,6 +558,8 @@
   buildCharts();
   refresh();
   refreshAccount();
+  refreshTracking();
   setInterval(refresh, 60000);
   setInterval(refreshAccount, 60000);
+  setInterval(refreshTracking, 60000);
 })();
