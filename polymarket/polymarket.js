@@ -355,19 +355,37 @@
         }).catch(function () {});
     });
   }
+  function fetchWalletCash() {
+    /* native USDC + bridged USDC.e held by the proxy wallet on Polygon. Polymarket's
+       "Available to trade" = this MINUS collateral reserved by open resting orders,
+       which is private to the order engine and not publicly readable. */
+    var tokens = ['0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359', '0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174'];
+    return Promise.all(tokens.map(function (tk, i) {
+      return fetch('https://polygon-rpc.com', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ jsonrpc: '2.0', id: i + 1, method: 'eth_call', params: [{ to: tk, data: '0x70a08231000000000000000000000000' + WALLET.slice(2).toLowerCase() }, 'latest'] })
+      }).then(function (r) { return r.json(); })
+        .then(function (j) { return j && j.result ? parseInt(j.result, 16) / 1e6 : 0; })
+        .catch(function () { return 0; });
+    })).then(function (vals) {
+      var sum = vals.reduce(function (s, v) { return s + (isFinite(v) ? v : 0); }, 0);
+      return sum > 0 ? sum : null;
+    }).catch(function () { return null; });
+  }
   function refreshAccount() {
     return Promise.all([
       fetch('https://data-api.polymarket.com/positions?user=' + WALLET + '&limit=500').then(function (r) { return r.json(); }),
-      fetch('https://data-api.polymarket.com/value?user=' + WALLET).then(function (r) { return r.json(); })
+      fetch('https://data-api.polymarket.com/value?user=' + WALLET).then(function (r) { return r.json(); }),
+      fetchWalletCash()
     ]).then(function (res) {
-      var pos = res[0] || [], valArr = res[1] || [];
+      var pos = res[0] || [], valArr = res[1] || [], walletCash = res[2];
       if (!pos.length) return null;
       var active = pos.filter(function (p) { return p.currentValue >= 1; })
                       .sort(function (a, b) { return b.currentValue - a.currentValue; });
-      return Promise.all([loadEntryMap(), loadPrev24(active.map(function (p) { return p.asset; }))]).then(function () { return { pos: pos, valArr: valArr, active: active }; });
+      return Promise.all([loadEntryMap(), loadPrev24(active.map(function (p) { return p.asset; }))]).then(function () { return { pos: pos, valArr: valArr, active: active, walletCash: walletCash }; });
     }).then(function (ctx) {
       if (!ctx) return;
-      var pos = ctx.pos, valArr = ctx.valArr, active = ctx.active;
+      var pos = ctx.pos, valArr = ctx.valArr, active = ctx.active, walletCash = ctx.walletCash;
       var body = $('#acct-body');
       if (body && active.length) {
         body.innerHTML = active.map(function (p) {
@@ -411,12 +429,13 @@
         if (acctSort.idx != null) sortAcct(acctSort.idx, acctSort.dir);
       }
       var posSum = pos.reduce(function (s, p) { return s + (p.currentValue || 0); }, 0);
-      setText('#acct-value', usd(posSum));
-      var total = valArr.length && valArr[0].value != null ? valArr[0].value : null;
+      /* data-api /value is positions-only; prefer it as authoritative when present */
+      var posVal = valArr.length && valArr[0].value != null ? valArr[0].value : posSum;
+      setText('#acct-value', usd(posVal));
       var ce = $('#acct-cash');
-      if (ce && total != null) ce.textContent = usd(Math.max(total - posSum, 0));
+      if (ce && walletCash != null) ce.textContent = usd(walletCash);
       var pf = $('#acct-portfolio');
-      if (pf) pf.textContent = usd(total != null ? total : posSum);
+      if (pf) pf.textContent = usd(posVal + (walletCash != null ? walletCash : 0));
       setText('#acct-open', String(active.length));
       var pnl = active.reduce(function (s, p) { return s + p.cashPnl; }, 0);
       var pnlEl = $('#acct-pnl');
