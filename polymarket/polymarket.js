@@ -178,8 +178,8 @@
       fmtAgo();
     }).catch(function () {
       setPills(false);
-      $('#last-updated').textContent = 'Snapshot · Jul 26, 2026 17:15 UTC (live APIs unreachable)';
-      var st = $('#sync-time'); if (st) st.textContent = 'Jul 26, 2026 17:15 UTC (baked snapshot — live APIs unreachable)';
+      $('#last-updated').textContent = 'Snapshot · Jul 26, 2026 20:00 UTC (live APIs unreachable)';
+      var st = $('#sync-time'); if (st) st.textContent = 'Jul 26, 2026 20:00 UTC (baked snapshot — live APIs unreachable)';
     });
   }
 
@@ -330,7 +330,13 @@
           var nameHtml = p.eventSlug
             ? '<a href="' + url + '" target="_blank" rel="noopener">' + esc(shortTitle(p.title)) + '<span class="pm-ext">\u2197</span></a>'
             : esc(shortTitle(p.title));
-          return '<tr><td class="pm-co pm-mkt" title="' + esc(p.title) + '">' + nameHtml + '</td>' +
+          var rowCls = p.outcome === 'No' ? 'row-short' : 'row-long';
+          var sub = '';
+          if (p.endDate && p.endDate.slice(0, 4) > '1971') {
+            var ed = new Date(p.endDate);
+            sub = '<div class="pm-sub">Ends ' + (ed.getUTCMonth() + 1) + '/' + ed.getUTCDate() + '/' + String(ed.getUTCFullYear()).slice(2) + '</div>';
+          }
+          return '<tr class="' + rowCls + '"><td class="pm-co pm-mkt" title="' + esc(p.title) + '">' + nameHtml + sub + '</td>' +
             '<td><span class="dir-badge ' + side + '">' + esc(p.outcome.toUpperCase()) + '</span></td>' +
             '<td class="col-num">' + Math.round(p.size).toLocaleString('en-US') + '</td>' +
             '<td class="col-num">' + (p.avgPrice * 100).toFixed(1) + '\u00A2</td>' +
@@ -354,7 +360,12 @@
         }).join('');
         applyAcctCollapse();
       }
-      if (valArr.length && valArr[0].value != null) setText('#acct-value', usd(valArr[0].value));
+      var posSum = pos.reduce(function (s, p) { return s + (p.currentValue || 0); }, 0);
+      setText('#acct-value', usd(posSum));
+      if (valArr.length && valArr[0].value != null) {
+        var cash = valArr[0].value - posSum;
+        var ce = $('#acct-cash'); if (ce) ce.textContent = cash >= 0 ? usd(cash) : '—';
+      }
       setText('#acct-open', String(active.length));
       var pnl = active.reduce(function (s, p) { return s + p.cashPnl; }, 0);
       var pnlEl = $('#acct-pnl');
