@@ -97,3 +97,9 @@ code { font-family: ui-monospace, monospace; font-size: 0.85em; background: var(
   color: var(--color-text);
 }
 .pm-exec strong { color: var(--color-primary); }
+
+/* ==== position links to Polymarket ==== */
+.pm-mkt a { color: inherit; text-decoration: none; border-bottom: 1px dotted var(--color-text-faint); transition: color var(--transition-interactive), border-color var(--transition-interactive); }
+.pm-mkt a:hover { color: var(--color-primary); border-bottom-color: var(--color-primary); }
+.pm-ext { font-size: 0.7em; margin-left: 4px; color: var(--color-text-faint); }
+.pm-mkt a:hover .pm-ext { color: var(--color-primary); }

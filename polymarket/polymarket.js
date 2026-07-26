@@ -275,7 +275,11 @@
           var side = p.outcome === 'No' ? 'dir-short' : 'dir-long';
           var sign = p.cashPnl >= 0 ? '+' : '\u2212';
           var psign = p.percentPnl >= 0 ? '+' : '\u2212';
-          return '<tr><td class="pm-co pm-mkt" title="' + esc(p.title) + '">' + esc(shortTitle(p.title)) + '</td>' +
+          var url = 'https://polymarket.com/event/' + encodeURIComponent(p.eventSlug || '') + (p.slug ? '/' + encodeURIComponent(p.slug) : '');
+          var nameHtml = p.eventSlug
+            ? '<a href="' + url + '" target="_blank" rel="noopener">' + esc(shortTitle(p.title)) + '<span class="pm-ext">\u2197</span></a>'
+            : esc(shortTitle(p.title));
+          return '<tr><td class="pm-co pm-mkt" title="' + esc(p.title) + '">' + nameHtml + '</td>' +
             '<td><span class="dir-badge ' + side + '">' + esc(p.outcome.toUpperCase()) + '</span></td>' +
             '<td class="col-num">' + Math.round(p.size).toLocaleString('en-US') + '</td>' +
             '<td class="col-num">' + (p.avgPrice * 100).toFixed(1) + '\u00A2</td>' +
