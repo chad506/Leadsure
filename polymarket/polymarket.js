@@ -261,6 +261,41 @@
   function usd(x) { return '$' + Math.abs(x).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
   var ACCT_SHOW = 20;
   var acctExpanded = false;
+  var prev24 = {}; var prev24At = 0;
+  var entryMap = null;
+  function loadEntryMap() {
+    if (entryMap) return Promise.resolve(entryMap);
+    var pages = [0, 500, 1000].map(function (off) {
+      return fetch('https://data-api.polymarket.com/activity?user=' + WALLET + '&limit=500&offset=' + off)
+        .then(function (r) { return r.json(); }).catch(function () { return []; });
+    });
+    return Promise.all(pages).then(function (res) {
+      var m = {};
+      res.forEach(function (arr) {
+        (arr || []).forEach(function (ev) {
+          if (ev && ev.type === 'TRADE' && ev.side === 'BUY' && ev.asset) {
+            var sz = parseFloat(ev.size) || 0;
+            var ts = +ev.timestamp; if (ts > 2e10) ts = ts / 1000;
+            if (!m[ev.asset]) m[ev.asset] = { s: 0, st: 0 };
+            m[ev.asset].s += sz; m[ev.asset].st += sz * ts;
+          }
+        });
+      });
+      entryMap = m; return m;
+    });
+  }
+  function loadPrev24(assets) {
+    if (Date.now() - prev24At > 30 * 60 * 1000) { prev24 = {}; }
+    var need = assets.filter(function (a) { return !(a in prev24); });
+    if (!need.length) return Promise.resolve();
+    prev24At = Date.now();
+    return Promise.all(need.map(function (a) {
+      return fetch('https://clob.polymarket.com/prices-history?market=' + a + '&interval=1d&fidelity=60')
+        .then(function (r) { return r.json(); })
+        .then(function (j) { if (j.history && j.history.length) prev24[a] = parseFloat(j.history[0].p); })
+        .catch(function () {});
+    }));
+  }
   function applyAcctCollapse() {
     var rows = $$('#acct-body tr');
     rows.forEach(function (r, i) { r.hidden = !acctExpanded && i >= ACCT_SHOW; });
@@ -277,9 +312,13 @@
       fetch('https://data-api.polymarket.com/value?user=' + WALLET).then(function (r) { return r.json(); })
     ]).then(function (res) {
       var pos = res[0] || [], valArr = res[1] || [];
-      if (!pos.length) return;
+      if (!pos.length) return null;
       var active = pos.filter(function (p) { return p.currentValue >= 1; })
                       .sort(function (a, b) { return b.currentValue - a.currentValue; });
+      return Promise.all([loadEntryMap(), loadPrev24(active.map(function (p) { return p.asset; }))]).then(function () { return { pos: pos, valArr: valArr, active: active }; });
+    }).then(function (ctx) {
+      if (!ctx) return;
+      var pos = ctx.pos, valArr = ctx.valArr, active = ctx.active;
       var body = $('#acct-body');
       if (body && active.length) {
         body.innerHTML = active.map(function (p) {
@@ -298,7 +337,20 @@
             '<td class="col-num">' + (p.curPrice * 100).toFixed(1) + '\u00A2</td>' +
             '<td class="col-num">' + usd(p.currentValue) + '</td>' +
             '<td class="col-num ' + cls + '">' + sign + usd(p.cashPnl) + '</td>' +
-            '<td class="col-num ' + cls + '">' + psign + Math.abs(p.percentPnl).toFixed(1) + '%</td></tr>';
+            '<td class="col-num ' + cls + '">' + psign + Math.abs(p.percentPnl).toFixed(1) + '%</td>' +
+            (function () {
+              var pv = prev24[p.asset];
+              if (pv == null || !isFinite(pv)) return '<td class="col-num">—</td>';
+              var d24 = (p.curPrice - pv) * p.size;
+              var c24 = d24 >= 0 ? 'pm-pos' : 'pm-neg';
+              return '<td class="col-num ' + c24 + '">' + (d24 >= 0 ? '+' : '\u2212') + usd(d24) + '</td>';
+            })() +
+            (function () {
+              var em = entryMap && entryMap[p.asset];
+              if (!em || !em.s) return '<td class="col-num">—</td>';
+              var d = new Date(em.st / em.s * 1000);
+              return '<td class="col-num">' + d.toLocaleDateString([], { month: 'numeric', day: 'numeric', year: '2-digit' }) + '</td>';
+            })() + '</tr>';
         }).join('');
         applyAcctCollapse();
       }
