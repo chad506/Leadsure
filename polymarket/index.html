@@ -81,7 +81,7 @@
       </div>
       <section class="account-hero" aria-label="Account summary">
         <div class="account-hero-primary">
-          <div class="account-hero-label">Portfolio</div>
+          <div class="account-hero-label">Portfolio (est.)</div>
           <div class="account-hero-value" id="acct-portfolio">$11,499.92</div>
         </div>
         <div class="account-hero-divider"></div>
@@ -91,7 +91,7 @@
             <div class="account-hero-stat-value" id="acct-value">$10,617.60</div>
           </div>
           <div class="account-hero-stat">
-            <div class="account-hero-stat-label">Cash in Wallet</div>
+            <div class="account-hero-stat-label">Cash on Chain</div>
             <div class="account-hero-stat-value" id="acct-cash">$882.32</div>
           </div>
           <div class="account-hero-stat">
@@ -150,15 +150,15 @@
           </table>
         </div>
         <button class="pm-more pm-acct-more" id="acct-more" hidden>Show all positions <span class="chev">▼</span></button>
-        <p class="pm-footnote">Positions Value = Data-API account value minus spendable cash; Positions Value comes from the Data API; Cash in Wallet reads the wallet's USDC balances (native + bridged) live from Polygon; Portfolio = the two combined. Polymarket's "Available to trade" runs LOWER than Cash in Wallet whenever resting limit orders are open — the difference is collateral reserved by those orders, which Polymarket's private order engine does not expose publicly. The account has been actively executing this page's tickets on Jul 26 — the live refresh recomputes every row and stat from the raw APIs on each sync. Zero-value expired positions hidden; snapshot Jul 26, 2026 ~22:00 UTC.</p>
+        <p class="pm-footnote">Positions Value = Data-API account value minus spendable cash; Positions Value comes from the Data API and matches Polymarket's positions tab exactly. Cash on Chain reads the wallet's USDC balances (native + bridged) live from Polygon. Polymarket's logged-in "Available to trade" and "Portfolio" figures additionally net out collateral reserved by open resting orders and in-flight conversions — those live in Polymarket's private order engine, are not exposed by any public API, and change with every order placed or cancelled, so Portfolio here is marked an estimate rather than pretending to mirror them. The account has been actively executing this page's tickets on Jul 26 — the live refresh recomputes every row and stat from the raw APIs on each sync. Zero-value expired positions hidden; snapshot Jul 26, 2026 ~22:00 UTC.</p>
       </section>
 
 
       <!-- ===================== ADD-ONS ALL POSITIONS ===================== -->
       <section class="table-section" aria-label="Recommended add-ons all positions">
         <div class="table-header-row">
-          <h2 class="section-title">Top 4 Add-Ons — All Positions</h2>
-          <span class="price-note">Global conviction ranking across the whole book — the best trade tops every list it appears on · not financial advice</span>
+          <h2 class="section-title">Top Add-Ons — All Positions</h2>
+          <span class="price-note">Global conviction ranking across the whole book — the best trade tops every list it appears on · not financial advice · 4 shown, scroll → for more</span>
         </div>
         <div class="pm-cards">
           <div class="panel-card">
@@ -181,15 +181,35 @@
             <p>The five near-expiry winners — SPY $770 NO, SPY $700-low NO, and the three Bitcoin NOs at 95–99¢ — hand back ≈<strong>$3,590 in cash on Aug 1</strong>, and the roll into next month's ladders is the natural add-on. But the liquidity check kills any early action: <strong>as of Jul 26 the August SPY event is an empty shell — $58 of total liquidity with every strike parked at a 50/50 placeholder — and the August Bitcoin event isn't listed at all yet.</strong> There is no real counterparty behind those 50¢ quotes. Monthly ladders get seeded with market-maker books around month-end.</p>
             <div class="pm-exec"><strong>THE TICKET — ⏳ EXECUTES ON/AFTER AUG 1, NOT BEFORE:</strong> Hold the ≈$3,590 as cash through Friday's resolutions. Once the August SPY/BTC ladders show real two-sided books, redeploy <strong>≈$3,000 into the far-OTM NOs at ≥94¢</strong> (equal thirds, resting limits only). If the ladders are still unseeded on Aug 1, keep waiting — the edge is carry, not urgency. Do not touch today's placeholder quotes.</div>
           </div>
+          <div class="panel-card">
+            <h3 class="panel-title"><span class="pm-badge pm-cheap">#5 ADD · AVERAGE UP</span> Add to Apple-Dec YES @ ~28¢ (held: 5,051 @ 19.0¢)</h3>
+            <p>The book's biggest winner is still ~17 pts below σ=2%/day fair value (45.6¢). Averaging up while still under fair is the disciplined version of letting a winner run; a moderate add keeps blended entry near 22–24¢. Reassess after each earnings print; invalidation = cap gap past ~5%.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> <strong>$500 → ≈1,730 sh @ ≈28.9¢</strong> (asks thin 28.5–28.9¢, then 1,400 sh at 29¢).</div>
+          </div>
+          <div class="panel-card">
+            <h3 class="panel-title"><span class="pm-badge pm-watch">#6 ADD · AVERAGE DOWN, CAPPED</span> Add NVDA-Aug NO @ ~26¢ (held: 939 @ 34.1¢)</h3>
+            <p>Model says NVDA-Aug YES is ~17 pts rich — the NO already held is cheap (model-fair NO ≈ 43¢), so averaging down has edge behind it, not just hope. Discipline: the account is short NVDA on all three dates — one correlated bet; cap the combined NVDA-short book at a fixed share of the portfolio before adding.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> <strong>$250 limit at 26¢</strong> (≈960 sh) only if total NVDA-short stays under your cap.</div>
+          </div>
+          <div class="panel-card">
+            <h3 class="panel-title"><span class="pm-badge pm-fair">#7 ADD · CARRY TOP-UP</span> SPY $770-high July NO @ ~97.4¢</h3>
+            <p>Best remaining carry-per-day in the July book (~2.6¢ over four sessions). Ranked low only because the AAPL-Aug trade dominates every marginal dollar right now.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> <strong>$250 at 97.4¢</strong> → ≈257 sh, ≈+$6.70 by Friday.</div>
+          </div>
+          <div class="panel-card">
+            <h3 class="panel-title"><span class="pm-badge pm-watch">#8 ADD · MOMENTUM, SMALL</span> Dylan Cease strikeout-leader YES @ ~11.4¢ (held: 520 @ 4.0¢)</h3>
+            <p>The +186% winner, with the Skenes NO leg hedging the favorite. Honest label: no quantitative model behind this one — a momentum add on a season-long contract where the market keeps agreeing. Reason to stay small, not to skip.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> <strong>$100 at ≤11.5¢</strong> (≈870 sh); total Cease exposure stays under ~1.6% of the account.</div>
+          </div>
         </div>
-        <p class="pm-footnote">Ranking is global and congruent with the other lists: #1 here is #1 on the Largest Company list and #1 among suggested new positions. Next in line, below the cut: averaging up AAPL-Dec (LC #3), averaging down NVDA-Aug NO (LC #4), topping up the SPY $770 July NO carry, and a small momentum add to Dylan Cease.</p>
+        <p class="pm-footnote">Ranking is global and congruent with the other lists: #1 here is #1 everywhere it appears. Ideas #5–#8 are visible by scrolling right; the twice-daily run maintains up to 12 per section as qualifying candidates exist.</p>
       </section>
 
       <!-- ===================== NEW POSITIONS ===================== -->
       <section class="table-section" aria-label="Top new positions suggested">
         <div class="table-header-row">
-          <h2 class="section-title">Top 4 New Positions Suggested — Not Currently Held</h2>
-          <span class="price-note">Sourced across ALL Polymarket books (ranking partitions, carry ladders, convexity) · ranked by conviction · not financial advice</span>
+          <h2 class="section-title">Top New Positions Suggested — Not Currently Held</h2>
+          <span class="price-note">Sourced across ALL Polymarket books (ranking partitions, carry ladders, convexity) · ranked by conviction · not financial advice · 4 shown, scroll → for more</span>
         </div>
         <div class="pm-cards">
           <div class="panel-card">
@@ -212,6 +232,16 @@
             <p>Alphabet needs ~+29% on NVDA in 26 trading days. At base vol (2%/day) 2.6¢ is slightly rich (fair 0.7¢) — but at the realized-vol regime just printed (4.5% relative in one session, Jul 24) fair climbs to 2.4–5¢. Strictly a bet that the high-vol regime persists: defined-risk lottery, not a modeled edge at base assumptions. Book: bid 2.4¢ × 60, ask 2.8¢ × 56 then 2.9¢ × 490.</p>
             <div class="pm-exec"><strong>THE TICKET:</strong> Rest <strong>$75 at 2.6¢</strong> (≈2,885 shares). Max loss $75; pays ≈$2,885 if Alphabet somehow takes #1 by Aug 31. The only ticket on the page the model does not endorse at base vol — cap it here.</div>
           </div>
+          <div class="panel-card">
+            <h3 class="panel-title"><span class="pm-badge pm-cheap">#5 NEW · AUGUST ECHO</span> NVDA "2nd-largest August" YES @ ~23¢</h3>
+            <p>Held in the July version (+124%) but not August. Tracks AAPL-Aug almost one-for-one and carries the same ~17-pt model edge in a separate venue. Limit-order-only book: bid 22¢ × 566, ask 24¢ × 140, then a 3-point gap.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> Rest <strong>$250 at 23¢</strong> (≈1,087 sh). Do not lift through 24¢.</div>
+          </div>
+          <div class="panel-card">
+            <h3 class="panel-title"><span class="pm-badge pm-watch">#6 NEW · AUGUST LADDERS</span> <span class="pm-badge pm-rich">⏳ NOT ACTIONABLE</span> Next-month SPY/BTC carry strikes</h3>
+            <p>The far-OTM NO ladder that has been the account's steadiest earner exists for August — but the books are empty shells today (Aug SPY event: $58 total liquidity, 50/50 placeholders; Aug BTC unlisted). New-position candidates the moment market makers seed them, typically around month-end.</p>
+            <div class="pm-exec"><strong>THE TICKET — ⏳ WAITS FOR SEEDED BOOKS:</strong> covered in full by the Aug 1 Roll card above; no order today under any circumstances.</div>
+          </div>
         </div>
         <p class="pm-footnote">Sourcing methodology: candidates are screened across book families — ranking partitions (1st/2nd/3rd-place books, where cross-book sums that should equal ~100¢ often don't), next-month carry ladders (SPY/BTC/WTI strikes — currently unseeded, see the Aug 1 roll card), and convexity punts — then ranked on one conviction scale with the largest-company trades. The twice-daily auto-run rescans all families as books seed and verifies any gamma-sourced quote against the live CLOB.</p>
       </section>
@@ -219,8 +249,8 @@
       <!-- ===================== ADD-ONS ===================== -->
       <section class="table-section" aria-label="Recommended add-ons">
         <div class="table-header-row">
-          <h2 class="section-title">Top 4 Add-Ons — Largest Company</h2>
-          <span class="price-note">Derived from the Largest Company analysis (other tab) · not financial advice</span>
+          <h2 class="section-title">Top Add-Ons — Largest Company</h2>
+          <span class="price-note">Derived from the Largest Company analysis (other tab) · not financial advice · 4 shown, scroll → for more</span>
         </div>
         <div class="pm-cards">
           <div class="panel-card">
@@ -245,8 +275,8 @@
       <!-- ===================== SELLS ===================== -->
       <section class="table-section" aria-label="Recommended sells">
         <div class="table-header-row">
-          <h2 class="section-title">Top 4 Sells — What to Cut From Current Positions</h2>
-          <span class="price-note">Ranked by salvageable value · not financial advice</span>
+          <h2 class="section-title">Top Sells — What to Cut From Current Positions</h2>
+          <span class="price-note">Ranked by salvageable value · not financial advice · 4 shown, scroll → for more</span>
         </div>
         <div class="pm-cards">
           <div class="panel-card">
@@ -264,6 +294,16 @@
           <div class="panel-card">
             <h3 class="panel-title"><span class="pm-badge pm-fair">#4 SELL · DEAD WEIGHT</span> The sub-$10 scraps — Pirates, Padres, AMZN-Dec</h3>
             <p>Pirates NL Central (1.1¢), Padres NL West (1.0¢) and Amazon-Dec (0.35¢) total ≈$23 with no live path between them. Selling frees little capital but cleans the book so open P&L tracks real bets. Leave the near-expiry winners alone — the SPY and Bitcoin NO legs at 95–99¢ resolve Aug 1 and are done compounding; they're cash in a week.</p>
+          </div>
+          <div class="panel-card">
+            <h3 class="panel-title"><span class="pm-badge pm-fair">#5 SELL · DUST</span> MSFT "3rd-largest July" YES — $0.72 left</h3>
+            <p>1,439 shares at 0.05¢ with four sessions to expiry and no path. Pure book hygiene; any bid is found money.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> Market-sell into whatever bid exists; if none, let it expire — the point is a clean ledger.</div>
+          </div>
+          <div class="panel-card">
+            <h3 class="panel-title"><span class="pm-badge pm-fair">#6 SELL · HOUSEKEEPING</span> Redeem any resolved winners still sitting unredeemed</h3>
+            <p>The positions feed shows more value-bearing line items than live markets — resolved winners priced at $1.00 awaiting redemption still count as "positions" until claimed. Redeeming costs nothing and moves that value into spendable cash.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> On Polymarket, open Positions → look for "Redeem" buttons and claim everything; repeat after Friday's July resolutions.</div>
           </div>
         </div>
       </section>
@@ -340,8 +380,8 @@
       <!-- ===================== TOP TRADES ===================== -->
       <section class="table-section" aria-label="Top recommended trades">
         <div class="table-header-row">
-          <h2 class="section-title">Top 4 Trades — Ranked by Conviction, Sized to the Account</h2>
-          <span class="price-note">Tickets sized to the live account ($10,660.69 value · ≈$1,991 cash) against REAL order-book depth, Jul 26 ~18:00 UTC · not financial advice</span>
+          <h2 class="section-title">Top Trades — Ranked by Conviction, Sized to the Account</h2>
+          <span class="price-note">Tickets sized to the live account ($10,660.69 value · ≈$1,991 cash) against REAL order-book depth, Jul 26 ~18:00 UTC · not financial advice · 4 shown, scroll → for more</span>
         </div>
         <div class="pm-cards">
           <div class="panel-card">
@@ -363,6 +403,26 @@
             <h3 class="panel-title"><span class="pm-badge pm-rich">#4 · EVENT</span> Small Apple-July YES @ 23.1¢ into Thursday's print</h3>
             <p><strong>The lottery ticket — smallest size.</strong> Apple needs ~+2.4% relative to NVDA by Friday's close, with an earnings reaction session as the finale. Typical Apple earnings-day moves run ±3–5%, and Jul 24 alone delivered +4.5% relative. Zero-drift fair is ~30¢, so you're buying a live binary at cheap-to-fair with all the convexity on your side of the print. But it is binary: a soft quarter and this is worth 0 by Friday 4pm. Cap it at lottery-ticket size (≤1–2% of bankroll). Prefer less variance? Skip the print and run trade #3 on the overreaction afterward instead.</p>
             <div class="pm-exec"><strong>THE TICKET:</strong> Buy <strong>$173 AAPL-Jul YES at 22.2¢</strong> — that takes the <em>entire</em> 780-share best ask; the next offer jumps to 23.4¢, so this trade literally does not scale past $173 without paying up. 1.6% of account, max loss $173, pays $780 on an Apple flip Friday (+$607). All four tickets together: <strong>$2,058</strong> ≈ cash ($1,991) + the SPCX sell ($160) — no winners touched.</div>
+          </div>
+          <div class="panel-card">
+            <h3 class="panel-title"><span class="pm-badge pm-cheap">#5 · ECHO</span> NVDA "2nd-largest Aug" YES @ ~23¢</h3>
+            <p>The Apple-flip-by-August thesis on the second-place book: if Apple takes #1, NVIDIA is #2. Prices in line with AAPL-Aug (23.5¢), carries the same ~17-pt model edge, and lives on a separate book — splitting execution risk. Thin: ask 24¢ × 140 then a gap to 27¢.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> Rest <strong>$250 at 23¢</strong> (≈1,087 sh), limit-only — never lift through the gap.</div>
+          </div>
+          <div class="panel-card">
+            <h3 class="panel-title"><span class="pm-badge pm-cheap">#6 · PARTITION</span> "Second Place, August" basket @ ~88.5¢ combined</h3>
+            <p>Buy BOTH Apple-2nd-Aug YES (~65.5¢) and NVDA-2nd-Aug YES (23¢): whoever loses the #1 duel is almost certainly #2 (Alphabet sits 26% below Apple). Pays ~$1 in essentially every world → ≈+13% in five weeks, thesis-free. ⚠ Apple leg quoted from the slower gamma feed — verify on the live book before entry (the auto-run re-checks twice daily).</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> If the legs sum ≤92¢ live, deploy <strong>$500 pro-rata</strong> (≈$370 / $130), limits only.</div>
+          </div>
+          <div class="panel-card">
+            <h3 class="panel-title"><span class="pm-badge pm-watch">#7 · CONVEXITY</span> Alphabet-Aug YES @ ~2.6¢ — regime bet, tiny</h3>
+            <p>Rich at base vol (fair 0.7¢ at σ=2%/day), cheap only if the just-printed high-vol regime persists (fair 2.4–5¢ at σ=2.5–3%). Defined risk, honest label: the model does not endorse this at base assumptions. Book: bid 2.4¢ × 60 / ask 2.8¢ × 56, then 2.9¢ × 490.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> Rest <strong>$75 at 2.6¢</strong> (≈2,885 sh). Max loss $75.</div>
+          </div>
+          <div class="panel-card">
+            <h3 class="panel-title"><span class="pm-badge pm-fair">#8 · CARRY</span> Top up SPY $770-high July NO @ ~97.4¢</h3>
+            <p>Best carry-per-day left in the July book: ~2.6¢ over four sessions on a strike needing a violent melt-up to hit. Beats the 99¢+ Bitcoin legs whose juice is already squeezed. Only if cash isn't needed for #1 fills — that trade dominates this one.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> <strong>$250 at 97.4¢</strong> → ≈257 sh, ≈+$6.70 by Friday. Near-zero thesis risk, ~35% annualized.</div>
           </div>
         </div>
       </section>

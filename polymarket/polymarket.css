@@ -154,3 +154,18 @@ code { font-family: ui-monospace, monospace; font-size: 0.85em; background: var(
 .pm-acct-table th.pm-sortable:hover { opacity: 0.8; }
 .pm-acct-table th.sort-asc::after { content: ' \25B2'; font-size: 0.5rem; vertical-align: middle; }
 .pm-acct-table th.sort-desc::after { content: ' \25BC'; font-size: 0.5rem; vertical-align: middle; }
+/* ==== 4-visible horizontal idea scrollers ==== */
+.pm-cards {
+  grid-template-columns: none;
+  grid-auto-flow: column;
+  grid-auto-columns: calc((100% - 3 * var(--space-4)) / 4);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: var(--space-2);
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border) transparent;
+}
+.pm-cards .panel-card { scroll-snap-align: start; }
+.pm-cards::-webkit-scrollbar { height: 8px; }
+.pm-cards::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: 4px; }
+@media (max-width: 900px) { .pm-cards { grid-auto-columns: 85%; } }
