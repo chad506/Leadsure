@@ -82,17 +82,17 @@
       <section class="account-hero" aria-label="Account summary">
         <div class="account-hero-primary">
           <div class="account-hero-label">Portfolio</div>
-          <div class="account-hero-value" id="acct-portfolio">$10,624.96</div>
+          <div class="account-hero-value" id="acct-portfolio">$10,850.45</div>
         </div>
         <div class="account-hero-divider"></div>
         <div class="account-hero-secondary">
           <div class="account-hero-stat">
             <div class="account-hero-stat-label">Positions Value</div>
-            <div class="account-hero-stat-value" id="acct-value">$9,742.64</div>
+            <div class="account-hero-stat-value" id="acct-value">$10,616.51</div>
           </div>
           <div class="account-hero-stat">
             <div class="account-hero-stat-label">Available to Trade</div>
-            <div class="account-hero-stat-value" id="acct-cash">$882.32</div>
+            <div class="account-hero-stat-value" id="acct-cash">$233.94</div>
           </div>
           <div class="account-hero-stat">
             <div class="account-hero-stat-label">Open Positions</div>
@@ -150,7 +150,7 @@
           </table>
         </div>
         <button class="pm-more pm-acct-more" id="acct-more" hidden>Show all positions <span class="chev">▼</span></button>
-        <p class="pm-footnote">Positions Value = Data-API account value minus spendable cash; Available to Trade reads the wallet's USDC balances (native + bridged USDC.e) directly from Polygon and sums them — the same money Polymarket counts as "Available to trade". Portfolio = Positions Value + Available to Trade. The account has been actively executing this page's tickets on Jul 26 — the live refresh recomputes every row and stat from the raw APIs on each sync. Zero-value expired positions hidden; snapshot Jul 26, 2026 ~21:20 UTC.</p>
+        <p class="pm-footnote">Positions Value = Data-API account value minus spendable cash; Portfolio is the Data API's total account value; Available to Trade = Portfolio minus the live sum of position values — this reproduces Polymarket's own "Available to trade" figure exactly. The account has been actively executing this page's tickets on Jul 26 — the live refresh recomputes every row and stat from the raw APIs on each sync. Zero-value expired positions hidden; snapshot Jul 26, 2026 ~21:35 UTC.</p>
       </section>
 
 
@@ -183,6 +183,36 @@
           </div>
         </div>
         <p class="pm-footnote">Ranking is global and congruent with the other lists: #1 here is #1 on the Largest Company list and #1 among suggested new positions. Next in line, below the cut: averaging up AAPL-Dec (LC #3), averaging down NVDA-Aug NO (LC #4), topping up the SPY $770 July NO carry, and a small momentum add to Dylan Cease.</p>
+      </section>
+
+      <!-- ===================== NEW POSITIONS ===================== -->
+      <section class="table-section" aria-label="Top new positions suggested">
+        <div class="table-header-row">
+          <h2 class="section-title">Top 4 New Positions Suggested — Not Currently Held</h2>
+          <span class="price-note">Ranked by conviction · books checked Jul 26 ~20:00 UTC · not financial advice</span>
+        </div>
+        <div class="pm-cards">
+          <div class="panel-card">
+            <h3 class="panel-title"><span class="pm-badge pm-cheap">#1 NEW · HIGHEST CONVICTION</span> Apple-August YES @ ~23.5¢</h3>
+            <p>The account holds Apple-July and Apple-December but not August — making the best trade on the page also a brand-new position. Biggest modeled edge anywhere (fair 37–41¢ vs 23.5¢), two catalysts inside the window, and a real book behind it. Same trade as Top 4 Trades #1 and All-Positions Add-On #1: one thesis, consistently ranked first everywhere it appears.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> $710 clears the asks through 26¢ → <strong>2,797 shares @ 25.4¢ avg</strong> (355×24¢, 930×25¢, 1,512×26¢); patient version rests at 24¢. Pays $2,797 if Apple is #1 on Aug 31.</div>
+          </div>
+          <div class="panel-card">
+            <h3 class="panel-title"><span class="pm-badge pm-watch">#2 NEW · STRUCTURAL SHORT</span> Alphabet-Dec NO @ ~91¢</h3>
+            <p>Not held, deepest book on the page, and the cleanest way to monetize the December vol-inversion: the market prices Alphabet-vs-NVDA at ~5× the implied volatility of Apple-vs-NVDA. Pairs naturally with the existing AAPL-Dec YES holding to complete a hedged relative-value structure.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> Buy <strong>$300 GOOGL-Dec NO @ 91¢</strong> → 329 shares in one level (5,020 offered at the touch; 3,494 bid at 89¢ behind you).</div>
+          </div>
+          <div class="panel-card">
+            <h3 class="panel-title"><span class="pm-badge pm-cheap">#3 NEW · THE AUGUST ECHO</span> NVDA "2nd-largest August" YES @ ~23¢</h3>
+            <p>The account holds the July version of this trade (+124%) but not August. If Apple takes #1 by Aug 31, NVIDIA is #2 — so this should track AAPL-Aug (23.5¢) almost one-for-one, and it does (23¢). Under the model that makes it ~17 pts cheap, same as the headline trade, in a separate book. Liquidity is the constraint: bid 22¢ × 566, ask 24¢ × 140 then a gap to 27¢ — this one is limit-order-only.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> Rest a <strong>$250 limit at 23¢</strong> (≈1,087 shares). Do not lift through the 24¢ ask — the book gaps 3 points behind it. Pays ≈$1,087 if Apple takes #1 by Aug 31.</div>
+          </div>
+          <div class="panel-card">
+            <h3 class="panel-title"><span class="pm-badge pm-watch">#4 NEW · CONVEXITY PUNT</span> Alphabet-August YES @ ~2.6¢ — smallest size, honest label</h3>
+            <p>Alphabet needs ~+29% on NVDA in 26 trading days. At base vol (2%/day) the model calls 2.6¢ slightly rich (fair 0.7¢) — but at the realized-vol regime the market just printed (a 4.5% relative move in one session on Jul 24), fair climbs to 2.4–5¢. This is strictly a bet that the high-vol regime persists: a lottery ticket with defined risk, not a modeled edge at base assumptions. Book: bid 2.4¢ × 60, ask 2.8¢ × 56 then 2.9¢ × 490.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> Rest <strong>$75 at 2.6¢</strong> (≈2,885 shares), or pay up to 2.9¢ for ≈2,586. Max loss $75; pays ≈$2,885 if Alphabet somehow takes #1 by Aug 31. Cap it here — this is the only ticket on the page the model does not endorse at base vol.</div>
+          </div>
+        </div>
       </section>
 
       <!-- ===================== ADD-ONS ===================== -->
@@ -332,36 +362,6 @@
             <h3 class="panel-title"><span class="pm-badge pm-rich">#4 · EVENT</span> Small Apple-July YES @ 23.1¢ into Thursday's print</h3>
             <p><strong>The lottery ticket — smallest size.</strong> Apple needs ~+2.4% relative to NVDA by Friday's close, with an earnings reaction session as the finale. Typical Apple earnings-day moves run ±3–5%, and Jul 24 alone delivered +4.5% relative. Zero-drift fair is ~30¢, so you're buying a live binary at cheap-to-fair with all the convexity on your side of the print. But it is binary: a soft quarter and this is worth 0 by Friday 4pm. Cap it at lottery-ticket size (≤1–2% of bankroll). Prefer less variance? Skip the print and run trade #3 on the overreaction afterward instead.</p>
             <div class="pm-exec"><strong>THE TICKET:</strong> Buy <strong>$173 AAPL-Jul YES at 22.2¢</strong> — that takes the <em>entire</em> 780-share best ask; the next offer jumps to 23.4¢, so this trade literally does not scale past $173 without paying up. 1.6% of account, max loss $173, pays $780 on an Apple flip Friday (+$607). All four tickets together: <strong>$2,058</strong> ≈ cash ($1,991) + the SPCX sell ($160) — no winners touched.</div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ===================== NEW POSITIONS ===================== -->
-      <section class="table-section" aria-label="Top new positions suggested">
-        <div class="table-header-row">
-          <h2 class="section-title">Top 4 New Positions Suggested — Not Currently Held</h2>
-          <span class="price-note">Ranked by conviction · books checked Jul 26 ~20:00 UTC · not financial advice</span>
-        </div>
-        <div class="pm-cards">
-          <div class="panel-card">
-            <h3 class="panel-title"><span class="pm-badge pm-cheap">#1 NEW · HIGHEST CONVICTION</span> Apple-August YES @ ~23.5¢</h3>
-            <p>The account holds Apple-July and Apple-December but not August — making the best trade on the page also a brand-new position. Biggest modeled edge anywhere (fair 37–41¢ vs 23.5¢), two catalysts inside the window, and a real book behind it. Same trade as Top 4 Trades #1 and All-Positions Add-On #1: one thesis, consistently ranked first everywhere it appears.</p>
-            <div class="pm-exec"><strong>THE TICKET:</strong> $710 clears the asks through 26¢ → <strong>2,797 shares @ 25.4¢ avg</strong> (355×24¢, 930×25¢, 1,512×26¢); patient version rests at 24¢. Pays $2,797 if Apple is #1 on Aug 31.</div>
-          </div>
-          <div class="panel-card">
-            <h3 class="panel-title"><span class="pm-badge pm-watch">#2 NEW · STRUCTURAL SHORT</span> Alphabet-Dec NO @ ~91¢</h3>
-            <p>Not held, deepest book on the page, and the cleanest way to monetize the December vol-inversion: the market prices Alphabet-vs-NVDA at ~5× the implied volatility of Apple-vs-NVDA. Pairs naturally with the existing AAPL-Dec YES holding to complete a hedged relative-value structure.</p>
-            <div class="pm-exec"><strong>THE TICKET:</strong> Buy <strong>$300 GOOGL-Dec NO @ 91¢</strong> → 329 shares in one level (5,020 offered at the touch; 3,494 bid at 89¢ behind you).</div>
-          </div>
-          <div class="panel-card">
-            <h3 class="panel-title"><span class="pm-badge pm-cheap">#3 NEW · THE AUGUST ECHO</span> NVDA "2nd-largest August" YES @ ~23¢</h3>
-            <p>The account holds the July version of this trade (+124%) but not August. If Apple takes #1 by Aug 31, NVIDIA is #2 — so this should track AAPL-Aug (23.5¢) almost one-for-one, and it does (23¢). Under the model that makes it ~17 pts cheap, same as the headline trade, in a separate book. Liquidity is the constraint: bid 22¢ × 566, ask 24¢ × 140 then a gap to 27¢ — this one is limit-order-only.</p>
-            <div class="pm-exec"><strong>THE TICKET:</strong> Rest a <strong>$250 limit at 23¢</strong> (≈1,087 shares). Do not lift through the 24¢ ask — the book gaps 3 points behind it. Pays ≈$1,087 if Apple takes #1 by Aug 31.</div>
-          </div>
-          <div class="panel-card">
-            <h3 class="panel-title"><span class="pm-badge pm-watch">#4 NEW · CONVEXITY PUNT</span> Alphabet-August YES @ ~2.6¢ — smallest size, honest label</h3>
-            <p>Alphabet needs ~+29% on NVDA in 26 trading days. At base vol (2%/day) the model calls 2.6¢ slightly rich (fair 0.7¢) — but at the realized-vol regime the market just printed (a 4.5% relative move in one session on Jul 24), fair climbs to 2.4–5¢. This is strictly a bet that the high-vol regime persists: a lottery ticket with defined risk, not a modeled edge at base assumptions. Book: bid 2.4¢ × 60, ask 2.8¢ × 56 then 2.9¢ × 490.</p>
-            <div class="pm-exec"><strong>THE TICKET:</strong> Rest <strong>$75 at 2.6¢</strong> (≈2,885 shares), or pay up to 2.9¢ for ≈2,586. Max loss $75; pays ≈$2,885 if Alphabet somehow takes #1 by Aug 31. Cap it here — this is the only ticket on the page the model does not endorse at base vol.</div>
           </div>
         </div>
       </section>

@@ -261,6 +261,40 @@
   function usd(x) { return '$' + Math.abs(x).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
   var ACCT_SHOW = 20;
   var acctExpanded = false;
+  var acctSort = { idx: null, dir: -1 };
+  function parseCell(td) {
+    var t = td.textContent.trim();
+    if (t === '\u2014' || t === '') return -Infinity;
+    var m = t.match(/^(\d+)\/(\d+)\/(\d+)$/);
+    if (m) return (+m[3]) * 10000 + (+m[1]) * 100 + (+m[2]);
+    var n = parseFloat(t.replace(/\u2212/g, '-').replace(/[$%\u00A2,+]/g, ''));
+    if (!isNaN(n)) return n;
+    return t.toLowerCase();
+  }
+  function sortAcct(idx, dir) {
+    var body = $('#acct-body'); if (!body) return;
+    var rows = Array.prototype.slice.call(body.querySelectorAll('tr'));
+    rows.sort(function (ra, rb) {
+      var va = parseCell(ra.children[idx]), vb = parseCell(rb.children[idx]);
+      if (va === vb) return 0;
+      if (typeof va === 'string' || typeof vb === 'string') { va = String(va); vb = String(vb); return va < vb ? dir : -dir; }
+      return (vb - va) * dir;
+    });
+    rows.forEach(function (r) { body.appendChild(r); });
+    applyAcctCollapse();
+  }
+  function initAcctSort() {
+    $$('.pm-acct-table thead th').forEach(function (th, idx) {
+      th.classList.add('pm-sortable');
+      th.addEventListener('click', function () {
+        var dir = (acctSort.idx === idx && acctSort.dir === 1) ? -1 : 1; /* first click: descending (dir=1 = big first) */
+        acctSort = { idx: idx, dir: dir };
+        $$('.pm-acct-table thead th').forEach(function (t) { t.classList.remove('sort-asc', 'sort-desc'); });
+        th.classList.add(dir === 1 ? 'sort-desc' : 'sort-asc');
+        sortAcct(idx, dir);
+      });
+    });
+  }
   var prev24 = {}; var prev24At = 0;
   var entryMap = null;
   function loadEntryMap() {
@@ -321,35 +355,19 @@
         }).catch(function () {});
     });
   }
-  function fetchCash() {
-    /* Available to trade = native USDC + bridged USDC.e balances of the proxy wallet on Polygon */
-    var tokens = ['0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359', '0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174'];
-    return Promise.all(tokens.map(function (tk, i) {
-      return fetch('https://polygon-rpc.com', {
-        method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ jsonrpc: '2.0', id: i + 1, method: 'eth_call', params: [{ to: tk, data: '0x70a08231000000000000000000000000' + WALLET.slice(2).toLowerCase() }, 'latest'] })
-      }).then(function (r) { return r.json(); })
-        .then(function (j) { return j && j.result ? parseInt(j.result, 16) / 1e6 : 0; })
-        .catch(function () { return 0; });
-    })).then(function (vals) {
-      var sum = vals.reduce(function (s, v) { return s + (isFinite(v) ? v : 0); }, 0);
-      return sum > 0 ? sum : null;
-    }).catch(function () { return null; });
-  }
   function refreshAccount() {
     return Promise.all([
       fetch('https://data-api.polymarket.com/positions?user=' + WALLET + '&limit=500').then(function (r) { return r.json(); }),
-      fetch('https://data-api.polymarket.com/value?user=' + WALLET).then(function (r) { return r.json(); }),
-      fetchCash()
+      fetch('https://data-api.polymarket.com/value?user=' + WALLET).then(function (r) { return r.json(); })
     ]).then(function (res) {
-      var pos = res[0] || [], valArr = res[1] || [], cashBal = res[2];
+      var pos = res[0] || [], valArr = res[1] || [];
       if (!pos.length) return null;
       var active = pos.filter(function (p) { return p.currentValue >= 1; })
                       .sort(function (a, b) { return b.currentValue - a.currentValue; });
-      return Promise.all([loadEntryMap(), loadPrev24(active.map(function (p) { return p.asset; }))]).then(function () { return { pos: pos, valArr: valArr, active: active, cashBal: cashBal }; });
+      return Promise.all([loadEntryMap(), loadPrev24(active.map(function (p) { return p.asset; }))]).then(function () { return { pos: pos, valArr: valArr, active: active }; });
     }).then(function (ctx) {
       if (!ctx) return;
-      var pos = ctx.pos, valArr = ctx.valArr, active = ctx.active, cashBal = ctx.cashBal;
+      var pos = ctx.pos, valArr = ctx.valArr, active = ctx.active;
       var body = $('#acct-body');
       if (body && active.length) {
         body.innerHTML = active.map(function (p) {
@@ -390,21 +408,15 @@
             })() + '</tr>';
         }).join('');
         applyAcctCollapse();
+        if (acctSort.idx != null) sortAcct(acctSort.idx, acctSort.dir);
       }
       var posSum = pos.reduce(function (s, p) { return s + (p.currentValue || 0); }, 0);
       setText('#acct-value', usd(posSum));
-      var haveCash = cashBal != null && isFinite(cashBal);
+      var total = valArr.length && valArr[0].value != null ? valArr[0].value : null;
       var ce = $('#acct-cash');
-      if (ce) {
-        if (haveCash) ce.textContent = usd(cashBal);
-        else if (valArr.length && valArr[0].value != null && valArr[0].value - posSum >= 0) ce.textContent = usd(valArr[0].value - posSum) + ' (est.)';
-      }
+      if (ce && total != null) ce.textContent = usd(Math.max(total - posSum, 0));
       var pf = $('#acct-portfolio');
-      if (pf) {
-        if (haveCash) pf.textContent = usd(posSum + cashBal);
-        else if (valArr.length && valArr[0].value != null) pf.textContent = usd(valArr[0].value);
-        else pf.textContent = usd(posSum);
-      }
+      if (pf) pf.textContent = usd(total != null ? total : posSum);
       setText('#acct-open', String(active.length));
       var pnl = active.reduce(function (s, p) { return s + p.cashPnl; }, 0);
       var pnlEl = $('#acct-pnl');
@@ -449,6 +461,7 @@
     root.setAttribute('data-theme', root.getAttribute('data-theme') === 'light' ? 'dark' : 'light');
     buildCharts();
   });
+  initAcctSort();
   var acctMoreBtn = document.getElementById('acct-more');
   if (acctMoreBtn) acctMoreBtn.addEventListener('click', function () { acctExpanded = !acctExpanded; applyAcctCollapse(); });
   applyAcctCollapse();

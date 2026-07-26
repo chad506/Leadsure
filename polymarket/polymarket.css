@@ -145,3 +145,12 @@ code { font-family: ui-monospace, monospace; font-size: 0.85em; background: var(
 /* colored hero stat values (override the fixed white) */
 .account-hero-stat-value.pm-pos { color: var(--color-gain); }
 .account-hero-stat-value.pm-neg { color: var(--color-loss); }
+/* center the hero numbers (this page only — polymarket.css is not loaded elsewhere) */
+.account-hero-primary { align-items: center; text-align: center; }
+.account-hero-stat { align-items: center; text-align: center; }
+/* center data columns under headers + sortable headers */
+.pm-acct-table th:not(:first-child), .pm-acct-table td:not(:first-child) { text-align: center; }
+.pm-acct-table th.pm-sortable { cursor: pointer; transition: opacity var(--transition-interactive); }
+.pm-acct-table th.pm-sortable:hover { opacity: 0.8; }
+.pm-acct-table th.sort-asc::after { content: ' \25B2'; font-size: 0.5rem; vertical-align: middle; }
+.pm-acct-table th.sort-desc::after { content: ' \25BC'; font-size: 0.5rem; vertical-align: middle; }
