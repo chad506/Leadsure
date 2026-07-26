@@ -317,18 +317,24 @@
           var d = arr[arr.length - 1].p - arr[0].p;
           var el = $(wins[iv]); if (!el) return;
           el.textContent = (d >= 0 ? '+' : '\u2212') + usd(d);
-          el.className = 'pm-acct-num ' + (d >= 0 ? 'pm-pos' : 'pm-neg');
+          el.className = 'account-hero-stat-value ' + (d >= 0 ? 'pm-pos' : 'pm-neg');
         }).catch(function () {});
     });
   }
   function fetchCash() {
-    /* USDC.e balanceOf(wallet) on Polygon — the number Polymarket shows as "Available to trade" */
-    return fetch('https://polygon-rpc.com', {
-      method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ jsonrpc: '2.0', id: 1, method: 'eth_call', params: [{ to: '0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174', data: '0x70a08231000000000000000000000000' + WALLET.slice(2).toLowerCase() }, 'latest'] })
-    }).then(function (r) { return r.json(); })
-      .then(function (j) { return j && j.result ? parseInt(j.result, 16) / 1e6 : null; })
-      .catch(function () { return null; });
+    /* Available to trade = native USDC + bridged USDC.e balances of the proxy wallet on Polygon */
+    var tokens = ['0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359', '0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174'];
+    return Promise.all(tokens.map(function (tk, i) {
+      return fetch('https://polygon-rpc.com', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ jsonrpc: '2.0', id: i + 1, method: 'eth_call', params: [{ to: tk, data: '0x70a08231000000000000000000000000' + WALLET.slice(2).toLowerCase() }, 'latest'] })
+      }).then(function (r) { return r.json(); })
+        .then(function (j) { return j && j.result ? parseInt(j.result, 16) / 1e6 : 0; })
+        .catch(function () { return 0; });
+    })).then(function (vals) {
+      var sum = vals.reduce(function (s, v) { return s + (isFinite(v) ? v : 0); }, 0);
+      return sum > 0 ? sum : null;
+    }).catch(function () { return null; });
   }
   function refreshAccount() {
     return Promise.all([
@@ -387,15 +393,22 @@
       }
       var posSum = pos.reduce(function (s, p) { return s + (p.currentValue || 0); }, 0);
       setText('#acct-value', usd(posSum));
+      var haveCash = cashBal != null && isFinite(cashBal);
       var ce = $('#acct-cash');
       if (ce) {
-        if (cashBal != null && isFinite(cashBal)) ce.textContent = usd(cashBal);
+        if (haveCash) ce.textContent = usd(cashBal);
         else if (valArr.length && valArr[0].value != null && valArr[0].value - posSum >= 0) ce.textContent = usd(valArr[0].value - posSum) + ' (est.)';
+      }
+      var pf = $('#acct-portfolio');
+      if (pf) {
+        if (haveCash) pf.textContent = usd(posSum + cashBal);
+        else if (valArr.length && valArr[0].value != null) pf.textContent = usd(valArr[0].value);
+        else pf.textContent = usd(posSum);
       }
       setText('#acct-open', String(active.length));
       var pnl = active.reduce(function (s, p) { return s + p.cashPnl; }, 0);
       var pnlEl = $('#acct-pnl');
-      if (pnlEl) { pnlEl.textContent = (pnl >= 0 ? '+' : '\u2212') + usd(pnl); pnlEl.className = 'pm-acct-num ' + (pnl >= 0 ? 'pm-pos' : 'pm-neg'); }
+      if (pnlEl) { pnlEl.textContent = (pnl >= 0 ? '+' : '\u2212') + usd(pnl); pnlEl.className = 'account-hero-stat-value ' + (pnl >= 0 ? 'pm-pos' : 'pm-neg'); }
       loadWindowPnl();
     }).catch(function () { /* keep baked snapshot */ });
   }

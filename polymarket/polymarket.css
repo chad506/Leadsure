@@ -142,3 +142,6 @@ code { font-family: ui-monospace, monospace; font-size: 0.85em; background: var(
 .pm-acct-table td { padding-top: 4px; padding-bottom: 4px; line-height: 1.3; }
 .pm-acct-table th { padding-top: 6px; padding-bottom: 6px; }
 .pm-acct-table .pm-sub { margin-top: 0; line-height: 1.15; }
+/* colored hero stat values (override the fixed white) */
+.account-hero-stat-value.pm-pos { color: var(--color-gain); }
+.account-hero-stat-value.pm-neg { color: var(--color-loss); }

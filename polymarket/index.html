@@ -79,20 +79,50 @@
         <h2 class="fund-title">Polymarket — Live Account &amp; Playbook</h2>
         <p class="fund-subtitle">Live positions for <span class="pm-wallet">0xD1eED2…42A8ae</span> from the Polymarket Data API, plus the top recommended add-ons and sells derived from the market-cap race analysis on the <strong>Largest Company</strong> tab. Everything refreshes every 60 seconds.</p>
       </div>
+      <section class="account-hero" aria-label="Account summary">
+        <div class="account-hero-primary">
+          <div class="account-hero-label">Portfolio</div>
+          <div class="account-hero-value" id="acct-portfolio">$10,624.96</div>
+        </div>
+        <div class="account-hero-divider"></div>
+        <div class="account-hero-secondary">
+          <div class="account-hero-stat">
+            <div class="account-hero-stat-label">Positions Value</div>
+            <div class="account-hero-stat-value" id="acct-value">$9,742.64</div>
+          </div>
+          <div class="account-hero-stat">
+            <div class="account-hero-stat-label">Available to Trade</div>
+            <div class="account-hero-stat-value" id="acct-cash">$882.32</div>
+          </div>
+          <div class="account-hero-stat">
+            <div class="account-hero-stat-label">Open Positions</div>
+            <div class="account-hero-stat-value" id="acct-open">16</div>
+          </div>
+          <div class="account-hero-stat">
+            <div class="account-hero-stat-label">Open P&amp;L</div>
+            <div class="account-hero-stat-value pm-pos" id="acct-pnl">+$762.20</div>
+          </div>
+          <div class="account-hero-stat">
+            <div class="account-hero-stat-label">24 Hour P&amp;L</div>
+            <div class="account-hero-stat-value pm-neg" id="acct-pnl24">−$572.73</div>
+          </div>
+          <div class="account-hero-stat">
+            <div class="account-hero-stat-label">1 Month P&amp;L</div>
+            <div class="account-hero-stat-value pm-pos" id="acct-pnl1m">+$5,930.72</div>
+          </div>
+          <div class="account-hero-stat">
+            <div class="account-hero-stat-label">1 Year P&amp;L</div>
+            <div class="account-hero-stat-value pm-neg" id="acct-pnl1y">−$900.02</div>
+          </div>
+        </div>
+      </section>
+      <hr class="hero-rule">
+
       <!-- ===================== LIVE ACCOUNT ===================== -->
       <section class="table-section" aria-label="Live account positions">
         <div class="table-header-row">
           <h2 class="section-title">Live Account Positions — <span class="pm-wallet">0xD1eE…A8ae</span></h2>
           <span class="price-note">Polymarket Data API · refreshes every 60s · zero-value expired positions hidden</span>
-        </div>
-        <div class="pm-acct-stats">
-          <div class="pm-acct-stat"><span class="pm-acct-label">Positions Value</span><span class="pm-acct-num" id="acct-value">$10,391.02</span></div>
-          <div class="pm-acct-stat"><span class="pm-acct-label">Available to Trade</span><span class="pm-acct-num" id="acct-cash">$233.94</span></div>
-          <div class="pm-acct-stat"><span class="pm-acct-label">Open Positions</span><span class="pm-acct-num" id="acct-open">16</span></div>
-          <div class="pm-acct-stat"><span class="pm-acct-label">Open Positions P&amp;L</span><span class="pm-acct-num pm-pos" id="acct-pnl">+$762.20</span></div>
-          <div class="pm-acct-stat"><span class="pm-acct-label">24 Hour P&amp;L</span><span class="pm-acct-num pm-neg" id="acct-pnl24">−$572.73</span></div>
-          <div class="pm-acct-stat"><span class="pm-acct-label">1 Month P&amp;L</span><span class="pm-acct-num pm-pos" id="acct-pnl1m">+$5,930.72</span></div>
-          <div class="pm-acct-stat"><span class="pm-acct-label">1 Year P&amp;L</span><span class="pm-acct-num pm-neg" id="acct-pnl1y">−$900.02</span></div>
         </div>
         <div class="table-wrapper pm-acct-wrap">
           <table class="pm-table pm-acct-table">
@@ -120,7 +150,7 @@
           </table>
         </div>
         <button class="pm-more pm-acct-more" id="acct-more" hidden>Show all positions <span class="chev">▼</span></button>
-        <p class="pm-footnote">Positions Value = Data-API account value minus spendable cash; Available to Trade reads the wallet's USDC balance directly from Polygon (the same number Polymarket shows as "Available to trade"). The account has been actively executing this page's tickets on Jul 26 — the live refresh recomputes every row and stat from the raw APIs on each sync. Zero-value expired positions hidden; snapshot Jul 26, 2026 ~20:45 UTC.</p>
+        <p class="pm-footnote">Positions Value = Data-API account value minus spendable cash; Available to Trade reads the wallet's USDC balances (native + bridged USDC.e) directly from Polygon and sums them — the same money Polymarket counts as "Available to trade". Portfolio = Positions Value + Available to Trade. The account has been actively executing this page's tickets on Jul 26 — the live refresh recomputes every row and stat from the raw APIs on each sync. Zero-value expired positions hidden; snapshot Jul 26, 2026 ~21:20 UTC.</p>
       </section>
 
 
