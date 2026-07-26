@@ -306,19 +306,44 @@
     btn.innerHTML = (acctExpanded ? 'Show top ' + ACCT_SHOW : 'Show all ' + rows.length + ' positions') + ' <span class="chev">\u25BC</span>';
     btn.classList.toggle('expanded', acctExpanded);
   }
+  function loadWindowPnl() {
+    var wins = { '1d': '#acct-pnl24', '1m': '#acct-pnl1m', 'all': '#acct-pnl1y' };
+    Object.keys(wins).forEach(function (iv) {
+      fetch('https://user-pnl-api.polymarket.com/user-pnl?user_address=' + WALLET + '&interval=' + iv + '&fidelity=' + (iv === '1d' ? '1h' : '1d'))
+        .then(function (r) { return r.json(); })
+        .then(function (arr) {
+          if (!arr || arr.length < 2) return;
+          if (iv === 'all' && arr.length > 365) arr = arr.slice(-365);
+          var d = arr[arr.length - 1].p - arr[0].p;
+          var el = $(wins[iv]); if (!el) return;
+          el.textContent = (d >= 0 ? '+' : '\u2212') + usd(d);
+          el.className = 'pm-acct-num ' + (d >= 0 ? 'pm-pos' : 'pm-neg');
+        }).catch(function () {});
+    });
+  }
+  function fetchCash() {
+    /* USDC.e balanceOf(wallet) on Polygon — the number Polymarket shows as "Available to trade" */
+    return fetch('https://polygon-rpc.com', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ jsonrpc: '2.0', id: 1, method: 'eth_call', params: [{ to: '0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174', data: '0x70a08231000000000000000000000000' + WALLET.slice(2).toLowerCase() }, 'latest'] })
+    }).then(function (r) { return r.json(); })
+      .then(function (j) { return j && j.result ? parseInt(j.result, 16) / 1e6 : null; })
+      .catch(function () { return null; });
+  }
   function refreshAccount() {
     return Promise.all([
       fetch('https://data-api.polymarket.com/positions?user=' + WALLET + '&limit=500').then(function (r) { return r.json(); }),
-      fetch('https://data-api.polymarket.com/value?user=' + WALLET).then(function (r) { return r.json(); })
+      fetch('https://data-api.polymarket.com/value?user=' + WALLET).then(function (r) { return r.json(); }),
+      fetchCash()
     ]).then(function (res) {
-      var pos = res[0] || [], valArr = res[1] || [];
+      var pos = res[0] || [], valArr = res[1] || [], cashBal = res[2];
       if (!pos.length) return null;
       var active = pos.filter(function (p) { return p.currentValue >= 1; })
                       .sort(function (a, b) { return b.currentValue - a.currentValue; });
-      return Promise.all([loadEntryMap(), loadPrev24(active.map(function (p) { return p.asset; }))]).then(function () { return { pos: pos, valArr: valArr, active: active }; });
+      return Promise.all([loadEntryMap(), loadPrev24(active.map(function (p) { return p.asset; }))]).then(function () { return { pos: pos, valArr: valArr, active: active, cashBal: cashBal }; });
     }).then(function (ctx) {
       if (!ctx) return;
-      var pos = ctx.pos, valArr = ctx.valArr, active = ctx.active;
+      var pos = ctx.pos, valArr = ctx.valArr, active = ctx.active, cashBal = ctx.cashBal;
       var body = $('#acct-body');
       if (body && active.length) {
         body.innerHTML = active.map(function (p) {
@@ -362,18 +387,16 @@
       }
       var posSum = pos.reduce(function (s, p) { return s + (p.currentValue || 0); }, 0);
       setText('#acct-value', usd(posSum));
-      if (valArr.length && valArr[0].value != null) {
-        var cash = valArr[0].value - posSum;
-        var ce = $('#acct-cash'); if (ce) ce.textContent = cash >= 0 ? usd(cash) : '—';
+      var ce = $('#acct-cash');
+      if (ce) {
+        if (cashBal != null && isFinite(cashBal)) ce.textContent = usd(cashBal);
+        else if (valArr.length && valArr[0].value != null && valArr[0].value - posSum >= 0) ce.textContent = usd(valArr[0].value - posSum) + ' (est.)';
       }
       setText('#acct-open', String(active.length));
       var pnl = active.reduce(function (s, p) { return s + p.cashPnl; }, 0);
       var pnlEl = $('#acct-pnl');
       if (pnlEl) { pnlEl.textContent = (pnl >= 0 ? '+' : '\u2212') + usd(pnl); pnlEl.className = 'pm-acct-num ' + (pnl >= 0 ? 'pm-pos' : 'pm-neg'); }
-      if (active.length) {
-        var big = active[0];
-        setText('#acct-big', esc(shortTitle(big.title)).split(' \u2014 ')[0].slice(0, 18) + ' ' + big.outcome.toUpperCase() + ' \u00B7 ' + usd(big.currentValue));
-      }
+      loadWindowPnl();
     }).catch(function () { /* keep baked snapshot */ });
   }
 

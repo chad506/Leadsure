@@ -58,6 +58,7 @@
     </header>
 
     <nav class="page-nav" aria-label="Page navigation">
+      <a href="../index.html" class="nav-tab">Home</a>
       <a href="#" class="nav-tab active" data-view="polymarket">Polymarket</a>
       <a href="#" class="nav-tab" data-view="largest" id="tab-largest">Largest Company</a>
     </nav>
@@ -85,11 +86,13 @@
           <span class="price-note">Polymarket Data API · refreshes every 60s · zero-value expired positions hidden</span>
         </div>
         <div class="pm-acct-stats">
-          <div class="pm-acct-stat"><span class="pm-acct-label">Positions Value</span><span class="pm-acct-num" id="acct-value">$7,857.36</span></div>
-          <div class="pm-acct-stat"><span class="pm-acct-label">Cash (est.)</span><span class="pm-acct-num" id="acct-cash">$2,767.60</span></div>
+          <div class="pm-acct-stat"><span class="pm-acct-label">Positions Value</span><span class="pm-acct-num" id="acct-value">$10,391.02</span></div>
+          <div class="pm-acct-stat"><span class="pm-acct-label">Available to Trade</span><span class="pm-acct-num" id="acct-cash">$233.94</span></div>
           <div class="pm-acct-stat"><span class="pm-acct-label">Open Positions</span><span class="pm-acct-num" id="acct-open">16</span></div>
           <div class="pm-acct-stat"><span class="pm-acct-label">Open Positions P&amp;L</span><span class="pm-acct-num pm-pos" id="acct-pnl">+$762.20</span></div>
-          <div class="pm-acct-stat"><span class="pm-acct-label">Largest Position</span><span class="pm-acct-num" id="acct-big">AAPL-Dec YES · $1,416.94</span></div>
+          <div class="pm-acct-stat"><span class="pm-acct-label">24 Hour P&amp;L</span><span class="pm-acct-num pm-neg" id="acct-pnl24">−$572.73</span></div>
+          <div class="pm-acct-stat"><span class="pm-acct-label">1 Month P&amp;L</span><span class="pm-acct-num pm-pos" id="acct-pnl1m">+$5,930.72</span></div>
+          <div class="pm-acct-stat"><span class="pm-acct-label">1 Year P&amp;L</span><span class="pm-acct-num pm-neg" id="acct-pnl1y">−$900.02</span></div>
         </div>
         <div class="table-wrapper pm-acct-wrap">
           <table class="pm-table pm-acct-table">
@@ -117,7 +120,7 @@
           </table>
         </div>
         <button class="pm-more pm-acct-more" id="acct-more" hidden>Show all positions <span class="chev">▼</span></button>
-        <p class="pm-footnote">Positions Value matches Polymarket's profile figure (sum of open positions); Cash is estimated as the Data API's total account value minus positions. Several of this page's sell recommendations were executed on Jul 26 (SPCX-Dec, WTI $95, Pirates, Padres) — cash is up and open P&L flipped positive. Zero-value expired positions hidden; snapshot Jul 26, 2026 ~20:00 UTC.</p>
+        <p class="pm-footnote">Positions Value = Data-API account value minus spendable cash; Available to Trade reads the wallet's USDC balance directly from Polygon (the same number Polymarket shows as "Available to trade"). The account has been actively executing this page's tickets on Jul 26 — the live refresh recomputes every row and stat from the raw APIs on each sync. Zero-value expired positions hidden; snapshot Jul 26, 2026 ~20:45 UTC.</p>
       </section>
 
 
@@ -125,30 +128,31 @@
       <section class="table-section" aria-label="Recommended add-ons all positions">
         <div class="table-header-row">
           <h2 class="section-title">Top 4 Add-Ons — All Positions</h2>
-          <span class="price-note">Across the whole book, beyond the largest-company race · not financial advice</span>
+          <span class="price-note">Global conviction ranking across the whole book — the best trade tops every list it appears on · not financial advice</span>
         </div>
         <div class="pm-cards">
           <div class="panel-card">
-            <h3 class="panel-title"><span class="pm-badge pm-cheap">#1 ADD · SAME THESIS, 2ND VENUE</span> Add NVDA "2nd-largest July" YES @ ~22¢ (held: 1,381 @ 9.8¢, +124%)</h3>
-            <p>If Apple takes #1 by Jul 31, NVIDIA becomes #2 — so this contract is the Apple-flip thesis traded on a different book. It prices at 22¢ while the model puts the Apple flip near 30¢: the same edge as AAPL-Jul YES, in a second venue with its own liquidity. Adding here also splits execution risk across books instead of piling into one thin ask.</p>
+            <h3 class="panel-title"><span class="pm-badge pm-cheap">#1 ADD · HIGHEST CONVICTION</span> Buy Apple-August YES @ ~23.5¢ — the biggest modeled edge anywhere</h3>
+            <p>The single best trade on this page, full stop — which is why it is also #1 on the Largest Company list and #1 among new positions. The account holds Apple-July and Apple-December but skips August, the cheapest leg of the term structure (model fair 37–41¢), with both earnings catalysts inside the window. Same trade, same rank, everywhere it appears.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> $710 clears every ask through 26¢ → <strong>2,797 shares @ 25.4¢ avg</strong>; patient version rests the order at 24¢. Full book math in Top 4 Trades on the Largest Company tab.</div>
+          </div>
+          <div class="panel-card">
+            <h3 class="panel-title"><span class="pm-badge pm-cheap">#2 ADD · SAME THESIS, 2ND VENUE</span> Add NVDA "2nd-largest July" YES @ ~22¢ (held: 1,381 @ 9.8¢, +124%)</h3>
+            <p>If Apple takes #1 by Jul 31, NVIDIA becomes #2 — this contract is the Apple-flip thesis traded on a different book. It prices at 22¢ while the model puts the flip near 30¢: the same edge as AAPL-Jul YES, in a second venue with its own liquidity. Adding here also splits execution risk across books instead of piling into one thin ask.</p>
             <div class="pm-exec"><strong>THE TICKET:</strong> Rest a <strong>$250 limit at 22¢</strong> (≈1,135 shares) rather than crossing — this book is thinner than the main one. Pays $1,135 on an Apple flip. Funded from the WTI sell salvage.</div>
           </div>
           <div class="panel-card">
-            <h3 class="panel-title"><span class="pm-badge pm-watch">#2 ADD · THE AUG 1 ROLL</span> Pre-plan rolling the July carry ladder into August</h3>
-            <p>The five near-expiry winners — SPY $770 NO, SPY $700-low NO, and the three Bitcoin NOs at 95–99¢ — hand back ≈<strong>$3,590 in cash on Aug 1</strong>. That ladder has been the book's steadiest earner (~1–2%/month with days of risk, not months). The add-on is the roll itself: the same far-out-of-range strikes exist in the August SPY/BTC books, typically offered at 94–97¢ in week one before decay compresses them.</p>
-            <div class="pm-exec"><strong>THE TICKET:</strong> On Aug 1, redeploy <strong>≈$3,000 of the $3,590</strong> into the August equivalents at ≥94¢ (equal thirds SPY-high NO / BTC-dip NO / BTC-reach NO), keeping $590 dry for trade #3 fills on the other tab. At 95¢ average, $3,000 → ≈3,158 shares → ≈+$158/month at the same risk profile.</div>
+            <h3 class="panel-title"><span class="pm-badge pm-watch">#3 ADD · COMPLETE THE PAIR</span> Buy Alphabet-Dec NO @ ~91¢ — the vol-inversion hedge</h3>
+            <p>Same trade as Largest Company #2: the account owns the long-challenger half of the December vol-inversion (AAPL-Dec YES) but not the short-Alphabet half. December prices Alphabet at ~5× Apple's implied relative vol — indefensible — and this leg also nets out the "NVDA stumbles" scenario the existing NVDA-Dec NO leans on. Ranked below #2 only because the NO side is capital-heavy per point of edge.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> Buy <strong>$300 GOOGL-Dec NO @ 91¢</strong> → 329 shares, one level, 5,020 offered — the deepest book on the page.</div>
           </div>
           <div class="panel-card">
-            <h3 class="panel-title"><span class="pm-badge pm-cheap">#3 ADD · BEST CARRY LEFT IN JULY</span> Top up SPY $770-high July NO @ 97.4¢</h3>
-            <p>Four sessions from resolution, this is the best carry-per-day still open to the account: 2.6¢ of upside in 4 trading days (≈2.7% in a week) for a strike the index would need a violent melt-up to hit. The account already holds 1,211 shares from 94.1¢; the same logic that made that entry good makes 97.4¢ still-good on an annualized basis — and it beats the 99.5¢ Bitcoin legs, whose juice is already squeezed.</p>
-            <div class="pm-exec"><strong>THE TICKET:</strong> Add <strong>$250 at 97.4¢</strong> → ≈257 shares, +$6.68 by Friday if SPY stays below $770. Small in dollars, ~35% annualized, near-zero thesis risk. Skip if the cash is needed for AAPL-Aug fills instead — that trade dominates this one.</div>
-          </div>
-          <div class="panel-card">
-            <h3 class="panel-title"><span class="pm-badge pm-watch">#4 ADD · RIDE THE WINNER, SMALL</span> Dylan Cease strikeout-leader YES @ 11.4¢ (held: 520 @ 4.0¢, +186%)</h3>
-            <p>The book's second-best percentage winner: bought at 4¢, now 11.4¢ and climbing, with the position's other half (Skenes NO at 95.7¢) hedging the favorite. Honest label: there is no quantitative model behind this one on this page — it's a momentum add on a season-long contract where the market keeps agreeing with the original call. That's a reason to stay small, not a reason to skip it entirely.</p>
-            <div class="pm-exec"><strong>THE TICKET:</strong> Add <strong>$100 at ≤11.5¢</strong> (≈870 shares) with a mental stop at breakeven on the add. Total Cease exposure stays under 1.6% of the account. Pays ≈$1,390 across both lots if Cease finishes #1 in strikeouts.</div>
+            <h3 class="panel-title"><span class="pm-badge pm-watch">#4 ADD · AUG 1 ROLL</span> <span class="pm-badge pm-rich">⏳ NOT ACTIONABLE TODAY</span> Roll the July carry ladder — when August books go live</h3>
+            <p>The five near-expiry winners — SPY $770 NO, SPY $700-low NO, and the three Bitcoin NOs at 95–99¢ — hand back ≈<strong>$3,590 in cash on Aug 1</strong>, and the roll into next month's ladders is the natural add-on. But the liquidity check kills any early action: <strong>as of Jul 26 the August SPY event is an empty shell — $58 of total liquidity with every strike parked at a 50/50 placeholder — and the August Bitcoin event isn't listed at all yet.</strong> There is no real counterparty behind those 50¢ quotes. Monthly ladders get seeded with market-maker books around month-end.</p>
+            <div class="pm-exec"><strong>THE TICKET — ⏳ EXECUTES ON/AFTER AUG 1, NOT BEFORE:</strong> Hold the ≈$3,590 as cash through Friday's resolutions. Once the August SPY/BTC ladders show real two-sided books, redeploy <strong>≈$3,000 into the far-OTM NOs at ≥94¢</strong> (equal thirds, resting limits only). If the ladders are still unseeded on Aug 1, keep waiting — the edge is carry, not urgency. Do not touch today's placeholder quotes.</div>
           </div>
         </div>
+        <p class="pm-footnote">Ranking is global and congruent with the other lists: #1 here is #1 on the Largest Company list and #1 among suggested new positions. Next in line, below the cut: averaging up AAPL-Dec (LC #3), averaging down NVDA-Aug NO (LC #4), topping up the SPY $770 July NO carry, and a small momentum add to Dylan Cease.</p>
       </section>
 
       <!-- ===================== ADD-ONS ===================== -->
@@ -298,6 +302,36 @@
             <h3 class="panel-title"><span class="pm-badge pm-rich">#4 · EVENT</span> Small Apple-July YES @ 23.1¢ into Thursday's print</h3>
             <p><strong>The lottery ticket — smallest size.</strong> Apple needs ~+2.4% relative to NVDA by Friday's close, with an earnings reaction session as the finale. Typical Apple earnings-day moves run ±3–5%, and Jul 24 alone delivered +4.5% relative. Zero-drift fair is ~30¢, so you're buying a live binary at cheap-to-fair with all the convexity on your side of the print. But it is binary: a soft quarter and this is worth 0 by Friday 4pm. Cap it at lottery-ticket size (≤1–2% of bankroll). Prefer less variance? Skip the print and run trade #3 on the overreaction afterward instead.</p>
             <div class="pm-exec"><strong>THE TICKET:</strong> Buy <strong>$173 AAPL-Jul YES at 22.2¢</strong> — that takes the <em>entire</em> 780-share best ask; the next offer jumps to 23.4¢, so this trade literally does not scale past $173 without paying up. 1.6% of account, max loss $173, pays $780 on an Apple flip Friday (+$607). All four tickets together: <strong>$2,058</strong> ≈ cash ($1,991) + the SPCX sell ($160) — no winners touched.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== NEW POSITIONS ===================== -->
+      <section class="table-section" aria-label="Top new positions suggested">
+        <div class="table-header-row">
+          <h2 class="section-title">Top 4 New Positions Suggested — Not Currently Held</h2>
+          <span class="price-note">Ranked by conviction · books checked Jul 26 ~20:00 UTC · not financial advice</span>
+        </div>
+        <div class="pm-cards">
+          <div class="panel-card">
+            <h3 class="panel-title"><span class="pm-badge pm-cheap">#1 NEW · HIGHEST CONVICTION</span> Apple-August YES @ ~23.5¢</h3>
+            <p>The account holds Apple-July and Apple-December but not August — making the best trade on the page also a brand-new position. Biggest modeled edge anywhere (fair 37–41¢ vs 23.5¢), two catalysts inside the window, and a real book behind it. Same trade as Top 4 Trades #1 and All-Positions Add-On #1: one thesis, consistently ranked first everywhere it appears.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> $710 clears the asks through 26¢ → <strong>2,797 shares @ 25.4¢ avg</strong> (355×24¢, 930×25¢, 1,512×26¢); patient version rests at 24¢. Pays $2,797 if Apple is #1 on Aug 31.</div>
+          </div>
+          <div class="panel-card">
+            <h3 class="panel-title"><span class="pm-badge pm-watch">#2 NEW · STRUCTURAL SHORT</span> Alphabet-Dec NO @ ~91¢</h3>
+            <p>Not held, deepest book on the page, and the cleanest way to monetize the December vol-inversion: the market prices Alphabet-vs-NVDA at ~5× the implied volatility of Apple-vs-NVDA. Pairs naturally with the existing AAPL-Dec YES holding to complete a hedged relative-value structure.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> Buy <strong>$300 GOOGL-Dec NO @ 91¢</strong> → 329 shares in one level (5,020 offered at the touch; 3,494 bid at 89¢ behind you).</div>
+          </div>
+          <div class="panel-card">
+            <h3 class="panel-title"><span class="pm-badge pm-cheap">#3 NEW · THE AUGUST ECHO</span> NVDA "2nd-largest August" YES @ ~23¢</h3>
+            <p>The account holds the July version of this trade (+124%) but not August. If Apple takes #1 by Aug 31, NVIDIA is #2 — so this should track AAPL-Aug (23.5¢) almost one-for-one, and it does (23¢). Under the model that makes it ~17 pts cheap, same as the headline trade, in a separate book. Liquidity is the constraint: bid 22¢ × 566, ask 24¢ × 140 then a gap to 27¢ — this one is limit-order-only.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> Rest a <strong>$250 limit at 23¢</strong> (≈1,087 shares). Do not lift through the 24¢ ask — the book gaps 3 points behind it. Pays ≈$1,087 if Apple takes #1 by Aug 31.</div>
+          </div>
+          <div class="panel-card">
+            <h3 class="panel-title"><span class="pm-badge pm-watch">#4 NEW · CONVEXITY PUNT</span> Alphabet-August YES @ ~2.6¢ — smallest size, honest label</h3>
+            <p>Alphabet needs ~+29% on NVDA in 26 trading days. At base vol (2%/day) the model calls 2.6¢ slightly rich (fair 0.7¢) — but at the realized-vol regime the market just printed (a 4.5% relative move in one session on Jul 24), fair climbs to 2.4–5¢. This is strictly a bet that the high-vol regime persists: a lottery ticket with defined risk, not a modeled edge at base assumptions. Book: bid 2.4¢ × 60, ask 2.8¢ × 56 then 2.9¢ × 490.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> Rest <strong>$75 at 2.6¢</strong> (≈2,885 shares), or pay up to 2.9¢ for ≈2,586. Max loss $75; pays ≈$2,885 if Alphabet somehow takes #1 by Aug 31. Cap it here — this is the only ticket on the page the model does not endorse at base vol.</div>
           </div>
         </div>
       </section>
