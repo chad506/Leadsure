@@ -169,3 +169,16 @@ code { font-family: ui-monospace, monospace; font-size: 0.85em; background: var(
 .pm-cards::-webkit-scrollbar { height: 8px; }
 .pm-cards::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: 4px; }
 @media (max-width: 900px) { .pm-cards { grid-auto-columns: 85%; } }
+/* ==== scroller arrows ==== */
+.pm-scroll-ctl { display: inline-flex; align-items: center; gap: 8px; margin-left: var(--space-3); flex-shrink: 0; }
+.pm-scroll-btn {
+  width: 26px; height: 26px; border-radius: 50%;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface-offset); color: var(--color-text);
+  font-size: 1.05rem; line-height: 1;
+  display: inline-flex; align-items: center; justify-content: center;
+  transition: border-color var(--transition-interactive), color var(--transition-interactive);
+}
+.pm-scroll-btn:hover:not(:disabled) { border-color: var(--color-primary); color: var(--color-primary); }
+.pm-scroll-btn:disabled { opacity: 0.35; cursor: default; }
+.pm-scroll-pos { font-family: var(--font-mono); font-size: 0.68rem; color: var(--color-text-muted); font-variant-numeric: tabular-nums; }

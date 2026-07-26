@@ -444,6 +444,41 @@
     }).catch(function () { /* keep baked snapshot */ });
   }
 
+  /* ---------- idea-scroller arrows ---------- */
+  var scrollerUpdates = [];
+  function initScrollers() {
+    $$('.pm-cards').forEach(function (pc) {
+      var n = pc.children.length;
+      if (n <= 4) return;
+      var sec = pc.closest('section'); if (!sec) return;
+      var hdr = sec.querySelector('.table-header-row'); if (!hdr) return;
+      var ctl = document.createElement('span');
+      ctl.className = 'pm-scroll-ctl';
+      ctl.innerHTML = '<button class="pm-scroll-btn" aria-label="Previous ideas">\u2039</button><span class="pm-scroll-pos"></span><button class="pm-scroll-btn" aria-label="More ideas">\u203A</button>';
+      hdr.appendChild(ctl);
+      var btns = ctl.querySelectorAll('button');
+      var pos = ctl.querySelector('.pm-scroll-pos');
+      function cardStep() {
+        var c = pc.children[0];
+        var w = c ? c.getBoundingClientRect().width : 0;
+        return (w > 0 ? w : 300) + 16;
+      }
+      function update() {
+        var step = cardStep();
+        var first = Math.round(pc.scrollLeft / step) + 1;
+        var last = Math.min(first + 3, n);
+        pos.textContent = first + '\u2013' + last + ' / ' + n;
+        btns[0].disabled = pc.scrollLeft <= 4;
+        btns[1].disabled = pc.clientWidth > 0 && pc.scrollLeft >= pc.scrollWidth - pc.clientWidth - 4;
+      }
+      btns[0].addEventListener('click', function () { pc.scrollBy({ left: -cardStep() * 4, behavior: 'smooth' }); });
+      btns[1].addEventListener('click', function () { pc.scrollBy({ left: cardStep() * 4, behavior: 'smooth' }); });
+      pc.addEventListener('scroll', function () { requestAnimationFrame(update); });
+      scrollerUpdates.push(update);
+      update();
+    });
+  }
+
   /* ---------- wiring ---------- */
   var chartsBuiltVisible = false;
   $$('.page-nav .nav-tab[data-view]').forEach(function (tab) {
@@ -458,6 +493,7 @@
         chartsBuiltVisible = true;
         requestAnimationFrame(buildCharts);
       }
+      requestAnimationFrame(function () { scrollerUpdates.forEach(function (u) { u(); }); });
     });
   });
 
@@ -481,6 +517,7 @@
     buildCharts();
   });
   initAcctSort();
+  initScrollers();
   var acctMoreBtn = document.getElementById('acct-more');
   if (acctMoreBtn) acctMoreBtn.addEventListener('click', function () { acctExpanded = !acctExpanded; applyAcctCollapse(); });
   applyAcctCollapse();
