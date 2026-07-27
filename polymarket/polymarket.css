@@ -192,3 +192,15 @@ code { font-family: ui-monospace, monospace; font-size: 0.85em; background: var(
   font-variant-numeric: tabular-nums;
   letter-spacing: 0.02em;
 }
+/* ==== tracking table: fully centered + totals row ==== */
+#track-table th, #track-table td { text-align: center !important; }
+#track-table .pm-mkt { max-width: none; }
+#track-table .pm-mkt a { justify-content: center; }
+.pm-track-total td {
+  background: var(--color-table-header, var(--color-surface-2));
+  font-weight: 700; font-family: var(--font-display);
+  border-top: 2px solid var(--color-border);
+  color: var(--color-text);
+}
+/* hard override: center Side→Date columns in account + tracking tables */
+.pm-table.pm-acct-table td.col-num, .pm-table.pm-acct-table th.col-num { text-align: center !important; }

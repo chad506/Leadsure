@@ -452,12 +452,12 @@
     { act: 'SELL', tok: '53163369856626064559322810866176581747272608812423874664444706765734968500482', sh: 492, px: 0.01 }
   ];
   function refreshTracking() {
-    TRACKED.forEach(function (t, i) {
-      fetch('https://clob.polymarket.com/midpoint?token_id=' + t.tok)
+    Promise.all(TRACKED.map(function (t, i) {
+      return fetch('https://clob.polymarket.com/midpoint?token_id=' + t.tok)
         .then(function (r) { return r.json(); })
         .then(function (j) {
           var cur = parseFloat(j.mid);
-          if (isNaN(cur)) return;
+          if (isNaN(cur)) return null;
           var nowEl = $('[data-track-now="' + i + '"]');
           if (nowEl) nowEl.textContent = (cur * 100).toFixed(1) + '\u00A2';
           var delta = t.act === 'SELL' ? (t.px - cur) * t.sh : (cur - t.px) * t.sh;
@@ -472,7 +472,23 @@
             else if (delta <= -1) { vEl.className = 'pm-badge pm-rich'; vEl.textContent = t.act === 'SELL' ? 'EARLY' : 'UNDERWATER'; }
             else { vEl.className = 'pm-badge pm-fair'; vEl.textContent = 'FLAT'; }
           }
-        }).catch(function () {});
+          return delta;
+        }).catch(function () { return null; });
+    })).then(function (ds) {
+      var vals = ds.filter(function (d) { return d != null && isFinite(d); });
+      if (!vals.length) return;
+      var tot = vals.reduce(function (s, d) { return s + d; }, 0);
+      var el = document.getElementById('track-total-delta');
+      if (el) {
+        el.textContent = (tot >= 0 ? '+' : '\u2212') + usd(tot) + ' net';
+        el.className = 'col-num ' + (tot >= 0 ? 'pm-pos' : 'pm-neg');
+      }
+      var v = document.getElementById('track-total-verdict');
+      if (v) {
+        if (tot >= 1) { v.className = 'pm-badge pm-cheap'; v.textContent = 'NET POSITIVE'; }
+        else if (tot <= -1) { v.className = 'pm-badge pm-rich'; v.textContent = 'NET NEGATIVE'; }
+        else { v.className = 'pm-badge pm-fair'; v.textContent = 'FLAT'; }
+      }
     });
   }
 
