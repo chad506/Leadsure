@@ -213,3 +213,10 @@ code { font-family: ui-monospace, monospace; font-size: 0.85em; background: var(
 }
 #retired-table th, #retired-table td { text-align: center !important; }
 .pm-retired-empty td { color: var(--color-text-muted); font-size: var(--text-xs); white-space: normal; text-align: left !important; }
+/* per-card idea date */
+.pm-idea-date {
+  font-family: var(--font-display); font-size: 0.6rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.06em;
+  color: var(--color-text-faint);
+  margin-top: 3px;
+}
