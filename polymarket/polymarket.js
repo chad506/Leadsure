@@ -568,8 +568,17 @@
         btns[0].disabled = pc.scrollLeft <= 4;
         btns[1].disabled = pc.clientWidth > 0 && pc.scrollLeft >= pc.scrollWidth - pc.clientWidth - 4;
       }
-      btns[0].addEventListener('click', function () { pc.scrollBy({ left: -cardStep() * 4, behavior: 'smooth' }); });
-      btns[1].addEventListener('click', function () { pc.scrollBy({ left: cardStep() * 4, behavior: 'smooth' }); });
+      function page(dir) {
+        var step = cardStep();
+        var max = pc.scrollWidth - pc.clientWidth;
+        var target = Math.max(0, Math.min(max, pc.scrollLeft + dir * step * 4));
+        if (typeof pc.scrollTo === 'function') {
+          try { pc.scrollTo({ left: target, behavior: 'smooth' }); } catch (e) { pc.scrollLeft = target; }
+        } else { pc.scrollLeft = target; }
+        setTimeout(update, 450);
+      }
+      btns[0].addEventListener('click', function (e) { e.preventDefault(); page(-1); });
+      btns[1].addEventListener('click', function (e) { e.preventDefault(); page(1); });
       pc.addEventListener('scroll', function () { requestAnimationFrame(update); });
       scrollerUpdates.push(update);
       update();

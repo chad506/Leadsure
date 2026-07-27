@@ -160,7 +160,8 @@ code { font-family: ui-monospace, monospace; font-size: 0.85em; background: var(
   grid-auto-flow: column;
   grid-auto-columns: calc((100% - 3 * var(--space-4)) / 4);
   overflow-x: auto;
-  scroll-snap-type: x mandatory;
+  scroll-snap-type: x proximity;
+  scroll-behavior: smooth;
   padding-bottom: var(--space-2);
   scrollbar-width: thin;
   scrollbar-color: var(--color-border) transparent;
@@ -220,3 +221,9 @@ code { font-family: ui-monospace, monospace; font-size: 0.85em; background: var(
   color: var(--color-text-faint);
   margin-top: 3px;
 }
+
+/* ==== scroller controls: never let the header push them off-screen ==== */
+.table-header-row { flex-wrap: wrap; row-gap: var(--space-2); }
+.table-header-row .price-note { flex: 1 1 220px; min-width: 0; }
+.table-header-row .pm-scroll-ctl { margin-left: auto; order: 99; }
+.pm-scroll-btn { flex: 0 0 auto; cursor: pointer; }
