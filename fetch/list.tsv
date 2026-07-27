@@ -1,2 +1,7 @@
-live_page	https://leadsure.com/polymarket/index.html
-live_js	https://leadsure.com/polymarket/polymarket.js
+check_activity	https://data-api.polymarket.com/activity?user=0xD1eED20eDD22A289839379e89E3470eA1742A8ae&limit=40
+check_mid_jul-NVDA	https://clob.polymarket.com/midpoint?token_id=11728583497514710574356365513249856989304427730091039531942765980605070477300
+check_mid_jul-AAPL	https://clob.polymarket.com/midpoint?token_id=5823805802875099304203116182652199693089526522530469365767529374822548212673
+check_mid_aug-NVDA	https://clob.polymarket.com/midpoint?token_id=95302905537962222918309360338213500184994944787102722256843629723110588711061
+check_mid_aug-AAPL	https://clob.polymarket.com/midpoint?token_id=42047893977785728528565456844873223397500118970867834014836006695082853076308
+check_mid_dec-NVDA	https://clob.polymarket.com/midpoint?token_id=11876606915924142133615854761923277060697657209957870741155164849437788272266
+check_mid_dec-AAPL	https://clob.polymarket.com/midpoint?token_id=9875273331604434310973374077817381730908757452538191940842519381772366848
