@@ -2,6 +2,9 @@ name: autodata
 on:
   push:
     branches: [auto-data-fetch]
+  workflow_dispatch:
+  schedule:
+    - cron: '45 12,22 * * *'   # 15 min before each 6am/4pm PT Claude run
 permissions:
   contents: write
 jobs:
@@ -10,12 +13,14 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: auto-data-fetch
       - name: fetch
         run: bash fetch/run.sh
       - name: commit results
         run: |
           git config user.name autodata
           git config user.email autodata@leadsure.local
-          git add -A fetch/out
+          git add -A fetch/out fetch/list.tsv
           git commit -m "autodata results" || exit 0
           git push origin HEAD:auto-data-fetch
