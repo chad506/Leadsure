@@ -1,0 +1,28 @@
+name: autodata
+# Scheduled workflows ONLY run from the default branch — this file must live on main.
+# It fetches Polymarket/market data on GitHub's network into the auto-data-fetch branch,
+# 15 minutes before each twice-daily Claude re-analysis run (6am / 4pm PT).
+on:
+  schedule:
+    - cron: '45 12 * * *'
+    - cron: '45 22 * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: auto-data-fetch
+      - name: fetch
+        run: bash fetch/run.sh
+      - name: commit results
+        run: |
+          git config user.name autodata
+          git config user.email autodata@leadsure.local
+          git add -A fetch/out
+          git commit -m "autodata results" || exit 0
+          git push origin HEAD:auto-data-fetch
