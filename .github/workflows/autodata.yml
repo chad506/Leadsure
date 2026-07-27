@@ -1,0 +1,21 @@
+name: autodata
+on:
+  push:
+    branches: [auto-data-fetch]
+permissions:
+  contents: write
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: fetch
+        run: bash fetch/run.sh
+      - name: commit results
+        run: |
+          git config user.name autodata
+          git config user.email autodata@leadsure.local
+          git add -A fetch/out
+          git commit -m "autodata results" || exit 0
+          git push origin HEAD:auto-data-fetch
