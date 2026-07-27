@@ -204,3 +204,12 @@ code { font-family: ui-monospace, monospace; font-size: 0.85em; background: var(
 }
 /* hard override: center Side→Date columns in account + tracking tables */
 .pm-table.pm-acct-table td.col-num, .pm-table.pm-acct-table th.col-num { text-align: center !important; }
+/* ==== section idea-date stamp + retired ledger ==== */
+.pm-sec-date {
+  font-family: var(--font-display); font-size: 0.66rem; font-weight: 600;
+  letter-spacing: 0.04em; color: var(--color-text-muted);
+  background: var(--color-surface-offset); border: 1px solid var(--color-border);
+  border-radius: var(--radius-full); padding: 2px 10px; white-space: nowrap;
+}
+#retired-table th, #retired-table td { text-align: center !important; }
+.pm-retired-empty td { color: var(--color-text-muted); font-size: var(--text-xs); white-space: normal; text-align: left !important; }

@@ -159,6 +159,7 @@
       <section class="table-section" aria-label="Recommended add-ons all positions">
         <div class="table-header-row">
           <h2 class="section-title">Top Add-Ons — All Positions</h2>
+          <span class="pm-sec-date">Ideas as of Jul 26, 2026 · 4:45 PM PT</span>
           <span class="price-note">Global conviction ranking across the whole book — the best trade tops every list it appears on · not financial advice · 4 shown, scroll → for more</span>
         </div>
         <div class="pm-cards">
@@ -210,6 +211,7 @@
       <section class="table-section" aria-label="Top new positions suggested">
         <div class="table-header-row">
           <h2 class="section-title">Top New Positions Suggested — Not Currently Held</h2>
+          <span class="pm-sec-date">Ideas as of Jul 26, 2026 · 4:45 PM PT</span>
           <span class="price-note">Sourced across ALL Polymarket books (ranking partitions, carry ladders, convexity) · ranked by conviction · not financial advice · 4 shown, scroll → for more</span>
         </div>
         <div class="pm-cards">
@@ -251,6 +253,7 @@
       <section class="table-section" aria-label="Recommended add-ons">
         <div class="table-header-row">
           <h2 class="section-title">Top Add-Ons — Largest Company</h2>
+          <span class="pm-sec-date">Ideas as of Jul 26, 2026 · 4:45 PM PT</span>
           <span class="price-note">Derived from the Largest Company analysis (other tab) · not financial advice · 4 shown, scroll → for more</span>
         </div>
         <div class="pm-cards">
@@ -277,6 +280,7 @@
       <section class="table-section" aria-label="Recommended sells">
         <div class="table-header-row">
           <h2 class="section-title">Top Sells — What to Cut From Current Positions</h2>
+          <span class="pm-sec-date">Ideas as of Jul 26, 2026 · 4:45 PM PT</span>
           <span class="price-note">Ranked by urgency + salvageable value · 4 shown, scroll → for more · executed sells move to the Tracking tab</span>
         </div>
         <div class="pm-cards">
@@ -382,6 +386,7 @@
       <section class="table-section" aria-label="Top recommended trades">
         <div class="table-header-row">
           <h2 class="section-title">Top Trades — Ranked by Conviction, Sized to the Account</h2>
+          <span class="pm-sec-date">Ideas as of Jul 26, 2026 · 4:45 PM PT</span>
           <span class="price-note">Tickets sized to the live account ($10,660.69 value · ≈$1,991 cash) against REAL order-book depth, Jul 26 ~18:00 UTC · not financial advice · 4 shown, scroll → for more</span>
         </div>
         <div class="pm-cards">
@@ -606,6 +611,25 @@
         </div>
         <p class="pm-footnote">How scoring works — SELLS: Since Decision = (exit price − current price) × shares. Positive means the exit saved money (the position kept falling); negative means it left money on the table so far. Final verdicts land at resolution. ADDS/BUYS: Since Decision = (current − fill) × shares, plus realized payout at resolution. Add-side executions are detected and appended automatically by the twice-daily run from the account's trade history — with actual average fills replacing estimates.</p>
       </section>
+
+      <section class="table-section" aria-label="Retired ideas ledger">
+        <div class="table-header-row">
+          <h2 class="section-title">Retired Ideas — Dropped Before Execution</h2>
+          <span class="price-note">Every idea is re-weighed at each 6am/4pm run · drops land here and get scored so we learn whether retiring was right</span>
+        </div>
+        <div class="table-wrapper">
+          <table class="pm-table pm-acct-table" id="retired-table">
+            <thead>
+              <tr><th>Added</th><th>Retired</th><th>Idea</th><th>Side</th><th class="col-num">Rec. Price</th><th class="col-num">Price at Retirement</th><th class="col-num">Price Now</th><th class="col-num">Move Since Retirement</th><th>Verdict</th></tr>
+            </thead>
+            <tbody id="retired-body">
+              <tr class="pm-retired-empty"><td colspan="9">No retired ideas yet — the first re-weigh happens on the next scheduled run. When an idea stops clearing the rules (edge gone, book died, thesis broken) it moves here instead of silently disappearing.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="pm-footnote">Scoring: for a retired BUY idea, if the price fell after we dropped it, the drop was right (GOOD DROP); if it kept climbing, we dropped it too early (TOO EARLY) — and the size of the move is the tuition. Retired SELL ideas score inversely. This ledger plus the executed ledger above covers every decision path: acted on, or walked away from.</p>
+      </section>
+
       </div>
 
     </main>

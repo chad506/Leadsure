@@ -492,6 +492,34 @@
     });
   }
 
+  /* ---------- retired ideas ledger (appended by the auto-run) ---------- */
+  var RETIRED = []; /* {tok, side ('BUY'|'SELL'), retPx} — indices align with #retired-body rows' data-retired-* attrs */
+  function refreshRetired() {
+    RETIRED.forEach(function (t, i) {
+      fetch('https://clob.polymarket.com/midpoint?token_id=' + t.tok)
+        .then(function (r) { return r.json(); })
+        .then(function (j) {
+          var cur = parseFloat(j.mid);
+          if (isNaN(cur) || !t.retPx) return;
+          var nowEl = $('[data-retired-now="' + i + '"]');
+          if (nowEl) nowEl.textContent = (cur * 100).toFixed(1) + '\u00A2';
+          var mv = (cur - t.retPx) / t.retPx * 100;
+          var goodDrop = t.side === 'BUY' ? mv <= 0 : mv >= 0;
+          var mEl = $('[data-retired-move="' + i + '"]');
+          if (mEl) {
+            mEl.textContent = (mv >= 0 ? '+' : '\u2212') + Math.abs(mv).toFixed(1) + '%';
+            mEl.className = 'col-num ' + (goodDrop ? 'pm-pos' : 'pm-neg');
+          }
+          var vEl = $('[data-retired-verdict="' + i + '"]');
+          if (vEl) {
+            if (Math.abs(mv) < 5) { vEl.className = 'pm-badge pm-fair'; vEl.textContent = 'FLAT'; }
+            else if (goodDrop) { vEl.className = 'pm-badge pm-cheap'; vEl.textContent = 'GOOD DROP'; }
+            else { vEl.className = 'pm-badge pm-rich'; vEl.textContent = 'TOO EARLY'; }
+          }
+        }).catch(function () {});
+    });
+  }
+
   /* ---------- idea-scroller arrows ---------- */
   var scrollerUpdates = [];
   function initScrollers() {
@@ -575,7 +603,9 @@
   refresh();
   refreshAccount();
   refreshTracking();
+  refreshRetired();
   setInterval(refresh, 60000);
   setInterval(refreshAccount, 60000);
   setInterval(refreshTracking, 60000);
+  setInterval(refreshRetired, 60000);
 })();
