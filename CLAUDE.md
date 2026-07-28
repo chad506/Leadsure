@@ -131,3 +131,133 @@ Standalone sub-page: Magnolia, WA homes for sale + a Bankrate-style mortgage cal
 - Sort defaults to **price low→high**; the calculator pre-fills from the cheapest visible listing.
 - "Show Mortgage" loads the calculator at 20% down with auto tax (0.9%/yr) + insurance (0.12%/yr); PMI auto-adds when down < 20%.
 - Calculator terms: **30-year fixed** (6.75% default) and **7-year ARM** (auto-fills a ~6.25% intro rate; amortizes over 30 years). Switching the term writes that product's typical rate (`data-rate` on the button) into the rate box.
+
+---
+
+## Polymarket sub-site (leadsure.com/polymarket)
+
+Live trading dashboard for Chad's Polymarket account. Regenerated twice a day by a
+scheduled Cowork task (6:00 AM and 4:00 PM Pacific). **Every rule below applies to
+every automated run** — a fresh session working in this repo reads this file, so
+treat it as the contract even if the task prompt is terser.
+
+### Files (all in `polymarket/`)
+- `index.html` — the whole page (single file; tabs are in-page, not separate documents)
+- `polymarket.css` — page-specific styles (loaded after `../base.css` + `../dashboard.css`)
+- `polymarket.js` — live data fetch, sorting, card carousels, resync button
+- `site-index.html` — copy of the root nav used to keep the tab strip in sync
+
+### Hard rules — do not violate
+- **NEVER place a trade.** This dashboard is read-only analysis. No order placement,
+  ever, under any phrasing of the request.
+- **NEVER store Polymarket trading API credentials in this repo or anywhere else.**
+  Polymarket API keys can place orders — there is no read-only tier. The user
+  explicitly declined them. Public endpoints only.
+- **NEVER echo the GitHub token** (embedded in the push remote) into page content,
+  commit messages, logs, or anything user-facing.
+
+### Data sources — which endpoint, and why
+- **Prices: CLOB API only** — `/midpoint`, `/book`, `/prices-history`.
+- **gamma-api is for discovery only.** Its prices lag the CLOB by up to two days.
+  Never quote a gamma price on the page.
+- **Positions / activity:** Data API `/positions`, `/activity`, `/value`.
+- **P&L:** user-pnl-api `/user-pnl?interval=1d|1m|all` → the 24h / 1M / 1Y tiles.
+- **Cash on chain:** Polygon USDC balances, both contracts, each ÷ 1e6 —
+  native USDC `0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359`
+  and USDC.e `0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174`.
+- Wallet: `0xD1eED20eDD22A289839379e89E3470eA1742A8ae`.
+
+### Account hero
+Portfolio (est.) | Positions Value | Cash on Chain | Open Positions | Open P&L | 24h P&L | 1M P&L | 1Y P&L
+
+`Portfolio` is labeled **"(est.)"** with a footnote on purpose: true "Available to
+Trade" needs private order-reserved collateral, which public endpoints cannot see.
+Show exact Positions Value + Cash on Chain and keep the estimate honest — do not
+silently drop the "(est.)" or the footnote to make the number look authoritative.
+
+### Card sections — 12 ideas each, 4 visible
+Five sections, each carrying **exactly 12 ideas**, 4 visible with `‹ ›` arrows and a
+counter pill (`1–4/12`):
+
+1. Top Add-Ons — All Positions
+2. Top New Positions Suggested — Not Currently Held
+3. Top Add-Ons — Largest Company
+4. Top Sells — What to Cut From Current Positions
+5. Top Trades — Ranked by Conviction, Sized to the Account
+
+Plus the **Mispricing Monitor** (8–12 dislocations) and the **Resolution** section
+(4 cards). Total card count on the page is currently **72**.
+
+- Ideas are **ranked by conviction**, and the ranking must be congruent across
+  sections — the top All-Positions add-on cannot contradict the top Largest-Company
+  add-on.
+- Each card carries a **date** to the right of its title (the date the idea was
+  first published, not the run date).
+
+### CARD LINK RULE — every card links to its market
+Every idea card's date line MUST end with an anchor to the market it is about:
+
+```html
+<div class="pm-idea-date">{date}<a class="pm-card-link" href="{url}" target="_blank"
+  rel="noopener" title="Open this market on Polymarket">View on Polymarket ↗</a></div>
+```
+
+Invariant to check after every regeneration — all three counts must be **equal**:
+
+```
+grep -c 'class="pm-card-link"' polymarket/index.html
+grep -c 'View on Polymarket'   polymarket/index.html
+grep -c 'pm-idea-date'         polymarket/index.html
+```
+
+- The month named in the card text must match the month of the linked market
+  (a July idea links to the July market, not August).
+- Account-hygiene cards (redeem winners, cancel stale resting orders) link to
+  `https://polymarket.com/portfolio` instead of an `/event/` slug. Those are the
+  only permitted non-`/event/` links.
+- `scripts/pm-link-cards.py` applies this mapping deterministically; it strips any
+  previously-added anchors first, so it is safe to re-run.
+
+### Sizing and liquidity
+- **Walk the order book before sizing anything.** Bids ascend, asks descend —
+  the touch is the **LAST** element of each array.
+- Quote an executable ticket size, not a notional wish. If the book cannot absorb
+  it, say so on the card.
+- If a trade should not be acted on until a future date (e.g. an Aug 1 roll), put
+  that date **prominently in the suggestion text** so it is not executed early.
+
+### Model — odds vs. fair value
+Zero-drift lognormal: `P(flip) = Φ( ln(capChal / capLead) / (σ√T) )`, σ = 2%/day
+with a 3%/day sensitivity case, `T` in **US trading days**
+(holidays: Sep 7, Nov 26, Dec 25). July, August and December resolve independently.
+
+Resolution source is **a consensus of credible reporting** on market cap at the
+close of the final trading day of the month — not any single vendor.
+
+### Twice-daily run — what each run must do
+1. Re-fetch positions, balances, and CLOB prices; **true up** every displayed balance.
+2. **Detect executions** — compare current positions against the standing ideas.
+   Anything acted on moves to the **Executed Recommendations Ledger** (Tracking tab).
+3. **Re-weigh every idea.** Ideas that no longer hold move to **Retired Ideas —
+   Dropped Before Execution** (Tracking tab) so their efficacy is scored over time.
+   Both ledgers are permanent — never truncate them.
+4. Backfill each section back to 12 ideas.
+5. Apply the CARD LINK RULE and verify the three counts match.
+6. Commit and push to `main` (GitHub Pages publishes from `main`).
+
+### Tracking tab
+Two permanent ledgers — Executed Recommendations and Retired Ideas — with live
+effectiveness scoring, columns centered, and a totals row at the bottom.
+
+### Gotchas hit before
+- **Round to 4 decimals before threshold comparisons** — raw float diffs produced
+  phantom mispricings at the boundary.
+- **`dashboard.css` forces `.col-num { text-align: right !important }`** — centering
+  the Polymarket tables needs a *more specific* selector, also `!important`.
+- **Carousel arrows get pushed off-screen** if the card header doesn't wrap — keep
+  the header `flex-wrap` and the arrow group on `margin-left:auto`.
+- **GitHub Actions `schedule:` only fires from the default branch** — anything
+  cron-driven must live on `main`.
+- **Verification:** this repo is public, so `git clone https://github.com/chad506/Leadsure.git`
+  anonymously is the reliable way to confirm what actually shipped when fetching
+  leadsure.com is blocked.
