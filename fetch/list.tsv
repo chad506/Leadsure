@@ -101,3 +101,11 @@ mid_atlcws	https://clob.polymarket.com/midpoint?token_id=50758375613609205206722
 book_atlcws	https://clob.polymarket.com/book?token_id=50758375613609205206722321143299691492416072642609722392299342065304974315278
 gs_sept2nd	https://gamma-api.polymarket.com/events?slug=2nd-largest-company-end-of-september
 gs_septsearch	https://gamma-api.polymarket.com/public-search?q=largest%20company%20september&limit_per_type=25
+gs_septmain	https://gamma-api.polymarket.com/events?slug=largest-company-end-of-september
+gs_sept30	https://gamma-api.polymarket.com/events?slug=largest-company-on-september-30
+mid_apple2sept	https://clob.polymarket.com/midpoint?token_id=8718946393710282563170454395341868473299189165110870841890692322034911123270
+book_apple2sept	https://clob.polymarket.com/book?token_id=8718946393710282563170454395341868473299189165110870841890692322034911123270
+mid_nvda2sept	https://clob.polymarket.com/midpoint?token_id=60912583345332311750277195830221868511760257832609727837696087670441563814826
+book_nvda2sept	https://clob.polymarket.com/book?token_id=60912583345332311750277195830221868511760257832609727837696087670441563814826
+mid_msft2sept	https://clob.polymarket.com/midpoint?token_id=5756428538263722844623309771839003105415019809942692937729605646693480593836
+mid_amzn264jul	https://clob.polymarket.com/midpoint?token_id=17275754600908351086268644037188773764043163588835669360978961593672223338690
