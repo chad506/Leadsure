@@ -36,7 +36,7 @@
           <h1 class="header-title">Polymarket Watch</h1>
           <div class="header-meta">
             <span class="status-dot"></span>
-            <span id="last-updated">Snapshot · Jul 27, 2026 15:00 UTC</span>
+            <span id="last-updated">Snapshot · Jul 28, 2026 00:20 UTC</span>
             <span class="pm-live-pill" id="live-pill">SNAPSHOT</span>
           </div>
         </div>
@@ -68,7 +68,7 @@
     <main class="dash-main" id="main-content">
       <div class="pm-syncbar" role="status" aria-live="polite">
         <span class="status-dot"></span>
-        <span class="pm-sync-text">Data last synced: <strong id="sync-time">Jul 27, 2026 15:00 UTC (baked snapshot)</strong> <span id="sync-ago" class="pm-sync-ago"></span></span>
+        <span class="pm-sync-text">Data last synced: <strong id="sync-time">Jul 28, 2026 00:20 UTC (baked snapshot)</strong> <span id="sync-ago" class="pm-sync-ago"></span></span>
         <span class="pm-live-pill" id="live-pill2">SNAPSHOT</span>
         <button class="pm-sync-btn" id="btn-sync">
           <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
@@ -83,38 +83,17 @@
       <section class="account-hero" aria-label="Account summary">
         <div class="account-hero-primary">
           <div class="account-hero-label">Portfolio (est.)</div>
-          <div class="account-hero-value" id="acct-portfolio">$13,322.81</div>
+          <div class="account-hero-value" id="acct-portfolio">$13,754.01</div>
         </div>
         <div class="account-hero-divider"></div>
         <div class="account-hero-secondary">
-          <div class="account-hero-stat">
-            <div class="account-hero-stat-label">Positions Value</div>
-            <div class="account-hero-stat-value" id="acct-value">$12,440.49</div>
-          </div>
-          <div class="account-hero-stat">
-            <div class="account-hero-stat-label">Cash on Chain</div>
-            <div class="account-hero-stat-value" id="acct-cash">$882.32</div>
-          </div>
-          <div class="account-hero-stat">
-            <div class="account-hero-stat-label">Open Positions</div>
-            <div class="account-hero-stat-value" id="acct-open">60</div>
-          </div>
-          <div class="account-hero-stat">
-            <div class="account-hero-stat-label">Open P&amp;L</div>
-            <div class="account-hero-stat-value pm-pos" id="acct-pnl">+$2,519.32</div>
-          </div>
-          <div class="account-hero-stat">
-            <div class="account-hero-stat-label">24 Hour P&amp;L</div>
-            <div class="account-hero-stat-value pm-neg" id="acct-pnl24">−$97.87</div>
-          </div>
-          <div class="account-hero-stat">
-            <div class="account-hero-stat-label">1 Month P&amp;L</div>
-            <div class="account-hero-stat-value pm-pos" id="acct-pnl1m">+$5,958.87</div>
-          </div>
-          <div class="account-hero-stat">
-            <div class="account-hero-stat-label">1 Year P&amp;L</div>
-            <div class="account-hero-stat-value pm-neg" id="acct-pnl1y">−$882.41</div>
-          </div>
+          <div class="account-hero-stat"><div class="account-hero-stat-label">Positions Value</div><div class="account-hero-stat-value" id="acct-value">$12,871.69</div></div>
+          <div class="account-hero-stat"><div class="account-hero-stat-label">Cash on Chain</div><div class="account-hero-stat-value" id="acct-cash">$882.32</div></div>
+          <div class="account-hero-stat"><div class="account-hero-stat-label">Open Positions</div><div class="account-hero-stat-value" id="acct-open">62</div></div>
+          <div class="account-hero-stat"><div class="account-hero-stat-label">Open P&amp;L</div><div class="account-hero-stat-value pm-pos" id="acct-pnl">+$2,414.61</div></div>
+          <div class="account-hero-stat"><div class="account-hero-stat-label">24 Hour P&amp;L</div><div class="account-hero-stat-value pm-pos" id="acct-pnl24">+$3,113.98</div></div>
+          <div class="account-hero-stat"><div class="account-hero-stat-label">1 Month P&amp;L</div><div class="account-hero-stat-value pm-pos" id="acct-pnl1m">+$8,981.81</div></div>
+          <div class="account-hero-stat"><div class="account-hero-stat-label">1 Year P&amp;L</div><div class="account-hero-stat-value pm-pos" id="acct-pnl1y">+$2,155.10</div></div>
         </div>
       </section>
       <hr class="hero-rule">
@@ -131,66 +110,26 @@
               <tr><th>Market</th><th title="YES pays $1 if the event happens (long the outcome); NO pays $1 if it doesn't (short the outcome)">Side ⓘ</th><th class="col-num">Shares</th><th class="col-num">Avg</th><th class="col-num">Last</th><th class="col-num">Value</th><th class="col-num">P&amp;L ($)</th><th class="col-num">P&amp;L (%)</th><th class="col-num">P&amp;L (24hr)</th><th class="col-num" title="Size-weighted average date of buys into this position">Date</th></tr>
             </thead>
             <tbody id="acct-body">
-              <tr class="row-long"><td class="pm-co pm-mkt" title="Will Apple be the largest company in the world by market cap on December 31?"><a href="https://polymarket.com/event/largest-company-end-of-december-2026/will-apple-be-the-largest-company-in-the-world-by-market-cap-on-december-31-291" target="_blank" rel="noopener">Apple — largest co. December 31<span class="pm-ext">↗</span></a><div class="pm-sub">Ends 12/31/26</div></td><td><span class="dir-badge dir-long">YES</span></td><td class="col-num">5,051</td><td class="col-num">19.0¢</td><td class="col-num">30.3¢</td><td class="col-num">$1,530.60</td><td class="col-num pm-pos">+$570.82</td><td class="col-num pm-pos">+59.5%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
-              <tr class="row-short"><td class="pm-co pm-mkt" title="Will NVIDIA be the largest company in the world by market cap on December 31?"><a href="https://polymarket.com/event/largest-company-end-of-december-2026/will-nvidia-be-the-largest-company-in-the-world-by-market-cap-on-december-31-244" target="_blank" rel="noopener">NVIDIA — largest co. December 31<span class="pm-ext">↗</span></a><div class="pm-sub">Ends 12/31/26</div></td><td><span class="dir-badge dir-short">NO</span></td><td class="col-num">2,865</td><td class="col-num">35.2¢</td><td class="col-num">45.5¢</td><td class="col-num">$1,303.76</td><td class="col-num pm-pos">+$294.62</td><td class="col-num pm-pos">+29.2%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
-              <tr class="row-short"><td class="pm-co pm-mkt" title="Will S&amp;P 500 (SPY) hit (HIGH) $770 in July?"><a href="https://polymarket.com/event/what-price-will-spy-hit-in-july-2026/will-spy-reach-770-in-july-2026" target="_blank" rel="noopener">S&amp;P 500 (SPY) hit (HIGH) $770 in July<span class="pm-ext">↗</span></a><div class="pm-sub">Ends 8/1/26</div></td><td><span class="dir-badge dir-short">NO</span></td><td class="col-num">1,211</td><td class="col-num">94.1¢</td><td class="col-num">96.9¢</td><td class="col-num">$1,172.85</td><td class="col-num pm-pos">+$32.85</td><td class="col-num pm-pos">+2.9%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
-              <tr class="row-short"><td class="pm-co pm-mkt" title="Will NVIDIA be the largest company in the world by market cap on July 31?"><a href="https://polymarket.com/event/largest-company-end-of-july-20260624192302727/will-nvidia-be-the-largest-company-in-the-world-by-market-cap-on-july-31-20260624192329841" target="_blank" rel="noopener">NVIDIA — largest co. July 31<span class="pm-ext">↗</span></a><div class="pm-sub">Ends 7/31/26</div></td><td><span class="dir-badge dir-short">NO</span></td><td class="col-num">1,487</td><td class="col-num">21.0¢</td><td class="col-num">55.5¢</td><td class="col-num">$825.31</td><td class="col-num pm-pos">+$512.42</td><td class="col-num pm-pos">+163.8%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
-              <tr class="row-long"><td class="pm-co pm-mkt" title="Will NVIDIA be the second-largest company in the world by market cap on July 31?"><a href="https://polymarket.com/event/2nd-largest-company-end-of-july-20260624192727948/will-nvidia-be-the-second-largest-company-in-the-world-by-market-cap-on-july-31-20260624192749110" target="_blank" rel="noopener">NVIDIA — 2nd largest July 31<span class="pm-ext">↗</span></a><div class="pm-sub">Ends 7/31/26</div></td><td><span class="dir-badge dir-long">YES</span></td><td class="col-num">1,583</td><td class="col-num">11.9¢</td><td class="col-num">51.5¢</td><td class="col-num">$815.08</td><td class="col-num pm-pos">+$627.17</td><td class="col-num pm-pos">+333.8%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
-              <tr class="row-short"><td class="pm-co pm-mkt" title="Will S&amp;P 500 (SPY) hit (LOW) $700 in July?"><a href="https://polymarket.com/event/what-price-will-spy-hit-in-july-2026/will-spy-dip-to-700-in-july-2026" target="_blank" rel="noopener">S&amp;P 500 (SPY) hit (LOW) $700 in July<span class="pm-ext">↗</span></a><div class="pm-sub">Ends 8/1/26</div></td><td><span class="dir-badge dir-short">NO</span></td><td class="col-num">740</td><td class="col-num">94.6¢</td><td class="col-num">97.1¢</td><td class="col-num">$718.33</td><td class="col-num pm-pos">+$18.33</td><td class="col-num pm-pos">+2.6%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
-              <tr class="row-short"><td class="pm-co pm-mkt" title="Will Bitcoin reach $75,000 in July?"><a href="https://polymarket.com/event/what-price-will-bitcoin-hit-in-july-2026/will-bitcoin-reach-75k-in-july-2026" target="_blank" rel="noopener">Bitcoin reach $75,000 in July<span class="pm-ext">↗</span></a><div class="pm-sub">Ends 8/1/26</div></td><td><span class="dir-badge dir-short">NO</span></td><td class="col-num">699</td><td class="col-num">97.6¢</td><td class="col-num">99.7¢</td><td class="col-num">$696.95</td><td class="col-num pm-pos">+$14.45</td><td class="col-num pm-pos">+2.1%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
-              <tr class="row-long"><td class="pm-co pm-mkt" title="Will Apple be the largest company in the world by market cap on July 31?"><a href="https://polymarket.com/event/largest-company-end-of-july-20260624192302727/will-apple-be-the-largest-company-in-the-world-by-market-cap-on-july-31-20260624192329843" target="_blank" rel="noopener">Apple — largest co. July 31<span class="pm-ext">↗</span></a><div class="pm-sub">Ends 7/31/26</div></td><td><span class="dir-badge dir-long">YES</span></td><td class="col-num">1,018</td><td class="col-num">5.9¢</td><td class="col-num">54.2¢</td><td class="col-num">$552.16</td><td class="col-num pm-pos">+$491.98</td><td class="col-num pm-pos">+817.5%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
-              <tr class="row-short"><td class="pm-co pm-mkt" title="Will Bitcoin dip to $57,500 in July?"><a href="https://polymarket.com/event/what-price-will-bitcoin-hit-in-july-2026/will-bitcoin-dip-to-57pt5k-in-july-2026-618" target="_blank" rel="noopener">Bitcoin dip to $57,500 in July<span class="pm-ext">↗</span></a><div class="pm-sub">Ends 8/1/26</div></td><td><span class="dir-badge dir-short">NO</span></td><td class="col-num">521</td><td class="col-num">96.0¢</td><td class="col-num">97.9¢</td><td class="col-num">$509.65</td><td class="col-num pm-pos">+$9.64</td><td class="col-num pm-pos">+1.9%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
-              <tr class="row-short"><td class="pm-co pm-mkt" title="Will Bitcoin dip to $55,000 in July?"><a href="https://polymarket.com/event/what-price-will-bitcoin-hit-in-july-2026/will-bitcoin-dip-to-55k-in-july-2026-381" target="_blank" rel="noopener">Bitcoin dip to $55,000 in July<span class="pm-ext">↗</span></a><div class="pm-sub">Ends 8/1/26</div></td><td><span class="dir-badge dir-short">NO</span></td><td class="col-num">511</td><td class="col-num">97.9¢</td><td class="col-num">99.6¢</td><td class="col-num">$508.43</td><td class="col-num pm-pos">+$8.43</td><td class="col-num pm-pos">+1.7%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
-              <tr class="row-short"><td class="pm-co pm-mkt" title="Will Paul Skenes strike out the most batters during the 2026 MLB regular season?"><a href="https://polymarket.com/event/mlb-strikeouts-leader-pitcher/will-paul-skenes-strike-out-the-most-batters-during-the-2026-mlb-regular-season" target="_blank" rel="noopener">Paul Skenes — MLB strikeout leader<span class="pm-ext">↗</span></a></td><td><span class="dir-badge dir-short">NO</span></td><td class="col-num">522</td><td class="col-num">95.8¢</td><td class="col-num">95.9¢</td><td class="col-num">$500.29</td><td class="col-num pm-pos">+$0.29</td><td class="col-num pm-pos">+0.1%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
-              <tr class="row-short"><td class="pm-co pm-mkt" title="Will NVIDIA be the largest company in the world by market cap on August 31?"><a href="https://polymarket.com/event/largest-company-end-of-august-20260715202138598/will-nvidia-be-the-largest-company-in-the-world-by-market-cap-on-august-31-20260715202138599" target="_blank" rel="noopener">NVIDIA — largest co. August 31<span class="pm-ext">↗</span></a><div class="pm-sub">Ends 8/31/26</div></td><td><span class="dir-badge dir-short">NO</span></td><td class="col-num">939</td><td class="col-num">34.1¢</td><td class="col-num">46.0¢</td><td class="col-num">$432.12</td><td class="col-num pm-pos">+$112.12</td><td class="col-num pm-pos">+35.0%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
-              <tr class="row-long"><td class="pm-co pm-mkt" title="Will Apple be the largest company in the world by market cap on August 31?"><a href="https://polymarket.com/event/largest-company-end-of-august-20260715202138598/will-apple-be-the-largest-company-in-the-world-by-market-cap-on-august-31-20260715202138601" target="_blank" rel="noopener">Apple — largest co. August 31<span class="pm-ext">↗</span></a><div class="pm-sub">Ends 8/31/26</div></td><td><span class="dir-badge dir-long">YES</span></td><td class="col-num">993</td><td class="col-num">25.9¢</td><td class="col-num">43.5¢</td><td class="col-num">$431.82</td><td class="col-num pm-pos">+$174.15</td><td class="col-num pm-pos">+67.6%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
-              <tr class="row-short"><td class="pm-co pm-mkt" title="Will Alphabet be the largest company in the world by market cap on December 31?"><a href="https://polymarket.com/event/largest-company-end-of-december-2026/will-alphabet-be-the-largest-company-in-the-world-by-market-cap-on-december-31-872" target="_blank" rel="noopener">Alphabet — largest co. December 31<span class="pm-ext">↗</span></a><div class="pm-sub">Ends 12/31/26</div></td><td><span class="dir-badge dir-short">NO</span></td><td class="col-num">320</td><td class="col-num">90.7¢</td><td class="col-num">89.5¢</td><td class="col-num">$286.20</td><td class="col-num pm-neg">−$3.80</td><td class="col-num pm-neg">−1.3%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
-              <tr class="row-long"><td class="pm-co pm-mkt" title="Will Atlanta Braves win the 2026 NL East title?"><a href="https://polymarket.com/event/mlb-2026-nl-east-champion/will-atlanta-braves-win-the-2026-nl-east-title" target="_blank" rel="noopener">Atlanta Braves win the 2026 NL East title<span class="pm-ext">↗</span></a><div class="pm-sub">Ends 10/11/26</div></td><td><span class="dir-badge dir-long">YES</span></td><td class="col-num">333</td><td class="col-num">78.8¢</td><td class="col-num">77.0¢</td><td class="col-num">$256.13</td><td class="col-num pm-neg">−$5.87</td><td class="col-num pm-neg">−2.2%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
-              <tr class="row-short"><td class="pm-co pm-mkt" title="Will Yoshinobu Yamamoto lead the MLB in ERA for the 2026 regular season?"><a href="https://polymarket.com/event/mlb-era-leader/will-yoshinobu-yamamoto-lead-the-mlb-in-era-for-the-2026-regular-season" target="_blank" rel="noopener">Yoshinobu Yamamoto lead the MLB in ERA for the 2026 regular season<span class="pm-ext">↗</span></a><div class="pm-sub">Ends 9/28/26</div></td><td><span class="dir-badge dir-short">NO</span></td><td class="col-num">208</td><td class="col-num">95.9¢</td><td class="col-num">97.0¢</td><td class="col-num">$202.11</td><td class="col-num pm-pos">+$2.11</td><td class="col-num pm-pos">+1.1%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
-              <tr class="row-short"><td class="pm-co pm-mkt" title="Will WTI Crude Oil (WTI) hit (LOW) $80 in July?"><a href="https://polymarket.com/event/what-price-will-wti-hit-in-july-2026/will-wti-dip-to-80-in-july-2026" target="_blank" rel="noopener">WTI Crude Oil (WTI) hit (LOW) $80 in July<span class="pm-ext">↗</span></a><div class="pm-sub">Ends 8/1/26</div></td><td><span class="dir-badge dir-short">NO</span></td><td class="col-num">366</td><td class="col-num">81.9¢</td><td class="col-num">47.5¢</td><td class="col-num">$174.07</td><td class="col-num pm-neg">−$125.93</td><td class="col-num pm-neg">−42.0%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
-              <tr class="row-long"><td class="pm-co pm-mkt" title="Will no Fed rate cuts happen in 2026?"><a href="https://polymarket.com/event/how-many-fed-rate-cuts-in-2026/will-no-fed-rate-cuts-happen-in-2026" target="_blank" rel="noopener">no Fed rate cuts happen in 2026<span class="pm-ext">↗</span></a><div class="pm-sub">Ends 12/31/26</div></td><td><span class="dir-badge dir-long">YES</span></td><td class="col-num">141</td><td class="col-num">18.6¢</td><td class="col-num">84.7¢</td><td class="col-num">$118.99</td><td class="col-num pm-pos">+$92.78</td><td class="col-num pm-pos">+354.1%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
-              <tr class="row-short"><td class="pm-co pm-mkt" title="Will Anthropic’s market cap be less than 0.6T at market close on IPO day by December 31 2027?"><a href="https://polymarket.com/event/anthropic-ipo-closing-market-cap-979/will-anthropics-market-cap-be-less-than-0pt6t-at-market-close-on-ipo-day-by-december-31-2027" target="_blank" rel="noopener">Anthropic’s market cap be less than 0.6T at market close on IPO day by December 31 2027<span class="pm-ext">↗</span></a><div class="pm-sub">Ends 12/31/27</div></td><td><span class="dir-badge dir-short">NO</span></td><td class="col-num">90</td><td class="col-num">94.5¢</td><td class="col-num">98.5¢</td><td class="col-num">$89.05</td><td class="col-num pm-pos">+$3.53</td><td class="col-num pm-pos">+4.1%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
-              <tr class="row-short"><td class="pm-co pm-mkt" title="Will New York Yankees win the 2026 American League Championship Series?"><a href="https://polymarket.com/event/mlb-2026-american-league-champion/will-new-york-yankees-win-the-2026-american-league-championship-series" target="_blank" rel="noopener">New York Yankees win the 2026 American League Championship Series<span class="pm-ext">↗</span></a><div class="pm-sub">Ends 11/1/26</div></td><td><span class="dir-badge dir-short">NO</span></td><td class="col-num">118</td><td class="col-num">70.6¢</td><td class="col-num">73.5¢</td><td class="col-num">$86.44</td><td class="col-num pm-pos">+$3.44</td><td class="col-num pm-pos">+4.1%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
-              <tr class="row-long"><td class="pm-co pm-mkt" title="Will 2026 be the second-hottest year on record?"><a href="https://polymarket.com/event/where-will-2026-rank-among-the-hottest-years-on-record/will-2026-be-the-second-hottest-year-on-record" target="_blank" rel="noopener">2026 be the second-hottest year on record<span class="pm-ext">↗</span></a><div class="pm-sub">Ends 12/31/26</div></td><td><span class="dir-badge dir-long">YES</span></td><td class="col-num">154</td><td class="col-num">62.4¢</td><td class="col-num">54.5¢</td><td class="col-num">$83.80</td><td class="col-num pm-neg">−$12.20</td><td class="col-num pm-neg">−12.7%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
-              <tr class="row-long"><td class="pm-co pm-mkt" title="Will the Atlanta Braves win the 2026 World Series?"><a href="https://polymarket.com/event/mlb-world-series-champion-2026/will-the-atlanta-braves-win-the-2026-world-series" target="_blank" rel="noopener">the Atlanta Braves win the 2026 World Series<span class="pm-ext">↗</span></a><div class="pm-sub">Ends 10/31/26</div></td><td><span class="dir-badge dir-long">YES</span></td><td class="col-num">1,110</td><td class="col-num">9.4¢</td><td class="col-num">7.3¢</td><td class="col-num">$81.59</td><td class="col-num pm-neg">−$23.41</td><td class="col-num pm-neg">−22.3%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
-              <tr class="row-short"><td class="pm-co pm-mkt" title="Will Christian Yelich lead the MLB in RBIs for the 2026 regular season?"><a href="https://polymarket.com/event/mlb-rbis-leader/will-christian-yelich-lead-the-mlb-in-rbis-for-the-2026-regular-season" target="_blank" rel="noopener">Christian Yelich lead the MLB in RBIs for the 2026 regular season<span class="pm-ext">↗</span></a><div class="pm-sub">Ends 9/28/26</div></td><td><span class="dir-badge dir-short">NO</span></td><td class="col-num">75</td><td class="col-num">99.4¢</td><td class="col-num">99.9¢</td><td class="col-num">$75.37</td><td class="col-num pm-pos">+$0.36</td><td class="col-num pm-pos">+0.5%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
-              <tr class="row-short"><td class="pm-co pm-mkt" title="Will Cal Raleigh lead the MLB in RBIs for the 2026 regular season?"><a href="https://polymarket.com/event/mlb-rbis-leader/will-cal-raleigh-lead-the-mlb-in-rbis-for-the-2026-regular-season" target="_blank" rel="noopener">Cal Raleigh lead the MLB in RBIs for the 2026 regular season<span class="pm-ext">↗</span></a><div class="pm-sub">Ends 9/28/26</div></td><td><span class="dir-badge dir-short">NO</span></td><td class="col-num">76</td><td class="col-num">99.3¢</td><td class="col-num">99.2¢</td><td class="col-num">$74.89</td><td class="col-num pm-neg">−$0.11</td><td class="col-num pm-neg">−0.2%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
-              <tr class="row-short"><td class="pm-co pm-mkt" title="Will the Detroit Tigers win 100 or more games during the 2026 MLB Regular Season?"><a href="https://polymarket.com/event/mlb-team-to-win-100-games/will-the-detroit-tigers-win-100-or-more-games-during-the-2026-mlb-regular-season" target="_blank" rel="noopener">the Detroit Tigers win 100 or more games during the 2026 MLB Regular Season<span class="pm-ext">↗</span></a><div class="pm-sub">Ends 9/28/26</div></td><td><span class="dir-badge dir-short">NO</span></td><td class="col-num">74</td><td class="col-num">99.2¢</td><td class="col-num">98.2¢</td><td class="col-num">$72.25</td><td class="col-num pm-neg">−$0.75</td><td class="col-num pm-neg">−1.0%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
-              <tr class="row-short"><td class="pm-co pm-mkt" title="Will the Chicago Cubs win 100 or more games during the 2026 MLB Regular Season?"><a href="https://polymarket.com/event/mlb-team-to-win-100-games/will-the-chicago-cubs-win-100-or-more-games-during-the-2026-mlb-regular-season" target="_blank" rel="noopener">the Chicago Cubs win 100 or more games during the 2026 MLB Regular Season<span class="pm-ext">↗</span></a><div class="pm-sub">Ends 9/28/26</div></td><td><span class="dir-badge dir-short">NO</span></td><td class="col-num">72</td><td class="col-num">96.9¢</td><td class="col-num">94.0¢</td><td class="col-num">$67.94</td><td class="col-num pm-neg">−$2.06</td><td class="col-num pm-neg">−2.9%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
-              <tr class="row-long"><td class="pm-co pm-mkt" title="Will Dylan Cease strike out the most batters during the 2026 MLB regular season?"><a href="https://polymarket.com/event/mlb-strikeouts-leader-pitcher/will-dylan-cease-strike-out-the-most-batters-during-the-2026-mlb-regular-season" target="_blank" rel="noopener">Dylan Cease — MLB strikeout leader<span class="pm-ext">↗</span></a></td><td><span class="dir-badge dir-long">YES</span></td><td class="col-num">520</td><td class="col-num">4.0¢</td><td class="col-num">11.5¢</td><td class="col-num">$59.53</td><td class="col-num pm-pos">+$38.92</td><td class="col-num pm-pos">+188.9%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
-              <tr class="row-short"><td class="pm-co pm-mkt" title="Will Anthropic’s market cap be between 0.9T and 1.2T at market close on IPO day by December 31 2027?"><a href="https://polymarket.com/event/anthropic-ipo-closing-market-cap-979/will-anthropics-market-cap-be-between-0pt9t-and-1pt2t-at-market-close-on-ipo-day-by-december-31-2027" target="_blank" rel="noopener">Anthropic’s market cap be between 0.9T and 1.2T at market close on IPO day by December 31 2027<span class="pm-ext">↗</span></a><div class="pm-sub">Ends 12/31/27</div></td><td><span class="dir-badge dir-short">NO</span></td><td class="col-num">50</td><td class="col-num">93.0¢</td><td class="col-num">93.2¢</td><td class="col-num">$46.62</td><td class="col-num pm-pos">+$0.12</td><td class="col-num pm-pos">+0.3%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
-              <tr class="row-short"><td class="pm-co pm-mkt" title="Will James Wood lead the MLB in RBIs for the 2026 regular season?"><a href="https://polymarket.com/event/mlb-rbis-leader/will-james-wood-lead-the-mlb-in-rbis-for-the-2026-regular-season" target="_blank" rel="noopener">James Wood lead the MLB in RBIs for the 2026 regular season<span class="pm-ext">↗</span></a><div class="pm-sub">Ends 9/28/26</div></td><td><span class="dir-badge dir-short">NO</span></td><td class="col-num">77</td><td class="col-num">96.9¢</td><td class="col-num">56.1¢</td><td class="col-num">$43.44</td><td class="col-num pm-neg">−$31.56</td><td class="col-num pm-neg">−42.1%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
-              <tr class="row-short"><td class="pm-co pm-mkt" title="Will SpaceX's market cap be between $1.5T and $2.0T at market close on last trading day of July?"><a href="https://polymarket.com/event/spacex-closing-market-cap-end-of-july-20260630213828808/will-spacexs-market-cap-be-between-1pt5t-and-2pt0t-at-market-close-on-last-trading-day-of-july-20260630213829128" target="_blank" rel="noopener">SpaceX's market cap be between $1.5T and $2.0T at market close on last trading day of July<span class="pm-ext">↗</span></a><div class="pm-sub">Ends 7/31/26</div></td><td><span class="dir-badge dir-short">NO</span></td><td class="col-num">63</td><td class="col-num">78.8¢</td><td class="col-num">64.0¢</td><td class="col-num">$40.63</td><td class="col-num pm-neg">−$9.37</td><td class="col-num pm-neg">−18.7%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
-              <tr class="row-short"><td class="pm-co pm-mkt" title="Will Detroit Tigers win the 2026 AL Central title?"><a href="https://polymarket.com/event/mlb-2026-al-central-champion/will-detroit-tigers-win-the-2026-al-central-title" target="_blank" rel="noopener">Detroit Tigers win the 2026 AL Central title<span class="pm-ext">↗</span></a><div class="pm-sub">Ends 10/11/26</div></td><td><span class="dir-badge dir-short">NO</span></td><td class="col-num">47</td><td class="col-num">86.2¢</td><td class="col-num">85.5¢</td><td class="col-num">$40.17</td><td class="col-num pm-neg">−$0.31</td><td class="col-num pm-neg">−0.8%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
-              <tr class="row-short"><td class="pm-co pm-mkt" title="Will the San Diego Padres win 100 or more games during the 2026 MLB Regular Season?"><a href="https://polymarket.com/event/mlb-team-to-win-100-games/will-the-san-diego-padres-win-100-or-more-games-during-the-2026-mlb-regular-season" target="_blank" rel="noopener">the San Diego Padres win 100 or more games during the 2026 MLB Regular Season<span class="pm-ext">↗</span></a><div class="pm-sub">Ends 9/28/26</div></td><td><span class="dir-badge dir-short">NO</span></td><td class="col-num">39</td><td class="col-num">96.7¢</td><td class="col-num">96.3¢</td><td class="col-num">$37.85</td><td class="col-num pm-neg">−$0.15</td><td class="col-num pm-neg">−0.4%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
-              <tr class="row-short"><td class="pm-co pm-mkt" title="Will Tanner Scott win the 2026 NL Comeback Player of the Year award?"><a href="https://polymarket.com/event/mlb-nl-comeback-player-of-the-year/will-tanner-scott-win-the-2026-nl-comeback-player-of-the-year-award" target="_blank" rel="noopener">Tanner Scott win the 2026 NL Comeback Player of the Year award<span class="pm-ext">↗</span></a><div class="pm-sub">Ends 12/19/26</div></td><td><span class="dir-badge dir-short">NO</span></td><td class="col-num">38</td><td class="col-num">98.6¢</td><td class="col-num">99.1¢</td><td class="col-num">$37.17</td><td class="col-num pm-pos">+$0.17</td><td class="col-num pm-pos">+0.5%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
-              <tr class="row-short"><td class="pm-co pm-mkt" title="Will the Philadelphia Phillies win 100 or more games during the 2026 MLB Regular Season?"><a href="https://polymarket.com/event/mlb-team-to-win-100-games/will-the-philadelphia-phillies-win-100-or-more-games-during-the-2026-mlb-regular-season" target="_blank" rel="noopener">the Philadelphia Phillies win 100 or more games during the 2026 MLB Regular Season<span class="pm-ext">↗</span></a><div class="pm-sub">Ends 9/28/26</div></td><td><span class="dir-badge dir-short">NO</span></td><td class="col-num">39</td><td class="col-num">96.7¢</td><td class="col-num">94.0¢</td><td class="col-num">$36.95</td><td class="col-num pm-neg">−$1.05</td><td class="col-num pm-neg">−2.8%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
-              <tr class="row-short"><td class="pm-co pm-mkt" title="Will Nick Kurtz win the 2026 American League MVP Award?"><a href="https://polymarket.com/event/pro-baseball-2026-al-mvp/will-nick-kurtz-win-the-2026-american-league-mvp-award" target="_blank" rel="noopener">Nick Kurtz win the 2026 American League MVP Award<span class="pm-ext">↗</span></a><div class="pm-sub">Ends 11/13/26</div></td><td><span class="dir-badge dir-short">NO</span></td><td class="col-num">37</td><td class="col-num">94.2¢</td><td class="col-num">96.4¢</td><td class="col-num">$36.10</td><td class="col-num pm-pos">+$0.81</td><td class="col-num pm-pos">+2.3%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
-              <tr class="row-short"><td class="pm-co pm-mkt" title="Will Houston Astros win the 2026 AL West title?"><a href="https://polymarket.com/event/mlb-2026-al-west-champion/will-houston-astros-win-the-2026-al-west-title" target="_blank" rel="noopener">Houston Astros win the 2026 AL West title<span class="pm-ext">↗</span></a><div class="pm-sub">Ends 10/11/26</div></td><td><span class="dir-badge dir-short">NO</span></td><td class="col-num">41</td><td class="col-num">94.0¢</td><td class="col-num">84.0¢</td><td class="col-num">$34.85</td><td class="col-num pm-neg">−$4.15</td><td class="col-num pm-neg">−10.6%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
-              <tr class="row-long"><td class="pm-co pm-mkt" title="Will Petr Yan fight Merab Dvalishvili next?"><a href="https://polymarket.com/event/who-will-petr-yan-fight-next-before-2027/will-petr-yan-fight-merab-dvalishvili-next" target="_blank" rel="noopener">Petr Yan fight Merab Dvalishvili next<span class="pm-ext">↗</span></a><div class="pm-sub">Ends 12/31/26</div></td><td><span class="dir-badge dir-long">YES</span></td><td class="col-num">39</td><td class="col-num">76.0¢</td><td class="col-num">87.0¢</td><td class="col-num">$34.34</td><td class="col-num pm-pos">+$4.34</td><td class="col-num pm-pos">+14.5%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
-              <tr class="row-long"><td class="pm-co pm-mkt" title="MLB: Aaron Judge or Juan Soto to draw more walks?"><a href="https://polymarket.com/event/mlb-aaron-judge-or-juan-soto-to-draw-more-walks/mlb-aaron-judge-or-juan-soto-to-draw-more-walks" target="_blank" rel="noopener">MLB: Aaron Judge or Juan Soto to draw more walks<span class="pm-ext">↗</span></a><div class="pm-sub">Ends 9/28/26</div></td><td><span class="dir-badge dir-long">SOTO</span></td><td class="col-num">36</td><td class="col-num">84.0¢</td><td class="col-num">93.5¢</td><td class="col-num">$33.39</td><td class="col-num pm-pos">+$3.39</td><td class="col-num pm-pos">+11.3%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
-              <tr class="row-long"><td class="pm-co pm-mkt" title="Will the Pittsburgh Pirates win more than 83.5 games in the 2026 MLB Regular Season?"><a href="https://polymarket.com/event/mlb-2026-regular-season-win-totals/2026-mlb-win-totals-pittsburgh-pirates" target="_blank" rel="noopener">the Pittsburgh Pirates win more than 83.5 games in the 2026 MLB Regular Season<span class="pm-ext">↗</span></a><div class="pm-sub">Ends 10/5/26</div></td><td><span class="dir-badge dir-long">O 83.5</span></td><td class="col-num">64</td><td class="col-num">53.0¢</td><td class="col-num">45.0¢</td><td class="col-num">$28.87</td><td class="col-num pm-neg">−$5.13</td><td class="col-num pm-neg">−15.1%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
-              <tr class="row-long"><td class="pm-co pm-mkt" title="Atlanta Braves vs. Chicago White Sox"><a href="https://polymarket.com/event/mlb-atl-cws-2026-06-11/mlb-atl-cws-2026-06-11" target="_blank" rel="noopener">Atlanta Braves vs. Chicago White Sox<span class="pm-ext">↗</span></a><div class="pm-sub">Ends 6/18/26</div></td><td><span class="dir-badge dir-long">ATLANTA BRAVES</span></td><td class="col-num">52</td><td class="col-num">38.1¢</td><td class="col-num">51.0¢</td><td class="col-num">$26.77</td><td class="col-num pm-pos">+$6.77</td><td class="col-num pm-pos">+33.8%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
-              <tr class="row-long"><td class="pm-co pm-mkt" title="Will Amazon.com, Inc. (AMZN) hit (HIGH) $264 in July?"><a href="https://polymarket.com/event/what-price-will-amzn-hit-in-july-2026/will-amzn-reach-264-in-july-2026" target="_blank" rel="noopener">Amazon.com, Inc. (AMZN) hit (HIGH) $264 in July<span class="pm-ext">↗</span></a><div class="pm-sub">Ends 8/1/26</div></td><td><span class="dir-badge dir-long">YES</span></td><td class="col-num">172</td><td class="col-num">58.0¢</td><td class="col-num">15.5¢</td><td class="col-num">$26.72</td><td class="col-num pm-neg">−$73.28</td><td class="col-num pm-neg">−73.3%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
-              <tr class="row-long"><td class="pm-co pm-mkt" title="Will the Democratic Party control the House after the 2026 Midterm elections?"><a href="https://polymarket.com/event/which-party-will-win-the-house-in-2026/will-the-democratic-party-control-the-house-after-the-2026-midterm-elections" target="_blank" rel="noopener">the Democratic Party control the House after the 2026 Midterm elections<span class="pm-ext">↗</span></a><div class="pm-sub">Ends 11/3/26</div></td><td><span class="dir-badge dir-long">YES</span></td><td class="col-num">24</td><td class="col-num">82.0¢</td><td class="col-num">85.5¢</td><td class="col-num">$20.85</td><td class="col-num pm-pos">+$0.85</td><td class="col-num pm-pos">+4.3%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
-              <tr class="row-long"><td class="pm-co pm-mkt" title="Will Anthropic have the highest IPO Market Cap 2026?"><a href="https://polymarket.com/event/largest-ipo-by-market-cap-in-2026-287/will-anthropic-have-the-highest-ipo-market-cap-2026-673" target="_blank" rel="noopener">Anthropic have the highest IPO Market Cap 2026<span class="pm-ext">↗</span></a><div class="pm-sub">Ends 12/31/26</div></td><td><span class="dir-badge dir-long">YES</span></td><td class="col-num">141</td><td class="col-num">10.6¢</td><td class="col-num">13.8¢</td><td class="col-num">$19.43</td><td class="col-num pm-pos">+$4.43</td><td class="col-num pm-pos">+29.6%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
-              <tr class="row-short"><td class="pm-co pm-mkt" title="Will Patty Murray be the next Senate Majority Leader?"><a href="https://polymarket.com/event/next-senate-majority-leader-485/will-patty-murray-be-the-next-senate-majority-leader" target="_blank" rel="noopener">Patty Murray be the next Senate Majority Leader<span class="pm-ext">↗</span></a><div class="pm-sub">Ends 1/3/27</div></td><td><span class="dir-badge dir-short">NO</span></td><td class="col-num">19</td><td class="col-num">98.8¢</td><td class="col-num">99.5¢</td><td class="col-num">$19.12</td><td class="col-num pm-pos">+$0.12</td><td class="col-num pm-pos">+0.7%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
-              <tr class="row-short"><td class="pm-co pm-mkt" title="Will the Los Angeles Dodgers win the 2026 World Series?"><a href="https://polymarket.com/event/mlb-world-series-champion-2026/will-the-los-angeles-dodgers-win-the-2026-world-series" target="_blank" rel="noopener">the Los Angeles Dodgers win the 2026 World Series<span class="pm-ext">↗</span></a><div class="pm-sub">Ends 10/31/26</div></td><td><span class="dir-badge dir-short">NO</span></td><td class="col-num">28</td><td class="col-num">71.0¢</td><td class="col-num">66.5¢</td><td class="col-num">$18.73</td><td class="col-num pm-neg">−$1.27</td><td class="col-num pm-neg">−6.3%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
-              <tr class="row-short"><td class="pm-co pm-mkt" title="Will the Chicago Cubs clinch a spot in the 2026 MLB Postseason?"><a href="https://polymarket.com/event/mlb-team-to-make-postseason/will-the-chicago-cubs-clinch-a-spot-in-the-2026-mlb-postseason" target="_blank" rel="noopener">the Chicago Cubs clinch a spot in the 2026 MLB Postseason<span class="pm-ext">↗</span></a><div class="pm-sub">Ends 9/28/26</div></td><td><span class="dir-badge dir-short">NO</span></td><td class="col-num">125</td><td class="col-num">33.0¢</td><td class="col-num">13.0¢</td><td class="col-num">$16.25</td><td class="col-num pm-neg">−$25.00</td><td class="col-num pm-neg">−60.6%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
-              <tr class="row-long"><td class="pm-co pm-mkt" title="Will Philadelphia Phillies win the 2026 National League Championship Series?"><a href="https://polymarket.com/event/mlb-2026-national-league-champion/will-philadelphia-phillies-win-the-2026-national-league-championship-series" target="_blank" rel="noopener">Philadelphia Phillies win the 2026 National League Championship Series<span class="pm-ext">↗</span></a><div class="pm-sub">Ends 11/1/26</div></td><td><span class="dir-badge dir-long">YES</span></td><td class="col-num">170</td><td class="col-num">10.0¢</td><td class="col-num">9.0¢</td><td class="col-num">$15.30</td><td class="col-num pm-neg">−$1.70</td><td class="col-num pm-neg">−10.0%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
-              <tr class="row-long"><td class="pm-co pm-mkt" title="Will Kevin McGonigle win the 2026 AL Rookie of the Year award?"><a href="https://polymarket.com/event/mlb-al-rookie-of-the-year/will-kevin-mcgonigle-win-the-2026-al-rookie-of-the-year-award" target="_blank" rel="noopener">Kevin McGonigle win the 2026 AL Rookie of the Year award<span class="pm-ext">↗</span></a><div class="pm-sub">Ends 12/19/26</div></td><td><span class="dir-badge dir-long">YES</span></td><td class="col-num">16</td><td class="col-num">48.0¢</td><td class="col-num">74.5¢</td><td class="col-num">$11.65</td><td class="col-num pm-pos">+$4.14</td><td class="col-num pm-pos">+55.2%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
-              <tr class="row-short"><td class="pm-co pm-mkt" title="Will Micron (MU) close above $1,280 end of July?"><a href="https://polymarket.com/event/mu-above-in-july-2026/mu-above-1280-on-july-31-2026" target="_blank" rel="noopener">Micron (MU) close above $1,280 end of July<span class="pm-ext">↗</span></a><div class="pm-sub">Ends 7/31/26</div></td><td><span class="dir-badge dir-short">NO</span></td><td class="col-num">11</td><td class="col-num">96.0¢</td><td class="col-num">98.1¢</td><td class="col-num">$11.24</td><td class="col-num pm-pos">+$0.24</td><td class="col-num pm-pos">+2.2%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
-              <tr class="row-long"><td class="pm-co pm-mkt" title="Will Amazon be the largest company in the world by market cap on December 31?"><a href="https://polymarket.com/event/largest-company-end-of-december-2026/will-amazon-be-the-largest-company-in-the-world-by-market-cap-on-december-31-376" target="_blank" rel="noopener">Amazon — largest co. December 31<span class="pm-ext">↗</span></a><div class="pm-sub">Ends 12/31/26</div></td><td><span class="dir-badge dir-long">YES</span></td><td class="col-num">2,533</td><td class="col-num">0.8¢</td><td class="col-num">0.4¢</td><td class="col-num">$10.13</td><td class="col-num pm-neg">−$9.28</td><td class="col-num pm-neg">−47.8%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
-              <tr class="row-short"><td class="pm-co pm-mkt" title="Will Micron (MU) close above $1,200 end of July?"><a href="https://polymarket.com/event/mu-above-in-july-2026/mu-above-1200-on-july-31-2026" target="_blank" rel="noopener">Micron (MU) close above $1,200 end of July<span class="pm-ext">↗</span></a><div class="pm-sub">Ends 7/31/26</div></td><td><span class="dir-badge dir-short">NO</span></td><td class="col-num">9</td><td class="col-num">95.0¢</td><td class="col-num">98.0¢</td><td class="col-num">$9.28</td><td class="col-num pm-pos">+$0.28</td><td class="col-num pm-pos">+3.1%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
-              <tr class="row-short"><td class="pm-co pm-mkt" title="Will the New York Yankees win 100 or more games during the 2026 MLB Regular Season?"><a href="https://polymarket.com/event/mlb-team-to-win-100-games/will-the-new-york-yankees-win-100-or-more-games-during-the-2026-mlb-regular-season" target="_blank" rel="noopener">the New York Yankees win 100 or more games during the 2026 MLB Regular Season<span class="pm-ext">↗</span></a><div class="pm-sub">Ends 9/28/26</div></td><td><span class="dir-badge dir-short">NO</span></td><td class="col-num">10</td><td class="col-num">92.5¢</td><td class="col-num">90.8¢</td><td class="col-num">$9.08</td><td class="col-num pm-neg">−$0.18</td><td class="col-num pm-neg">−1.9%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
-              <tr class="row-short"><td class="pm-co pm-mkt" title="Will Microsoft (MSFT) close above $450 end of July?"><a href="https://polymarket.com/event/msft-above-in-july-2026/msft-above-450-on-july-31-2026" target="_blank" rel="noopener">Microsoft (MSFT) close above $450 end of July<span class="pm-ext">↗</span></a><div class="pm-sub">Ends 7/31/26</div></td><td><span class="dir-badge dir-short">NO</span></td><td class="col-num">9</td><td class="col-num">95.0¢</td><td class="col-num">95.2¢</td><td class="col-num">$9.02</td><td class="col-num pm-pos">+$0.02</td><td class="col-num pm-pos">+0.3%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
-              <tr class="row-long"><td class="pm-co pm-mkt" title="Will the Philadelphia Phillies win the 2026 World Series?"><a href="https://polymarket.com/event/mlb-world-series-champion-2026/will-the-philadelphia-phillies-win-the-2026-world-series" target="_blank" rel="noopener">the Philadelphia Phillies win the 2026 World Series<span class="pm-ext">↗</span></a><div class="pm-sub">Ends 10/31/26</div></td><td><span class="dir-badge dir-long">YES</span></td><td class="col-num">128</td><td class="col-num">3.9¢</td><td class="col-num">5.7¢</td><td class="col-num">$7.24</td><td class="col-num pm-pos">+$2.24</td><td class="col-num pm-pos">+44.9%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
-              <tr class="row-long"><td class="pm-co pm-mkt" title="Will San Diego Padres win the 2026 NL West title?"><a href="https://polymarket.com/event/mlb-2026-nl-west-champion/will-san-diego-padres-win-the-2026-nl-west-title" target="_blank" rel="noopener">San Diego Padres win the 2026 NL West title<span class="pm-ext">↗</span></a><div class="pm-sub">Ends 10/11/26</div></td><td><span class="dir-badge dir-long">YES</span></td><td class="col-num">492</td><td class="col-num">12.2¢</td><td class="col-num">1.0¢</td><td class="col-num">$4.92</td><td class="col-num pm-neg">−$55.08</td><td class="col-num pm-neg">−91.8%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
-              <tr class="row-long"><td class="pm-co pm-mkt" title="Will the Seattle Mariners win more than 88.5 games in the 2026 MLB Regular Season?"><a href="https://polymarket.com/event/mlb-2026-regular-season-win-totals/2026-mlb-win-totals-seattle-mariners" target="_blank" rel="noopener">the Seattle Mariners win more than 88.5 games in the 2026 MLB Regular Season<span class="pm-ext">↗</span></a><div class="pm-sub">Ends 10/5/26</div></td><td><span class="dir-badge dir-long">O 88.5</span></td><td class="col-num">26</td><td class="col-num">41.7¢</td><td class="col-num">17.5¢</td><td class="col-num">$4.62</td><td class="col-num pm-neg">−$6.38</td><td class="col-num pm-neg">−58.0%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
-              <tr class="row-short"><td class="pm-co pm-mkt" title="Will Yordan Alvarez hit the most home runs during the 2026 MLB regular season?"><a href="https://polymarket.com/event/mlb-home-runs-leader/will-yordan-alvarez-hit-the-most-home-runs-during-the-2026-mlb-regular-season" target="_blank" rel="noopener">Yordan Alvarez hit the most home runs during the 2026 MLB regular season<span class="pm-ext">↗</span></a><div class="pm-sub">Ends 10/11/26</div></td><td><span class="dir-badge dir-short">NO</span></td><td class="col-num">8</td><td class="col-num">95.5¢</td><td class="col-num">53.8¢</td><td class="col-num">$4.23</td><td class="col-num pm-neg">−$3.27</td><td class="col-num pm-neg">−43.6%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
-              <tr class="row-long"><td class="pm-co pm-mkt" title="Will Pittsburgh Pirates win the 2026 NL Central title?"><a href="https://polymarket.com/event/mlb-2026-nl-central-champion/will-pittsburgh-pirates-win-the-2026-nl-central-title" target="_blank" rel="noopener">Pittsburgh Pirates win the 2026 NL Central title<span class="pm-ext">↗</span></a><div class="pm-sub">Ends 10/11/26</div></td><td><span class="dir-badge dir-long">YES</span></td><td class="col-num">903</td><td class="col-num">11.2¢</td><td class="col-num">0.4¢</td><td class="col-num">$3.16</td><td class="col-num pm-neg">−$97.84</td><td class="col-num pm-neg">−96.9%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
-              <tr class="row-long"><td class="pm-co pm-mkt" title="Will the Athletics clinch a spot in the 2026 MLB Postseason?"><a href="https://polymarket.com/event/mlb-team-to-make-postseason/will-the-athletics-clinch-a-spot-in-the-2026-mlb-postseason" target="_blank" rel="noopener">the Athletics clinch a spot in the 2026 MLB Postseason<span class="pm-ext">↗</span></a><div class="pm-sub">Ends 9/28/26</div></td><td><span class="dir-badge dir-long">YES</span></td><td class="col-num">39</td><td class="col-num">46.0¢</td><td class="col-num">4.0¢</td><td class="col-num">$1.55</td><td class="col-num pm-neg">−$16.45</td><td class="col-num pm-neg">−91.4%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
-              <tr class="row-long"><td class="pm-co pm-mkt" title="Will the Eurozone's 2026 Annual Inflation be at least 3.1%?"><a href="https://polymarket.com/event/eurozone-2026-annual-inflation/will-the-eurozones-2026-annual-inflation-be-at-least-3pt1" target="_blank" rel="noopener">the Eurozone's 2026 Annual Inflation be at least 3.1%<span class="pm-ext">↗</span></a><div class="pm-sub">Ends 1/19/27</div></td><td><span class="dir-badge dir-long">YES</span></td><td class="col-num">6</td><td class="col-num">53.9¢</td><td class="col-num">27.8¢</td><td class="col-num">$1.54</td><td class="col-num pm-neg">−$1.46</td><td class="col-num pm-neg">−48.5%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
+              <tr class="row-long"><td class="pm-co pm-mkt" title="Will Apple be the largest company in the world by market cap on December 31?"><a href="https://polymarket.com/event/largest-company-end-of-december-2026" target="_blank" rel="noopener">Apple — largest co. December 31<span class="pm-ext">↗</span></a><div class="pm-sub">Ends 12/31/26</div></td><td><span class="dir-badge dir-long">YES</span></td><td class="col-num">5,051</td><td class="col-num">19.0¢</td><td class="col-num">35.3¢</td><td class="col-num">$1,783.18</td><td class="col-num pm-pos">+$823.40</td><td class="col-num pm-pos">+85.8%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
+              <tr class="row-short"><td class="pm-co pm-mkt" title="Will NVIDIA be the largest company in the world by market cap on December 31?"><a href="https://polymarket.com/event/largest-company-end-of-december-2026" target="_blank" rel="noopener">NVIDIA — largest co. December 31<span class="pm-ext">↗</span></a><div class="pm-sub">Ends 12/31/26</div></td><td><span class="dir-badge dir-short">NO</span></td><td class="col-num">2,865</td><td class="col-num">35.2¢</td><td class="col-num">49.0¢</td><td class="col-num">$1,404.05</td><td class="col-num pm-pos">+$394.91</td><td class="col-num pm-pos">+39.1%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
+              <tr class="row-short"><td class="pm-co pm-mkt" title="Will S&P 500 (SPY) hit (HIGH) $770 in July?"><a href="https://polymarket.com/event/what-price-will-spy-hit-in-july-2026" target="_blank" rel="noopener">S&P 500 (SPY) hit (HIGH) $770 in July<span class="pm-ext">↗</span></a><div class="pm-sub">Ends 8/1/26</div></td><td><span class="dir-badge dir-short">NO</span></td><td class="col-num">1,211</td><td class="col-num">94.1¢</td><td class="col-num">96.8¢</td><td class="col-num">$1,172.24</td><td class="col-num pm-pos">+$32.24</td><td class="col-num pm-pos">+2.8%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
+              <tr class="row-long"><td class="pm-co pm-mkt" title="Will Apple be the largest company in the world by market cap on August 31?"><a href="https://polymarket.com/event/largest-company-end-of-august-20260715202138598" target="_blank" rel="noopener">Apple — largest co. August 31<span class="pm-ext">↗</span></a><div class="pm-sub">Ends 8/31/26</div></td><td><span class="dir-badge dir-long">YES</span></td><td class="col-num">2,388</td><td class="col-num">40.1¢</td><td class="col-num">47.0¢</td><td class="col-num">$1,122.41</td><td class="col-num pm-pos">+$164.74</td><td class="col-num pm-pos">+17.2%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
+              <tr class="row-long"><td class="pm-co pm-mkt" title="Will NVIDIA be the second-largest company in the world by market cap on July 31?"><a href="https://polymarket.com/event/2nd-largest-company-end-of-july-20260624192727948" target="_blank" rel="noopener">NVIDIA — 2nd largest July 31<span class="pm-ext">↗</span></a><div class="pm-sub">Ends 7/31/26</div></td><td><span class="dir-badge dir-long">YES</span></td><td class="col-num">1,063</td><td class="col-num">11.9¢</td><td class="col-num">67.5¢</td><td class="col-num">$717.32</td><td class="col-num pm-pos">+$591.15</td><td class="col-num pm-pos">+468.5%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
+              <tr class="row-short"><td class="pm-co pm-mkt" title="Will S&P 500 (SPY) hit (LOW) $700 in July?"><a href="https://polymarket.com/event/what-price-will-spy-hit-in-july-2026" target="_blank" rel="noopener">S&P 500 (SPY) hit (LOW) $700 in July<span class="pm-ext">↗</span></a><div class="pm-sub">Ends 8/1/26</div></td><td><span class="dir-badge dir-short">NO</span></td><td class="col-num">740</td><td class="col-num">94.6¢</td><td class="col-num">96.5¢</td><td class="col-num">$714.26</td><td class="col-num pm-pos">+$14.26</td><td class="col-num pm-pos">+2.0%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
+              <tr class="row-short"><td class="pm-co pm-mkt" title="Will Bitcoin reach $75,000 in July?"><a href="https://polymarket.com/event/what-price-will-bitcoin-hit-in-july-2026" target="_blank" rel="noopener">Bitcoin reach $75,000 in July<span class="pm-ext">↗</span></a><div class="pm-sub">Ends 8/1/26</div></td><td><span class="dir-badge dir-short">NO</span></td><td class="col-num">699</td><td class="col-num">97.6¢</td><td class="col-num">99.8¢</td><td class="col-num">$697.65</td><td class="col-num pm-pos">+$15.15</td><td class="col-num pm-pos">+2.2%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
+              <tr class="row-short"><td class="pm-co pm-mkt" title="Will NVIDIA be the largest company in the world by market cap on July 31?"><a href="https://polymarket.com/event/largest-company-end-of-july-20260624192302727" target="_blank" rel="noopener">NVIDIA — largest co. July 31<span class="pm-ext">↗</span></a><div class="pm-sub">Ends 7/31/26</div></td><td><span class="dir-badge dir-short">NO</span></td><td class="col-num">987</td><td class="col-num">21.0¢</td><td class="col-num">70.5¢</td><td class="col-num">$695.87</td><td class="col-num pm-pos">+$488.18</td><td class="col-num pm-pos">+235.1%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
+              <tr class="row-short"><td class="pm-co pm-mkt" title="Will Paul Skenes strike out the most batters during the 2026 MLB regular season?"><a href="https://polymarket.com/event/mlb-strikeouts-leader-pitcher" target="_blank" rel="noopener">Paul Skenes — MLB strikeout leader<span class="pm-ext">↗</span></a></td><td><span class="dir-badge dir-short">NO</span></td><td class="col-num">522</td><td class="col-num">95.8¢</td><td class="col-num">95.7¢</td><td class="col-num">$499.25</td><td class="col-num pm-neg">−$0.75</td><td class="col-num pm-neg">−0.2%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
+              <tr class="row-short"><td class="pm-co pm-mkt" title="Will Bitcoin dip to $57,500 in July?"><a href="https://polymarket.com/event/what-price-will-bitcoin-hit-in-july-2026" target="_blank" rel="noopener">Bitcoin dip to $57,500 in July<span class="pm-ext">↗</span></a><div class="pm-sub">Ends 8/1/26</div></td><td><span class="dir-badge dir-short">NO</span></td><td class="col-num">521</td><td class="col-num">96.0¢</td><td class="col-num">95.8¢</td><td class="col-num">$498.71</td><td class="col-num pm-neg">−$1.30</td><td class="col-num pm-neg">−0.3%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
+              <tr class="row-short"><td class="pm-co pm-mkt" title="Will NVIDIA be the largest company in the world by market cap on August 31?"><a href="https://polymarket.com/event/largest-company-end-of-august-20260715202138598" target="_blank" rel="noopener">NVIDIA — largest co. August 31<span class="pm-ext">↗</span></a><div class="pm-sub">Ends 8/31/26</div></td><td><span class="dir-badge dir-short">NO</span></td><td class="col-num">939</td><td class="col-num">34.1¢</td><td class="col-num">51.0¢</td><td class="col-num">$479.09</td><td class="col-num pm-pos">+$159.09</td><td class="col-num pm-pos">+49.7%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
+              <tr class="row-short"><td class="pm-co pm-mkt" title="Will Apple be the second-largest company in the world by market cap on July 31?"><a href="https://polymarket.com/event/2nd-largest-company-end-of-july-20260624192727948" target="_blank" rel="noopener">Apple — 2nd largest July 31<span class="pm-ext">↗</span></a><div class="pm-sub">Ends 7/31/26</div></td><td><span class="dir-badge dir-short">NO</span></td><td class="col-num">405</td><td class="col-num">74.0¢</td><td class="col-num">72.0¢</td><td class="col-num">$291.89</td><td class="col-num pm-neg">−$8.11</td><td class="col-num pm-neg">−2.7%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
+              <tr class="row-short"><td class="pm-co pm-mkt" title="Will Alphabet be the largest company in the world by market cap on December 31?"><a href="https://polymarket.com/event/largest-company-end-of-december-2026" target="_blank" rel="noopener">Alphabet — largest co. December 31<span class="pm-ext">↗</span></a><div class="pm-sub">Ends 12/31/26</div></td><td><span class="dir-badge dir-short">NO</span></td><td class="col-num">320</td><td class="col-num">90.7¢</td><td class="col-num">89.5¢</td><td class="col-num">$286.20</td><td class="col-num pm-neg">−$3.80</td><td class="col-num pm-neg">−1.3%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
+              <tr class="row-long"><td class="pm-co pm-mkt" title="Will Atlanta Braves win the 2026 NL East title?"><a href="https://polymarket.com/event/mlb-2026-nl-east-champion" target="_blank" rel="noopener">Atlanta Braves win the 2026 NL East title<span class="pm-ext">↗</span></a><div class="pm-sub">Ends 10/11/26</div></td><td><span class="dir-badge dir-long">YES</span></td><td class="col-num">333</td><td class="col-num">78.8¢</td><td class="col-num">77.0¢</td><td class="col-num">$256.13</td><td class="col-num pm-neg">−$5.87</td><td class="col-num pm-neg">−2.2%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
+              <tr class="row-long"><td class="pm-co pm-mkt" title="Will Apple be the largest company in the world by market cap on July 31?"><a href="https://polymarket.com/event/largest-company-end-of-july-20260624192302727" target="_blank" rel="noopener">Apple — largest co. July 31<span class="pm-ext">↗</span></a><div class="pm-sub">Ends 7/31/26</div></td><td><span class="dir-badge dir-long">YES</span></td><td class="col-num">302</td><td class="col-num">5.9¢</td><td class="col-num">69.8¢</td><td class="col-num">$210.96</td><td class="col-num pm-pos">+$193.09</td><td class="col-num pm-pos">+1,080.3%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
+              <tr class="row-short"><td class="pm-co pm-mkt" title="Will Yoshinobu Yamamoto lead the MLB in ERA for the 2026 regular season?"><a href="https://polymarket.com/event/mlb-era-leader" target="_blank" rel="noopener">Yoshinobu Yamamoto lead the MLB in ERA for the 2026 regular season<span class="pm-ext">↗</span></a><div class="pm-sub">Ends 9/28/26</div></td><td><span class="dir-badge dir-short">NO</span></td><td class="col-num">208</td><td class="col-num">95.9¢</td><td class="col-num">96.8¢</td><td class="col-num">$201.80</td><td class="col-num pm-pos">+$1.80</td><td class="col-num pm-pos">+0.9%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
+              <tr class="row-long"><td class="pm-co pm-mkt" title="Will NVIDIA be the second-largest company in the world by market cap on August 31?"><a href="https://polymarket.com/event/2nd-largest-company-end-of-august-20260715202554129" target="_blank" rel="noopener">NVIDIA — 2nd largest August 31<span class="pm-ext">↗</span></a><div class="pm-sub">Ends 8/31/26</div></td><td><span class="dir-badge dir-long">YES</span></td><td class="col-num">357</td><td class="col-num">55.9¢</td><td class="col-num">51.0¢</td><td class="col-num">$182.32</td><td class="col-num pm-neg">−$17.67</td><td class="col-num pm-neg">−8.8%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
+              <tr class="row-long"><td class="pm-co pm-mkt" title="Will no Fed rate cuts happen in 2026?"><a href="https://polymarket.com/event/how-many-fed-rate-cuts-in-2026" target="_blank" rel="noopener">no Fed rate cuts happen in 2026<span class="pm-ext">↗</span></a><div class="pm-sub">Ends 12/31/26</div></td><td><span class="dir-badge dir-long">YES</span></td><td class="col-num">141</td><td class="col-num">18.6¢</td><td class="col-num">85.4¢</td><td class="col-num">$119.97</td><td class="col-num pm-pos">+$93.77</td><td class="col-num pm-pos">+357.8%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
+              <tr class="row-short"><td class="pm-co pm-mkt" title="Will WTI Crude Oil (WTI) hit (LOW) $80 in July?"><a href="https://polymarket.com/event/what-price-will-wti-hit-in-july-2026" target="_blank" rel="noopener">WTI Crude Oil (WTI) hit (LOW) $80 in July<span class="pm-ext">↗</span></a><div class="pm-sub">Ends 8/1/26</div></td><td><span class="dir-badge dir-short">NO</span></td><td class="col-num">366</td><td class="col-num">81.9¢</td><td class="col-num">28.5¢</td><td class="col-num">$104.41</td><td class="col-num pm-neg">−$195.59</td><td class="col-num pm-neg">−65.2%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
+              <tr class="row-short"><td class="pm-co pm-mkt" title="Will Anthropic’s market cap be less than 0.6T at market close on IPO day by December 31 2027?"><a href="https://polymarket.com/event/anthropic-ipo-closing-market-cap-979" target="_blank" rel="noopener">Anthropic’s market cap be less than 0.6T at market close on IPO day by December 31 2027<span class="pm-ext">↗</span></a><div class="pm-sub">Ends 12/31/27</div></td><td><span class="dir-badge dir-short">NO</span></td><td class="col-num">90</td><td class="col-num">94.5¢</td><td class="col-num">98.0¢</td><td class="col-num">$88.68</td><td class="col-num pm-pos">+$3.17</td><td class="col-num pm-pos">+3.7%</td><td class="col-num">—</td><td class="col-num">—</td></tr>
             </tbody>
           </table>
         </div>
@@ -203,75 +142,81 @@
       <section class="table-section" aria-label="Recommended add-ons all positions">
         <div class="table-header-row">
           <h2 class="section-title">Top Add-Ons — All Positions</h2>
-          <span class="pm-sec-date">Ideas as of Jul 27, 2026 · 8:15 AM PT</span>
+          <span class="pm-sec-date">Ideas as of Jul 27, 2026 · 5:20 PM PT</span>
           <span class="price-note">Global conviction ranking across the whole book — the best trade tops every list it appears on · not financial advice · 4 shown, scroll → for more</span>
         </div>
         <div class="pm-cards">
           <div class="panel-card">
-            <h3 class="panel-title"><span class="pm-badge pm-cheap">#1 ADD · HIGHEST CONVICTION</span> Add NVDA-Dec NO @ 46¢ (held: 2,865 @ 35.2¢, +29%) — the biggest edge on the page</h3>
-            <div class="pm-idea-date">Idea added Jul 26, 2026</div>
-            <p>The flip printed intraday Jul 27 — Apple $4.950T vs NVIDIA $4.824T — yet December still prices NVIDIA to hold #1 at 54.5¢ against a zero-drift fair of 23.2¢: <strong>+31 pts, the largest dislocation this page has measured</strong>. The NO is the deepest, cleanest expression, so this position takes #1 on every list this run. Risk: this is the market's momentum bet — NVDA earnings ~Aug 26 plus the Oct/Nov rounds can restore the crown.</p>
-            <div class="pm-exec"><strong>THE TICKET:</strong> $500 → <strong>1,087 sh at 46¢ flat</strong> (1,185 offered at the touch, 825 more at 47¢). Model-fair NO ≈ 77¢. Jul + Aug + Dec NOs are one correlated story — respect the combined NVDA-short cap.</div>
+            <h3 class="panel-title"><span class="pm-badge pm-cheap">#1 ADD · HIGHEST CONVICTION</span> Apple-August YES @ 49¢ (held: 2,388 @ 40.1¢, +17.2%)</h3>
+            <div class="pm-idea-date">Idea added Jul 27, 2026</div>
+            <p>The biggest modeled edge on the page — 47¢ market vs 64% fair now that Apple actually holds the crown. The position is already the account's third largest and still under fair; adding here is buying more of the one thesis that has paid twice this week.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> <strong>$500 → 1,016 sh @ 49.2¢</strong> (48¢×15, 49¢×780, then 2,959 at 50¢). Blended entry moves to ≈42.8¢ across 3,404 shares.</div>
           </div>
           <div class="panel-card">
-            <h3 class="panel-title"><span class="pm-badge pm-cheap">#2 ADD · AVERAGE UP</span> Add Apple-Dec YES @ ~32¢ (held: 5,051 @ 19.0¢, +59%)</h3>
-            <div class="pm-idea-date">Idea added Jul 26, 2026</div>
-            <p>The book's biggest winner repriced 28.1¢ → 30.3¢ on the flip and still sits ~25 pts under σ=2%/day fair (54.9¢) — the current leader's contract priced like a challenger's. Asks are thin: a $300 market order walks all the way to 34.8¢, so patience is the edge here.</p>
-            <div class="pm-exec"><strong>THE TICKET:</strong> $150 at ≤32.2¢ (≈465 sh through three levels), or rest $300 at 32¢ and let a red Apple day fill it. Invalidation: NVDA retakes a &gt;5% cap lead.</div>
+            <h3 class="panel-title"><span class="pm-badge pm-cheap">#2 ADD · THE MIRROR</span> NVIDIA-August NO @ 51¢ (held: 939 @ 34.1¢, +49.7%)</h3>
+            <div class="pm-idea-date">Idea added Jul 27, 2026</div>
+            <p>Model-fair NO is 65.5% — 14.5 points of edge in the deepest August book. Adding here is functionally identical to adding Apple-Aug YES, so the two share one risk budget; pick whichever book is offering better depth at the moment you trade.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> <strong>$300 at 51¢</strong> → ≈588 sh. Combined Aug exposure after both adds ≈$2,100 — cap it there until after NVDA earnings (~Aug 26).</div>
           </div>
           <div class="panel-card">
-            <h3 class="panel-title"><span class="pm-badge pm-cheap">#3 ADD · THIRD TRANCHE</span> Add Apple-Aug YES @ 46¢ (held: 992 @ 25.9¢, +68%, two tranches filled)</h3>
-            <div class="pm-idea-date">Idea added Jul 26, 2026</div>
-            <p>Both recommended tranches executed (443 @ 23.1¢, 399 @ 26.7¢ — Tracking tab) and the leg is +68%. At 43.5¢ mid it is still 16 pts under fair (60¢): with Apple now ahead, a sub-50¢ August price says the market calls the flip temporary. The model disagrees. NVDA earnings ~Aug 26 is the swing risk inside the window.</p>
-            <div class="pm-exec"><strong>THE TICKET:</strong> $300 → <strong>652 sh at 46¢</strong> (440 at the touch, then 1,056 at 47¢). The old 45¢ half-off trigger is retired — see the post-flip rule card (#11).</div>
+            <h3 class="panel-title"><span class="pm-badge pm-cheap">#3 ADD · UNDER FAIR</span> Apple-December YES @ 36.4¢ (held: 5,051 @ 19.0¢, +85.8%)</h3>
+            <div class="pm-idea-date">Idea added Jul 27, 2026</div>
+            <p>The account's biggest winner is still 5.7 points under fair (42.1%). Averaging up while under fair is the disciplined version of letting a winner run — and December is the leg least exposed to Thursday's single-print risk.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> <strong>$500 → 1,361 sh @ 36.75¢</strong>. Blended entry ≈22.7¢ across 6,412 sh. Skip if Thursday risk is already maxed.</div>
           </div>
           <div class="panel-card">
-            <h3 class="panel-title"><span class="pm-badge pm-cheap">#4 ADD · NOW AVERAGE UP</span> Add NVDA-Aug NO @ 47¢ (held: 939 @ 34.1¢, +35%)</h3>
-            <div class="pm-idea-date">Idea added Jul 26, 2026</div>
-            <p>Last run this was an average-<em>down</em> at −24%; the flip turned it into an average-up at +35%. NVDA-Aug YES still prices 18 pts over zero-drift fair (54.0 vs 35.6), so the NO keeps real edge behind it. Same correlated-cap discipline as #1.</p>
-            <div class="pm-exec"><strong>THE TICKET:</strong> $250 → <strong>532 sh at 47¢</strong> (661 offered at the touch). Only inside the total NVDA-short cap.</div>
+            <h3 class="panel-title"><span class="pm-badge pm-cheap">#4 ADD · BEST CARRY</span> Alphabet "3rd-largest August" YES @ 89¢ — new leg, deep book</h3>
+            <div class="pm-idea-date">Idea added Jul 27, 2026</div>
+            <p>Not currently held and the best risk-adjusted carry available: 12.4% over 25 days for a #3 spot cushioned by 37%. It also diversifies the book away from the Apple/NVIDIA axis that now drives nearly every other position.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> <strong>$300 at 89¢</strong> → ≈335 sh (2,575 more offered at 90¢). Pays $335 on Aug 31.</div>
           </div>
           <div class="panel-card">
-            <h3 class="panel-title"><span class="pm-badge pm-watch">#5 ADD · EVENT, TINY</span> Add AAPL-July YES @ ≤55¢ into the print (held: 1,018 @ 5.9¢, +818%)</h3>
-            <div class="pm-idea-date">Idea added Jul 26, 2026</div>
-            <p>Five sessions left, Apple ahead, and Thursday's earnings reaction session <em>is</em> resolution day. 54.4¢ vs 71.9¢ zero-drift fair — but the position is already +818%, so any add is lottery-sized. The house-money trim (Sells #2) is the risk-off alternative; pick one, not both.</p>
-            <div class="pm-exec"><strong>THE TICKET:</strong> ≤$100 at ≤55¢ (303 sh offered at 54.9¢). Binary by Friday close.</div>
+            <h3 class="panel-title"><span class="pm-badge pm-watch">#5 ADD · FOUR-DAY</span> Apple-July YES @ 70.4¢ (held: 302 @ 5.9¢, +1,080%)</h3>
+            <div class="pm-idea-date">Idea added Jul 27, 2026</div>
+            <p>The remaining July stub is pure house money after the scale-out from 69¢ to 82.7¢. Fair is 84% at base vol, 74.6% at earnings vol — still cheap, but this is a four-day binary into a print, so any add is an event ticket, not an investment.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> <strong>≤$250 at ≤70.5¢</strong> → ≈355 sh. Hard cap: total July risk under 3% of the portfolio.</div>
           </div>
           <div class="panel-card">
-            <h3 class="panel-title"><span class="pm-badge pm-watch">#6 ADD · SHORT LEG, THIN</span> Add NVDA-July NO @ 56¢ limit (held: 1,487 @ 21.0¢ after a 510-sh trim)</h3>
-            <div class="pm-idea-date">Idea added Jul 26, 2026</div>
-            <p>The same five-day thesis as #5 via the other book: model-fair NO ≈ 72¢ vs 56¢. Note the account went the other way this morning — 510 sh sold at 39–49¢ into the spike (early by the model, honest de-risking in practice; footnoted in the positions table). The NO side is thin: 23 sh at 56¢, then gaps.</p>
-            <div class="pm-exec"><strong>THE TICKET:</strong> rest ≤$150 at 56¢, limits only — a $200 market order averages 60¢+.</div>
+            <h3 class="panel-title"><span class="pm-badge pm-rich">#6 ADD · CAPPED</span> NVIDIA-December NO @ 49¢ (held: 2,865 @ 35.2¢, +39.1%)</h3>
+            <div class="pm-idea-date">Idea added Jul 27, 2026</div>
+            <p>Still 8.5 points cheap by the model, but this is the third NVIDIA-short date in the book. All three pay on the same story; the correlated total — not the per-leg edge — is what should govern any further size.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> <strong>$300 at 49¢</strong> (≈612 sh) ONLY if the combined NVDA-short book stays under ~25% of the portfolio. Otherwise skip.</div>
           </div>
           <div class="panel-card">
-            <h3 class="panel-title"><span class="pm-badge pm-fair">#7 ADD · CARRY TOP-UP</span> SPY $770-high July NO @ ~98.7¢</h3>
-            <div class="pm-idea-date">Idea added Jul 26, 2026</div>
-            <p>Best remaining verified carry in the July ladder: ~1.3¢ over four sessions, resolves Aug 1. Book re-walked this run: 55 sh at 98.6¢, then 600 at 98.7¢.</p>
-            <div class="pm-exec"><strong>THE TICKET:</strong> $250 → ≈253 sh @ 98.68¢ avg, ≈+$3.30 by Friday. Only with cash not earmarked for #1–#4.</div>
+            <h3 class="panel-title"><span class="pm-badge pm-fair">#7 ADD · CARRY</span> SPY $770-high July NO @ 96.8¢ (held: 1,211 @ 94.1¢)</h3>
+            <div class="pm-idea-date">Idea added Jul 27, 2026</div>
+            <p>Three sessions of decay left on a strike the index would need a violent melt-up to touch. 3.2¢ of upside on a near-certainty; the whole July ladder converts to cash on Aug 1 and funds the roll.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> <strong>$200 at 96.8¢</strong> → ≈207 sh, +$6.60 by Friday. Only with cash not earmarked for #1–#4.</div>
           </div>
           <div class="panel-card">
-            <h3 class="panel-title"><span class="pm-badge pm-watch">#8 ADD · MOMENTUM, SMALL</span> Dylan Cease strikeout-leader YES @ ~11.3¢ (held: 520 @ 4.0¢, +186%)</h3>
-            <div class="pm-idea-date">Idea added Jul 26, 2026</div>
-            <p>The +186% winner, with the Skenes NO leg hedging the favorite. Honest label: no quantitative model behind this one — a momentum add on a season-long contract where the market keeps agreeing. Reason to stay small, not to skip.</p>
-            <div class="pm-exec"><strong>THE TICKET:</strong> $100 at ≤11.5¢ (≈870 sh); total Cease exposure stays under ~1.6% of the account.</div>
+            <h3 class="panel-title"><span class="pm-badge pm-fair">#8 ADD · CARRY</span> BTC $57.5k-dip July NO @ 95.75¢ (held: 521 @ 96.0¢)</h3>
+            <div class="pm-idea-date">Idea added Jul 27, 2026</div>
+            <p>The last July Bitcoin leg after the $55k strike was sold at 99.5¢. Slightly underwater on entry but structurally the same near-certain carry, and it resolves Aug 1 with the rest of the ladder.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> <strong>$150 at ≤95.8¢</strong> → ≈157 sh. Low priority — the ranking-book edges dominate this by an order of magnitude.</div>
           </div>
           <div class="panel-card">
-            <h3 class="panel-title"><span class="pm-badge pm-watch">#9 ADD · NO MODEL, SMALL</span> Top up Skenes NO @ ~95.9¢ (held: 522 @ 95.8¢)</h3>
-            <div class="pm-idea-date">Idea added Jul 26, 2026</div>
-            <p>The field-vs-favorite side of the strikeout structure: pays unless Skenes finishes #1, and the held Cease YES already hedges the most likely challenger. Season-long carry with no quantitative model behind it on this page.</p>
-            <div class="pm-exec"><strong>THE TICKET:</strong> $100 at ≤95.9¢ → ≈104 sh. Caps the whole strikeout structure under ~6% of the account.</div>
+            <h3 class="panel-title"><span class="pm-badge pm-watch">#9 ADD · SECOND-PLACE HEDGE</span> Apple "2nd-largest July" NO @ 72¢ (held: 405 @ 74.0¢, −2.7%)</h3>
+            <div class="pm-idea-date">Idea added Jul 27, 2026</div>
+            <p>This leg pays whenever Apple is #1 <em>or</em> falls to #3+ — in practice it is a cheaper way to own "Apple stays on top" with a free tail. It has drifted 2 points against the account even as the flip happened, which is itself a small mispricing.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> <strong>$200 at ≤72¢</strong> → ≈278 sh. Cleaner than adding July YES if you want the same direction with less binary risk.</div>
           </div>
           <div class="panel-card">
-            <h3 class="panel-title"><span class="pm-badge pm-watch">#10 ADD · AUG 1 ROLL</span> <span class="pm-badge pm-cheap">WTI LIVE EARLY</span> Roll the July carry ladder — WTI August seeded; SPY/BTC still shells</h3>
+            <h3 class="panel-title"><span class="pm-badge pm-watch">#10 ADD · MOMENTUM, SMALL</span> Dylan Cease strikeout leader YES @ 11.5¢ (held: 520 @ 4.0¢, +190%)</h3>
             <div class="pm-idea-date">Idea added Jul 26, 2026</div>
-            <p>The five near-expiry July NOs hand back ≈$3,680 around Aug 1. Re-checked this run: <strong>the August WTI ladder seeded early with real books</strong> ($150-high NO 99.7¢ × 109, $140-high 99.2¢ × 100, $40-low 99.4¢ × 100) — while August SPY is still a $42 placeholder shell and August BTC remains unlisted. The roll can start one leg early.</p>
-            <div class="pm-exec"><strong>THE TICKET:</strong> WTI tails only today (New Positions #2, ≤$400 total). The SPY/BTC thirds wait for seeded two-sided books after Friday's resolutions. Never touch 50/50 placeholders.</div>
+            <p>The no-model winner, hedged by the Skenes NO leg. Momentum add on a season-long contract where the market keeps agreeing with the original call — a reason to stay small, not to skip.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> <strong>$100 at ≤11.5¢</strong> → ≈870 sh. Total strikeout-structure exposure stays under ~5% of the account.</div>
           </div>
           <div class="panel-card">
-            <h3 class="panel-title"><span class="pm-badge pm-fair">#11 ADD · POST-FLIP RULE, NOW ACTIVE</span> The rebalance rule triggered — flip landed Jul 27</h3>
-            <div class="pm-idea-date">Idea added Jul 26, 2026</div>
-            <p>Written pre-flip as a conditional; triggered today. Updated for the new tape: hold AAPL-Dec (25 pts under fair), roll July NVDA-NO trim proceeds into NVDA-Aug NO while it prices under model (ticket #4), and <strong>raise the AAPL-Aug half-off trigger from 45¢ to ≥55¢</strong> — selling at 45¢ against a 60¢ fair would hand back the edge just earned.</p>
-            <div class="pm-exec"><strong>THE TICKET:</strong> Standing orders per #1–#4; the PM run re-checks whether Thursday's print confirms or unwinds the flip.</div>
+            <h3 class="panel-title"><span class="pm-badge pm-fair">#11 ADD · SEEDED LADDER</span> WTI August $140-high NO @ 99¢ — the roll's first live leg</h3>
+            <div class="pm-idea-date">Idea added Jul 27, 2026</div>
+            <p>The August WTI book is the only next-month ladder with real two-sided depth ($65,429 liquidity). The $140-high NO is the best of the tails; the rest of the roll still waits on SPY/BTC seeding.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> <strong>≤$100 at 99¢</strong> → ≈101 sh, ≈1% over 34 days. Parking money for the roll, explicitly not alpha.</div>
+          </div>
+          <div class="panel-card">
+            <h3 class="panel-title"><span class="pm-badge pm-fair">#12 ADD · AUG 1 ROLL</span> <span class="pm-badge pm-rich">⏳ NOT ACTIONABLE TODAY</span> The rest of the carry roll</h3>
+            <div class="pm-idea-date">Idea added Jul 27, 2026</div>
+            <p>The July ladder (SPY $770 NO, SPY $700-low NO, BTC $75k NO, BTC $57.5k NO) returns ≈<strong>$3,080 in cash on Aug 1</strong>. The August SPY event is still $291 of 50/50 placeholders and August Bitcoin is not reliably listed — no counterparty exists behind those quotes yet.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> ⏳ <strong>EXECUTES ON/AFTER AUG 1</strong>: hold the July legs to resolution, then redeploy ≈$2,500 into the August SPY/BTC far-OTM NOs at ≥94¢ <em>once real books appear</em>. Resting limits only. Do not touch placeholder quotes today.</div>
           </div>
         </div>
         <p class="pm-footnote">Ranking is global and congruent with the other lists: #1 here is #1 everywhere it appears. 11 add-on ideas qualify today — the GOOGL-Dec NO add and the BTC $57.5k July top-up were retired this run (post-flip edge &lt; 5 pts; unverifiable book) and are scored on the Tracking tab.</p>
@@ -281,39 +226,81 @@
       <section class="table-section" aria-label="Top new positions suggested">
         <div class="table-header-row">
           <h2 class="section-title">Top New Positions Suggested — Not Currently Held</h2>
-          <span class="pm-sec-date">Ideas as of Jul 27, 2026 · 8:15 AM PT</span>
+          <span class="pm-sec-date">Ideas as of Jul 27, 2026 · 5:20 PM PT</span>
           <span class="price-note">Sourced across ALL Polymarket books (ranking partitions, carry ladders, convexity) · ranked by conviction · not financial advice · 4 shown, scroll → for more</span>
         </div>
         <div class="pm-cards">
           <div class="panel-card">
-            <h3 class="panel-title"><span class="pm-badge pm-cheap">#1 NEW · FLIP ECHO</span> NVDA "2nd-largest August" YES @ 40¢ limit — 5.5 pts behind its twin</h3>
-            <div class="pm-idea-date">Idea added Jul 26, 2026</div>
-            <p>If Apple holds #1 through Aug 31, NVIDIA is #2 — this is AAPL-Aug (43.5¢) traded in a second venue at <strong>38¢ mid, lagging its twin by 5.5 pts</strong> (Mispricing #5). Fair ≈ 56¢ net of the Alphabet-takes-#2 tail (priced 7.5¢). The book is the catch: 47 sh offered at 40¢, then a 9-pt gap to 49¢.</p>
-            <div class="pm-exec"><strong>THE TICKET:</strong> Rest <strong>$150 at 40¢</strong> (375 sh) and wait — never cross the gap; a $150 market order averages 49¢. This is how the July echo (+334%) was built.</div>
-          </div>
-          <div class="panel-card">
-            <h3 class="panel-title"><span class="pm-badge pm-fair">#2 NEW · CARRY, SEEDED EARLY</span> WTI August tail NOs — the first live leg of the Aug roll</h3>
-            <div class="pm-idea-date">Idea added Jul 26, 2026</div>
-            <p>Converted from last run's "not actionable" ladder slot: the August WTI strikes now carry <strong>real, walked books</strong> — $150-high NO 99.7¢ × 109, $140-high NO 99.2¢ × 100, $40-low NO 99.4¢ × 100, $50-low NO 99.0¢ (5 sh) then 99.8¢. These are strikes the July tape never approached; 0.3–0.8¢ carry per leg to Aug 31. August SPY/BTC remain unseeded shells — they wait.</p>
-            <div class="pm-exec"><strong>THE TICKET:</strong> ≤$100 per leg resting at the quoted touches, four legs max (≤$400). Skip the $50-low leg past its 5-share touch — 99.8¢ isn't worth the lockup.</div>
-          </div>
-          <div class="panel-card">
-            <h3 class="panel-title"><span class="pm-badge pm-fair">#3 NEW · CARRY, DEEP BOOK</span> Alphabet "3rd-largest August" YES @ 90¢</h3>
+            <h3 class="panel-title"><span class="pm-badge pm-cheap">#1 NEW · BEST CARRY</span> Alphabet "3rd-largest August" YES @ 89¢</h3>
             <div class="pm-idea-date">Idea added Jul 27, 2026</div>
-            <p>The quiet corner of the ranking family: Alphabet holds #3 by a $1.09T margin over Microsoft, while both leaders sit 21–24% above it. Fair ≈ 92–93¢ (1 − the 7.5¢ the market gives GOOGL-takes-#2 − ≈0 for Microsoft catching up); the book is the deepest of any second/third-place market — 2,450 × 90¢ ask, 4,334 × 88¢ bid.</p>
-            <div class="pm-exec"><strong>THE TICKET:</strong> $250 → <strong>278 sh at 90¢ flat</strong>. ~2.2% to Aug 31 (~23% annualized). Fat risk = an Alphabet surge to #2 — which this book is already positioned against elsewhere.</div>
+            <p>Not held, deep two-sided book, and the widest gap on the page between structural certainty and price: Alphabet ($3,976B) holds #3 with Microsoft 37% behind, and promotion to #2 is priced at 7¢. For the 11¢ tail to pay, one of two ~35% relative moves must happen in 25 trading days.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> Buy <strong>$300 at 89¢</strong> (ask 89¢ × 30, then 2,575 at 90¢) → ≈335 sh, +$37 by Aug 31 ≈ <strong>12.4% in 25 days</strong>.</div>
           </div>
           <div class="panel-card">
-            <h3 class="panel-title"><span class="pm-badge pm-watch">#4 NEW · AUGUST LADDERS</span> <span class="pm-badge pm-rich">⏳ NOT ACTIONABLE</span> SPY/BTC August carry strikes — still empty shells</h3>
-            <div class="pm-idea-date">Idea added Jul 26, 2026</div>
-            <p>Re-checked this run: the August SPY event still shows ≈$42 of total liquidity across 14 strikes with every quote a 50/50 placeholder, and the August Bitcoin event is still unlisted. There is no real counterparty behind those 50¢ quotes yet.</p>
-            <div class="pm-exec"><strong>THE TICKET — ⏳ WAITS FOR SEEDED BOOKS:</strong> no order today under any circumstances; the auto-run flags seeding the morning it appears (typically around month-end).</div>
+            <h3 class="panel-title"><span class="pm-badge pm-cheap">#2 NEW · TAIL CARRY</span> WTI August $140-high NO @ 99¢ — the seeded ladder leg</h3>
+            <div class="pm-idea-date">Idea added Jul 27, 2026</div>
+            <p>The August WTI event is the only next-month ladder with genuine depth ($65,429 across 21 strikes). WTI would need a near-doubling in 34 days for this NO to fail. Thin return, but it is a real book with real quotes — unlike the August SPY placeholders.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> <strong>≤$100 at 99¢</strong> → ≈101 sh. Also live: $150-high NO at 99.7¢ and $40-low NO at 99.5¢, ≤$100 each.</div>
           </div>
           <div class="panel-card">
-            <h3 class="panel-title"><span class="pm-badge pm-fair">#5 NEW · WATCHLIST</span> The September book — trade the listing-day kink</h3>
-            <div class="pm-idea-date">Idea added Jul 26, 2026</div>
-            <p>The August largest-company book listed Jul 15 priced nearly flat to July — the kink this page bought at 23.1¢, now 43.5¢. The September book should list mid-August; the repeatable trade is buying the cheap Apple leg in week one, before the ladder reprices.</p>
-            <div class="pm-exec"><strong>THE TICKET:</strong> No order today. Standing instruction: the auto-run flags the September listing the day it appears and prices the kink immediately.</div>
+            <h3 class="panel-title"><span class="pm-badge pm-watch">#3 NEW · PARTITION</span> Second-place August basket @ ≤96¢ — Apple-2nd + NVDA-2nd together</h3>
+            <div class="pm-idea-date">Idea added Jul 27, 2026</div>
+            <p>Neither leg is held in the August book (the account holds NVDA-2nd-Aug YES but not the Apple side). Buying both covers every world except a third company breaking into the top two — Alphabet needs +24% relative in 25 sessions.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> Only at <strong>≤96¢ combined</strong> (45¢ + 52¢ asks = 97¢ today): $400 pro-rata, limits inside the spread.</div>
+          </div>
+          <div class="panel-card">
+            <h3 class="panel-title"><span class="pm-badge pm-watch">#4 NEW · CONVEXITY</span> Alphabet-August YES @ 4.5¢ — a bet on the new volatility regime</h3>
+            <div class="pm-idea-date">Idea added Jul 27, 2026</div>
+            <p>Base-vol fair is 1.4%, so this is rich unless σ stays near the post-flip 11 pts/day, where fair climbs to 4–6¢. Defined-risk exposure to turbulence itself rather than to Alphabet — the only ticket on the page the model does not endorse at base assumptions.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> <strong>≤$75 resting at 4.5¢</strong> → ≈1,667 sh. Max loss $75.</div>
+          </div>
+          <div class="panel-card">
+            <h3 class="panel-title"><span class="pm-badge pm-fair">#5 NEW · SEEDED TAIL</span> WTI August $150-high NO @ 99.7¢ and $40-low NO @ 99.5¢</h3>
+            <div class="pm-idea-date">Idea added Jul 27, 2026</div>
+            <p>The extreme ends of the seeded WTI ladder — strikes requiring a doubling or a halving of crude inside 34 days. Returns are small by construction; their job is to keep the carry book populated while the SPY and BTC ladders remain unlisted.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> <strong>≤$100 each</strong> at the quoted touch. Combined with #2, ≈$300 of the $3,080 roll capital deployed early.</div>
+          </div>
+          <div class="panel-card">
+            <h3 class="panel-title"><span class="pm-badge pm-fair">#6 NEW · WATCHLIST</span> August SPY ladder — <span class="pm-badge pm-rich">⏳ NOT ACTIONABLE</span> still placeholders</h3>
+            <div class="pm-idea-date">Idea added Jul 27, 2026</div>
+            <p>Re-checked this run: the August SPY event shows <strong>$291 of total liquidity</strong> across 14 strikes with every quote parked at 50/50, and August Bitcoin isn't reliably listed. These are the two biggest legs of the Aug 1 roll and neither has a counterparty yet.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> ⏳ <strong>WAITS FOR SEEDED BOOKS.</strong> No order today under any circumstances. The auto-run checks every 12 hours and flags the morning real quotes appear.</div>
+          </div>
+          <div class="panel-card">
+            <h3 class="panel-title"><span class="pm-badge pm-fair">#7 NEW · WATCHLIST</span> The September ranking book — the listing-day kink</h3>
+            <div class="pm-idea-date">Idea added Jul 27, 2026</div>
+            <p>Each new month has listed with the front-month kink intact: the later date priced flat to the nearer one despite weeks of extra optionality. August listed Jul 15 at 23.5¢ against July's 22¢ — and is 47¢ today. September should appear mid-August.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> No order today. Standing instruction: price the kink the day the September book lists, before the ladder repositions.</div>
+          </div>
+          <div class="panel-card">
+            <h3 class="panel-title"><span class="pm-badge pm-watch">#8 NEW · OIL TAIL</span> Saudi Aramco-December YES — the cheap version of oil-shock exposure</h3>
+            <div class="pm-idea-date">Idea added Jul 27, 2026</div>
+            <p>The account exited Crude-ATH-Dec at a loss; if oil-tail exposure is still wanted, Aramco needs a super-spike to reach $5T — the same scenario, at lottery pricing rather than 13.5¢. Quote needs CLOB verification before any order.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> <span class="pm-badge pm-watch">QUOTE PENDING</span> Verify on the live book (the 6am run does this). If ≤1¢: <strong>≤$50 resting</strong>, max loss $50.</div>
+          </div>
+          <div class="panel-card">
+            <h3 class="panel-title"><span class="pm-badge pm-fair">#9 NEW · STRUCTURAL</span> Microsoft "3rd-largest August" NO — the other side of the #3 trade</h3>
+            <div class="pm-idea-date">Idea added Jul 27, 2026</div>
+            <p>The complement of idea #1: if Alphabet holds #3, Microsoft does not take it. Whether this or the Alphabet YES is better depends purely on which book quotes tighter — they are the same event.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> <span class="pm-badge pm-watch">QUOTE PENDING</span> Compare against the 89¢ Alphabet leg; take whichever offers the better effective price. Do not hold both — that is one trade, doubled.</div>
+          </div>
+          <div class="panel-card">
+            <h3 class="panel-title"><span class="pm-badge pm-watch">#10 NEW · RE-FLIP HEDGE</span> NVIDIA-July YES @ 30¢ — insurance, not a view</h3>
+            <div class="pm-idea-date">Idea added Jul 27, 2026</div>
+            <p>The account is now long Apple's crown across July, August and December plus three NVIDIA shorts — one story, six ways. NVDA is a single 4% session from taking it back, and it moved −4.99% today. A small July YES pays exactly when everything else hurts.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> <strong>≤$150 at ≤30¢</strong> → ≈500 sh, pays $500 if NVIDIA reclaims #1 by Friday. Insurance pricing: expect to lose it.</div>
+          </div>
+          <div class="panel-card">
+            <h3 class="panel-title"><span class="pm-badge pm-fair">#11 NEW · CONDITIONAL</span> Post-print re-entry — the Friday overreaction</h3>
+            <div class="pm-idea-date">Idea added Jul 27, 2026</div>
+            <p>July resolves Friday on the earnings reaction. Whatever the print does, the August and December books will overshoot with it — σ is 11 points/day before a catalyst. The trade is not the print; it is the August leg mispriced by the print's echo.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> After Thursday's close: recompute fair from the new caps, then buy AAPL-Aug or NVDA-Aug NO only if the odds sit <strong>&gt;15 pts</strong> from it. Budget ≈$500. No pre-positioning.</div>
+          </div>
+          <div class="panel-card">
+            <h3 class="panel-title"><span class="pm-badge pm-fair">#12 NEW · HYGIENE</span> Redeem resolved winners sitting unclaimed</h3>
+            <div class="pm-idea-date">Idea added Jul 27, 2026</div>
+            <p>The positions feed carries 304 line items against 62 live ones — resolved markets priced at $1.00 still count as positions until redeemed, and that value cannot be traded until it is claimed. Free money in the sense that it is already yours.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> On Polymarket: Positions → claim every "Redeem" button; repeat Saturday after the July book settles.</div>
           </div>
         </div>
         <p class="pm-footnote">Only 5 new-position candidates survive today's re-weigh — the Jul 27 flip repriced the cross-book families, and five ideas retired to the Tracking tab (Second-Place baskets for July and August, Apple-2nd-Aug standalone, both December second-place legs, Aramco-Dec). Sourcing methodology unchanged: ranking partitions, next-month carry ladders, and convexity punts are rescanned every run, with all quotes verified against live CLOB books before a ticket is written.</p>
@@ -323,50 +310,81 @@
       <section class="table-section" aria-label="Recommended add-ons">
         <div class="table-header-row">
           <h2 class="section-title">Top Add-Ons — Largest Company</h2>
-          <span class="pm-sec-date">Ideas as of Jul 27, 2026 · 8:15 AM PT</span>
+          <span class="pm-sec-date">Ideas as of Jul 27, 2026 · 5:20 PM PT</span>
           <span class="price-note">Derived from the Largest Company analysis (other tab) · not financial advice · 4 shown, scroll → for more</span>
         </div>
         <div class="pm-cards">
           <div class="panel-card">
-            <h3 class="panel-title"><span class="pm-badge pm-cheap">#1 ADD · HIGHEST CONVICTION</span> NVDA-Dec NO @ 46¢ — +31 pts of model edge</h3>
-            <div class="pm-idea-date">Idea added Jul 26, 2026</div>
-            <p>Apple took the cap lead intraday Jul 27, yet December still prices NVIDIA to hold at 54.5¢ vs 23.2¢ zero-drift fair. Deepest book in the family (1,185 sh at the 46¢ NO touch), held leg +29%. #1 on every list this run. The full case and ticket live under Top Trades #1 on this tab.</p>
+            <h3 class="panel-title"><span class="pm-badge pm-cheap">#1 ADD</span> Apple-August YES @ 49¢ — the family's biggest edge</h3>
+            <div class="pm-idea-date">Idea added Jul 27, 2026</div>
+            <p>Same trade as the global #1, filed under the largest-company complex: 47¢ market vs 64% fair on a live 4.05% cushion, with 25 trading days and NVDA earnings inside the window.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> <strong>$500 → 1,016 sh @ 49.2¢</strong>. Deepest ask stack of the three Apple dates.</div>
           </div>
           <div class="panel-card">
-            <h3 class="panel-title"><span class="pm-badge pm-cheap">#2 ADD · AVERAGE UP</span> Apple-Dec YES @ ~32¢ (held: 5,051 @ 19.0¢, +59%)</h3>
-            <div class="pm-idea-date">Idea added Jul 26, 2026</div>
-            <p>Still ~25 pts under σ=2%/day fair (54.9¢) even after the flip repriced it to 30.3¢ — the leader's own contract at challenger prices. Asks thin to 34.8¢ on a $300 walk, so rest limits. Invalidation: NVDA retakes a &gt;5% cap lead.</p>
-            <div class="pm-exec"><strong>THE TICKET:</strong> $150 at ≤32.2¢, or rest $300 at 32¢.</div>
+            <h3 class="panel-title"><span class="pm-badge pm-cheap">#2 ADD</span> NVIDIA-August NO @ 51¢ — the mirror leg</h3>
+            <div class="pm-idea-date">Idea added Jul 27, 2026</div>
+            <p>Model-fair NO 65.5% vs 51¢. Identical exposure to #1 via the other side of the same book; trade whichever shows better depth.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> <strong>$300 at 51¢</strong> → ≈588 sh; 471 bid at 48¢ sits behind you.</div>
           </div>
           <div class="panel-card">
-            <h3 class="panel-title"><span class="pm-badge pm-cheap">#3 ADD · THIRD TRANCHE</span> Apple-Aug YES @ 46¢ (held: 992 @ 25.9¢ after two fills, +68%)</h3>
-            <div class="pm-idea-date">Idea added Jul 26, 2026</div>
-            <p>Both earlier tranches filled (443 @ 23.1¢, 399 @ 26.7¢). August still trades 16 pts under fair — and now sits 11 pts <em>below</em> the July leg (43.5 vs 54.4), a curve that says the market expects the flip to fade. The model says otherwise; NVDA earnings ~Aug 26 is the risk.</p>
-            <div class="pm-exec"><strong>THE TICKET:</strong> $300 → 652 sh at 46¢ (440 at the touch).</div>
+            <h3 class="panel-title"><span class="pm-badge pm-cheap">#3 ADD</span> Alphabet "3rd-largest August" YES @ 89¢</h3>
+            <div class="pm-idea-date">Idea added Jul 27, 2026</div>
+            <p>The complex's best carry: 12.4% in 25 days for a #3 position insulated by a 37% gap over Microsoft. Also the only leg here uncorrelated with the Apple/NVIDIA duel.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> <strong>$300 at 89¢</strong> → ≈335 sh.</div>
           </div>
           <div class="panel-card">
-            <h3 class="panel-title"><span class="pm-badge pm-cheap">#4 ADD · NOW AVERAGE UP</span> NVDA-Aug NO @ 47¢ (held: 939 @ 34.1¢, +35%)</h3>
-            <div class="pm-idea-date">Idea added Jul 26, 2026</div>
-            <p>Flipped from average-down to average-up in one session. NVDA-Aug YES still 18 pts over fair (54.0 vs 35.6). One correlated NVDA-short story across three dates — the combined cap is the discipline.</p>
-            <div class="pm-exec"><strong>THE TICKET:</strong> $250 → 532 sh at 47¢, inside the NVDA-short cap.</div>
+            <h3 class="panel-title"><span class="pm-badge pm-cheap">#4 ADD</span> Apple-December YES @ 36.4¢</h3>
+            <div class="pm-idea-date">Idea added Jul 27, 2026</div>
+            <p>The long-horizon expression of the new incumbency, still 5.7 points under fair and least exposed to Thursday's print.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> <strong>$500 → 1,361 sh @ 36.75¢</strong>.</div>
           </div>
           <div class="panel-card">
-            <h3 class="panel-title"><span class="pm-badge pm-watch">#5 ADD · EVENT, TINY</span> AAPL-July YES @ ≤55¢ into Thursday's print (held: 1,018 @ 5.9¢, +818%)</h3>
-            <div class="pm-idea-date">Idea added Jul 26, 2026</div>
-            <p>The five-day binary: 54.4¢ vs 71.9¢ fair with the earnings reaction session as resolution day. Lottery-sized only; the trim fork on the Polymarket tab is the risk-off alternative.</p>
-            <div class="pm-exec"><strong>THE TICKET:</strong> ≤$100 at ≤55¢.</div>
+            <h3 class="panel-title"><span class="pm-badge pm-watch">#5 ADD</span> Apple-July YES @ 70.4¢ — four-day binary</h3>
+            <div class="pm-idea-date">Idea added Jul 27, 2026</div>
+            <p>Fair 84% at base vol / 74.6% at earnings vol vs 69.8¢. Cheap, but it resolves on the earnings reaction session — event sizing only.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> <strong>≤$250 at ≤70.5¢</strong> → ≈355 sh.</div>
           </div>
           <div class="panel-card">
-            <h3 class="panel-title"><span class="pm-badge pm-watch">#6 ADD · SHORT LEG, THIN</span> NVDA-July NO @ 56¢ limit (held: 1,487 @ 21.0¢)</h3>
-            <div class="pm-idea-date">Idea added Jul 26, 2026</div>
-            <p>Model-fair NO ≈ 72¢ vs 56¢, but the book is thin (23 sh at the touch, gaps to 61¢). The account trimmed 510 sh at 39–49¢ into this morning's spike — early per the model. Limits only.</p>
-            <div class="pm-exec"><strong>THE TICKET:</strong> rest ≤$150 at 56¢; never market.</div>
+            <h3 class="panel-title"><span class="pm-badge pm-rich">#6 ADD · CAPPED</span> NVIDIA-December NO @ 49¢</h3>
+            <div class="pm-idea-date">Idea added Jul 27, 2026</div>
+            <p>8.5 points cheap, but the third NVIDIA-short date in a book already carrying two. The cap, not the edge, is the binding constraint.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> <strong>$300 at 49¢</strong> only inside the combined NVDA-short cap.</div>
           </div>
           <div class="panel-card">
-            <h3 class="panel-title"><span class="pm-badge pm-fair">#7 ADD · POST-FLIP RULE, NOW ACTIVE</span> The family rebalance — triggered Jul 27</h3>
-            <div class="pm-idea-date">Idea added Jul 26, 2026</div>
-            <p>The pre-committed flip plan is live: hold AAPL-Dec, keep rolling NVDA-short adds only while they price under model (all three dates still qualify), and raise the AAPL-Aug half-off trigger from 45¢ to ≥55¢. Thursday's print is the confirm-or-unwind event.</p>
-            <div class="pm-exec"><strong>THE TICKET:</strong> Standing orders per #1–#4; PM run re-ranks after the print.</div>
+            <h3 class="panel-title"><span class="pm-badge pm-watch">#7 ADD</span> Apple "2nd-largest July" NO @ 72¢ — the softer long</h3>
+            <div class="pm-idea-date">Idea added Jul 27, 2026</div>
+            <p>Pays if Apple is #1 or drops to #3+; a lower-variance way to hold the same direction into Thursday, and it has drifted against the account despite the flip.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> <strong>$200 at ≤72¢</strong> → ≈278 sh.</div>
+          </div>
+          <div class="panel-card">
+            <h3 class="panel-title"><span class="pm-badge pm-watch">#8 ADD · PARTITION</span> Second-place August basket @ ≤96¢ combined</h3>
+            <div class="pm-idea-date">Idea added Jul 27, 2026</div>
+            <p>Apple-2nd-Aug (45¢) + NVDA-2nd-Aug (52¢) pays $1 unless a third company breaks into the top two — Alphabet needs +24% relative in 25 days. The gap narrowed from 11.5¢ to ~3¢, so it is now a fill-quality trade.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> Only at <strong>≤96¢ combined</strong>: $400 pro-rata, limits inside the spread. Otherwise pass.</div>
+          </div>
+          <div class="panel-card">
+            <h3 class="panel-title"><span class="pm-badge pm-fair">#9 ADD</span> Alphabet-December YES — the flip made it cheap; do not short it</h3>
+            <div class="pm-idea-date">Idea added Jul 27, 2026</div>
+            <p>With Apple leading, Alphabet's December fair rises to 14.8% against 10.5¢ mid. The account is short via the Dec NO leg — this card exists to stop that short from growing, not to open a new long.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> No buy. <strong>Standing rule:</strong> no adds to GOOGL-Dec NO below 90¢; close it if the YES trades under 8¢.</div>
+          </div>
+          <div class="panel-card">
+            <h3 class="panel-title"><span class="pm-badge pm-watch">#10 ADD · CONVEXITY</span> Alphabet-August YES @ 4.5¢ — regime punt, honest label</h3>
+            <div class="pm-idea-date">Idea added Jul 27, 2026</div>
+            <p>Alphabet needs ~+24% on Apple in 25 sessions. Base-vol fair is 1.4%, so 4.5¢ is rich unless the post-flip volatility regime (σ now 11 pts/day) persists — at 3%/day the fair rises toward 4–6¢. A defined-risk bet on turbulence, not on Alphabet.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> <strong>≤$75 resting at 4.5¢</strong> → ≈1,667 sh. Max loss $75. The only ticket here the model does not endorse at base vol.</div>
+          </div>
+          <div class="panel-card">
+            <h3 class="panel-title"><span class="pm-badge pm-fair">#11 ADD · WATCHLIST</span> The September book — buy the listing-day kink</h3>
+            <div class="pm-idea-date">Idea added Jul 27, 2026</div>
+            <p>August's book listed on Jul 15 with the classic kink: the new month priced flat to the front month despite four extra weeks of optionality. September should list in mid-August; the repeatable trade is buying the leading challenger's leg in week one before the ladder reprices.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> No order today. The twice-daily run flags the September listing the morning it appears and prices the kink immediately.</div>
+          </div>
+          <div class="panel-card">
+            <h3 class="panel-title"><span class="pm-badge pm-watch">#12 ADD · CONDITIONAL</span> The re-flip rulebook — if NVIDIA takes the crown back</h3>
+            <div class="pm-idea-date">Idea added Jul 27, 2026</div>
+            <p>NVDA sits one 4% session from #1 and just moved −4.99%, so a re-flip is inside a single day's range. Every edge on this page changes sign in that world; pre-committing beats improvising into a 50-point gap.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> Trigger: NVDA within 1% of Apple. Then halt all Apple adds, sell half of AAPL-July, and re-run the model before touching Aug/Dec legs.</div>
           </div>
         </div>
         <p class="pm-footnote">7 family add-ons qualify today. Retired this run (scored on the Tracking tab): the GOOGL-Dec NO add (post-flip edge &lt; 5 pts — the two executed fills stay ledgered), and the GOOGL-Aug 2.6¢ convexity punt cards (retired Jul 26 at 4.7¢; it now trades 1.7¢ — GOOD DROP).</p>
@@ -376,69 +394,81 @@
       <section class="table-section" aria-label="Recommended sells">
         <div class="table-header-row">
           <h2 class="section-title">Top Sells — What to Cut From Current Positions</h2>
-          <span class="pm-sec-date">Ideas as of Jul 27, 2026 · 8:15 AM PT</span>
+          <span class="pm-sec-date">Ideas as of Jul 27, 2026 · 5:20 PM PT</span>
           <span class="price-note">Ranked by urgency + salvageable value · 4 shown, scroll → for more · executed sells move to the Tracking tab</span>
         </div>
         <div class="pm-cards">
           <div class="panel-card">
-            <h3 class="panel-title"><span class="pm-badge pm-cheap">#1 TRIM · EXECUTING</span> NVDA "2nd-largest July" YES — 80 of 790 filled @ 52.5¢ (held: 1,583 @ 11.9¢, +334%)</h3>
-            <div class="pm-idea-date">Idea added Jul 26, 2026</div>
-            <p>The trim-half rec is live and filling into strength: 80 sh sold at 52–53¢ this morning (ledgered). At 52¢ vs ~71¢ implied fair the runner is still cheap by the model, so the remaining offer stays <em>above</em> market — lock gains only into further strength, never by hitting bids.</p>
-            <div class="pm-exec"><strong>THE TICKET:</strong> keep an offer for the remaining ≈710 sh of the half at ≥55¢; cancel Friday morning if untouched. The back half rides to resolution.</div>
+            <h3 class="panel-title"><span class="pm-badge pm-rich">#1 SELL · DAYS FROM ZERO</span> WTI $80-low July NO — 366 sh @ 28.5¢, $104 left (−65%)</h3>
+            <div class="pm-idea-date">Idea added Jul 27, 2026</div>
+            <p>The market prices a 71.5% chance WTI touches $80 before Friday, and there are only four sessions for it not to. This is the largest position in the book with a majority chance of going to zero this week; $104 of salvage beats a likely donut.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> Sell into any bid ≥25¢; work an offer at 28¢ otherwise. Salvage ≈$95–104 → funds the Alphabet-3rd carry ticket.</div>
           </div>
           <div class="panel-card">
-            <h3 class="panel-title"><span class="pm-badge pm-fair">#2 TRIM · HOUSE MONEY</span> AAPL-July YES — recover the basis pre-print (held: 1,018 @ 5.9¢, +818%)</h3>
-            <div class="pm-idea-date">Idea added Jul 26, 2026</div>
-            <p>At 54¢, selling just <strong>110 sh returns the entire $60 cost basis</strong> — versus 275 sh when this card was written at 22¢. Everything else rides Thursday for free. Mutually exclusive with the event-add card; choose a side.</p>
-            <div class="pm-exec"><strong>THE TICKET:</strong> sell 110 sh at ≥54¢; done.</div>
+            <h3 class="panel-title"><span class="pm-badge pm-rich">#2 SELL · THESIS DEAD</span> AMZN $264-high July YES — 172 sh @ 11.5¢, $19.83 (−80%)</h3>
+            <div class="pm-idea-date">Idea added Jul 27, 2026</div>
+            <p>Amazon needs a ~14% move in four sessions. The strike is out of reach and the contract decays to zero Friday; any bid is found money.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> Market-sell into the bid. ≈$18–20 recovered.</div>
           </div>
           <div class="panel-card">
-            <h3 class="panel-title"><span class="pm-badge pm-fair">#3 TRIM · TRIGGER RAISED</span> AAPL-Aug — half off at ≥55¢ (was 45¢)</h3>
-            <div class="pm-idea-date">Idea added Jul 26, 2026</div>
-            <p>The pre-flip rule said half-off above 45¢; the flip moved fair to 60¢, so 45¢ would now sell edge too cheap. Raised to ≥55¢ — roughly model fair minus one adverse-week cushion. At 43.5¢ the trigger is live-but-unhit.</p>
-            <div class="pm-exec"><strong>THE TICKET:</strong> standing offer: 500 sh at 55¢; revisit after Thursday's print.</div>
+            <h3 class="panel-title"><span class="pm-badge pm-rich">#3 SELL · DEAD, LARGE SHARE COUNT</span> Pirates NL Central YES — 903 sh @ 0.35¢ · Padres NL West YES — 492 sh @ 1.0¢</h3>
+            <div class="pm-idea-date">Idea added Jul 27, 2026</div>
+            <p>Both were flagged for sale yesterday and both are still open, now at −96.9% and −91.8%. Combined they are worth $8 against 1,395 shares of clutter that distort every position count on the page.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> Sell both into whatever bid exists; ≈$8 total. This is ledger hygiene, not alpha.</div>
           </div>
           <div class="panel-card">
-            <h3 class="panel-title"><span class="pm-badge pm-rich">#4 SELL · WEAK CONVICTION</span> Atlanta Braves WS YES — exit @ ~7.3¢ (held: 1,110 @ 9.4¢, −22%)</h3>
-            <div class="pm-idea-date">Idea added Jul 26, 2026</div>
-            <p>No model, no edge claim, three months of capital lockup for a thesis this page cannot evaluate. ≈$81 of salvage redeploys into modeled edges; sports exposure stays via the strikeout structure.</p>
-            <div class="pm-exec"><strong>THE TICKET:</strong> work an offer at 7.5¢; accept 7¢. Salvage ≈$78–82.</div>
+            <h3 class="panel-title"><span class="pm-badge pm-rich">#4 SELL · NO PATH</span> Athletics playoff YES ($1.41, −92%) · Eurozone inflation YES ($1.53, −49%) · Mariners over-88.5 ($4.49, −59%)</h3>
+            <div class="pm-idea-date">Idea added Jul 27, 2026</div>
+            <p>Three sub-$5 positions with broken theses and months of capital lockup. Individually trivial; collectively they are noise in every open-P&L number the page reports.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> Close all three at market. ≈$7 recovered, three fewer rows of distortion.</div>
           </div>
           <div class="panel-card">
-            <h3 class="panel-title"><span class="pm-badge pm-fair">#5 TRIM · MOMENTUM FORK</span> Dylan Cease YES — trim half @ ≥11.5¢ (held: 520 @ 4.0¢, +186%)</h3>
-            <div class="pm-idea-date">Idea added Jul 26, 2026</div>
-            <p>The no-model winner, 11.3¢ now: either add small (Add-Ons #8 fork) or bank half. Trimming half at 11.5¢ returns ~2.9× the original basis and leaves a free runner for the season.</p>
-            <div class="pm-exec"><strong>THE TICKET:</strong> rest an offer: 260 sh at 11.5¢. The Skenes NO leg stays untouched either way.</div>
+            <h3 class="panel-title"><span class="pm-badge pm-watch">#5 TRIM · BANK THE FLIP</span> NVIDIA "2nd-largest July" YES — 1,063 sh @ 67.5¢ (+468%)</h3>
+            <div class="pm-idea-date">Idea added Jul 27, 2026</div>
+            <p>The single best trade of the week: bought at 11.9¢, now 67.5¢. It resolves Friday on the same event as every other July leg, and the account is already long that outcome six ways. Taking half here converts the call into cash without giving up the thesis.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> Sell <strong>500 sh at ≥67¢</strong> → ≈$335 banked, ≈563 sh left riding. Scale the rest at 75¢ / 85¢ as the flip firms.</div>
           </div>
           <div class="panel-card">
-            <h3 class="panel-title"><span class="pm-badge pm-fair">#6 · CONDITIONAL TRIM</span> NVDA-Dec NO — bank a third if Dec YES trades under 50¢</h3>
-            <div class="pm-idea-date">Idea added Jul 26, 2026</div>
-            <p>The Dec short is +29% and the trigger moved closer today: YES fell 57.5¢ → 54.5¢. Under 50¢, roughly a third of the 31-pt model edge is captured — banking a third there de-risks the correlated NVDA-short complex while keeping most of the upside.</p>
-            <div class="pm-exec"><strong>THE TICKET:</strong> standing rule: offer 955 sh (one-third) at 52¢ NO-equivalent when YES &lt; 50¢. The auto-run flags when the trigger is near.</div>
+            <h3 class="panel-title"><span class="pm-badge pm-watch">#6 TRIM · CONCENTRATION</span> NVIDIA-July NO — 987 sh @ 70.5¢ (+235%)</h3>
+            <div class="pm-idea-date">Idea added Jul 27, 2026</div>
+            <p>Already trimmed from 1,997 shares today at 76–83¢ — good execution. What remains is still 70.5¢ of a 4-day binary that pays the same $1 as three other July legs. Trimming further is about concentration, not about doubting the thesis.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> Sell <strong>300 sh at ≥70¢</strong> (≈$210). Keep ≈687 sh into the print.</div>
           </div>
           <div class="panel-card">
-            <h3 class="panel-title"><span class="pm-badge pm-fair">#7 SELL · DUST</span> Amazon-Dec + the voided MLB scraps</h3>
-            <div class="pm-idea-date">Idea added Jul 26, 2026</div>
-            <p>Amazon-Dec YES (2,533 sh, $10.13) still has a real bid — 0.3¢ × 17,414 — sell it. The two voided MLB sells re-listed last run have no exit left: Padres bids collapsed to 0.3¢ × 446, Pirates to 0.2¢ × 3 — under $2.50 of combined salvage. Let those expire and keep the ledger honest. MSFT-3rd-July retired this run: its bid side is literally empty.</p>
-            <div class="pm-exec"><strong>THE TICKET:</strong> market-sell AMZN-Dec into the 0.3¢ bid (≈$7.60); no orders for Padres/Pirates.</div>
+            <h3 class="panel-title"><span class="pm-badge pm-fair">#7 · DO NOT SELL</span> The July carry ladder — SPY $770 NO, SPY $700-low NO, BTC $75k NO, BTC $57.5k NO</h3>
+            <div class="pm-idea-date">Idea added Jul 27, 2026</div>
+            <p>Roughly $3,080 across four legs at 95.75–99.75¢, all resolving Aug 1. Selling early pays the spread twice for pennies of remaining decay — and these legs are the funding for the August roll. Listed explicitly so a sell sweep never clips them.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> No action. Hold all four to resolution. The $55k leg was correctly sold at 99.5¢ — that one had no decay left.</div>
           </div>
           <div class="panel-card">
-            <h3 class="panel-title"><span class="pm-badge pm-fair">#8 · HOUSEKEEPING</span> Redeem any resolved winners still sitting unredeemed</h3>
-            <div class="pm-idea-date">Idea added Jul 26, 2026</div>
-            <p>Resolved winners priced at $1.00 awaiting redemption still count as "positions" until claimed. Redeeming costs nothing and moves that value into spendable cash.</p>
-            <div class="pm-exec"><strong>THE TICKET:</strong> Positions → click every "Redeem"; repeat after Friday's July resolutions land.</div>
+            <h3 class="panel-title"><span class="pm-badge pm-rich">#8 SELL · DETERIORATING</span> James Wood RBI-leader NO — 77 sh @ 58.2¢ (−40%)</h3>
+            <div class="pm-idea-date">Idea added Jul 27, 2026</div>
+            <p>Entered at 96.9¢ as a near-certainty; the market now says 42% that Wood leads. That is not noise — the thesis has genuinely broken, and there are two months of season left for it to break further.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> Sell at ≥57¢ → ≈$44. When a 97¢ "certainty" trades at 58¢, the original read was wrong; take the loss.</div>
           </div>
           <div class="panel-card">
-            <h3 class="panel-title"><span class="pm-badge pm-cheap">#9 · DO NOT SELL</span> The July carry ladder — hold to resolution, explicitly</h3>
-            <div class="pm-idea-date">Idea added Jul 26, 2026</div>
-            <p>The five SPY/BTC NOs at 96.2–99.7¢ resolve Friday/Aug 1 and hand back ≈$3,680. Selling early pays the spread twice for nothing — they are the Aug roll's funding and they finish the job themselves. Listed so "review the sells" never clips a winner by accident. (The BTC top-up idea was retired this run — unverifiable book, four days left; holding ≠ adding.)</p>
-            <div class="pm-exec"><strong>THE TICKET:</strong> No action. Let all five legs resolve; the roll ticket takes over Aug 1.</div>
+            <h3 class="panel-title"><span class="pm-badge pm-watch">#9 TRIM · NO MODEL</span> Braves World Series YES — 1,110 sh @ 7.35¢ (−22%)</h3>
+            <div class="pm-idea-date">Idea added Jul 27, 2026</div>
+            <p>A three-month hold with no quantitative model behind it on this page, against ranking-book edges of 14–17 points that resolve in weeks. $82 of capital doing nothing the page can measure.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> Work an offer at 7.5¢; accept 7¢. ≈$78 freed → the Alphabet-3rd or Apple-Aug tickets.</div>
           </div>
           <div class="panel-card">
-            <h3 class="panel-title"><span class="pm-badge pm-fair">#10 · HOUSEKEEPING</span> Cancel stale resting orders before Thursday's print</h3>
-            <div class="pm-idea-date">Idea added Jul 26, 2026</div>
-            <p>Exhibit A from last night: the 22¢ NVDA-2nd resting bid kept dribbling fills all the way through the flip — fine this time (it was 30 pts cheap by morning), but a stale pre-print limit becomes mispriced the second the print lands. Reserved collateral also sits against every open order.</p>
-            <div class="pm-exec"><strong>THE TICKET:</strong> Wednesday close: cancel all resting bids on July/Aug books; keep only post-print playbook orders.</div>
+            <h3 class="panel-title"><span class="pm-badge pm-fair">#10 TRIM · HOUSE MONEY</span> Dylan Cease strikeout leader YES — 520 sh @ 11.5¢ (+190%)</h3>
+            <div class="pm-idea-date">Idea added Jul 27, 2026</div>
+            <p>The fork against add-on #10: either add small or bank half. Trimming half returns ~2.9× the original basis and leaves a free runner for the rest of the season.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> Offer <strong>260 sh at 11.5¢</strong> (≈$30). Mutually exclusive with the add — pick one and note which.</div>
+          </div>
+          <div class="panel-card">
+            <h3 class="panel-title"><span class="pm-badge pm-fair">#11 · CONDITIONAL TRIM</span> Apple-December YES — bank a third above 45¢</h3>
+            <div class="pm-idea-date">Idea added Jul 27, 2026</div>
+            <p>The account's largest position (5,051 sh, +85.8%). Above 45¢ roughly two-thirds of the modeled edge is captured, and December still has 110 sessions of re-flip risk. A pre-set trim beats deciding in the moment.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> Standing order: offer <strong>1,650 sh at 45¢</strong>. Until then, hold — it is still under fair at 36.4¢.</div>
+          </div>
+          <div class="panel-card">
+            <h3 class="panel-title"><span class="pm-badge pm-fair">#12 · HOUSEKEEPING</span> Cancel stale resting orders before Thursday's print</h3>
+            <div class="pm-idea-date">Idea added Jul 27, 2026</div>
+            <p>≈$650 of cash sits reserved by open limit orders (the gap between $882 on-chain and Polymarket's lower "available to trade"). With σ at 11 points/day, orders placed pre-flip are now mispriced by a wide margin and will fill at the worst moment on an earnings gap.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> Wednesday close: cancel every resting order on the July and August books. Re-place only post-print, per the playbook.</div>
           </div>
         </div>
         <p class="pm-footnote">Executed Jul 26–27 (moved to Tracking): SpaceX-Dec, WTI $95 &amp; $100 July, Crude-ATH-Dec sells; AAPL-Aug tranches 1–2 (443 @ 23.1¢, 399 @ 26.7¢), GOOGL-Dec NO fills 1–2 (220 @ 91.3¢, 100 @ 90¢), NVDA-2nd-Jul adds (228 + 54 @ 22¢) and the first 80 sh of its trim @ 52.5¢. Retired this run: MSFT-3rd dust sell (no bid exists) — see Tracking → Retired Ideas.</p>
@@ -453,139 +483,110 @@
 
       <section class="account-hero" aria-label="Race summary">
         <div class="account-hero-primary">
-          <div class="account-hero-label" id="hero-lead-label">Current #1 · Apple</div>
-          <div class="account-hero-value" id="hero-lead-cap">$4.950T</div>
+          <div class="account-hero-label">NEW #1 · APPLE</div>
+          <div class="account-hero-value" id="hero-lead-cap">$4.948T</div>
         </div>
         <div class="account-hero-divider"></div>
         <div class="account-hero-secondary">
-          <div class="account-hero-stat">
-            <div class="account-hero-stat-label" id="hero-chal-label">#2 NVIDIA</div>
-            <div class="account-hero-stat-value" id="hero-chal-cap">$4.824T</div>
-          </div>
-          <div class="account-hero-stat">
-            <div class="account-hero-stat-label">Gap to #1</div>
-            <div class="account-hero-stat-value" id="hero-gap">2.62% · $127B</div>
-          </div>
-          <div class="account-hero-stat">
-            <div class="account-hero-stat-label">Next Catalyst</div>
-            <div class="account-hero-stat-value">AAPL earnings Thu Jul 30</div>
-          </div>
-          <div class="account-hero-stat">
-            <div class="account-hero-stat-label">NVDA Odds Jul / Aug / Dec</div>
-            <div class="account-hero-stat-value" id="hero-nvda-odds">45% / 54% / 54.5%</div>
-          </div>
+          <div class="account-hero-stat"><div class="account-hero-stat-label">#2 NVIDIA</div><div class="account-hero-stat-value" id="hero-chal-cap">$4.756T</div></div>
+          <div class="account-hero-stat"><div class="account-hero-stat-label">Apple's Lead</div><div class="account-hero-stat-value pm-pos" id="hero-gap">4.05% · $193B</div></div>
+          <div class="account-hero-stat"><div class="account-hero-stat-label">Today</div><div class="account-hero-stat-value">NVDA −4.99% · AAPL +1.17%</div></div>
+          <div class="account-hero-stat"><div class="account-hero-stat-label">Next Catalyst</div><div class="account-hero-stat-value">AAPL earnings Thu Jul 30</div></div>
+          <div class="account-hero-stat"><div class="account-hero-stat-label">AAPL Odds Jul / Aug / Dec</div><div class="account-hero-stat-value" id="hero-nvda-odds">70% / 47% / 35%</div></div>
         </div>
       </section>
       <hr class="hero-rule">
 
       <section class="kpi-grid" aria-label="Key stats">
-        <div class="kpi-card" data-accent="cyan">
-          <div class="kpi-label">NVDA · July 31</div>
-          <div class="kpi-value" data-odds-kpi="jul-NVDA">44.5%</div>
-        </div>
-        <div class="kpi-card" data-accent="cyan">
-          <div class="kpi-label">NVDA · Aug 31</div>
-          <div class="kpi-value" data-odds-kpi="aug-NVDA">54.0%</div>
-        </div>
-        <div class="kpi-card" data-accent="cyan">
-          <div class="kpi-label">NVDA · Dec 31</div>
-          <div class="kpi-value" data-odds-kpi="dec-NVDA">54.5%</div>
-        </div>
-        <div class="kpi-card" data-accent="slate">
-          <div class="kpi-label">AAPL · Dec 31</div>
-          <div class="kpi-value" data-odds-kpi="dec-AAPL">30.3%</div>
-        </div>
-        <div class="kpi-card" data-accent="peach">
-          <div class="kpi-label">Biggest Model Edge</div>
-          <div class="kpi-value" id="kpi-edge">NVDA-Dec +31.3</div>
-        </div>
-        <div class="kpi-card" data-accent="teal">
-          <div class="kpi-label">July Odds Vol (σ, 1d)</div>
-          <div class="kpi-value">9.3 pts</div>
-        </div>
-        <div class="kpi-card" data-accent="teal">
-          <div class="kpi-label">P(July book ±5pts / wk)</div>
-          <div class="kpi-value">81%</div>
-        </div>
-        <div class="kpi-card" data-accent="slate">
-          <div class="kpi-label">Trading Days to Jul 31</div>
-          <div class="kpi-value" id="kpi-days">5</div>
-        </div>
+        <div class="kpi-card" data-accent="cyan"><div class="kpi-label">AAPL · July 31</div><div class="kpi-value" data-odds-kpi="jul-AAPL">69.8%</div></div>
+        <div class="kpi-card" data-accent="cyan"><div class="kpi-label">AAPL · Aug 31</div><div class="kpi-value" data-odds-kpi="aug-AAPL">47.0%</div></div>
+        <div class="kpi-card" data-accent="cyan"><div class="kpi-label">AAPL · Dec 31</div><div class="kpi-value" data-odds-kpi="dec-AAPL">35.3%</div></div>
+        <div class="kpi-card" data-accent="slate"><div class="kpi-label">NVDA · Dec 31</div><div class="kpi-value" data-odds-kpi="dec-NVDA">51.0%</div></div>
+        <div class="kpi-card" data-accent="peach"><div class="kpi-label">Biggest Model Edge</div><div class="kpi-value" id="kpi-edge">AAPL-Aug −17.0</div></div>
+        <div class="kpi-card" data-accent="teal"><div class="kpi-label">July Odds Vol (σ, 1d)</div><div class="kpi-value">11.3 pts</div></div>
+        <div class="kpi-card" data-accent="teal"><div class="kpi-label">P(July book ±5pts / day)</div><div class="kpi-value">47%</div></div>
+        <div class="kpi-card" data-accent="slate"><div class="kpi-label">Trading Days to Jul 31</div><div class="kpi-value" id="kpi-days">4</div></div>
       </section>
 
       <!-- ===================== TOP TRADES ===================== -->
       <section class="table-section" aria-label="Top recommended trades">
         <div class="table-header-row">
           <h2 class="section-title">Top Trades — Ranked by Conviction, Sized to the Account</h2>
-          <span class="pm-sec-date">Ideas as of Jul 27, 2026 · 8:15 AM PT</span>
+          <span class="pm-sec-date">Ideas as of Jul 27, 2026 · 5:20 PM PT</span>
           <span class="price-note">Tickets sized to the live account ($12,440 positions · ≈$882 cash on chain) against REAL order-book depth, Jul 27 ~15:00 UTC · not financial advice · 4 shown, scroll → for more</span>
         </div>
         <div class="pm-cards">
           <div class="panel-card">
-            <h3 class="panel-title"><span class="pm-badge pm-cheap">#1 · SHORT</span> Buy NVDA-Dec NO @ 46¢ &nbsp;→&nbsp; model-fair NO ≈ 77¢</h3>
-            <div class="pm-idea-date">Idea added Jul 26, 2026</div>
-            <p><strong>The flagship after the flip.</strong> Apple passed NVIDIA intraday Jul 27 ($4.950T vs $4.824T), yet December still hands NVIDIA a 54.5¢ hold probability against a zero-drift fair of 23.2¢ — <strong>+31 pts, the widest gap this page has measured in a month of runs</strong>. To justify 54.5¢ the market needs NVIDIA to out-drift Apple ~0.9%/month for five months <em>after just losing the lead</em>. Deep enough for full size: 1,185 sh offered at the 46¢ NO touch. Risks: NVDA earnings ~Aug 26 and the Oct/Nov rounds are real catalysts, and this is a 5-month capital lockup.</p>
-            <div class="pm-exec"><strong>THE TICKET:</strong> $500 → <strong>1,087 sh at 46¢ flat</strong> (825 more at 47¢ behind it). Add only inside the combined NVDA-short cap — the Jul/Aug/Dec NOs are one correlated bet on the same story.</div>
-          </div>
-          <div class="panel-card">
-            <h3 class="panel-title"><span class="pm-badge pm-cheap">#2 · LONG</span> Buy Apple-Dec YES @ ~32¢ &nbsp;→&nbsp; model fair 54.9¢</h3>
-            <div class="pm-idea-date">Idea added Jul 26, 2026</div>
-            <p>The other side of the same dislocation, kept as its own ticket because the account already runs 5,051 sh from 19¢. This was the long half of the vol-inversion pair; <strong>the GOOGL-Dec NO half retired this run</strong> — post-flip, Alphabet's NO carries under 5 pts of model edge (both executed fills stay scored on the Tracking tab). What remains is simple: the current leader's December contract at 30.3¢. Thin asks — a $300 market order walks to 34.8¢.</p>
-            <div class="pm-exec"><strong>THE TICKET:</strong> $150 at ≤32.2¢ (≈465 sh), or rest $300 at 32¢ for a red day. Invalidation: NVDA retakes a &gt;5% cap lead.</div>
-          </div>
-          <div class="panel-card">
-            <h3 class="panel-title"><span class="pm-badge pm-cheap">#3 · ECHO</span> NVDA "2nd-largest Aug" YES @ 40¢ limit — 5.5 pts behind its twin</h3>
-            <div class="pm-idea-date">Idea added Jul 26, 2026</div>
-            <p>Apple holding #1 through August and NVIDIA finishing #2 are near-identical events, yet this leg trades 38¢ mid against AAPL-Aug's 43.5¢ — a 5.5-pt twin gap (Mispricing #5), fair ≈ 56¢ net of the Alphabet tail. Thin book: 47 sh at 40¢, then a 9-pt gap. The July version of this trade is +334%.</p>
-            <div class="pm-exec"><strong>THE TICKET:</strong> Rest <strong>$150 at 40¢</strong> (375 sh); never cross the gap.</div>
-          </div>
-          <div class="panel-card">
-            <h3 class="panel-title"><span class="pm-badge pm-cheap">#4 · LONG</span> Add Apple-Aug YES @ 46¢ &nbsp;→&nbsp; fair 60¢ (tranches filled: 443 @ 23.1¢, 399 @ 26.7¢)</h3>
-            <div class="pm-idea-date">Idea added Jul 26, 2026</div>
-            <p>The original calendar-kink trade is +68% and, remarkably, still 16 pts cheap — because the curve <em>inverted</em>: August (43.5¢) now trades 11 pts under July (54.4¢), i.e. the market charges less for <em>more</em> time with Apple ahead. Zero-drift says that's backwards (Mispricing #1). NVDA earnings ~Aug 26 is the swing risk.</p>
-            <div class="pm-exec"><strong>THE TICKET:</strong> $300 → <strong>652 sh at 46¢</strong> (440 at the touch, 1,056 at 47¢). Half-off trigger now ≥55¢ per the post-flip rule.</div>
-          </div>
-          <div class="panel-card">
-            <h3 class="panel-title"><span class="pm-badge pm-cheap">#5 · SHORT</span> Add NVDA-Aug NO @ 47¢ &nbsp;→&nbsp; fair NO ≈ 64¢</h3>
-            <div class="pm-idea-date">Idea added Jul 26, 2026</div>
-            <p>Third venue on the August thesis: NVDA-Aug YES at 54.0¢ is 18 pts over fair. The held NO leg went from −24% to +35% in one session; adding is now averaging up with the model still onside. 661 sh available at the 47¢ NO touch.</p>
-            <div class="pm-exec"><strong>THE TICKET:</strong> $250 → 532 sh at 47¢, strictly inside the NVDA-short cap.</div>
-          </div>
-          <div class="panel-card">
-            <h3 class="panel-title"><span class="pm-badge pm-watch">#6 · EVENT</span> The July binary into Thursday's print — AAPL-Jul YES 55¢ / NVDA-Jul NO 56¢, fair ~72</h3>
-            <div class="pm-idea-date">Idea added Jul 26, 2026</div>
-            <p>Five sessions, Apple ahead, and the earnings reaction session <em>is</em> resolution day. Both expressions run ~17 pts cheap to zero-drift fair; both books are thin (303 sh at 54.9¢ on the YES; 23 sh at 56¢ on the NO, gapping to 61¢). A soft Apple quarter Thursday sends both toward 0 — size like the binary it is. The account holds both legs already (+818% and +164%).</p>
-            <div class="pm-exec"><strong>THE TICKET:</strong> ≤$100 AAPL-Jul YES at ≤55¢ and/or rest ≤$150 NVDA-Jul NO at 56¢ — limits only, never market the NO.</div>
-          </div>
-          <div class="panel-card">
-            <h3 class="panel-title"><span class="pm-badge pm-fair">#7 · PROCESS</span> Fade flow moves — but today was information, not flow</h3>
-            <div class="pm-idea-date">Idea added Jul 26, 2026</div>
-            <p>The discipline half of the fade rule earned its keep: this morning's 35-pt July move came <em>with</em> the stock tape (a real cap flip) — exactly the "do not fade" case. The rule stays armed for odds-only moves: rest bids ~10 pts under live model fair, offers ~10 pts above, never through a catalyst (Jul 30, Aug 26). σ(1d) on the July book is now 9.3 pts; ≥5-pt weeks hit 81%.</p>
-            <div class="pm-exec"><strong>THE TICKET:</strong> re-arm after Thursday: $250 of resting bids 10 pts under post-print fair on the August legs. No fades before the print.</div>
-          </div>
-          <div class="panel-card">
-            <h3 class="panel-title"><span class="pm-badge pm-fair">#8 · CONDITIONAL</span> The Thursday-print playbook — orders staged for Apple earnings</h3>
-            <div class="pm-idea-date">Idea added Jul 26, 2026</div>
-            <p>Whatever Thursday's print does, the July and August books will overreact — this series has overshot every catalyst this month, and the flip session added a 35-pt data point. Pre-committed plan, not a position: recompute model fair on the after-hours move, then trade only the gap between the reopened odds and that number.</p>
-            <div class="pm-exec"><strong>THE TICKET:</strong> after the print, rest limits ±8 pts around recomputed fair on AAPL-Aug and NVDA-Aug; cancel everything unfilled 24h later. Zero capital until the market overshoots.</div>
-          </div>
-          <div class="panel-card">
-            <h3 class="panel-title"><span class="pm-badge pm-fair">#9 · CARRY</span> Top up SPY $770-high July NO @ ~98.7¢</h3>
-            <div class="pm-idea-date">Idea added Jul 26, 2026</div>
-            <p>Best verified carry left in the July ladder: ~1.3¢ over four sessions on a strike needing a violent melt-up. Book re-walked: 55 sh at 98.6¢, 600 at 98.7¢. Only if cash isn't needed for #1–#5 fills.</p>
-            <div class="pm-exec"><strong>THE TICKET:</strong> $250 → ≈253 sh @ 98.68¢, ≈+$3.30 by Friday.</div>
-          </div>
-          <div class="panel-card">
-            <h3 class="panel-title"><span class="pm-badge pm-fair">#10 · CARRY, NEW</span> WTI August tail NOs — seeded early, first leg of the roll</h3>
-            <div class="pm-idea-date">Idea added Jul 26, 2026</div>
-            <p>The August WTI ladder went live ahead of schedule with real books on the tails: $150-high NO 99.7¢ × 109, $140-high 99.2¢ × 100, $40-low 99.4¢ × 100. Strikes July never approached; SPY/BTC August remain placeholder shells and wait.</p>
-            <div class="pm-exec"><strong>THE TICKET:</strong> ≤$100 per leg at the quoted touches, ≤$400 total, resting only.</div>
-          </div>
-          <div class="panel-card">
-            <h3 class="panel-title"><span class="pm-badge pm-fair">#11 · CARRY</span> Alphabet "3rd-largest Aug" YES @ 90¢ — deep-book family carry</h3>
+            <h3 class="panel-title"><span class="pm-badge pm-cheap">#1 · BIGGEST EDGE</span> Apple-August YES @ 49¢ — the market still hasn't repriced the crown</h3>
             <div class="pm-idea-date">Idea added Jul 27, 2026</div>
-            <p>Alphabet holds #3 by $1.09T over Microsoft with both leaders 21–24% above it — fair ≈ 92–93¢ against a 90¢ ask with unusual depth (2,450 offered). ~2.2% to Aug 31; the fat risk (Alphabet surging to #2) is a scenario the book is already short elsewhere.</p>
-            <div class="pm-exec"><strong>THE TICKET:</strong> $250 → 278 sh at 90¢ flat.</div>
+            <p>Apple <strong>took #1 today</strong> ($4,948B vs NVIDIA $4,755B, a 4.05% lead after NVDA fell 4.99%) — yet August still prices Apple at just 47¢ to hold it through Aug 31. Zero-drift fair on a 4.05% cushion over 25 trading days is <strong>64%</strong>. That is a 17-point gap, the largest anywhere on this page, and it is the same trade that was #1 yesterday at 23.5¢ — the thesis was right and the market <em>still</em> hasn't finished paying for it.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> Buy <strong>$500 of AAPL-Aug YES</strong> → walks 48¢ × 15, 49¢ × 780 = <strong>1,016 sh @ 49.2¢ avg</strong> (depth is excellent: 2,959 more at 50¢). Pays $1,016 on Aug 31 (+$516). Account already holds 2,388 @ 40.1¢ — this is an add, not a new leg.</div>
+          </div>
+          <div class="panel-card">
+            <h3 class="panel-title"><span class="pm-badge pm-cheap">#2 · THE MIRROR</span> NVIDIA-August NO @ 51¢ — same edge, better book</h3>
+            <div class="pm-idea-date">Idea added Jul 27, 2026</div>
+            <p>The exact complement of #1: if Apple holds, NVDA-Aug YES (49¢) goes to zero. Model-fair NO is <strong>65.5%</strong>, so the NO is 14.5 points cheap — and its book is deeper than Apple's. Owning both AAPL-Aug YES and NVDA-Aug NO is one position expressed twice, so size them as a single risk, not two.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> Buy <strong>$300 NVDA-Aug NO</strong> at 51¢ → ≈588 sh (bid side shows 471 at 48¢ behind you). Account already holds 939 @ 34.1¢ (+49.7%). Prefer this leg over #1 only if Apple's ask thins out.</div>
+          </div>
+          <div class="panel-card">
+            <h3 class="panel-title"><span class="pm-badge pm-cheap">#3 · FOUR-DAY HOLD</span> Apple-July YES @ 70.4¢ — the incumbency discount, priced for a coin-flip that isn't</h3>
+            <div class="pm-idea-date">Idea added Jul 27, 2026</div>
+            <p>Apple needs to keep a 4.05% lead for <strong>4 trading days</strong>. At base vol that is an 84% proposition; even at the elevated 3%/day vol appropriate to an earnings gap it is 74.6%. The market says 69.8¢. Thursday's Apple print lands after the close with the reaction session <em>as</em> resolution day — that is exactly why the discount exists, and exactly why it's still too big.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> Buy <strong>$250 AAPL-Jul YES</strong> → 70.4¢ × 200 then 70.5¢ × 269 = ≈355 sh @ 70.5¢. Max loss $250, pays $355 Friday. Do NOT oversize: one bad print erases it, and the account already rode this from 5.9¢ (+1,080%).</div>
+          </div>
+          <div class="panel-card">
+            <h3 class="panel-title"><span class="pm-badge pm-cheap">#4 · LONG HORIZON</span> Apple-December YES @ 36.4¢ vs 42.1% fair</h3>
+            <div class="pm-idea-date">Idea added Jul 27, 2026</div>
+            <p>The cheapest way to own the new incumbency over a five-month horizon. The edge here (−6.8 pts) is the smallest of the three Apple legs because 110 trading days is a long time for a 4% cushion — but it is the leg where the account has the most conviction already (5,051 sh at 19¢, now +85.8%), and it remains under fair.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> Buy <strong>$500 AAPL-Dec YES</strong> → 36.4¢ × 219, 36.6¢ × 400 = <strong>1,361 sh @ 36.75¢</strong>. Lower priority than #1/#2 — same direction, slower payoff.</div>
+          </div>
+          <div class="panel-card">
+            <h3 class="panel-title"><span class="pm-badge pm-cheap">#5 · CARRY, NEW</span> Alphabet "3rd-largest August" YES @ 89¢ — a 37% cushion priced at 11% risk</h3>
+            <div class="pm-idea-date">Idea added Jul 27, 2026</div>
+            <p>The quiet corner of the ranking complex: Alphabet ($3,976B) sits #3 with Microsoft ($2,890B) <strong>37% behind</strong> — a gap nothing has closed in years. For Alphabet to lose #3 by Aug 31, Microsoft would need a ~37% relative move in 25 sessions, or Alphabet would have to pass Apple/NVIDIA into #2 (7¢ says that too is unlikely). The book pays 11¢ for that tail.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> Buy <strong>$300 GOOGL-3rd-Aug YES</strong> at 89¢ (ask 89¢ × 30, then 2,575 at 90¢) → ≈335 sh, +$37 by Aug 31 ≈ <strong>12.4% in 25 days</strong>. Deep book, both sides — the cleanest carry on the page.</div>
+          </div>
+          <div class="panel-card">
+            <h3 class="panel-title"><span class="pm-badge pm-fair">#6 · PROCESS</span> Fade the flow — but the bar just got much higher</h3>
+            <div class="pm-idea-date">Idea added Jul 27, 2026</div>
+            <p>The velocity table exploded with the flip: July NVDA now shows σ = <strong>11.3 points per day</strong> with a 50-point single-day move, and 47% of days move ≥5 points. Mean reversion still works on this book, but "10 points from fair" is no longer an unusual dislocation — it is a normal Tuesday. Widen the trigger or stop trading the noise.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> Rest bids only <strong>≥18 points</strong> below live model fair (was 10). Nothing qualifies right now. Cancel every resting order before Thursday's print — a 50-point gap would fill all of them at the worst possible price.</div>
+          </div>
+          <div class="panel-card">
+            <h3 class="panel-title"><span class="pm-badge pm-watch">#7 · PARTITION</span> "Second place, August" basket @ 97¢ at the ask — thin but real</h3>
+            <div class="pm-idea-date">Idea added Jul 27, 2026</div>
+            <p>Apple-2nd-Aug (45¢ ask) + NVIDIA-2nd-Aug (52¢ ask) = 97¢ for a basket that pays $1 unless a third company cracks the top two — Alphabet would need +24% relative in 25 days. Mid-to-mid the gap looks like 5¢; at executable prices it is 3¢, or ≈3% over 25 days. Real, but no longer the standout it was at 88.5¢.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> Only if you can get the pair ≤96¢ combined: <strong>$400 split pro-rata</strong>, limits inside the spread. Skip entirely if #1/#5 need the capital — both beat this on return per dollar.</div>
+          </div>
+          <div class="panel-card">
+            <h3 class="panel-title"><span class="pm-badge pm-rich">#8 · THE SHORT SIDE</span> NVIDIA-December NO @ 49¢ — the rich leg of the December book</h3>
+            <div class="pm-idea-date">Idea added Jul 27, 2026</div>
+            <p>December still prices NVIDIA at 51% to reclaim #1 by year-end, versus 42.5% fair on today's 4.05% deficit. The comeback is entirely plausible — NVDA has out-grown Apple for two years — but 51¢ requires <em>positive</em> drift on top of a deficit, which is the market paying for a story rather than a distribution.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> Buy <strong>$300 NVDA-Dec NO</strong> at 49¢ → ≈612 sh (806 bid at 50¢ behind). Account holds 2,865 @ 35.2¢ (+39.1%) — cap total NVDA-short exposure before adding a fourth date.</div>
+          </div>
+          <div class="panel-card">
+            <h3 class="panel-title"><span class="pm-badge pm-watch">#9 · EARNINGS PLAYBOOK</span> Thursday, Jul 30 — the pre-committed plan</h3>
+            <div class="pm-idea-date">Idea added Jul 27, 2026</div>
+            <p>Apple reports after the close Thursday with July resolving Friday. Given σ = 11.3 pts/day <em>before</em> a print, the July book can move 30–50 points on the reaction. Trading the print is a coin flip; trading the <em>overreaction</em> is the edge — and the model recomputes live on this page the moment caps update.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> Pre-commit: no new July risk after Wednesday's close. After the print, recompute fair from the gap and trade only if odds sit &gt;15 pts from it. If Apple gaps up and July prints ≥90¢, sell the remaining July legs into it rather than holding for the last 10¢.</div>
+          </div>
+          <div class="panel-card">
+            <h3 class="panel-title"><span class="pm-badge pm-fair">#10 · CARRY, SEEDED</span> WTI August tail NOs — the first ladder to come alive</h3>
+            <div class="pm-idea-date">Idea added Jul 27, 2026</div>
+            <p>The August roll finally has a live leg: the WTI August event now shows <strong>$65,429 of liquidity</strong> across 21 strikes with two-sided books (vs the August SPY event, still $291 of placeholder quotes). The far tails price sensibly: $150-high NO at 99.7¢, $140-high NO at 99¢, $40-low NO at 99.5¢.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> Modest size only — <strong>≤$100 per leg at the quoted touch</strong> ($140-high NO at 99¢ is the best of them: ≈1% over 34 days). This is parking money, not alpha; it exists to keep the carry ladder alive through the roll.</div>
+          </div>
+          <div class="panel-card">
+            <h3 class="panel-title"><span class="pm-badge pm-fair">#11 · SMALL CHEAP</span> Alphabet-December YES @ 11¢ vs 14.8% fair</h3>
+            <div class="pm-idea-date">Idea added Jul 27, 2026</div>
+            <p>For the first time this week Alphabet screens <em>cheap</em> rather than rich: with Apple now the leader at a 4% cushion, Alphabet's 19.7% deficit over 110 trading days is worth ~14.8%, against 10.5¢ mid / 11¢ ask. The account is short this via the Dec NO leg (319 sh at 90.7¢) — so this is a flag to <strong>stop adding</strong> to that short, not necessarily to flip it.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> No new buy recommended. Standing rule: do not add to GOOGL-Dec NO below 90¢, and close it if Alphabet-Dec YES trades under 8¢.</div>
+          </div>
+          <div class="panel-card">
+            <h3 class="panel-title"><span class="pm-badge pm-watch">#12 · CONDITIONAL</span> If NVIDIA reclaims #1 before Friday — the reversal plan</h3>
+            <div class="pm-idea-date">Idea added Jul 27, 2026</div>
+            <p>NVDA is one 4% session from taking the crown back, and it moved −4.99% today, so the reverse is well inside a day's range. Pre-committing the response prevents improvising into a 50-point gap: the Apple legs would be sold into strength, not held through a re-flip.</p>
+            <div class="pm-exec"><strong>THE TICKET:</strong> Trigger: NVDA cap within 1% of Apple. Then sell half of AAPL-Jul immediately, stop all Apple adds, and re-run the model before touching Aug/Dec — a re-flip changes the sign of every edge on this page, not just the July one.</div>
           </div>
         </div>
         <p class="pm-footnote">11 trades qualify today. Retired this run and scored on the Tracking tab: the Second-Place August basket (legs converged to 93.5¢ — the 11-pt leak closed), the Second-Place July conditional (legs sum ≈97.5¢, trigger dead), and the NVDA-July YES hedge (superseded by the account's own 510-sh NO trim at better prices).</p>
@@ -595,49 +596,49 @@
       <section class="table-section" aria-label="Mispricing monitor">
         <div class="table-header-row">
           <h2 class="section-title">Mispricing Monitor — Where Odds May Not Reflect Reality</h2>
-          <span class="pm-sec-date">Ideas as of Jul 27, 2026 · 8:15 AM PT</span>
+          <span class="pm-sec-date">Ideas as of Jul 27, 2026 · 5:20 PM PT</span>
           <span class="price-note">Ranked by size of dislocation</span>
         </div>
         <div class="pm-cards">
           <div class="panel-card">
-            <h3 class="panel-title"><span class="pm-badge pm-cheap">1 · TERM INVERSION</span> Apple's curve now slopes the wrong way</h3>
-            <div class="pm-idea-date">Idea added Jul 26, 2026</div>
-            <p>Pre-flip the story was a flat kink (July 23.1¢ vs August 23.5¢). Post-flip the curve inverted outright: <strong>July 54.4¢, August 43.5¢, December 30.3¢</strong> — the market pays the new leader <em>less</em> the longer it has to stay ahead, even though Apple banks two more earnings rounds inside the December window. Zero-drift fair runs 71.9 / 60.0 / 54.9. Under any diffusion model a leader's hold-probability cannot fall this fast with horizon; every long-Apple ticket above is a piece of this one dislocation.</p>
+            <h3 class="panel-title"><span class="pm-badge pm-cheap">1 · INCUMBENCY LAG</span> The crown changed hands; the odds haven't caught up</h3>
+            <div class="pm-idea-date">Idea added Jul 27, 2026</div>
+            <p>Apple leads by 4.05% ($193B) and yet trades below model fair on <strong>all three dates</strong> — July 69.8¢ vs 84%, August 47¢ vs 64%, December 35.3¢ vs 42.1%. The market is pricing a coin-flip in August for a company that is currently ahead. Either the book believes NVIDIA's drift is worth 15+ points a month, or it simply hasn't repriced a same-day handover.</p>
           </div>
           <div class="panel-card">
-            <h3 class="panel-title"><span class="pm-badge pm-rich">2 · MOMENTUM PREMIUM</span> What NVIDIA's prices imply now</h3>
-            <div class="pm-idea-date">Idea added Jul 26, 2026</div>
-            <p>Back-solving the drift the market needs to justify NVDA at 44.5 / 54.0 / 54.5: NVIDIA must out-grow Apple by ≈<strong>8.3%/month</strong> to Friday, ≈<strong>2.9%/month</strong> through August, ≈<strong>0.9%/month</strong> through December. The December number is at least a coherent momentum bet; July and August require the flip to reverse almost immediately. If you believe in AI-capex momentum the book is fine and the CHEAP flags shrink; if big-cap relative performance is near a random walk, NVDA NO is overpriced on all three dates. Decide which world you're in before trading this page.</p>
+            <h3 class="panel-title"><span class="pm-badge pm-rich">2 · SYMMETRIC RICHNESS</span> Every NVIDIA leg is rich by the same amount its Apple twin is cheap</h3>
+            <div class="pm-idea-date">Idea added Jul 27, 2026</div>
+            <p>July NVDA +13.5, August +14.5, December +8.5 versus fair — mirror images of the Apple discounts. That symmetry is the tell: this is one repricing lag expressed across six contracts, not six independent opinions. It also means the "buy Apple / buy NVDA NO" pair is not a hedge — it is the same bet twice.</p>
           </div>
           <div class="panel-card">
-            <h3 class="panel-title"><span class="pm-badge pm-watch">3 · FLIP DISCOUNT</span> A leader priced under 50%</h3>
-            <div class="pm-idea-date">Idea added Jul 26, 2026</div>
-            <p>Under <em>any</em> zero-drift volatility, the current #1's month-end hold probability is above 50% — more vol only helps the trailer. August at 43.5¢ and December at 30.3¢ price Apple's lead away entirely: no σ reproduces those numbers without handing NVIDIA positive drift. Caveat honestly stated: the flip is hours old and intraday; the market is partly pricing "this doesn't survive to a month-end close," partly Thursday's binary print.</p>
+            <h3 class="panel-title"><span class="pm-badge pm-cheap">3 · CARRY MISPRICING</span> Alphabet's #3 spot pays 11% for a 37% cushion</h3>
+            <div class="pm-idea-date">Idea added Jul 27, 2026</div>
+            <p>Alphabet-3rd-August trades 89¢. Microsoft trails Alphabet by 37% and Alphabet trails #2 by enough that promotion is priced at 7¢. For the NO to pay, one of two ~35% relative moves must happen inside 25 trading days. Comparable-probability contracts elsewhere on this book trade at 97–99¢. This is the widest gap between structural certainty and price on the page.</p>
           </div>
           <div class="panel-card">
-            <h3 class="panel-title"><span class="pm-badge pm-fair">4 · NO FREE LUNCH</span> The books themselves stay tight</h3>
-            <div class="pm-idea-date">Idea added Jul 26, 2026</div>
-            <p>Sum of YES mids after the repricing: July <strong>99.30¢</strong>, August <strong>100.20¢</strong>, December <strong>98.15¢</strong>. Nothing Dutch-bookable once real spreads are crossed. The edge on this page lives in <em>relative</em> pricing (cards 1–3 and the twin gap below), not in the sums.</p>
+            <h3 class="panel-title"><span class="pm-badge pm-fair">4 · ARB CLOSED</span> The second-place partition gap has largely healed</h3>
+            <div class="pm-idea-date">Idea added Jul 27, 2026</div>
+            <p>Yesterday the "second place" baskets summed to 88.5¢; today July is 95¢ mid / 99¢ at the ask and August 95¢ / 97¢. The dislocation was real and it paid — the account's NVDA-2nd-July leg went 11.9¢ → 67.5¢ (+468%) — but a closed arb should be documented and retired, not re-recommended at worse prices.</p>
           </div>
           <div class="panel-card">
-            <h3 class="panel-title"><span class="pm-badge pm-cheap">5 · ECHO PARITY</span> The August twins split 5.5 pts</h3>
-            <div class="pm-idea-date">Idea added Jul 26, 2026</div>
-            <p>AAPL-Aug 43.5¢ vs NVDA-2nd-Aug 38.0¢ — near-identical events, 5.5 pts apart (the July pair sits 54.4 vs 52.0, inside tolerance). The August gap is the actionable one: buy the cheap twin (Top Trades #3). Divergence beyond ~2 pts between twins is the closest thing to riskless relative value in this family.</p>
+            <h3 class="panel-title"><span class="pm-badge pm-rich">5 · VOLATILITY REGIME BREAK</span> July odds now move 11 points a day — and 50 in one session</h3>
+            <div class="pm-idea-date">Idea added Jul 27, 2026</div>
+            <p>The flip session produced a <strong>50-point single-day move</strong> in July NVIDIA and 48 points in July Apple; σ jumped from 6.9 to 11.3 points/day, with 47% of days now moving ≥5 points. Every position-sizing assumption written before today is stale: a "normal" adverse week in this book is now 20+ points, and stop distances calibrated last week will be hit by noise.</p>
           </div>
           <div class="panel-card">
-            <h3 class="panel-title"><span class="pm-badge pm-fair">6 · PARTITION GAP, CLOSED</span> The 11-pt second-place leak got arbed</h3>
+            <h3 class="panel-title"><span class="pm-badge pm-rich">6 · STALE-FEED ARBITRAGE</span> Polymarket's own gamma feed lags its CLOB by up to two days</h3>
             <div class="pm-idea-date">Idea added Jul 26, 2026</div>
-            <p>Last run, Apple-2nd + NVDA-2nd August summed to ~88.5¢ against a ~92.5¢ parity ceiling. Today: 55.5 + 38.0 = <strong>93.5¢</strong> — the hole closed and the basket idea retired (scored in Tracking → Retired Ideas). The monitor stays on: these cross-book leaks reopen around fast tapes, and today's tape was the fastest yet.</p>
+            <p>Verified repeatedly this week: gamma-api outcomePrices showed values hours-to-days behind the live CLOB — on a day when the July book moved 50 points, anyone pricing off gamma was trading a market that no longer existed. Every number on this page comes from the CLOB directly; that discipline was worth more today than any single trade idea.</p>
           </div>
           <div class="panel-card">
-            <h3 class="panel-title"><span class="pm-badge pm-rich">7 · STALE-FEED RISK</span> Polymarket's gamma feed vs its CLOB</h3>
-            <div class="pm-idea-date">Idea added Jul 26, 2026</div>
-            <p>The gamma feed roughly caught up today — checked legs sat within ~1 pt of CLOB mids — but it ran up to 2 days stale during last week's moves (NVDA-July 87.5¢ on gamma vs 78¢ live), and it is precisely fast tapes when it lags. Every number on this page stays CLOB-sourced; any bot or dashboard pricing off gamma was catastrophically wrong this morning.</p>
+            <h3 class="panel-title"><span class="pm-badge pm-fair">7 · LISTING LAG</span> August WTI is fully seeded while August SPY is still placeholder quotes</h3>
+            <div class="pm-idea-date">Idea added Jul 27, 2026</div>
+            <p>The August WTI event now carries $65,429 of liquidity across 21 two-sided strikes; the August SPY event still shows $291 and every strike parked at 50/50, and August Bitcoin isn't reliably listed at all. Market makers seed these ladders on their own schedule, and the first hours after seeding are historically the cheapest — worth watching daily rather than waiting for month-end.</p>
           </div>
           <div class="panel-card">
-            <h3 class="panel-title"><span class="pm-badge pm-fair">8 · WEEKEND DRIFT</span> The weekend told you nothing about the flip</h3>
+            <h3 class="panel-title"><span class="pm-badge pm-fair">8 · WEEKEND DRIFT</span> Odds trade 24/7; the companies they track do not</h3>
             <div class="pm-idea-date">Idea added Jul 26, 2026</div>
-            <p>The books drifted only ~3 pts across the weekend and re-opened Monday still holding NVDA-July near 79.5¢ — then the equity open repriced it 35 pts in hours. Weekend odds carried almost no information about the largest single-day repricing in the series; treat Sunday quotes as stale until futures open, and never mark positions to weekend mids.</p>
+            <p>These books reprice all weekend on zero fundamental information, then Monday's equity open resolves the guess. With σ now above 11 points/day, weekend drift is no longer a rounding error — it is the single largest source of unanchored price movement in the July book, and the Monday open is its scheduled correction.</p>
           </div>
         </div>
       </section>
@@ -663,26 +664,24 @@
               </tr>
             </thead>
             <tbody id="pm-table-body">
-              <tr class="pm-group"><td colspan="8">JULY 31 — resolves in <span data-days="jul">5</span> trading days · book sum <span data-sum="jul">99.30</span>¢ · APPLE TOOK THE CAP LEAD INTRADAY JUL 27 · Apple earnings land Jul 30 after close, reaction session <em>is</em> resolution day</td></tr>
-              <tr><td class="pm-co">Apple</td><td class="col-num" data-cap="AAPL">4,950.1</td><td class="col-num" data-gap="AAPL">—</td><td class="col-num pm-odds" data-odds="jul-AAPL">54.4%</td><td class="col-num" data-fair="jul-AAPL">71.9%</td><td class="col-num" data-edge="jul-AAPL">−17.5</td><td><span class="pm-badge pm-cheap" data-verdict="jul-AAPL">CHEAP</span></td><td class="col-num">65%</td></tr>
-              <tr><td class="pm-co">NVIDIA</td><td class="col-num" data-cap="NVDA">4,823.5</td><td class="col-num" data-gap="NVDA">2.62%</td><td class="col-num pm-odds" data-odds="jul-NVDA">44.5%</td><td class="col-num" data-fair="jul-NVDA">27.9%</td><td class="col-num" data-edge="jul-NVDA">+16.6</td><td><span class="pm-badge pm-rich" data-verdict="jul-NVDA">RICH</span></td><td class="col-num">81%</td></tr>
-              <tr><td class="pm-co">Alphabet</td><td class="col-num" data-cap="GOOGL">3,986.4</td><td class="col-num" data-gap="GOOGL">24.18%</td><td class="col-num pm-odds" data-odds="jul-GOOGL">0.15%</td><td class="col-num" data-fair="jul-GOOGL">0.00%</td><td class="col-num" data-edge="jul-GOOGL">+0.1</td><td><span class="pm-badge pm-fair" data-verdict="jul-GOOGL">FAIR</span></td><td class="col-num">&lt;1%</td></tr>
-              <tr><td class="pm-co">Microsoft</td><td class="col-num" data-cap="MSFT">2,895.2</td><td class="col-num" data-gap="MSFT">70.97%</td><td class="col-num pm-odds" data-odds="jul-MSFT">0.05%</td><td class="col-num" data-fair="jul-MSFT">0.00%</td><td class="col-num" data-edge="jul-MSFT">+0.1</td><td><span class="pm-badge pm-fair" data-verdict="jul-MSFT">FAIR</span></td><td class="col-num">&lt;1%</td></tr>
-              <tr><td class="pm-co">Amazon</td><td class="col-num" data-cap="AMZN">2,508.6</td><td class="col-num" data-gap="AMZN">97.32%</td><td class="col-num pm-odds" data-odds="jul-AMZN">0.05%</td><td class="col-num" data-fair="jul-AMZN">0.00%</td><td class="col-num" data-edge="jul-AMZN">+0.1</td><td><span class="pm-badge pm-fair" data-verdict="jul-AMZN">FAIR</span></td><td class="col-num">&lt;1%</td></tr>
-
-              <tr class="pm-group"><td colspan="8">AUGUST 31 — <span data-days="aug">26</span> trading days · book sum <span data-sum="aug">100.20</span>¢ · window contains NVDA earnings ≈ Aug 26</td></tr>
-              <tr><td class="pm-co">Apple</td><td class="col-num" data-cap="AAPL2">4,950.1</td><td class="col-num" data-gap="AAPL2">—</td><td class="col-num pm-odds" data-odds="aug-AAPL">43.5%</td><td class="col-num" data-fair="aug-AAPL">60.0%</td><td class="col-num" data-edge="aug-AAPL">−16.5</td><td><span class="pm-badge pm-cheap" data-verdict="aug-AAPL">CHEAP</span></td><td class="col-num">86%</td></tr>
-              <tr><td class="pm-co">NVIDIA</td><td class="col-num" data-cap="NVDA2">4,823.5</td><td class="col-num" data-gap="NVDA2">2.62%</td><td class="col-num pm-odds" data-odds="aug-NVDA">54.0%</td><td class="col-num" data-fair="aug-NVDA">35.6%</td><td class="col-num" data-edge="aug-NVDA">+18.4</td><td><span class="pm-badge pm-rich" data-verdict="aug-NVDA">RICH</span></td><td class="col-num">71%</td></tr>
-              <tr><td class="pm-co">Alphabet</td><td class="col-num" data-cap="GOOGL2">3,986.4</td><td class="col-num" data-gap="GOOGL2">24.18%</td><td class="col-num pm-odds" data-odds="aug-GOOGL">1.7%</td><td class="col-num" data-fair="aug-GOOGL">3.1%</td><td class="col-num" data-edge="aug-GOOGL">−1.4</td><td><span class="pm-badge pm-fair" data-verdict="aug-GOOGL">FAIR</span></td><td class="col-num">~10%</td></tr>
-              <tr><td class="pm-co">Amazon</td><td class="col-num">2,508.6</td><td class="col-num">97.3%</td><td class="col-num pm-odds" data-odds="aug-AMZN">0.15%</td><td class="col-num">0.0%</td><td class="col-num">+0.2</td><td><span class="pm-badge pm-fair">FAIR</span></td><td class="col-num">&lt;1%</td></tr>
-              <tr><td class="pm-co">Broadcom</td><td class="col-num">1,813.9</td><td class="col-num">172.9%</td><td class="col-num pm-odds" data-odds="aug-AVGO">0.20%</td><td class="col-num">0.0%</td><td class="col-num">+0.2</td><td><span class="pm-badge pm-fair">FAIR</span></td><td class="col-num">&lt;1%</td></tr>
-
-              <tr class="pm-group"><td colspan="8">DECEMBER 31 — <span data-days="dec">111</span> trading days · book sum <span data-sum="dec">98.15</span>¢ · Oct + Nov earnings rounds for all three leaders inside the window</td></tr>
-              <tr><td class="pm-co">Apple</td><td class="col-num" data-cap="AAPL3">4,950.1</td><td class="col-num" data-gap="AAPL3">—</td><td class="col-num pm-odds" data-odds="dec-AAPL">30.3%</td><td class="col-num" data-fair="dec-AAPL">54.9%</td><td class="col-num" data-edge="dec-AAPL">−24.6</td><td><span class="pm-badge pm-cheap" data-verdict="dec-AAPL">CHEAP</span></td><td class="col-num">54%</td></tr>
-              <tr><td class="pm-co">NVIDIA</td><td class="col-num" data-cap="NVDA3">4,823.5</td><td class="col-num" data-gap="NVDA3">2.62%</td><td class="col-num pm-odds" data-odds="dec-NVDA">54.5%</td><td class="col-num" data-fair="dec-NVDA">23.2%</td><td class="col-num" data-edge="dec-NVDA">+31.3</td><td><span class="pm-badge pm-rich" data-verdict="dec-NVDA">RICH</span></td><td class="col-num">69%</td></tr>
-              <tr><td class="pm-co">Alphabet</td><td class="col-num" data-cap="GOOGL3">3,986.4</td><td class="col-num" data-gap="GOOGL3">24.18%</td><td class="col-num pm-odds" data-odds="dec-GOOGL">10.5%</td><td class="col-num" data-fair="dec-GOOGL">18.3%</td><td class="col-num" data-edge="dec-GOOGL">−7.8</td><td><span class="pm-badge pm-cheap" data-verdict="dec-GOOGL">CHEAP†</span></td><td class="col-num">12%</td></tr>
-              <tr><td class="pm-co">SpaceX <span class="pm-note">(SPCX, IPO'd Jun 12)</span></td><td class="col-num">≈1,914</td><td class="col-num">158.6%</td><td class="col-num pm-odds" data-odds="dec-SPCX">0.95%</td><td class="col-num">n/a‡</td><td class="col-num">—</td><td><span class="pm-badge pm-watch">WATCH</span></td><td class="col-num">&lt;1%</td></tr>
-              <tr><td class="pm-co">Tesla</td><td class="col-num">1,159.5</td><td class="col-num">326.9%</td><td class="col-num pm-odds" data-odds="dec-TSLA">0.45%</td><td class="col-num">0.0%</td><td class="col-num">+0.5</td><td><span class="pm-badge pm-fair">FAIR</span></td><td class="col-num">&lt;1%</td></tr>
+              <tr class="pm-group"><td colspan="8">JULY 31 — 4 trading days · book sum 99.55¢ · <strong>APPLE NOW LEADS BY 4.05%</strong> · Apple earnings Jul 30 after close, reaction session <em>is</em> resolution day</td></tr>
+              <tr><td class="pm-co">Apple <span class="pm-note">(leader)</span></td><td class="col-num">4,948.3</td><td class="col-num">—</td><td class="col-num pm-odds">69.80%</td><td class="col-num">84.0%</td><td class="col-num">−14.2</td><td><span class="pm-badge pm-cheap">CHEAP</span></td><td class="col-num">38%</td></tr>
+              <tr><td class="pm-co">NVIDIA</td><td class="col-num">4,755.5</td><td class="col-num">−3.90%</td><td class="col-num pm-odds">29.50%</td><td class="col-num">16.0%</td><td class="col-num">+13.5</td><td><span class="pm-badge pm-rich">RICH</span></td><td class="col-num">54%</td></tr>
+              <tr><td class="pm-co">Alphabet</td><td class="col-num">3,975.7</td><td class="col-num">−19.7%</td><td class="col-num pm-odds">0.15%</td><td class="col-num">0.0%</td><td class="col-num">+0.1</td><td><span class="pm-badge pm-fair">FAIR</span></td><td class="col-num">&lt;1%</td></tr>
+              <tr><td class="pm-co">Microsoft</td><td class="col-num">2,890.4</td><td class="col-num">−41.6%</td><td class="col-num pm-odds">0.05%</td><td class="col-num">0.0%</td><td class="col-num">+0.1</td><td><span class="pm-badge pm-fair">FAIR</span></td><td class="col-num">&lt;1%</td></tr>
+              <tr><td class="pm-co">Amazon</td><td class="col-num">2,489.1</td><td class="col-num">−49.7%</td><td class="col-num pm-odds">0.05%</td><td class="col-num">0.0%</td><td class="col-num">+0.1</td><td><span class="pm-badge pm-fair">FAIR</span></td><td class="col-num">&lt;1%</td></tr>
+              <tr class="pm-group"><td colspan="8">AUGUST 31 — 25 trading days · book sum 100.60¢ · window contains NVDA earnings ≈ Aug 26 — the biggest modeled edge on the page</td></tr>
+              <tr><td class="pm-co">Apple <span class="pm-note">(leader)</span></td><td class="col-num">4,948.3</td><td class="col-num">—</td><td class="col-num pm-odds">47.00%</td><td class="col-num">64.0%</td><td class="col-num">−17.0</td><td><span class="pm-badge pm-cheap">CHEAP</span></td><td class="col-num">62%</td></tr>
+              <tr><td class="pm-co">NVIDIA</td><td class="col-num">4,755.5</td><td class="col-num">−3.90%</td><td class="col-num pm-odds">49.00%</td><td class="col-num">34.5%</td><td class="col-num">+14.4</td><td><span class="pm-badge pm-rich">RICH</span></td><td class="col-num">50%</td></tr>
+              <tr><td class="pm-co">Alphabet</td><td class="col-num">3,975.7</td><td class="col-num">−19.7%</td><td class="col-num pm-odds">4.30%</td><td class="col-num">1.4%</td><td class="col-num">+2.9</td><td><span class="pm-badge pm-fair">FAIR</span></td><td class="col-num">~12%</td></tr>
+              <tr><td class="pm-co">Amazon</td><td class="col-num">2,489.1</td><td class="col-num">−49.7%</td><td class="col-num pm-odds">0.15%</td><td class="col-num">0.0%</td><td class="col-num">+0.1</td><td><span class="pm-badge pm-fair">FAIR</span></td><td class="col-num">&lt;1%</td></tr>
+              <tr><td class="pm-co">Broadcom</td><td class="col-num">1,823.2</td><td class="col-num">−63.2%</td><td class="col-num pm-odds">0.15%</td><td class="col-num">0.0%</td><td class="col-num">+0.1</td><td><span class="pm-badge pm-fair">FAIR</span></td><td class="col-num">&lt;1%</td></tr>
+              <tr class="pm-group"><td colspan="8">DECEMBER 31 — 110 trading days · book sum 98.15¢ · Oct + Nov earnings rounds for all three leaders inside the window</td></tr>
+              <tr><td class="pm-co">Apple <span class="pm-note">(leader)</span></td><td class="col-num">4,948.3</td><td class="col-num">—</td><td class="col-num pm-odds">35.30%</td><td class="col-num">42.1%</td><td class="col-num">−6.8</td><td><span class="pm-badge pm-cheap">CHEAP</span></td><td class="col-num">27%</td></tr>
+              <tr><td class="pm-co">NVIDIA</td><td class="col-num">4,755.5</td><td class="col-num">−3.90%</td><td class="col-num pm-odds">51.00%</td><td class="col-num">42.5%</td><td class="col-num">+8.5</td><td><span class="pm-badge pm-rich">RICH</span></td><td class="col-num">27%</td></tr>
+              <tr><td class="pm-co">Alphabet</td><td class="col-num">3,975.7</td><td class="col-num">−19.7%</td><td class="col-num pm-odds">10.50%</td><td class="col-num">14.8%</td><td class="col-num">−4.3</td><td><span class="pm-badge pm-fair">FAIR</span></td><td class="col-num">&lt;5%</td></tr>
+              <tr><td class="pm-co">SpaceX <span class="pm-note">(SPCX)</span></td><td class="col-num">SPCX</td><td class="col-num">−61.3%</td><td class="col-num pm-odds">0.95%</td><td class="col-num">n/a†</td><td class="col-num">—</td><td><span class="pm-badge pm-watch">WATCH</span></td><td class="col-num">&lt;1%</td></tr>
+              <tr><td class="pm-co">Tesla</td><td class="col-num">1,161.3</td><td class="col-num">−76.5%</td><td class="col-num pm-odds">0.40%</td><td class="col-num">0.0%</td><td class="col-num">+0.4</td><td><span class="pm-badge pm-fair">FAIR</span></td><td class="col-num">&lt;1%</td></tr>
             </tbody>
           </table>
         </div>
@@ -719,25 +718,25 @@
               <tr><th>Contract</th><th class="col-num">σ 1-day (pts)</th><th class="col-num">Avg |1-day|</th><th class="col-num">Max 1-day</th><th class="col-num">P(|1d| ≥ 5pts)</th><th class="col-num">P(|1wk| ≥ 10pts)</th><th class="col-num">Max 1-week</th><th class="col-num">Model: pts per ±1% rel. move</th></tr>
             </thead>
             <tbody>
-              <tr><td class="pm-co">NVDA · July</td><td class="col-num">9.3</td><td class="col-num">5.8</td><td class="col-num">35.0</td><td class="col-num">47%</td><td class="col-num">50%</td><td class="col-num">44.0</td><td class="col-num">±7.5</td></tr>
-              <tr><td class="pm-co">AAPL · July</td><td class="col-num">8.9</td><td class="col-num">5.3</td><td class="col-num">32.9</td><td class="col-num">30%</td><td class="col-num">35%</td><td class="col-num">42.9</td><td class="col-num">±7.5</td></tr>
-              <tr><td class="pm-co">NVDA · August</td><td class="col-num">10.1</td><td class="col-num">8.2</td><td class="col-num">18.0</td><td class="col-num">55%</td><td class="col-num">43%</td><td class="col-num">25.5</td><td class="col-num">±3.8</td></tr>
-              <tr><td class="pm-co">AAPL · August</td><td class="col-num">10.7</td><td class="col-num">8.5</td><td class="col-num">19.5</td><td class="col-num">45%</td><td class="col-num">57%</td><td class="col-num">24.5</td><td class="col-num">±3.8</td></tr>
-              <tr><td class="pm-co">NVDA · December</td><td class="col-num">4.0</td><td class="col-num">3.1</td><td class="col-num">10.5</td><td class="col-num">23%</td><td class="col-num">23%</td><td class="col-num">18.5</td><td class="col-num">±1.9</td></tr>
-              <tr><td class="pm-co">AAPL · December</td><td class="col-num">3.9</td><td class="col-num">2.6</td><td class="col-num">11.7</td><td class="col-num">13%</td><td class="col-num">23%</td><td class="col-num">21.5</td><td class="col-num">±1.9</td></tr>
-              <tr><td class="pm-co">GOOGL · December</td><td class="col-num">1.3</td><td class="col-num">0.9</td><td class="col-num">4.0</td><td class="col-num">0%</td><td class="col-num">0%</td><td class="col-num">5.0</td><td class="col-num">±1.3</td></tr>
-              <tr><td class="pm-co">SPCX · December</td><td class="col-num">0.3</td><td class="col-num">0.2</td><td class="col-num">1.2</td><td class="col-num">0%</td><td class="col-num">0%</td><td class="col-num">1.2</td><td class="col-num">—</td></tr>
+              <tr><td class="pm-co">AAPL · July</td><td class="col-num">10.9</td><td class="col-num">5.8</td><td class="col-num">48.3</td><td class="col-num">30%</td><td class="col-num">38%</td><td class="col-num">60.2</td><td class="col-num">±6.8</td></tr>
+              <tr><td class="pm-co">NVDA · July</td><td class="col-num">11.3</td><td class="col-num">6.3</td><td class="col-num">50.0</td><td class="col-num">47%</td><td class="col-num">54%</td><td class="col-num">59.5</td><td class="col-num">±6.8</td></tr>
+              <tr><td class="pm-co">AAPL · August</td><td class="col-num">10.8</td><td class="col-num">8.0</td><td class="col-num">22.0</td><td class="col-num">42%</td><td class="col-num">62%</td><td class="col-num">30.0</td><td class="col-num">±3.8</td></tr>
+              <tr><td class="pm-co">NVDA · August</td><td class="col-num">10.5</td><td class="col-num">7.9</td><td class="col-num">23.0</td><td class="col-num">50%</td><td class="col-num">50%</td><td class="col-num">29.0</td><td class="col-num">±3.8</td></tr>
+              <tr><td class="pm-co">AAPL · December</td><td class="col-num">4.0</td><td class="col-num">2.8</td><td class="col-num">11.7</td><td class="col-num">17%</td><td class="col-num">27%</td><td class="col-num">21.5</td><td class="col-num">±1.9</td></tr>
+              <tr><td class="pm-co">NVDA · December</td><td class="col-num">4.1</td><td class="col-num">3.2</td><td class="col-num">10.5</td><td class="col-num">27%</td><td class="col-num">27%</td><td class="col-num">18.5</td><td class="col-num">±1.9</td></tr>
+              <tr><td class="pm-co">GOOGL · December</td><td class="col-num">1.3</td><td class="col-num">0.8</td><td class="col-num">4.0</td><td class="col-num">0%</td><td class="col-num">0%</td><td class="col-num">5.0</td><td class="col-num">±0.9</td></tr>
+              <tr><td class="pm-co">SPCX · December</td><td class="col-num">0.3</td><td class="col-num">0.2</td><td class="col-num">1.3</td><td class="col-num">0%</td><td class="col-num">0%</td><td class="col-num">1.3</td><td class="col-num">—</td></tr>
             </tbody>
           </table>
         </div>
-        <p class="pm-footnote">Read: the July NVDA contract now averages 5.8 pts of movement per day with a 47% chance of a ≥5-point day. The Jul 27 flip session printed a <strong>35-point single move — the largest in the series</strong> — and stretched the max 1-week swing to 44 points. A typical Apple earnings-day stock move (±4%) still maps to ≈±30 points on the July book: Thursday's print remains, functionally, the July market's expiry event.</p>
+        <p class="pm-footnote">Read: the flip session broke the volatility regime. July NVIDIA moved <strong>50 points in a single day</strong> (77¢ → 29.5¢ across the handover) and July Apple 48 points the other way; σ jumped from 6.9 to 11.3 points/day and 47% of days now move ≥5 points. Every stop distance and position size calibrated before today is stale. The final column is the model's sensitivity: with Apple leading by 4.05%, a further ±1% relative move is worth ±6.8 points on the July book, ±3.8 on August, ±1.9 on December — and Thursday's Apple print routinely produces ±3–5% relative.</p>
       </section>
 
       <!-- ===================== RESOLUTION ===================== -->
       <section class="table-section" aria-label="Resolution sources and risk">
         <div class="table-header-row">
           <h2 class="section-title">Resolution — Who Actually Decides, and Where It Can Go Wrong</h2>
-          <span class="pm-sec-date">Ideas as of Jul 27, 2026 · 8:15 AM PT</span>
+          <span class="pm-sec-date">Ideas as of Jul 27, 2026 · 5:20 PM PT</span>
           <span class="price-note">Risk: LOW if finish &gt;2% apart · ELEVATED if &lt;1.5%</span>
         </div>
         <div class="pm-cards">
@@ -800,9 +799,13 @@
               <tr><td class="col-num">7/27/26</td><td><span class="dir-badge dir-long">BUY</span></td><td class="pm-co pm-mkt" title="Will Alphabet be the largest company in the world by market cap on December 31? (NO)"><a href="https://polymarket.com/event/largest-company-end-of-december-2026" target="_blank" rel="noopener">Alphabet — largest co. Dec 31 · NO<span class="pm-ext">↗</span></a><div class="pm-sub">Second fill of the vol-inversion short half — idea retired later this run (post-flip edge &lt; 5 pts)</div></td><td class="col-num">100</td><td class="col-num">90.0¢</td><td class="col-num">$90.00</td><td class="col-num" data-track-now="8">89.5¢</td><td class="col-num" data-track-delta="8">−$0.50</td><td><span class="pm-badge pm-fair" data-track-verdict="8">FLAT</span></td></tr>
               <tr><td class="col-num">7/27/26</td><td><span class="dir-badge dir-long">BUY</span></td><td class="pm-co pm-mkt" title="Will NVIDIA be the second-largest company in the world by market cap on July 31?"><a href="https://polymarket.com/event/2nd-largest-company-end-of-july-20260624192727948" target="_blank" rel="noopener">NVIDIA — 2nd largest July 31<span class="pm-ext">↗</span></a><div class="pm-sub">The 22¢ resting bid kept dribbling fills through the night</div></td><td class="col-num">54</td><td class="col-num">22.0¢</td><td class="col-num">$11.80</td><td class="col-num" data-track-now="9">52.0¢</td><td class="col-num pm-pos" data-track-delta="9">+$16.08</td><td><span class="pm-badge pm-cheap" data-track-verdict="9">WORKING</span></td></tr>
               <tr><td class="col-num">7/27/26</td><td><span class="dir-badge dir-short">SELL</span></td><td class="pm-co pm-mkt" title="Will NVIDIA be the second-largest company in the world by market cap on July 31?"><a href="https://polymarket.com/event/2nd-largest-company-end-of-july-20260624192727948" target="_blank" rel="noopener">NVIDIA — 2nd largest July 31<span class="pm-ext">↗</span></a><div class="pm-sub">Partial fill of the trim-half rec (80 of ≈790 sh target) into the flip spike</div></td><td class="col-num">80</td><td class="col-num">52.5¢</td><td class="col-num">$41.99</td><td class="col-num" data-track-now="10">52.0¢</td><td class="col-num" data-track-delta="10">+$0.39 saved</td><td><span class="pm-badge pm-fair" data-track-verdict="10">FLAT</span></td></tr>
+                          <tr><td class="col-num">7/27/26</td><td><span class="dir-badge dir-long">BUY</span></td><td class="pm-co pm-mkt" title="Will Alphabet be the largest company in the world by market cap on December 31?"><a href="https://polymarket.com/event/largest-company-end-of-december-2026" target="_blank" rel="noopener">Alphabet — largest co. Dec 31 (NO)<span class="pm-ext">↗</span></a><div class="pm-sub">rec: New Positions #2 @ ~91¢</div></td><td class="col-num">320</td><td class="col-num">90.7¢</td><td class="col-num">$290.10</td><td class="col-num" data-track-now="11">—</td><td class="col-num" data-track-delta="11">—</td><td><span class="pm-badge pm-fair" data-track-verdict="11">PENDING</span></td></tr>
+              <tr><td class="col-num">7/27/26</td><td><span class="dir-badge dir-long">BUY</span></td><td class="pm-co pm-mkt" title="Will Apple be the largest company in the world by market cap on August 31?"><a href="https://polymarket.com/event/largest-company-end-of-august-20260715202138598" target="_blank" rel="noopener">Apple — largest co. Aug 31<span class="pm-ext">↗</span></a><div class="pm-sub">rec: #1 conviction — scaled to 2,388 sh</div></td><td class="col-num">1,020</td><td class="col-num">49.0¢</td><td class="col-num">$510.20</td><td class="col-num" data-track-now="12">—</td><td class="col-num" data-track-delta="12">—</td><td><span class="pm-badge pm-fair" data-track-verdict="12">PENDING</span></td></tr>
+              <tr><td class="col-num">7/27/26</td><td><span class="dir-badge dir-short">TRIM</span></td><td class="pm-co pm-mkt" title="Will NVIDIA be the second-largest company in the world by market cap on July 31?"><a href="https://polymarket.com/event/2nd-largest-company-end-of-july-20260624192727948" target="_blank" rel="noopener">NVIDIA — 2nd largest July 31<span class="pm-ext">↗</span></a><div class="pm-sub">rec: Sells #5 trim — scaled out 52¢→77¢</div></td><td class="col-num">560</td><td class="col-num">64.0¢</td><td class="col-num">$358.40</td><td class="col-num" data-track-now="13">—</td><td class="col-num" data-track-delta="13">—</td><td><span class="pm-badge pm-fair" data-track-verdict="13">PENDING</span></td></tr>
+              <tr><td class="col-num">7/27/26</td><td><span class="dir-badge dir-short">TRIM</span></td><td class="pm-co pm-mkt" title="Will NVIDIA be the largest company in the world by market cap on July 31?"><a href="https://polymarket.com/event/largest-company-end-of-july-20260624192302727" target="_blank" rel="noopener">NVIDIA — largest co. July 31 (NO)<span class="pm-ext">↗</span></a><div class="pm-sub">rec: Sells #6 trim — sold 76¢–83¢</div></td><td class="col-num">500</td><td class="col-num">80.5¢</td><td class="col-num">$402.50</td><td class="col-num" data-track-now="14">—</td><td class="col-num" data-track-delta="14">—</td><td><span class="pm-badge pm-fair" data-track-verdict="14">PENDING</span></td></tr>
             </tbody>
             <tfoot>
-              <tr class="pm-track-total"><td>TOTAL</td><td></td><td>11 decisions (2 voided excluded)</td><td class="col-num">15,122</td><td class="col-num">—</td><td class="col-num">+$484.13 / −$561.73</td><td class="col-num">—</td><td class="col-num pm-pos" id="track-total-delta">+$279.77 net</td><td><span class="pm-badge pm-cheap" id="track-total-verdict">NET POSITIVE</span></td></tr>
+              <tr class="pm-track-total"><td>TOTAL</td><td></td><td>15 decisions</td><td class="col-num">—</td><td class="col-num">—</td><td class="col-num">$3,432.85</td><td class="col-num">—</td><td class="col-num" id="track-total-delta">—</td><td><span class="pm-badge pm-fair" id="track-total-verdict">PENDING</span></td></tr>
             </tfoot>
           </table>
         </div>
@@ -845,12 +848,11 @@
       <span>Leadsure · Polymarket Watch — odds data © Polymarket CLOB API · caps via Finnhub</span>
     </footer>
   </div>
-    <script>
+      <script>
     var _cb = Date.now();
     document.write('<scr'+'ipt src="./polymarket.js?v='+_cb+'"></scr'+'ipt>');
   </script>
 </body>
-
 <script>
     window.addEventListener('pageshow', function(e) { if (e.persisted) window.location.reload(); });
   </script>
