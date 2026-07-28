@@ -2,14 +2,14 @@
 (function () {
   'use strict';
 
-  /* ---------- baked odds history (daily CLOB closes, Jun 27 – Jul 26 2026) ---------- */
+  /* ---------- baked odds history (daily CLOB closes, Jun 27 – Jul 27 2026 + live) ---------- */
   var H = {
-    julNVDA: [0.92,0.925,0.905,0.905,0.895,0.84,0.815,0.815,0.825,0.795,0.805,0.81,0.86,0.915,0.915,0.92,0.855,0.915,0.845,0.715,0.55,0.53,0.545,0.68,0.745,0.885,0.89,0.715,0.765,0.795,0.445,0.265],
-    julAAPL: [0.043,0.043,0.0435,0.0345,0.0385,0.1205,0.121,0.126,0.1245,0.118,0.112,0.1085,0.092,0.0645,0.0575,0.0655,0.113,0.06,0.1045,0.2675,0.415,0.441,0.411,0.286,0.241,0.1155,0.0965,0.2795,0.2235,0.2155,0.544,0.7255],
-    decNVDA: [0.725,0.725,0.62,0.645,0.655,0.605,0.585,0.605,0.615,0.595,0.635,0.655,0.655,0.685,0.695,0.705,0.665,0.72,0.655,0.615,0.52,0.555,0.545,0.605,0.61,0.615,0.645,0.625,0.565,0.575,0.545,0.485],
-    decAAPL: [0.0815,0.082,0.0965,0.095,0.108,0.1475,0.143,0.132,0.158,0.1555,0.1705,0.1265,0.1265,0.1405,0.1305,0.13,0.1705,0.1285,0.143,0.2285,0.345,0.328,0.3305,0.235,0.2025,0.1985,0.1985,0.2565,0.2995,0.281,0.303,0.3825],
-    decGOOGL: [0.105,0.115,0.155,0.165,0.16,0.155,0.165,0.175,0.165,0.165,0.165,0.155,0.155,0.145,0.145,0.145,0.12,0.105,0.12,0.125,0.105,0.105,0.105,0.105,0.125,0.105,0.105,0.105,0.095,0.095,0.105,0.125],
-    decSPCX: [0.033,0.0395,0.0355,0.023,0.0225,0.0215,0.027,0.027,0.0235,0.0215,0.0205,0.022,0.0215,0.0185,0.02,0.019,0.0145,0.0135,0.0125,0.012,0.0085,0.0085,0.0085,0.0085,0.009,0.0095,0.0115,0.0125,0.015,0.0105,0.0095,0.017]
+    julNVDA: [0.925,0.925,0.905,0.905,0.895,0.84,0.815,0.815,0.825,0.795,0.805,0.81,0.86,0.915,0.915,0.92,0.855,0.915,0.845,0.715,0.55,0.53,0.545,0.68,0.745,0.885,0.89,0.715,0.765,0.795,0.295,0.255],
+    julAAPL: [0.043,0.043,0.0435,0.0345,0.0385,0.1205,0.121,0.126,0.1245,0.118,0.112,0.1085,0.092,0.0645,0.0575,0.0655,0.113,0.06,0.1045,0.2675,0.415,0.441,0.411,0.286,0.241,0.1155,0.0965,0.2795,0.2235,0.2155,0.698,0.7475],
+    decNVDA: [0.725,0.725,0.62,0.645,0.655,0.605,0.585,0.605,0.615,0.595,0.635,0.655,0.655,0.685,0.695,0.705,0.665,0.72,0.655,0.615,0.52,0.555,0.545,0.605,0.61,0.615,0.645,0.625,0.565,0.575,0.51,0.485],
+    decAAPL: [0.082,0.082,0.0965,0.095,0.108,0.1475,0.143,0.132,0.158,0.1555,0.1705,0.1265,0.1265,0.1405,0.1305,0.13,0.1705,0.1285,0.143,0.2285,0.345,0.328,0.3305,0.235,0.2025,0.1985,0.1985,0.2565,0.2995,0.281,0.353,0.362],
+    decGOOGL: [0.115,0.115,0.155,0.165,0.16,0.155,0.165,0.175,0.165,0.165,0.165,0.155,0.155,0.145,0.145,0.145,0.12,0.105,0.12,0.125,0.105,0.105,0.105,0.105,0.125,0.105,0.105,0.105,0.095,0.095,0.105,0.125],
+    decSPCX: [0.0395,0.0395,0.0355,0.023,0.0225,0.0215,0.027,0.027,0.0235,0.0215,0.0205,0.022,0.0215,0.0185,0.02,0.019,0.0145,0.0135,0.0125,0.012,0.0085,0.0085,0.0085,0.0085,0.009,0.0095,0.0115,0.0125,0.015,0.0105,0.0095,0.017]
   };
   var LABELS = (function () {
     var out = [], d = new Date(Date.UTC(2026, 5, 27));
@@ -127,16 +127,23 @@
           setText('#hero-chal-cap', '$' + (caps[chal] / 1000).toFixed(3) + 'T');
           setText('#hero-gap', ((caps[lead] / caps[chal] - 1) * 100).toFixed(2) + '% \u00B7 $' + Math.round(caps[lead] - caps[chal]) + 'B');
         }
-        /* model fair + edge per date for AAPL & GOOGL vs NVDA */
+        /* model fair + edge per date — LEADER-AWARE: key off whichever company is largest today.
+           Challenger fair = P(chal ends above leader); leader fair = 100 − Σ challenger fairs − small legs. */
         var edgeList = [];
+        var RACE = ['AAPL', 'NVDA', 'GOOGL', 'MSFT', 'AMZN'];
+        var leadSym = RACE.filter(function (s) { return caps[s]; }).reduce(function (a, b) { return caps[a] >= caps[b] ? a : b; });
         ['jul', 'aug', 'dec'].forEach(function (ev) {
           var td = tradingDaysTo(DEADLINES[ev]);
           setText('[data-days="' + ev + '"]', Math.round(td));
-          ['AAPL', 'GOOGL', 'MSFT', 'AMZN'].forEach(function (sym) {
+          var sumCh = 0;
+          RACE.forEach(function (sym) { if (sym !== leadSym && caps[sym]) sumCh += fair(caps[sym], caps[leadSym], td) * 100; });
+          RACE.forEach(function (sym) {
             if (!caps[sym]) return;
             var key = ev + '-' + sym;
             if (!(key in TOKENS)) return;
-            var f = fair(caps[sym], caps.NVDA, td) * 100;
+            var f = sym === leadSym
+              ? 100 - sumCh - (ev === 'jul' ? 0.25 : ev === 'aug' ? 1.25 : 3.65)
+              : fair(caps[sym], caps[leadSym], td) * 100;
             setText('[data-fair="' + key + '"]', (f >= 1 ? f.toFixed(1) : f.toFixed(2)) + '%');
             if (!isNaN(mids[key])) {
               var edge = mids[key] * 100 - f;
@@ -149,16 +156,6 @@
               }
             }
           });
-          /* NVDA fair = 1 - sum of challenger fairs (AAPL + GOOGL dominate) */
-          if (caps.AAPL && caps.GOOGL && !isNaN(mids[ev + '-NVDA'])) {
-            var fN = 100 - fair(caps.AAPL, caps.NVDA, td) * 100 - fair(caps.GOOGL, caps.NVDA, td) * 100 - (ev === 'jul' ? 0.25 : ev === 'aug' ? 1.25 : 3.65);
-            setText('[data-fair="' + ev + '-NVDA"]', fN.toFixed(1) + '%');
-            var edgeN = mids[ev + '-NVDA'] * 100 - fN;
-            setText('[data-edge="' + ev + '-NVDA"]', (edgeN >= 0 ? '+' : '−') + Math.abs(edgeN).toFixed(1));
-            var vN = $('[data-verdict="' + ev + '-NVDA"]');
-            if (vN) { vN.className = 'pm-badge ' + (edgeN <= -5 ? 'pm-cheap' : edgeN >= 5 ? 'pm-rich' : 'pm-fair'); vN.textContent = edgeN <= -5 ? 'CHEAP' : edgeN >= 5 ? 'RICH' : 'FAIR'; }
-            edgeList.push({ key: ev + '-NVDA', edge: edgeN });
-          }
         });
         if (edgeList.length) {
           edgeList.sort(function (x, y) { return Math.abs(y.edge) - Math.abs(x.edge); });
@@ -170,8 +167,8 @@
         var sums = { jul: 0.0015, aug: 0.0065, dec: 0.0145 }; /* untracked small legs, baked */
         Object.keys(mids).forEach(function (k) { if (!isNaN(mids[k])) sums[k.slice(0, 3)] += mids[k]; });
         ['jul', 'aug', 'dec'].forEach(function (ev) { setText('[data-sum="' + ev + '"]', (sums[ev] * 100).toFixed(2)); });
-        /* hero NVDA odds */
-        if (!isNaN(mids['jul-NVDA'])) setText('#hero-nvda-odds', (mids['jul-NVDA'] * 100).toFixed(0) + '% / ' + (mids['aug-NVDA'] * 100).toFixed(0) + '% / ' + (mids['dec-NVDA'] * 100).toFixed(1) + '%');
+        /* hero AAPL odds (label reads "AAPL Odds Jul / Aug / Dec") */
+        if (!isNaN(mids['jul-AAPL'])) setText('#hero-nvda-odds', (mids['jul-AAPL'] * 100).toFixed(0) + '% / ' + (mids['aug-AAPL'] * 100).toFixed(0) + '% / ' + (mids['dec-AAPL'] * 100).toFixed(1) + '%');
       }
       lastTick = Date.now();
       var st = $('#sync-time');
@@ -180,8 +177,8 @@
       fmtAgo();
     }).catch(function () {
       setPills(false);
-      $('#last-updated').textContent = 'Snapshot · Jul 28, 2026 00:20 UTC (live APIs unreachable)';
-      var st = $('#sync-time'); if (st) st.textContent = 'Jul 28, 2026 00:20 UTC (baked snapshot — live APIs unreachable)';
+      $('#last-updated').textContent = 'Snapshot · Jul 28, 2026 16:40 UTC (live APIs unreachable)';
+      var st = $('#sync-time'); if (st) st.textContent = 'Jul 28, 2026 16:40 UTC (baked snapshot — live APIs unreachable)';
     });
   }
 
@@ -467,10 +464,13 @@
     { act: 'BUY', tok: '5823805802875099304203116182652199693089526522530469365767529374822548212673', sh: 353.0, px: 0.7925 },
     { act: 'BUY', tok: '73927186257882802877663040737479279251981612783026680169571204930062095676076', sh: 36391.0, px: 0.0032 },
     { act: 'BUY', tok: '89706022921501149384847021353587496883277465141816802927673604440172434177565', sh: 484.0, px: 0.1006 },
-    { act: 'SELL', tok: '', sh: 699.0, px: 0.9965 },
+    { act: 'SELL', tok: '11122870307832213829937141164621963143556849554535072384599725110500454191759', sh: 699.0, px: 0.9965 },
     { act: 'SELL', tok: '54398790535896757998414933803834478150495648270732685658889540342278545164806', sh: 320.0, px: 0.8861 },
     { act: 'SELL', tok: '79162765079028727202719931536645059951675772849915793147357039418708378144838', sh: 201.0, px: 0.862 },
-    { act: 'SELL', tok: '5823805802875099304203116182652199693089526522530469365767529374822548212673', sh: 656.0, px: 0.7433 }
+    { act: 'SELL', tok: '5823805802875099304203116182652199693089526522530469365767529374822548212673', sh: 656.0, px: 0.7433 },
+    { act: 'SELL', tok: '42047893977785728528565456844873223397500118970867834014836006695082853076308', sh: 2097.19, px: 0.4579 },
+    { act: 'SELL', tok: '62131357779217648903043004312290004169149177020747768355527511163218119967855', sh: 565.71, px: 0.5080 },
+    { act: 'SELL', tok: '9875273331604434310973374077817381730908757452538191940842519381772366848', sh: 1262.87, px: 0.3540 }
   ];
   function refreshTracking() {
     Promise.all(TRACKED.map(function (t, i) {
@@ -526,7 +526,12 @@
     { tok: '', side: 'BUY', retPx: 0 },
     { tok: '11728583497514710574356365513249856989304427730091039531942765980605070477300', side: 'BUY', retPx: 0.445 },
     { tok: '76489196366809276678703167395741335062889477749411701459047587268289649419879', side: 'BUY', retPx: 0.979 },
-    { tok: '79162765079028727202719931536645059951675772849915793147357039418708378144838', side: 'BUY', retPx: 0.795 }
+    { tok: '79162765079028727202719931536645059951675772849915793147357039418708378144838', side: 'BUY', retPx: 0.795 },
+    { tok: '9875273331604434310973374077817381730908757452538191940842519381772366848', side: 'BUY', retPx: 0.362 }, /* Apple-Dec add — edge < 5 pts post-trim */
+    { tok: '', side: 'SELL', retPx: 0 }, /* WTI $80-low July NO — resolved YES to zero before the salvage sell; unscoreable */
+    { tok: '62174033562645769120246190297623781610533939632822008848983822335275512869792', side: 'SELL', retPx: 0.9485 }, /* James Wood RBI NO sell — thesis reversed */
+    { tok: '', side: 'BUY', retPx: 0 }, /* MSFT-3rd-Aug NO — 99.8¢ indicative, dominated; QUOTE PENDING failed twice */
+    { tok: '11728583497514710574356365513249856989304427730091039531942765980605070477300', side: 'BUY', retPx: 0.255 } /* NVDA-July YES re-flip hedge — rich vs model, July book closed */
   ]; /* {tok, side ('BUY'|'SELL'), retPx} — indices align with #retired-body rows' data-retired-* attrs */
   function refreshRetired() {
     RETIRED.forEach(function (t, i) {
