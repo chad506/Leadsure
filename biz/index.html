@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>WA Service Businesses Under $200K — Top 10 Ranked | Leadsure</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lato:wght@300;400;700;900&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+<script>
+    var _build = Date.now();
+    document.write('<link rel="stylesheet" href="../base.css?v='+_build+'">');
+    document.write('<link rel="stylesheet" href="../style.css?v='+_build+'">');
+    document.write('<link rel="stylesheet" href="../dashboard.css?v='+_build+'">');
+  </script>
+<style>
+/* ==== biz page-specific additions ==== */
+.biz-table th, .biz-table td {
+  padding: 8px 10px; text-align: left; white-space: nowrap;
+  border-bottom: 1px solid var(--color-divider);
+  font-size: var(--text-xs);
+}
+.biz-table thead { position: sticky; top: 0; z-index: 2; background: var(--color-table-header, var(--color-surface-2)); }
+.biz-table th {
+  font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em;
+  color: var(--color-primary); font-size: 0.65rem;
+}
+[data-theme="light"] .biz-table th { color: var(--color-text); }
+.biz-table td.col-num, .biz-table th.col-num { text-align: right; font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+.biz-table tbody tr { transition: background var(--transition-interactive); border-left: 3px solid transparent; }
+.biz-table tbody tr:nth-child(even) { background: var(--color-surface-2); }
+.biz-table tbody tr:hover { background: var(--color-surface-dynamic); }
+.biz-name { font-weight: 700; }
+.biz-name a { color: var(--color-text); text-decoration: none; }
+.biz-name a:hover { color: var(--color-primary); }
+.biz-rank { font-family: var(--font-display); font-weight: 700; color: var(--color-primary); }
+.gain { color: var(--color-gain); font-weight: 700; }
+.loss { color: var(--color-loss); font-weight: 700; }
+.warn { color: var(--color-warning); font-weight: 700; }
+.muted { color: var(--color-text-muted); }
+.biz-badge {
+  display: inline-block; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.06em;
+  padding: 2px 8px; border-radius: var(--radius-full); border: 1px solid transparent; white-space: nowrap;
+}
+.b-new   { background: var(--color-gain-bg); color: var(--color-gain); border-color: var(--color-gain-border); }
+.b-stale { background: var(--color-loss-bg); color: var(--color-loss); border-color: var(--color-loss-border); }
+.b-mid   { background: var(--color-warning-bg); color: var(--color-warning); border-color: var(--color-warning); }
+.b-sold  { background: var(--color-gain-bg); color: var(--color-gain); border-color: var(--color-gain-border); }
+.b-bench { background: var(--color-accent-slate); color: var(--color-text-muted); border-color: var(--color-border); }
+.b-active{ background: var(--color-warning-bg); color: var(--color-warning); border-color: var(--color-warning); }
+.b-score { background: rgba(0,212,255,0.10); color: var(--color-primary); border-color: rgba(0,212,255,0.35); font-size: 0.68rem; }
+.review-section { margin-block: var(--space-6); }
+.review-card {
+  background: var(--color-surface); border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg); padding: var(--space-5); box-shadow: var(--shadow-sm);
+}
+.review-head { display: flex; align-items: baseline; gap: var(--space-3); flex-wrap: wrap; margin-bottom: var(--space-2); }
+.review-head .rank-no {
+  font-family: var(--font-display); font-size: var(--text-xl); font-weight: 700; color: var(--color-primary);
+}
+.review-head h3 { font-family: var(--font-display); font-size: var(--text-lg); color: var(--color-text); }
+.review-head .loc { color: var(--color-text-muted); font-size: var(--text-xs); }
+.review-metrics {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(128px, 1fr));
+  gap: var(--space-2); margin-block: var(--space-3);
+}
+.rm { background: var(--color-surface-2); border: 1px solid var(--color-divider); border-radius: var(--radius-md); padding: var(--space-2) var(--space-3); }
+.rm-label { font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-text-muted); }
+.rm-value { font-family: var(--font-mono); font-variant-numeric: tabular-nums; font-weight: 700; font-size: var(--text-base); color: var(--color-text); }
+.review-card p { max-width: none; font-size: var(--text-sm); line-height: 1.6; margin-block: var(--space-2); color: var(--color-text); }
+.review-card p.crit { color: var(--color-text-muted); font-size: var(--text-xs); }
+.comps-title { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-text-muted); margin-top: var(--space-4); margin-bottom: var(--space-1); }
+.listing-link { font-size: var(--text-xs); font-weight: 700; color: var(--color-primary); text-decoration: none; }
+.listing-link:hover { text-decoration: underline; }
+.biz-footnote { margin-top: var(--space-3); color: var(--color-text-muted); font-size: var(--text-xs); max-width: 110ch; }
+.fund-subtitle { white-space: normal; max-width: 115ch; }
+.table-section { margin-block: var(--space-4); }
+.date-pill {
+  font-size: 0.6rem; font-weight: 700; letter-spacing: 0.08em;
+  padding: 2px 8px; border-radius: var(--radius-full);
+  background: rgba(0,212,255,0.10); color: var(--color-primary); border: 1px solid rgba(0,212,255,0.35);
+}
+@media (max-width: 700px) { .review-metrics { grid-template-columns: repeat(2, 1fr); } }
+</style>
+</head>
+<body>
+  <div class="dashboard">
+    <header class="dash-header">
+      <div class="header-left">
+        <svg class="logo" width="32" height="32" viewBox="0 0 32 32" fill="none" aria-label="Leadsure WA Businesses">
+          <rect x="2" y="14" width="12" height="2" rx="1" fill="currentColor" opacity="0.2"/>
+          <rect x="18" y="14" width="12" height="2" rx="1" fill="currentColor" opacity="0.2"/>
+          <path d="M8 12V6" stroke="var(--color-gain)" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M5 9L8 6L11 9" stroke="var(--color-gain)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M24 18V24" stroke="var(--color-loss)" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M21 21L24 24L27 21" stroke="var(--color-loss)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="16" cy="15" r="2.5" fill="var(--color-primary)" opacity="0.6"/>
+        </svg>
+        <div class="header-title-group">
+          <h1 class="header-title">WA Businesses Under $200K</h1>
+          <div class="header-meta">
+            <span class="status-dot"></span>
+            <span>Shown: July 28, 2026</span>
+            <span class="date-pill">SNAPSHOT</span>
+          </div>
+        </div>
+      </div>
+      <div class="header-right">
+        <button class="btn-icon" id="theme-toggle" aria-label="Switch theme">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <nav class="page-nav" aria-label="Page navigation">
+      <a href="../index.html" class="nav-tab">Home</a>
+      <a href="#" class="nav-tab active">WA Service Businesses</a>
+      <a href="#reviews" class="nav-tab">The 10 Reviews</a>
+    </nav>
+
+    <main class="dash-main" id="main-content">
+      <div class="fund-header">
+        <h2 class="fund-title">Service Businesses for Sale — Washington State</h2>
+        <p class="fund-subtitle">Top 10 service businesses listed under $200,000, screened from 40 active Washington listings on BizBuySell as of <strong>July 28, 2026</strong>. Ranked on five investor criteria: cash flow, limited owner involvement, barrier to entry, repeat customers, and low/no inventory (each scored 1&ndash;5, max 25). All figures are seller-reported and unverified &mdash; confirm with tax returns and P&amp;Ls before making an offer.</p>
+      </div>
+
+      <section class="account-hero" aria-label="Screen summary">
+        <div class="account-hero-primary">
+          <div class="account-hero-label">Date Shown</div>
+          <div class="account-hero-value">Jul 28, 2026</div>
+        </div>
+        <div class="account-hero-divider"></div>
+        <div class="account-hero-secondary">
+          <div class="account-hero-stat">
+            <div class="account-hero-stat-label">Listings Screened</div>
+            <div class="account-hero-stat-value">40</div>
+          </div>
+          <div class="account-hero-stat">
+            <div class="account-hero-stat-label">Median Ask (Top 10)</div>
+            <div class="account-hero-stat-value">$150,000</div>
+          </div>
+          <div class="account-hero-stat">
+            <div class="account-hero-stat-label">Median Cash Flow (Top 10)</div>
+            <div class="account-hero-stat-value gain">$83,813</div>
+          </div>
+          <div class="account-hero-stat">
+            <div class="account-hero-stat-label">Avg Price / Cash Flow</div>
+            <div class="account-hero-stat-value">1.59x</div>
+          </div>
+        </div>
+      </section>
+      <hr class="hero-rule">
+
+      <section class="kpi-grid" aria-label="Market benchmarks">
+        <div class="kpi-card" data-accent="cyan">
+          <div class="kpi-label">US Service Biz — Median Sold Price</div>
+          <div class="kpi-value">$350,000</div>
+        </div>
+        <div class="kpi-card" data-accent="cyan">
+          <div class="kpi-label">Median Days on Market (Sold)</div>
+          <div class="kpi-value">170</div>
+        </div>
+        <div class="kpi-card" data-accent="teal">
+          <div class="kpi-label">Sale-to-Ask Ratio (2025)</div>
+          <div class="kpi-value">0.93</div>
+        </div>
+        <div class="kpi-card" data-accent="teal">
+          <div class="kpi-label">Avg Sold SDE Multiple</div>
+          <div class="kpi-value">2.58x</div>
+        </div>
+        <div class="kpi-card" data-accent="slate">
+          <div class="kpi-label">WA Service — Median Ask</div>
+          <div class="kpi-value">$373,718</div>
+        </div>
+        <div class="kpi-card" data-accent="slate">
+          <div class="kpi-label">WA Service — Median SDE</div>
+          <div class="kpi-value">$122,558</div>
+        </div>
+        <div class="kpi-card" data-accent="sage">
+          <div class="kpi-label">Top 10 Avg Ask / SDE</div>
+          <div class="kpi-value gain">1.59x</div>
+        </div>
+        <div class="kpi-card" data-accent="sage">
+          <div class="kpi-label">Routes — Median DOM (Sold)</div>
+          <div class="kpi-value">112</div>
+        </div>
+      </section>
+
+      <section class="table-section" aria-label="Top 10 rankings">
+        <div class="table-header-row">
+          <h2 class="section-title">Top 10 — Ranked</h2>
+          <span class="price-note">Shown Jul 28, 2026 &middot; all data seller-reported</span>
+        </div>
+        <div class="table-wrapper">
+          <table class="biz-table" id="rank-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Business</th>
+                <th>Location</th>
+                <th>Category</th>
+                <th class="col-num">Asking</th>
+                <th class="col-num">Cash Flow (SDE)</th>
+                <th class="col-num">Revenue</th>
+                <th class="col-num">Ask/SDE</th>
+                <th class="col-num">SDE Margin</th>
+                <th>Est. First Listed*</th>
+                <th class="col-num">Est. Days Listed*</th>
+                <th>Score</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="biz-rank">1</td>
+                <td class="biz-name"><a href="https://www.bizbuysell.com/business-opportunity/mission-s-tortilla-route-issaquah-wa/2349385/" target="_blank" rel="noopener">Mission's Tortilla Route (9 accts)</a></td>
+                <td>Issaquah</td>
+                <td>Route</td>
+                <td class="col-num">$150,000</td>
+                <td class="col-num gain">$165,021</td>
+                <td class="col-num">$1,105,260</td>
+                <td class="col-num gain">0.91x</td>
+                <td class="col-num">14.9%</td>
+                <td class="muted">~Apr 2025</td>
+                <td class="col-num"><span class="biz-badge b-stale">~475</span></td>
+                <td><span class="biz-badge b-score">21/25</span></td>
+              </tr>
+              <tr>
+                <td class="biz-rank">2</td>
+                <td class="biz-name"><a href="https://www.bizbuysell.com/business-opportunity/mission-s-tortilla-route-snoqualmie-wa/2398568/" target="_blank" rel="noopener">Mission's Tortilla Route (5 accts)</a></td>
+                <td>Snoqualmie</td>
+                <td>Route</td>
+                <td class="col-num">$70,000</td>
+                <td class="col-num gain">$74,126</td>
+                <td class="col-num">$511,576</td>
+                <td class="col-num gain">0.94x</td>
+                <td class="col-num">14.5%</td>
+                <td class="muted">~Aug 2025</td>
+                <td class="col-num"><span class="biz-badge b-stale">~345</span></td>
+                <td><span class="biz-badge b-score">20/25</span></td>
+              </tr>
+              <tr>
+                <td class="biz-rank">3</td>
+                <td class="biz-name"><a href="https://www.bizbuysell.com/business-opportunity/established-and-profitable-cleaning-business/2529778/" target="_blank" rel="noopener">Dryer Vent Cleaning &amp; Maintenance</a></td>
+                <td>Lynnwood</td>
+                <td>Home Services</td>
+                <td class="col-num">$67,000</td>
+                <td class="col-num gain">$59,000</td>
+                <td class="col-num">$98,784</td>
+                <td class="col-num gain">1.14x</td>
+                <td class="col-num gain">59.7%</td>
+                <td class="muted">~Jul 2026</td>
+                <td class="col-num"><span class="biz-badge b-new">~10</span></td>
+                <td><span class="biz-badge b-score">20/25</span></td>
+              </tr>
+              <tr>
+                <td class="biz-rank">4</td>
+                <td class="biz-name"><a href="https://www.bizbuysell.com/business-opportunity/business-to-business-ctr-design-and-print-biz-repeat-client/2523584/" target="_blank" rel="noopener">Minuteman Press — Design &amp; Print</a></td>
+                <td>Grays Harbor Co.</td>
+                <td>B2B Print</td>
+                <td class="col-num">$199,000</td>
+                <td class="col-num gain">$111,000</td>
+                <td class="col-num muted">n/d</td>
+                <td class="col-num">1.79x</td>
+                <td class="col-num muted">n/d</td>
+                <td class="muted">~Jul 2026</td>
+                <td class="col-num"><span class="biz-badge b-new">~27</span></td>
+                <td><span class="biz-badge b-score">19/25</span></td>
+              </tr>
+              <tr>
+                <td class="biz-rank">5</td>
+                <td class="biz-name"><a href="https://www.bizbuysell.com/business-opportunity/thriving-profitable-dry-cleaner-consistent-growth-yearly/2232185/" target="_blank" rel="noopener">Established Dry Cleaner (20+ yrs)</a></td>
+                <td>Snohomish Co.</td>
+                <td>Dry Cleaning</td>
+                <td class="col-num">$150,000</td>
+                <td class="col-num gain">$84,625</td>
+                <td class="col-num">$178,577</td>
+                <td class="col-num">1.77x</td>
+                <td class="col-num gain">47.4%</td>
+                <td class="muted">~Feb 2025</td>
+                <td class="col-num"><span class="biz-badge b-stale">~535</span></td>
+                <td><span class="biz-badge b-score">19/25</span></td>
+              </tr>
+              <tr>
+                <td class="biz-rank">6</td>
+                <td class="biz-name"><a href="https://www.bizbuysell.com/business-opportunity/mission-s-tortilla-route-seattle-wa/2447481/" target="_blank" rel="noopener">Mission's Tortilla Route (13 accts + truck)</a></td>
+                <td>Seattle</td>
+                <td>Route</td>
+                <td class="col-num">$189,000</td>
+                <td class="col-num gain">$124,727</td>
+                <td class="col-num">$817,804</td>
+                <td class="col-num">1.52x</td>
+                <td class="col-num">15.3%</td>
+                <td class="muted">~Dec 2025</td>
+                <td class="col-num"><span class="biz-badge b-mid">~220</span></td>
+                <td><span class="biz-badge b-score">19/25</span></td>
+              </tr>
+              <tr>
+                <td class="biz-rank">7</td>
+                <td class="biz-name"><a href="https://www.bizbuysell.com/business-opportunity/flowers-bread-route-spokane-wa/2462789/" target="_blank" rel="noopener">Flowers Bread Route (16 accts)</a></td>
+                <td>Spokane</td>
+                <td>Route</td>
+                <td class="col-num">$200,000</td>
+                <td class="col-num gain">$102,200</td>
+                <td class="col-num">$751,510</td>
+                <td class="col-num">1.96x</td>
+                <td class="col-num">13.6%</td>
+                <td class="muted">~Jan 2026</td>
+                <td class="col-num"><span class="biz-badge b-mid">~180</span></td>
+                <td><span class="biz-badge b-score">18/25</span></td>
+              </tr>
+              <tr>
+                <td class="biz-rank">8</td>
+                <td class="biz-name"><a href="https://www.bizbuysell.com/business-opportunity/turnkey-professional-home-organizing-business/2469255/" target="_blank" rel="noopener">Professional Home Organizing Co.</a></td>
+                <td>Vancouver</td>
+                <td>Home Services</td>
+                <td class="col-num">$125,000</td>
+                <td class="col-num gain">$57,913</td>
+                <td class="col-num">$120,174</td>
+                <td class="col-num">2.16x</td>
+                <td class="col-num gain">48.2%</td>
+                <td class="muted">~Feb 2026</td>
+                <td class="col-num"><span class="biz-badge b-mid">~165</span></td>
+                <td><span class="biz-badge b-score">18/25</span></td>
+              </tr>
+              <tr>
+                <td class="biz-rank">9</td>
+                <td class="biz-name"><a href="https://www.bizbuysell.com/business-opportunity/frame-shop-new-price/2404489/" target="_blank" rel="noopener">Custom Frame Shop</a></td>
+                <td>King Co.</td>
+                <td>Specialty Retail/Svc</td>
+                <td class="col-num">$100,000</td>
+                <td class="col-num gain">$83,000</td>
+                <td class="col-num">$273,000</td>
+                <td class="col-num gain">1.20x</td>
+                <td class="col-num">30.4%</td>
+                <td class="muted">~Sep 2025</td>
+                <td class="col-num"><span class="biz-badge b-stale">~330</span></td>
+                <td><span class="biz-badge b-score">17/25</span></td>
+              </tr>
+              <tr>
+                <td class="biz-rank">10</td>
+                <td class="biz-name"><a href="https://www.bizbuysell.com/business-opportunity/kirkland-cleaning-business/2409204/" target="_blank" rel="noopener">Kirkland Cleaning Business</a></td>
+                <td>Kirkland</td>
+                <td>Cleaning</td>
+                <td class="col-num">$200,000</td>
+                <td class="col-num gain">$80,000</td>
+                <td class="col-num">$300,000</td>
+                <td class="col-num">2.50x</td>
+                <td class="col-num">26.7%</td>
+                <td class="muted">~Sep 2025</td>
+                <td class="col-num"><span class="biz-badge b-stale">~320</span></td>
+                <td><span class="biz-badge b-score">17/25</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="biz-footnote">*Estimated from BizBuySell ad-ID sequencing calibrated against 60+ dated archive snapshots (&plusmn;4&ndash;6 weeks). BizBuySell does not publish listing dates. Reference: sold US service businesses take a median 170 days to sell; routes 112 days. Listings well past those medians often indicate price flexibility (average sale-to-ask ratio is 0.93) &mdash; or a problem worth finding in diligence.</p>
+      </section>
+
+      <!-- ============ REVIEWS ============ -->
+      <div class="fund-header" id="reviews">
+        <h2 class="fund-title">The 10 Reviews</h2>
+        <p class="fund-subtitle">Each review includes the investor metric set and a comp table of five similar businesses &mdash; actual sold Washington comps where available (routes), otherwise BizBuySell sold-market medians for the category plus active local comparables. Sold comp figures are broker-reported.</p>
+      </div>
+
+      <!-- 1 -->
+      <section class="review-section">
+        <div class="review-card">
+          <div class="review-head">
+            <span class="rank-no">#1</span>
+            <h3>Mission's Tortilla Route — 9 Grocery Accounts</h3>
+            <span class="loc">Issaquah, WA (King County)</span>
+            <span class="biz-badge b-score">Score 21/25</span>
+            <a class="listing-link" href="https://www.bizbuysell.com/business-opportunity/mission-s-tortilla-route-issaquah-wa/2349385/" target="_blank" rel="noopener">View Listing &#8599;</a>
+          </div>
+          <div class="review-metrics">
+            <div class="rm"><div class="rm-label">Asking</div><div class="rm-value">$150,000</div></div>
+            <div class="rm"><div class="rm-label">Cash Flow (SDE)</div><div class="rm-value gain">$165,021</div></div>
+            <div class="rm"><div class="rm-label">Revenue</div><div class="rm-value">$1,105,260</div></div>
+            <div class="rm"><div class="rm-label">Ask / SDE</div><div class="rm-value gain">0.91x</div></div>
+            <div class="rm"><div class="rm-label">Payback</div><div class="rm-value gain">&lt; 1 yr</div></div>
+            <div class="rm"><div class="rm-label">Est. Days Listed*</div><div class="rm-value loss">~475</div></div>
+            <div class="rm"><div class="rm-label">Established</div><div class="rm-value">2018</div></div>
+            <div class="rm"><div class="rm-label">Inventory</div><div class="rm-value">None</div></div>
+          </div>
+          <p>The best cash-flow-to-price ratio of any sub-$200K listing in the state — current earnings repay the full purchase price in under a year. This is a protected Mission Foods distributorship: nine grocery-store accounts that reorder tortillas and chips continuously, so repeat business is structural, not aspirational. Territory protection is a genuine barrier to entry, and product is bought and sold same-week, so there is no inventory to carry. Criteria scores: cash flow 5, owner involvement 2, barrier 4, repeat customers 5, inventory 5.</p>
+          <p>The trade-off is that this is a buy-a-job in the best sense — early mornings, 5–6 days a week driving, stocking, and order management. Hiring a driver would consume roughly $50–70K of the SDE. Priced at 0.91x SDE against a national sold-route average of 1.78x, it is cheap on paper; the ~475 estimated days on market (vs a 112-day route median) says either the labor reality thins the buyer pool or the account list needs scrutiny. Verify account concentration and the Mission distributor agreement's territory-restructuring clauses before offering.</p>
+          <div class="comps-title">Comps — Sold Washington Mission Foods Routes (Routes For Sale broker data)</div>
+          <div class="table-wrapper">
+            <table class="biz-table">
+              <thead><tr><th>Comp</th><th>Status</th><th class="col-num">Price</th><th class="col-num">Yearly Sales</th><th class="col-num">Cash Flow</th><th class="col-num">Price/CF</th></tr></thead>
+              <tbody>
+                <tr><td>Mission Foods Route — Seattle, WA</td><td><span class="biz-badge b-sold">SOLD</span></td><td class="col-num">$119,900</td><td class="col-num">$785,356</td><td class="col-num">$126,429</td><td class="col-num">0.95x</td></tr>
+                <tr><td>Mission Foods Route — Puyallup, WA</td><td><span class="biz-badge b-sold">SOLD</span></td><td class="col-num">$180,000</td><td class="col-num">$801,455</td><td class="col-num">$112,083</td><td class="col-num">1.61x</td></tr>
+                <tr><td>Mission Foods Route — Seattle, WA</td><td><span class="biz-badge b-sold">SOLD</span></td><td class="col-num">$90,000</td><td class="col-num">$522,444</td><td class="col-num">$77,400</td><td class="col-num">1.16x</td></tr>
+                <tr><td>Mission Foods Route — Seattle, WA</td><td><span class="biz-badge b-sold">SOLD</span></td><td class="col-num">$80,000</td><td class="col-num">$638,248</td><td class="col-num">$98,471</td><td class="col-num">0.81x</td></tr>
+                <tr><td>US Route Businesses — median of 2,914 sold (BizBuySell)</td><td><span class="biz-badge b-bench">SOLD MEDIAN</span></td><td class="col-num">$120,000</td><td class="col-num">$322,910</td><td class="col-num">$102,050</td><td class="col-num">1.78x avg</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="crit">Read: sold WA Mission routes cleared at 0.81x–1.61x cash flow. At 0.91x with the largest SDE of the set, this listing is priced inside the sold range — competitive if the accounts check out.</p>
+        </div>
+      </section>
+
+      <!-- 2 -->
+      <section class="review-section">
+        <div class="review-card">
+          <div class="review-head">
+            <span class="rank-no">#2</span>
+            <h3>Mission's Tortilla Route — 5 Accounts</h3>
+            <span class="loc">Snoqualmie / North Bend, WA</span>
+            <span class="biz-badge b-score">Score 20/25</span>
+            <a class="listing-link" href="https://www.bizbuysell.com/business-opportunity/mission-s-tortilla-route-snoqualmie-wa/2398568/" target="_blank" rel="noopener">View Listing &#8599;</a>
+          </div>
+          <div class="review-metrics">
+            <div class="rm"><div class="rm-label">Asking</div><div class="rm-value">$70,000</div></div>
+            <div class="rm"><div class="rm-label">Cash Flow (SDE)</div><div class="rm-value gain">$74,126</div></div>
+            <div class="rm"><div class="rm-label">Revenue</div><div class="rm-value">$511,576</div></div>
+            <div class="rm"><div class="rm-label">Ask / SDE</div><div class="rm-value gain">0.94x</div></div>
+            <div class="rm"><div class="rm-label">Payback</div><div class="rm-value gain">&lt; 1 yr</div></div>
+            <div class="rm"><div class="rm-label">Est. Days Listed*</div><div class="rm-value loss">~345</div></div>
+            <div class="rm"><div class="rm-label">Established</div><div class="rm-value">2018</div></div>
+            <div class="rm"><div class="rm-label">Vehicle</div><div class="rm-value warn">Not incl.</div></div>
+          </div>
+          <p>The affordability champion: $70K buys a route netting more than its purchase price annually. Five accounts make for a tighter, more manageable delivery day than the bigger routes, and the Snoqualmie/North Bend corridor is one of the fastest-growing in King County. Same structural advantages as #1 — protected territory, grocery accounts that reorder perpetually, no inventory risk. Scores: cash flow 5, owner involvement 2, barrier 4, repeat customers 5, inventory 4.</p>
+          <p>Five accounts is also the risk: losing one store could cut revenue ~20%. No vehicle is included, so budget $20–40K for a delivery truck. At 0.94x SDE it sits inside the sold-comp range below. Roughly 11 months on market (est.) against a 112-day route median suggests room to negotiate — sold routes average 93% of ask.</p>
+          <div class="comps-title">Comps — Sold Washington Routes (Routes For Sale broker data)</div>
+          <div class="table-wrapper">
+            <table class="biz-table">
+              <thead><tr><th>Comp</th><th>Status</th><th class="col-num">Price</th><th class="col-num">Yearly Sales</th><th class="col-num">Cash Flow</th><th class="col-num">Price/CF</th></tr></thead>
+              <tbody>
+                <tr><td>Mission Foods Route — Seattle, WA</td><td><span class="biz-badge b-sold">SOLD</span></td><td class="col-num">$80,000</td><td class="col-num">$638,248</td><td class="col-num">$98,471</td><td class="col-num">0.81x</td></tr>
+                <tr><td>Mission Foods Route — Seattle, WA</td><td><span class="biz-badge b-sold">SOLD</span></td><td class="col-num">$90,000</td><td class="col-num">$522,444</td><td class="col-num">$77,400</td><td class="col-num">1.16x</td></tr>
+                <tr><td>Mission Foods Route — Seattle, WA</td><td><span class="biz-badge b-sold">SOLD</span></td><td class="col-num">$119,900</td><td class="col-num">$785,356</td><td class="col-num">$126,429</td><td class="col-num">0.95x</td></tr>
+                <tr><td>Flowers Bread Route — King County, WA</td><td><span class="biz-badge b-sold">SOLD</span></td><td class="col-num">$145,000</td><td class="col-num">$818,272</td><td class="col-num">$132,444</td><td class="col-num">1.09x</td></tr>
+                <tr><td>US Route Businesses — median of 2,914 sold (BizBuySell)</td><td><span class="biz-badge b-bench">SOLD MEDIAN</span></td><td class="col-num">$120,000</td><td class="col-num">$322,910</td><td class="col-num">$102,050</td><td class="col-num">1.78x avg</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="crit">Read: the closest sold comp (Seattle, $522K sales / $77K net) cleared at $90K — this listing asks $70K for nearly identical economics. Priced to sell.</p>
+        </div>
+      </section>
+
+      <!-- 3 -->
+      <section class="review-section">
+        <div class="review-card">
+          <div class="review-head">
+            <span class="rank-no">#3</span>
+            <h3>Dryer Vent Cleaning &amp; Maintenance (Franchise Territory)</h3>
+            <span class="loc">Lynnwood, WA (Snohomish County)</span>
+            <span class="biz-badge b-score">Score 20/25</span>
+            <a class="listing-link" href="https://www.bizbuysell.com/business-opportunity/established-and-profitable-cleaning-business/2529778/" target="_blank" rel="noopener">View Listing &#8599;</a>
+          </div>
+          <div class="review-metrics">
+            <div class="rm"><div class="rm-label">Asking</div><div class="rm-value">$67,000</div></div>
+            <div class="rm"><div class="rm-label">Cash Flow (SDE)</div><div class="rm-value gain">$59,000</div></div>
+            <div class="rm"><div class="rm-label">Revenue (2025)</div><div class="rm-value">$98,784</div></div>
+            <div class="rm"><div class="rm-label">SDE Margin</div><div class="rm-value gain">59.7%</div></div>
+            <div class="rm"><div class="rm-label">Ask / SDE</div><div class="rm-value gain">1.14x</div></div>
+            <div class="rm"><div class="rm-label">Est. Days Listed*</div><div class="rm-value gain">~10 (NEW)</div></div>
+            <div class="rm"><div class="rm-label">Customer Base</div><div class="rm-value">5,200+</div></div>
+            <div class="rm"><div class="rm-label">Established</div><div class="rm-value">2007</div></div>
+          </div>
+          <p>Quietly the best risk-adjusted deal on the board. Nineteen years of history, a 5,200+ customer database, and a ~60% SDE margin from a 100% home-based operation with zero employees, effectively zero inventory, and an avg ticket of $280. Dryer vent cleaning is safety- and insurance-driven, repeated on a schedule, and the business holds a required specialty contractor license — a real barrier that keeps casual competitors out. Exclusive franchise territory covers Seattle, Shoreline, Edmonds, Kirkland, Bothell, and Lynnwood. Scores: cash flow 4, owner involvement 2, barrier 4, repeat customers 5, inventory 5.</p>
+          <p>It is an owner-operator model — the $59K SDE assumes you do the (light) work. The included 2007 vehicle needs repairs, and franchise royalty/transfer terms need confirming. Commercial work is only 15% of revenue; the B2B upside (property managers, laundromats, hotels) is untapped. Listed roughly ten days ago — fresh listings in this category historically sell near ask, so move fast if it fits.</p>
+          <div class="comps-title">Comps — Cleaning-Category Sold Market + Active WA Comparables</div>
+          <div class="table-wrapper">
+            <table class="biz-table">
+              <thead><tr><th>Comp</th><th>Status</th><th class="col-num">Price</th><th class="col-num">Revenue</th><th class="col-num">Cash Flow</th><th class="col-num">Price/CF</th></tr></thead>
+              <tbody>
+                <tr><td>US Cleaning &amp; Janitorial — median of 797 sold (BizBuySell)</td><td><span class="biz-badge b-bench">SOLD MEDIAN</span></td><td class="col-num">$260,000</td><td class="col-num">$433,327</td><td class="col-num">$136,326</td><td class="col-num">2.19x avg</td></tr>
+                <tr><td>Residential Cleaning — Whatcom Co., WA (30 clients, 10 hrs/wk)</td><td><span class="biz-badge b-active">ACTIVE</span></td><td class="col-num">$84,393</td><td class="col-num">n/d</td><td class="col-num">$31,584</td><td class="col-num">2.67x</td></tr>
+                <tr><td>Window &amp; Pressure Washing — Snohomish Co., WA</td><td><span class="biz-badge b-active">ACTIVE</span></td><td class="col-num">$50,000</td><td class="col-num">n/d</td><td class="col-num">$29,904</td><td class="col-num">1.67x</td></tr>
+                <tr><td>Carpet Cleaning (40 yrs) — N. Seattle, WA</td><td><span class="biz-badge b-active">ACTIVE</span></td><td class="col-num">$195,000</td><td class="col-num">$99,439</td><td class="col-num">$65,385</td><td class="col-num">2.98x</td></tr>
+                <tr><td>Residential Cleaning — Marysville, WA (recurring contracts)</td><td><span class="biz-badge b-active">ACTIVE</span></td><td class="col-num">$40,000</td><td class="col-num">n/d</td><td class="col-num">n/d</td><td class="col-num">&mdash;</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="crit">Read: sold cleaning businesses average 2.19x cash flow; comparable active WA owner-operator listings ask 1.7x–3.0x. At 1.14x, this is the cheapest earnings multiple in its category on the WA market right now.</p>
+        </div>
+      </section>
+
+      <!-- 4 -->
+      <section class="review-section">
+        <div class="review-card">
+          <div class="review-head">
+            <span class="rank-no">#4</span>
+            <h3>Minuteman Press — B2B Design &amp; Print Center</h3>
+            <span class="loc">Grays Harbor County, WA</span>
+            <span class="biz-badge b-score">Score 19/25</span>
+            <a class="listing-link" href="https://www.bizbuysell.com/business-opportunity/business-to-business-ctr-design-and-print-biz-repeat-client/2523584/" target="_blank" rel="noopener">View Listing &#8599;</a>
+          </div>
+          <div class="review-metrics">
+            <div class="rm"><div class="rm-label">Asking</div><div class="rm-value">$199,000</div></div>
+            <div class="rm"><div class="rm-label">Cash Flow (SDE)</div><div class="rm-value gain">$111,000</div></div>
+            <div class="rm"><div class="rm-label">Revenue</div><div class="rm-value muted">Not disclosed</div></div>
+            <div class="rm"><div class="rm-label">Ask / SDE</div><div class="rm-value">1.79x</div></div>
+            <div class="rm"><div class="rm-label">Payback</div><div class="rm-value">1.8 yrs</div></div>
+            <div class="rm"><div class="rm-label">Est. Days Listed*</div><div class="rm-value gain">~27 (NEW)</div></div>
+            <div class="rm"><div class="rm-label">Staff</div><div class="rm-value">In place</div></div>
+            <div class="rm"><div class="rm-label">Financing</div><div class="rm-value gain">Owner</div></div>
+          </div>
+          <p>A true B2B repeat-customer machine: print, marketing, and design products are consumable — business cards run out, banners wear, campaigns recur — so established accounts reorder indefinitely. Long-established shop with professional staff, normal business hours, low inventory (produced on demand), proprietary franchise pricing/management software, two weeks of formal training, and ongoing local support. Owner is retiring — the good kind of seller motivation — and owner financing is on the table. Scores: cash flow 4, owner involvement 3, barrier 3, repeat customers 5, inventory 4.</p>
+          <p>Franchise royalties apply (verify the rate against the FDD), revenue is undisclosed (demand three years of P&amp;Ls), and Grays Harbor is a small market — which caps the ceiling but also deters competitors. At 1.79x SDE it is priced well under the 2.57x national average for sold printing businesses.</p>
+          <div class="comps-title">Comps — Printing-Category Sold Market + Active WA Comparables</div>
+          <div class="table-wrapper">
+            <table class="biz-table">
+              <thead><tr><th>Comp</th><th>Status</th><th class="col-num">Price</th><th class="col-num">Revenue</th><th class="col-num">Cash Flow</th><th class="col-num">Price/CF</th></tr></thead>
+              <tbody>
+                <tr><td>US Printing Businesses — median sold (BizBuySell)</td><td><span class="biz-badge b-bench">SOLD MEDIAN</span></td><td class="col-num">$400,000</td><td class="col-num">$787,841</td><td class="col-num">$173,477</td><td class="col-num">2.57x avg</td></tr>
+                <tr><td>US Service Businesses — median of 5,839 sold (BizBuySell)</td><td><span class="biz-badge b-bench">SOLD MEDIAN</span></td><td class="col-num">$350,000</td><td class="col-num">$506,200</td><td class="col-num">$155,559</td><td class="col-num">2.58x avg</td></tr>
+                <tr><td>B2B Print, Promo &amp; Marketing — Spokane Co., WA</td><td><span class="biz-badge b-active">ACTIVE</span></td><td class="col-num">$630,000</td><td class="col-num">n/d</td><td class="col-num">n/d</td><td class="col-num">&mdash;</td></tr>
+                <tr><td>B2B Print, Promo &amp; Marketing — Clark Co., WA</td><td><span class="biz-badge b-active">ACTIVE</span></td><td class="col-num">$350,000</td><td class="col-num">n/d</td><td class="col-num">n/d</td><td class="col-num">&mdash;</td></tr>
+                <tr><td>Promotional Marketing (franchise) — Pierce Co., WA</td><td><span class="biz-badge b-active">ACTIVE</span></td><td class="col-num">$84,995</td><td class="col-num">n/d</td><td class="col-num">$50,000</td><td class="col-num">1.70x</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="crit">Read: WA B2B print shops ask $350K–$630K; sold printing businesses clear ~2.57x cash flow. At $199K / 1.79x with staff in place, this is the value entry into the category — if the undisclosed revenue verifies.</p>
+        </div>
+      </section>
+
+      <!-- 5 -->
+      <section class="review-section">
+        <div class="review-card">
+          <div class="review-head">
+            <span class="rank-no">#5</span>
+            <h3>Established Dry Cleaner — 20+ Years, Prime Location</h3>
+            <span class="loc">Snohomish County, WA</span>
+            <span class="biz-badge b-score">Score 19/25</span>
+            <a class="listing-link" href="https://www.bizbuysell.com/business-opportunity/thriving-profitable-dry-cleaner-consistent-growth-yearly/2232185/" target="_blank" rel="noopener">View Listing &#8599;</a>
+          </div>
+          <div class="review-metrics">
+            <div class="rm"><div class="rm-label">Asking</div><div class="rm-value">$150,000</div></div>
+            <div class="rm"><div class="rm-label">Cash Flow (SDE)</div><div class="rm-value gain">$84,625</div></div>
+            <div class="rm"><div class="rm-label">Revenue</div><div class="rm-value">$178,577</div></div>
+            <div class="rm"><div class="rm-label">SDE Margin</div><div class="rm-value gain">47.4%</div></div>
+            <div class="rm"><div class="rm-label">Ask / SDE</div><div class="rm-value">1.77x</div></div>
+            <div class="rm"><div class="rm-label">Est. Days Listed*</div><div class="rm-value loss">~535</div></div>
+            <div class="rm"><div class="rm-label">Employees</div><div class="rm-value">2</div></div>
+            <div class="rm"><div class="rm-label">FF&amp;E Incl.</div><div class="rm-value">$50,000</div></div>
+          </div>
+          <p>Two decades in a prime location with a loyal, stable clientele and a 47% SDE margin. Dry cleaning is the definition of repeat business — the same customers weekly or monthly — and the $50K of specialized equipment included is a real barrier: nobody opens a dry cleaner on a whim. Two employees in place, seller retiring. Scores: cash flow 4, owner involvement 2, barrier 4, repeat customers 5, inventory 4.</p>
+          <p>The category has secular headwinds (casual workwear, WFH), so verify the growth claim against tax returns, and ask about the solvent system — legacy perc machines carry environmental liability. The ~18 months of estimated market time is the longest in this top 10 and nearly 3x the 190-day median for sold dry cleaners; with sale-to-ask averaging 93%, a below-ask offer is well-supported. At 1.77x SDE it is priced under the 2.09x category sold average.</p>
+          <div class="comps-title">Comps — Dry-Cleaning Sold Market + Active WA Dry Cleaners</div>
+          <div class="table-wrapper">
+            <table class="biz-table">
+              <thead><tr><th>Comp</th><th>Status</th><th class="col-num">Price</th><th class="col-num">Revenue</th><th class="col-num">Cash Flow</th><th class="col-num">Price/CF</th></tr></thead>
+              <tbody>
+                <tr><td>US Dry Cleaners — median of 559 sold (BizBuySell)</td><td><span class="biz-badge b-bench">SOLD MEDIAN</span></td><td class="col-num">$250,000</td><td class="col-num">$360,000</td><td class="col-num">$132,513</td><td class="col-num">2.09x avg</td></tr>
+                <tr><td>Dry Cleaner &amp; Laundry — Seattle, WA (35+ yrs)</td><td><span class="biz-badge b-active">ACTIVE</span></td><td class="col-num">$349,000</td><td class="col-num">n/d</td><td class="col-num">$190,000</td><td class="col-num">1.84x</td></tr>
+                <tr><td>Dry Cleaners &amp; Alterations — Kitsap Co., WA (30 yrs)</td><td><span class="biz-badge b-active">ACTIVE</span></td><td class="col-num">$200,000</td><td class="col-num">n/d</td><td class="col-num">$15,000</td><td class="col-num">13.3x</td></tr>
+                <tr><td>Friendly Green Dry Cleaners — Pierce Co., WA (HC system)</td><td><span class="biz-badge b-active">ACTIVE</span></td><td class="col-num">$180,000</td><td class="col-num">n/d</td><td class="col-num">n/d</td><td class="col-num">&mdash;</td></tr>
+                <tr><td>US Service Businesses — median of 5,839 sold (BizBuySell)</td><td><span class="biz-badge b-bench">SOLD MEDIAN</span></td><td class="col-num">$350,000</td><td class="col-num">$506,200</td><td class="col-num">$155,559</td><td class="col-num">2.58x avg</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="crit">Read: this is the best cash-flow-per-dollar dry cleaner on the WA market — 1.77x vs the 2.09x sold average, with the strongest margin of the active comps. Long market time = negotiating leverage.</p>
+        </div>
+      </section>
+
+      <!-- 6 -->
+      <section class="review-section">
+        <div class="review-card">
+          <div class="review-head">
+            <span class="rank-no">#6</span>
+            <h3>Mission's Tortilla Route — 13 Accounts, Truck Included</h3>
+            <span class="loc">Seattle, WA (King County)</span>
+            <span class="biz-badge b-score">Score 19/25</span>
+            <a class="listing-link" href="https://www.bizbuysell.com/business-opportunity/mission-s-tortilla-route-seattle-wa/2447481/" target="_blank" rel="noopener">View Listing &#8599;</a>
+          </div>
+          <div class="review-metrics">
+            <div class="rm"><div class="rm-label">Asking</div><div class="rm-value">$189,000</div></div>
+            <div class="rm"><div class="rm-label">Cash Flow (SDE)</div><div class="rm-value gain">$124,727</div></div>
+            <div class="rm"><div class="rm-label">Revenue</div><div class="rm-value">$817,804</div></div>
+            <div class="rm"><div class="rm-label">Ask / SDE</div><div class="rm-value">1.52x</div></div>
+            <div class="rm"><div class="rm-label">Payback</div><div class="rm-value">1.5 yrs</div></div>
+            <div class="rm"><div class="rm-label">Est. Days Listed*</div><div class="rm-value warn">~220</div></div>
+            <div class="rm"><div class="rm-label">Established</div><div class="rm-value">2015</div></div>
+            <div class="rm"><div class="rm-label">Truck</div><div class="rm-value gain">Included</div></div>
+          </div>
+          <p>The most turnkey of the three Mission routes: 13 established grocery accounts and the delivery truck included, removing the biggest hidden cost of route ownership. Thirteen accounts diversify revenue better than the smaller routes — no single store sinks you — and a decade of operating history under the current structure. Scores: cash flow 4, owner involvement 2, barrier 4, repeat customers 5, inventory 4.</p>
+          <p>Highest price of the three routes and no seller financing, so bring the full amount or SBA. More accounts means longer days and dense urban logistics — Seattle traffic, store dock schedules. At 1.52x SDE it sits just under the sold Puyallup comp (1.61x) with more accounts and equipment included; ~7 months on market vs the 112-day route median suggests the price has room.</p>
+          <div class="comps-title">Comps — Sold Washington Mission Foods Routes (Routes For Sale broker data)</div>
+          <div class="table-wrapper">
+            <table class="biz-table">
+              <thead><tr><th>Comp</th><th>Status</th><th class="col-num">Price</th><th class="col-num">Yearly Sales</th><th class="col-num">Cash Flow</th><th class="col-num">Price/CF</th></tr></thead>
+              <tbody>
+                <tr><td>Mission Foods Route — Puyallup, WA</td><td><span class="biz-badge b-sold">SOLD</span></td><td class="col-num">$180,000</td><td class="col-num">$801,455</td><td class="col-num">$112,083</td><td class="col-num">1.61x</td></tr>
+                <tr><td>Mission Foods Route — Seattle, WA</td><td><span class="biz-badge b-sold">SOLD</span></td><td class="col-num">$119,900</td><td class="col-num">$785,356</td><td class="col-num">$126,429</td><td class="col-num">0.95x</td></tr>
+                <tr><td>Mission Foods Route — Seattle, WA</td><td><span class="biz-badge b-sold">SOLD</span></td><td class="col-num">$90,000</td><td class="col-num">$522,444</td><td class="col-num">$77,400</td><td class="col-num">1.16x</td></tr>
+                <tr><td>Mission Foods Route — Seattle, WA</td><td><span class="biz-badge b-sold">SOLD</span></td><td class="col-num">$80,000</td><td class="col-num">$638,248</td><td class="col-num">$98,471</td><td class="col-num">0.81x</td></tr>
+                <tr><td>US Route Businesses — median of 2,914 sold (BizBuySell)</td><td><span class="biz-badge b-bench">SOLD MEDIAN</span></td><td class="col-num">$120,000</td><td class="col-num">$322,910</td><td class="col-num">$102,050</td><td class="col-num">1.78x avg</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="crit">Read: the nearest sold comp (Puyallup — $801K sales / $112K net) cleared at $180K without a truck. This asks $189K with a truck and higher cash flow. Fairly priced; the sold Seattle comps argue for opening lower.</p>
+        </div>
+      </section>
+
+      <!-- 7 -->
+      <section class="review-section">
+        <div class="review-card">
+          <div class="review-head">
+            <span class="rank-no">#7</span>
+            <h3>Flowers Bread Route — 16 Accounts, Company Financing</h3>
+            <span class="loc">Spokane, WA</span>
+            <span class="biz-badge b-score">Score 18/25</span>
+            <a class="listing-link" href="https://www.bizbuysell.com/business-opportunity/flowers-bread-route-spokane-wa/2462789/" target="_blank" rel="noopener">View Listing &#8599;</a>
+          </div>
+          <div class="review-metrics">
+            <div class="rm"><div class="rm-label">Asking</div><div class="rm-value">$200,000</div></div>
+            <div class="rm"><div class="rm-label">Cash Flow (SDE)</div><div class="rm-value gain">$102,200</div></div>
+            <div class="rm"><div class="rm-label">Revenue</div><div class="rm-value">$751,510</div></div>
+            <div class="rm"><div class="rm-label">Ask / SDE</div><div class="rm-value">1.96x</div></div>
+            <div class="rm"><div class="rm-label">Down Payment</div><div class="rm-value gain">~$79,000</div></div>
+            <div class="rm"><div class="rm-label">Est. Days Listed*</div><div class="rm-value warn">~180</div></div>
+            <div class="rm"><div class="rm-label">Accounts</div><div class="rm-value">16</div></div>
+            <div class="rm"><div class="rm-label">Financing</div><div class="rm-value gain">Company</div></div>
+          </div>
+          <p>A protected Flowers Baking Co. distributorship (Nature's Own, Dave's Killer Bread, Cobblestone) with 16 grocery accounts — the most diversified account base of any route on this list, anchored by brands consumers seek out by name. The standout feature: company financing with ~$79,000 down, the only sub-$200K listing here with institutional-style financing built in. Cash-on-cash return on the down payment exceeds 100%. Scores: cash flow 4, owner involvement 2, barrier 4, repeat customers 5, inventory 3.</p>
+          <p>Bread is delivered daily and stales fast — expect 6-day weeks, early starts, and more stops than any other route here. A 10% cash reserve is required on top of the down payment. Sold WA Flowers comps below cleared at 1.09x–1.42x cash flow; at 1.96x this is priced above every sold comp — the financing is what you're paying for. Negotiate.</p>
+          <div class="comps-title">Comps — Sold Washington Flowers Bread Routes (Routes For Sale broker data)</div>
+          <div class="table-wrapper">
+            <table class="biz-table">
+              <thead><tr><th>Comp</th><th>Status</th><th class="col-num">Price</th><th class="col-num">Yearly Sales</th><th class="col-num">Cash Flow</th><th class="col-num">Price/CF</th></tr></thead>
+              <tbody>
+                <tr><td>Flowers Bread Route — Vancouver, WA (16 accts)</td><td><span class="biz-badge b-sold">SOLD</span></td><td class="col-num">$285,000</td><td class="col-num">$1,194,700</td><td class="col-num">$200,980</td><td class="col-num">1.42x</td></tr>
+                <tr><td>Flowers Bread Route — King County, WA (12 accts)</td><td><span class="biz-badge b-sold">SOLD</span></td><td class="col-num">$180,000</td><td class="col-num">$897,676</td><td class="col-num">$160,295</td><td class="col-num">1.12x</td></tr>
+                <tr><td>Flowers Bread Route — Spokane Valley, WA (15 accts)</td><td><span class="biz-badge b-sold">SOLD</span></td><td class="col-num">$175,000</td><td class="col-num">$827,587</td><td class="col-num">$136,396</td><td class="col-num">1.28x</td></tr>
+                <tr><td>Flowers Bread Route — Spokane Valley, WA (16 accts)</td><td><span class="biz-badge b-sold">SOLD</span></td><td class="col-num">$160,000</td><td class="col-num">$837,316</td><td class="col-num">$136,920</td><td class="col-num">1.17x</td></tr>
+                <tr><td>Flowers Bread Route — King County, WA (11 accts)</td><td><span class="biz-badge b-sold">SOLD</span></td><td class="col-num">$145,000</td><td class="col-num">$818,272</td><td class="col-num">$132,444</td><td class="col-num">1.09x</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="crit">Read: five sold WA Flowers routes — every one had MORE cash flow at a LOWER multiple than this listing. The sold Spokane Valley comps ($160K–$175K for ~$136K net) say fair value here is closer to $130K–$150K unless the financing terms are exceptional.</p>
+        </div>
+      </section>
+
+      <!-- 8 -->
+      <section class="review-section">
+        <div class="review-card">
+          <div class="review-head">
+            <span class="rank-no">#8</span>
+            <h3>Professional Home Organizing Co. — Semi-Absentee</h3>
+            <span class="loc">Vancouver, WA (Clark County)</span>
+            <span class="biz-badge b-score">Score 18/25</span>
+            <a class="listing-link" href="https://www.bizbuysell.com/business-opportunity/turnkey-professional-home-organizing-business/2469255/" target="_blank" rel="noopener">View Listing &#8599;</a>
+          </div>
+          <div class="review-metrics">
+            <div class="rm"><div class="rm-label">Asking</div><div class="rm-value">$125,000</div></div>
+            <div class="rm"><div class="rm-label">Cash Flow (SDE)</div><div class="rm-value gain">$57,913</div></div>
+            <div class="rm"><div class="rm-label">Revenue</div><div class="rm-value">$120,174</div></div>
+            <div class="rm"><div class="rm-label">SDE Margin</div><div class="rm-value gain">48.2%</div></div>
+            <div class="rm"><div class="rm-label">Ask / SDE</div><div class="rm-value">2.16x</div></div>
+            <div class="rm"><div class="rm-label">Est. Days Listed*</div><div class="rm-value warn">~165</div></div>
+            <div class="rm"><div class="rm-label">Owner Hours/Wk</div><div class="rm-value gain">20</div></div>
+            <div class="rm"><div class="rm-label">Team</div><div class="rm-value">6</div></div>
+          </div>
+          <p>The most genuinely semi-absentee business in the top 10. A trained team of lead and subcontracted organizers does all field work — the listing explicitly states "no owner-dependent field labor" — and the owner runs it about 20 hours a week from home. Asset-light to the point of having nothing to maintain: no storefront, no fleet, no inventory. A registered trademark, strong local SEO, and documented systems give it more defensibility than a typical solo outfit. Six weeks of training and seller financing available. Scores: cash flow 3, owner involvement 4, barrier 3, repeat customers 3, inventory 5.</p>
+          <p>A 2.16x multiple on modest SDE is close to the 2.58x sold-service average despite being a younger (2020), discretionary-category business — the premium is for the delegation structure. Organizing is more project-based than recurring; probe what percentage of revenue comes from repeat maintenance programs. Per-hour-of-owner-time, though, this is the best earner on the list (~$56/owner-hour vs ~$30–35 for the routes).</p>
+          <div class="comps-title">Comps — Service-Category Sold Market + Active WA Comparables</div>
+          <div class="table-wrapper">
+            <table class="biz-table">
+              <thead><tr><th>Comp</th><th>Status</th><th class="col-num">Price</th><th class="col-num">Revenue</th><th class="col-num">Cash Flow</th><th class="col-num">Price/CF</th></tr></thead>
+              <tbody>
+                <tr><td>US Service Businesses — median of 5,839 sold (BizBuySell)</td><td><span class="biz-badge b-bench">SOLD MEDIAN</span></td><td class="col-num">$350,000</td><td class="col-num">$506,200</td><td class="col-num">$155,559</td><td class="col-num">2.58x avg</td></tr>
+                <tr><td>US Cleaning &amp; Janitorial — median of 797 sold (BizBuySell)</td><td><span class="biz-badge b-bench">SOLD MEDIAN</span></td><td class="col-num">$260,000</td><td class="col-num">$433,327</td><td class="col-num">$136,326</td><td class="col-num">2.19x avg</td></tr>
+                <tr><td>Residential Cleaning — Whatcom Co., WA (semi-absentee, 10 hrs/wk)</td><td><span class="biz-badge b-active">ACTIVE</span></td><td class="col-num">$84,393</td><td class="col-num">n/d</td><td class="col-num">$31,584</td><td class="col-num">2.67x</td></tr>
+                <tr><td>Home Staging &amp; Interior Design — Snohomish Co., WA (team-run)</td><td><span class="biz-badge b-active">ACTIVE</span></td><td class="col-num">$400,000</td><td class="col-num">n/d</td><td class="col-num">n/d</td><td class="col-num">&mdash;</td></tr>
+                <tr><td>Kirkland Cleaning Business — Kirkland, WA (crew in place)</td><td><span class="biz-badge b-active">ACTIVE</span></td><td class="col-num">$200,000</td><td class="col-num">$300,000</td><td class="col-num">$80,000</td><td class="col-num">2.50x</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="crit">Read: semi-absentee service businesses in WA ask 2.5x–2.7x cash flow; this asks 2.16x with a stronger delegation structure than any of them. Fair price for the lifestyle profile.</p>
+        </div>
+      </section>
+
+      <!-- 9 -->
+      <section class="review-section">
+        <div class="review-card">
+          <div class="review-head">
+            <span class="rank-no">#9</span>
+            <h3>Custom Frame Shop — Price Reduced</h3>
+            <span class="loc">King County, WA</span>
+            <span class="biz-badge b-score">Score 17/25</span>
+            <a class="listing-link" href="https://www.bizbuysell.com/business-opportunity/frame-shop-new-price/2404489/" target="_blank" rel="noopener">View Listing &#8599;</a>
+          </div>
+          <div class="review-metrics">
+            <div class="rm"><div class="rm-label">Asking</div><div class="rm-value">$100,000</div></div>
+            <div class="rm"><div class="rm-label">Cash Flow (SDE)</div><div class="rm-value gain">$83,000</div></div>
+            <div class="rm"><div class="rm-label">Revenue</div><div class="rm-value">$273,000</div></div>
+            <div class="rm"><div class="rm-label">SDE Margin</div><div class="rm-value">30.4%</div></div>
+            <div class="rm"><div class="rm-label">Ask / SDE</div><div class="rm-value gain">1.20x</div></div>
+            <div class="rm"><div class="rm-label">Est. Days Listed*</div><div class="rm-value loss">~330</div></div>
+            <div class="rm"><div class="rm-label">Rent</div><div class="rm-value">$4,000/mo</div></div>
+            <div class="rm"><div class="rm-label">Inventory Incl.</div><div class="rm-value">$5,000</div></div>
+          </div>
+          <p>A price-cut story ("NEW PRICE") now sitting at a strong 1.20x multiple with a 30% SDE margin. Hand-built custom framing is a skilled craft — that skill is the barrier — and the listing notes very little nearby competition. Add-on services (Giclée printing, photo restoration, lamination) diversify revenue. Only $5K of inventory, all included, in a 1,400 sq ft business-park space near light rail. Seller financing available. Scores: cash flow 4, owner involvement 2, barrier 4, repeat customers 3, inventory 4.</p>
+          <p>Custom framing is discretionary, and the craft must be learned or hired — training is only "as needed and agreed upon," so negotiate a real transition period. The lease expires 10/30/2026: renegotiate before closing, since $48K/year of rent against $273K revenue is the biggest fixed cost in the deal. ~11 months on market plus an already-cut price = a motivated seller.</p>
+          <div class="comps-title">Comps — Service/Specialty Sold Market + Active WA Comparables</div>
+          <div class="table-wrapper">
+            <table class="biz-table">
+              <thead><tr><th>Comp</th><th>Status</th><th class="col-num">Price</th><th class="col-num">Revenue</th><th class="col-num">Cash Flow</th><th class="col-num">Price/CF</th></tr></thead>
+              <tbody>
+                <tr><td>US Service Businesses — median of 5,839 sold (BizBuySell)</td><td><span class="biz-badge b-bench">SOLD MEDIAN</span></td><td class="col-num">$350,000</td><td class="col-num">$506,200</td><td class="col-num">$155,559</td><td class="col-num">2.58x avg</td></tr>
+                <tr><td>WA Service Businesses — median asking (93 analyzed)</td><td><span class="biz-badge b-bench">ASK MEDIAN</span></td><td class="col-num">$373,718</td><td class="col-num">$653,000</td><td class="col-num">$122,558</td><td class="col-num">2.99x</td></tr>
+                <tr><td>Design &amp; Print Ctr — Grays Harbor Co., WA (repeat B2B)</td><td><span class="biz-badge b-active">ACTIVE</span></td><td class="col-num">$199,000</td><td class="col-num">n/d</td><td class="col-num">$111,000</td><td class="col-num">1.79x</td></tr>
+                <tr><td>Promotional Marketing — Pierce Co., WA</td><td><span class="biz-badge b-active">ACTIVE</span></td><td class="col-num">$84,995</td><td class="col-num">n/d</td><td class="col-num">$50,000</td><td class="col-num">1.70x</td></tr>
+                <tr><td>Party/Event Rental — Seattle, WA</td><td><span class="biz-badge b-active">ACTIVE</span></td><td class="col-num">$75,000</td><td class="col-num">n/d</td><td class="col-num">$50,205</td><td class="col-num">1.49x</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="crit">Read: at 1.20x cash flow this is the cheapest non-route multiple in the top 10 — less than half the sold-service average. The discount prices in the key-person risk: the owner IS the craftsman.</p>
+        </div>
+      </section>
+
+      <!-- 10 -->
+      <section class="review-section">
+        <div class="review-card">
+          <div class="review-head">
+            <span class="rank-no">#10</span>
+            <h3>Kirkland Cleaning Business — Recurring Eastside Clients</h3>
+            <span class="loc">Kirkland, WA (King County)</span>
+            <span class="biz-badge b-score">Score 17/25</span>
+            <a class="listing-link" href="https://www.bizbuysell.com/business-opportunity/kirkland-cleaning-business/2409204/" target="_blank" rel="noopener">View Listing &#8599;</a>
+          </div>
+          <div class="review-metrics">
+            <div class="rm"><div class="rm-label">Asking</div><div class="rm-value">$200,000</div></div>
+            <div class="rm"><div class="rm-label">Cash Flow (SDE)</div><div class="rm-value gain">$80,000</div></div>
+            <div class="rm"><div class="rm-label">Revenue</div><div class="rm-value">$300,000</div></div>
+            <div class="rm"><div class="rm-label">SDE Margin</div><div class="rm-value">26.7%</div></div>
+            <div class="rm"><div class="rm-label">Ask / SDE</div><div class="rm-value warn">2.50x</div></div>
+            <div class="rm"><div class="rm-label">Est. Days Listed*</div><div class="rm-value loss">~320</div></div>
+            <div class="rm"><div class="rm-label">Overhead</div><div class="rm-value gain">$7,000/yr</div></div>
+            <div class="rm"><div class="rm-label">Established</div><div class="rm-value">2020</div></div>
+          </div>
+          <p>Recurring residential cleaning (weekly / bi-weekly / monthly) in one of the wealthiest ZIP-code clusters in the state, plus commercial, move-out, post-construction, and carpet work. Skilled, experienced cleaners are on staff, so the owner's role is scheduling, quality control, and sales — not cleaning. Overhead is almost comical: $7,000 per year for storage. Subscription-style revenue makes cash flow predictable. Scores: cash flow 3, owner involvement 3, barrier 2, repeat customers 5, inventory 4.</p>
+          <p>Cleaning has the lowest barrier to entry on this list — the moat is the client list and crew retention, so lock in key employees at closing. At 2.50x SDE it is priced above the 2.19x sold-cleaning average, and ~10 months of estimated market time (double the 165-day category median) argues the ask is rich. The sold data (sale-to-ask 0.93 on average, softer for stale listings) supports opening in the $150–170K range.</p>
+          <div class="comps-title">Comps — Cleaning-Category Sold Market + Active WA Comparables</div>
+          <div class="table-wrapper">
+            <table class="biz-table">
+              <thead><tr><th>Comp</th><th>Status</th><th class="col-num">Price</th><th class="col-num">Revenue</th><th class="col-num">Cash Flow</th><th class="col-num">Price/CF</th></tr></thead>
+              <tbody>
+                <tr><td>US Cleaning &amp; Janitorial — median of 797 sold (BizBuySell)</td><td><span class="biz-badge b-bench">SOLD MEDIAN</span></td><td class="col-num">$260,000</td><td class="col-num">$433,327</td><td class="col-num">$136,326</td><td class="col-num">2.19x avg</td></tr>
+                <tr><td>Hands-Off Cleaning Business — Jefferson Co., WA</td><td><span class="biz-badge b-active">PENDING</span></td><td class="col-num">$450,000</td><td class="col-num">n/d</td><td class="col-num">$151,000</td><td class="col-num">2.98x</td></tr>
+                <tr><td>Residential Cleaning — Whatcom Co., WA (30 clients)</td><td><span class="biz-badge b-active">ACTIVE</span></td><td class="col-num">$84,393</td><td class="col-num">n/d</td><td class="col-num">$31,584</td><td class="col-num">2.67x</td></tr>
+                <tr><td>Dryer Vent Cleaning — Lynnwood, WA (#3 above)</td><td><span class="biz-badge b-active">ACTIVE</span></td><td class="col-num">$67,000</td><td class="col-num">$98,784</td><td class="col-num">$59,000</td><td class="col-num">1.14x</td></tr>
+                <tr><td>Residential Cleaning — Marysville, WA</td><td><span class="biz-badge b-active">ACTIVE</span></td><td class="col-num">$40,000</td><td class="col-num">n/d</td><td class="col-num">n/d</td><td class="col-num">&mdash;</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="crit">Read: a Jefferson County cleaning business with nearly double the cash flow went pending at 2.98x — so 2.50x isn't crazy for the Eastside, but the sold median says value is closer to $175K.</p>
+        </div>
+      </section>
+
+      <!-- Flagged -->
+      <section class="table-section">
+        <div class="table-header-row">
+          <h2 class="section-title">Flagged — High Cash Flow on Paper, Not Ranked</h2>
+          <span class="price-note">Proceed with caution</span>
+        </div>
+        <div class="table-wrapper">
+          <table class="biz-table">
+            <thead><tr><th>Listing</th><th>Location</th><th class="col-num">Asking</th><th class="col-num">Claimed SDE</th><th>Why it's flagged</th></tr></thead>
+            <tbody>
+              <tr>
+                <td class="biz-name"><a href="https://www.bizbuysell.com/business-opportunity/high-demand-recession-proof-biz-with-lots-of-clients-all-areas/2423816/" target="_blank" rel="noopener">Mold &amp; Air Quality Assessment</a></td>
+                <td>Seattle</td><td class="col-num">$50,000</td><td class="col-num">$150,000</td>
+                <td class="muted">Est. 2023, revenue undisclosed, website points to a Florida operation, seller "expanding to all states" — reads as a territory/training-package sale, not an established local business.</td>
+              </tr>
+              <tr>
+                <td class="biz-name"><a href="https://www.bizbuysell.com/business-opportunity/northwest-catering-company-10yrs-experience/2524603/" target="_blank" rel="noopener">Northwest Catering Co. (10 yrs)</a></td>
+                <td>Lake Forest Park</td><td class="col-num">$50,000</td><td class="col-num">$159,000</td>
+                <td class="muted">Real brand and team, but the sale includes NO kitchen (host restaurant closing). Only viable for an operator with existing commercial kitchen capacity.</td>
+              </tr>
+              <tr>
+                <td class="biz-name"><a href="https://www.bizbuysell.com/business-opportunity/established-promotional-marketing-company-for-sale/2391219/" target="_blank" rel="noopener">Promotional Marketing (franchise)</a></td>
+                <td>Pierce Co.</td><td class="col-num">$84,995</td><td class="col-num">$50,000</td>
+                <td class="muted">Listed "$887K revenue" is a franchise-wide FDD average of 48 stores, not this store's number. SDE may be real — the revenue line isn't.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Method -->
+      <section class="fund-description" aria-label="Methodology">
+        <h3 class="section-title">Methodology &amp; Sources</h3>
+        <p>Screen: all 136 Washington service-business listings on BizBuySell filtered to asking price under $200,000 (40 results) on July 28, 2026. Excluded: pure asset sales (equipment, trailers, vending machines), sale-pending listings, and franchise territory offerings with no operating history. Scoring: five criteria (cash flow, limited owner involvement, barrier to entry, repeat customers, low/no inventory), each 1&ndash;5. Sold route comps: Routes For Sale&reg; broker-reported sold listings for Washington. Category sold benchmarks: BizBuySell valuation-benchmark reports (service, cleaning &amp; janitorial, dry cleaners, routes, printing), reflecting businesses sold on and reported to BizBuySell. *Days listed are estimates derived from BizBuySell ad-ID sequencing calibrated against 60+ dated Internet Archive snapshots; treat as &plusmn;4&ndash;6 weeks. All listing figures are seller-reported and unverified. Nothing on this page is investment, legal, or tax advice — verify everything with tax returns, bank statements, and professional diligence before any offer.</p>
+      </section>
+    </main>
+
+    <footer class="dash-footer">
+      <span>Leadsure &middot; WA Business Screener &middot; Data shown July 28, 2026</span>
+    </footer>
+  </div>
+
+  <script>
+    (function(){
+      var btn = document.getElementById('theme-toggle');
+      if (btn) btn.addEventListener('click', function(){
+        var html = document.documentElement;
+        html.setAttribute('data-theme', html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+      });
+    })();
+  </script>
+</body>
+</html>
