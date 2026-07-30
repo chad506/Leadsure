@@ -177,8 +177,8 @@
       fmtAgo();
     }).catch(function () {
       setPills(false);
-      $('#last-updated').textContent = 'Snapshot · Jul 30, 2026 23:20 UTC — after hours (live APIs unreachable)';
-      var st = $('#sync-time'); if (st) st.textContent = 'Jul 30, 2026 23:20 UTC · after hours (baked snapshot — live APIs unreachable)';
+      $('#last-updated').textContent = 'Snapshot · Jul 30, 2026 23:45 UTC — after hours (live APIs unreachable)';
+      var st = $('#sync-time'); if (st) st.textContent = 'Jul 30, 2026 23:45 UTC · after hours (baked snapshot — live APIs unreachable)';
     });
   }
 
@@ -456,7 +456,7 @@
     { act: 'BUY', tok: '54398790535896757998414933803834478150495648270732685658889540342278545164806', sh: 100.00, px: 0.9000 },
     { act: 'BUY', tok: '84136147843234982343387328371427319914867576606050691793138736029250260155687', sh: 53.62, px: 0.2201 },
     { act: 'SELL', tok: '84136147843234982343387328371427319914867576606050691793138736029250260155687', sh: 80.00, px: 0.5249 },
-    { act: 'BUY', tok: '17275754600908351086268644037188773764043163588835669360978961593672223338690', sh: 320, px: 0.9068 },
+    { act: 'BUY', tok: '54398790535896757998414933803834478150495648270732685658889540342278545164806', sh: 320, px: 0.9068 } /* token corrected Jul 30 PM: prior entry carried the Alphabet-JULY-NO token by mistake */,
     { act: 'BUY', tok: '42047893977785728528565456844873223397500118970867834014836006695082853076308', sh: 408.16, px: 0.49 },
     { act: 'SELL', tok: '84136147843234982343387328371427319914867576606050691793138736029250260155687', sh: 259.98, px: 0.8115 },
     { act: 'SELL', tok: '75848210276979954337354349909329862141109563590210566057575338891512846216329', sh: 1366.20, px: 0.7504 },
