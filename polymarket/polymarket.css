@@ -239,3 +239,80 @@ code { font-family: ui-monospace, monospace; font-size: 0.85em; background: var(
   transition: background var(--transition-interactive), color var(--transition-interactive);
 }
 .pm-card-link:hover { background: var(--color-primary); color: var(--color-text-inverse); }
+
+/* ==== ledger readability (tracking + retired) ====
+   The market cell carries a prose annotation. Without a width cap it sets the
+   table's intrinsic width and pushes every scoring column off-canvas, which is
+   exactly what it was doing. Cap it, let the note wrap, and left-align the text. */
+#track-table, #retired-table { table-layout: fixed; width: 100%; }
+
+#track-table th:nth-child(3), #track-table td:nth-child(3),
+#retired-table th:nth-child(3), #retired-table td:nth-child(3) {
+  width: 34%;
+  text-align: left !important;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+#track-table th:nth-child(1), #track-table td:nth-child(1),
+#retired-table th:nth-child(1), #retired-table td:nth-child(1),
+#retired-table th:nth-child(2), #retired-table td:nth-child(2) { width: 7.5%; }
+#track-table th:nth-child(2), #track-table td:nth-child(2) { width: 8%; }
+#track-table th:nth-child(9), #track-table td:nth-child(9),
+#retired-table th:nth-child(9), #retired-table td:nth-child(9) { width: 11%; }
+
+/* multi-line cells must align from the top, or the numbers float mid-paragraph */
+#track-table td, #retired-table td { vertical-align: top; padding-top: 9px; padding-bottom: 9px; }
+#track-table tbody tr, #retired-table tbody tr { border-bottom: 1px solid var(--color-border); }
+
+/* the annotation was 0.62rem/1.15 — below comfortable reading size */
+#track-table .pm-sub, #retired-table .pm-sub {
+  font-size: 0.72rem;
+  line-height: 1.45;
+  margin-top: 4px;
+  color: var(--color-text-muted);
+  text-align: left;
+  max-width: 46ch;
+}
+#track-table .pm-mkt > a, #retired-table .pm-mkt > a { font-size: 0.82rem; }
+
+/* keep the numeric columns readable rather than merely centred */
+#track-table td.col-num, #retired-table td.col-num { white-space: nowrap; font-size: 0.8rem; }
+
+@media (max-width: 900px) {
+  #track-table th:nth-child(3), #track-table td:nth-child(3),
+  #retired-table th:nth-child(3), #retired-table td:nth-child(3) { width: 42%; }
+  #track-table .pm-sub, #retired-table .pm-sub { font-size: 0.68rem; }
+}
+
+/* ledger headers: let them wrap instead of colliding, and give the numeric
+   columns fixed widths so "FREED / DEPLOYED" stops running into "PRICE NOW" */
+#track-table th, #retired-table th {
+  white-space: normal;
+  line-height: 1.25;
+  letter-spacing: 0.02em;
+  vertical-align: bottom;
+  font-size: 0.6rem;
+}
+#track-table th:nth-child(4), #track-table td:nth-child(4) { width: 8%; }
+#track-table th:nth-child(5), #track-table td:nth-child(5) { width: 9%; }
+#track-table th:nth-child(6), #track-table td:nth-child(6) { width: 10%; }
+#track-table th:nth-child(7), #track-table td:nth-child(7) { width: 8%; }
+#track-table th:nth-child(8), #track-table td:nth-child(8) { width: 12%; }
+#retired-table th:nth-child(4), #retired-table td:nth-child(4) { width: 7%; }
+#retired-table th:nth-child(5), #retired-table td:nth-child(5) { width: 9%; }
+#retired-table th:nth-child(6), #retired-table td:nth-child(6) { width: 10%; }
+#retired-table th:nth-child(7), #retired-table td:nth-child(7) { width: 8%; }
+#retired-table th:nth-child(8), #retired-table td:nth-child(8) { width: 10%; }
+
+/* zebra striping reads better than hairlines once rows are multi-line */
+#track-table tbody tr, #retired-table tbody tr { border-bottom: 1px solid var(--color-border); }
+#track-table .pm-badge, #retired-table .pm-badge { white-space: nowrap; }
+
+/* On phones, 9 fixed columns crush to ~28px each. Let the ledger scroll inside
+   its wrapper instead of compressing every column past legibility. */
+@media (max-width: 700px) {
+  #track-table, #retired-table { table-layout: auto; min-width: 760px; }
+  #track-table th:nth-child(3), #track-table td:nth-child(3),
+  #retired-table th:nth-child(3), #retired-table td:nth-child(3) { width: auto; min-width: 260px; }
+  #track-table .pm-sub, #retired-table .pm-sub { max-width: 34ch; }
+}
