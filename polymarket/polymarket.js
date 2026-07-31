@@ -177,8 +177,8 @@
       fmtAgo();
     }).catch(function () {
       setPills(false);
-      $('#last-updated').textContent = 'Snapshot · Jul 31, 2026 13:13 UTC — pre-market, resolution day (live APIs unreachable)';
-      var st = $('#sync-time'); if (st) st.textContent = 'Jul 31, 2026 13:13 UTC · pre-market (baked snapshot — live APIs unreachable)';
+      $('#last-updated').textContent = 'Snapshot · Jul 31, 2026 15:35 UTC — pre-market, resolution day (live APIs unreachable)';
+      var st = $('#sync-time'); if (st) st.textContent = 'Jul 31, 2026 15:35 UTC · pre-market (baked snapshot — live APIs unreachable)';
     });
   }
 
@@ -497,7 +497,13 @@
     { act: 'SELL', tok: '11728583497514710574356365513249856989304427730091039531942765980605070477300', sh: 898.6, px: 0.8868 } /* NVDA-crown July YES — rulebook clips 84.6–92.6¢ */,
     { act: 'SELL', tok: '44485368873643784531862401772918820589721230664189835980509638753050855169710', sh: 544.2, px: 0.9144 } /* AAPL-crown July NO — block trim */,
     { act: 'SELL', tok: '24709869777541994161985607099029324252686151170116658170228927775726765767759', sh: 169.5, px: 0.9440 } /* NVDA-2nd July NO — block trim */,
-    { act: 'SELL', tok: '96738271970978473626692761675665650558731868524608528797496705773854589776782', sh: 1797.0, px: 0.405 } /* BACKFILL Jul 30: Apple-2nd-Aug NO unwind after the print */
+    { act: 'SELL', tok: '96738271970978473626692761675665650558731868524608528797496705773854589776782', sh: 1797.0, px: 0.405 } /* BACKFILL Jul 30: Apple-2nd-Aug NO unwind after the print */,
+    { act: 'SELL', tok: '11728583497514710574356365513249856989304427730091039531942765980605070477300', sh: 1824.0, px: 0.9687 },
+    { act: 'SELL', tok: '24709869777541994161985607099029324252686151170116658170228927775726765767759', sh: 834.0, px: 0.9749 },
+    { act: 'SELL', tok: '44485368873643784531862401772918820589721230664189835980509638753050855169710', sh: 592.0, px: 0.9895 },
+    { act: 'SELL', tok: '52571501528156787027187935562201905991806996165843090033663476160970921418771', sh: 386.0, px: 0.9732 },
+    { act: 'SELL', tok: '96594539864896017658091700429432931825025677922116471396340225316561885246', sh: 172.0, px: 0.9033 },
+    { act: 'BUY', tok: '89706022921501149384847021353587496883277465141816802927673604440172434177565', sh: 135.0, px: 0.2677 }
   ];
   function refreshTracking() {
     Promise.all(TRACKED.map(function (t, i) {
@@ -573,7 +579,8 @@
     { tok: '', side: 'BUY', retPx: 0 }, /* July carry re-entry (BTC $57.5k NO + SPY $700 NO) — decayed to 0.2/1.3 pts at the asks with resolution Aug 1; multi-token, unscoreable */
     { tok: '22227957563975750716653233638849839957651843503812478121278991305586251655238', side: 'BUY', retPx: 0.335 }, /* NVDA-2nd-Aug YES add — thesis inverted by the Jul 30 print; stub sold at 40.9c */
     { tok: '84136147843234982343387328371427319914867576606050691793138736029250260155687', side: 'BUY', retPx: 0.3015 } /* NVDA-2nd-July YES 94.3c carry — collapsed to ~30c on the re-flip; never filled */,
-    { tok: '93997509898554464206013458433253360996772270234627522008621917049464308684354', side: 'BUY', retPx: 0.0705 } /* Alphabet-Aug convexity punt (re-run) — ran 2.1x past its 3.3c limit unfilled; retired Jul 31 AM */
+    { tok: '93997509898554464206013458433253360996772270234627522008621917049464308684354', side: 'BUY', retPx: 0.0705 } /* Alphabet-Aug convexity punt (re-run) — ran 2.1x past its 3.3c limit unfilled; retired Jul 31 AM */,
+    { tok: '99989724583763374403799114487538400642955271680502705587990647202176759344135', side: 'BUY', retPx: 0.55 } /* GOOGL-3rd-Aug carry, second retirement: thesis self-destructed at the Jul 31 open */
   ]; /* {tok, side ('BUY'|'SELL'), retPx} — indices align with #retired-body rows' data-retired-* attrs */
   function refreshRetired() {
     RETIRED.forEach(function (t, i) {

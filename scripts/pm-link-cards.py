@@ -146,9 +146,12 @@ def check(path):
         if url == PORTFOLIO:
             continue  # account-hygiene card, exempt by design
         low = title.lower()
-        for long_name, short in MONTHS:
-            if long_name in low and f'-{short}' not in url and long_name not in url:
-                problems.append(f'month mismatch ({long_name}): {title[:60]} -> {url}')
+        mentioned = [(long_name, short) for long_name, short in MONTHS if long_name in low]
+        if mentioned and not any(
+            f'-{short}' in url or long_name in url for long_name, short in mentioned
+        ):
+            names = '/'.join(n for n, _ in mentioned)
+            problems.append(f'month mismatch ({names}): {title[:60]} -> {url}')
 
     if problems:
         print(f'FAIL ({len(problems)} problem(s)):')
