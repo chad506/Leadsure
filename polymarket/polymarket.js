@@ -177,8 +177,8 @@
       fmtAgo();
     }).catch(function () {
       setPills(false);
-      $('#last-updated').textContent = 'Snapshot · Jul 31, 2026 15:35 UTC — pre-market, resolution day (live APIs unreachable)';
-      var st = $('#sync-time'); if (st) st.textContent = 'Jul 31, 2026 15:35 UTC · pre-market (baked snapshot — live APIs unreachable)';
+      $('#last-updated').textContent = 'Snapshot · Jul 31, 2026 15:35 UTC — market open, resolution day (live APIs unreachable)';
+      var st = $('#sync-time'); if (st) st.textContent = 'Jul 31, 2026 15:35 UTC · market open (baked snapshot — live APIs unreachable)';
     });
   }
 
@@ -432,9 +432,12 @@
       var posVal = valArr.length && valArr[0].value != null ? valArr[0].value : posSum;
       setText('#acct-value', usd(posVal));
       var ce = $('#acct-cash');
-      if (ce && walletCash != null) ce.textContent = usd(walletCash);
+      if (ce && walletCash != null) ce.textContent = usd(walletCash) + ' + ' + usd(ENGINE_CASH);
       var pf = $('#acct-portfolio');
-      if (pf) pf.textContent = usd(posVal + (walletCash != null ? walletCash : 0));
+      /* ENGINE_CASH: CLOB sale proceeds settled off-chain (exchange balance). Reconstructed
+         each run from the trade ledger vs the Jul 30 23:45Z anchor (engine ~ $0), because
+         neither data-api /value (positions only) nor the on-chain USDC balances see it. */
+      if (pf) pf.textContent = usd(posVal + (walletCash != null ? walletCash : 0) + ENGINE_CASH);
       setText('#acct-open', String(active.length));
       var pnl = active.reduce(function (s, p) { return s + p.cashPnl; }, 0);
       var pnlEl = $('#acct-pnl');
@@ -442,6 +445,8 @@
       loadWindowPnl();
     }).catch(function () { /* keep baked snapshot */ });
   }
+
+  var ENGINE_CASH = 5669.87; /* re-baked every run; see comment at use site */
 
   /* ---------- decision tracking ledger ---------- */
   var TRACKED = [

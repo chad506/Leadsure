@@ -83,12 +83,12 @@
       <section class="account-hero" aria-label="Account summary">
         <div class="account-hero-primary">
           <div class="account-hero-label">Portfolio (est.)</div>
-          <div class="account-hero-value" id="acct-portfolio">$5,158.97</div>
+          <div class="account-hero-value" id="acct-portfolio">$10,828.84</div>
         </div>
         <div class="account-hero-divider"></div>
         <div class="account-hero-secondary">
           <div class="account-hero-stat"><div class="account-hero-stat-label">Positions Value</div><div class="account-hero-stat-value" id="acct-value">$4,276.65</div></div>
-          <div class="account-hero-stat"><div class="account-hero-stat-label">Cash on Chain</div><div class="account-hero-stat-value" id="acct-cash">$882.32</div></div>
+          <div class="account-hero-stat"><div class="account-hero-stat-label">Cash · Chain + In-Engine</div><div class="account-hero-stat-value" id="acct-cash">$882.32 + $5,669.87</div></div>
           <div class="account-hero-stat"><div class="account-hero-stat-label">Open Positions</div><div class="account-hero-stat-value" id="acct-open">52</div></div>
           <div class="account-hero-stat"><div class="account-hero-stat-label">Open P&amp;L</div><div class="account-hero-stat-value pm-pos" id="acct-pnl">+$22.96</div></div>
           <div class="account-hero-stat"><div class="account-hero-stat-label">24 Hour P&amp;L</div><div class="account-hero-stat-value pm-pos" id="acct-pnl24">+$702.69</div></div>
@@ -134,7 +134,7 @@
           </table>
         </div>
         <button class="pm-more pm-acct-more" id="acct-more" hidden>Show all positions <span class="chev">▼</span></button>
-        <p class="pm-footnote">Positions Value = Data-API /value (matches Polymarket’s positions tab); Cash on Chain reads the wallet’s USDC balances (native + bridged) live from Polygon. OVERNIGHT INTO RESOLUTION DAY: the account scaled out of the July re-flip into strength — <strong>899 sh of NVDA-crown YES in twelve clips at 84.6–92.6¢</strong> (the rulebook’s “clip ≥80¢” instruction, executed as written), 544 sh of Apple-crown NO at 88.3–94.3¢, 170 sh of NVDA-2nd NO at 94.4¢, and <strong>542 sh of WTI $95-high NO lifted at 99.5–99.8¢</strong> (the ≥99¢ guard-rail rule’s fourth payout) — ≈$1.99k of sells, all ledgered on the Tracking tab. The remaining July ranking block ($3,767, 50% of positions) resolves at <strong>TODAY’s 4pm ET close</strong>. Note the on-chain cash reading: it held at $882.32 through ≈$2.0k of overnight sells — proceeds sit in the order-engine balance, which public endpoints cannot see, so Portfolio (est.) is a conservative floor. Zero-value expired positions hidden; snapshot Jul 31, 2026 13:13 UTC (pre-market).</p>
+        <p class="pm-footnote">Positions Value = Data-API /value (matches Polymarket’s positions tab); Cash on Chain reads the wallet’s USDC balances (native + bridged) live from Polygon. OVERNIGHT INTO RESOLUTION DAY: the account scaled out of the July re-flip into strength — <strong>899 sh of NVDA-crown YES in twelve clips at 84.6–92.6¢</strong> (the rulebook’s “clip ≥80¢” instruction, executed as written), 544 sh of Apple-crown NO at 88.3–94.3¢, 170 sh of NVDA-2nd NO at 94.4¢, and <strong>542 sh of WTI $95-high NO lifted at 99.5–99.8¢</strong> (the ≥99¢ guard-rail rule’s fourth payout) — ≈$1.99k of sells, all ledgered on the Tracking tab. The remaining July ranking block ($3,767, 50% of positions) resolves at <strong>TODAY’s 4pm ET close</strong>. CASH ACCOUNTING, CORRECTED AT 8:50 AM PT: on-chain USDC has read $882.32 all week while the account sold ≈$5.7k — CLOB proceeds settle into the order-engine balance, which no public endpoint reports. Portfolio (est.) now includes an <strong>in-engine component of $5,669.87, reconstructed from the trade ledger itself</strong> (every fill since the Jul 30 23:45 UTC anchor, when engine cash was ≈$0: $5,691.02 sold − $36.04 bought + $15.39 rebates/yield). Cross-check: implied equity growth since the anchor (+$1,655) matches the July book’s convergence P&L. This is an estimate — deposits/withdrawals or fills after 15:32 UTC would move it. Zero-value expired positions hidden; snapshot Jul 31, 2026 15:35 UTC (market open).</p>
       </section>
 
 
@@ -496,7 +496,7 @@
             <div class="pm-exec"><strong>THE TICKET:</strong> At 4pm ET: score the re-flip and freeze the July ledger rows at 0/100. Tonight’s PM run: recompute every fair on settled caps, release the re-entry budget (#2, then #4), and prep tomorrow’s WTI roll. Saturday: collect the carry.</div>
           </div>
         </div>
-        <p class="pm-footnote">Ten slots (target 12) — the tombstones (the killed NVDA-2nd carry, the closed Apple-2nd-Aug round trip, the sold July block card) aged off into the ledgers that now score them. Live edges, in conviction order: the July block itself (#1 — now a hold at model-fair, not an edge), NVDA-Dec NO (+32.8, gated on tonight), Alphabet-3rd-Aug (+9, executable), the December challenger discounts, and the carry family. Tickets sized to the live account ($7,562 positions · $882 on-chain cash · ≈$2.0k engine-side proceeds) against real order-book depth, 13:13 UTC (pre-market) · not financial advice.</p>
+        <p class="pm-footnote">Ten slots (target 12) — the tombstones (the killed NVDA-2nd carry, the closed Apple-2nd-Aug round trip, the sold July block card) aged off into the ledgers that now score them. Live edges, in conviction order: the July block itself (#1 — now a hold at model-fair, not an edge), NVDA-Dec NO (+32.8, gated on tonight), Alphabet-3rd-Aug (+9, executable), the December challenger discounts, and the carry family. Tickets sized to the live account ($4,277 positions · $882 on-chain · $5,670 in-engine, ledger-reconstructed) against real order-book depth, 15:32 UTC (market open) · not financial advice.</p>
       </section>
 
       <!-- ===================== MISPRICING MONITOR ===================== -->
