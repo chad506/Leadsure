@@ -2,14 +2,14 @@
 (function () {
   'use strict';
 
-  /* ---------- baked odds history (daily CLOB closes, Jun 27 – Jul 30 2026 + the Jul 31 post-close prints, 23:13 UTC — July resolved NVIDIA at the close) ---------- */
+  /* ---------- baked odds history (daily CLOB closes, Jun 27 – Jul 30 2026 + the Aug 1 13:28 UTC prints — July resolved NVIDIA; Dec series continues, Jul legs frozen) ---------- */
   var H = {
     julNVDA: [0.925,0.925,0.905,0.905,0.895,0.84,0.815,0.815,0.825,0.795,0.805,0.81,0.86,0.915,0.915,0.92,0.855,0.915,0.845,0.715,0.55,0.53,0.545,0.68,0.745,0.885,0.89,0.715,0.765,0.795,0.295,0.215,0.075,0.754,0.986],
     julAAPL: [0.043,0.043,0.0435,0.0345,0.0385,0.1205,0.121,0.126,0.1245,0.118,0.112,0.1085,0.092,0.0645,0.0575,0.0655,0.113,0.06,0.1045,0.2675,0.415,0.441,0.411,0.286,0.241,0.1155,0.0965,0.2795,0.2235,0.2155,0.698,0.7815,0.9255,0.2335,0.0045],
-    decNVDA: [0.725,0.725,0.62,0.645,0.655,0.605,0.585,0.605,0.615,0.595,0.635,0.655,0.655,0.685,0.695,0.705,0.665,0.72,0.655,0.615,0.52,0.555,0.545,0.605,0.61,0.615,0.645,0.625,0.565,0.575,0.51,0.485,0.485,0.575,0.555],
-    decAAPL: [0.082,0.082,0.0965,0.095,0.108,0.1475,0.143,0.132,0.158,0.1555,0.1705,0.1265,0.1265,0.1405,0.1305,0.13,0.1705,0.1285,0.143,0.2285,0.345,0.328,0.3305,0.235,0.2025,0.1985,0.1985,0.2565,0.2995,0.281,0.353,0.289,0.3565,0.251,0.2035],
-    decGOOGL: [0.115,0.115,0.155,0.165,0.16,0.155,0.165,0.175,0.165,0.165,0.165,0.155,0.155,0.145,0.145,0.145,0.12,0.105,0.12,0.125,0.105,0.105,0.105,0.105,0.125,0.105,0.105,0.105,0.095,0.095,0.105,0.135,0.145,0.13,0.165],
-    decSPCX: [0.0395,0.0395,0.0355,0.023,0.0225,0.0215,0.027,0.027,0.0235,0.0215,0.0205,0.022,0.0215,0.0185,0.02,0.019,0.0145,0.0135,0.0125,0.012,0.0085,0.0085,0.0085,0.0085,0.009,0.0095,0.0115,0.0125,0.015,0.0105,0.0095,0.017,0.0155,0.0175,0.0145]
+    decNVDA: [0.725,0.725,0.62,0.645,0.655,0.605,0.585,0.605,0.615,0.595,0.635,0.655,0.655,0.685,0.695,0.705,0.665,0.72,0.655,0.615,0.52,0.555,0.545,0.605,0.61,0.615,0.645,0.625,0.565,0.575,0.51,0.485,0.485,0.575,0.565],
+    decAAPL: [0.082,0.082,0.0965,0.095,0.108,0.1475,0.143,0.132,0.158,0.1555,0.1705,0.1265,0.1265,0.1405,0.1305,0.13,0.1705,0.1285,0.143,0.2285,0.345,0.328,0.3305,0.235,0.2025,0.1985,0.1985,0.2565,0.2995,0.281,0.353,0.289,0.3565,0.251,0.2255],
+    decGOOGL: [0.115,0.115,0.155,0.165,0.16,0.155,0.165,0.175,0.165,0.165,0.165,0.155,0.155,0.145,0.145,0.145,0.12,0.105,0.12,0.125,0.105,0.105,0.105,0.105,0.125,0.105,0.105,0.105,0.095,0.095,0.105,0.135,0.145,0.13,0.155],
+    decSPCX: [0.0395,0.0395,0.0355,0.023,0.0225,0.0215,0.027,0.027,0.0235,0.0215,0.0205,0.022,0.0215,0.0185,0.02,0.019,0.0145,0.0135,0.0125,0.012,0.0085,0.0085,0.0085,0.0085,0.009,0.0095,0.0115,0.0125,0.015,0.0105,0.0095,0.017,0.0155,0.0175,0.015]
   };
   var LABELS = (function () {
     var out = [], d = new Date(Date.UTC(2026, 5, 27));
@@ -199,8 +199,8 @@
       fmtAgo();
     }).catch(function () {
       setPills(false);
-      $('#last-updated').textContent = 'Snapshot · Jul 31, 2026 23:13 UTC — post-close, July resolved (live APIs unreachable)';
-      var st = $('#sync-time'); if (st) st.textContent = 'Jul 31, 2026 23:13 UTC · post-close, July resolved (baked snapshot — live APIs unreachable)';
+      $('#last-updated').textContent = 'Snapshot · Aug 1, 2026 13:28 UTC — Saturday, July settled (live APIs unreachable)';
+      var st = $('#sync-time'); if (st) st.textContent = 'Aug 1, 2026 13:28 UTC · Saturday, July settled (baked snapshot — live APIs unreachable)';
     });
   }
 
@@ -495,7 +495,7 @@
     }).catch(function () { /* keep baked snapshot */ });
   }
 
-  var ENGINE_CASH = 5808.09; /* re-baked every run from the trade ledger: 5,669.87 at 15:33Z + $1,594.29 sold + $20.93 redeemed (Micron) - $1,477.00 bought through 23:13Z */
+  var ENGINE_CASH = 4294.29; /* re-baked every run from the trade ledger: 5,808.09 at Jul 31 23:13Z + $5.85 rebates/yield + $38.91 Phillies-NO sale - $1,558.56 deployed into the 10Y-5.0% rung through Aug 1 13:28Z */
 
   /* ---------- decision tracking ledger ---------- */
   var TRACKED = [
@@ -562,7 +562,9 @@
     { act: 'SELL', tok: '22380582002052839082465005899114395003938630732672759582910297636521820401881', sh: 542.1, px: 0.9988 } /* WTI $95 July NO — second 542-sh tranche lifted 99.8-99.9c */,
     { act: 'SELL', tok: '52571501528156787027187935562201905991806996165843090033663476160970921418771', sh: 472.7, px: 0.9829 } /* Apple-2nd July stub — sold 98.7-99.5c pre-settlement instead of riding */,
     { act: 'SELL', tok: '11554673541814555978405662589194531433610823807505275391222087447793922121663', sh: 63.5, px: 0.9875 } /* SpaceX July-cap NO — band broke; exit at 98-99c, not the card's 35c bid */,
-    { act: 'BUY', tok: '89706022921501149384847021353587496883277465141816802927673604440172434177565', sh: 768.8, px: 0.3760 } /* Alphabet-2nd-Aug YES — successor-trade adds at 31.7/41.0c */
+    { act: 'BUY', tok: '89706022921501149384847021353587496883277465141816802927673604440172434177565', sh: 768.8, px: 0.3760 } /* Alphabet-2nd-Aug YES — successor-trade adds at 31.7/41.0c */,
+    { act: 'BUY', tok: '22397766228589110871783272985290872433765236471932774952155419500943165057456', sh: 6864.46, px: 0.2271 } /* 10Y-5.0% YES — overnight execution of the Treasuries tab's #1 ticket at 4x size, 21.3-24.5c walk */,
+    { act: 'SELL', tok: '88070604095019933483120371166318147806645160089526649541840854734212832936177', sh: 39.3, px: 0.99 } /* Phillies 100+ wins NO — guard-rail seventh payout at 99c */
   ];
   function refreshTracking() {
     Promise.all(TRACKED.map(function (t, i) {
@@ -641,7 +643,9 @@
     { tok: '93997509898554464206013458433253360996772270234627522008621917049464308684354', side: 'BUY', retPx: 0.0705 } /* Alphabet-Aug convexity punt (re-run) — ran 2.1x past its 3.3c limit unfilled; retired Jul 31 AM */,
     { tok: '99989724583763374403799114487538400642955271680502705587990647202176759344135', side: 'BUY', retPx: 0.55 } /* GOOGL-3rd-Aug carry, second retirement: thesis self-destructed at the Jul 31 open */,
     { tok: '58255742710354753372638105507395301856276470581760095695579319734210276720718', side: 'BUY', retPx: 0.165 } /* September kink bids (NVDA-2nd-Sept <=30c) — resolution repriced 42.5 -> 16.5 straight through the bid zone */,
-    { tok: '', side: 'BUY', retPx: 0 } /* Post-print re-entry test — condition met on settled caps; superseded by the released Dec tickets; process card, unscoreable */
+    { tok: '', side: 'BUY', retPx: 0 } /* Post-print re-entry test — condition met on settled caps; superseded by the released Dec tickets; process card, unscoreable */,
+    { tok: '99989724583763374403799114487538400642955271680502705587990647202176759344135', side: 'BUY', retPx: 0.62 } /* GOOGL-3rd-Aug YES third listing — book repriced 51/54 -> 62/63 straight through fair overnight; edge gone */,
+    { tok: '', side: 'BUY', retPx: 0 } /* Trades #10 July final-accounting card — self-retiring process card; ledger closed at 64 decisions +$4,151 */
   ]; /* {tok, side ('BUY'|'SELL'), retPx} — indices align with #retired-body rows' data-retired-* attrs */
   function refreshRetired() {
     RETIRED.forEach(function (t, i) {
