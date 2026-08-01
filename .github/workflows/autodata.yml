@@ -7,6 +7,9 @@ on:
     - cron: '45 12 * * *'
     - cron: '45 22 * * *'
   workflow_dispatch:
+  push:
+    branches: [auto-data-fetch]
+    paths: ['fetch/poke']
 permissions:
   contents: write
 jobs:
