@@ -316,3 +316,10 @@ code { font-family: ui-monospace, monospace; font-size: 0.85em; background: var(
   #retired-table th:nth-child(3), #retired-table td:nth-child(3) { width: auto; min-width: 260px; }
   #track-table .pm-sub, #retired-table .pm-sub { max-width: 34ch; }
 }
+
+
+/* ==== Treasuries tab (6% long-bond) ==== */
+.page-nav { flex-wrap: wrap; }
+#view-treasuries .pm-table td[colspan],
+#view-treasuries .pm-table td.trs-prose { white-space: normal; min-width: 300px; line-height: 1.55; }
+#view-treasuries .pm-table td[colspan] { min-width: 0; }

@@ -38,6 +38,15 @@ SLUGS = {
     'ws':     'mlb-world-series-champion-2026',
     'so':     'mlb-strikeouts-leader-pitcher',
     'rbi':    'mlb-rbis-leader',
+    # Treasuries tab (6% long-bond scenario)
+    'trs10y':    'how-high-will-10-year-treasury-yield-go-before-2027',
+    'trs10ylow': 'how-low-will-10-year-treasury-yield-get-before-2027',
+    'trshike':   'fed-rate-hike-in-2026',
+    'trsmort':   'will-the-30-year-mortgage-rate-hit-in-2026',
+    'trsspx':    'spx-hit-dec-2026',
+    'trsstag':   'us-economic-state-at-the-end-of-2026',
+    'trsgold':   'what-will-gold-gc-hit-by-end-of-december',
+    'trsemerg':  'fed-emergency-rate-cut-before-2027',
 }
 
 CARD_RE = re.compile(
@@ -54,6 +63,23 @@ def pick_url(title_html):
     def has(*needles):
         return any(n.lower() in text for n in needles)
 
+    # Treasuries-tab cards — most specific first, before every largest-company rule.
+    if has('the basket \u2014 and the fade', 'and the fade'):
+        return EVENT + SLUGS['trs10ylow'], '10Y yield, how low'
+    if has('10-year yield hits', '10-year hits', 'direct ladder', 'rung '):
+        return EVENT + SLUGS['trs10y'], '10Y yield, how high'
+    if has('hike complex'):
+        return EVENT + SLUGS['trshike'], 'Fed hike in 2026'
+    if has('30-year mortgage'):
+        return EVENT + SLUGS['trsmort'], '30Y mortgage rate'
+    if has('equity transmission', 'spx down-touch'):
+        return EVENT + SLUGS['trsspx'], 'SPX touch levels'
+    if has('stagflation'):
+        return EVENT + SLUGS['trsstag'], 'US economic state'
+    if has('gold touch ladder', 'fiscal hedge'):
+        return EVENT + SLUGS['trsgold'], 'Gold touch levels'
+    if has('emergency cut', 'accident leg'):
+        return EVENT + SLUGS['trsemerg'], 'Fed emergency cut'
     if has('3rd-largest august', '3rd-largest aug', '"3rd-largest', '3rd spot', '#3 spot'):
         return EVENT + SLUGS['3aug'], '3rd-largest, August'
     if has('second-place july', '2nd-largest july', '2nd largest july'):

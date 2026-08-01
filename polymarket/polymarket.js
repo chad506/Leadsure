@@ -43,7 +43,27 @@
     'dec-AAPL': '9875273331604434310973374077817381730908757452538191940842519381772366848',
     'dec-GOOGL': '62009449847159122385971991480139610869824965029008686522071073076098387124747',
     'dec-SPCX': '34376240305139645452191650383029377919496221975523712782933090732539681434119',
-    'dec-TSLA': '50967548204329017987830198881678379324925229642745345006556239550086450305683'
+    'dec-TSLA': '50967548204329017987830198881678379324925229642745345006556239550086450305683',
+    /* Treasuries tab (6% long-bond scenario) */
+    'trs-10y48': '57813774524155463423838033259397133747187306761649300584910471142751787047106',
+    'trs-10y50': '22397766228589110871783272985290872433765236471932774952155419500943165057456',
+    'trs-10y52': '70090363170367815297146294007692529992906189341824085184699164213923074932193',
+    'trs-10y55': '108315584853799729838614333748063377472256875592940383916811669252949563879956',
+    'trs-10y57': '19807745274820218436318664068726385243490453006769046292026430944247457642518',
+    'trs-nocuts': '12403602920039269077597917340921667997547115084613238528792639013246536343316',
+    'trs-sephike': '63842529068710005716169325380315470359047749786610778647370693404952498013178',
+    'trs-dechike': '111662129652828266889360374468657435151479595863413519836161861837506140152890',
+    'trs-hike26': '75028752776148090296091099469912621384650554615761384992997579209329182670110',
+    'trs-spx6200': '49955818039428095386956976055681140865441561732095652149645714273344189549953',
+    'trs-spx5800': '34357288327330056667349828087095149953359155962095457849915526561277102684498',
+    'trs-spx5200': '43862694280485931410720845136506753152245240145650454010850206036552462953242',
+    'trs-gold5k': '25472502502236710744675799561400967135875595061119902215625578202260735017994',
+    'trs-gold6k': '79773570476744632615747480307256906441402089435470166694872527952303027818942',
+    'trs-stagf': '29221647660001052534885426446639848390010824454348882014638265430112051361512',
+    'trs-emerg': '8618184031231342643840589970076443003283607991865226846156174312081261691762',
+    'trs-recess': '100379208559626151022751801118534484742123694725746262280150222742563282755057',
+    'trs-cpi45': '74673761985513157199971989678705947308950428080518161992747749503329915181832',
+    'trs-mort7': '83519912354085399762068008706537393573148541011886846818970046660026074594792'
   };
   var SHARES = { NVDA: 24.2, AAPL: 14.68736, GOOGL: 12.17456, MSFT: 7.42843, AMZN: 10.75711, AVGO: 4.75758, TSLA: 3.75572 }; /* billions */
   var FINNHUB_KEY = 'd6kqa11r01qmopd1net0d6kqa11r01qmopd1netg';
@@ -95,7 +115,8 @@
     var midCalls = Object.keys(TOKENS).map(function (k) {
       return fetch('https://clob.polymarket.com/midpoint?token_id=' + TOKENS[k])
         .then(function (r) { return r.json(); })
-        .then(function (j) { mids[k] = parseFloat(j.mid); });
+        .then(function (j) { mids[k] = parseFloat(j.mid); })
+        .catch(function () { /* leave baked value for this token */ });
     });
     var quoteCalls = Object.keys(SHARES).map(function (sym) {
       return fetch('https://finnhub.io/api/v1/quote?symbol=' + sym + '&token=' + FINNHUB_KEY)
@@ -111,6 +132,7 @@
         setText('[data-odds="' + k + '"]', disp);
         setText('[data-odds-kpi="' + k + '"]', disp);
       });
+      try { updateTrs(mids); } catch (e) { /* never break the shared refresh */ }
       /* caps + gaps */
       if (caps.NVDA) {
         var leadCap = Math.max.apply(null, Object.keys(caps).map(function (k2) { return caps[k2]; }));
@@ -179,6 +201,33 @@
       setPills(false);
       $('#last-updated').textContent = 'Snapshot · Jul 31, 2026 23:13 UTC — post-close, July resolved (live APIs unreachable)';
       var st = $('#sync-time'); if (st) st.textContent = 'Jul 31, 2026 23:13 UTC · post-close, July resolved (baked snapshot — live APIs unreachable)';
+    });
+  }
+
+  /* ---------- treasuries tab: live fair/edge/implied recompute ---------- */
+  function updateTrs(mids) {
+    var P6 = 0.18;
+    $$('#trs-table-body tr[data-trs-row]').forEach(function (row) {
+      var k = row.getAttribute('data-trs-row');
+      var mid = mids[k];
+      if (mid == null || isNaN(mid)) return;
+      var pc = parseFloat(row.getAttribute('data-pc'));
+      var pe = parseFloat(row.getAttribute('data-pe'));
+      var fair = P6 * pc + (1 - P6) * pe;
+      var edge = mid - fair;
+      var imp = Math.max(0, (mid - pe) / (pc - pe));
+      var f = row.querySelector('[data-trs-fair]'); if (f) f.textContent = (fair * 100).toFixed(1) + '%';
+      var e = row.querySelector('[data-trs-edge]');
+      if (e) {
+        e.textContent = (edge >= 0 ? '+' : '\u2212') + Math.abs(edge * 100).toFixed(1);
+        e.className = 'col-num' + (edge <= -0.025 ? ' pm-pos' : '');
+      }
+      var im = row.querySelector('[data-trs-imp]'); if (im) im.textContent = imp <= 0.005 ? '\u22480%' : (imp * 100).toFixed(1) + '%';
+      var v = row.querySelector('[data-trs-verdict]');
+      if (v) {
+        v.className = 'pm-badge ' + (edge <= -0.025 ? 'pm-cheap' : edge >= 0.025 ? 'pm-rich' : 'pm-fair');
+        v.textContent = edge <= -0.025 ? 'CHEAP' : edge >= 0.025 ? 'RICH' : 'FAIR';
+      }
     });
   }
 
@@ -672,7 +721,7 @@
       $$('.page-nav .nav-tab[data-view]').forEach(function (t) { t.classList.remove('active'); });
       tab.classList.add('active');
       var view = tab.getAttribute('data-view');
-      ['polymarket', 'largest', 'tracking'].forEach(function (v) {
+      ['polymarket', 'largest', 'treasuries', 'tracking'].forEach(function (v) {
         var el = document.getElementById('view-' + v);
         if (el) el.hidden = v !== view;
       });
