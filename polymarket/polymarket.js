@@ -2,14 +2,14 @@
 (function () {
   'use strict';
 
-  /* ---------- baked odds history (daily CLOB closes, Jun 27 – Jul 30 2026 + the Aug 1 13:28 UTC prints — July resolved NVIDIA; Dec series continues, Jul legs frozen) ---------- */
+  /* ---------- baked odds history (daily CLOB closes, Jun 27 – Jul 30 2026 + the Aug 2 01:12 UTC prints — July resolved NVIDIA; Dec series continues, Jul legs frozen) ---------- */
   var H = {
     julNVDA: [0.925,0.925,0.905,0.905,0.895,0.84,0.815,0.815,0.825,0.795,0.805,0.81,0.86,0.915,0.915,0.92,0.855,0.915,0.845,0.715,0.55,0.53,0.545,0.68,0.745,0.885,0.89,0.715,0.765,0.795,0.295,0.215,0.075,0.754,0.986],
     julAAPL: [0.043,0.043,0.0435,0.0345,0.0385,0.1205,0.121,0.126,0.1245,0.118,0.112,0.1085,0.092,0.0645,0.0575,0.0655,0.113,0.06,0.1045,0.2675,0.415,0.441,0.411,0.286,0.241,0.1155,0.0965,0.2795,0.2235,0.2155,0.698,0.7815,0.9255,0.2335,0.0045],
-    decNVDA: [0.725,0.725,0.62,0.645,0.655,0.605,0.585,0.605,0.615,0.595,0.635,0.655,0.655,0.685,0.695,0.705,0.665,0.72,0.655,0.615,0.52,0.555,0.545,0.605,0.61,0.615,0.645,0.625,0.565,0.575,0.51,0.485,0.485,0.575,0.565],
-    decAAPL: [0.082,0.082,0.0965,0.095,0.108,0.1475,0.143,0.132,0.158,0.1555,0.1705,0.1265,0.1265,0.1405,0.1305,0.13,0.1705,0.1285,0.143,0.2285,0.345,0.328,0.3305,0.235,0.2025,0.1985,0.1985,0.2565,0.2995,0.281,0.353,0.289,0.3565,0.251,0.2255],
+    decNVDA: [0.725,0.725,0.62,0.645,0.655,0.605,0.585,0.605,0.615,0.595,0.635,0.655,0.655,0.685,0.695,0.705,0.665,0.72,0.655,0.615,0.52,0.555,0.545,0.605,0.61,0.615,0.645,0.625,0.565,0.575,0.51,0.485,0.485,0.575,0.555],
+    decAAPL: [0.082,0.082,0.0965,0.095,0.108,0.1475,0.143,0.132,0.158,0.1555,0.1705,0.1265,0.1265,0.1405,0.1305,0.13,0.1705,0.1285,0.143,0.2285,0.345,0.328,0.3305,0.235,0.2025,0.1985,0.1985,0.2565,0.2995,0.281,0.353,0.289,0.3565,0.251,0.2275],
     decGOOGL: [0.115,0.115,0.155,0.165,0.16,0.155,0.165,0.175,0.165,0.165,0.165,0.155,0.155,0.145,0.145,0.145,0.12,0.105,0.12,0.125,0.105,0.105,0.105,0.105,0.125,0.105,0.105,0.105,0.095,0.095,0.105,0.135,0.145,0.13,0.155],
-    decSPCX: [0.0395,0.0395,0.0355,0.023,0.0225,0.0215,0.027,0.027,0.0235,0.0215,0.0205,0.022,0.0215,0.0185,0.02,0.019,0.0145,0.0135,0.0125,0.012,0.0085,0.0085,0.0085,0.0085,0.009,0.0095,0.0115,0.0125,0.015,0.0105,0.0095,0.017,0.0155,0.0175,0.015]
+    decSPCX: [0.0395,0.0395,0.0355,0.023,0.0225,0.0215,0.027,0.027,0.0235,0.0215,0.0205,0.022,0.0215,0.0185,0.02,0.019,0.0145,0.0135,0.0125,0.012,0.0085,0.0085,0.0085,0.0085,0.009,0.0095,0.0115,0.0125,0.015,0.0105,0.0095,0.017,0.0155,0.0175,0.0145]
   };
   var LABELS = (function () {
     var out = [], d = new Date(Date.UTC(2026, 5, 27));
@@ -50,6 +50,7 @@
     'trs-10y52': '70090363170367815297146294007692529992906189341824085184699164213923074932193',
     'trs-10y55': '108315584853799729838614333748063377472256875592940383916811669252949563879956',
     'trs-10y57': '19807745274820218436318664068726385243490453006769046292026430944247457642518',
+    'trs-10y60': '33659372827600316727835785655881220724422400527200618608139639039116681963297',
     'trs-nocuts': '12403602920039269077597917340921667997547115084613238528792639013246536343316',
     'trs-sephike': '63842529068710005716169325380315470359047749786610778647370693404952498013178',
     'trs-dechike': '111662129652828266889360374468657435151479595863413519836161861837506140152890',
@@ -88,6 +89,50 @@
     return Math.max(n, 0.5);
   }
   function fair(capChal, capLead, td) { return phi(Math.log(capChal / capLead) / (SIGMA * Math.sqrt(td))); }
+
+  /* ---------- EXACT-RANK MODEL (adopted Aug 1 2026 PM — replaces the pairwise plug) ----------
+     These books resolve on "is X the LARGEST company", not on "does X pass today's leader".
+     The old formula priced the second event: challenger = P(chal > lead), leader = 100 − Σ(challengers).
+     That is a union bound, and it double-counts overtakes: P(A passes ∪ G passes) < P(A) + P(G),
+     because a bad NVDA draw pushes everyone past it at once. The plug absorbed the whole error,
+     The residual made the leader biased LOW — by 6.3 pts in August and 24.5 in December — and, contrary to how this
+     was first written up, the CHALLENGERS carried an equal and opposite error (Dec: AAPL +9.2, GOOGL +10.9, MSFT +3.8,
+     AMZN +0.6, summing to the leader's 24.5). Every leg was wrong, not just the plug.
+     Correct version, same diffusion: give every name idiosyncratic log-vol σ/√2 so the log-RATIO
+     of any pair keeps the published σ = 2%/day (any common market factor cancels in a ranking),
+     then integrate P(X is the max) over X's own shock:
+         P(X largest) = ∫ φ(z) Π_{j≠X} Φ( [ln(cX/cj) + s·z] / s ) dz,   s = (σ/√2)·√T
+     Simpson, 481 nodes on [-8, 8]; agrees with a 3 M-path Monte Carlo to within simulation noise and -
+     unlike the old formula - the legs sum to 100 by construction instead of by subtraction. Scaled down
+     by the untracked small legs, read off THEIR OWN books (see SMALL below), so the modelled set shares
+     the rest.
+     KNOWN LIMIT: sigma = 2%/day was only ever calibrated on the four leader-vs-challenger pairs. This
+     integral needs all ten pairs and the six challenger-vs-challenger vols are free parameters. Sweeping
+     them 1.3-2.8%/day moves Dec NVDA over 41.8-55.8 and NVDA-2nd-Aug over 16.1-26.0 - a wider band than
+     the disclosed sigma=3% case. Disclosed in the methodology box; do not quote these fairs as precise. */
+  function rankFair(caps, syms, td, smallLegs) {
+    var s = (SIGMA / Math.SQRT2) * Math.sqrt(td);
+    var N = 481, a = -8, h = 16 / (N - 1), scale = 1 - (smallLegs || 0) / 100, out = {};
+    var W = [], Z = [];
+    for (var k = 0; k < N; k++) {
+      var z = a + k * h;
+      Z.push(z);
+      W.push((k === 0 || k === N - 1) ? 1 : (k % 2 ? 4 : 2));
+    }
+    syms.forEach(function (t) {
+      var tot = 0;
+      for (var k2 = 0; k2 < N; k2++) {
+        var z2 = Z[k2], pr = Math.exp(-0.5 * z2 * z2) / Math.sqrt(2 * Math.PI);
+        for (var j = 0; j < syms.length; j++) {
+          if (syms[j] === t) continue;
+          pr *= phi((Math.log(caps[t] / caps[syms[j]]) + s * z2) / s);
+        }
+        tot += W[k2] * pr;
+      }
+      out[t] = tot * h / 3 * 100 * scale;
+    });
+    return out;
+  }
 
   var $ = function (sel) { return document.querySelector(sel); };
   var $$ = function (sel) { return Array.prototype.slice.call(document.querySelectorAll(sel)); };
@@ -149,23 +194,27 @@
           setText('#hero-chal-cap', '$' + (caps[chal] / 1000).toFixed(3) + 'T');
           setText('#hero-gap', ((caps[lead] / caps[chal] - 1) * 100).toFixed(2) + '% \u00B7 $' + Math.round(caps[lead] - caps[chal]) + 'B');
         }
-        /* model fair + edge per date — LEADER-AWARE: key off whichever company is largest today.
-           Challenger fair = P(chal ends above leader); leader fair = 100 − Σ challenger fairs − small legs. */
+        /* model fair + edge per date — EXACT-RANK: P(sym is the largest), not P(sym passes today's
+           leader). See rankFair() above for why the old pairwise plug was biased. */
         var edgeList = [];
         var RACE = ['AAPL', 'NVDA', 'GOOGL', 'MSFT', 'AMZN'];
-        var leadSym = RACE.filter(function (s) { return caps[s]; }).reduce(function (a, b) { return caps[a] >= caps[b] ? a : b; });
+        var SMALL = { jul: 0.15, aug: 0.45, dec: 2.10 }; /* untracked competitors, taken from THEIR OWN books, not guessed:
+             aug = Tesla + Aramco + Broadcom at 0.15c each (Microsoft and Amazon are tracked names, not small legs);
+             dec = Tesla 0.35 + SpaceX 1.45 + Aramco 0.30. Re-read every run — a mis-set allowance moves the leader leg
+             by ~0.6 pt, which is an eighth of the edges this page trades on. */
+        var live = RACE.filter(function (s) { return caps[s]; });
+        /* a single failed quote would drop a name from the ranking and inflate every survivor
+           (losing AAPL alone prints NVDA-Aug at 88 instead of 72) — keep the baked fairs instead */
+        if (live.length < RACE.length) return;
         ['jul', 'aug', 'dec'].forEach(function (ev) {
           var td = tradingDaysTo(DEADLINES[ev]);
           setText('[data-days="' + ev + '"]', Math.round(td));
-          var sumCh = 0;
-          RACE.forEach(function (sym) { if (sym !== leadSym && caps[sym]) sumCh += fair(caps[sym], caps[leadSym], td) * 100; });
+          var rf = rankFair(caps, live, td, SMALL[ev]);
           RACE.forEach(function (sym) {
             if (!caps[sym]) return;
             var key = ev + '-' + sym;
             if (!(key in TOKENS)) return;
-            var f = sym === leadSym
-              ? 100 - sumCh - (ev === 'jul' ? 0.25 : ev === 'aug' ? 1.25 : 3.65)
-              : fair(caps[sym], caps[leadSym], td) * 100;
+            var f = rf[sym];
             setText('[data-fair="' + key + '"]', (f >= 1 ? f.toFixed(1) : f.toFixed(2)) + '%');
             if (!isNaN(mids[key])) {
               var edge = mids[key] * 100 - f;
@@ -186,7 +235,7 @@
           var ke = $('#kpi-edge'); if (ke) ke.textContent = lbl[1] + '-' + mon + ' ' + (top.edge >= 0 ? '+' : '−') + Math.abs(top.edge).toFixed(1);
         }
         /* book sums */
-        var sums = { jul: 0.0015, aug: 0.0065, dec: 0.0145 }; /* untracked small legs, baked */
+        var sums = { jul: 0.0015, aug: 0.0045, dec: 0.0070 }; /* untracked legs at their own mids: aug = TSLA+ARAMCO+MSFT 0.15c each; dec = ARAMCO 0.30 + AMZN 0.40 */
         Object.keys(mids).forEach(function (k) { if (!isNaN(mids[k])) sums[k.slice(0, 3)] += mids[k]; });
         ['jul', 'aug', 'dec'].forEach(function (ev) { setText('[data-sum="' + ev + '"]', (sums[ev] * 100).toFixed(2)); });
         /* hero AAPL odds (label reads "AAPL Odds Jul / Aug / Dec") */
@@ -199,8 +248,8 @@
       fmtAgo();
     }).catch(function () {
       setPills(false);
-      $('#last-updated').textContent = 'Snapshot · Aug 1, 2026 13:28 UTC — Saturday, July settled (live APIs unreachable)';
-      var st = $('#sync-time'); if (st) st.textContent = 'Aug 1, 2026 13:28 UTC · Saturday, July settled (baked snapshot — live APIs unreachable)';
+      $('#last-updated').textContent = 'Snapshot · Aug 2, 2026 01:12 UTC — Saturday night, exact-rank model adopted (live APIs unreachable)';
+      var st = $('#sync-time'); if (st) st.textContent = 'Aug 2, 2026 01:12 UTC · Saturday night (baked snapshot — live APIs unreachable)';
     });
   }
 
@@ -495,7 +544,7 @@
     }).catch(function () { /* keep baked snapshot */ });
   }
 
-  var ENGINE_CASH = 4294.29; /* re-baked every run from the trade ledger: 5,808.09 at Jul 31 23:13Z + $5.85 rebates/yield + $38.91 Phillies-NO sale - $1,558.56 deployed into the 10Y-5.0% rung through Aug 1 13:28Z */
+  var ENGINE_CASH = 1013.74; /* re-baked every run from the trade ledger: 4,294.29 at Aug 1 13:28Z + $6.97 taker rebate + $30.53 Anthropic-NO sale + $0.24 July BTC redemption - $3,318.29 deployed (MU ladder $1,364.39, Apple-crown-Aug NO $1,006.42, Alphabet-2nd-Aug adds $291.36, SPY $680-low NO $282.65, Alphabet-crown-Aug $207.51, SPY $790-high $82.99, 10Y-3.6 NO $40.12, no-cuts $25.14, Trump-search $17.70) through Aug 2 01:12Z */
 
   /* ---------- decision tracking ledger ---------- */
   var TRACKED = [
@@ -564,7 +613,23 @@
     { act: 'SELL', tok: '11554673541814555978405662589194531433610823807505275391222087447793922121663', sh: 63.5, px: 0.9875 } /* SpaceX July-cap NO — band broke; exit at 98-99c, not the card's 35c bid */,
     { act: 'BUY', tok: '89706022921501149384847021353587496883277465141816802927673604440172434177565', sh: 768.8, px: 0.3760 } /* Alphabet-2nd-Aug YES — successor-trade adds at 31.7/41.0c */,
     { act: 'BUY', tok: '22397766228589110871783272985290872433765236471932774952155419500943165057456', sh: 6864.46, px: 0.2271 } /* 10Y-5.0% YES — overnight execution of the Treasuries tab's #1 ticket at 4x size, 21.3-24.5c walk */,
-    { act: 'SELL', tok: '88070604095019933483120371166318147806645160089526649541840854734212832936177', sh: 39.3, px: 0.99 } /* Phillies 100+ wins NO — guard-rail seventh payout at 99c */
+    { act: 'SELL', tok: '88070604095019933483120371166318147806645160089526649541840854734212832936177', sh: 39.3, px: 0.99 } /* Phillies 100+ wins NO — guard-rail seventh payout at 99c */,
+    { act: 'BUY', tok: '65352899435250001909112885455763971360013158662453391169470389250673340297697', sh: 42.53, px: 0.9435 } /* 10Y-dips-below-3.6% NO top-up — Treasuries low-ladder carry */,
+    { act: 'BUY', tok: '89706022921501149384847021353587496883277465141816802927673604440172434177565', sh: 787.12, px: 0.3701 } /* Alphabet-2nd-Aug adds, 5 clips 36.0-35.0c — paid 9.5 pts OVER the 27.5% exact-rank fair */,
+    { act: 'BUY', tok: '45785223831320903636994814819281571811919629332215573777456567635993484304860', sh: 111.11, px: 0.9036 } /* MU weekly <$720 NO — worst leg of the ladder vs realized vol */,
+    { act: 'BUY', tok: '88102944326321223034427972795763358802534353414353394036421795124775748480786', sh: 477.17, px: 0.3781 } /* MU weekly >$900 YES */,
+    { act: 'BUY', tok: '90636609665072628934561741191110505683107177678969080679996981652330626258363', sh: 300.0, px: 0.7869 } /* MU >$700 end-Aug */,
+    { act: 'BUY', tok: '106686425884931414831660414537151585336396834374452525127171574247454082548832', sh: 294.12, px: 0.6887 } /* MU >$760 end-Aug */,
+    { act: 'BUY', tok: '74982300354231902205849663538606152588940436342760335825517353633724464241850', sh: 300.0, px: 0.5599 } /* MU >$820 end-Aug */,
+    { act: 'BUY', tok: '68110003550119804768382100356048768439318034246758143453631320291674571791684', sh: 600.0, px: 0.5499 } /* MU >$840 end-Aug — biggest single MU leg */,
+    { act: 'BUY', tok: '53049739028670365953377531513580183628183853707672301760004000111406343250709', sh: 300.0, px: 0.49 } /* MU >$860 end-Aug */,
+    { act: 'BUY', tok: '16715935133118487637818437087975087219587423634360983683750200849648271646473', sh: 299.36, px: 0.9442 } /* SPY $680-low Aug NO — index down-touch carry */,
+    { act: 'BUY', tok: '99310206238906312712351993273929763851099659261404992891652117635117564819942', sh: 96.31, px: 0.1838 } /* Trump #1-searched-person YES — no model, token-size punt */,
+    { act: 'BUY', tok: '12403602920039269077597917340921667997547115084613238528792639013246536343316', sh: 28.22, px: 0.8908 } /* No Fed cuts in 2026 YES — Treasuries tab congruent, filled at fair */,
+    { act: 'SELL', tok: '31155907477701757690022379073336112499706938908180279820755007284862306962906', sh: 31.25, px: 0.977 } /* Anthropic 0.9-1.2T NO — guard-rail EIGHTH near-par payout, 3 clips 96.5-98.5c */,
+    { act: 'BUY', tok: '73765233196749292869366451654880406567953679806142840993718162290941523229389', sh: 1240.98, px: 0.0669 } /* SPY $790-high Aug YES — the cheap side of the index skew */,
+    { act: 'BUY', tok: '28968413545616763951382294393977143128717157799818103817407198720924087703276', sh: 1191.16, px: 0.845 } /* Apple-crown-Aug NO, 2 clips — 4.8 pts OVER the 79.7% NO-fair and the opposite side of the page's own Apple-Aug call */,
+    { act: 'BUY', tok: '93997509898554464206013458433253360996772270234627522008621917049464308684354', sh: 3275.42, px: 0.0634 } /* Alphabet-crown-Aug YES — filled 0.7 pt INSIDE the 7.0% exact-rank fair, the night's best-priced ticket */
   ];
   function refreshTracking() {
     Promise.all(TRACKED.map(function (t, i) {
@@ -645,7 +710,10 @@
     { tok: '58255742710354753372638105507395301856276470581760095695579319734210276720718', side: 'BUY', retPx: 0.165 } /* September kink bids (NVDA-2nd-Sept <=30c) — resolution repriced 42.5 -> 16.5 straight through the bid zone */,
     { tok: '', side: 'BUY', retPx: 0 } /* Post-print re-entry test — condition met on settled caps; superseded by the released Dec tickets; process card, unscoreable */,
     { tok: '99989724583763374403799114487538400642955271680502705587990647202176759344135', side: 'BUY', retPx: 0.62 } /* GOOGL-3rd-Aug YES third listing — book repriced 51/54 -> 62/63 straight through fair overnight; edge gone */,
-    { tok: '', side: 'BUY', retPx: 0 } /* Trades #10 July final-accounting card — self-retiring process card; ledger closed at 64 decisions +$4,151 */
+    { tok: '', side: 'BUY', retPx: 0 } /* Trades #10 July final-accounting card — self-retiring process card; ledger closed at 64 decisions +$4,151 */,
+    { tok: '62009449847159122385971991480139610869824965029008686522071073076098387124747', side: 'BUY', retPx: 0.16 } /* Alphabet-Dec YES — exact-rank correction cut the fair 29.0 -> 18.1%, edge -13.5 -> -2.1 */,
+    { tok: '42047893977785728528565456844873223397500118970867834014836006695082853076308', side: 'BUY', retPx: 0.18 } /* Apple-Aug YES re-entry — ask widened 16 -> 18c AND fair fell 22.8 -> 20.3%, edge -6.8 -> -2.3 */,
+    { tok: '57813774524155463423838033259397133747187306761649300584910471142751787047106', side: 'BUY', retPx: 0.69 } /* Treasuries rung 0 (10Y 4.8%) — repriced 63 -> 69c against an unchanged 65.4% fair; CHEAP inverted to RICH */
   ]; /* {tok, side ('BUY'|'SELL'), retPx} — indices align with #retired-body rows' data-retired-* attrs */
   function refreshRetired() {
     RETIRED.forEach(function (t, i) {

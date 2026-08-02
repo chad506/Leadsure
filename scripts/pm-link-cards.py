@@ -47,6 +47,13 @@ SLUGS = {
     'trsstag':   'us-economic-state-at-the-end-of-2026',
     'trsgold':   'what-will-gold-gc-hit-by-end-of-december',
     'trsemerg':  'fed-emergency-rate-cut-before-2027',
+    'trscuts':   'how-many-fed-rate-cuts-in-2026',
+    # Added Aug 1 2026 — new account complexes
+    'muaug':     'mu-above-in-august-2026',
+    'muwk':      'mu-week-august-7-2026',
+    '2sep':      '2nd-largest-company-end-of-september-20260729222928263',
+    'anthropic': 'anthropic-ipo-closing-market-cap-979',
+    'trump1':    '1-searched-person-on-google-in-the-us-2026-20260730192940',
 }
 
 CARD_RE = re.compile(
@@ -64,6 +71,20 @@ def pick_url(title_html):
         return any(n.lower() in text for n in needles)
 
     # Treasuries-tab cards — most specific first, before every largest-company rule.
+    # Micron ladder — before every other rule (the titles say "August")
+    if has('week of aug', 'week-of-aug', 'weekly <$720', 'weekly >$900', 'micron week'):
+        return EVENT + SLUGS['muwk'], 'Micron, week of Aug 3'
+    if has('micron', 'mu >$', 'mu ladder'):
+        return EVENT + SLUGS['muaug'], 'Micron, August'
+    if has('no fed cuts', 'no-cuts'):
+        return EVENT + SLUGS['trscuts'], 'Fed cuts in 2026'
+    if has('2nd-largest september', '2nd largest september', 'second-largest september',
+           '2nd-sept', '3rd-in-september', 'september family', 'september third-place'):
+        return EVENT + SLUGS['2sep'], '2nd-largest, September'
+    if has('anthropic'):
+        return EVENT + SLUGS['anthropic'], 'Anthropic IPO cap'
+    if has('#1-searched', 'searched person'):
+        return EVENT + SLUGS['trump1'], '#1 searched person'
     if has('the basket \u2014 and the fade', 'and the fade'):
         return EVENT + SLUGS['trs10ylow'], '10Y yield, how low'
     if has('10-year yield hits', '10-year hits', 'direct ladder', 'rung '):
