@@ -2,14 +2,14 @@
 (function () {
   'use strict';
 
-  /* ---------- baked odds history (daily CLOB closes, Jun 27 – Jul 30 2026 + the Aug 2 01:12 UTC prints — July resolved NVIDIA; Dec series continues, Jul legs frozen) ---------- */
+  /* ---------- baked odds history (daily CLOB closes, Jun 27 – Jul 30 2026 + the Aug 3 03:35 UTC prints — July resolved NVIDIA; Dec series continues, Jul legs frozen) ---------- */
   var H = {
     julNVDA: [0.925,0.925,0.905,0.905,0.895,0.84,0.815,0.815,0.825,0.795,0.805,0.81,0.86,0.915,0.915,0.92,0.855,0.915,0.845,0.715,0.55,0.53,0.545,0.68,0.745,0.885,0.89,0.715,0.765,0.795,0.295,0.215,0.075,0.754,0.986],
     julAAPL: [0.043,0.043,0.0435,0.0345,0.0385,0.1205,0.121,0.126,0.1245,0.118,0.112,0.1085,0.092,0.0645,0.0575,0.0655,0.113,0.06,0.1045,0.2675,0.415,0.441,0.411,0.286,0.241,0.1155,0.0965,0.2795,0.2235,0.2155,0.698,0.7815,0.9255,0.2335,0.0045],
-    decNVDA: [0.725,0.725,0.62,0.645,0.655,0.605,0.585,0.605,0.615,0.595,0.635,0.655,0.655,0.685,0.695,0.705,0.665,0.72,0.655,0.615,0.52,0.555,0.545,0.605,0.61,0.615,0.645,0.625,0.565,0.575,0.51,0.485,0.485,0.575,0.555],
-    decAAPL: [0.082,0.082,0.0965,0.095,0.108,0.1475,0.143,0.132,0.158,0.1555,0.1705,0.1265,0.1265,0.1405,0.1305,0.13,0.1705,0.1285,0.143,0.2285,0.345,0.328,0.3305,0.235,0.2025,0.1985,0.1985,0.2565,0.2995,0.281,0.353,0.289,0.3565,0.251,0.2275],
+    decNVDA: [0.725,0.725,0.62,0.645,0.655,0.605,0.585,0.605,0.615,0.595,0.635,0.655,0.655,0.685,0.695,0.705,0.665,0.72,0.655,0.615,0.52,0.555,0.545,0.605,0.61,0.615,0.645,0.625,0.565,0.575,0.51,0.485,0.485,0.575,0.545],
+    decAAPL: [0.082,0.082,0.0965,0.095,0.108,0.1475,0.143,0.132,0.158,0.1555,0.1705,0.1265,0.1265,0.1405,0.1305,0.13,0.1705,0.1285,0.143,0.2285,0.345,0.328,0.3305,0.235,0.2025,0.1985,0.1985,0.2565,0.2995,0.281,0.353,0.289,0.3565,0.251,0.2355],
     decGOOGL: [0.115,0.115,0.155,0.165,0.16,0.155,0.165,0.175,0.165,0.165,0.165,0.155,0.155,0.145,0.145,0.145,0.12,0.105,0.12,0.125,0.105,0.105,0.105,0.105,0.125,0.105,0.105,0.105,0.095,0.095,0.105,0.135,0.145,0.13,0.155],
-    decSPCX: [0.0395,0.0395,0.0355,0.023,0.0225,0.0215,0.027,0.027,0.0235,0.0215,0.0205,0.022,0.0215,0.0185,0.02,0.019,0.0145,0.0135,0.0125,0.012,0.0085,0.0085,0.0085,0.0085,0.009,0.0095,0.0115,0.0125,0.015,0.0105,0.0095,0.017,0.0155,0.0175,0.0145]
+    decSPCX: [0.0395,0.0395,0.0355,0.023,0.0225,0.0215,0.027,0.027,0.0235,0.0215,0.0205,0.022,0.0215,0.0185,0.02,0.019,0.0145,0.0135,0.0125,0.012,0.0085,0.0085,0.0085,0.0085,0.009,0.0095,0.0115,0.0125,0.015,0.0105,0.0095,0.017,0.0155,0.0175,0.0155]
   };
   var LABELS = (function () {
     var out = [], d = new Date(Date.UTC(2026, 5, 27));
@@ -248,8 +248,8 @@
       fmtAgo();
     }).catch(function () {
       setPills(false);
-      $('#last-updated').textContent = 'Snapshot · Aug 2, 2026 01:12 UTC — Saturday night, exact-rank model adopted (live APIs unreachable)';
-      var st = $('#sync-time'); if (st) st.textContent = 'Aug 2, 2026 01:12 UTC · Saturday night (baked snapshot — live APIs unreachable)';
+      $('#last-updated').textContent = 'Snapshot · Aug 3, 2026 03:35 UTC — Sunday night, first full session on the corrected model (live APIs unreachable)';
+      var st = $('#sync-time'); if (st) st.textContent = 'Aug 3, 2026 03:35 UTC · Sunday night (baked snapshot — live APIs unreachable)';
     });
   }
 
@@ -544,7 +544,14 @@
     }).catch(function () { /* keep baked snapshot */ });
   }
 
-  var ENGINE_CASH = 1013.74; /* re-baked every run from the trade ledger: 4,294.29 at Aug 1 13:28Z + $6.97 taker rebate + $30.53 Anthropic-NO sale + $0.24 July BTC redemption - $3,318.29 deployed (MU ladder $1,364.39, Apple-crown-Aug NO $1,006.42, Alphabet-2nd-Aug adds $291.36, SPY $680-low NO $282.65, Alphabet-crown-Aug $207.51, SPY $790-high $82.99, 10Y-3.6 NO $40.12, no-cuts $25.14, Trump-search $17.70) through Aug 2 01:12Z */
+  var ENGINE_CASH = 0; /* RECONSTRUCTION FAILED — Aug 2 2026, and the page now says so rather than printing a made-up number.
+     Rolling the ledger forward from the Aug 2 01:12Z anchor of 1,013.74 gives 1,013.74 + 3.20 rebate + 5.51 sale
+     - 1,573.84 deployed = -551.39, which is impossible: the account cannot spend cash it does not have.
+     The buys are real (9 fills, /activity), so the anchor was LOW by at least 560.10 and there is an inflow the
+     public endpoints cannot see - most likely a direct exchange-side deposit, or negRisk conversions being
+     reported as BUYs with a usdcSize that never left the balance. Until the on-chain USDC moves and re-anchors
+     the chain, engine cash is UNOBSERVABLE and is floored at 0, which makes the hero figure a FLOOR, not an
+     estimate. Do not "fix" this by back-solving a number that makes the arithmetic close. */
 
   /* ---------- decision tracking ledger ---------- */
   var TRACKED = [
@@ -629,7 +636,14 @@
     { act: 'SELL', tok: '31155907477701757690022379073336112499706938908180279820755007284862306962906', sh: 31.25, px: 0.977 } /* Anthropic 0.9-1.2T NO — guard-rail EIGHTH near-par payout, 3 clips 96.5-98.5c */,
     { act: 'BUY', tok: '73765233196749292869366451654880406567953679806142840993718162290941523229389', sh: 1240.98, px: 0.0669 } /* SPY $790-high Aug YES — the cheap side of the index skew */,
     { act: 'BUY', tok: '28968413545616763951382294393977143128717157799818103817407198720924087703276', sh: 1191.16, px: 0.845 } /* Apple-crown-Aug NO, 2 clips — 4.8 pts OVER the 79.7% NO-fair and the opposite side of the page's own Apple-Aug call */,
-    { act: 'BUY', tok: '93997509898554464206013458433253360996772270234627522008621917049464308684354', sh: 3275.42, px: 0.0634 } /* Alphabet-crown-Aug YES — filled 0.7 pt INSIDE the 7.0% exact-rank fair, the night's best-priced ticket */
+    { act: 'BUY', tok: '93997509898554464206013458433253360996772270234627522008621917049464308684354', sh: 3275.42, px: 0.0634 } /* Alphabet-crown-Aug YES — filled 0.7 pt INSIDE the 7.0% exact-rank fair, the night's best-priced ticket */,
+    { act: 'BUY', tok: '986625934884180891112686496117276469393361067047414381654886200953641996403', sh: 1105.19, px: 0.1414 } /* SPY $780-high Aug YES, 2 clips 13.5/14.5c — the page's Saturday skew card, executed */,
+    { act: 'BUY', tok: '47694332922547868411610882826731694023995060415214591827642518726120615225440', sh: 558.15, px: 0.5474 } /* SPY $760-high Aug YES — the near-money rung of the same skew trade */,
+    { act: 'SELL', tok: '37115377809826927694181763076177973521362201008447468754472846079605723267622', sh: 5.61, px: 0.982 } /* Nick Kurtz AL MVP NO — guard-rail NINTH near-par payout */,
+    { act: 'BUY', tok: '88756945498515564655643791084153591360846567860732500416226379530632897154253', sh: 819.21, px: 0.7403 } /* AMZN $280-high Aug YES — new complex, no model on this page */,
+    { act: 'BUY', tok: '70495113508210767655365291291788468538934663465126471715738169362699788708131', sh: 104.12, px: 0.9619 } /* AMZN $224-low Aug NO — the carry side of the same ladder */,
+    { act: 'BUY', tok: '54288500488899075246367627195163472475615595062225751818759128802176967336777', sh: 469.51, px: 0.8303 } /* Ethereum reaches $2,000 by Dec 31 YES — new complex, no model */,
+    { act: 'BUY', tok: '22397766228589110871783272985290872433765236471932774952155419500943165057456', sh: 78.20, px: 0.2000 } /* 10Y-5.0% rung top-up at 20c — INSIDE the card's stop-adding-above-23c rule */
   ];
   function refreshTracking() {
     Promise.all(TRACKED.map(function (t, i) {
@@ -713,7 +727,10 @@
     { tok: '', side: 'BUY', retPx: 0 } /* Trades #10 July final-accounting card — self-retiring process card; ledger closed at 64 decisions +$4,151 */,
     { tok: '62009449847159122385971991480139610869824965029008686522071073076098387124747', side: 'BUY', retPx: 0.16 } /* Alphabet-Dec YES — exact-rank correction cut the fair 29.0 -> 18.1%, edge -13.5 -> -2.1 */,
     { tok: '42047893977785728528565456844873223397500118970867834014836006695082853076308', side: 'BUY', retPx: 0.18 } /* Apple-Aug YES re-entry — ask widened 16 -> 18c AND fair fell 22.8 -> 20.3%, edge -6.8 -> -2.3 */,
-    { tok: '57813774524155463423838033259397133747187306761649300584910471142751787047106', side: 'BUY', retPx: 0.69 } /* Treasuries rung 0 (10Y 4.8%) — repriced 63 -> 69c against an unchanged 65.4% fair; CHEAP inverted to RICH */
+    { tok: '57813774524155463423838033259397133747187306761649300584910471142751787047106', side: 'BUY', retPx: 0.69 } /* Treasuries rung 0 (10Y 4.8%) — repriced 63 -> 69c against an unchanged 65.4% fair; CHEAP inverted to RICH */,
+    { tok: '112917653797517457474191727734311838332458686889832634273844237276119071933739', side: 'SELL', retPx: 0.325 } /* Alphabet-2nd-Sept NO — WORKED: YES 38.5 -> 32.5, 5.5 of 7.9 pts captured, edge closed to -2.4 */,
+    { tok: '95302905537962222918309360338213500184994944787102722256843629723110588711061', side: 'SELL', retPx: 0.755 } /* NVDA-Aug NO — leader leg came in 77.5 -> 75.5, edge -5.5 -> -2.9, under the bar */,
+    { tok: '11876606915924142133615854761923277060697657209957870741155164849437788272266', side: 'SELL', retPx: 0.545 } /* NVDA-Dec NO — the six-day flagship; +31.7 was a model artifact, residue arbitraged to -3.9 */
   ]; /* {tok, side ('BUY'|'SELL'), retPx} — indices align with #retired-body rows' data-retired-* attrs */
   function refreshRetired() {
     RETIRED.forEach(function (t, i) {
