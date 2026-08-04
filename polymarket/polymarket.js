@@ -2,14 +2,14 @@
 (function () {
   'use strict';
 
-  /* ---------- baked odds history (daily CLOB closes, Jun 27 – Jul 30 2026 + the Aug 3 03:35 UTC prints — July resolved NVIDIA; Dec series continues, Jul legs frozen) ---------- */
+  /* ---------- baked odds history (daily CLOB closes, Jun 27 – Jul 30 2026 + the Aug 4 23:16 UTC prints — July resolved NVIDIA; Dec series continues, Jul legs frozen) ---------- */
   var H = {
     julNVDA: [0.925,0.925,0.905,0.905,0.895,0.84,0.815,0.815,0.825,0.795,0.805,0.81,0.86,0.915,0.915,0.92,0.855,0.915,0.845,0.715,0.55,0.53,0.545,0.68,0.745,0.885,0.89,0.715,0.765,0.795,0.295,0.215,0.075,0.754,0.986],
     julAAPL: [0.043,0.043,0.0435,0.0345,0.0385,0.1205,0.121,0.126,0.1245,0.118,0.112,0.1085,0.092,0.0645,0.0575,0.0655,0.113,0.06,0.1045,0.2675,0.415,0.441,0.411,0.286,0.241,0.1155,0.0965,0.2795,0.2235,0.2155,0.698,0.7815,0.9255,0.2335,0.0045],
-    decNVDA: [0.725,0.725,0.62,0.645,0.655,0.605,0.585,0.605,0.615,0.595,0.635,0.655,0.655,0.685,0.695,0.705,0.665,0.72,0.655,0.615,0.52,0.555,0.545,0.605,0.61,0.615,0.645,0.625,0.565,0.575,0.51,0.485,0.485,0.575,0.545],
-    decAAPL: [0.082,0.082,0.0965,0.095,0.108,0.1475,0.143,0.132,0.158,0.1555,0.1705,0.1265,0.1265,0.1405,0.1305,0.13,0.1705,0.1285,0.143,0.2285,0.345,0.328,0.3305,0.235,0.2025,0.1985,0.1985,0.2565,0.2995,0.281,0.353,0.289,0.3565,0.251,0.2355],
-    decGOOGL: [0.115,0.115,0.155,0.165,0.16,0.155,0.165,0.175,0.165,0.165,0.165,0.155,0.155,0.145,0.145,0.145,0.12,0.105,0.12,0.125,0.105,0.105,0.105,0.105,0.125,0.105,0.105,0.105,0.095,0.095,0.105,0.135,0.145,0.13,0.155],
-    decSPCX: [0.0395,0.0395,0.0355,0.023,0.0225,0.0215,0.027,0.027,0.0235,0.0215,0.0205,0.022,0.0215,0.0185,0.02,0.019,0.0145,0.0135,0.0125,0.012,0.0085,0.0085,0.0085,0.0085,0.009,0.0095,0.0115,0.0125,0.015,0.0105,0.0095,0.017,0.0155,0.0175,0.0155]
+    decNVDA: [0.725,0.725,0.62,0.645,0.655,0.605,0.585,0.605,0.615,0.595,0.635,0.655,0.655,0.685,0.695,0.705,0.665,0.72,0.655,0.615,0.52,0.555,0.545,0.605,0.61,0.615,0.645,0.625,0.565,0.575,0.51,0.485,0.485,0.575,0.605],
+    decAAPL: [0.082,0.082,0.0965,0.095,0.108,0.1475,0.143,0.132,0.158,0.1555,0.1705,0.1265,0.1265,0.1405,0.1305,0.13,0.1705,0.1285,0.143,0.2285,0.345,0.328,0.3305,0.235,0.2025,0.1985,0.1985,0.2565,0.2995,0.281,0.353,0.289,0.3565,0.251,0.1915],
+    decGOOGL: [0.115,0.115,0.155,0.165,0.16,0.155,0.165,0.175,0.165,0.165,0.165,0.155,0.155,0.145,0.145,0.145,0.12,0.105,0.12,0.125,0.105,0.105,0.105,0.105,0.125,0.105,0.105,0.105,0.095,0.095,0.105,0.135,0.145,0.13,0.16],
+    decSPCX: [0.0395,0.0395,0.0355,0.023,0.0225,0.0215,0.027,0.027,0.0235,0.0215,0.0205,0.022,0.0215,0.0185,0.02,0.019,0.0145,0.0135,0.0125,0.012,0.0085,0.0085,0.0085,0.0085,0.009,0.0095,0.0115,0.0125,0.015,0.0105,0.0095,0.017,0.0155,0.0175,0.016]
   };
   var LABELS = (function () {
     var out = [], d = new Date(Date.UTC(2026, 5, 27));
@@ -187,9 +187,12 @@
           $$('[data-gap^="' + sym + '"]').forEach(function (el) { el.textContent = gap < 0.005 ? '\u2014' : gap.toFixed(2) + '%'; });
         });
         if (caps.AAPL) {
-          var lead = caps.AAPL > caps.NVDA ? 'AAPL' : 'NVDA', chal = lead === 'AAPL' ? 'NVDA' : 'AAPL';
-          setText('#hero-lead-label', 'Current #1 \u00B7 ' + (lead === 'AAPL' ? 'Apple' : 'NVIDIA'));
-          setText('#hero-chal-label', '#2 ' + (chal === 'AAPL' ? 'Apple' : 'NVIDIA'));
+          /* Aug 4 2026: Alphabet passed Apple — the #2 slot must be computed over ALL quoted names, not assumed AAPL/NVDA */
+          var NAMES = { NVDA: 'NVIDIA', AAPL: 'Apple', GOOGL: 'Alphabet', MSFT: 'Microsoft', AMZN: 'Amazon', AVGO: 'Broadcom', TSLA: 'Tesla' };
+          var ranked = Object.keys(caps).sort(function (x, y) { return caps[y] - caps[x]; });
+          var lead = ranked[0], chal = ranked[1];
+          setText('#hero-lead-label', 'Current #1 \u00B7 ' + (NAMES[lead] || lead));
+          setText('#hero-chal-label', '#2 ' + (NAMES[chal] || chal) + (chal === 'GOOGL' ? ' \u2014 NEW' : ''));
           setText('#hero-lead-cap', '$' + (caps[lead] / 1000).toFixed(3) + 'T');
           setText('#hero-chal-cap', '$' + (caps[chal] / 1000).toFixed(3) + 'T');
           setText('#hero-gap', ((caps[lead] / caps[chal] - 1) * 100).toFixed(2) + '% \u00B7 $' + Math.round(caps[lead] - caps[chal]) + 'B');
@@ -198,9 +201,9 @@
            leader). See rankFair() above for why the old pairwise plug was biased. */
         var edgeList = [];
         var RACE = ['AAPL', 'NVDA', 'GOOGL', 'MSFT', 'AMZN'];
-        var SMALL = { jul: 0.15, aug: 0.45, dec: 2.10 }; /* untracked competitors, taken from THEIR OWN books, not guessed:
+        var SMALL = { jul: 0.15, aug: 0.45, dec: 2.15 }; /* untracked competitors, taken from THEIR OWN books, not guessed:
              aug = Tesla + Aramco + Broadcom at 0.15c each (Microsoft and Amazon are tracked names, not small legs);
-             dec = Tesla 0.35 + SpaceX 1.45 + Aramco 0.30. Re-read every run — a mis-set allowance moves the leader leg
+             dec = Tesla 0.30 + SpaceX 1.60 + Aramco 0.25. Re-read every run — a mis-set allowance moves the leader leg
              by ~0.6 pt, which is an eighth of the edges this page trades on. */
         var live = RACE.filter(function (s) { return caps[s]; });
         /* a single failed quote would drop a name from the ranking and inflate every survivor
@@ -544,7 +547,11 @@
     }).catch(function () { /* keep baked snapshot */ });
   }
 
-  var ENGINE_CASH = 0; /* RECONSTRUCTION FAILED — Aug 2 2026, and the page now says so rather than printing a made-up number.
+  var ENGINE_CASH = 0; /* STILL UNOBSERVABLE — Aug 4 2026 update: since the Aug 2 anchor the account has net-deployed
+     $1,587.88 (buys 4,126.23 − sells 2,536.99 − rebates 1.36) against $1,013.74 of reconstructed cash while the chain
+     sat at exactly $882.32 for a FIFTH run — the unexplained inflow is now ≥ $574.14 and still growing. Floor stays 0.
+     Original failure note, kept verbatim:
+     RECONSTRUCTION FAILED — Aug 2 2026, and the page now says so rather than printing a made-up number.
      Rolling the ledger forward from the Aug 2 01:12Z anchor of 1,013.74 gives 1,013.74 + 3.20 rebate + 5.51 sale
      - 1,573.84 deployed = -551.39, which is impossible: the account cannot spend cash it does not have.
      The buys are real (9 fills, /activity), so the anchor was LOW by at least 560.10 and there is an inflow the
@@ -643,7 +650,28 @@
     { act: 'BUY', tok: '88756945498515564655643791084153591360846567860732500416226379530632897154253', sh: 819.21, px: 0.7403 } /* AMZN $280-high Aug YES — new complex, no model on this page */,
     { act: 'BUY', tok: '70495113508210767655365291291788468538934663465126471715738169362699788708131', sh: 104.12, px: 0.9619 } /* AMZN $224-low Aug NO — the carry side of the same ladder */,
     { act: 'BUY', tok: '54288500488899075246367627195163472475615595062225751818759128802176967336777', sh: 469.51, px: 0.8303 } /* Ethereum reaches $2,000 by Dec 31 YES — new complex, no model */,
-    { act: 'BUY', tok: '22397766228589110871783272985290872433765236471932774952155419500943165057456', sh: 78.20, px: 0.2000 } /* 10Y-5.0% rung top-up at 20c — INSIDE the card's stop-adding-above-23c rule */
+    { act: 'BUY', tok: '22397766228589110871783272985290872433765236471932774952155419500943165057456', sh: 78.20, px: 0.2000 } /* 10Y-5.0% rung top-up at 20c — INSIDE the card's stop-adding-above-23c rule */,
+    { act: 'SELL', tok: '88756945498515564655643791084153591360846567860732500416226379530632897154253', sh: 819.21, px: 0.9568 } /* 8/3/26 Sold the whole unmodelled leg in 7 clips 93–98¢ the session before AMZN fell 2.3 */,
+    { act: 'SELL', tok: '93997509898554464206013458433253360996772270234627522008621917049464308684354', sh: 536.42, px: 0.1621 } /* 8/3/26 Trimmed 536 of 3,275 sh into the Monday spike at 11.8–19.5¢ */,
+    { act: 'SELL', tok: '47694332922547868411610882826731694023995060415214591827642518726120615225440', sh: 40.00, px: 0.8400 } /* 8/3/26 First profit-take on the skew card at 84¢; SPY touched $760 the next day and the */,
+    { act: 'BUY', tok: '47694332922547868411610882826731694023995060415214591827642518726120615225440', sh: 212.07, px: 0.8768 } /* 8/3/26 Reversed the morning trim an hour later at 87.2¢ */,
+    { act: 'BUY', tok: '40766732854727988997103264850535062908745561898964808306819900954273411201269', sh: 311.76, px: 0.6508 } /* 8/3/26 Added the next rung up at 65.1¢; round-tripped out at 94.3¢ avg the following se */,
+    { act: 'BUY', tok: '96738271970978473626692761675665650558731868524608528797496705773854589776782', sh: 808.47, px: 0.6279 } /* 8/3/26 Bought the NO at 62.8¢ hours before Alphabet passed Apple on the tape */,
+    { act: 'BUY', tok: '22397766228589110871783272985290872433765236471932774952155419500943165057456', sh: 121.80, px: 0.1918 } /* 8/3/26 Third add inside the card’s stop-adding-above-23¢ rule (19–20¢); position 8,182  */,
+    { act: 'BUY', tok: '86153684421253045841026634173780053732858134081585356454716135535905962818488', sh: 419.08, px: 0.0495 } /* 8/3/26 Bought the 2.8σ tail this page’s Monitor #3 flagged as the RICH side */,
+    { act: 'SELL', tok: '89706022921501149384847021353587496883277465141816802927673604440172434177565', sh: 189.00, px: 0.4783 } /* 8/4/26 Nine clips 46–50¢ into the flip rally */,
+    { act: 'SELL', tok: '37115377809826927694181763076177973521362201008447468754472846079605723267622', sh: 10.98, px: 0.9880 } /* 8/4/26 Guard rail payout #10 */,
+    { act: 'SELL', tok: '22950994476993217816620059342676363932633660110705295996162691702412928292772', sh: 9.74, px: 0.9702 } /* 8/4/26 Guard rail payout #11 at 97.0¢ avg */,
+    { act: 'SELL', tok: '47694332922547868411610882826731694023995060415214591827642518726120615225440', sh: 730.21, px: 0.9900 } /* 8/4/26 The touch paid: whole remaining leg (incl. the buy-back) sold at 99¢ */,
+    { act: 'SELL', tok: '986625934884180891112686496117276469393361067047414381654886200953641996403', sh: 772.10, px: 0.6183 } /* 8/4/26 18 clips 41→78¢ as SPY ran */,
+    { act: 'BUY', tok: '71247391199380658995824617898942777181447594510008171102068161507178943839629', sh: 537.63, px: 0.9326 } /* 8/4/26 Took the carry family’s theme one rung closer to spot at 93.3¢ (the card named t */,
+    { act: 'BUY', tok: '106686425884931414831660414537151585336396834374452525127171574247454082548832', sh: 389.61, px: 0.7770 } /* 8/4/26 Added against the standing DO-NOT-ADD card */,
+    { act: 'BUY', tok: '46727839354464696273296516236823936849490843247643416964597722256143450327668', sh: 158.54, px: 0.8259 } /* 8/4/26 A ninth Micron leg, again unmodelled */,
+    { act: 'SELL', tok: '40766732854727988997103264850535062908745561898964808306819900954273411201269', sh: 311.76, px: 0.9425 } /* 8/4/26 Full exit at 94.3¢ avg against the 65.1¢ entry */,
+    { act: 'BUY', tok: '53049739028670365953377531513580183628183853707672301760004000111406343250709', sh: 606.56, px: 0.6195 } /* 8/4/26 Biggest add of the day ($376) into the MU squeeze */,
+    { act: 'SELL', tok: '73765233196749292869366451654880406567953679806142840993718162290941523229389', sh: 30.00, px: 0.4740 } /* 8/4/26 Two token clips at 46–48.1¢ off a 1,241-sh position that cost 6.7¢ */,
+    { act: 'SELL', tok: '31351186768315326460771976161382920909043553573272353666473916390357183809529', sh: 8.10, px: 0.9988 } /* 8/4/26 Guard rail payout #12 at 99.9¢ */,
+    { act: 'BUY', tok: '28968413545616763951382294393977143128717157799818103817407198720924087703276', sh: 326.09, px: 0.9229 } /* 8/4/26 Added the crown NO at 92.3¢ */
   ];
   function refreshTracking() {
     Promise.all(TRACKED.map(function (t, i) {
@@ -730,7 +758,16 @@
     { tok: '57813774524155463423838033259397133747187306761649300584910471142751787047106', side: 'BUY', retPx: 0.69 } /* Treasuries rung 0 (10Y 4.8%) — repriced 63 -> 69c against an unchanged 65.4% fair; CHEAP inverted to RICH */,
     { tok: '112917653797517457474191727734311838332458686889832634273844237276119071933739', side: 'SELL', retPx: 0.325 } /* Alphabet-2nd-Sept NO — WORKED: YES 38.5 -> 32.5, 5.5 of 7.9 pts captured, edge closed to -2.4 */,
     { tok: '95302905537962222918309360338213500184994944787102722256843629723110588711061', side: 'SELL', retPx: 0.755 } /* NVDA-Aug NO — leader leg came in 77.5 -> 75.5, edge -5.5 -> -2.9, under the bar */,
-    { tok: '11876606915924142133615854761923277060697657209957870741155164849437788272266', side: 'SELL', retPx: 0.545 } /* NVDA-Dec NO — the six-day flagship; +31.7 was a model artifact, residue arbitraged to -3.9 */
+    { tok: '11876606915924142133615854761923277060697657209957870741155164849437788272266', side: 'SELL', retPx: 0.545 } /* NVDA-Dec NO — the six-day flagship; +31.7 was a model artifact, residue arbitraged to -3.9 */,
+    { tok: '99989724583763374403799114487538400642955271680502705587990647202176759344135', side: 'BUY', retPx: 0.505 } /* Alphabet-3rd-Aug YES — thesis broken: Alphabet took #2 on Aug 4; fair collapsed 64.7 -> 42.8, CHEAP flipped to RICH */,
+    { tok: '22227957563975750716653233638849839957651843503812478121278991305586251655238', side: 'BUY', retPx: 0.105 } /* NVDA-2nd-Aug YES — NVDA lead widened to 11.6%; fair 21.7 -> 13.6, -1.6 at the ask */,
+    { tok: '58255742710354753372638105507395301856276470581760095695579319734210276720718', side: 'BUY', retPx: 0.205 } /* NVDA-2nd-Sept YES — fair 26.7 -> 21.4 (T=41); +3.6 at the 25c ask */,
+    { tok: '89706022921501149384847021353587496883277465141816802927673604440172434177565', side: 'SELL', retPx: 0.495 } /* Alphabet-2nd-Aug NO hedge — Alphabet TOOK #2; NO -1.9 at the ask, hedge premise dead */,
+    { tok: '9875273331604434310973374077817381730908757452538191940842519381772366848', side: 'BUY', retPx: 0.1915 } /* Apple-Dec YES — caps moved against it; fair 28.2 -> 19.4, edge -0.2 */,
+    { tok: '', side: 'BUY', retPx: 0 } /* Monday roll (BTC/WTI carry order) — written for Monday's open, unexecuted through Tuesday's close; process card */,
+    { tok: '86153684421253045841026634173780053732858134081585356454716135535905962818488', side: 'SELL', retPx: 0.026 } /* MSFT-3rd-Aug fade exhibit — WORKED: tail collapsed 4.95 -> 2.6c; the account bought it at 4.77 instead */,
+    { tok: '28968413545616763951382294393977143128717157799818103817407198720924087703276', side: 'SELL', retPx: 0.91 } /* Apple-crown-Aug NO trim — NO repriced 84.5 -> 91 with Apple's fair falling; position now AT model, nothing to trim against */,
+    { tok: '', side: 'BUY', retPx: 0 } /* Micron $840 'no book' exhibit — OBE: the book rebuilt (55/75) and MU ripped; folded into the Micron complex card */
   ]; /* {tok, side ('BUY'|'SELL'), retPx} — indices align with #retired-body rows' data-retired-* attrs */
   function refreshRetired() {
     RETIRED.forEach(function (t, i) {
