@@ -2,14 +2,14 @@
 (function () {
   'use strict';
 
-  /* ---------- baked odds history (daily CLOB closes, Jun 27 – Jul 30 2026 + the Aug 5 13:25 UTC prints — July resolved NVIDIA; Dec series continues, Jul legs frozen) ---------- */
+  /* ---------- baked odds history (daily CLOB closes, Jun 27 – Jul 30 2026 + the Aug 5 23:19 UTC post-close prints — July resolved NVIDIA; Dec series continues, Jul legs frozen) ---------- */
   var H = {
     julNVDA: [0.925,0.925,0.905,0.905,0.895,0.84,0.815,0.815,0.825,0.795,0.805,0.81,0.86,0.915,0.915,0.92,0.855,0.915,0.845,0.715,0.55,0.53,0.545,0.68,0.745,0.885,0.89,0.715,0.765,0.795,0.295,0.215,0.075,0.754,0.986],
     julAAPL: [0.043,0.043,0.0435,0.0345,0.0385,0.1205,0.121,0.126,0.1245,0.118,0.112,0.1085,0.092,0.0645,0.0575,0.0655,0.113,0.06,0.1045,0.2675,0.415,0.441,0.411,0.286,0.241,0.1155,0.0965,0.2795,0.2235,0.2155,0.698,0.7815,0.9255,0.2335,0.0045],
-    decNVDA: [0.725,0.725,0.62,0.645,0.655,0.605,0.585,0.605,0.615,0.595,0.635,0.655,0.655,0.685,0.695,0.705,0.665,0.72,0.655,0.615,0.52,0.555,0.545,0.605,0.61,0.615,0.645,0.625,0.565,0.575,0.51,0.485,0.485,0.575,0.615],
-    decAAPL: [0.082,0.082,0.0965,0.095,0.108,0.1475,0.143,0.132,0.158,0.1555,0.1705,0.1265,0.1265,0.1405,0.1305,0.13,0.1705,0.1285,0.143,0.2285,0.345,0.328,0.3305,0.235,0.2025,0.1985,0.1985,0.2565,0.2995,0.281,0.353,0.289,0.3565,0.251,0.1885],
-    decGOOGL: [0.115,0.115,0.155,0.165,0.16,0.155,0.165,0.175,0.165,0.165,0.165,0.155,0.155,0.145,0.145,0.145,0.12,0.105,0.12,0.125,0.105,0.105,0.105,0.105,0.125,0.105,0.105,0.105,0.095,0.095,0.105,0.135,0.145,0.13,0.165],
-    decSPCX: [0.0395,0.0395,0.0355,0.023,0.0225,0.0215,0.027,0.027,0.0235,0.0215,0.0205,0.022,0.0215,0.0185,0.02,0.019,0.0145,0.0135,0.0125,0.012,0.0085,0.0085,0.0085,0.0085,0.009,0.0095,0.0115,0.0125,0.015,0.0105,0.0095,0.017,0.0155,0.0175,0.0155]
+    decNVDA: [0.725,0.725,0.62,0.645,0.655,0.605,0.585,0.605,0.615,0.595,0.635,0.655,0.655,0.685,0.695,0.705,0.665,0.72,0.655,0.615,0.52,0.555,0.545,0.605,0.61,0.615,0.645,0.625,0.565,0.575,0.51,0.485,0.485,0.575,0.655],
+    decAAPL: [0.082,0.082,0.0965,0.095,0.108,0.1475,0.143,0.132,0.158,0.1555,0.1705,0.1265,0.1265,0.1405,0.1305,0.13,0.1705,0.1285,0.143,0.2285,0.345,0.328,0.3305,0.235,0.2025,0.1985,0.1985,0.2565,0.2995,0.281,0.353,0.289,0.3565,0.251,0.1715],
+    decGOOGL: [0.115,0.115,0.155,0.165,0.16,0.155,0.165,0.175,0.165,0.165,0.165,0.155,0.155,0.145,0.145,0.145,0.12,0.105,0.12,0.125,0.105,0.105,0.105,0.105,0.125,0.105,0.105,0.105,0.095,0.095,0.105,0.135,0.145,0.13,0.155],
+    decSPCX: [0.0395,0.0395,0.0355,0.023,0.0225,0.0215,0.027,0.027,0.0235,0.0215,0.0205,0.022,0.0215,0.0185,0.02,0.019,0.0145,0.0135,0.0125,0.012,0.0085,0.0085,0.0085,0.0085,0.009,0.0095,0.0115,0.0125,0.015,0.0105,0.0095,0.017,0.0155,0.0175,0.0135]
   };
   var LABELS = (function () {
     var out = [], d = new Date(Date.UTC(2026, 5, 27));
@@ -192,7 +192,7 @@
           var ranked = Object.keys(caps).sort(function (x, y) { return caps[y] - caps[x]; });
           var lead = ranked[0], chal = ranked[1];
           setText('#hero-lead-label', 'Current #1 \u00B7 ' + (NAMES[lead] || lead));
-          setText('#hero-chal-label', '#2 ' + (NAMES[chal] || chal) + (chal === 'GOOGL' ? ' \u2014 NEW' : ''));
+          setText('#hero-chal-label', '#2 ' + (NAMES[chal] || chal)); /* Aug 5 PM: Apple re-took #2 — the slot is computed, no baked NEW tag */
           setText('#hero-lead-cap', '$' + (caps[lead] / 1000).toFixed(3) + 'T');
           setText('#hero-chal-cap', '$' + (caps[chal] / 1000).toFixed(3) + 'T');
           setText('#hero-gap', ((caps[lead] / caps[chal] - 1) * 100).toFixed(2) + '% \u00B7 $' + Math.round(caps[lead] - caps[chal]) + 'B');
@@ -201,9 +201,9 @@
            leader). See rankFair() above for why the old pairwise plug was biased. */
         var edgeList = [];
         var RACE = ['AAPL', 'NVDA', 'GOOGL', 'MSFT', 'AMZN'];
-        var SMALL = { jul: 0.15, aug: 0.45, dec: 2.10 }; /* untracked competitors, taken from THEIR OWN books, not guessed:
+        var SMALL = { jul: 0.15, aug: 0.45, dec: 1.85 }; /* untracked competitors, taken from THEIR OWN books, not guessed:
              aug = Tesla + Aramco + Broadcom at 0.15c each (Microsoft and Amazon are tracked names, not small legs);
-             dec = Tesla 0.30 + SpaceX 1.55 + Aramco 0.25 (re-read Aug 5 13:25Z). Re-read every run — a mis-set allowance
+             dec = Tesla 0.25 + SpaceX 1.35 + Aramco 0.25 (re-read Aug 5 23:19Z). Re-read every run — a mis-set allowance
              moves the leader leg by ~0.6 pt, which is an eighth of the edges this page trades on. */
         var live = RACE.filter(function (s) { return caps[s]; });
         /* a single failed quote would drop a name from the ranking and inflate every survivor
@@ -238,7 +238,7 @@
           var ke = $('#kpi-edge'); if (ke) ke.textContent = lbl[1] + '-' + mon + ' ' + (top.edge >= 0 ? '+' : '−') + Math.abs(top.edge).toFixed(1);
         }
         /* book sums */
-        var sums = { jul: 0.0015, aug: 0.0045, dec: 0.0070 }; /* untracked legs at their own mids: aug = TSLA+ARAMCO+MSFT 0.15c each; dec = ARAMCO 0.30 + AMZN 0.40 */
+        var sums = { jul: 0.0015, aug: 0.0045, dec: 0.0060 }; /* untracked legs at their own mids: aug = TSLA+ARAMCO+MSFT 0.15c each; dec = ARAMCO 0.25 + AMZN 0.35 (re-read Aug 5 23:19Z) */
         Object.keys(mids).forEach(function (k) { if (!isNaN(mids[k])) sums[k.slice(0, 3)] += mids[k]; });
         ['jul', 'aug', 'dec'].forEach(function (ev) { setText('[data-sum="' + ev + '"]', (sums[ev] * 100).toFixed(2)); });
         /* hero AAPL odds (label reads "AAPL Odds Jul / Aug / Dec") */
@@ -251,8 +251,8 @@
       fmtAgo();
     }).catch(function () {
       setPills(false);
-      $('#last-updated').textContent = 'Snapshot · Aug 5, 2026 13:25 UTC — Wednesday pre-open (live APIs unreachable)';
-      var st = $('#sync-time'); if (st) st.textContent = 'Aug 5, 2026 13:25 UTC · Wednesday pre-open (baked snapshot — live APIs unreachable)';
+      $('#last-updated').textContent = 'Snapshot · Aug 5, 2026 23:19 UTC — Wednesday post-close (live APIs unreachable)';
+      var st = $('#sync-time'); if (st) st.textContent = 'Aug 5, 2026 23:19 UTC · Wednesday post-close (baked snapshot — live APIs unreachable)';
     });
   }
 
@@ -547,10 +547,10 @@
     }).catch(function () { /* keep baked snapshot */ });
   }
 
-  var ENGINE_CASH = 0; /* STILL UNOBSERVABLE — Aug 5 2026 update: since the Aug 2 anchor the account has net-deployed
-     $1,560.78 (buys 4,141.70 − sells 2,577.04 − rebates 3.88; the overnight tape actually FREED $27.10) against
-     $1,013.74 of reconstructed cash while the chain sat at exactly $882.32 for a SIXTH run — the unexplained inflow
-     is still ≥ $547.04 on the reconstruction. Floor stays 0.
+  var ENGINE_CASH = 0; /* STILL UNOBSERVABLE — Aug 5 2026 PM update: since the Aug 2 anchor the account has net-deployed
+     $1,577.87 (buys 4,331.70 − sells 2,749.95 − rebates 3.88; today's session deployed a net $17.09 more) against
+     $1,013.74 of reconstructed cash while the chain sat at exactly $882.32 for a SEVENTH run — the unexplained inflow
+     is now ≥ $564.13 on the reconstruction. Floor stays 0.
      Original failure note, kept verbatim:
      RECONSTRUCTION FAILED — Aug 2 2026, and the page now says so rather than printing a made-up number.
      Rolling the ledger forward from the Aug 2 01:12Z anchor of 1,013.74 gives 1,013.74 + 3.20 rebate + 5.51 sale
@@ -676,7 +676,14 @@
     { act: 'BUY', tok: '27073303004572553849637491269750009119441121163110046345436572485239448486478', sh: 27.27, px: 0.5673 } /* 8/5/26 BTC $60k-dip Aug NO — token-size, unmodelled, no card */,
     { act: 'SELL', tok: '45785223831320903636994814819281571811919629332215573777456567635993484304860', sh: 27.77, px: 0.9800 } /* 8/5/26 MU-week <$720 NO — quarter-skim at 98¢ two sessions before resolution */,
     { act: 'SELL', tok: '71464108500672983676536398854219674504864814997435981582754166649109871191554', sh: 5.49, px: 0.9800 } /* 8/5/26 10Y-below-3.7% NO trim at 98¢ — shrinks the violated low-ladder leg */,
-    { act: 'SELL', tok: '74753385292355732879917809656352834782762051527133442900841490505532116166739', sh: 7.50, px: 0.9940 } /* 8/5/26 WTI $130-high NO at 99.4¢ — guard-rail payout THIRTEEN */
+    { act: 'SELL', tok: '74753385292355732879917809656352834782762051527133442900841490505532116166739', sh: 7.50, px: 0.9940 } /* 8/5/26 WTI $130-high NO at 99.4¢ — guard-rail payout THIRTEEN */,
+    { act: 'SELL', tok: '73765233196749292869366451654880406567953679806142840993718162290941523229389', sh: 120.00, px: 0.5230 } /* 8/5/26 PM SPY $790 — the exit ladder's first rung PRINTED: 120 sh at 50.3–53.3¢, then SPY faded to a 44.45 mid */,
+    { act: 'SELL', tok: '45785223831320903636994814819281571811919629332215573777456567635993484304860', sh: 83.34, px: 0.9900 } /* 8/5/26 PM MU-week <$720 NO — the whole remaining leg lifted at 99¢, two sessions before Friday resolution */,
+    { act: 'BUY', tok: '40684707985730872491849941128992064766674278074233806919820229239102287677521', sh: 142.86, px: 0.7000 } /* 8/5/26 PM MU >$880 monthly at 70¢ — against the DO-NOT-ADD card; marked 49.5¢ the same day */,
+    { act: 'BUY', tok: '29132439792600455451030084891481768959658744162592479354164537623610669187848', sh: 101.40, px: 0.8875 } /* 8/5/26 PM MU >$720 monthly at 88.75¢ — second same-day DO-NOT-ADD violation; marked 77.5¢ */,
+    { act: 'SELL', tok: '37115377809826927694181763076177973521362201008447468754472846079605723267622', sh: 20.86, px: 0.9926 } /* 8/5/26 PM Nick Kurtz AL MVP NO — guard-rail payout FOURTEEN, 3 clips 98.8–99.4¢ */,
+    { act: 'SELL', tok: '986625934884180891112686496117276469393361067047414381654886200953641996403', sh: 5.94, px: 0.9500 } /* 8/5/26 PM SPY $780 token skim at 95¢ — the leg closed the day at 72¢ */,
+    { act: 'SELL', tok: '74753385292355732879917809656352834782762051527133442900841490505532116166739', sh: 1.31, px: 0.9940 } /* 8/5/26 PM WTI $130-high NO dust clip at 99.4¢ */
   ];
   function refreshTracking() {
     Promise.all(TRACKED.map(function (t, i) {
@@ -774,7 +781,12 @@
     { tok: '28968413545616763951382294393977143128717157799818103817407198720924087703276', side: 'SELL', retPx: 0.91 } /* Apple-crown-Aug NO trim — NO repriced 84.5 -> 91 with Apple's fair falling; position now AT model, nothing to trim against */,
     { tok: '', side: 'BUY', retPx: 0 } /* Micron $840 'no book' exhibit — OBE: the book rebuilt (55/75) and MU ripped; folded into the Micron complex card */,
     { tok: '112917653797517457474191727734311838332458686889832634273844237276119071933739', side: 'BUY', retPx: 0.39 } /* Alphabet-2nd-Sept YES — WORKED: 33/35 -> 37/41 overnight, 4 of the 5.9 published points captured; -0.1 left at the 41c ask */,
-    { tok: '70495113508210767655365291291788468538934663465126471715738169362699788708131', side: 'BUY', retPx: 0.9395 } /* AMZN $224-low NO — QUOTE PENDING resolved against it: first real CLOB walk 90x162 / 97.9x20; nothing left at the executable */
+    { tok: '70495113508210767655365291291788468538934663465126471715738169362699788708131', side: 'BUY', retPx: 0.9395 } /* AMZN $224-low NO — QUOTE PENDING resolved against it: first real CLOB walk 90x162 / 97.9x20; nothing left at the executable */,
+    { tok: '62009449847159122385971991480139610869824965029008686522071073076098387124747', side: 'BUY', retPx: 0.155 } /* Alphabet-Dec YES — thesis broken by the re-flip: fair collapsed 21.7 -> 12.9 on GOOGL -4.0%; the 16c resting bid is now a losing fill */,
+    { tok: '52111153087993944251381388500455000347142130118001080456457518631547320289410', side: 'BUY', retPx: 0.23 } /* Apple-3rd-Aug YES — the card's own invalidation fired: Alphabet handed #2 straight back; Apple is #2 again, not 3rd */,
+    { tok: '112996809883883766789820608824059367455551434396689079529794719824285513465225', side: 'BUY', retPx: 0.29 } /* Apple-3rd-Sept YES (the orphan) — same invalidation; Apple is no longer the sitting third. Successor: Apple-2nd-Sept YES */,
+    { tok: '11286203532633435050461029087857565736892531921887062202100644346193481478173', side: 'BUY', retPx: 0.065 } /* Alphabet-Sept crown ask watch — the 12c ask collapsed to 6/7 and the fair to 5.6% on the GOOGL slide; edge gone */,
+    { tok: '11876606915924142133615854761923277060697657209957870741155164849437788272266', side: 'SELL', retPx: 0.655 } /* NVDA-Dec NO decision card — edge closed: mid 65.5 vs 65.8 fair (-0.3); the +6.0 RICH converged in one session */
   ]; /* {tok, side ('BUY'|'SELL'), retPx} — indices align with #retired-body rows' data-retired-* attrs */
   function refreshRetired() {
     RETIRED.forEach(function (t, i) {
