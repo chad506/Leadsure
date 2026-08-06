@@ -2,12 +2,12 @@
 (function () {
   'use strict';
 
-  /* ---------- baked odds history (daily CLOB closes, Jun 27 – Jul 30 2026 + the Aug 5 23:19 UTC post-close prints — July resolved NVIDIA; Dec series continues, Jul legs frozen) ---------- */
+  /* ---------- baked odds history (daily CLOB closes, Jun 27 – Jul 30 2026 + the Aug 6 13:26 UTC pre-open prints — July resolved NVIDIA; Dec series continues, Jul legs frozen) ---------- */
   var H = {
-    julNVDA: [0.925,0.925,0.905,0.905,0.895,0.84,0.815,0.815,0.825,0.795,0.805,0.81,0.86,0.915,0.915,0.92,0.855,0.915,0.845,0.715,0.55,0.53,0.545,0.68,0.745,0.885,0.89,0.715,0.765,0.795,0.295,0.215,0.075,0.754,0.986],
+    julNVDA: [0.925,0.925,0.905,0.905,0.895,0.84,0.815,0.815,0.825,0.795,0.805,0.81,0.86,0.915,0.915,0.92,0.855,0.915,0.845,0.715,0.55,0.53,0.545,0.68,0.745,0.885,0.89,0.715,0.765,0.795,0.295,0.215,0.075,0.754,0.9875],
     julAAPL: [0.043,0.043,0.0435,0.0345,0.0385,0.1205,0.121,0.126,0.1245,0.118,0.112,0.1085,0.092,0.0645,0.0575,0.0655,0.113,0.06,0.1045,0.2675,0.415,0.441,0.411,0.286,0.241,0.1155,0.0965,0.2795,0.2235,0.2155,0.698,0.7815,0.9255,0.2335,0.0045],
     decNVDA: [0.725,0.725,0.62,0.645,0.655,0.605,0.585,0.605,0.615,0.595,0.635,0.655,0.655,0.685,0.695,0.705,0.665,0.72,0.655,0.615,0.52,0.555,0.545,0.605,0.61,0.615,0.645,0.625,0.565,0.575,0.51,0.485,0.485,0.575,0.655],
-    decAAPL: [0.082,0.082,0.0965,0.095,0.108,0.1475,0.143,0.132,0.158,0.1555,0.1705,0.1265,0.1265,0.1405,0.1305,0.13,0.1705,0.1285,0.143,0.2285,0.345,0.328,0.3305,0.235,0.2025,0.1985,0.1985,0.2565,0.2995,0.281,0.353,0.289,0.3565,0.251,0.1715],
+    decAAPL: [0.082,0.082,0.0965,0.095,0.108,0.1475,0.143,0.132,0.158,0.1555,0.1705,0.1265,0.1265,0.1405,0.1305,0.13,0.1705,0.1285,0.143,0.2285,0.345,0.328,0.3305,0.235,0.2025,0.1985,0.1985,0.2565,0.2995,0.281,0.353,0.289,0.3565,0.251,0.1625],
     decGOOGL: [0.115,0.115,0.155,0.165,0.16,0.155,0.165,0.175,0.165,0.165,0.165,0.155,0.155,0.145,0.145,0.145,0.12,0.105,0.12,0.125,0.105,0.105,0.105,0.105,0.125,0.105,0.105,0.105,0.095,0.095,0.105,0.135,0.145,0.13,0.155],
     decSPCX: [0.0395,0.0395,0.0355,0.023,0.0225,0.0215,0.027,0.027,0.0235,0.0215,0.0205,0.022,0.0215,0.0185,0.02,0.019,0.0145,0.0135,0.0125,0.012,0.0085,0.0085,0.0085,0.0085,0.009,0.0095,0.0115,0.0125,0.015,0.0105,0.0095,0.017,0.0155,0.0175,0.0135]
   };
@@ -203,7 +203,7 @@
         var RACE = ['AAPL', 'NVDA', 'GOOGL', 'MSFT', 'AMZN'];
         var SMALL = { jul: 0.15, aug: 0.45, dec: 1.85 }; /* untracked competitors, taken from THEIR OWN books, not guessed:
              aug = Tesla + Aramco + Broadcom at 0.15c each (Microsoft and Amazon are tracked names, not small legs);
-             dec = Tesla 0.25 + SpaceX 1.35 + Aramco 0.25 (re-read Aug 5 23:19Z). Re-read every run — a mis-set allowance
+             dec = Tesla 0.25 + SpaceX 1.35 + Aramco 0.25 (re-read Aug 6 13:26Z). Re-read every run — a mis-set allowance
              moves the leader leg by ~0.6 pt, which is an eighth of the edges this page trades on. */
         var live = RACE.filter(function (s) { return caps[s]; });
         /* a single failed quote would drop a name from the ranking and inflate every survivor
@@ -238,7 +238,7 @@
           var ke = $('#kpi-edge'); if (ke) ke.textContent = lbl[1] + '-' + mon + ' ' + (top.edge >= 0 ? '+' : '−') + Math.abs(top.edge).toFixed(1);
         }
         /* book sums */
-        var sums = { jul: 0.0015, aug: 0.0045, dec: 0.0060 }; /* untracked legs at their own mids: aug = TSLA+ARAMCO+MSFT 0.15c each; dec = ARAMCO 0.25 + AMZN 0.35 (re-read Aug 5 23:19Z) */
+        var sums = { jul: 0.0015, aug: 0.0045, dec: 0.0050 }; /* untracked legs at their own mids: aug = TSLA+ARAMCO+MSFT 0.15c each; dec = ARAMCO 0.25 + AMZN 0.25 (re-read Aug 6 13:26Z) */
         Object.keys(mids).forEach(function (k) { if (!isNaN(mids[k])) sums[k.slice(0, 3)] += mids[k]; });
         ['jul', 'aug', 'dec'].forEach(function (ev) { setText('[data-sum="' + ev + '"]', (sums[ev] * 100).toFixed(2)); });
         /* hero AAPL odds (label reads "AAPL Odds Jul / Aug / Dec") */
@@ -251,8 +251,8 @@
       fmtAgo();
     }).catch(function () {
       setPills(false);
-      $('#last-updated').textContent = 'Snapshot · Aug 5, 2026 23:19 UTC — Wednesday post-close (live APIs unreachable)';
-      var st = $('#sync-time'); if (st) st.textContent = 'Aug 5, 2026 23:19 UTC · Wednesday post-close (baked snapshot — live APIs unreachable)';
+      $('#last-updated').textContent = 'Snapshot · Aug 6, 2026 13:26 UTC — Thursday pre-open (live APIs unreachable)';
+      var st = $('#sync-time'); if (st) st.textContent = 'Aug 6, 2026 13:26 UTC · Thursday pre-open (baked snapshot — live APIs unreachable)';
     });
   }
 
@@ -547,10 +547,10 @@
     }).catch(function () { /* keep baked snapshot */ });
   }
 
-  var ENGINE_CASH = 0; /* STILL UNOBSERVABLE — Aug 5 2026 PM update: since the Aug 2 anchor the account has net-deployed
-     $1,577.87 (buys 4,331.70 − sells 2,749.95 − rebates 3.88; today's session deployed a net $17.09 more) against
-     $1,013.74 of reconstructed cash while the chain sat at exactly $882.32 for a SEVENTH run — the unexplained inflow
-     is now ≥ $564.13 on the reconstruction. Floor stays 0.
+  var ENGINE_CASH = 0; /* STILL UNOBSERVABLE — Aug 6 2026 AM update: ZERO trades overnight; the only activity is a
+     $1.09 liquidity reward at 00:00Z, which nudges the reconstruction to net-deployed $1,576.78 against $1,014.83 of
+     reconstructed cash while the chain sits at exactly $882.32 for an EIGHTH run — the unexplained inflow evidence
+     is ≥ $563.04. Floor stays 0.
      Original failure note, kept verbatim:
      RECONSTRUCTION FAILED — Aug 2 2026, and the page now says so rather than printing a made-up number.
      Rolling the ledger forward from the Aug 2 01:12Z anchor of 1,013.74 gives 1,013.74 + 3.20 rebate + 5.51 sale
@@ -786,7 +786,9 @@
     { tok: '52111153087993944251381388500455000347142130118001080456457518631547320289410', side: 'BUY', retPx: 0.23 } /* Apple-3rd-Aug YES — the card's own invalidation fired: Alphabet handed #2 straight back; Apple is #2 again, not 3rd */,
     { tok: '112996809883883766789820608824059367455551434396689079529794719824285513465225', side: 'BUY', retPx: 0.29 } /* Apple-3rd-Sept YES (the orphan) — same invalidation; Apple is no longer the sitting third. Successor: Apple-2nd-Sept YES */,
     { tok: '11286203532633435050461029087857565736892531921887062202100644346193481478173', side: 'BUY', retPx: 0.065 } /* Alphabet-Sept crown ask watch — the 12c ask collapsed to 6/7 and the fair to 5.6% on the GOOGL slide; edge gone */,
-    { tok: '11876606915924142133615854761923277060697657209957870741155164849437788272266', side: 'SELL', retPx: 0.655 } /* NVDA-Dec NO decision card — edge closed: mid 65.5 vs 65.8 fair (-0.3); the +6.0 RICH converged in one session */
+    { tok: '11876606915924142133615854761923277060697657209957870741155164849437788272266', side: 'SELL', retPx: 0.655 } /* NVDA-Dec NO decision card — edge closed: mid 65.5 vs 65.8 fair (-0.3); the +6.0 RICH converged in one session */,
+    { tok: '69436436951640881186918962093978129047876125081246052069821867405322712154087', side: 'BUY', retPx: 0.515 } /* Apple-2nd-Sept YES — the #1 ticket CONVERGED UNEXECUTED overnight: 40c rec -> 49/54 vs 51.3 fair at T=39 */,
+    { tok: '99989724583763374403799114487538400642955271680502705587990647202176759344135', side: 'SELL', retPx: 0.62 } /* Alphabet-3rd-Aug — sell-YES/buy-NO captured: YES 69 -> 62 (NO 38 vs 35.4 NO-fair); scored in YES terms */
   ]; /* {tok, side ('BUY'|'SELL'), retPx} — indices align with #retired-body rows' data-retired-* attrs */
   function refreshRetired() {
     RETIRED.forEach(function (t, i) {
