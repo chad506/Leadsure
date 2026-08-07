@@ -2,12 +2,12 @@
 (function () {
   'use strict';
 
-  /* ---------- baked odds history (daily CLOB closes, Jun 27 – Jul 30 2026 + the Aug 6 23:40 UTC post-close prints — July resolved NVIDIA; Dec series continues, Jul legs frozen) ---------- */
+  /* ---------- baked odds history (daily CLOB closes, Jun 27 – Jul 30 2026 + the Aug 7 13:27 UTC pre-open prints — July resolved NVIDIA; Dec series continues, Jul legs frozen) ---------- */
   var H = {
     julNVDA: [0.925,0.925,0.905,0.905,0.895,0.84,0.815,0.815,0.825,0.795,0.805,0.81,0.86,0.915,0.915,0.92,0.855,0.915,0.845,0.715,0.55,0.53,0.545,0.68,0.745,0.885,0.89,0.715,0.765,0.795,0.295,0.215,0.075,0.754,0.9875],
     julAAPL: [0.043,0.043,0.0435,0.0345,0.0385,0.1205,0.121,0.126,0.1245,0.118,0.112,0.1085,0.092,0.0645,0.0575,0.0655,0.113,0.06,0.1045,0.2675,0.415,0.441,0.411,0.286,0.241,0.1155,0.0965,0.2795,0.2235,0.2155,0.698,0.7815,0.9255,0.2335,0.0045],
     decNVDA: [0.725,0.725,0.62,0.645,0.655,0.605,0.585,0.605,0.615,0.595,0.635,0.655,0.655,0.685,0.695,0.705,0.665,0.72,0.655,0.615,0.52,0.555,0.545,0.605,0.61,0.615,0.645,0.625,0.565,0.575,0.51,0.485,0.485,0.575,0.675],
-    decAAPL: [0.082,0.082,0.0965,0.095,0.108,0.1475,0.143,0.132,0.158,0.1555,0.1705,0.1265,0.1265,0.1405,0.1305,0.13,0.1705,0.1285,0.143,0.2285,0.345,0.328,0.3305,0.235,0.2025,0.1985,0.1985,0.2565,0.2995,0.281,0.353,0.289,0.3565,0.251,0.1625],
+    decAAPL: [0.082,0.082,0.0965,0.095,0.108,0.1475,0.143,0.132,0.158,0.1555,0.1705,0.1265,0.1265,0.1405,0.1305,0.13,0.1705,0.1285,0.143,0.2285,0.345,0.328,0.3305,0.235,0.2025,0.1985,0.1985,0.2565,0.2995,0.281,0.353,0.289,0.3565,0.251,0.1645],
     decGOOGL: [0.115,0.115,0.155,0.165,0.16,0.155,0.165,0.175,0.165,0.165,0.165,0.155,0.155,0.145,0.145,0.145,0.12,0.105,0.12,0.125,0.105,0.105,0.105,0.105,0.125,0.105,0.105,0.105,0.095,0.095,0.105,0.135,0.145,0.13,0.155],
     decSPCX: [0.0395,0.0395,0.0355,0.023,0.0225,0.0215,0.027,0.027,0.0235,0.0215,0.0205,0.022,0.0215,0.0185,0.02,0.019,0.0145,0.0135,0.0125,0.012,0.0085,0.0085,0.0085,0.0085,0.009,0.0095,0.0115,0.0125,0.015,0.0105,0.0095,0.017,0.0155,0.0175,0.0115]
   };
@@ -203,7 +203,7 @@
         var RACE = ['AAPL', 'NVDA', 'GOOGL', 'MSFT', 'AMZN'];
         var SMALL = { jul: 0.15, aug: 0.45, dec: 1.65 }; /* untracked competitors, taken from THEIR OWN books, not guessed:
              aug = Tesla + Aramco + Broadcom at 0.15c each (Microsoft and Amazon are tracked names, not small legs);
-             dec = Tesla 0.25 + SpaceX 1.15 + Aramco 0.25 (re-read Aug 6 23:40Z post-close). Re-read every run — a mis-set allowance
+             dec = Tesla 0.25 + SpaceX 1.15 + Aramco 0.25 (re-read Aug 7 13:27Z pre-open). Re-read every run — a mis-set allowance
              moves the leader leg by ~0.6 pt, which is an eighth of the edges this page trades on. */
         var live = RACE.filter(function (s) { return caps[s]; });
         /* a single failed quote would drop a name from the ranking and inflate every survivor
@@ -238,7 +238,7 @@
           var ke = $('#kpi-edge'); if (ke) ke.textContent = lbl[1] + '-' + mon + ' ' + (top.edge >= 0 ? '+' : '−') + Math.abs(top.edge).toFixed(1);
         }
         /* book sums */
-        var sums = { jul: 0.0015, aug: 0.0045, dec: 0.0050 }; /* untracked legs at their own mids: aug = TSLA+ARAMCO+MSFT 0.15c each; dec = ARAMCO 0.25 + AMZN 0.25 (re-read Aug 6 23:40Z) */
+        var sums = { jul: 0.0015, aug: 0.0045, dec: 0.0050 }; /* untracked legs at their own mids: aug = TSLA+ARAMCO+MSFT 0.15c each; dec = ARAMCO 0.25 + AMZN 0.25 (re-read Aug 7 13:27Z) */
         Object.keys(mids).forEach(function (k) { if (!isNaN(mids[k])) sums[k.slice(0, 3)] += mids[k]; });
         ['jul', 'aug', 'dec'].forEach(function (ev) { setText('[data-sum="' + ev + '"]', (sums[ev] * 100).toFixed(2)); });
         /* hero AAPL odds (label reads "AAPL Odds Jul / Aug / Dec") */
@@ -251,8 +251,8 @@
       fmtAgo();
     }).catch(function () {
       setPills(false);
-      $('#last-updated').textContent = 'Snapshot · Aug 6, 2026 23:40 UTC — Thursday post-close (live APIs unreachable)';
-      var st = $('#sync-time'); if (st) st.textContent = 'Aug 6, 2026 23:40 UTC · Thursday post-close (baked snapshot — live APIs unreachable)';
+      $('#last-updated').textContent = 'Snapshot · Aug 7, 2026 13:27 UTC — Friday pre-open, jobs-print morning (live APIs unreachable)';
+      var st = $('#sync-time'); if (st) st.textContent = 'Aug 7, 2026 13:27 UTC · Friday pre-open, jobs-print morning (baked snapshot — live APIs unreachable)';
     });
   }
 
@@ -547,7 +547,11 @@
     }).catch(function () { /* keep baked snapshot */ });
   }
 
-  var ENGINE_CASH = 0; /* STILL UNOBSERVABLE — Aug 6 2026 PM update: THE LIQUIDATION MOVED ~$1,000 INTO THE DARK.
+  var ENGINE_CASH = 0; /* STILL UNOBSERVABLE — Aug 7 2026 AM update: the overnight tape sold $221.96 more
+     (223 sh Apple-crown NO at 95c + 10 sh walks NO at 98c) plus a $2.53 taker rebate — ~$224 of new proceeds
+     settled engine-side while the chain read $882.32 a TENTH consecutive run. The dark pool is now >= ~$1,222
+     from the last two sessions alone, on top of the standing >= $563 of unexplained inflow evidence. Floor stays 0.
+     Prior note, kept verbatim — Aug 6 2026 PM update: THE LIQUIDATION MOVED ~$1,000 INTO THE DARK.
      Five fills between 21:34Z and 21:57Z sold $1,018.75 of rank-book positions and bought $20.74 of MSFT-3rd-Sept —
      net sale proceeds of $998.01 settled into the order engine, where no public endpoint can see them, while the
      on-chain USDC read exactly $882.32 for a NINTH consecutive run. The floor therefore UNDERCOUNTS the account by
@@ -690,7 +694,9 @@
     { act: 'SELL', tok: '96738271970978473626692761675665650558731868524608528797496705773854589776782', sh: 1004.30, px: 0.3480 } /* 8/6/26 Apple-2nd-Aug NO — the wrong-way leg's exit card, hit 10 pts below its 44.5/46/48 ladder */,
     { act: 'SELL', tok: '93997509898554464206013458433253360996772270234627522008621917049464308684354', sh: 2739.00, px: 0.0328 } /* 8/6/26 Alphabet-crown-Aug stub closed at 3.28¢ vs 0.8% fair */,
     { act: 'BUY', tok: '46552579038506701209087110814172553391939526036683166770317364680747842791908', sh: 274.11, px: 0.0730 } /* 8/6/26 MSFT-3rd-Sept YES — new uncarded punt at 7.30¢ vs 10.9% fair */,
-    { act: 'SELL', tok: '52111153087993944251381388500455000347142130118001080456457518631547320289410', sh: 448.54, px: 0.2416 } /* 8/6/26 Apple-3rd-Aug residue out at 24.16¢ — the Aug 4 flagship ends −$56 realised */
+    { act: 'SELL', tok: '52111153087993944251381388500455000347142130118001080456457518631547320289410', sh: 448.54, px: 0.2416 } /* 8/6/26 Apple-3rd-Aug residue out at 24.16¢ — the Aug 4 flagship ends −$56 realised */,
+    { act: 'SELL', tok: '28968413545616763951382294393977143128717157799818103817407198720924087703276', sh: 223.33, px: 0.9500 } /* 8/7/26 04:06Z Apple-crown-Aug NO — 3 clips at 95¢ flat, 4.5 pts OVER the 90.5 mid and a point under the 96.1 NO-fair; trims the add card's own leg */,
+    { act: 'SELL', tok: '22950994476993217816620059342676363932633660110705295996162691702412928292772', sh: 10.00, px: 0.9800 } /* 8/7/26 10:26Z Judge/Soto walks (Soto) — guard-rail payout FIFTEEN, 10 sh at 98¢ off an 84¢ basis */
   ];
   function refreshTracking() {
     Promise.all(TRACKED.map(function (t, i) {
@@ -800,7 +806,9 @@
     { tok: '52111153087993944251381388500455000347142130118001080456457518631547320289410', side: 'BUY', retPx: 0.245 } /* Apple-3rd-Aug residue — account sold all 448 sh at 24.16c (row 126) */,
     { tok: '93997509898554464206013458433253360996772270234627522008621917049464308684354', side: 'BUY', retPx: 0.0305 } /* Alphabet-crown-Aug stub — account closed at 3.28c (row 124) */,
     { tok: '57813774524155463423838033259397133747187306761649300584910471142751787047106', side: 'BUY', retPx: 0.615 } /* 10Y-4.8 rung 0 — CAPTURED: 52.5 -> 61.5 vs 65.4 fair in one session; second retirement of this rung */,
-    { tok: '22227957563975750716653233638849839957651843503812478121278991305586251655238', side: 'SELL', retPx: 0.075 } /* NVDA-2nd-Aug NO rest-only orphan — edge under bar (-2.7); scored in YES terms (sell-YES ≡ buy-NO) */
+    { tok: '22227957563975750716653233638849839957651843503812478121278991305586251655238', side: 'SELL', retPx: 0.075 } /* NVDA-2nd-Aug NO rest-only orphan — edge under bar (-2.7); scored in YES terms (sell-YES ≡ buy-NO) */,
+    { tok: '6369142801468538078435462495249654721381776375778296596920715169671444692617', side: 'SELL', retPx: 0.065 } /* NVDA-3rd-Sept NO — CAPTURED UNEXECUTED: NO 88 -> 95 touch overnight (YES 12/13 -> 5/8); 7 of the 9.5 pts converged in one session; scored in YES terms */,
+    { tok: '99989724583763374403799114487538400642955271680502705587990647202176759344135', side: 'BUY', retPx: 0.71 } /* Alphabet-3rd-Aug NO rich-hedge sell — converged without a fill: NO 34.5 -> 29 onto the 29.1 NO-fair; the >=35c offer never printed; scored in YES terms (sell-NO ≡ buy-YES) */
   ]; /* {tok, side ('BUY'|'SELL'), retPx} — indices align with #retired-body rows' data-retired-* attrs */
   function refreshRetired() {
     RETIRED.forEach(function (t, i) {
