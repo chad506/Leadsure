@@ -254,3 +254,7 @@ fh_IT	https://finnhub.io/api/v1/quote?symbol=IT&token=d6kqa11r01qmopd1net0d6kqa1
 fhp_IT	https://finnhub.io/api/v1/stock/profile2?symbol=IT&token=d6kqa11r01qmopd1net0d6kqa11r01qmopd1netg
 fh_MMS	https://finnhub.io/api/v1/quote?symbol=MMS&token=d6kqa11r01qmopd1net0d6kqa11r01qmopd1netg
 fhp_MMS	https://finnhub.io/api/v1/stock/profile2?symbol=MMS&token=d6kqa11r01qmopd1net0d6kqa11r01qmopd1netg
+fh_XYL	https://finnhub.io/api/v1/quote?symbol=XYL&token=d6kqa11r01qmopd1net0d6kqa11r01qmopd1netg
+fhp_XYL	https://finnhub.io/api/v1/stock/profile2?symbol=XYL&token=d6kqa11r01qmopd1net0d6kqa11r01qmopd1netg
+fh_HURN	https://finnhub.io/api/v1/quote?symbol=HURN&token=d6kqa11r01qmopd1net0d6kqa11r01qmopd1netg
+fhp_HURN	https://finnhub.io/api/v1/stock/profile2?symbol=HURN&token=d6kqa11r01qmopd1net0d6kqa11r01qmopd1netg
