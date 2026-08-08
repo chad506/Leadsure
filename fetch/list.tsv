@@ -244,3 +244,13 @@ mid_wti130no	https://clob.polymarket.com/midpoint?token_id=747533852923557328799
 book_wti130no	https://clob.polymarket.com/book?token_id=74753385292355732879917809656352834782762051527133442900841490505532116166739
 trs_book_10y60	https://clob.polymarket.com/book?token_id=33659372827600316727835785655881220724422400527200618608139639039116681963297
 book_cease	https://clob.polymarket.com/book?token_id=102965342134187381913982590329414198291915202774878597893115242870459924108426
+fh_ATKR	https://finnhub.io/api/v1/quote?symbol=ATKR&token=d6kqa11r01qmopd1net0d6kqa11r01qmopd1netg
+fhp_ATKR	https://finnhub.io/api/v1/stock/profile2?symbol=ATKR&token=d6kqa11r01qmopd1net0d6kqa11r01qmopd1netg
+fh_MYRG	https://finnhub.io/api/v1/quote?symbol=MYRG&token=d6kqa11r01qmopd1net0d6kqa11r01qmopd1netg
+fhp_MYRG	https://finnhub.io/api/v1/stock/profile2?symbol=MYRG&token=d6kqa11r01qmopd1net0d6kqa11r01qmopd1netg
+fh_ROK	https://finnhub.io/api/v1/quote?symbol=ROK&token=d6kqa11r01qmopd1net0d6kqa11r01qmopd1netg
+fhp_ROK	https://finnhub.io/api/v1/stock/profile2?symbol=ROK&token=d6kqa11r01qmopd1net0d6kqa11r01qmopd1netg
+fh_IT	https://finnhub.io/api/v1/quote?symbol=IT&token=d6kqa11r01qmopd1net0d6kqa11r01qmopd1netg
+fhp_IT	https://finnhub.io/api/v1/stock/profile2?symbol=IT&token=d6kqa11r01qmopd1net0d6kqa11r01qmopd1netg
+fh_MMS	https://finnhub.io/api/v1/quote?symbol=MMS&token=d6kqa11r01qmopd1net0d6kqa11r01qmopd1netg
+fhp_MMS	https://finnhub.io/api/v1/stock/profile2?symbol=MMS&token=d6kqa11r01qmopd1net0d6kqa11r01qmopd1netg
