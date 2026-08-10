@@ -251,30 +251,36 @@
       fmtAgo();
     }).catch(function () {
       setPills(false);
-      $('#last-updated').textContent = 'Snapshot · Aug 7, 2026 23:16 UTC — Friday post-close (live APIs unreachable)';
-      var st = $('#sync-time'); if (st) st.textContent = 'Aug 7, 2026 23:16 UTC · Friday post-close (baked snapshot — live APIs unreachable)';
+      $('#last-updated').textContent = 'Snapshot · Treasuries Aug 10, 2026 22:29 UTC · other tabs Aug 7 23:16 UTC (live APIs unreachable)';
+      var st = $('#sync-time'); if (st) st.textContent = 'Treasuries Aug 10, 2026 22:29 UTC · other tabs Aug 7 23:16 UTC (baked snapshot — live APIs unreachable)';
     });
   }
 
   /* ---------- treasuries tab: live fair/edge/implied recompute ---------- */
+  /* Aug 10 2026: the scenario decomposition (P6 x P|6% + (1-P6) x P|no-6%) is retired.
+     Its P6 was two-thirds drift extrapolation off a coefficient with t = 0.84, and the
+     per-row conditionals were hand-set. The ladder now carries two models that actually
+     fit the 2026 series - a zero-drift random walk and a fitted AR(1) - and the fair is
+     their equal-weight mixture. data-pc holds the martingale leg, data-pe the AR(1) leg.
+     Rows with data-trs-nomodel have no yield model and are left alone: their mid still
+     refreshes, but nothing pretends to price them. */
   function updateTrs(mids) {
-    var P6 = 0.18;
     $$('#trs-table-body tr[data-trs-row]').forEach(function (row) {
+      if (row.getAttribute('data-trs-nomodel')) return;
       var k = row.getAttribute('data-trs-row');
       var mid = mids[k];
       if (mid == null || isNaN(mid)) return;
       var pc = parseFloat(row.getAttribute('data-pc'));
       var pe = parseFloat(row.getAttribute('data-pe'));
-      var fair = P6 * pc + (1 - P6) * pe;
+      if (isNaN(pc) || isNaN(pe)) return;
+      var fair = 0.5 * (pc + pe);
       var edge = mid - fair;
-      var imp = Math.max(0, (mid - pe) / (pc - pe));
       var f = row.querySelector('[data-trs-fair]'); if (f) f.textContent = (fair * 100).toFixed(1) + '%';
       var e = row.querySelector('[data-trs-edge]');
       if (e) {
         e.textContent = (edge >= 0 ? '+' : '\u2212') + Math.abs(edge * 100).toFixed(1);
         e.className = 'col-num' + (edge <= -0.025 ? ' pm-pos' : '');
       }
-      var im = row.querySelector('[data-trs-imp]'); if (im) im.textContent = imp <= 0.005 ? '\u22480%' : (imp * 100).toFixed(1) + '%';
       var v = row.querySelector('[data-trs-verdict]');
       if (v) {
         v.className = 'pm-badge ' + (edge <= -0.025 ? 'pm-cheap' : edge >= 0.025 ? 'pm-rich' : 'pm-fair');
