@@ -734,7 +734,14 @@
     { act: 'SELL', tok: '28968413545616763951382294393977143128717157799818103817407198720924087703276', sh: 223.33, px: 0.9500 } /* 8/7/26 04:06Z Apple-crown-Aug NO — 3 clips at 95¢ flat, 4.5 pts OVER the 90.5 mid and a point under the 96.1 NO-fair; trims the add card's own leg */,
     { act: 'SELL', tok: '22950994476993217816620059342676363932633660110705295996162691702412928292772', sh: 10.00, px: 0.9800 } /* 8/7/26 10:26Z Judge/Soto walks (Soto) — guard-rail payout FIFTEEN, 10 sh at 98¢ off an 84¢ basis */,
     { act: 'BUY', tok: '106686425884931414831660414537151585336396834374452525127171574247454082548832', sh: 1358.02, px: 0.8161 } /* 8/7/26 15:34Z MU >$760-Aug YES — the DO-NOT-ADD violated again, $1,108.36 in one clip at 81.6c avg vs a ~62% canyon fair; position now 2,042 sh */,
-    { act: 'BUY', tok: '114360814676723656908472400412863358263807885083510208644030301446128034414560', sh: 159.09, px: 0.8800 } /* 8/7/26 20:32Z SPY LOW-$720 Aug NO — uncarded add to the low-ladder NO family at 88c */
+    { act: 'BUY', tok: '114360814676723656908472400412863358263807885083510208644030301446128034414560', sh: 159.09, px: 0.8800 } /* 8/7/26 20:32Z SPY LOW-$720 Aug NO — uncarded add to the low-ladder NO family at 88c */,
+    { act: 'SELL', tok: '31225139866242944635093305486513254364151240001212431906638320551757774431080', sh: 24.30, px: 0.9940 } /* 8/9/26 Skenes strikeouts NO — guard-rail payout SIXTEEN at 99.4c */,
+    { act: 'SELL', tok: '83247781037352156539108067944461291821683755894607244160607042790356561625563', sh: 6.09, px: 0.8900 } /* 8/9/26 Dem House YES — uncarded token-size trim */,
+    { act: 'BUY', tok: '57813774524155463423838033259397133747187306761649300584910471142751787047106', sh: 48.06, px: 0.6658 } /* 8/10/26 10Y-4.8% rung 0 — filled 2.6 pts above the midpoint feed; no walked book exists for this rung */,
+    { act: 'SELL', tok: '28968413545616763951382294393977143128717157799818103817407198720924087703276', sh: 808.69, px: 0.9400 } /* 8/10/26 Apple-crown-Aug NO — 808.69 sh distributed at 94c across two clips, 485.2 sh left */,
+    { act: 'BUY', tok: '70090363170367815297146294007692529992906189341824085184699164213923074932193', sh: 133.46, px: 0.1199 } /* 8/10/26 10Y-5.2% rung 2 at 11.99c — inside the 13.8 mixture fair, the only ladder add tonight that is */,
+    { act: 'BUY', tok: '22397766228589110871783272985290872433765236471932774952155419500943165057456', sh: 698.02, px: 0.2521 } /* 8/10/26 10Y-5.0% rung 1 at 25.21c — breaks the 23c stop AND the fired kill-switch; also cleared the offers and created the 34.0 mid */,
+    { act: 'BUY', tok: '25472502502236710744675799561400967135875595061119902215625578202260735017994', sh: 155.84, px: 0.4620 } /* 8/10/26 Gold $5,000 YES — bought the book this page has called RICH since Aug 1 */
   ];
   function refreshTracking() {
     Promise.all(TRACKED.map(function (t, i) {
