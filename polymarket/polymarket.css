@@ -323,3 +323,39 @@ code { font-family: ui-monospace, monospace; font-size: 0.85em; background: var(
 #view-treasuries .pm-table td[colspan],
 #view-treasuries .pm-table td.trs-prose { white-space: normal; min-width: 300px; line-height: 1.55; }
 #view-treasuries .pm-table td[colspan] { min-width: 0; }
+
+/* ==== Hero overflow guard ====
+   .account-hero sets overflow:hidden and .account-hero-secondary is a non-wrapping
+   flex row, so any hero stat whose value runs long is silently CLIPPED rather than
+   wrapped. That is what broke the Largest-Company and Treasuries heroes (their stat
+   values carry a sentence, not a number, and ran ~7,000px past a 1,440px viewport).
+   Scoped to the Polymarket page so the fund dashboard's hero is untouched. */
+#view-polymarket .account-hero,
+#view-largest .account-hero,
+#view-treasuries .account-hero { flex-wrap: wrap; }
+#view-polymarket .account-hero-secondary,
+#view-largest .account-hero-secondary,
+#view-treasuries .account-hero-secondary { flex-wrap: wrap; min-width: 0; }
+#view-polymarket .account-hero-stat,
+#view-largest .account-hero-stat,
+#view-treasuries .account-hero-stat { min-width: 0; flex: 1 1 240px; }
+#view-polymarket .account-hero-stat-label,
+#view-largest .account-hero-stat-label,
+#view-treasuries .account-hero-stat-label { white-space: normal; }
+#view-polymarket .account-hero-stat-value,
+#view-largest .account-hero-stat-value,
+#view-treasuries .account-hero-stat-value { white-space: normal; overflow-wrap: anywhere; }
+
+/* Hero stats whose "value" is a sentence rather than a figure. The display face at
+   700/19px was never meant to carry 300 characters — render prose at body size so a
+   narrative stat reads as narrative instead of as a wall of headline type. */
+.account-hero-stat-value.pm-hero-prose {
+  font-family: var(--font-body, inherit);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0;
+  color: var(--color-text);
+}
+.account-hero-stat-value.pm-hero-prose.pm-neg { color: var(--color-loss); }
+.account-hero-stat-value.pm-hero-prose.pm-pos { color: var(--color-gain); }
