@@ -346,6 +346,36 @@
     if (p.offsetParent !== null && p.scrollHeight <= p.clientHeight + 2) btn.style.display = 'none';
   });
 
+  /* ---------- generic long-form disclosures ----------
+     Same idiom as the cards, but for standalone blocks: methodology, sensitivity
+     notes, section footnotes, the page standfirst. data-longform="N" clamps to N
+     lines. Text stays in the DOM (clamped, not hidden) so find-in-page still works. */
+  var discloseSync = [];
+  $$('[data-longform]').forEach(function (el) {
+    var lines = parseInt(el.getAttribute('data-longform'), 10);
+    if (lines > 0) el.style.webkitLineClamp = String(lines);
+    var label = el.getAttribute('data-longform-label') || 'Read more';
+    var btn = document.createElement('button');
+    btn.className = 'pm-more pm-more-block';
+    btn.setAttribute('aria-expanded', 'false');
+    btn.innerHTML = label + ' <span class="chev">▼</span>';
+    if (el.id) btn.setAttribute('aria-controls', el.id);
+    el.parentNode.insertBefore(btn, el.nextSibling);
+    btn.addEventListener('click', function () {
+      var open = el.classList.toggle('lf-open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      btn.innerHTML = (open ? 'Show less' : label) + ' <span class="chev">▼</span>';
+    });
+    /* A block inside a hidden tab measures 0/0, so the "does it even overflow?"
+       question cannot be answered until that tab is first shown. Re-run on reveal. */
+    var measure = function () {
+      if (el.offsetParent === null || el.classList.contains('lf-open')) return;
+      btn.style.display = el.scrollHeight > el.clientHeight + 2 ? '' : 'none';
+    };
+    discloseSync.push(measure);
+    measure();
+  });
+
 
   /* ---------- live account positions ---------- */
   var WALLET = '0xD1eED20eDD22A289839379e89E3470eA1742A8ae';
@@ -899,7 +929,10 @@
         chartsBuiltVisible = true;
         requestAnimationFrame(buildCharts);
       }
-      requestAnimationFrame(function () { scrollerUpdates.forEach(function (u) { u(); }); });
+      requestAnimationFrame(function () {
+        scrollerUpdates.forEach(function (u) { u(); });
+        discloseSync.forEach(function (m) { m(); });
+      });
     });
   });
 

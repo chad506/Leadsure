@@ -359,3 +359,98 @@ code { font-family: ui-monospace, monospace; font-size: 0.85em; background: var(
 }
 .account-hero-stat-value.pm-hero-prose.pm-neg { color: var(--color-loss); }
 .account-hero-stat-value.pm-hero-prose.pm-pos { color: var(--color-gain); }
+
+/* ==== long-form disclosure ====
+   The Treasuries tab carries several blocks that run 800-4,200 characters — the
+   methodology box, the sensitivity note, the section footnotes, the page standfirst.
+   Rendered whole they are walls of 11px type nobody reads. Clamp them to a few lines
+   with a fade and a toggle, reusing the card idiom (.pm-more). Clamping rather than
+   display:none keeps the text in the DOM, so Ctrl+F and screen readers still reach it. */
+[data-longform] {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+  position: relative;
+}
+[data-longform].lf-open {
+  display: block;
+  -webkit-line-clamp: unset;
+  overflow: visible;
+}
+/* Fade the last clamped line by masking the TEXT, not by painting a gradient in the
+   container's colour — these blocks sit on three different backgrounds (page, panel,
+   hero cell) and a colour fade left a visible pale band on the light theme. */
+[data-longform]:not(.lf-open) {
+  -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 1.35em), transparent);
+  mask-image: linear-gradient(to bottom, #000 calc(100% - 1.35em), transparent);
+}
+.pm-more.pm-more-block { display: flex; margin-top: var(--space-1); }
+.pm-more.pm-more-block .chev { transition: transform var(--transition-interactive); }
+.pm-more.pm-more-block[aria-expanded="true"] .chev { transform: rotate(180deg); }
+
+/* ==== Treasuries tab: density and rhythm ====
+   Seven stacked sections of dense numeric tables with prose crammed into the same
+   cell as the row label. Give the tab its own vertical rhythm and let the annotations
+   sit on their own line instead of trailing the market name. */
+#view-treasuries .table-section { margin-block: var(--space-6); }
+#view-treasuries .fund-header { margin-bottom: var(--space-5); }
+#view-treasuries .pm-table th,
+#view-treasuries .pm-table td { padding: 11px 12px; vertical-align: top; }
+#view-treasuries .pm-table td:first-child { white-space: normal; max-width: 46ch; line-height: 1.5; }
+#view-treasuries .pm-table .pm-note {
+  display: block;
+  margin-top: 3px;
+  line-height: 1.5;
+  font-size: 0.72rem;
+  white-space: normal;
+}
+#view-treasuries .pm-table td[colspan],
+#view-treasuries .pm-table td.trs-prose { line-height: 1.65; padding-block: var(--space-3); }
+#view-treasuries .pm-footnote { max-width: 104ch; line-height: 1.7; margin-top: var(--space-4); }
+#view-treasuries .pm-cards { margin-top: var(--space-2); }
+#view-treasuries .section-title { margin-bottom: 2px; }
+
+/* Methodology box: a single 4,200-character paragraph became six labelled blocks.
+   Each block gets its own line and a heading so the box can be skimmed. */
+.pm-method-block { margin-top: var(--space-3); padding-top: var(--space-3); border-top: 1px solid var(--color-divider); }
+.pm-method-block:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
+.pm-method-h {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.68rem; font-weight: 700;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--color-primary);
+  margin-bottom: 4px;
+}
+.pm-method-block p { margin: 0; font-size: var(--text-xs); line-height: 1.7; color: var(--color-text-muted); max-width: 104ch; }
+
+/* dashboard.css pins .price-note to white-space:nowrap, so the long explanatory
+   notes in these section headers ran past the panel edge and were clipped mid-word
+   ("... · mids live"). Let them wrap inside the Polymarket views. */
+#view-polymarket .table-header-row .price-note,
+#view-largest .table-header-row .price-note,
+#view-treasuries .table-header-row .price-note,
+#view-tracking .table-header-row .price-note { white-space: normal; line-height: 1.5; }
+
+/* The hero row's height is set by its tallest (prose) stat, which left the headline
+   figure stranded at the top of a ~250px column of dead space. Center it. */
+#view-polymarket .account-hero-primary,
+#view-largest .account-hero-primary,
+#view-treasuries .account-hero-primary { justify-content: center; }
+/* .account-hero-label is nowrap too, and the Treasuries label runs 78 characters —
+   it was forcing the headline cell to ~460px and stranding "5.21%" in dead space. */
+#view-polymarket .account-hero-label,
+#view-largest .account-hero-label,
+#view-treasuries .account-hero-label { white-space: normal; max-width: 30ch; }
+#view-polymarket .account-hero,
+#view-largest .account-hero,
+#view-treasuries .account-hero { align-items: stretch; }
+
+/* .section-title is nowrap globally; at 390px "Every Market vs. the 6% Scenario
+   Model" and the date pill next to it ran off the panel. */
+@media (max-width: 760px) {
+  #view-polymarket .section-title, #view-largest .section-title,
+  #view-treasuries .section-title, #view-tracking .section-title { white-space: normal; }
+  #view-treasuries .pm-table td:first-child { max-width: none; }
+}
