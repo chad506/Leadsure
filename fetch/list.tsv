@@ -262,3 +262,4 @@ trs_h15_html	https://www.federalreserve.gov/releases/h15/
 trs_h15_ddp	https://www.federalreserve.gov/datadownload/Output.aspx?rel=H15&series=bf17364827e38702b42a58cf8eaa3f78&lastobs=20&from=&to=&filetype=csv&label=include&layout=seriescolumn
 trs_tsy_xml	https://home.treasury.gov/resource-center/data-chart-center/interest-rates/pages/xml?data=daily_treasury_yield_curve&field_tdr_date_value_month=202608
 trs_tsy_csv	https://home.treasury.gov/resource-center/data-chart-center/interest-rates/daily-treasury-rates.csv/2026/all?type=daily_treasury_yield_curve&field_tdr_date_value=2026&page&_format=csv
+trs_ev_homeval	https://gamma-api.polymarket.com/events?slug=what-will-the-median-home-value-in-the-us-be-on-september-30-20260630175540363
