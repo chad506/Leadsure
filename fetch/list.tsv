@@ -258,3 +258,7 @@ fh_XYL	https://finnhub.io/api/v1/quote?symbol=XYL&token=d6kqa11r01qmopd1net0d6kq
 fhp_XYL	https://finnhub.io/api/v1/stock/profile2?symbol=XYL&token=d6kqa11r01qmopd1net0d6kqa11r01qmopd1netg
 fh_HURN	https://finnhub.io/api/v1/quote?symbol=HURN&token=d6kqa11r01qmopd1net0d6kqa11r01qmopd1netg
 fhp_HURN	https://finnhub.io/api/v1/stock/profile2?symbol=HURN&token=d6kqa11r01qmopd1net0d6kqa11r01qmopd1netg
+trs_h15_html	https://www.federalreserve.gov/releases/h15/
+trs_h15_ddp	https://www.federalreserve.gov/datadownload/Output.aspx?rel=H15&series=bf17364827e38702b42a58cf8eaa3f78&lastobs=20&from=&to=&filetype=csv&label=include&layout=seriescolumn
+trs_tsy_xml	https://home.treasury.gov/resource-center/data-chart-center/interest-rates/pages/xml?data=daily_treasury_yield_curve&field_tdr_date_value_month=202608
+trs_tsy_csv	https://home.treasury.gov/resource-center/data-chart-center/interest-rates/daily-treasury-rates.csv/2026/all?type=daily_treasury_yield_curve&field_tdr_date_value=2026&page&_format=csv
