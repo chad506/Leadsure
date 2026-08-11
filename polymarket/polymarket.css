@@ -450,3 +450,9 @@ code { font-family: ui-monospace, monospace; font-size: 0.85em; background: var(
   #view-treasuries .section-title, #view-tracking .section-title { white-space: normal; }
   #view-treasuries .pm-table td:first-child { max-width: none; }
 }
+
+/* Every card carries BOTH dates: when the idea was first published, and when it was
+   last actually reconsidered. A card whose review date is older than the run date has
+   not been re-priced this run, and should read that way at a glance. */
+.pm-reviewed { color: var(--color-text-faint); font-weight: 500; }
+.pm-reviewed.is-stale { color: var(--color-warning); }
