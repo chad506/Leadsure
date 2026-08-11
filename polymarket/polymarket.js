@@ -4,13 +4,17 @@
 
   /* ---------- baked odds history (daily CLOB closes, Jun 27 2026 onward, + the Aug 11 00:40 UTC post-close prints — July resolved NVIDIA; Dec series continues, Jul legs frozen) ---------- */
   var H = {
-    julNVDA: [0.925,0.925,0.905,0.905,0.895,0.84,0.815,0.815,0.825,0.795,0.805,0.81,0.86,0.915,0.915,0.92,0.855,0.915,0.845,0.715,0.55,0.53,0.545,0.68,0.745,0.885,0.89,0.715,0.765,0.795,0.295,0.215,0.075,0.754,0.986,0.986],
-    julAAPL: [0.043,0.043,0.0435,0.0345,0.0385,0.1205,0.121,0.126,0.1245,0.118,0.112,0.1085,0.092,0.0645,0.0575,0.0655,0.113,0.06,0.1045,0.2675,0.415,0.441,0.411,0.286,0.241,0.1155,0.0965,0.2795,0.2235,0.2155,0.698,0.7815,0.9255,0.2335,0.0045,0.0045],
     decNVDA: [0.725,0.725,0.62,0.645,0.655,0.605,0.585,0.605,0.615,0.595,0.635,0.655,0.655,0.685,0.695,0.705,0.665,0.72,0.655,0.615,0.52,0.555,0.545,0.605,0.61,0.615,0.645,0.625,0.565,0.575,0.51,0.485,0.485,0.575,0.705,0.695],
     decAAPL: [0.082,0.082,0.0965,0.095,0.108,0.1475,0.143,0.132,0.158,0.1555,0.1705,0.1265,0.1265,0.1405,0.1305,0.13,0.1705,0.1285,0.143,0.2285,0.345,0.328,0.3305,0.235,0.2025,0.1985,0.1985,0.2565,0.2995,0.281,0.353,0.289,0.3565,0.251,0.1645,0.1405],
     decGOOGL: [0.115,0.115,0.155,0.165,0.16,0.155,0.165,0.175,0.165,0.165,0.165,0.155,0.155,0.145,0.145,0.145,0.12,0.105,0.12,0.125,0.105,0.105,0.105,0.105,0.125,0.105,0.105,0.105,0.095,0.095,0.105,0.135,0.145,0.13,0.105,0.125],
     decSPCX: [0.0395,0.0395,0.0355,0.023,0.0225,0.0215,0.027,0.027,0.0235,0.0215,0.0205,0.022,0.0215,0.0185,0.02,0.019,0.0145,0.0135,0.0125,0.012,0.0085,0.0085,0.0085,0.0085,0.009,0.0095,0.0115,0.0125,0.015,0.0105,0.0095,0.017,0.0155,0.0175,0.0115,0.011]
   };
+  /* The September rank books listed Jul 29 and this page began recording them on
+     Aug 11, so their series starts with a single print and grows one point per run.
+     Seeded, not back-filled — no synthetic history. */
+  var SEPH = { sep2AAPL: [0.585], sep2GOOGL: [0.31], sep2NVDA: [0.085] };
+  var SEP_LABELS = ['8/11'];
+
   var LABELS = (function () {
     var out = [], d = new Date(Date.UTC(2026, 5, 27));
     for (var i = 0; i < 35; i++) {
@@ -29,11 +33,12 @@
 
   /* ---------- live plumbing ---------- */
   var TOKENS = {
-    'jul-NVDA': '11728583497514710574356365513249856989304427730091039531942765980605070477300',
-    'jul-AAPL': '5823805802875099304203116182652199693089526522530469365767529374822548212673',
-    'jul-GOOGL': '46584362414049299081102864761073270023695613262912078060282755871576741137444',
-    'jul-MSFT': '110369498265062016820251239100016356984114678897918474918996455047198849953447',
-    'jul-AMZN': '78963030528454339216772435409768100324088386511503879377911886576556782601312',
+    'sep-sep2AAPL': '69436436951640881186918962093978129047876125081246052069821867405322712154087',
+    'sep-sep2GOOGL': '112917653797517457474191727734311838332458686889832634273844237276119071933739',
+    'sep-sep2NVDA': '58255742710354753372638105507395301856276470581760095695579319734210276720718',
+    'sep-sep3AAPL': '112996809883883766789820608824059367455551434396689079529794719824285513465225',
+    'sep-sep3NVDA': '6369142801468538078435462495249654721381776375778296596920715169671444692617',
+    'sep-sepGOOGL': '11286203532633435050461029087857565736892531921887062202100644346193481478173',
     'aug-NVDA': '95302905537962222918309360338213500184994944787102722256843629723110588711061',
     'aug-AAPL': '42047893977785728528565456844873223397500118970867834014836006695082853076308',
     'aug-GOOGL': '93997509898554464206013458433253360996772270234627522008621917049464308684354',
@@ -242,7 +247,7 @@
         Object.keys(mids).forEach(function (k) { if (!isNaN(mids[k])) sums[k.slice(0, 3)] += mids[k]; });
         ['jul', 'aug', 'dec'].forEach(function (ev) { setText('[data-sum="' + ev + '"]', (sums[ev] * 100).toFixed(2)); });
         /* hero AAPL odds (label reads "AAPL Odds Jul / Aug / Dec") */
-        if (!isNaN(mids['jul-AAPL'])) setText('#hero-nvda-odds', (mids['jul-AAPL'] * 100).toFixed(0) + '% / ' + (mids['aug-AAPL'] * 100).toFixed(0) + '% / ' + (mids['dec-AAPL'] * 100).toFixed(1) + '%');
+        if (!isNaN(mids['aug-AAPL'])) setText('#hero-nvda-odds', (mids['aug-AAPL'] * 100).toFixed(1) + '% / ' + (mids['sep-sep2AAPL'] * 100).toFixed(1) + '% / ' + (mids['dec-AAPL'] * 100).toFixed(2) + '%');
       }
       lastTick = Date.now();
       var st = $('#sync-time');
@@ -328,8 +333,14 @@
       elements: { line: { borderWidth: 2, tension: 0.25 }, point: { radius: 0, hoverRadius: 5, hitRadius: 10 } }
     };
     function ds(label, arr, color) { return { label: label, data: arr.map(function (p) { return p * 100; }), borderColor: color, backgroundColor: color, pointBackgroundColor: color }; }
-    var el1 = document.getElementById('chart-july');
-    if (el1) charts.push(new Chart(el1, { type: 'line', data: { labels: LABELS, datasets: [ds('NVDA', H.julNVDA, P.NVDA), ds('AAPL', H.julAAPL, P.AAPL)] }, options: common, plugins: [endLabelPlugin(P.ink)] }));
+    var el1 = document.getElementById('chart-september');
+    if (el1) {
+      var sepOpts = JSON.parse(JSON.stringify(common));
+      sepOpts.elements = { point: { radius: 4, hoverRadius: 6 } };
+      charts.push(new Chart(el1, { type: 'line', data: { labels: SEP_LABELS, datasets: [
+        ds('AAPL 2nd', SEPH.sep2AAPL, P.AAPL), ds('GOOGL 2nd', SEPH.sep2GOOGL, P.GOOGL), ds('NVDA 2nd', SEPH.sep2NVDA, P.NVDA)
+      ] }, options: sepOpts, plugins: [endLabelPlugin(P.ink)] }));
+    }
     var el2 = document.getElementById('chart-dec');
     if (el2) charts.push(new Chart(el2, { type: 'line', data: { labels: LABELS, datasets: [ds('NVDA', H.decNVDA, P.NVDA), ds('AAPL', H.decAAPL, P.AAPL), ds('GOOGL', H.decGOOGL, P.GOOGL), ds('SPCX', H.decSPCX, P.SPCX)] }, options: common, plugins: [endLabelPlugin(P.ink)] }));
   }
