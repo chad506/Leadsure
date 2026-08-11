@@ -471,3 +471,69 @@ code { font-family: ui-monospace, monospace; font-size: 0.85em; background: var(
   margin-top: 2px;
 }
 #view-treasuries .trs-mkt .pm-sub strong { color: var(--color-text); }
+
+/* ==== second pass on the walls of text ====
+   The page grew a lot of long-form in one night: 27 "why this is cheap" cells in the
+   fair-value table, 46 more in the two ledgers, ten section notes and 28 ticket
+   boxes. Clamped by default, expandable on demand — nothing is removed, it just
+   stops arriving all at once. */
+
+/* Ticket boxes ride the card's existing Read more button rather than adding a second
+   toggle to every card. */
+.pm-cards .panel-card .pm-exec {
+  display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden;
+}
+.pm-cards .panel-card.expanded .pm-exec {
+  display: block; -webkit-line-clamp: unset; overflow: visible;
+}
+
+/* Row-level reasoning in the fair-value table and both ledgers. Two lines by default;
+   one control per table opens them all, and any single cell opens on click. */
+#view-treasuries .trs-mkt .pm-sub,
+#track-table .pm-sub,
+#retired-table .pm-sub {
+  display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden;
+  -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 1.1em), transparent);
+  mask-image: linear-gradient(to bottom, #000 calc(100% - 1.1em), transparent);
+  cursor: pointer;
+}
+#view-treasuries .trs-mkt .pm-sub:hover { color: var(--color-text); }
+/* the clamp rule is #view-treasuries .trs-mkt .pm-sub (id + 2 classes), so the
+   "open everything" rule has to match or beat it — a bare .reasoning-open loses. */
+#view-treasuries #trs-table-body.reasoning-open .pm-sub,
+#track-table.reasoning-open .pm-sub,
+#retired-table.reasoning-open .pm-sub,
+#view-treasuries .trs-mkt .pm-sub.is-open,
+#track-table .pm-sub.is-open,
+#retired-table .pm-sub.is-open {
+  display: block; -webkit-line-clamp: unset; overflow: visible;
+  -webkit-mask-image: none; mask-image: none;
+}
+.pm-reason-toggle {
+  margin-left: auto;
+  font-family: var(--font-display);
+  font-size: 0.66rem; font-weight: 600;
+  letter-spacing: 0.05em; text-transform: uppercase;
+  color: var(--color-primary);
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 3px 9px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+}
+.pm-reason-toggle:hover { color: var(--color-primary-hover); border-color: var(--color-primary); }
+.pm-reason-toggle .chev { font-size: 0.55rem; transition: transform var(--transition-interactive); }
+.pm-reason-toggle[aria-expanded="true"] .chev { transform: rotate(180deg); }
+.lf-cell { display: -webkit-box; }
+
+/* Legend for the fair-value table: CHEAP/RICH are not self-evident and the sign
+   convention (edge = mid − fair, so CHEAP is negative) trips everyone once. */
+.pm-legend {
+  display: flex; flex-direction: column; gap: 6px;
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--color-divider);
+  background: var(--color-surface-offset, transparent);
+}
+.pm-legend-item { font-size: var(--text-xs); line-height: 1.6; color: var(--color-text-muted); }
+.pm-legend-item .pm-badge { margin-right: 6px; vertical-align: middle; }
+.pm-legend-item strong { color: var(--color-text); }

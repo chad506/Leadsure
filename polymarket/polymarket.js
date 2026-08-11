@@ -352,6 +352,26 @@
     if (p.offsetParent !== null && p.scrollHeight <= p.clientHeight + 2) btn.style.display = 'none';
   });
 
+  /* ---------- one control for every row-level explanation in the fair-value table ----------
+     27 rows each carry a written "why this is cheap/rich". Clamped to two lines by
+     default so the table stays a table; this opens them all at once, and any single
+     cell also opens on click. */
+  (function () {
+    var btn = document.getElementById('trs-reason-toggle');
+    var body = document.getElementById('trs-table-body');
+    if (btn && body) {
+      btn.addEventListener('click', function () {
+        var open = body.classList.toggle('reasoning-open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        btn.innerHTML = (open ? 'Hide reasoning' : 'Show all reasoning') + ' <span class="chev">\u25BC</span>';
+        if (!open) $$('#trs-table-body .pm-sub.is-open').forEach(function (el) { el.classList.remove('is-open'); });
+      });
+    }
+    $$('#trs-table-body .pm-sub, #track-table .pm-sub, #retired-table .pm-sub').forEach(function (el) {
+      el.addEventListener('click', function () { el.classList.toggle('is-open'); });
+    });
+  })();
+
   /* ---------- generic long-form disclosures ----------
      Same idiom as the cards, but for standalone blocks: methodology, sensitivity
      notes, section footnotes, the page standfirst. data-longform="N" clamps to N
