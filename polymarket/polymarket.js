@@ -2,7 +2,7 @@
 (function () {
   'use strict';
 
-  /* ---------- baked odds history (daily CLOB closes, Jun 27 2026 onward, + the Aug 11 16:43 UTC intraday prints — July resolved NVIDIA; Dec series continues, Jul legs frozen) ---------- */
+  /* ---------- baked odds history (daily CLOB closes, Jun 27 2026 onward, through the Aug 11 close — which printed ZERO change on all four Dec legs; July resolved NVIDIA, Jul legs frozen) ---------- */
   var H = {
     decNVDA: [0.725,0.725,0.62,0.645,0.655,0.605,0.585,0.605,0.615,0.595,0.635,0.655,0.655,0.685,0.695,0.705,0.665,0.72,0.655,0.615,0.52,0.555,0.545,0.605,0.61,0.615,0.645,0.625,0.565,0.575,0.51,0.485,0.485,0.575,0.705,0.695,0.705],
     decAAPL: [0.082,0.082,0.0965,0.095,0.108,0.1475,0.143,0.132,0.158,0.1555,0.1705,0.1265,0.1265,0.1405,0.1305,0.13,0.1705,0.1285,0.143,0.2285,0.345,0.328,0.3305,0.235,0.2025,0.1985,0.1985,0.2565,0.2995,0.281,0.353,0.289,0.3565,0.251,0.1645,0.1405,0.1455],
@@ -11,9 +11,10 @@
   };
   /* The September rank books listed Jul 29 and this page began recording them on
      Aug 10 (post-close walk, fetched 00:40 UTC Aug 11 — the first print), so the
-     series grows one point per run. Seeded, not back-filled — no synthetic history. */
-  var SEPH = { sep2AAPL: [0.585,0.565], sep2GOOGL: [0.31,0.315], sep2NVDA: [0.085,0.08] };
-  var SEP_LABELS = ['8/10', '8/11'];
+     series grows one point per run (third print: Aug 11 close, 23:22 UTC).
+     Seeded, not back-filled — no synthetic history. */
+  var SEPH = { sep2AAPL: [0.585,0.565,0.575], sep2GOOGL: [0.31,0.315,0.315], sep2NVDA: [0.085,0.08,0.08] };
+  var SEP_LABELS = ['8/10', '8/11', '8/11 PM'];
 
   var LABELS = (function () {
     var out = [], d = new Date(Date.UTC(2026, 5, 27));
@@ -206,9 +207,9 @@
            leader). See rankFair() above for why the old pairwise plug was biased. */
         var edgeList = [];
         var RACE = ['AAPL', 'NVDA', 'GOOGL', 'MSFT', 'AMZN'];
-        var SMALL = { jul: 0.15, aug: 0.35, dec: 1.65 }; /* untracked competitors, taken from THEIR OWN books, not guessed:
+        var SMALL = { jul: 0.15, aug: 0.35, dec: 1.60 }; /* untracked competitors, taken from THEIR OWN books, not guessed:
              aug = Tesla 0.15 + Aramco 0.15 + Broadcom 0.05 (AVGO re-read off its own book this run; Microsoft and Amazon are tracked names, not small legs);
-             dec = Tesla 0.25 + SpaceX 1.15 + Aramco 0.25 (re-read Aug 7 23:16Z post-close). Re-read every run — a mis-set allowance
+             dec = Tesla 0.25 + SpaceX 1.10 + Aramco 0.25 (re-read Aug 11 23:22Z close — SPCX eased to a 1.0/1.2 book). Re-read every run — a mis-set allowance
              moves the leader leg by ~0.6 pt, which is an eighth of the edges this page trades on. */
         var live = RACE.filter(function (s) { return caps[s]; });
         /* a single failed quote would drop a name from the ranking and inflate every survivor
@@ -256,8 +257,8 @@
       fmtAgo();
     }).catch(function () {
       setPills(false);
-      $('#last-updated').textContent = 'Snapshot · Aug 11, 2026 16:43 UTC — full-page true-up, intraday Tuesday (live APIs unreachable)';
-      var st = $('#sync-time'); if (st) st.textContent = 'Aug 11, 2026 16:43 UTC — full-page true-up on intraday quotes (baked snapshot — live APIs unreachable)';
+      $('#last-updated').textContent = 'Snapshot · Aug 11, 2026 23:22 UTC — post-close true-up, Tuesday close (live APIs unreachable)';
+      var st = $('#sync-time'); if (st) st.textContent = 'Aug 11, 2026 23:22 UTC — post-close true-up on Tuesday closing quotes (baked snapshot — live APIs unreachable)';
     });
   }
 
@@ -614,7 +615,10 @@
     }).catch(function () { /* keep baked snapshot */ });
   }
 
-  var ENGINE_CASH = 0; /* STILL UNOBSERVABLE — Aug 11 2026 AM update: the chain printed $882.32 a TWELFTH
+  var ENGINE_CASH = 0; /* STILL UNOBSERVABLE — Aug 11 2026 PM update: THIRTEENTH consecutive run at $882.32 — trivially so,
+     because the window printed ZERO trades (the first empty tape since Aug 6 AM). Nothing moved on-chain or engine-side;
+     the floor stays 0 and the hero figure remains a FLOOR, not an estimate.
+     Prior note, kept verbatim — Aug 11 2026 AM update: the chain printed $882.32 a TWELFTH
      consecutive run while the window since the Aug 7 true-up sold $1,076 (SPY-790/680/690 trims, the Apple-crown
      NO clips at 94-96c, a McGonigle stub) and bought $272 (10Y rungs 1-2 adds, the median-home bucket, an SPX
      punt) - roughly $800 MORE of net proceeds settled engine-side where no public endpoint can read them.
