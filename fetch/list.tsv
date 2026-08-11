@@ -281,3 +281,6 @@ trs_book_hv_u419_no	https://clob.polymarket.com/book?token_id=482065719760784172
 mid_hv_u419_no	https://clob.polymarket.com/midpoint?token_id=48206571976078417237748791791514989846479516184396221049448574214961961697346
 trs_book_hv_419_426_no	https://clob.polymarket.com/book?token_id=28897984708762741008396467433114588437489493507334979047728239347992777696849
 mid_hv_419_426_no	https://clob.polymarket.com/midpoint?token_id=28897984708762741008396467433114588437489493507334979047728239347992777696849
+fh_SPY	https://finnhub.io/api/v1/quote?symbol=SPY&token=d6kqa11r01qmopd1net0d6kqa11r01qmopd1netg
+fh_GLD	https://finnhub.io/api/v1/quote?symbol=GLD&token=d6kqa11r01qmopd1net0d6kqa11r01qmopd1netg
+fh_IAU	https://finnhub.io/api/v1/quote?symbol=IAU&token=d6kqa11r01qmopd1net0d6kqa11r01qmopd1netg
