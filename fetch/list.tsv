@@ -284,3 +284,6 @@ mid_hv_419_426_no	https://clob.polymarket.com/midpoint?token_id=2889798470876274
 fh_SPY	https://finnhub.io/api/v1/quote?symbol=SPY&token=d6kqa11r01qmopd1net0d6kqa11r01qmopd1netg
 fh_GLD	https://finnhub.io/api/v1/quote?symbol=GLD&token=d6kqa11r01qmopd1net0d6kqa11r01qmopd1netg
 fh_IAU	https://finnhub.io/api/v1/quote?symbol=IAU&token=d6kqa11r01qmopd1net0d6kqa11r01qmopd1netg
+lg_mkt_sep2AAPL	https://gamma-api.polymarket.com/markets?clob_token_ids=69436436951640881186918962093978129047876125081246052069821867405322712154087
+lg_mkt_sep3AAPL	https://gamma-api.polymarket.com/markets?clob_token_ids=112996809883883766789820608824059367455551434396689079529794719824285513465225
+lg_mkt_sepGOOGL	https://gamma-api.polymarket.com/markets?clob_token_ids=11286203532633435050461029087857565736892531921887062202100644346193481478173
