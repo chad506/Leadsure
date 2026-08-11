@@ -330,19 +330,18 @@ code { font-family: ui-monospace, monospace; font-size: 0.85em; background: var(
    wrapped. That is what broke the Largest-Company and Treasuries heroes (their stat
    values carry a sentence, not a number, and ran ~7,000px past a 1,440px viewport).
    Scoped to the Polymarket page so the fund dashboard's hero is untouched. */
-#view-polymarket .account-hero,
+/* NOTE: scoped to the two heroes whose stat VALUES are prose. The Polymarket
+   account hero carries eight short numeric stats and was never broken — giving its
+   stats a 240px flex-basis pushed 7 x 240 = 1,680px into a 1,440px row and wrapped
+   the hero onto two ragged lines. Leave it sizing to content. */
 #view-largest .account-hero,
 #view-treasuries .account-hero { flex-wrap: wrap; }
-#view-polymarket .account-hero-secondary,
 #view-largest .account-hero-secondary,
 #view-treasuries .account-hero-secondary { flex-wrap: wrap; min-width: 0; }
-#view-polymarket .account-hero-stat,
 #view-largest .account-hero-stat,
-#view-treasuries .account-hero-stat { min-width: 0; flex: 1 1 240px; }
-#view-polymarket .account-hero-stat-label,
+#view-treasuries .account-hero-stat { min-width: 0; flex: 1 1 260px; }
 #view-largest .account-hero-stat-label,
 #view-treasuries .account-hero-stat-label { white-space: normal; }
-#view-polymarket .account-hero-stat-value,
 #view-largest .account-hero-stat-value,
 #view-treasuries .account-hero-stat-value { white-space: normal; overflow-wrap: anywhere; }
 
@@ -435,15 +434,12 @@ code { font-family: ui-monospace, monospace; font-size: 0.85em; background: var(
 
 /* The hero row's height is set by its tallest (prose) stat, which left the headline
    figure stranded at the top of a ~250px column of dead space. Center it. */
-#view-polymarket .account-hero-primary,
 #view-largest .account-hero-primary,
 #view-treasuries .account-hero-primary { justify-content: center; }
 /* .account-hero-label is nowrap too, and the Treasuries label runs 78 characters —
    it was forcing the headline cell to ~460px and stranding "5.21%" in dead space. */
-#view-polymarket .account-hero-label,
 #view-largest .account-hero-label,
 #view-treasuries .account-hero-label { white-space: normal; max-width: 30ch; }
-#view-polymarket .account-hero,
 #view-largest .account-hero,
 #view-treasuries .account-hero { align-items: stretch; }
 
