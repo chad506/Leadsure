@@ -456,3 +456,18 @@ code { font-family: ui-monospace, monospace; font-size: 0.85em; background: var(
    not been re-priced this run, and should read that way at a glance. */
 .pm-reviewed { color: var(--color-text-faint); font-weight: 500; }
 .pm-reviewed.is-stale { color: var(--color-warning); }
+
+/* Fair-value table: the market cell now carries a link plus a full "why this is
+   cheap/rich" paragraph, so it needs room to breathe rather than the 34ch ellipsis
+   the account tables use. */
+#view-treasuries .trs-mkt { max-width: 52ch; overflow: visible; text-overflow: clip; white-space: normal; }
+#view-treasuries .trs-mkt > a { font-weight: 700; display: inline-block; margin-bottom: 3px; }
+#view-treasuries .trs-mkt .pm-sub {
+  font-weight: 400;
+  font-size: 0.72rem;
+  line-height: 1.55;
+  color: var(--color-text-muted);
+  white-space: normal;
+  margin-top: 2px;
+}
+#view-treasuries .trs-mkt .pm-sub strong { color: var(--color-text); }
