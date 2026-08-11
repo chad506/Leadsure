@@ -251,8 +251,8 @@
       fmtAgo();
     }).catch(function () {
       setPills(false);
-      $('#last-updated').textContent = 'Snapshot · Treasuries Aug 10, 2026 22:29 UTC · other tabs Aug 7 23:16 UTC (live APIs unreachable)';
-      var st = $('#sync-time'); if (st) st.textContent = 'Treasuries Aug 10, 2026 22:29 UTC · other tabs Aug 7 23:16 UTC (baked snapshot — live APIs unreachable)';
+      $('#last-updated').textContent = 'Snapshot · Aug 11, 2026 00:40 UTC — Largest Company & Treasuries current; All-Positions on Aug 7 (live APIs unreachable)';
+      var st = $('#sync-time'); if (st) st.textContent = 'Aug 11, 2026 00:40 UTC — Largest Company & Treasuries current, All-Positions & Tracking on Aug 7 (baked snapshot — live APIs unreachable)';
     });
   }
 

@@ -537,3 +537,34 @@ code { font-family: ui-monospace, monospace; font-size: 0.85em; background: var(
 .pm-legend-item { font-size: var(--text-xs); line-height: 1.6; color: var(--color-text-muted); }
 .pm-legend-item .pm-badge { margin-right: 6px; vertical-align: middle; }
 .pm-legend-item strong { color: var(--color-text); }
+
+/* ==== card headlines ====
+   Two separate faults, both visible on every card:
+
+   1. dashboard.css renders .panel-title as faint, letter-spaced, ALL CAPS display
+      type. Fine for a four-word panel label; unreadable for these headlines, which
+      carry the numbers and run 80-140 characters.
+   2. .pm-cards .panel-title was display:flex with wrap. In a flex container every
+      inline child becomes its own flex item, so a headline containing <strong> tags
+      SHATTERS — "…96.59 fair (-3.09) — 23,330.9 shares /" then "$22,314" alone on the
+      next line, then the rest. That is what made these look broken.
+
+   Block layout restores normal inline flow; the badges go inline-block so they still
+   sit on the same line and keep their uppercase treatment. */
+.pm-cards .panel-title {
+  display: block;
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--color-text);
+  font-weight: 650;
+  line-height: 1.45;
+}
+.pm-cards .panel-title .pm-badge {
+  display: inline-block;
+  vertical-align: baseline;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0 6px 5px 0;
+}
+.pm-cards .panel-title strong { font-weight: 750; color: #fff; }
+[data-theme="light"] .pm-cards .panel-title strong { color: var(--color-text); }
