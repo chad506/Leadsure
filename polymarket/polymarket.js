@@ -2,20 +2,21 @@
 (function () {
   'use strict';
 
-  /* ---------- baked odds history (daily CLOB closes, Jun 27 2026 onward, through the Aug 12 close — the post-close run re-marked the 'now' point on the 23:31 UTC books: NVDA 70.5 -> 71.5, AAPL 14.55 -> 14.45, SPCX 1.05 -> 1.15, GOOGL unchanged; July resolved NVIDIA, Jul legs frozen) ---------- */
+  /* ---------- baked odds history (daily CLOB closes, Jun 27 2026 onward, through the Aug 12 close — the Aug 13 pre-open run re-marked the 'now' point on the 13:26 UTC books: NVDA 71.5 -> 72.5, AAPL 14.45 -> 14.05, GOOGL 12.5 -> 11.5, SPCX unchanged 1.15; July resolved NVIDIA, Jul legs frozen) ---------- */
   var H = {
-    decNVDA: [0.725,0.725,0.62,0.645,0.655,0.605,0.585,0.605,0.615,0.595,0.635,0.655,0.655,0.685,0.695,0.705,0.665,0.72,0.655,0.615,0.52,0.555,0.545,0.605,0.61,0.615,0.645,0.625,0.565,0.575,0.51,0.485,0.485,0.575,0.705,0.695,0.715],
-    decAAPL: [0.082,0.082,0.0965,0.095,0.108,0.1475,0.143,0.132,0.158,0.1555,0.1705,0.1265,0.1265,0.1405,0.1305,0.13,0.1705,0.1285,0.143,0.2285,0.345,0.328,0.3305,0.235,0.2025,0.1985,0.1985,0.2565,0.2995,0.281,0.353,0.289,0.3565,0.251,0.1645,0.1405,0.1445],
-    decGOOGL: [0.115,0.115,0.155,0.165,0.16,0.155,0.165,0.175,0.165,0.165,0.165,0.155,0.155,0.145,0.145,0.145,0.12,0.105,0.12,0.125,0.105,0.105,0.105,0.105,0.125,0.105,0.105,0.105,0.095,0.095,0.105,0.135,0.145,0.13,0.105,0.125,0.125],
+    decNVDA: [0.725,0.725,0.62,0.645,0.655,0.605,0.585,0.605,0.615,0.595,0.635,0.655,0.655,0.685,0.695,0.705,0.665,0.72,0.655,0.615,0.52,0.555,0.545,0.605,0.61,0.615,0.645,0.625,0.565,0.575,0.51,0.485,0.485,0.575,0.705,0.695,0.725],
+    decAAPL: [0.082,0.082,0.0965,0.095,0.108,0.1475,0.143,0.132,0.158,0.1555,0.1705,0.1265,0.1265,0.1405,0.1305,0.13,0.1705,0.1285,0.143,0.2285,0.345,0.328,0.3305,0.235,0.2025,0.1985,0.1985,0.2565,0.2995,0.281,0.353,0.289,0.3565,0.251,0.1645,0.1405,0.1405],
+    decGOOGL: [0.115,0.115,0.155,0.165,0.16,0.155,0.165,0.175,0.165,0.165,0.165,0.155,0.155,0.145,0.145,0.145,0.12,0.105,0.12,0.125,0.105,0.105,0.105,0.105,0.125,0.105,0.105,0.105,0.095,0.095,0.105,0.135,0.145,0.13,0.105,0.125,0.115],
     decSPCX: [0.0395,0.0395,0.0355,0.023,0.0225,0.0215,0.027,0.027,0.0235,0.0215,0.0205,0.022,0.0215,0.0185,0.02,0.019,0.0145,0.0135,0.0125,0.012,0.0085,0.0085,0.0085,0.0085,0.009,0.0095,0.0115,0.0125,0.015,0.0105,0.0095,0.017,0.0155,0.0175,0.0115,0.011,0.0115]
   };
   /* The September rank books listed Jul 29 and this page began recording them on
      Aug 10 (post-close walk, fetched 00:40 UTC Aug 11 — the first print), so the
-     series grows one point per run (fifth print: Aug 12 post-close, 23:31 UTC —
-     sep2AAPL bounced 49.0 -> 51.0 on a 46/56 book, taking back 2 of the pre-open
-     collapse's 8.5; still a wide-book mid, not a close). Seeded, not back-filled — no synthetic history. */
-  var SEPH = { sep2AAPL: [0.585,0.565,0.575,0.49,0.51], sep2GOOGL: [0.31,0.315,0.315,0.32,0.325], sep2NVDA: [0.085,0.08,0.08,0.095,0.085] };
-  var SEP_LABELS = ['8/10', '8/11', '8/11 PM', '8/12', '8/12 PM'];
+     series grows one point per run (sixth print: Aug 13 pre-open, 13:26 UTC —
+     sep2AAPL extended the bounce 51.0 -> 53.0 on a 49/57 book while its fair rose
+     to 64.2 at T = 34; sep2GOOGL printed a series-high 34.0, RICH at the mid for
+     the first time). Seeded, not back-filled — no synthetic history. */
+  var SEPH = { sep2AAPL: [0.585,0.565,0.575,0.49,0.51,0.53], sep2GOOGL: [0.31,0.315,0.315,0.32,0.325,0.34], sep2NVDA: [0.085,0.08,0.08,0.095,0.085,0.085] };
+  var SEP_LABELS = ['8/10', '8/11', '8/11 PM', '8/12', '8/12 PM', '8/13'];
 
   var LABELS = (function () {
     var out = [], d = new Date(Date.UTC(2026, 5, 27));
@@ -208,9 +209,9 @@
            leader). See rankFair() above for why the old pairwise plug was biased. */
         var edgeList = [];
         var RACE = ['AAPL', 'NVDA', 'GOOGL', 'MSFT', 'AMZN'];
-        var SMALL = { jul: 0.15, aug: 0.35, dec: 1.65 }; /* untracked competitors, taken from THEIR OWN books, not guessed:
+        var SMALL = { jul: 0.15, aug: 0.35, dec: 1.55 }; /* untracked competitors, taken from THEIR OWN books, not guessed:
              aug = Tesla 0.15 + Aramco 0.15 + Broadcom 0.05 (AVGO re-read off its own book this run; Microsoft and Amazon are tracked names, not small legs);
-             dec = Tesla 0.25 + SpaceX 1.15 + Aramco 0.25 (re-read Aug 12 23:31Z post-close — SPCX ticked up to a 1.1/1.2 book). Re-read every run — a mis-set allowance
+             dec = Tesla 0.15 + SpaceX 1.15 + Aramco 0.25 (re-read Aug 13 13:26Z pre-open — TSLA-Dec ticked down to 0.15). Re-read every run — a mis-set allowance
              moves the leader leg by ~0.6 pt, which is an eighth of the edges this page trades on. */
         var live = RACE.filter(function (s) { return caps[s]; });
         /* a single failed quote would drop a name from the ranking and inflate every survivor
@@ -258,8 +259,8 @@
       fmtAgo();
     }).catch(function () {
       setPills(false);
-      $('#last-updated').textContent = 'Snapshot · Aug 12, 2026 23:31 UTC — post-close true-up, record-lead books (live APIs unreachable)';
-      var st = $('#sync-time'); if (st) st.textContent = 'Aug 12, 2026 23:31 UTC — post-close true-up on record-lead books (baked snapshot — live APIs unreachable)';
+      $('#last-updated').textContent = 'Snapshot · Aug 13, 2026 13:26 UTC — pre-open true-up, the convergence morning (live APIs unreachable)';
+      var st = $('#sync-time'); if (st) st.textContent = 'Aug 13, 2026 13:26 UTC — pre-open true-up, the convergence morning (baked snapshot — live APIs unreachable)';
     });
   }
 
@@ -616,7 +617,10 @@
     }).catch(function () { /* keep baked snapshot */ });
   }
 
-  var ENGINE_CASH = 0; /* STILL UNOBSERVABLE — Aug 12 2026 PM update: SIXTEENTH consecutive run at $882.32 — and tonight the flow
+  var ENGINE_CASH = 0; /* STILL UNOBSERVABLE — Aug 13 2026 AM update: SEVENTEENTH consecutive run at $882.32. The overnight window
+     sold $41.19 of Braves (row 156) and collected a $1.43 maker rebate — ~$42.62 more settled engine-side where no public
+     endpoint can read it. Floor stays 0; the hero figure remains a FLOOR, not an estimate.
+     Prior note, kept verbatim — Aug 12 2026 PM update: SIXTEENTH consecutive run at $882.32 — and tonight the flow
      ran the OTHER way: five fills (rows 151-155) bought $133.25 of Treasury rungs against $59.06 of Braves sales, so ~$74.19 of
      net purchases were funded ENTIRELY from the engine balance no public endpoint can see — direct evidence the dark pool is
      real and spendable, on top of yesterday's ~$194 of proceeds that vanished into it. Floor stays 0; the hero figure remains
@@ -810,7 +814,8 @@
     { act: 'BUY', tok: '22397766228589110871783272985290872433765236471932774952155419500943165057456', sh: 200.00, px: 0.2600 } /* 8/12/26 18:11-20:57Z 10Y-5.0% rung 1 — 3 clips 25-27c through the fired kill-switch AND the 23c stop, again; position 9,380 sh */,
     { act: 'SELL', tok: '62604142436062146035823440216234221528806401973102274199745936240471112633499', sh: 64.20, px: 0.9200 } /* 8/12/26 18:22-20:47Z Braves NL East YES — uncarded trim, 3 clips at 92c flat off a 78.76c basis; 268.4 sh remain */,
     { act: 'BUY', tok: '70090363170367815297146294007692529992906189341824085184699164213923074932193', sh: 400.00, px: 0.1440 } /* 8/12/26 20:48-20:57Z 10Y-5.2% rung 2 — 5 clips 12.9-15.9c, 0.6 OVER the 13.8 mixture fair; position 3,468 sh */,
-    { act: 'BUY', tok: '108315584853799729838614333748063377472256875592940383916811669252949563879956', sh: 220.00, px: 0.0920 } /* 8/12/26 20:57-21:02Z 10Y-5.5% rung 3 — the tab's flagged RICH leg (+7.6 at the AM walk) BOUGHT at 9.2c avg; position 2,032 sh */
+    { act: 'BUY', tok: '108315584853799729838614333748063377472256875592940383916811669252949563879956', sh: 220.00, px: 0.0920 } /* 8/12/26 20:57-21:02Z 10Y-5.5% rung 3 — the tab's flagged RICH leg (+7.6 at the AM walk) BOUGHT at 9.2c avg; position 2,032 sh */,
+    { act: 'SELL', tok: '62604142436062146035823440216234221528806401973102274199745936240471112633499', sh: 44.07, px: 0.9345 } /* 8/13/26 03:17Z Braves NL East YES — second uncarded trim: 2 clips at 93/94c (avg 93.45) off the 78.76c basis; 224.3 sh remain */
   ];
   function refreshTracking() {
     Promise.all(TRACKED.map(function (t, i) {
@@ -940,7 +945,9 @@
     { tok: '89706022921501149384847021353587496883277465141816802927673604440172434177565', side: 'SELL', retPx: 0.19 } /* Alphabet-2nd-Aug rich fade (Largest #4 / Trades #4) — WORKED UNEXECUTED: 24.0 -> 19.0 vs a 21.15 fair; +5.85 RICH converged to -2.15 in one session; the $0-cap card banked its information */,
     { tok: '52111153087993944251381388500455000347142130118001080456457518631547320289410', side: 'SELL', retPx: 0.215 } /* Apple-3rd-Aug rich tail (Largest #5 / Trades #7) — WORKED UNEXECUTED: 25.0 -> 21.5 vs a 20.98 fair; +7.00 converged to +0.52; the $125 door never mattered */,
     { tok: '42047893977785728528565456844873223397500118970867834014836006695082853076308', side: 'SELL', retPx: 0.0325 } /* Apple-crown-Aug YES rich complement exhibit (Trades #6) — 5.10 -> 3.25 vs a 0.37 fair; +2.88 residue under the bar; superseded by the all-three-partitions-under-par exhibit */,
-    { tok: '', side: 'BUY', retPx: 0 } /* 'December closed both its tickets' watch (Trades #9 / Largest #10) — premise broken the other way: neither re-open level hit, but a +3% NVDA day ran the Dec fair THROUGH the sleeping book (70.67 -> 76.96 vs a 71.5 mid). Successors: the NVDA-Dec 71c rest and the Alphabet-Dec NO fade. Process card, unscoreable */
+    { tok: '', side: 'BUY', retPx: 0 } /* 'December closed both its tickets' watch (Trades #9 / Largest #10) — premise broken the other way: neither re-open level hit, but a +3% NVDA day ran the Dec fair THROUGH the sleeping book (70.67 -> 76.96 vs a 71.5 mid). Successors: the NVDA-Dec 71c rest and the Alphabet-Dec NO fade. Process card, unscoreable */,
+    { tok: '62009449847159122385971991480139610869824965029008686522071073076098387124747', side: 'SELL', retPx: 0.115 } /* Alphabet-Dec NO fade — WORKED UNEXECUTED: 12.5 -> 11.5 overnight, +4.2 left at the 11c bid, under the bar; neither ticket step (16c bid-pull, NO <=88c) ever posted. Scored in YES terms */,
+    { tok: '', side: 'BUY', retPx: 0 } /* August under-par partition basket — leak closed in one session (2nd seat 97.75 -> 101.40, ask baskets back over par); the 34-sh window never printed; multi-token, unscoreable */
   ]; /* {tok, side ('BUY'|'SELL'), retPx} — indices align with #retired-body rows' data-retired-* attrs */
   function refreshRetired() {
     RETIRED.forEach(function (t, i) {
