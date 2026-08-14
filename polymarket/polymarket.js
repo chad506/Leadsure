@@ -2,25 +2,25 @@
 (function () {
   'use strict';
 
-  /* ---------- baked odds history (daily CLOB closes, Jun 27 2026 onward, through the Aug 12 close — the Aug 13 pre-open run re-marked the 'now' point on the 13:26 UTC books: NVDA 71.5 -> 72.5, AAPL 14.45 -> 14.05, GOOGL 12.5 -> 11.5, SPCX unchanged 1.15; July resolved NVIDIA, Jul legs frozen) ---------- */
+  /* ---------- baked odds history (daily CLOB closes, Jun 27 2026 onward, through the Aug 13 close, appended by the post-close run at 23:28 UTC: NVDA 72.5 (flat), AAPL 14.05 -> 14.35, GOOGL 11.5 (flat), SPCX 1.15 (flat); July resolved NVIDIA, Jul legs frozen) ---------- */
   var H = {
-    decNVDA: [0.725,0.725,0.62,0.645,0.655,0.605,0.585,0.605,0.615,0.595,0.635,0.655,0.655,0.685,0.695,0.705,0.665,0.72,0.655,0.615,0.52,0.555,0.545,0.605,0.61,0.615,0.645,0.625,0.565,0.575,0.51,0.485,0.485,0.575,0.705,0.695,0.725],
-    decAAPL: [0.082,0.082,0.0965,0.095,0.108,0.1475,0.143,0.132,0.158,0.1555,0.1705,0.1265,0.1265,0.1405,0.1305,0.13,0.1705,0.1285,0.143,0.2285,0.345,0.328,0.3305,0.235,0.2025,0.1985,0.1985,0.2565,0.2995,0.281,0.353,0.289,0.3565,0.251,0.1645,0.1405,0.1405],
-    decGOOGL: [0.115,0.115,0.155,0.165,0.16,0.155,0.165,0.175,0.165,0.165,0.165,0.155,0.155,0.145,0.145,0.145,0.12,0.105,0.12,0.125,0.105,0.105,0.105,0.105,0.125,0.105,0.105,0.105,0.095,0.095,0.105,0.135,0.145,0.13,0.105,0.125,0.115],
-    decSPCX: [0.0395,0.0395,0.0355,0.023,0.0225,0.0215,0.027,0.027,0.0235,0.0215,0.0205,0.022,0.0215,0.0185,0.02,0.019,0.0145,0.0135,0.0125,0.012,0.0085,0.0085,0.0085,0.0085,0.009,0.0095,0.0115,0.0125,0.015,0.0105,0.0095,0.017,0.0155,0.0175,0.0115,0.011,0.0115]
+    decNVDA: [0.725,0.725,0.62,0.645,0.655,0.605,0.585,0.605,0.615,0.595,0.635,0.655,0.655,0.685,0.695,0.705,0.665,0.72,0.655,0.615,0.52,0.555,0.545,0.605,0.61,0.615,0.645,0.625,0.565,0.575,0.51,0.485,0.485,0.575,0.705,0.695,0.725,0.725],
+    decAAPL: [0.082,0.082,0.0965,0.095,0.108,0.1475,0.143,0.132,0.158,0.1555,0.1705,0.1265,0.1265,0.1405,0.1305,0.13,0.1705,0.1285,0.143,0.2285,0.345,0.328,0.3305,0.235,0.2025,0.1985,0.1985,0.2565,0.2995,0.281,0.353,0.289,0.3565,0.251,0.1645,0.1405,0.1435,0.1435],
+    decGOOGL: [0.115,0.115,0.155,0.165,0.16,0.155,0.165,0.175,0.165,0.165,0.165,0.155,0.155,0.145,0.145,0.145,0.12,0.105,0.12,0.125,0.105,0.105,0.105,0.105,0.125,0.105,0.105,0.105,0.095,0.095,0.105,0.135,0.145,0.13,0.105,0.125,0.115,0.115],
+    decSPCX: [0.0395,0.0395,0.0355,0.023,0.0225,0.0215,0.027,0.027,0.0235,0.0215,0.0205,0.022,0.0215,0.0185,0.02,0.019,0.0145,0.0135,0.0125,0.012,0.0085,0.0085,0.0085,0.0085,0.009,0.0095,0.0115,0.0125,0.015,0.0105,0.0095,0.017,0.0155,0.0175,0.0115,0.011,0.0115,0.0115]
   };
   /* The September rank books listed Jul 29 and this page began recording them on
      Aug 10 (post-close walk, fetched 00:40 UTC Aug 11 — the first print), so the
-     series grows one point per run (sixth print: Aug 13 pre-open, 13:26 UTC —
-     sep2AAPL extended the bounce 51.0 -> 53.0 on a 49/57 book while its fair rose
-     to 64.2 at T = 34; sep2GOOGL printed a series-high 34.0, RICH at the mid for
-     the first time). Seeded, not back-filled — no synthetic history. */
-  var SEPH = { sep2AAPL: [0.585,0.565,0.575,0.49,0.51,0.53], sep2GOOGL: [0.31,0.315,0.315,0.32,0.325,0.34], sep2NVDA: [0.085,0.08,0.08,0.095,0.085,0.085] };
-  var SEP_LABELS = ['8/10', '8/11', '8/11 PM', '8/12', '8/12 PM', '8/13'];
+     series grows one point per run (seventh print: Aug 13 post-close, 23:28 UTC —
+     the series' first double-flat print: sep2AAPL 53.0 and sep2GOOGL 34.0 both
+     unchanged while the DOOR under the 53.0 mid built $419 -> $507 and graduated
+     the ticket; sep2NVDA eased to 8.0). Seeded, not back-filled — no synthetic history. */
+  var SEPH = { sep2AAPL: [0.585,0.565,0.575,0.49,0.51,0.53,0.53], sep2GOOGL: [0.31,0.315,0.315,0.32,0.325,0.34,0.34], sep2NVDA: [0.085,0.08,0.08,0.095,0.085,0.085,0.08] };
+  var SEP_LABELS = ['8/10', '8/11', '8/11 PM', '8/12', '8/12 PM', '8/13', '8/13 PM'];
 
   var LABELS = (function () {
     var out = [], d = new Date(Date.UTC(2026, 5, 27));
-    for (var i = 0; i < 36; i++) {
+    for (var i = 0; i < 37; i++) {
       out.push((d.getUTCMonth() + 1) + '/' + d.getUTCDate());
       d.setUTCDate(d.getUTCDate() + 1);
     }
@@ -209,9 +209,9 @@
            leader). See rankFair() above for why the old pairwise plug was biased. */
         var edgeList = [];
         var RACE = ['AAPL', 'NVDA', 'GOOGL', 'MSFT', 'AMZN'];
-        var SMALL = { jul: 0.15, aug: 0.35, dec: 1.55 }; /* untracked competitors, taken from THEIR OWN books, not guessed:
-             aug = Tesla 0.15 + Aramco 0.15 + Broadcom 0.05 (AVGO re-read off its own book this run; Microsoft and Amazon are tracked names, not small legs);
-             dec = Tesla 0.15 + SpaceX 1.15 + Aramco 0.25 (re-read Aug 13 13:26Z pre-open — TSLA-Dec ticked down to 0.15). Re-read every run — a mis-set allowance
+        var SMALL = { jul: 0.15, aug: 0.45, dec: 1.55 }; /* untracked competitors, taken from THEIR OWN books, not guessed:
+             aug = Tesla 0.15 + Aramco 0.25 + Broadcom 0.05 (Aramco-Aug re-read at 0.25c off its own book this run; Microsoft and Amazon are tracked names, not small legs);
+             dec = Tesla 0.15 + SpaceX 1.15 + Aramco 0.25 (re-read Aug 13 23:28Z post-close). Re-read every run — a mis-set allowance
              moves the leader leg by ~0.6 pt, which is an eighth of the edges this page trades on. */
         var live = RACE.filter(function (s) { return caps[s]; });
         /* a single failed quote would drop a name from the ranking and inflate every survivor
@@ -259,8 +259,8 @@
       fmtAgo();
     }).catch(function () {
       setPills(false);
-      $('#last-updated').textContent = 'Snapshot · Aug 13, 2026 13:26 UTC — pre-open true-up, the convergence morning (live APIs unreachable)';
-      var st = $('#sync-time'); if (st) st.textContent = 'Aug 13, 2026 13:26 UTC — pre-open true-up, the convergence morning (baked snapshot — live APIs unreachable)';
+      $('#last-updated').textContent = 'Snapshot · Aug 13, 2026 23:28 UTC — post-close true-up, the night the levels printed (live APIs unreachable)';
+      var st = $('#sync-time'); if (st) st.textContent = 'Aug 13, 2026 23:28 UTC — post-close true-up, the night the levels printed (baked snapshot — live APIs unreachable)';
     });
   }
 
@@ -617,7 +617,11 @@
     }).catch(function () { /* keep baked snapshot */ });
   }
 
-  var ENGINE_CASH = 0; /* STILL UNOBSERVABLE — Aug 13 2026 AM update: SEVENTEENTH consecutive run at $882.32. The overnight window
+  var ENGINE_CASH = 0; /* STILL UNOBSERVABLE — Aug 13 2026 PM update: EIGHTEENTH consecutive run at $882.32 — and the window ran
+     $585.58 of NET BUYING through it: 18 fills (rows 158-168) bought $997.39 (two $300 MU legs, a $300 BTC-dip NO, Treasury rungs)
+     against $411.81 of sales (the SPY-780 skim at 95/97c, three MU trims, the Anthropic-IPO punt at 27.7c) with the chain unmoved —
+     more direct evidence the engine balance spends. Floor stays 0; the hero figure remains a FLOOR, not an estimate.
+     Prior note, kept verbatim — Aug 13 2026 AM update: SEVENTEENTH consecutive run at $882.32. The overnight window
      sold $41.19 of Braves (row 156) and collected a $1.43 maker rebate — ~$42.62 more settled engine-side where no public
      endpoint can read it. Floor stays 0; the hero figure remains a FLOOR, not an estimate.
      Prior note, kept verbatim — Aug 12 2026 PM update: SIXTEENTH consecutive run at $882.32 — and tonight the flow
@@ -815,7 +819,18 @@
     { act: 'SELL', tok: '62604142436062146035823440216234221528806401973102274199745936240471112633499', sh: 64.20, px: 0.9200 } /* 8/12/26 18:22-20:47Z Braves NL East YES — uncarded trim, 3 clips at 92c flat off a 78.76c basis; 268.4 sh remain */,
     { act: 'BUY', tok: '70090363170367815297146294007692529992906189341824085184699164213923074932193', sh: 400.00, px: 0.1440 } /* 8/12/26 20:48-20:57Z 10Y-5.2% rung 2 — 5 clips 12.9-15.9c, 0.6 OVER the 13.8 mixture fair; position 3,468 sh */,
     { act: 'BUY', tok: '108315584853799729838614333748063377472256875592940383916811669252949563879956', sh: 220.00, px: 0.0920 } /* 8/12/26 20:57-21:02Z 10Y-5.5% rung 3 — the tab's flagged RICH leg (+7.6 at the AM walk) BOUGHT at 9.2c avg; position 2,032 sh */,
-    { act: 'SELL', tok: '62604142436062146035823440216234221528806401973102274199745936240471112633499', sh: 44.07, px: 0.9345 } /* 8/13/26 03:17Z Braves NL East YES — second uncarded trim: 2 clips at 93/94c (avg 93.45) off the 78.76c basis; 224.3 sh remain */
+    { act: 'SELL', tok: '62604142436062146035823440216234221528806401973102274199745936240471112633499', sh: 44.07, px: 0.9345 } /* 8/13/26 03:17Z Braves NL East YES — second uncarded trim: 2 clips at 93/94c (avg 93.45) off the 78.76c basis; 224.3 sh remain */,
+    { act: 'BUY', tok: '57813774524155463423838033259397133747187306761649300584910471142751787047106', sh: 126.24, px: 0.6235 } /* 8/13/26 13:36-13:46Z 10Y-4.8% rung 0 — 5 clips 60-66c against the card's NOT-ACTIONABLE/no-book flag; position 318.7 sh */,
+    { act: 'SELL', tok: '74753385292355732879917809656352834782762051527133442900841490505532116166739', sh: 1.12, px: 0.9940 } /* 8/13/26 13:37Z WTI $130-high Aug NO dust clip at 99.4c — guard-rail payout SEVENTEEN */,
+    { act: 'BUY', tok: '108315584853799729838614333748063377472256875592940383916811669252949563879956', sh: 180.00, px: 0.0764 } /* 8/13/26 13:44-14:05Z 10Y-5.5% rung 3 — the RICH-flagged leg bought AGAIN, 180 sh at 7.2-8.2c; position 2,212.5 sh */,
+    { act: 'SELL', tok: '74982300354231902205849663538606152588940436342760335825517353633724464241850', sh: 131.25, px: 0.8571 } /* 8/13/26 14:18Z+17:24Z MU >$820 — 2 clips at 84/88c... hours before rebuying the same leg 5-9 points higher (row 165) */,
+    { act: 'SELL', tok: '986625934884180891112686496117276469393361067047414381654886200953641996403', sh: 160.60, px: 0.9604 } /* 8/13/26 14:24-14:31Z SPY $780-high YES — THE CARDED >=85c SKIM EXECUTED at 95/97c (avg 96.04), 160.6 of 166.6 sh */,
+    { act: 'SELL', tok: '90636609665072628934561741191110505683107177678969080679996981652330626258363', sh: 56.25, px: 0.9700 } /* 8/13/26 14:53Z MU >$700 — uncarded trim at 97c off a 78c basis; 243.75 sh remain */,
+    { act: 'SELL', tok: '21209890653812186814248619913047412762177779312349880099050240669177189381593', sh: 70.67, px: 0.2770 } /* 8/13/26 17:42Z Anthropic-IPO YES — half the punt sold at 27.7c off a 10.6c basis, hours after the page flagged the wake-up; 70.67 sh remain */,
+    { act: 'BUY', tok: '8881400370038397971838140193303727239318785128034801687960768890227554347129', sh: 357.14, px: 0.8400 } /* 8/13/26 21:41Z BTC $57.5k-dip Aug NO — NEW $300 carry leg at 84c, no card, no model */,
+    { act: 'BUY', tok: '74982300354231902205849663538606152588940436342760335825517353633724464241850', sh: 322.58, px: 0.9300 } /* 8/13/26 21:45Z MU >$820 REBOUGHT at 93c — the same leg trimmed at 84/88c this morning (row 160); position 491.3 sh */,
+    { act: 'BUY', tok: '102587121003409847003377550152130425968333220239163333181571343484358987889222', sh: 319.15, px: 0.9400 } /* 8/13/26 21:46Z MU >$800 — a TENTH Micron strike, $300 at 94c, unmodelled */,
+    { act: 'SELL', tok: '106686425884931414831660414537151585336396834374452525127171574247454082548832', sh: 73.52, px: 0.9500 } /* 8/13/26 22:05Z MU >$760 at 95c — THE CARDED >=85c TRANCHE finally prints, 73.5 of the 760-sh level; 1,968.2 sh remain */
   ];
   function refreshTracking() {
     Promise.all(TRACKED.map(function (t, i) {
@@ -947,7 +962,8 @@
     { tok: '42047893977785728528565456844873223397500118970867834014836006695082853076308', side: 'SELL', retPx: 0.0325 } /* Apple-crown-Aug YES rich complement exhibit (Trades #6) — 5.10 -> 3.25 vs a 0.37 fair; +2.88 residue under the bar; superseded by the all-three-partitions-under-par exhibit */,
     { tok: '', side: 'BUY', retPx: 0 } /* 'December closed both its tickets' watch (Trades #9 / Largest #10) — premise broken the other way: neither re-open level hit, but a +3% NVDA day ran the Dec fair THROUGH the sleeping book (70.67 -> 76.96 vs a 71.5 mid). Successors: the NVDA-Dec 71c rest and the Alphabet-Dec NO fade. Process card, unscoreable */,
     { tok: '62009449847159122385971991480139610869824965029008686522071073076098387124747', side: 'SELL', retPx: 0.115 } /* Alphabet-Dec NO fade — WORKED UNEXECUTED: 12.5 -> 11.5 overnight, +4.2 left at the 11c bid, under the bar; neither ticket step (16c bid-pull, NO <=88c) ever posted. Scored in YES terms */,
-    { tok: '', side: 'BUY', retPx: 0 } /* August under-par partition basket — leak closed in one session (2nd seat 97.75 -> 101.40, ask baskets back over par); the 34-sh window never printed; multi-token, unscoreable */
+    { tok: '', side: 'BUY', retPx: 0 } /* August under-par partition basket — leak closed in one session (2nd seat 97.75 -> 101.40, ask baskets back over par); the 34-sh window never printed; multi-token, unscoreable */,
+    { tok: '11876606915924142133615854761923277060697657209957870741155164849437788272266', side: 'BUY', retPx: 0.725 } /* NVDA-Dec crown YES 72c rest — Apple's +1% day cut the fair 77.2 -> 76.6; -4.6 joining the bid, under bar at every price; CANCEL the 200-sh GTC */
   ]; /* {tok, side ('BUY'|'SELL'), retPx} — indices align with #retired-body rows' data-retired-* attrs */
   function refreshRetired() {
     RETIRED.forEach(function (t, i) {
