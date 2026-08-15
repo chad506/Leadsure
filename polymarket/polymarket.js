@@ -2,22 +2,23 @@
 (function () {
   'use strict';
 
-  /* ---------- baked odds history (daily CLOB closes, Jun 27 2026 onward, through the Aug 14 close, appended 23:32 UTC: NVDA 73.5, AAPL 14.1, GOOGL 12.5, SPCX 1.15; July resolved NVIDIA, Jul legs frozen) ---------- */
+  /* ---------- baked odds history (daily CLOB closes, Jun 27 2026 onward, through the Aug 14 close; Saturday run Aug 15 13:20 UTC updates only the 'now' point — no new close on a weekend: NVDA 73.5, AAPL 14.05, GOOGL 12.5, SPCX 1.15; July resolved NVIDIA, Jul legs frozen) ---------- */
   var H = {
     decNVDA: [0.725,0.725,0.62,0.645,0.655,0.605,0.585,0.605,0.615,0.595,0.635,0.655,0.655,0.685,0.695,0.705,0.665,0.72,0.655,0.615,0.52,0.555,0.545,0.605,0.61,0.615,0.645,0.625,0.565,0.575,0.51,0.485,0.485,0.575,0.705,0.695,0.725,0.735,0.735],
-    decAAPL: [0.082,0.082,0.0965,0.095,0.108,0.1475,0.143,0.132,0.158,0.1555,0.1705,0.1265,0.1265,0.1405,0.1305,0.13,0.1705,0.1285,0.143,0.2285,0.345,0.328,0.3305,0.235,0.2025,0.1985,0.1985,0.2565,0.2995,0.281,0.353,0.289,0.3565,0.251,0.1645,0.1405,0.1435,0.141,0.141],
+    decAAPL: [0.082,0.082,0.0965,0.095,0.108,0.1475,0.143,0.132,0.158,0.1555,0.1705,0.1265,0.1265,0.1405,0.1305,0.13,0.1705,0.1285,0.143,0.2285,0.345,0.328,0.3305,0.235,0.2025,0.1985,0.1985,0.2565,0.2995,0.281,0.353,0.289,0.3565,0.251,0.1645,0.1405,0.1435,0.141,0.1405],
     decGOOGL: [0.115,0.115,0.155,0.165,0.16,0.155,0.165,0.175,0.165,0.165,0.165,0.155,0.155,0.145,0.145,0.145,0.12,0.105,0.12,0.125,0.105,0.105,0.105,0.105,0.125,0.105,0.105,0.105,0.095,0.095,0.105,0.135,0.145,0.13,0.105,0.125,0.115,0.125,0.125],
     decSPCX: [0.0395,0.0395,0.0355,0.023,0.0225,0.0215,0.027,0.027,0.0235,0.0215,0.0205,0.022,0.0215,0.0185,0.02,0.019,0.0145,0.0135,0.0125,0.012,0.0085,0.0085,0.0085,0.0085,0.009,0.0095,0.0115,0.0125,0.015,0.0105,0.0095,0.017,0.0155,0.0175,0.0115,0.011,0.0115,0.0115,0.0115]
   };
   /* The September rank books listed Jul 29 and this page began recording them on
      Aug 10 (post-close walk, fetched 00:40 UTC Aug 11 — the first print), so the
-     series grows one point per run (ninth print: Aug 14 post-close, 23:32 UTC —
-     sep2AAPL gave back 2.0 of the morning chase to 54.5 while its fair ROSE to 65.9,
-     re-opening the graduated door; sep2GOOGL flat at 34.0 a FOURTH straight run —
-     and for the first time the flat print is bid-actionable against the fade;
-     sep2NVDA 8.0). Seeded, not back-filled — no synthetic history. */
-  var SEPH = { sep2AAPL: [0.585,0.565,0.575,0.49,0.51,0.53,0.53,0.565,0.545], sep2GOOGL: [0.31,0.315,0.315,0.32,0.325,0.34,0.34,0.34,0.34], sep2NVDA: [0.085,0.08,0.08,0.095,0.085,0.085,0.08,0.085,0.08] };
-  var SEP_LABELS = ['8/10', '8/11', '8/11 PM', '8/12', '8/12 PM', '8/13', '8/13 PM', '8/14', '8/14 PM'];
+     series grows one point per run (tenth print: Aug 15 Saturday walk, 13:20 UTC —
+     sep2AAPL CHASED 54.5 -> 57.0 over a weekend, the series' biggest per-run
+     up-move on a tape that never traded, while the fair rose to 66.5 on calendar
+     decay; sep2GOOGL flat at 34.0 a FIFTH straight run — the stillest series on
+     the page keeps refusing its own fade; sep2NVDA eased to 7.5). Seeded, not
+     back-filled — no synthetic history. */
+  var SEPH = { sep2AAPL: [0.585,0.565,0.575,0.49,0.51,0.53,0.53,0.565,0.545,0.57], sep2GOOGL: [0.31,0.315,0.315,0.32,0.325,0.34,0.34,0.34,0.34,0.34], sep2NVDA: [0.085,0.08,0.08,0.095,0.085,0.085,0.08,0.085,0.08,0.075] };
+  var SEP_LABELS = ['8/10', '8/11', '8/11 PM', '8/12', '8/12 PM', '8/13', '8/13 PM', '8/14', '8/14 PM', '8/15'];
 
   var LABELS = (function () {
     var out = [], d = new Date(Date.UTC(2026, 5, 27));
@@ -260,8 +261,8 @@
       fmtAgo();
     }).catch(function () {
       setPills(false);
-      $('#last-updated').textContent = 'Snapshot · Aug 14, 2026 13:40 UTC — post-open true-up, the morning the tape kept going (live APIs unreachable)';
-      var st = $('#sync-time'); if (st) st.textContent = 'Aug 14, 2026 13:40 UTC — post-open true-up, the morning the tape kept going (baked snapshot — live APIs unreachable)';
+      $('#last-updated').textContent = 'Snapshot · Aug 15, 2026 13:20 UTC — Saturday true-up on frozen caps (live APIs unreachable)';
+      var st = $('#sync-time'); if (st) st.textContent = 'Aug 15, 2026 13:20 UTC — Saturday true-up on frozen caps, zero overnight fills (baked snapshot — live APIs unreachable)';
     });
   }
 
@@ -618,7 +619,11 @@
     }).catch(function () { /* keep baked snapshot */ });
   }
 
-  var ENGINE_CASH = 0; /* STILL UNOBSERVABLE — Aug 13 2026 PM update: EIGHTEENTH consecutive run at $882.32 — and the window ran
+  var ENGINE_CASH = 0; /* STILL UNOBSERVABLE — Aug 15 2026 Saturday update: TWENTY-FIRST consecutive run at $882.32 —
+     and the cleanest null result yet: ZERO trades since the Aug 14 post-close true-up (the first fully empty window since
+     Aug 11 PM), so nothing moved on-chain or engine-side by construction. Floor stays 0; the hero figure remains a FLOOR,
+     not an estimate.
+     Prior note, kept verbatim — Aug 13 2026 PM update: EIGHTEENTH consecutive run at $882.32 — and the window ran
      $585.58 of NET BUYING through it: 18 fills (rows 158-168) bought $997.39 (two $300 MU legs, a $300 BTC-dip NO, Treasury rungs)
      against $411.81 of sales (the SPY-780 skim at 95/97c, three MU trims, the Anthropic-IPO punt at 27.7c) with the chain unmoved —
      more direct evidence the engine balance spends. Floor stays 0; the hero figure remains a FLOOR, not an estimate.
@@ -972,7 +977,8 @@
     { tok: '11876606915924142133615854761923277060697657209957870741155164849437788272266', side: 'BUY', retPx: 0.725 } /* NVDA-Dec crown YES 72c rest — Apple's +1% day cut the fair 77.2 -> 76.6; -4.6 joining the bid, under bar at every price; CANCEL the 200-sh GTC */,
     { tok: '112917653797517457474191727734311838332458686889832634273844237276119071933739', side: 'SELL', retPx: 0.34 } /* Alphabet-2nd-Sept rich fade — edge gone: GOOGL's +1.1% open ran the MC fair 28.30 -> 30.23 under an unmoved 34.0 mid; +3.8 at the mid / +2.8 at the 33c bid, never ungated. Scored in YES terms */,
     { tok: '88181040897286103762090116883791794441997393429026713037275553532748007513417', side: 'SELL', retPx: 0.86 }, /* Apple-2nd-Aug rich watch — edge died from the model's side (fair chased the mid) */
-    { tok: '89706022921501149384847021353587496883277465141816802927673604440172434177565', side: 'BUY', retPx: 0.135 } /* Alphabet-2nd-Aug cheap watch — edge < 5 at mid and lift one session after opening */
+    { tok: '89706022921501149384847021353587496883277465141816802927673604440172434177565', side: 'BUY', retPx: 0.135 } /* Alphabet-2nd-Aug cheap watch — edge < 5 at mid and lift one session after opening */,
+    { tok: '52111153087993944251381388500455000347142130118001080456457518631547320289410', side: 'BUY', retPx: 0.165 } /* Apple-3rd-Aug cheap watch — the -6.9 overshoot converged to +0.2 IN ITS SLEEP: 10.5 -> 16.5 over the weekend against a 16.3 fair. Third August watch killed by model-vs-book convergence with zero fills; the <=15c re-open never funded past its $85 door */
   ]; /* {tok, side ('BUY'|'SELL'), retPx} — indices align with #retired-body rows' data-retired-* attrs */
   function refreshRetired() {
     RETIRED.forEach(function (t, i) {
