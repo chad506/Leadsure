@@ -2,23 +2,22 @@
 (function () {
   'use strict';
 
-  /* ---------- baked odds history (daily CLOB closes, Jun 27 2026 onward, through the Aug 14 close; Sunday PM run Aug 16 23:05 UTC re-read the 'now' point and the December freeze BROKE — NVDA jumped to 75.5, GOOGL slipped to 10.5, SPCX 0.95, AAPL alone unchanged at 14.05; July resolved NVIDIA, Jul legs frozen) ---------- */
+  /* ---------- baked odds history (daily CLOB closes, Jun 27 2026 onward, through the Aug 14 close; Monday AM run Aug 17 13:32 UTC re-read the 'now' point — December kept moving toward the model: NVDA 75.5 -> 78.0 (on model +1.2), AAPL DROPPED 14.05 -> 10.95 (cheap -3.0), GOOGL 10.5 -> 9.0, SPCX 0.85; caps still the Aug 14 Friday close until the Monday tape prints; July resolved NVIDIA, Jul legs frozen) ---------- */
   var H = {
-    decNVDA: [0.725,0.725,0.62,0.645,0.655,0.605,0.585,0.605,0.615,0.595,0.635,0.655,0.655,0.685,0.695,0.705,0.665,0.72,0.655,0.615,0.52,0.555,0.545,0.605,0.61,0.615,0.645,0.625,0.565,0.575,0.51,0.485,0.485,0.575,0.705,0.695,0.725,0.735,0.755],
-    decAAPL: [0.082,0.082,0.0965,0.095,0.108,0.1475,0.143,0.132,0.158,0.1555,0.1705,0.1265,0.1265,0.1405,0.1305,0.13,0.1705,0.1285,0.143,0.2285,0.345,0.328,0.3305,0.235,0.2025,0.1985,0.1985,0.2565,0.2995,0.281,0.353,0.289,0.3565,0.251,0.1645,0.1405,0.1435,0.141,0.1405],
-    decGOOGL: [0.115,0.115,0.155,0.165,0.16,0.155,0.165,0.175,0.165,0.165,0.165,0.155,0.155,0.145,0.145,0.145,0.12,0.105,0.12,0.125,0.105,0.105,0.105,0.105,0.125,0.105,0.105,0.105,0.095,0.095,0.105,0.135,0.145,0.13,0.105,0.125,0.115,0.125,0.105],
-    decSPCX: [0.0395,0.0395,0.0355,0.023,0.0225,0.0215,0.027,0.027,0.0235,0.0215,0.0205,0.022,0.0215,0.0185,0.02,0.019,0.0145,0.0135,0.0125,0.012,0.0085,0.0085,0.0085,0.0085,0.009,0.0095,0.0115,0.0125,0.015,0.0105,0.0095,0.017,0.0155,0.0175,0.0115,0.011,0.0115,0.0115,0.0095]
+    decNVDA: [0.725,0.725,0.62,0.645,0.655,0.605,0.585,0.605,0.615,0.595,0.635,0.655,0.655,0.685,0.695,0.705,0.665,0.72,0.655,0.615,0.52,0.555,0.545,0.605,0.61,0.615,0.645,0.625,0.565,0.575,0.51,0.485,0.485,0.575,0.705,0.695,0.725,0.735,0.78],
+    decAAPL: [0.082,0.082,0.0965,0.095,0.108,0.1475,0.143,0.132,0.158,0.1555,0.1705,0.1265,0.1265,0.1405,0.1305,0.13,0.1705,0.1285,0.143,0.2285,0.345,0.328,0.3305,0.235,0.2025,0.1985,0.1985,0.2565,0.2995,0.281,0.353,0.289,0.3565,0.251,0.1645,0.1405,0.1435,0.141,0.1095],
+    decGOOGL: [0.115,0.115,0.155,0.165,0.16,0.155,0.165,0.175,0.165,0.165,0.165,0.155,0.155,0.145,0.145,0.145,0.12,0.105,0.12,0.125,0.105,0.105,0.105,0.105,0.125,0.105,0.105,0.105,0.095,0.095,0.105,0.135,0.145,0.13,0.105,0.125,0.115,0.125,0.09],
+    decSPCX: [0.0395,0.0395,0.0355,0.023,0.0225,0.0215,0.027,0.027,0.0235,0.0215,0.0205,0.022,0.0215,0.0185,0.02,0.019,0.0145,0.0135,0.0125,0.012,0.0085,0.0085,0.0085,0.0085,0.009,0.0095,0.0115,0.0125,0.015,0.0105,0.0095,0.017,0.0155,0.0175,0.0115,0.011,0.0115,0.0115,0.0085]
   };
   /* The September rank books listed Jul 29 and this page began recording them on
      Aug 10 (post-close walk, fetched 00:40 UTC Aug 11 — the first print), so the
-     series grows one point per run (thirteenth print: Aug 16 Sunday-evening walk,
-     23:05 UTC — both of the morning's movers gave part back: sep2GOOGL 37.5 ->
-     36.0 (still +9.0 over the 27.0 fair) and sep2AAPL up half to 54.5 against
-     the 66.5 fair (-12.0) — while the sep2AAPL qualifying door REBUILT $466 ->
-     $984 and the ticket re-graduated; sep2NVDA eased to 7.5). Seeded, not
-     back-filled — no synthetic history. */
-  var SEPH = { sep2AAPL: [0.585,0.565,0.575,0.49,0.51,0.53,0.53,0.565,0.545,0.57,0.57,0.54,0.545], sep2GOOGL: [0.31,0.315,0.315,0.32,0.325,0.34,0.34,0.34,0.34,0.34,0.34,0.375,0.36], sep2NVDA: [0.085,0.08,0.08,0.095,0.085,0.085,0.08,0.085,0.08,0.075,0.075,0.08,0.075] };
-  var SEP_LABELS = ['8/10', '8/11', '8/11 PM', '8/12', '8/12 PM', '8/13', '8/13 PM', '8/14', '8/14 PM', '8/15', '8/15 PM', '8/16', '8/16 PM'];
+     series grows one point per run (fourteenth print: Aug 17 Monday-morning walk,
+     13:32 UTC — both legs kept climbing on the Monday-open books: sep2AAPL up to
+     57.0 against the 66.5 fair (-9.5, the door still qualifies) and sep2GOOGL
+     up to 39.5 against the 27.0 fair (+12.5 — the fade edge WIDENED); sep2NVDA
+     eased to 7.0). Seeded, not back-filled — no synthetic history. */
+  var SEPH = { sep2AAPL: [0.585,0.565,0.575,0.49,0.51,0.53,0.53,0.565,0.545,0.57,0.57,0.54,0.545,0.57], sep2GOOGL: [0.31,0.315,0.315,0.32,0.325,0.34,0.34,0.34,0.34,0.34,0.34,0.375,0.36,0.395], sep2NVDA: [0.085,0.08,0.08,0.095,0.085,0.085,0.08,0.085,0.08,0.075,0.075,0.08,0.075,0.07] };
+  var SEP_LABELS = ['8/10', '8/11', '8/11 PM', '8/12', '8/12 PM', '8/13', '8/13 PM', '8/14', '8/14 PM', '8/15', '8/15 PM', '8/16', '8/16 PM', '8/17'];
 
   var LABELS = (function () {
     var out = [], d = new Date(Date.UTC(2026, 5, 27));
@@ -261,8 +260,8 @@
       fmtAgo();
     }).catch(function () {
       setPills(false);
-      $('#last-updated').textContent = 'Snapshot · Aug 16, 2026 13:20 UTC — Sunday-morning true-up on frozen caps (live APIs unreachable)';
-      var st = $('#sync-time'); if (st) st.textContent = 'Aug 16, 2026 13:20 UTC — Sunday-morning true-up on frozen caps, one $2 MU-700 clip (baked snapshot — live APIs unreachable)';
+      $('#last-updated').textContent = 'Snapshot · Aug 17, 2026 13:32 UTC — Monday-morning true-up on the Friday-close caps (live APIs unreachable)';
+      var st = $('#sync-time'); if (st) st.textContent = 'Aug 17, 2026 13:32 UTC — Monday-morning true-up on frozen caps: December moved toward the model, two overnight skims, balances re-baked (baked snapshot — live APIs unreachable)';
     });
   }
 
@@ -619,7 +618,11 @@
     }).catch(function () { /* keep baked snapshot */ });
   }
 
-  var ENGINE_CASH = 0; /* STILL UNOBSERVABLE — Aug 16 2026 Sunday PM update: TWENTY-FOURTH consecutive run at $882.32 —
+  var ENGINE_CASH = 0; /* STILL UNOBSERVABLE — Aug 17 2026 Monday AM update: TWENTY-FIFTH consecutive run at $882.32 —
+     the window's two fills were both SELLS (row 180 Gold-5k trim $9.37, row 181 WTI-130 skim $5.82 = ~$15.19 of proceeds)
+     so a touch more settled engine-side where no public endpoint can read it. Small, consistent in direction: the dark pool
+     absorbs every sale. Floor stays 0; the hero figure remains a FLOOR, not an estimate.
+     Prior note, kept verbatim — Aug 16 2026 Sunday PM update: TWENTY-FOURTH consecutive run at $882.32 —
      and the window ran $40.11 of NET BUYING through it: three fills (a $1.60 WTI-130 skim out, $40.11 of EWY-152/GOOGL-390
      NO nibbles in — rows 177-179) with the chain unmoved, all engine-side. The ledger also books row 176: Friday's 258-sh
      BTC-55k buy ($241.18, 23:01Z) that the Saturday-evening run misread as a resurfaced ghost — that too was engine-funded.
@@ -860,7 +863,9 @@
     { act: 'BUY', tok: '68400022093573165474037038700563901937737223661702772285033991069743666651631', sh: 258.06, px: 0.93 } /* 8/15/26 23:01Z BTC-55k-dip-Aug NO — backfilled 8/16 PM: the Saturday-evening run misread this fill as a resurfaced ghost position; the activity tape shows a real BUY five minutes before that snapshot */,
     { act: 'SELL', tok: '74753385292355732879917809656352834782762051527133442900841490505532116166739', sh: 1.61, px: 0.996 } /* 8/16/26 15:15Z WTI-130-Aug NO dust skim at the top of book */,
     { act: 'BUY', tok: '76101753352724923398774796382225351539663488663617616077670010848908402792427', sh: 21.51, px: 0.93 } /* 8/16/26 17:39Z EWY-152-low-Aug NO — uncarded $20 nibble, new market */,
-    { act: 'BUY', tok: '102989311994667094556238101108060401526072526012421040716014843890342965446870', sh: 21.28, px: 0.94 } /* 8/16/26 17:40Z GOOGL-390-high-Aug NO — uncarded $20 nibble, new market, one minute after the EWY leg */
+    { act: 'BUY', tok: '102989311994667094556238101108060401526072526012421040716014843890342965446870', sh: 21.28, px: 0.94 } /* 8/16/26 17:40Z GOOGL-390-high-Aug NO — uncarded $20 nibble, new market, one minute after the EWY leg */,
+    { act: 'SELL', tok: '25472502502236710744675799561400967135875595061119902215625578202260735017994', sh: 14.07, px: 0.6658 } /* 8/17/26 06:30Z Gold-5k YES — overnight trim of the RICH gold leg, 3 clips 65-68c (avg 66.6) off the 46.2c basis; 141.8 sh remain, cleared ~6.6 over the 60.0 mid */,
+    { act: 'SELL', tok: '74753385292355732879917809656352834782762051527133442900841490505532116166739', sh: 5.84, px: 0.996 } /* 8/17/26 08:50Z WTI-130-Aug NO — guard-rail dust skim EIGHTEEN at 99.6c; 101.9 sh remain at a 98.1c basis */
   ];
   function refreshTracking() {
     Promise.all(TRACKED.map(function (t, i) {
