@@ -2,25 +2,24 @@
 (function () {
   'use strict';
 
-  /* ---------- baked odds history (daily CLOB closes, Jun 27 2026 onward, through the Aug 14 close; Tuesday LATE walk Aug 19 02:04 UTC re-read the 'now' point — a second evening pass ~3h after the 23:09 walk, same Aug 18 caps (NVDA $5,317.7B / AAPL $4,553.5B, lead 16.78%), T now counts from Aug 19 (9/30/94): fairs Dec NVDA 72.3 / AAPL 18.5 / GOOGL 7.3, mids barely moved — NVDA 74.5, AAPL 11.55 -> 11.60 (still the widest crown-book edge, -6.9 CHEAP on a door that GREW $629 -> $1,001), GOOGL 9.5, SPCX 0.80; July resolved NVIDIA, Jul legs frozen) ---------- */
+  /* ==== baked odds history (daily CLOB closes, Jun 27 2026 onward, through the Aug 14 close; Wednesday MORNING walk Aug 19 13:24 UTC re-read the 'now' point — the overnight books moved hard while the caps slept (same Aug 18 closes: NVDA $5,317.7B / AAPL $4,553.5B, lead 16.78%), T counts from Aug 19 (9/30/94): fairs Dec NVDA 72.3 / AAPL 18.5 / GOOGL 7.3, and the mids CAME TO THEM — NVDA 74.5 -> 70.0 (through fair to -2.3), AAPL 11.60 -> 13.35 (still the widest crown-book edge, -5.1 CHEAP on a door that DOUBLED $1,001 -> $2,259), GOOGL 9.5, SPCX 0.85; July resolved NVIDIA, Jul legs frozen) ==== */
   var H = {
-    decNVDA: [0.725,0.725,0.62,0.645,0.655,0.605,0.585,0.605,0.615,0.595,0.635,0.655,0.655,0.685,0.695,0.705,0.665,0.72,0.655,0.615,0.52,0.555,0.545,0.605,0.61,0.615,0.645,0.625,0.565,0.575,0.51,0.485,0.485,0.575,0.705,0.695,0.725,0.735,0.745],
-    decAAPL: [0.082,0.082,0.0965,0.095,0.108,0.1475,0.143,0.132,0.158,0.1555,0.1705,0.1265,0.1265,0.1405,0.1305,0.13,0.1705,0.1285,0.143,0.2285,0.345,0.328,0.3305,0.235,0.2025,0.1985,0.1985,0.2565,0.2995,0.281,0.353,0.289,0.3565,0.251,0.1645,0.1405,0.1435,0.141,0.116],
+    decNVDA: [0.725,0.725,0.62,0.645,0.655,0.605,0.585,0.605,0.615,0.595,0.635,0.655,0.655,0.685,0.695,0.705,0.665,0.72,0.655,0.615,0.52,0.555,0.545,0.605,0.61,0.615,0.645,0.625,0.565,0.575,0.51,0.485,0.485,0.575,0.705,0.695,0.725,0.735,0.70],
+    decAAPL: [0.082,0.082,0.0965,0.095,0.108,0.1475,0.143,0.132,0.158,0.1555,0.1705,0.1265,0.1265,0.1405,0.1305,0.13,0.1705,0.1285,0.143,0.2285,0.345,0.328,0.3305,0.235,0.2025,0.1985,0.1985,0.2565,0.2995,0.281,0.353,0.289,0.3565,0.251,0.1645,0.1405,0.1435,0.141,0.1335],
     decGOOGL: [0.115,0.115,0.155,0.165,0.16,0.155,0.165,0.175,0.165,0.165,0.165,0.155,0.155,0.145,0.145,0.145,0.12,0.105,0.12,0.125,0.105,0.105,0.105,0.105,0.125,0.105,0.105,0.105,0.095,0.095,0.105,0.135,0.145,0.13,0.105,0.125,0.115,0.125,0.095],
-    decSPCX: [0.0395,0.0395,0.0355,0.023,0.0225,0.0215,0.027,0.027,0.0235,0.0215,0.0205,0.022,0.0215,0.0185,0.02,0.019,0.0145,0.0135,0.0125,0.012,0.0085,0.0085,0.0085,0.0085,0.009,0.0095,0.0115,0.0125,0.015,0.0105,0.0095,0.017,0.0155,0.0175,0.0115,0.011,0.0115,0.0115,0.008]
+    decSPCX: [0.0395,0.0395,0.0355,0.023,0.0225,0.0215,0.027,0.027,0.0235,0.0215,0.0205,0.022,0.0215,0.0185,0.02,0.019,0.0145,0.0135,0.0125,0.012,0.0085,0.0085,0.0085,0.0085,0.009,0.0095,0.0115,0.0125,0.015,0.0105,0.0095,0.017,0.0155,0.0175,0.0115,0.011,0.0115,0.0115,0.0085]
   };
   /* The September rank books listed Jul 29 and this page began recording them on
      Aug 10 (post-close walk, fetched 00:40 UTC Aug 11 — the first print), so the
-     series grows one point per run (seventeenth print: Aug 18 LATE walk, a second
-     Tuesday-evening pass fetched 02:04 UTC Aug 19, ~3h after the 23:09 walk —
-     the record-move convergence HELD and then gave a little back: sep2AAPL
-     drifted 67.5 -> 64.5, re-opening a -5.3 gap to its 69.8 fair (T now 30) —
-     the edge that retired unexecuted last walk is back over the bar, but on a
-     $146 door (the $1,608.55 ask stack was eaten or pulled); sep2GOOGL eased
-     26.5 -> 25.0 vs a 21.6 fair (+3.4); sep2NVDA held 5.0 vs 8.0. Seeded, not
-     back-filled — no synthetic history. */
-  var SEPH = { sep2AAPL: [0.585,0.565,0.575,0.49,0.51,0.53,0.53,0.565,0.545,0.57,0.57,0.54,0.545,0.57,0.57,0.675,0.645], sep2GOOGL: [0.31,0.315,0.315,0.32,0.325,0.34,0.34,0.34,0.34,0.34,0.34,0.375,0.36,0.395,0.36,0.265,0.25], sep2NVDA: [0.085,0.08,0.08,0.095,0.085,0.085,0.08,0.085,0.08,0.075,0.075,0.08,0.075,0.07,0.07,0.05,0.05] };
-  var SEP_LABELS = ['8/10', '8/11', '8/11 PM', '8/12', '8/12 PM', '8/13', '8/13 PM', '8/14', '8/14 PM', '8/15', '8/15 PM', '8/16', '8/16 PM', '8/17', '8/17 PM', '8/18 PM', '8/18 LATE'];
+     series grows one point per run (eighteenth print: Aug 19 MORNING walk, books
+     fetched 13:24 UTC — the overnight session put in the series' SECOND double-digit
+     move: sep2AAPL ripped 64.5 -> 74.5 (+10.0) straight THROUGH its 69.8 fair to
+     +4.7 RICH — the -5.3 edge that re-armed at the late walk died a second death,
+     this time by price, never having got its door back (the $146 shelf was gone by
+     13:24); sep2GOOGL fell 25.0 -> 21.0 onto its 21.6 fair (-0.6); sep2NVDA held
+     5.0 vs 8.0. Seeded, not back-filled — no synthetic history. */
+  var SEPH = { sep2AAPL: [0.585,0.565,0.575,0.49,0.51,0.53,0.53,0.565,0.545,0.57,0.57,0.54,0.545,0.57,0.57,0.675,0.645,0.745], sep2GOOGL: [0.31,0.315,0.315,0.32,0.325,0.34,0.34,0.34,0.34,0.34,0.34,0.375,0.36,0.395,0.36,0.265,0.25,0.21], sep2NVDA: [0.085,0.08,0.08,0.095,0.085,0.085,0.08,0.085,0.08,0.075,0.075,0.08,0.075,0.07,0.07,0.05,0.05,0.05] };
+  var SEP_LABELS = ['8/10', '8/11', '8/11 PM', '8/12', '8/12 PM', '8/13', '8/13 PM', '8/14', '8/14 PM', '8/15', '8/15 PM', '8/16', '8/16 PM', '8/17', '8/17 PM', '8/18 PM', '8/18 LATE', '8/19'];
 
   var LABELS = (function () {
     var out = [], d = new Date(Date.UTC(2026, 5, 27));
