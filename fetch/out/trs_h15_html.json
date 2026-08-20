@@ -21,7 +21,7 @@
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="/images/Social_Default_Image.jpg" />
 
-    <title>Federal Reserve Board - H.15 - Selected Interest Rates (Daily) - August 19, 2026</title>
+    <title>Federal Reserve Board - H.15 - Selected Interest Rates (Daily) - August 20, 2026</title>
     
     <link href="/css/bootstrap.css" rel="stylesheet" type="text/css">
     <link href="/css/bluesteel-theme.css" rel="stylesheet" type="text/css">
@@ -1344,289 +1344,289 @@
       The release is posted daily Monday through Friday at 4:15pm.
       The release is not posted on holidays or in the event that the
       Board is closed.
-    </div><div class="dates">Release date: August 19, 2026</div><h5>Selected Interest Rates</h5><span class="tableunit">Yields in percent per annum</span><div id="dailyH15" data-table-popout="" class="data-table"><table id="h15table" title="Selected Interest Rates" cellspacing="0" cellpadding="0" class="statistics pubtables" data-sticky-columns="1" data-sticky-rows="1" data-other-sticky-ids="t4_nav,navbar-mobile,nav-primary">
+    </div><div class="dates">Release date: August 20, 2026</div><h5>Selected Interest Rates</h5><span class="tableunit">Yields in percent per annum</span><div id="dailyH15" data-table-popout="" class="data-table"><table id="h15table" title="Selected Interest Rates" cellspacing="0" cellpadding="0" class="statistics pubtables" data-sticky-columns="1" data-sticky-rows="1" data-other-sticky-ids="t4_nav,navbar-mobile,nav-primary">
 <thead><tr>
 <th class="colhead" id="instruments" nowrap="nowrap">Instruments</th>
-<th id="col1" class="colhead">2026<br>Aug<br>12</th>
-<th id="col2" class="colhead">2026<br>Aug<br>13</th>
-<th id="col3" class="colhead">2026<br>Aug<br>14</th>
-<th id="col4" class="colhead">2026<br>Aug<br>17</th>
-<th id="col5" class="colhead">2026<br>Aug<br>18</th>
+<th id="col1" class="colhead">2026<br>Aug<br>13</th>
+<th id="col2" class="colhead">2026<br>Aug<br>14</th>
+<th id="col3" class="colhead">2026<br>Aug<br>17</th>
+<th id="col4" class="colhead">2026<br>Aug<br>18</th>
+<th id="col5" class="colhead">2026<br>Aug<br>19</th>
 </tr></thead><tbody>
 <tr>
-<th nowrap="nowrap" id="id9e34fd0" headers="instruments" class="stub">Federal funds (effective) <a class="foot" title="Footnote 1" href="#fn1">1</a> <a class="foot" title="Footnote 2" href="#fn2">2</a> <a class="foot" title="Footnote 3" href="#fn3">3</a>
+<th nowrap="nowrap" id="id83ddfd0" headers="instruments" class="stub">Federal funds (effective) <a class="foot" title="Footnote 1" href="#fn1">1</a> <a class="foot" title="Footnote 2" href="#fn2">2</a> <a class="foot" title="Footnote 3" href="#fn3">3</a>
 </th>
-<td class="data" headers="id9e34fd0 col1" nowrap="nowrap">&nbsp;3.63&nbsp;</td>
-<td class="data" headers="id9e34fd0 col2" nowrap="nowrap">&nbsp;3.63&nbsp;</td>
-<td class="data" headers="id9e34fd0 col3" nowrap="nowrap">&nbsp;3.63&nbsp;</td>
-<td class="data" headers="id9e34fd0 col4" nowrap="nowrap">&nbsp;3.63&nbsp;</td>
-<td class="data" headers="id9e34fd0 col5" nowrap="nowrap">&nbsp;3.63&nbsp;</td>
+<td class="data" headers="id83ddfd0 col1" nowrap="nowrap">&nbsp;3.63&nbsp;</td>
+<td class="data" headers="id83ddfd0 col2" nowrap="nowrap">&nbsp;3.63&nbsp;</td>
+<td class="data" headers="id83ddfd0 col3" nowrap="nowrap">&nbsp;3.63&nbsp;</td>
+<td class="data" headers="id83ddfd0 col4" nowrap="nowrap">&nbsp;3.63&nbsp;</td>
+<td class="data" headers="id83ddfd0 col5" nowrap="nowrap">&nbsp;3.63&nbsp;</td>
 </tr><tr>
-<th nowrap="nowrap" id="id9e350e8" headers="instruments" class="stub">Commercial Paper <a class="foot" title="Footnote 3" href="#fn3">3</a> <a class="foot" title="Footnote 4" href="#fn4">4</a> <a class="foot" title="Footnote 5" href="#fn5">5</a> <a class="foot" title="Footnote 6" href="#fn6">6</a>
+<th nowrap="nowrap" id="id83de0e8" headers="instruments" class="stub">Commercial Paper <a class="foot" title="Footnote 3" href="#fn3">3</a> <a class="foot" title="Footnote 4" href="#fn4">4</a> <a class="foot" title="Footnote 5" href="#fn5">5</a> <a class="foot" title="Footnote 6" href="#fn6">6</a>
 </th>
-<td class="data" headers="id9e350e8 col1" nowrap="nowrap">&nbsp;&nbsp;</td>
-<td class="data" headers="id9e350e8 col2" nowrap="nowrap">&nbsp;&nbsp;</td>
-<td class="data" headers="id9e350e8 col3" nowrap="nowrap">&nbsp;&nbsp;</td>
-<td class="data" headers="id9e350e8 col4" nowrap="nowrap">&nbsp;&nbsp;</td>
-<td class="data" headers="id9e350e8 col5" nowrap="nowrap">&nbsp;&nbsp;</td>
+<td class="data" headers="id83de0e8 col1" nowrap="nowrap">&nbsp;&nbsp;</td>
+<td class="data" headers="id83de0e8 col2" nowrap="nowrap">&nbsp;&nbsp;</td>
+<td class="data" headers="id83de0e8 col3" nowrap="nowrap">&nbsp;&nbsp;</td>
+<td class="data" headers="id83de0e8 col4" nowrap="nowrap">&nbsp;&nbsp;</td>
+<td class="data" headers="id83de0e8 col5" nowrap="nowrap">&nbsp;&nbsp;</td>
 </tr><tr>
-<th nowrap="nowrap" id="id9e35200" headers="instruments id9e350e8" class="stub in2">Nonfinancial</th>
-<td class="data" headers="id9e350e8 id9e35200 col1" nowrap="nowrap">&nbsp;&nbsp;</td>
-<td class="data" headers="id9e350e8 id9e35200 col2" nowrap="nowrap">&nbsp;&nbsp;</td>
-<td class="data" headers="id9e350e8 id9e35200 col3" nowrap="nowrap">&nbsp;&nbsp;</td>
-<td class="data" headers="id9e350e8 id9e35200 col4" nowrap="nowrap">&nbsp;&nbsp;</td>
-<td class="data" headers="id9e350e8 id9e35200 col5" nowrap="nowrap">&nbsp;&nbsp;</td>
+<th nowrap="nowrap" id="id83de200" headers="instruments id83de0e8" class="stub in2">Nonfinancial</th>
+<td class="data" headers="id83de0e8 id83de200 col1" nowrap="nowrap">&nbsp;&nbsp;</td>
+<td class="data" headers="id83de0e8 id83de200 col2" nowrap="nowrap">&nbsp;&nbsp;</td>
+<td class="data" headers="id83de0e8 id83de200 col3" nowrap="nowrap">&nbsp;&nbsp;</td>
+<td class="data" headers="id83de0e8 id83de200 col4" nowrap="nowrap">&nbsp;&nbsp;</td>
+<td class="data" headers="id83de0e8 id83de200 col5" nowrap="nowrap">&nbsp;&nbsp;</td>
 </tr><tr>
-<th nowrap="nowrap" id="id9e35318" headers="instruments id9e350e8 id9e35200" class="stub in3">1-month</th>
-<td class="data" headers="id9e350e8 id9e35200 id9e35318 col1" nowrap="nowrap">&nbsp;3.67&nbsp;</td>
-<td class="data" headers="id9e350e8 id9e35200 id9e35318 col2" nowrap="nowrap">&nbsp;3.71&nbsp;</td>
-<td class="data" headers="id9e350e8 id9e35200 id9e35318 col3" nowrap="nowrap">&nbsp;3.72&nbsp;</td>
-<td class="data" headers="id9e350e8 id9e35200 id9e35318 col4" nowrap="nowrap">&nbsp;3.71&nbsp;</td>
-<td class="data" headers="id9e350e8 id9e35200 id9e35318 col5" nowrap="nowrap">&nbsp;3.66&nbsp;</td>
+<th nowrap="nowrap" id="id83de318" headers="instruments id83de0e8 id83de200" class="stub in3">1-month</th>
+<td class="data" headers="id83de0e8 id83de200 id83de318 col1" nowrap="nowrap">&nbsp;3.71&nbsp;</td>
+<td class="data" headers="id83de0e8 id83de200 id83de318 col2" nowrap="nowrap">&nbsp;3.72&nbsp;</td>
+<td class="data" headers="id83de0e8 id83de200 id83de318 col3" nowrap="nowrap">&nbsp;3.71&nbsp;</td>
+<td class="data" headers="id83de0e8 id83de200 id83de318 col4" nowrap="nowrap">&nbsp;3.66&nbsp;</td>
+<td class="data" headers="id83de0e8 id83de200 id83de318 col5" nowrap="nowrap">&nbsp;3.67&nbsp;</td>
 </tr><tr>
-<th nowrap="nowrap" id="id9e35430" headers="instruments id9e350e8 id9e35200" class="stub in3">2-month</th>
-<td class="data" headers="id9e350e8 id9e35200 id9e35430 col1" nowrap="nowrap">&nbsp;3.72&nbsp;</td>
-<td class="data" headers="id9e350e8 id9e35200 id9e35430 col2" nowrap="nowrap">&nbsp;3.72&nbsp;</td>
-<td class="data" headers="id9e350e8 id9e35200 id9e35430 col3" nowrap="nowrap">&nbsp;3.74&nbsp;</td>
-<td class="data" headers="id9e350e8 id9e35200 id9e35430 col4" nowrap="nowrap">&nbsp;3.73&nbsp;</td>
-<td class="data" headers="id9e350e8 id9e35200 id9e35430 col5" nowrap="nowrap">&nbsp;3.69&nbsp;</td>
+<th nowrap="nowrap" id="id83de430" headers="instruments id83de0e8 id83de200" class="stub in3">2-month</th>
+<td class="data" headers="id83de0e8 id83de200 id83de430 col1" nowrap="nowrap">&nbsp;3.72&nbsp;</td>
+<td class="data" headers="id83de0e8 id83de200 id83de430 col2" nowrap="nowrap">&nbsp;3.74&nbsp;</td>
+<td class="data" headers="id83de0e8 id83de200 id83de430 col3" nowrap="nowrap">&nbsp;3.73&nbsp;</td>
+<td class="data" headers="id83de0e8 id83de200 id83de430 col4" nowrap="nowrap">&nbsp;3.69&nbsp;</td>
+<td class="data" headers="id83de0e8 id83de200 id83de430 col5" nowrap="nowrap">&nbsp;3.69&nbsp;</td>
 </tr><tr>
-<th nowrap="nowrap" id="id9e35548" headers="instruments id9e350e8 id9e35200" class="stub in3">3-month</th>
-<td class="data" headers="id9e350e8 id9e35200 id9e35548 col1" nowrap="nowrap">&nbsp;n.a.&nbsp;</td>
-<td class="data" headers="id9e350e8 id9e35200 id9e35548 col2" nowrap="nowrap">&nbsp;3.77&nbsp;</td>
-<td class="data" headers="id9e350e8 id9e35200 id9e35548 col3" nowrap="nowrap">&nbsp;n.a.&nbsp;</td>
-<td class="data" headers="id9e350e8 id9e35200 id9e35548 col4" nowrap="nowrap">&nbsp;n.a.&nbsp;</td>
-<td class="data" headers="id9e350e8 id9e35200 id9e35548 col5" nowrap="nowrap">&nbsp;3.69&nbsp;</td>
+<th nowrap="nowrap" id="id83de548" headers="instruments id83de0e8 id83de200" class="stub in3">3-month</th>
+<td class="data" headers="id83de0e8 id83de200 id83de548 col1" nowrap="nowrap">&nbsp;3.77&nbsp;</td>
+<td class="data" headers="id83de0e8 id83de200 id83de548 col2" nowrap="nowrap">&nbsp;n.a.&nbsp;</td>
+<td class="data" headers="id83de0e8 id83de200 id83de548 col3" nowrap="nowrap">&nbsp;n.a.&nbsp;</td>
+<td class="data" headers="id83de0e8 id83de200 id83de548 col4" nowrap="nowrap">&nbsp;3.69&nbsp;</td>
+<td class="data" headers="id83de0e8 id83de200 id83de548 col5" nowrap="nowrap">&nbsp;3.68&nbsp;</td>
 </tr><tr>
-<th nowrap="nowrap" id="id9e35660" headers="instruments id9e350e8" class="stub in2">Financial</th>
-<td class="data" headers="id9e350e8 id9e35660 col1" nowrap="nowrap">&nbsp;&nbsp;</td>
-<td class="data" headers="id9e350e8 id9e35660 col2" nowrap="nowrap">&nbsp;&nbsp;</td>
-<td class="data" headers="id9e350e8 id9e35660 col3" nowrap="nowrap">&nbsp;&nbsp;</td>
-<td class="data" headers="id9e350e8 id9e35660 col4" nowrap="nowrap">&nbsp;&nbsp;</td>
-<td class="data" headers="id9e350e8 id9e35660 col5" nowrap="nowrap">&nbsp;&nbsp;</td>
+<th nowrap="nowrap" id="id83de660" headers="instruments id83de0e8" class="stub in2">Financial</th>
+<td class="data" headers="id83de0e8 id83de660 col1" nowrap="nowrap">&nbsp;&nbsp;</td>
+<td class="data" headers="id83de0e8 id83de660 col2" nowrap="nowrap">&nbsp;&nbsp;</td>
+<td class="data" headers="id83de0e8 id83de660 col3" nowrap="nowrap">&nbsp;&nbsp;</td>
+<td class="data" headers="id83de0e8 id83de660 col4" nowrap="nowrap">&nbsp;&nbsp;</td>
+<td class="data" headers="id83de0e8 id83de660 col5" nowrap="nowrap">&nbsp;&nbsp;</td>
 </tr><tr>
-<th nowrap="nowrap" id="id9e35778" headers="instruments id9e350e8 id9e35660" class="stub in3">1-month</th>
-<td class="data" headers="id9e350e8 id9e35660 id9e35778 col1" nowrap="nowrap">&nbsp;3.68&nbsp;</td>
-<td class="data" headers="id9e350e8 id9e35660 id9e35778 col2" nowrap="nowrap">&nbsp;n.a.&nbsp;</td>
-<td class="data" headers="id9e350e8 id9e35660 id9e35778 col3" nowrap="nowrap">&nbsp;n.a.&nbsp;</td>
-<td class="data" headers="id9e350e8 id9e35660 id9e35778 col4" nowrap="nowrap">&nbsp;n.a.&nbsp;</td>
-<td class="data" headers="id9e350e8 id9e35660 id9e35778 col5" nowrap="nowrap">&nbsp;n.a.&nbsp;</td>
+<th nowrap="nowrap" id="id83de778" headers="instruments id83de0e8 id83de660" class="stub in3">1-month</th>
+<td class="data" headers="id83de0e8 id83de660 id83de778 col1" nowrap="nowrap">&nbsp;n.a.&nbsp;</td>
+<td class="data" headers="id83de0e8 id83de660 id83de778 col2" nowrap="nowrap">&nbsp;n.a.&nbsp;</td>
+<td class="data" headers="id83de0e8 id83de660 id83de778 col3" nowrap="nowrap">&nbsp;n.a.&nbsp;</td>
+<td class="data" headers="id83de0e8 id83de660 id83de778 col4" nowrap="nowrap">&nbsp;n.a.&nbsp;</td>
+<td class="data" headers="id83de0e8 id83de660 id83de778 col5" nowrap="nowrap">&nbsp;3.71&nbsp;</td>
 </tr><tr>
-<th nowrap="nowrap" id="id9e35890" headers="instruments id9e350e8 id9e35660" class="stub in3">2-month</th>
-<td class="data" headers="id9e350e8 id9e35660 id9e35890 col1" nowrap="nowrap">&nbsp;n.a.&nbsp;</td>
-<td class="data" headers="id9e350e8 id9e35660 id9e35890 col2" nowrap="nowrap">&nbsp;n.a.&nbsp;</td>
-<td class="data" headers="id9e350e8 id9e35660 id9e35890 col3" nowrap="nowrap">&nbsp;3.76&nbsp;</td>
-<td class="data" headers="id9e350e8 id9e35660 id9e35890 col4" nowrap="nowrap">&nbsp;n.a.&nbsp;</td>
-<td class="data" headers="id9e350e8 id9e35660 id9e35890 col5" nowrap="nowrap">&nbsp;n.a.&nbsp;</td>
+<th nowrap="nowrap" id="id83de890" headers="instruments id83de0e8 id83de660" class="stub in3">2-month</th>
+<td class="data" headers="id83de0e8 id83de660 id83de890 col1" nowrap="nowrap">&nbsp;n.a.&nbsp;</td>
+<td class="data" headers="id83de0e8 id83de660 id83de890 col2" nowrap="nowrap">&nbsp;3.76&nbsp;</td>
+<td class="data" headers="id83de0e8 id83de660 id83de890 col3" nowrap="nowrap">&nbsp;n.a.&nbsp;</td>
+<td class="data" headers="id83de0e8 id83de660 id83de890 col4" nowrap="nowrap">&nbsp;n.a.&nbsp;</td>
+<td class="data" headers="id83de0e8 id83de660 id83de890 col5" nowrap="nowrap">&nbsp;n.a.&nbsp;</td>
 </tr><tr>
-<th nowrap="nowrap" id="id9e359a8" headers="instruments id9e350e8 id9e35660" class="stub in3">3-month</th>
-<td class="data" headers="id9e350e8 id9e35660 id9e359a8 col1" nowrap="nowrap">&nbsp;n.a.&nbsp;</td>
-<td class="data" headers="id9e350e8 id9e35660 id9e359a8 col2" nowrap="nowrap">&nbsp;3.79&nbsp;</td>
-<td class="data" headers="id9e350e8 id9e35660 id9e359a8 col3" nowrap="nowrap">&nbsp;3.82&nbsp;</td>
-<td class="data" headers="id9e350e8 id9e35660 id9e359a8 col4" nowrap="nowrap">&nbsp;3.78&nbsp;</td>
-<td class="data" headers="id9e350e8 id9e35660 id9e359a8 col5" nowrap="nowrap">&nbsp;3.79&nbsp;</td>
+<th nowrap="nowrap" id="id83de9a8" headers="instruments id83de0e8 id83de660" class="stub in3">3-month</th>
+<td class="data" headers="id83de0e8 id83de660 id83de9a8 col1" nowrap="nowrap">&nbsp;3.79&nbsp;</td>
+<td class="data" headers="id83de0e8 id83de660 id83de9a8 col2" nowrap="nowrap">&nbsp;3.82&nbsp;</td>
+<td class="data" headers="id83de0e8 id83de660 id83de9a8 col3" nowrap="nowrap">&nbsp;3.78&nbsp;</td>
+<td class="data" headers="id83de0e8 id83de660 id83de9a8 col4" nowrap="nowrap">&nbsp;3.79&nbsp;</td>
+<td class="data" headers="id83de0e8 id83de660 id83de9a8 col5" nowrap="nowrap">&nbsp;3.84&nbsp;</td>
 </tr><tr>
-<th nowrap="nowrap" id="id9e35ac0" headers="instruments" class="stub">Bank prime loan <a class="foot" title="Footnote 2" href="#fn2">2</a> <a class="foot" title="Footnote 3" href="#fn3">3</a> <a class="foot" title="Footnote 7" href="#fn7">7</a>
+<th nowrap="nowrap" id="id83deac0" headers="instruments" class="stub">Bank prime loan <a class="foot" title="Footnote 2" href="#fn2">2</a> <a class="foot" title="Footnote 3" href="#fn3">3</a> <a class="foot" title="Footnote 7" href="#fn7">7</a>
 </th>
-<td class="data" headers="id9e35ac0 col1" nowrap="nowrap">&nbsp;6.75&nbsp;</td>
-<td class="data" headers="id9e35ac0 col2" nowrap="nowrap">&nbsp;6.75&nbsp;</td>
-<td class="data" headers="id9e35ac0 col3" nowrap="nowrap">&nbsp;6.75&nbsp;</td>
-<td class="data" headers="id9e35ac0 col4" nowrap="nowrap">&nbsp;6.75&nbsp;</td>
-<td class="data" headers="id9e35ac0 col5" nowrap="nowrap">&nbsp;6.75&nbsp;</td>
+<td class="data" headers="id83deac0 col1" nowrap="nowrap">&nbsp;6.75&nbsp;</td>
+<td class="data" headers="id83deac0 col2" nowrap="nowrap">&nbsp;6.75&nbsp;</td>
+<td class="data" headers="id83deac0 col3" nowrap="nowrap">&nbsp;6.75&nbsp;</td>
+<td class="data" headers="id83deac0 col4" nowrap="nowrap">&nbsp;6.75&nbsp;</td>
+<td class="data" headers="id83deac0 col5" nowrap="nowrap">&nbsp;6.75&nbsp;</td>
 </tr><tr>
-<th nowrap="nowrap" id="id9e35bd8" headers="instruments" class="stub">Discount window primary credit <a class="foot" title="Footnote 2" href="#fn2">2</a> <a class="foot" title="Footnote 8" href="#fn8">8</a>
+<th nowrap="nowrap" id="id83debd8" headers="instruments" class="stub">Discount window primary credit <a class="foot" title="Footnote 2" href="#fn2">2</a> <a class="foot" title="Footnote 8" href="#fn8">8</a>
 </th>
-<td class="data" headers="id9e35bd8 col1" nowrap="nowrap">&nbsp;3.75&nbsp;</td>
-<td class="data" headers="id9e35bd8 col2" nowrap="nowrap">&nbsp;3.75&nbsp;</td>
-<td class="data" headers="id9e35bd8 col3" nowrap="nowrap">&nbsp;3.75&nbsp;</td>
-<td class="data" headers="id9e35bd8 col4" nowrap="nowrap">&nbsp;3.75&nbsp;</td>
-<td class="data" headers="id9e35bd8 col5" nowrap="nowrap">&nbsp;3.75&nbsp;</td>
+<td class="data" headers="id83debd8 col1" nowrap="nowrap">&nbsp;3.75&nbsp;</td>
+<td class="data" headers="id83debd8 col2" nowrap="nowrap">&nbsp;3.75&nbsp;</td>
+<td class="data" headers="id83debd8 col3" nowrap="nowrap">&nbsp;3.75&nbsp;</td>
+<td class="data" headers="id83debd8 col4" nowrap="nowrap">&nbsp;3.75&nbsp;</td>
+<td class="data" headers="id83debd8 col5" nowrap="nowrap">&nbsp;3.75&nbsp;</td>
 </tr><tr>
-<th nowrap="nowrap" id="id9e35cf0" headers="instruments" class="stub">U.S. government securities</th>
-<td class="data" headers="id9e35cf0 col1" nowrap="nowrap">&nbsp;&nbsp;</td>
-<td class="data" headers="id9e35cf0 col2" nowrap="nowrap">&nbsp;&nbsp;</td>
-<td class="data" headers="id9e35cf0 col3" nowrap="nowrap">&nbsp;&nbsp;</td>
-<td class="data" headers="id9e35cf0 col4" nowrap="nowrap">&nbsp;&nbsp;</td>
-<td class="data" headers="id9e35cf0 col5" nowrap="nowrap">&nbsp;&nbsp;</td>
+<th nowrap="nowrap" id="id83decf0" headers="instruments" class="stub">U.S. government securities</th>
+<td class="data" headers="id83decf0 col1" nowrap="nowrap">&nbsp;&nbsp;</td>
+<td class="data" headers="id83decf0 col2" nowrap="nowrap">&nbsp;&nbsp;</td>
+<td class="data" headers="id83decf0 col3" nowrap="nowrap">&nbsp;&nbsp;</td>
+<td class="data" headers="id83decf0 col4" nowrap="nowrap">&nbsp;&nbsp;</td>
+<td class="data" headers="id83decf0 col5" nowrap="nowrap">&nbsp;&nbsp;</td>
 </tr><tr>
-<th nowrap="nowrap" id="id9e35e08" headers="instruments id9e35cf0" class="stub in2">Treasury bills (secondary market) <a class="foot" title="Footnote 3" href="#fn3">3</a> <a class="foot" title="Footnote 4" href="#fn4">4</a>
+<th nowrap="nowrap" id="id83dee08" headers="instruments id83decf0" class="stub in2">Treasury bills (secondary market) <a class="foot" title="Footnote 3" href="#fn3">3</a> <a class="foot" title="Footnote 4" href="#fn4">4</a>
 </th>
-<td class="data" headers="id9e35cf0 id9e35e08 col1" nowrap="nowrap">&nbsp;&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e35e08 col2" nowrap="nowrap">&nbsp;&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e35e08 col3" nowrap="nowrap">&nbsp;&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e35e08 col4" nowrap="nowrap">&nbsp;&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e35e08 col5" nowrap="nowrap">&nbsp;&nbsp;</td>
+<td class="data" headers="id83decf0 id83dee08 col1" nowrap="nowrap">&nbsp;&nbsp;</td>
+<td class="data" headers="id83decf0 id83dee08 col2" nowrap="nowrap">&nbsp;&nbsp;</td>
+<td class="data" headers="id83decf0 id83dee08 col3" nowrap="nowrap">&nbsp;&nbsp;</td>
+<td class="data" headers="id83decf0 id83dee08 col4" nowrap="nowrap">&nbsp;&nbsp;</td>
+<td class="data" headers="id83decf0 id83dee08 col5" nowrap="nowrap">&nbsp;&nbsp;</td>
 </tr><tr>
-<th nowrap="nowrap" id="id9e35f20" headers="instruments id9e35cf0 id9e35e08" class="stub in3">4-week</th>
-<td class="data" headers="id9e35cf0 id9e35e08 id9e35f20 col1" nowrap="nowrap">&nbsp;3.62&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e35e08 id9e35f20 col2" nowrap="nowrap">&nbsp;3.64&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e35e08 id9e35f20 col3" nowrap="nowrap">&nbsp;3.64&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e35e08 id9e35f20 col4" nowrap="nowrap">&nbsp;3.64&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e35e08 id9e35f20 col5" nowrap="nowrap">&nbsp;3.63&nbsp;</td>
+<th nowrap="nowrap" id="id83def20" headers="instruments id83decf0 id83dee08" class="stub in3">4-week</th>
+<td class="data" headers="id83decf0 id83dee08 id83def20 col1" nowrap="nowrap">&nbsp;3.64&nbsp;</td>
+<td class="data" headers="id83decf0 id83dee08 id83def20 col2" nowrap="nowrap">&nbsp;3.64&nbsp;</td>
+<td class="data" headers="id83decf0 id83dee08 id83def20 col3" nowrap="nowrap">&nbsp;3.64&nbsp;</td>
+<td class="data" headers="id83decf0 id83dee08 id83def20 col4" nowrap="nowrap">&nbsp;3.63&nbsp;</td>
+<td class="data" headers="id83decf0 id83dee08 id83def20 col5" nowrap="nowrap">&nbsp;3.62&nbsp;</td>
 </tr><tr>
-<th nowrap="nowrap" id="id9e36038" headers="instruments id9e35cf0 id9e35e08" class="stub in3">3-month</th>
-<td class="data" headers="id9e35cf0 id9e35e08 id9e36038 col1" nowrap="nowrap">&nbsp;3.72&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e35e08 id9e36038 col2" nowrap="nowrap">&nbsp;3.71&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e35e08 id9e36038 col3" nowrap="nowrap">&nbsp;3.71&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e35e08 id9e36038 col4" nowrap="nowrap">&nbsp;3.72&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e35e08 id9e36038 col5" nowrap="nowrap">&nbsp;3.71&nbsp;</td>
+<th nowrap="nowrap" id="id83df038" headers="instruments id83decf0 id83dee08" class="stub in3">3-month</th>
+<td class="data" headers="id83decf0 id83dee08 id83df038 col1" nowrap="nowrap">&nbsp;3.71&nbsp;</td>
+<td class="data" headers="id83decf0 id83dee08 id83df038 col2" nowrap="nowrap">&nbsp;3.71&nbsp;</td>
+<td class="data" headers="id83decf0 id83dee08 id83df038 col3" nowrap="nowrap">&nbsp;3.72&nbsp;</td>
+<td class="data" headers="id83decf0 id83dee08 id83df038 col4" nowrap="nowrap">&nbsp;3.71&nbsp;</td>
+<td class="data" headers="id83decf0 id83dee08 id83df038 col5" nowrap="nowrap">&nbsp;3.71&nbsp;</td>
 </tr><tr>
-<th nowrap="nowrap" id="id9e36150" headers="instruments id9e35cf0 id9e35e08" class="stub in3">6-month</th>
-<td class="data" headers="id9e35cf0 id9e35e08 id9e36150 col1" nowrap="nowrap">&nbsp;3.80&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e35e08 id9e36150 col2" nowrap="nowrap">&nbsp;3.78&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e35e08 id9e36150 col3" nowrap="nowrap">&nbsp;3.79&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e35e08 id9e36150 col4" nowrap="nowrap">&nbsp;3.79&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e35e08 id9e36150 col5" nowrap="nowrap">&nbsp;3.78&nbsp;</td>
+<th nowrap="nowrap" id="id83df150" headers="instruments id83decf0 id83dee08" class="stub in3">6-month</th>
+<td class="data" headers="id83decf0 id83dee08 id83df150 col1" nowrap="nowrap">&nbsp;3.78&nbsp;</td>
+<td class="data" headers="id83decf0 id83dee08 id83df150 col2" nowrap="nowrap">&nbsp;3.79&nbsp;</td>
+<td class="data" headers="id83decf0 id83dee08 id83df150 col3" nowrap="nowrap">&nbsp;3.79&nbsp;</td>
+<td class="data" headers="id83decf0 id83dee08 id83df150 col4" nowrap="nowrap">&nbsp;3.78&nbsp;</td>
+<td class="data" headers="id83decf0 id83dee08 id83df150 col5" nowrap="nowrap">&nbsp;3.78&nbsp;</td>
 </tr><tr>
-<th nowrap="nowrap" id="id9e36268" headers="instruments id9e35cf0 id9e35e08" class="stub in3">1-year</th>
-<td class="data" headers="id9e35cf0 id9e35e08 id9e36268 col1" nowrap="nowrap">&nbsp;3.83&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e35e08 id9e36268 col2" nowrap="nowrap">&nbsp;3.80&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e35e08 id9e36268 col3" nowrap="nowrap">&nbsp;3.81&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e35e08 id9e36268 col4" nowrap="nowrap">&nbsp;3.82&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e35e08 id9e36268 col5" nowrap="nowrap">&nbsp;3.82&nbsp;</td>
+<th nowrap="nowrap" id="id83df268" headers="instruments id83decf0 id83dee08" class="stub in3">1-year</th>
+<td class="data" headers="id83decf0 id83dee08 id83df268 col1" nowrap="nowrap">&nbsp;3.80&nbsp;</td>
+<td class="data" headers="id83decf0 id83dee08 id83df268 col2" nowrap="nowrap">&nbsp;3.81&nbsp;</td>
+<td class="data" headers="id83decf0 id83dee08 id83df268 col3" nowrap="nowrap">&nbsp;3.82&nbsp;</td>
+<td class="data" headers="id83decf0 id83dee08 id83df268 col4" nowrap="nowrap">&nbsp;3.82&nbsp;</td>
+<td class="data" headers="id83decf0 id83dee08 id83df268 col5" nowrap="nowrap">&nbsp;3.82&nbsp;</td>
 </tr><tr>
-<th nowrap="nowrap" id="id9e36380" headers="instruments id9e35cf0" class="stub in2">Treasury constant maturities</th>
-<td class="data" headers="id9e35cf0 id9e36380 col1" nowrap="nowrap">&nbsp;&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e36380 col2" nowrap="nowrap">&nbsp;&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e36380 col3" nowrap="nowrap">&nbsp;&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e36380 col4" nowrap="nowrap">&nbsp;&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e36380 col5" nowrap="nowrap">&nbsp;&nbsp;</td>
+<th nowrap="nowrap" id="id83df380" headers="instruments id83decf0" class="stub in2">Treasury constant maturities</th>
+<td class="data" headers="id83decf0 id83df380 col1" nowrap="nowrap">&nbsp;&nbsp;</td>
+<td class="data" headers="id83decf0 id83df380 col2" nowrap="nowrap">&nbsp;&nbsp;</td>
+<td class="data" headers="id83decf0 id83df380 col3" nowrap="nowrap">&nbsp;&nbsp;</td>
+<td class="data" headers="id83decf0 id83df380 col4" nowrap="nowrap">&nbsp;&nbsp;</td>
+<td class="data" headers="id83decf0 id83df380 col5" nowrap="nowrap">&nbsp;&nbsp;</td>
 </tr><tr>
-<th nowrap="nowrap" id="id9e36498" headers="instruments id9e35cf0 id9e36380" class="stub in3">Nominal <a class="foot" title="Footnote 9" href="#fn9">9</a>
+<th nowrap="nowrap" id="id83df498" headers="instruments id83decf0 id83df380" class="stub in3">Nominal <a class="foot" title="Footnote 9" href="#fn9">9</a>
 </th>
-<td class="data" headers="id9e35cf0 id9e36380 id9e36498 col1" nowrap="nowrap">&nbsp;&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e36380 id9e36498 col2" nowrap="nowrap">&nbsp;&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e36380 id9e36498 col3" nowrap="nowrap">&nbsp;&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e36380 id9e36498 col4" nowrap="nowrap">&nbsp;&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e36380 id9e36498 col5" nowrap="nowrap">&nbsp;&nbsp;</td>
+<td class="data" headers="id83decf0 id83df380 id83df498 col1" nowrap="nowrap">&nbsp;&nbsp;</td>
+<td class="data" headers="id83decf0 id83df380 id83df498 col2" nowrap="nowrap">&nbsp;&nbsp;</td>
+<td class="data" headers="id83decf0 id83df380 id83df498 col3" nowrap="nowrap">&nbsp;&nbsp;</td>
+<td class="data" headers="id83decf0 id83df380 id83df498 col4" nowrap="nowrap">&nbsp;&nbsp;</td>
+<td class="data" headers="id83decf0 id83df380 id83df498 col5" nowrap="nowrap">&nbsp;&nbsp;</td>
 </tr><tr>
-<th nowrap="nowrap" id="id9e365b0" headers="instruments id9e35cf0 id9e36380 id9e36498" class="stub in4">1-month</th>
-<td class="data" headers="id9e35cf0 id9e36380 id9e36498 id9e365b0 col1" nowrap="nowrap">&nbsp;3.78&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e36380 id9e36498 id9e365b0 col2" nowrap="nowrap">&nbsp;3.79&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e36380 id9e36498 id9e365b0 col3" nowrap="nowrap">&nbsp;3.79&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e36380 id9e36498 id9e365b0 col4" nowrap="nowrap">&nbsp;3.79&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e36380 id9e36498 id9e365b0 col5" nowrap="nowrap">&nbsp;3.78&nbsp;</td>
+<th nowrap="nowrap" id="id83df5b0" headers="instruments id83decf0 id83df380 id83df498" class="stub in4">1-month</th>
+<td class="data" headers="id83decf0 id83df380 id83df498 id83df5b0 col1" nowrap="nowrap">&nbsp;3.79&nbsp;</td>
+<td class="data" headers="id83decf0 id83df380 id83df498 id83df5b0 col2" nowrap="nowrap">&nbsp;3.79&nbsp;</td>
+<td class="data" headers="id83decf0 id83df380 id83df498 id83df5b0 col3" nowrap="nowrap">&nbsp;3.79&nbsp;</td>
+<td class="data" headers="id83decf0 id83df380 id83df498 id83df5b0 col4" nowrap="nowrap">&nbsp;3.78&nbsp;</td>
+<td class="data" headers="id83decf0 id83df380 id83df498 id83df5b0 col5" nowrap="nowrap">&nbsp;3.77&nbsp;</td>
 </tr><tr>
-<th nowrap="nowrap" id="id9e366c8" headers="instruments id9e35cf0 id9e36380 id9e36498" class="stub in4">3-month</th>
-<td class="data" headers="id9e35cf0 id9e36380 id9e36498 id9e366c8 col1" nowrap="nowrap">&nbsp;3.87&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e36380 id9e36498 id9e366c8 col2" nowrap="nowrap">&nbsp;3.87&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e36380 id9e36498 id9e366c8 col3" nowrap="nowrap">&nbsp;3.86&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e36380 id9e36498 id9e366c8 col4" nowrap="nowrap">&nbsp;3.87&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e36380 id9e36498 id9e366c8 col5" nowrap="nowrap">&nbsp;3.86&nbsp;</td>
+<th nowrap="nowrap" id="id83df6c8" headers="instruments id83decf0 id83df380 id83df498" class="stub in4">3-month</th>
+<td class="data" headers="id83decf0 id83df380 id83df498 id83df6c8 col1" nowrap="nowrap">&nbsp;3.87&nbsp;</td>
+<td class="data" headers="id83decf0 id83df380 id83df498 id83df6c8 col2" nowrap="nowrap">&nbsp;3.86&nbsp;</td>
+<td class="data" headers="id83decf0 id83df380 id83df498 id83df6c8 col3" nowrap="nowrap">&nbsp;3.87&nbsp;</td>
+<td class="data" headers="id83decf0 id83df380 id83df498 id83df6c8 col4" nowrap="nowrap">&nbsp;3.86&nbsp;</td>
+<td class="data" headers="id83decf0 id83df380 id83df498 id83df6c8 col5" nowrap="nowrap">&nbsp;3.86&nbsp;</td>
 </tr><tr>
-<th nowrap="nowrap" id="id9e367e0" headers="instruments id9e35cf0 id9e36380 id9e36498" class="stub in4">6-month</th>
-<td class="data" headers="id9e35cf0 id9e36380 id9e36498 id9e367e0 col1" nowrap="nowrap">&nbsp;3.97&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e36380 id9e36498 id9e367e0 col2" nowrap="nowrap">&nbsp;3.94&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e36380 id9e36498 id9e367e0 col3" nowrap="nowrap">&nbsp;3.95&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e36380 id9e36498 id9e367e0 col4" nowrap="nowrap">&nbsp;3.95&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e36380 id9e36498 id9e367e0 col5" nowrap="nowrap">&nbsp;3.94&nbsp;</td>
+<th nowrap="nowrap" id="id83df7e0" headers="instruments id83decf0 id83df380 id83df498" class="stub in4">6-month</th>
+<td class="data" headers="id83decf0 id83df380 id83df498 id83df7e0 col1" nowrap="nowrap">&nbsp;3.94&nbsp;</td>
+<td class="data" headers="id83decf0 id83df380 id83df498 id83df7e0 col2" nowrap="nowrap">&nbsp;3.95&nbsp;</td>
+<td class="data" headers="id83decf0 id83df380 id83df498 id83df7e0 col3" nowrap="nowrap">&nbsp;3.95&nbsp;</td>
+<td class="data" headers="id83decf0 id83df380 id83df498 id83df7e0 col4" nowrap="nowrap">&nbsp;3.94&nbsp;</td>
+<td class="data" headers="id83decf0 id83df380 id83df498 id83df7e0 col5" nowrap="nowrap">&nbsp;3.94&nbsp;</td>
 </tr><tr>
-<th nowrap="nowrap" id="id9e368f8" headers="instruments id9e35cf0 id9e36380 id9e36498" class="stub in4">1-year</th>
-<td class="data" headers="id9e35cf0 id9e36380 id9e36498 id9e368f8 col1" nowrap="nowrap">&nbsp;4.00&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e36380 id9e36498 id9e368f8 col2" nowrap="nowrap">&nbsp;3.97&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e36380 id9e36498 id9e368f8 col3" nowrap="nowrap">&nbsp;3.98&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e36380 id9e36498 id9e368f8 col4" nowrap="nowrap">&nbsp;4.00&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e36380 id9e36498 id9e368f8 col5" nowrap="nowrap">&nbsp;3.99&nbsp;</td>
+<th nowrap="nowrap" id="id83df8f8" headers="instruments id83decf0 id83df380 id83df498" class="stub in4">1-year</th>
+<td class="data" headers="id83decf0 id83df380 id83df498 id83df8f8 col1" nowrap="nowrap">&nbsp;3.97&nbsp;</td>
+<td class="data" headers="id83decf0 id83df380 id83df498 id83df8f8 col2" nowrap="nowrap">&nbsp;3.98&nbsp;</td>
+<td class="data" headers="id83decf0 id83df380 id83df498 id83df8f8 col3" nowrap="nowrap">&nbsp;4.00&nbsp;</td>
+<td class="data" headers="id83decf0 id83df380 id83df498 id83df8f8 col4" nowrap="nowrap">&nbsp;3.99&nbsp;</td>
+<td class="data" headers="id83decf0 id83df380 id83df498 id83df8f8 col5" nowrap="nowrap">&nbsp;4.00&nbsp;</td>
 </tr><tr>
-<th nowrap="nowrap" id="id9e36a10" headers="instruments id9e35cf0 id9e36380 id9e36498" class="stub in4">2-year</th>
-<td class="data" headers="id9e35cf0 id9e36380 id9e36498 id9e36a10 col1" nowrap="nowrap">&nbsp;4.20&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e36380 id9e36498 id9e36a10 col2" nowrap="nowrap">&nbsp;4.15&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e36380 id9e36498 id9e36a10 col3" nowrap="nowrap">&nbsp;4.17&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e36380 id9e36498 id9e36a10 col4" nowrap="nowrap">&nbsp;4.19&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e36380 id9e36498 id9e36a10 col5" nowrap="nowrap">&nbsp;4.19&nbsp;</td>
+<th nowrap="nowrap" id="id83dfa10" headers="instruments id83decf0 id83df380 id83df498" class="stub in4">2-year</th>
+<td class="data" headers="id83decf0 id83df380 id83df498 id83dfa10 col1" nowrap="nowrap">&nbsp;4.15&nbsp;</td>
+<td class="data" headers="id83decf0 id83df380 id83df498 id83dfa10 col2" nowrap="nowrap">&nbsp;4.17&nbsp;</td>
+<td class="data" headers="id83decf0 id83df380 id83df498 id83dfa10 col3" nowrap="nowrap">&nbsp;4.19&nbsp;</td>
+<td class="data" headers="id83decf0 id83df380 id83df498 id83dfa10 col4" nowrap="nowrap">&nbsp;4.19&nbsp;</td>
+<td class="data" headers="id83decf0 id83df380 id83df498 id83dfa10 col5" nowrap="nowrap">&nbsp;4.19&nbsp;</td>
 </tr><tr>
-<th nowrap="nowrap" id="id9e36b28" headers="instruments id9e35cf0 id9e36380 id9e36498" class="stub in4">3-year</th>
-<td class="data" headers="id9e35cf0 id9e36380 id9e36498 id9e36b28 col1" nowrap="nowrap">&nbsp;4.25&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e36380 id9e36498 id9e36b28 col2" nowrap="nowrap">&nbsp;4.20&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e36380 id9e36498 id9e36b28 col3" nowrap="nowrap">&nbsp;4.24&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e36380 id9e36498 id9e36b28 col4" nowrap="nowrap">&nbsp;4.25&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e36380 id9e36498 id9e36b28 col5" nowrap="nowrap">&nbsp;4.26&nbsp;</td>
+<th nowrap="nowrap" id="id83dfb28" headers="instruments id83decf0 id83df380 id83df498" class="stub in4">3-year</th>
+<td class="data" headers="id83decf0 id83df380 id83df498 id83dfb28 col1" nowrap="nowrap">&nbsp;4.20&nbsp;</td>
+<td class="data" headers="id83decf0 id83df380 id83df498 id83dfb28 col2" nowrap="nowrap">&nbsp;4.24&nbsp;</td>
+<td class="data" headers="id83decf0 id83df380 id83df498 id83dfb28 col3" nowrap="nowrap">&nbsp;4.25&nbsp;</td>
+<td class="data" headers="id83decf0 id83df380 id83df498 id83dfb28 col4" nowrap="nowrap">&nbsp;4.26&nbsp;</td>
+<td class="data" headers="id83decf0 id83df380 id83df498 id83dfb28 col5" nowrap="nowrap">&nbsp;4.25&nbsp;</td>
 </tr><tr>
-<th nowrap="nowrap" id="id9e36c40" headers="instruments id9e35cf0 id9e36380 id9e36498" class="stub in4">5-year</th>
-<td class="data" headers="id9e35cf0 id9e36380 id9e36498 id9e36c40 col1" nowrap="nowrap">&nbsp;4.38&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e36380 id9e36498 id9e36c40 col2" nowrap="nowrap">&nbsp;4.32&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e36380 id9e36498 id9e36c40 col3" nowrap="nowrap">&nbsp;4.36&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e36380 id9e36498 id9e36c40 col4" nowrap="nowrap">&nbsp;4.38&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e36380 id9e36498 id9e36c40 col5" nowrap="nowrap">&nbsp;4.37&nbsp;</td>
+<th nowrap="nowrap" id="id83dfc40" headers="instruments id83decf0 id83df380 id83df498" class="stub in4">5-year</th>
+<td class="data" headers="id83decf0 id83df380 id83df498 id83dfc40 col1" nowrap="nowrap">&nbsp;4.32&nbsp;</td>
+<td class="data" headers="id83decf0 id83df380 id83df498 id83dfc40 col2" nowrap="nowrap">&nbsp;4.36&nbsp;</td>
+<td class="data" headers="id83decf0 id83df380 id83df498 id83dfc40 col3" nowrap="nowrap">&nbsp;4.38&nbsp;</td>
+<td class="data" headers="id83decf0 id83df380 id83df498 id83dfc40 col4" nowrap="nowrap">&nbsp;4.37&nbsp;</td>
+<td class="data" headers="id83decf0 id83df380 id83df498 id83dfc40 col5" nowrap="nowrap">&nbsp;4.35&nbsp;</td>
 </tr><tr>
-<th nowrap="nowrap" id="id9e36d58" headers="instruments id9e35cf0 id9e36380 id9e36498" class="stub in4">7-year</th>
-<td class="data" headers="id9e35cf0 id9e36380 id9e36498 id9e36d58 col1" nowrap="nowrap">&nbsp;4.52&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e36380 id9e36498 id9e36d58 col2" nowrap="nowrap">&nbsp;4.47&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e36380 id9e36498 id9e36d58 col3" nowrap="nowrap">&nbsp;4.51&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e36380 id9e36498 id9e36d58 col4" nowrap="nowrap">&nbsp;4.54&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e36380 id9e36498 id9e36d58 col5" nowrap="nowrap">&nbsp;4.53&nbsp;</td>
+<th nowrap="nowrap" id="id83dfd58" headers="instruments id83decf0 id83df380 id83df498" class="stub in4">7-year</th>
+<td class="data" headers="id83decf0 id83df380 id83df498 id83dfd58 col1" nowrap="nowrap">&nbsp;4.47&nbsp;</td>
+<td class="data" headers="id83decf0 id83df380 id83df498 id83dfd58 col2" nowrap="nowrap">&nbsp;4.51&nbsp;</td>
+<td class="data" headers="id83decf0 id83df380 id83df498 id83dfd58 col3" nowrap="nowrap">&nbsp;4.54&nbsp;</td>
+<td class="data" headers="id83decf0 id83df380 id83df498 id83dfd58 col4" nowrap="nowrap">&nbsp;4.53&nbsp;</td>
+<td class="data" headers="id83decf0 id83df380 id83df498 id83dfd58 col5" nowrap="nowrap">&nbsp;4.48&nbsp;</td>
 </tr><tr>
-<th nowrap="nowrap" id="id9e36e70" headers="instruments id9e35cf0 id9e36380 id9e36498" class="stub in4">10-year</th>
-<td class="data" headers="id9e35cf0 id9e36380 id9e36498 id9e36e70 col1" nowrap="nowrap">&nbsp;4.68&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e36380 id9e36498 id9e36e70 col2" nowrap="nowrap">&nbsp;4.63&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e36380 id9e36498 id9e36e70 col3" nowrap="nowrap">&nbsp;4.68&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e36380 id9e36498 id9e36e70 col4" nowrap="nowrap">&nbsp;4.72&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e36380 id9e36498 id9e36e70 col5" nowrap="nowrap">&nbsp;4.71&nbsp;</td>
+<th nowrap="nowrap" id="id83dfe70" headers="instruments id83decf0 id83df380 id83df498" class="stub in4">10-year</th>
+<td class="data" headers="id83decf0 id83df380 id83df498 id83dfe70 col1" nowrap="nowrap">&nbsp;4.63&nbsp;</td>
+<td class="data" headers="id83decf0 id83df380 id83df498 id83dfe70 col2" nowrap="nowrap">&nbsp;4.68&nbsp;</td>
+<td class="data" headers="id83decf0 id83df380 id83df498 id83dfe70 col3" nowrap="nowrap">&nbsp;4.72&nbsp;</td>
+<td class="data" headers="id83decf0 id83df380 id83df498 id83dfe70 col4" nowrap="nowrap">&nbsp;4.71&nbsp;</td>
+<td class="data" headers="id83decf0 id83df380 id83df498 id83dfe70 col5" nowrap="nowrap">&nbsp;4.65&nbsp;</td>
 </tr><tr>
-<th nowrap="nowrap" id="id9e36f88" headers="instruments id9e35cf0 id9e36380 id9e36498" class="stub in4">20-year</th>
-<td class="data" headers="id9e35cf0 id9e36380 id9e36498 id9e36f88 col1" nowrap="nowrap">&nbsp;5.24&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e36380 id9e36498 id9e36f88 col2" nowrap="nowrap">&nbsp;5.20&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e36380 id9e36498 id9e36f88 col3" nowrap="nowrap">&nbsp;5.25&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e36380 id9e36498 id9e36f88 col4" nowrap="nowrap">&nbsp;5.30&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e36380 id9e36498 id9e36f88 col5" nowrap="nowrap">&nbsp;5.28&nbsp;</td>
+<th nowrap="nowrap" id="id83dff88" headers="instruments id83decf0 id83df380 id83df498" class="stub in4">20-year</th>
+<td class="data" headers="id83decf0 id83df380 id83df498 id83dff88 col1" nowrap="nowrap">&nbsp;5.20&nbsp;</td>
+<td class="data" headers="id83decf0 id83df380 id83df498 id83dff88 col2" nowrap="nowrap">&nbsp;5.25&nbsp;</td>
+<td class="data" headers="id83decf0 id83df380 id83df498 id83dff88 col3" nowrap="nowrap">&nbsp;5.30&nbsp;</td>
+<td class="data" headers="id83decf0 id83df380 id83df498 id83dff88 col4" nowrap="nowrap">&nbsp;5.28&nbsp;</td>
+<td class="data" headers="id83decf0 id83df380 id83df498 id83dff88 col5" nowrap="nowrap">&nbsp;5.17&nbsp;</td>
 </tr><tr>
-<th nowrap="nowrap" id="id9e370a0" headers="instruments id9e35cf0 id9e36380 id9e36498" class="stub in4">30-year</th>
-<td class="data" headers="id9e35cf0 id9e36380 id9e36498 id9e370a0 col1" nowrap="nowrap">&nbsp;5.24&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e36380 id9e36498 id9e370a0 col2" nowrap="nowrap">&nbsp;5.21&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e36380 id9e36498 id9e370a0 col3" nowrap="nowrap">&nbsp;5.25&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e36380 id9e36498 id9e370a0 col4" nowrap="nowrap">&nbsp;5.31&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e36380 id9e36498 id9e370a0 col5" nowrap="nowrap">&nbsp;5.28&nbsp;</td>
+<th nowrap="nowrap" id="id83e00a0" headers="instruments id83decf0 id83df380 id83df498" class="stub in4">30-year</th>
+<td class="data" headers="id83decf0 id83df380 id83df498 id83e00a0 col1" nowrap="nowrap">&nbsp;5.21&nbsp;</td>
+<td class="data" headers="id83decf0 id83df380 id83df498 id83e00a0 col2" nowrap="nowrap">&nbsp;5.25&nbsp;</td>
+<td class="data" headers="id83decf0 id83df380 id83df498 id83e00a0 col3" nowrap="nowrap">&nbsp;5.31&nbsp;</td>
+<td class="data" headers="id83decf0 id83df380 id83df498 id83e00a0 col4" nowrap="nowrap">&nbsp;5.28&nbsp;</td>
+<td class="data" headers="id83decf0 id83df380 id83df498 id83e00a0 col5" nowrap="nowrap">&nbsp;5.19&nbsp;</td>
 </tr><tr>
-<th nowrap="nowrap" id="id9e371b8" headers="instruments id9e35cf0 id9e36380" class="stub in3">Inflation indexed <a class="foot" title="Footnote 10" href="#fn10">10</a>
+<th nowrap="nowrap" id="id83e01b8" headers="instruments id83decf0 id83df380" class="stub in3">Inflation indexed <a class="foot" title="Footnote 10" href="#fn10">10</a>
 </th>
-<td class="data" headers="id9e35cf0 id9e36380 id9e371b8 col1" nowrap="nowrap">&nbsp;&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e36380 id9e371b8 col2" nowrap="nowrap">&nbsp;&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e36380 id9e371b8 col3" nowrap="nowrap">&nbsp;&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e36380 id9e371b8 col4" nowrap="nowrap">&nbsp;&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e36380 id9e371b8 col5" nowrap="nowrap">&nbsp;&nbsp;</td>
+<td class="data" headers="id83decf0 id83df380 id83e01b8 col1" nowrap="nowrap">&nbsp;&nbsp;</td>
+<td class="data" headers="id83decf0 id83df380 id83e01b8 col2" nowrap="nowrap">&nbsp;&nbsp;</td>
+<td class="data" headers="id83decf0 id83df380 id83e01b8 col3" nowrap="nowrap">&nbsp;&nbsp;</td>
+<td class="data" headers="id83decf0 id83df380 id83e01b8 col4" nowrap="nowrap">&nbsp;&nbsp;</td>
+<td class="data" headers="id83decf0 id83df380 id83e01b8 col5" nowrap="nowrap">&nbsp;&nbsp;</td>
 </tr><tr>
-<th nowrap="nowrap" id="id9e372d0" headers="instruments id9e35cf0 id9e36380 id9e371b8" class="stub in4">5-year</th>
-<td class="data" headers="id9e35cf0 id9e36380 id9e371b8 id9e372d0 col1" nowrap="nowrap">&nbsp;2.14&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e36380 id9e371b8 id9e372d0 col2" nowrap="nowrap">&nbsp;2.11&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e36380 id9e371b8 id9e372d0 col3" nowrap="nowrap">&nbsp;2.12&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e36380 id9e371b8 id9e372d0 col4" nowrap="nowrap">&nbsp;2.13&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e36380 id9e371b8 id9e372d0 col5" nowrap="nowrap">&nbsp;2.10&nbsp;</td>
+<th nowrap="nowrap" id="id83e02d0" headers="instruments id83decf0 id83df380 id83e01b8" class="stub in4">5-year</th>
+<td class="data" headers="id83decf0 id83df380 id83e01b8 id83e02d0 col1" nowrap="nowrap">&nbsp;2.11&nbsp;</td>
+<td class="data" headers="id83decf0 id83df380 id83e01b8 id83e02d0 col2" nowrap="nowrap">&nbsp;2.12&nbsp;</td>
+<td class="data" headers="id83decf0 id83df380 id83e01b8 id83e02d0 col3" nowrap="nowrap">&nbsp;2.13&nbsp;</td>
+<td class="data" headers="id83decf0 id83df380 id83e01b8 id83e02d0 col4" nowrap="nowrap">&nbsp;2.10&nbsp;</td>
+<td class="data" headers="id83decf0 id83df380 id83e01b8 id83e02d0 col5" nowrap="nowrap">&nbsp;2.07&nbsp;</td>
 </tr><tr>
-<th nowrap="nowrap" id="id9e373e8" headers="instruments id9e35cf0 id9e36380 id9e371b8" class="stub in4">7-year</th>
-<td class="data" headers="id9e35cf0 id9e36380 id9e371b8 id9e373e8 col1" nowrap="nowrap">&nbsp;2.26&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e36380 id9e371b8 id9e373e8 col2" nowrap="nowrap">&nbsp;2.23&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e36380 id9e371b8 id9e373e8 col3" nowrap="nowrap">&nbsp;2.25&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e36380 id9e371b8 id9e373e8 col4" nowrap="nowrap">&nbsp;2.27&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e36380 id9e371b8 id9e373e8 col5" nowrap="nowrap">&nbsp;2.24&nbsp;</td>
+<th nowrap="nowrap" id="id83e03e8" headers="instruments id83decf0 id83df380 id83e01b8" class="stub in4">7-year</th>
+<td class="data" headers="id83decf0 id83df380 id83e01b8 id83e03e8 col1" nowrap="nowrap">&nbsp;2.23&nbsp;</td>
+<td class="data" headers="id83decf0 id83df380 id83e01b8 id83e03e8 col2" nowrap="nowrap">&nbsp;2.25&nbsp;</td>
+<td class="data" headers="id83decf0 id83df380 id83e01b8 id83e03e8 col3" nowrap="nowrap">&nbsp;2.27&nbsp;</td>
+<td class="data" headers="id83decf0 id83df380 id83e01b8 id83e03e8 col4" nowrap="nowrap">&nbsp;2.24&nbsp;</td>
+<td class="data" headers="id83decf0 id83df380 id83e01b8 id83e03e8 col5" nowrap="nowrap">&nbsp;2.19&nbsp;</td>
 </tr><tr>
-<th nowrap="nowrap" id="id9e37500" headers="instruments id9e35cf0 id9e36380 id9e371b8" class="stub in4">10-year</th>
-<td class="data" headers="id9e35cf0 id9e36380 id9e371b8 id9e37500 col1" nowrap="nowrap">&nbsp;2.42&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e36380 id9e371b8 id9e37500 col2" nowrap="nowrap">&nbsp;2.39&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e36380 id9e371b8 id9e37500 col3" nowrap="nowrap">&nbsp;2.41&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e36380 id9e371b8 id9e37500 col4" nowrap="nowrap">&nbsp;2.44&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e36380 id9e371b8 id9e37500 col5" nowrap="nowrap">&nbsp;2.41&nbsp;</td>
+<th nowrap="nowrap" id="id83e0500" headers="instruments id83decf0 id83df380 id83e01b8" class="stub in4">10-year</th>
+<td class="data" headers="id83decf0 id83df380 id83e01b8 id83e0500 col1" nowrap="nowrap">&nbsp;2.39&nbsp;</td>
+<td class="data" headers="id83decf0 id83df380 id83e01b8 id83e0500 col2" nowrap="nowrap">&nbsp;2.41&nbsp;</td>
+<td class="data" headers="id83decf0 id83df380 id83e01b8 id83e0500 col3" nowrap="nowrap">&nbsp;2.44&nbsp;</td>
+<td class="data" headers="id83decf0 id83df380 id83e01b8 id83e0500 col4" nowrap="nowrap">&nbsp;2.41&nbsp;</td>
+<td class="data" headers="id83decf0 id83df380 id83e01b8 id83e0500 col5" nowrap="nowrap">&nbsp;2.35&nbsp;</td>
 </tr><tr>
-<th nowrap="nowrap" id="id9e37618" headers="instruments id9e35cf0 id9e36380 id9e371b8" class="stub in4">20-year</th>
-<td class="data" headers="id9e35cf0 id9e36380 id9e371b8 id9e37618 col1" nowrap="nowrap">&nbsp;2.78&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e36380 id9e371b8 id9e37618 col2" nowrap="nowrap">&nbsp;2.76&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e36380 id9e371b8 id9e37618 col3" nowrap="nowrap">&nbsp;2.78&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e36380 id9e371b8 id9e37618 col4" nowrap="nowrap">&nbsp;2.84&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e36380 id9e371b8 id9e37618 col5" nowrap="nowrap">&nbsp;2.81&nbsp;</td>
+<th nowrap="nowrap" id="id83e0618" headers="instruments id83decf0 id83df380 id83e01b8" class="stub in4">20-year</th>
+<td class="data" headers="id83decf0 id83df380 id83e01b8 id83e0618 col1" nowrap="nowrap">&nbsp;2.76&nbsp;</td>
+<td class="data" headers="id83decf0 id83df380 id83e01b8 id83e0618 col2" nowrap="nowrap">&nbsp;2.78&nbsp;</td>
+<td class="data" headers="id83decf0 id83df380 id83e01b8 id83e0618 col3" nowrap="nowrap">&nbsp;2.84&nbsp;</td>
+<td class="data" headers="id83decf0 id83df380 id83e01b8 id83e0618 col4" nowrap="nowrap">&nbsp;2.81&nbsp;</td>
+<td class="data" headers="id83decf0 id83df380 id83e01b8 id83e0618 col5" nowrap="nowrap">&nbsp;2.72&nbsp;</td>
 </tr><tr>
-<th nowrap="nowrap" id="id9e37730" headers="instruments id9e35cf0 id9e36380 id9e371b8" class="stub in4">30-year</th>
-<td class="data" headers="id9e35cf0 id9e36380 id9e371b8 id9e37730 col1" nowrap="nowrap">&nbsp;2.99&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e36380 id9e371b8 id9e37730 col2" nowrap="nowrap">&nbsp;2.97&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e36380 id9e371b8 id9e37730 col3" nowrap="nowrap">&nbsp;3.00&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e36380 id9e371b8 id9e37730 col4" nowrap="nowrap">&nbsp;3.06&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e36380 id9e371b8 id9e37730 col5" nowrap="nowrap">&nbsp;3.03&nbsp;</td>
+<th nowrap="nowrap" id="id83e0730" headers="instruments id83decf0 id83df380 id83e01b8" class="stub in4">30-year</th>
+<td class="data" headers="id83decf0 id83df380 id83e01b8 id83e0730 col1" nowrap="nowrap">&nbsp;2.97&nbsp;</td>
+<td class="data" headers="id83decf0 id83df380 id83e01b8 id83e0730 col2" nowrap="nowrap">&nbsp;3.00&nbsp;</td>
+<td class="data" headers="id83decf0 id83df380 id83e01b8 id83e0730 col3" nowrap="nowrap">&nbsp;3.06&nbsp;</td>
+<td class="data" headers="id83decf0 id83df380 id83e01b8 id83e0730 col4" nowrap="nowrap">&nbsp;3.03&nbsp;</td>
+<td class="data" headers="id83decf0 id83df380 id83e01b8 id83e0730 col5" nowrap="nowrap">&nbsp;2.94&nbsp;</td>
 </tr><tr>
-<th nowrap="nowrap" id="id9e37848" headers="instruments id9e35cf0" class="stub in2">Inflation-indexed long-term average <a class="foot" title="Footnote 11" href="#fn11">11</a>
+<th nowrap="nowrap" id="id83e0848" headers="instruments id83decf0" class="stub in2">Inflation-indexed long-term average <a class="foot" title="Footnote 11" href="#fn11">11</a>
 </th>
-<td class="data" headers="id9e35cf0 id9e37848 col1" nowrap="nowrap">&nbsp;2.97&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e37848 col2" nowrap="nowrap">&nbsp;2.94&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e37848 col3" nowrap="nowrap">&nbsp;2.97&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e37848 col4" nowrap="nowrap">&nbsp;3.03&nbsp;</td>
-<td class="data" headers="id9e35cf0 id9e37848 col5" nowrap="nowrap">&nbsp;3.00&nbsp;</td>
+<td class="data" headers="id83decf0 id83e0848 col1" nowrap="nowrap">&nbsp;2.94&nbsp;</td>
+<td class="data" headers="id83decf0 id83e0848 col2" nowrap="nowrap">&nbsp;2.97&nbsp;</td>
+<td class="data" headers="id83decf0 id83e0848 col3" nowrap="nowrap">&nbsp;3.03&nbsp;</td>
+<td class="data" headers="id83decf0 id83e0848 col4" nowrap="nowrap">&nbsp;3.00&nbsp;</td>
+<td class="data" headers="id83decf0 id83e0848 col5" nowrap="nowrap">&nbsp;2.91&nbsp;</td>
 </tr>
 </tbody>
 </table></div><div class="note"><table><tr>
@@ -1663,7 +1663,7 @@
 
 <a id="back-top" class="icon__backTop icon-backtop" href="#" title="Scroll To Top"><span class="sr-only">Back to Top</span></a>
 <div class="row">
-    <div class="lastUpdate" id="lastUpdate">Last Update: August 19, 2026 </div>
+    <div class="lastUpdate" id="lastUpdate">Last Update: August 20, 2026 </div>
 </div>
 
       <a
@@ -1891,5 +1891,5 @@
         });
       });
     </script>
-  <script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2e1cbbb19e268e8',t:'MTc4NzIzMzA3OQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+  <script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2e511c3fdeeefe7',t:'MTc4NzI2NzQwNQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
