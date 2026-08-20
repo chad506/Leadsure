@@ -6,7 +6,7 @@
 const SHARED_FINNHUB_KEY = 'd6kqa11r01qmopd1net0d6kqa11r01qmopd1netg';
 
 // Bump DATA_VERSION whenever positions, costs, or prices change — invalidates all localStorage caches
-const DATA_VERSION = '2026-08-20-1';
+const DATA_VERSION = '2026-08-20-2';
 
 // Date when price/prevClose were last set (YYYY-MM-DD in US/Pacific)
 // On a new trading day, pages auto-reset price = prevClose so Today P&L starts at $0
@@ -88,7 +88,7 @@ const POSITIONS = [
   {"symbol": "PSFE", "name": "Paysafe Ltd", "sector": "Technology", "industry": "IT Services", "marketCap": 340575280, "direction": "Short", "qty": 666, "price": 8.08, "costBasis": 7.5, "prevClose": 8.47},
   {"symbol": "Z", "name": "Zillow Group Inc", "sector": "Technology", "industry": "Internet Content & Information", "marketCap": 7729430000, "direction": "Short", "qty": 113, "price": 34.06, "costBasis": 44.4, "prevClose": 33.71},
   {"symbol": "FN", "name": "Fabrinet", "sector": "Technology", "industry": "Electronic Components", "marketCap": 20558207920, "direction": "Long", "qty": 10, "price": 435.41, "costBasis": 506.94, "prevClose": 439.33},
-  {"symbol": "EXPI", "name": "eXp World Holdings", "sector": "Real Estate", "industry": "Real Estate Services", "marketCap": 964689386, "direction": "Short", "qty": 811, "price": 3.9, "costBasis": 6.17, "prevClose": 3.83},
+  {"symbol": "AGNT", "name": "AGNT Inc (fka eXp World)", "sector": "Real Estate", "industry": "Real Estate Services", "marketCap": 964689386, "direction": "Short", "qty": 811, "price": 3.9, "costBasis": 6.17, "prevClose": 3.83},
   {"symbol": "NBIS", "name": "Nebius Group", "sector": "Technology", "industry": "Internet Content & Information", "marketCap": 68745867916, "direction": "Long", "qty": 71, "price": 190.41, "costBasis": 126.52, "prevClose": 188.43},
   {"symbol": "NVDA", "name": "NVIDIA Corp", "sector": "Technology", "industry": "Semiconductors", "marketCap": 5446936073780, "direction": "Long", "qty": 27, "price": 200.75, "costBasis": 185.37, "prevClose": 195.04},
   {"symbol": "AMSC", "name": "American Superconductor", "sector": "Technology", "industry": "Power Infrastructure", "marketCap": 1542640160, "direction": "Long", "qty": 163, "price": 29.37, "costBasis": 30.7, "prevClose": 29.45},
