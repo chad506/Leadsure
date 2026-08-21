@@ -6,14 +6,14 @@
 const SHARED_FINNHUB_KEY = 'd6kqa11r01qmopd1net0d6kqa11r01qmopd1netg';
 
 // Bump DATA_VERSION whenever positions, costs, or prices change — invalidates all localStorage caches
-const DATA_VERSION = '2026-08-20-2';
+const DATA_VERSION = '2026-08-21-1';
 
 // Date when price/prevClose were last set (YYYY-MM-DD in US/Pacific)
 // On a new trading day, pages auto-reset price = prevClose so Today P&L starts at $0
 const PRICES_AS_OF = '2026-07-31';
 
-// Realized P&L from closed positions (CHGG: -$449.07, RIOT: -$1,189.30, U: -$1,336.68, HPP: -$3,496.09, MDB: -$1,301.40, BXP: -$965.15, GPN: -$775.91, AXTI: -$715.96, SPG: -$774.07, DUOL: -$782.97, PL: -$1,712.79, KEEL: -$2,141.57, ACN: -$1,954.75, WOLF: -$1,736.83, GLOB: -$1,380.86, WIX: -$3,709.56, FLEX: -$1,002.41, ON: -$1,382.23, WPP: -$2,817.22, WDAY: -$1,816.46, TASK: -$1,039.00, CWK: -$729.88, NOW: -$669.39, ADBE: -$599.03)
-const SHARED_REALIZED_PNL = -34478.58;
+// Realized P&L from closed positions (CHGG: -$449.07, RIOT: -$1,189.30, U: -$1,336.68, HPP: -$3,496.09, MDB: -$1,301.40, BXP: -$965.15, GPN: -$775.91, AXTI: -$715.96, SPG: -$774.07, DUOL: -$782.97, PL: -$1,712.79, KEEL: -$2,141.57, ACN: -$1,954.75, WOLF: -$1,736.83, GLOB: -$1,380.86, WIX: -$3,709.56, FLEX: -$1,002.41, ON: -$1,382.23, WPP: -$2,817.22, WDAY: -$1,816.46, TASK: -$1,039.00, CWK: -$729.88, NOW: -$669.39, ADBE: -$599.03, FN: -$769.44)
+const SHARED_REALIZED_PNL = -35248.02;
 
 // Sold positions
 const SOLD_POSITIONS = [
@@ -40,7 +40,8 @@ const SOLD_POSITIONS = [
   {"symbol": "TASK", "name": "TaskUs Inc", "direction": "Short", "qty": 750, "costBasis": 6.67, "exitPrice": 8.06, "realizedPnl": -1039.0, "entryDate": "Apr 7", "exitDate": "Aug 20"},
   {"symbol": "CWK", "name": "Cushman & Wakefield", "direction": "Short", "qty": 373, "costBasis": 13.38, "exitPrice": 15.34, "realizedPnl": -729.88, "entryDate": "Mar 4", "exitDate": "Aug 20"},
   {"symbol": "NOW", "name": "ServiceNow Inc", "direction": "Short", "qty": 44, "costBasis": 114.35, "exitPrice": 128.68, "realizedPnl": -669.39, "entryDate": "Mar 4", "exitDate": "Aug 20"},
-  {"symbol": "ADBE", "name": "Adobe Inc", "direction": "Short", "qty": 21, "costBasis": 245.24, "exitPrice": 273.77, "realizedPnl": -599.03, "entryDate": "Mar 18", "exitDate": "Aug 20"}
+  {"symbol": "ADBE", "name": "Adobe Inc", "direction": "Short", "qty": 21, "costBasis": 245.24, "exitPrice": 273.77, "realizedPnl": -599.03, "entryDate": "Mar 18", "exitDate": "Aug 20"},
+  {"symbol": "FN", "name": "Fabrinet", "direction": "Long", "qty": 10, "costBasis": 506.94, "exitPrice": 430.0, "realizedPnl": -769.44, "entryDate": "Mar 11", "exitDate": "Aug 21"}
 ];
 
 // Add-on positions (March rebalance — informational only, already included in POSITIONS totals)
@@ -62,7 +63,7 @@ const ADDON_POSITIONS = [
   {"symbol": "DELL", "name": "Dell Technologies", "direction": "Long", "qty": 8, "costBasis": 405.37, "entryDate": "Jul 31", "note": "Month-end add-on to winner"}
 ];
 
-// Active positions — THE source of truth (52 positions)
+// Active positions — THE source of truth (51 positions)
 const POSITIONS = [
   {"symbol": "BE", "name": "Bloom Energy Corp", "sector": "Energy", "industry": "Electrical Equipment & Parts", "marketCap": 68134483418, "direction": "Long", "qty": 46, "price": 205.81, "costBasis": 198.6, "prevClose": 207.12},
   {"symbol": "CBRE", "name": "CBRE Group Inc", "sector": "Real Estate", "industry": "Real Estate Services", "marketCap": 44219598663, "direction": "Short", "qty": 35, "price": 146.81, "costBasis": 141.82, "prevClose": 149.46},
@@ -87,7 +88,6 @@ const POSITIONS = [
   {"symbol": "MRVL", "name": "Marvell Technology", "sector": "Technology", "industry": "Semiconductors", "marketCap": 193430522467, "direction": "Long", "qty": 94, "price": 187.56, "costBasis": 118.56, "prevClose": 183.3},
   {"symbol": "PSFE", "name": "Paysafe Ltd", "sector": "Technology", "industry": "IT Services", "marketCap": 340575280, "direction": "Short", "qty": 666, "price": 8.08, "costBasis": 7.5, "prevClose": 8.47},
   {"symbol": "Z", "name": "Zillow Group Inc", "sector": "Technology", "industry": "Internet Content & Information", "marketCap": 7729430000, "direction": "Short", "qty": 113, "price": 34.06, "costBasis": 44.4, "prevClose": 33.71},
-  {"symbol": "FN", "name": "Fabrinet", "sector": "Technology", "industry": "Electronic Components", "marketCap": 20558207920, "direction": "Long", "qty": 10, "price": 435.41, "costBasis": 506.94, "prevClose": 439.33},
   {"symbol": "AGNT", "name": "AGNT Inc (fka eXp World)", "sector": "Real Estate", "industry": "Real Estate Services", "marketCap": 964689386, "direction": "Short", "qty": 811, "price": 3.9, "costBasis": 6.17, "prevClose": 3.83},
   {"symbol": "NBIS", "name": "Nebius Group", "sector": "Technology", "industry": "Internet Content & Information", "marketCap": 68745867916, "direction": "Long", "qty": 71, "price": 190.41, "costBasis": 126.52, "prevClose": 188.43},
   {"symbol": "NVDA", "name": "NVIDIA Corp", "sector": "Technology", "industry": "Semiconductors", "marketCap": 5446936073780, "direction": "Long", "qty": 27, "price": 200.75, "costBasis": 185.37, "prevClose": 195.04},
