@@ -2,7 +2,7 @@
 (function () {
   'use strict';
 
-  /* ==== baked odds history (daily CLOB closes, Jun 27 2026 onward; Thursday MORNING walk Aug 20 13:27 UTC re-read the 'now' point on the Aug 19 closes — THE GAP CRUSHED AGAIN: NVDA $5,265.0B (-0.99%) / AAPL $4,653.4B (+2.19%), lead 16.78% -> 13.14% ($611.6B), third straight compression; T counts from Aug 20 (8/29/93): fairs Dec NVDA 67.65 / AAPL 23.0 / GOOGL 7.3 — dec-NVDA flipped RICH (72.5 vs 67.65, +4.85) one walk after its first cheap print, dec-AAPL widened to THE WIDEST EDGE EVER (14.0 vs 23.0 = -9.0 CHEAP on a $2,725 door), GOOGL 9.5, SPCX 0.85; July resolved NVIDIA, Jul legs frozen) ==== */
+  /* ==== baked odds history (daily CLOB closes, Jun 27 2026 onward; Thursday EVENING walk Aug 20 23:10 UTC re-read the 'now' point on the Aug 20 closes — THE CRUSH SNAPPED: NVDA $5,247.8B (-0.33%) / AAPL $4,572.2B (-1.75%), lead 13.14% -> 14.78% ($675.6B); T holds 8/29/93: fairs Dec NVDA 69.7 / AAPL 21.15 / GOOGL 7.1 — every December mid FROZE at 72.5/14.0/9.5/0.85 while the caps recomposed the fairs: dec-NVDA de-armed to +2.80, dec-AAPL narrowed by cap to -7.15 CHEAP (still the widest live edge, $2,229 door); July resolved NVIDIA, Jul legs frozen) ==== */
   var H = {
     decNVDA: [0.725,0.725,0.62,0.645,0.655,0.605,0.585,0.605,0.615,0.595,0.635,0.655,0.655,0.685,0.695,0.705,0.665,0.72,0.655,0.615,0.52,0.555,0.545,0.605,0.61,0.615,0.645,0.625,0.565,0.575,0.51,0.485,0.485,0.575,0.705,0.695,0.725,0.735,0.725],
     decAAPL: [0.082,0.082,0.0965,0.095,0.108,0.1475,0.143,0.132,0.158,0.1555,0.1705,0.1265,0.1265,0.1405,0.1305,0.13,0.1705,0.1285,0.143,0.2285,0.345,0.328,0.3305,0.235,0.2025,0.1985,0.1985,0.2565,0.2995,0.281,0.353,0.289,0.3565,0.251,0.1645,0.1405,0.1435,0.141,0.14],
@@ -11,14 +11,15 @@
   };
   /* The September rank books listed Jul 29 and this page began recording them on
      Aug 10 (post-close walk, fetched 00:40 UTC Aug 11 — the first print), so the
-     series grows one point per run (nineteenth print: Aug 20 MORNING walk, books
-     fetched 13:27 UTC — the rip kept going: sep2AAPL 74.5 -> 77.0 (+2.5), now +6.1
-     OVER its 70.9 MC fair — the fade this page said arms at >=+5 is armed on edge
-     and fails its $300 bid-side door (~$142); sep2GOOGL fell a fourth straight
-     print, 21.0 -> 18.0, through its 16.3 fair to +1.7; sep2NVDA held 5.0 against
-     a 12.4 fair — cheap, on a $123 door. Seeded, not back-filled — no synthetic history. */
-  var SEPH = { sep2AAPL: [0.585,0.565,0.575,0.49,0.51,0.53,0.53,0.565,0.545,0.57,0.57,0.54,0.545,0.57,0.57,0.675,0.645,0.745,0.77], sep2GOOGL: [0.31,0.315,0.315,0.32,0.325,0.34,0.34,0.34,0.34,0.34,0.34,0.375,0.36,0.395,0.36,0.265,0.25,0.21,0.18], sep2NVDA: [0.085,0.08,0.08,0.095,0.085,0.085,0.08,0.085,0.08,0.075,0.075,0.08,0.075,0.07,0.07,0.05,0.05,0.05,0.05] };
-  var SEP_LABELS = ['8/10', '8/11', '8/11 PM', '8/12', '8/12 PM', '8/13', '8/13 PM', '8/14', '8/14 PM', '8/15', '8/15 PM', '8/16', '8/16 PM', '8/17', '8/17 PM', '8/18 PM', '8/18 LATE', '8/19', '8/20'];
+     series grows one point per run (twentieth print: Aug 20 EVENING walk, books
+     fetched 23:10 UTC — the rip refused to stop: sep2AAPL 77.0 -> 80.5 (+3.5), a
+     FIFTH straight advance, +8.7 OVER a 71.8 MC fair — the fade stays armed on edge
+     and still fails its $300 bid-side door ($170.64); sep2GOOGL fell a fifth straight
+     print, 18.0 -> 16.5, THROUGH its 17.65 fair to -1.15 — the family's last cheap
+     leg died by convergence; sep2NVDA eased to 4.5 vs a 10.05 fair — cheap at the
+     5.0 ask, on a ~$105 door. Seeded, not back-filled — no synthetic history. */
+  var SEPH = { sep2AAPL: [0.585,0.565,0.575,0.49,0.51,0.53,0.53,0.565,0.545,0.57,0.57,0.54,0.545,0.57,0.57,0.675,0.645,0.745,0.77,0.805], sep2GOOGL: [0.31,0.315,0.315,0.32,0.325,0.34,0.34,0.34,0.34,0.34,0.34,0.375,0.36,0.395,0.36,0.265,0.25,0.21,0.18,0.165], sep2NVDA: [0.085,0.08,0.08,0.095,0.085,0.085,0.08,0.085,0.08,0.075,0.075,0.08,0.075,0.07,0.07,0.05,0.05,0.05,0.05,0.045] };
+  var SEP_LABELS = ['8/10', '8/11', '8/11 PM', '8/12', '8/12 PM', '8/13', '8/13 PM', '8/14', '8/14 PM', '8/15', '8/15 PM', '8/16', '8/16 PM', '8/17', '8/17 PM', '8/18 PM', '8/18 LATE', '8/19', '8/20', '8/20 PM'];
 
   var LABELS = (function () {
     var out = [], d = new Date(Date.UTC(2026, 5, 27));
@@ -904,7 +905,12 @@
     { act: 'BUY', tok: '71296910957902084356560391757722633648005498400799774895345285101862220728868', sh: 401.14, px: 0.0374 } /* 8/19/26 BTC-140k tail */,
     { act: 'SELL', tok: '78959017184382580042532738046363918551357602274462396865643365060706535362447', sh: 550.00, px: 0.6809 } /* 8/20/26 OpenAI spike-sell 62-72c */,
     { act: 'BUY', tok: '78959017184382580042532738046363918551357602274462396865643365060706535362447', sh: 1533.07, px: 0.2353 } /* 8/20/26 OpenAI round trip back in */,
-    { act: 'SELL', tok: '68400022093573165474037038700563901937737223661702772285033991069743666651631', sh: 258.06, px: 0.9861 } /* 8/20/26 BTC 55k-dip NO last leg out */
+    { act: 'SELL', tok: '68400022093573165474037038700563901937737223661702772285033991069743666651631', sh: 258.06, px: 0.9861 } /* 8/20/26 BTC 55k-dip NO last leg out */,
+    { act: 'BUY', tok: '65965214225073605704712365855887384729237451947822407248598722221769498441791', sh: 740.43, px: 0.07 } /* 8/20/26 14:07Z BTC-120k Dec — fourth ladder strike, uncarded */,
+    { act: 'SELL', tok: '28968413545616763951382294393977143128717157799818103817407198720924087703276', sh: 206.01, px: 0.972 } /* 8/20/26 15:20Z Apple-crown-Aug NO — THE CARDED PRINT: all 206.01 sh in one clip at 97.2c; first carded fill in thirteen windows */,
+    { act: 'BUY', tok: '56078938060096976448086754249497300447360333783952000147427828224794011030104', sh: 1167.62, px: 0.16 } /* 8/20/26 15:21Z BTC-100k anchor add #1 at 16c */,
+    { act: 'SELL', tok: '106686425884931414831660414537151585336396834374452525127171574247454082548832', sh: 1884.12, px: 0.939 } /* 8/20/26 15:58Z MU-760 — the saga leg CLEARED in one 93.9c print, $1,764.87 */,
+    { act: 'BUY', tok: '56078938060096976448086754249497300447360333783952000147427828224794011030104', sh: 3750.00, px: 0.16 } /* 8/20/26 15:59Z BTC-100k anchor add #2 — the Micron proceeds rotated within a minute; position 9,584.29 sh at a 13.42c blend */
   ];
   function refreshTracking() {
     Promise.all(TRACKED.map(function (t, i) {
