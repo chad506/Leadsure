@@ -39,6 +39,58 @@
 
   /* ---------- live plumbing ---------- */
   var TOKENS = {
+    /* Bitcoin tab — Aug 21 2026: August monthly ladder + 'before 2027' ladder, YES tokens */
+    'btc-aug-re80k': '102270650225797845195454805763498397874386067232149902550118294787057200324741',
+    'btc-aug-re82_5k': '58559007481908595732343519640998477965598707756438174409311033318259996889965',
+    'btc-aug-re85k': '112241751071174396487292868128075924275858867204192436670566953710907627910138',
+    'btc-aug-re87_5k': '58934772812121845536960060739940872473706732919207396740821739825921647791275',
+    'btc-aug-re90k': '72739316523858479816906805619832308458888360975886863074336484009500930856438',
+    'btc-aug-re100k': '18258395755041392118198940898057846234774760894152262988568951221464458542850',
+    'btc-aug-di75k': '52967959241395817429602158891216394752909947915176073432962965400546600207163',
+    'btc-aug-di72_5k': '79697021471149273297867285272226524165531438782155382582295930999430106675621',
+    'btc-aug-di70k': '12441167212229750268659752951509231773978449399558023877007225411177778794121',
+    'btc-aug-di67_5k': '45349201673033527447768645359864385869991777646128023206959790874029348120325',
+    'btc-aug-di65k': '43898757872820987638297146930820621323643875433360934741436059076419637367671',
+    'btc-aug-di62_5k': '97454153157320890301565733152088528189410505166162922730489352561967591530343',
+    'btc-aug-di60k': '88902974378195889166057110964513688920047250482309636378282580896757420591128',
+    'btc-aug-di57_5k': '105934924793101961671194607931144938442778142774865876808979595111561162727678',
+    'btc-aug-di55k': '70459296325871889453156773347249996978545476708208151499368447748521658358017',
+    'btc-aug-di52_5k': '55524689612005448388368447943683952282193574718980087284475487813080937536215',
+    'btc-aug-di50k': '74739074909584676497787401686892858852610063847464192700752443429685992559595',
+    'btc-aug-di47_5k': '38047243640275994623018060409505748484658089693620691895063154581347365967394',
+    'btc-aug-di45k': '37046509536395159361335902951771808094145892190769810696385162495774938829015',
+    'btc-aug-di42_5k': '108302454607081176309311291655387968923267938167375542356953661581919615932612',
+    'btc-aug-di40k': '80229713107491604988166227575420811552403620778847461006375175585272053257376',
+    'btc-dec-re80k': '93924969469939330995194645669345334142528685509853517456507765752635309176671',
+    'btc-dec-re85k': '27201221676173593121678787264361008606480627771007041356248031697735484721466',
+    'btc-dec-re90k': '89384721767526056909881321094852287855436067743554155484781205764118128944311',
+    'btc-dec-re95k': '37011650970792437921328530439273985710481032638212715110420998355785945483754',
+    'btc-dec-re100k': '56078938060096976448086754249497300447360333783952000147427828224794011030104',
+    'btc-dec-re110k': '74843373582432484858627201602003648342208168490128239235522790524493414154441',
+    'btc-dec-re120k': '65965214225073605704712365855887384729237451947822407248598722221769498441791',
+    'btc-dec-re130k': '106722178102302988256241610384561546855057790384749278490135208236665942286983',
+    'btc-dec-re140k': '71296910957902084356560391757722633648005498400799774895345285101862220728868',
+    'btc-dec-re150k': '9408196828451163378822245032645030045707991112669125056198742225498158094445',
+    'btc-dec-re160k': '82383148892491951057986758727379275490538136042110607950765593149629854993897',
+    'btc-dec-re170k': '91771200478987002878887468575926960041640880090910228629453422737528263499583',
+    'btc-dec-re180k': '74565691184914883284595890202312045107598400454020809925536957708002527360857',
+    'btc-dec-re190k': '44277901818108806761236452190579702355420207259376614876965091268791774916719',
+    'btc-dec-re200k': '61368943128255287414565270336856615453000675377332178800733742873558311943412',
+    'btc-dec-re250k': '13433573766910980267981622064090484781359464703732825845886677588040916221533',
+    'btc-dec-re500k': '91920414851381703961459336798965934286338468050347816160274927361190904665656',
+    'btc-dec-re1000k': '18571303954259773157233385333455041418270179723020753158306812650937565180666',
+    'btc-dec-di60k': '104279604547231872129402198190232956636095665469278761891693384128061158683041',
+    'btc-dec-di55k': '115462087336983275104521488923966022755348986822352694745153736621832003960847',
+    'btc-dec-di50k': '13887983551129862992605123088744175927084435631400400451585519366058907542147',
+    'btc-dec-di45k': '9894510651052373088408067031031513212801618531203062911959630395716258202132',
+    'btc-dec-di40k': '4255890554350661695724949176183233033027635903850796430457642328613772591960',
+    'btc-dec-di35k': '19830138103155427354579425893303398904208550475895360582465715721785944321950',
+    'btc-dec-di30k': '32100646597103151520708930825184762124585961199171649862922931416837210460836',
+    'btc-dec-di25k': '58908160299895538838177673280060816284346493901538403975218911918392404378292',
+    'btc-dec-di20k': '59683974246799525831244219921114455736275705032978487912646746315061494194144',
+    'btc-dec-di15k': '63985397218239656926367525871649971575041102854345777114360978052613472299768',
+    'btc-dec-di10k': '42439528758178981890895605039938161151582654744978607695897321288347422769852',
+    'btc-dec-di5k': '78813286502861287035170675523688055494398144118547987619022209059970667952352',
     'sep-sep2AAPL': '69436436951640881186918962093978129047876125081246052069821867405322712154087',
     'sep-sep2GOOGL': '112917653797517457474191727734311838332458686889832634273844237276119071933739',
     'sep-sep2NVDA': '58255742710354753372638105507395301856276470581760095695579319734210276720718',
@@ -189,6 +241,7 @@
         setText('[data-odds-kpi="' + k + '"]', disp);
       });
       try { updateTrs(mids); } catch (e) { /* never break the shared refresh */ }
+      try { updateBtc(mids); } catch (e) { /* never break the shared refresh */ }
       /* caps + gaps */
       if (caps.NVDA) {
         var leadCap = Math.max.apply(null, Object.keys(caps).map(function (k2) { return caps[k2]; }));
@@ -300,6 +353,38 @@
     });
   }
 
+
+  /* ---------- bitcoin tab: live edge/verdict recompute ----------
+     Aug 21 2026. Each row bakes its σ2.35 reflection-principle fair in data-fair
+     (a fraction); the mid refreshes live and edge = mid − fair is recomputed with the
+     CHEAP ≤ −2.5 / RICH ≥ +2.5 thresholds at full precision — the same rule that baked the table, so the two agree at the baked mids (rounding first would flip Dec $25k, edge +2.4977); a row whose verdict flips live has its Value-rank cell replaced with 're-rank on next bake'. Rows with data-btc-tail are
+     the sub-2¢ legs with no model resolution: their mid still refreshes, nothing else. */
+  function updateBtc(mids) {
+    $$('#btc-table-body tr[data-btc-row]').forEach(function (row) {
+      if (row.getAttribute('data-btc-tail')) return;
+      var k = row.getAttribute('data-btc-row');
+      var mid = mids[k];
+      if (mid == null || isNaN(mid)) return;
+      var fair = parseFloat(row.getAttribute('data-fair'));
+      if (isNaN(fair)) return;
+      var edge = mid - fair;
+      var f = row.querySelector('[data-btc-fair]'); if (f) f.textContent = (fair * 100).toFixed(1) + '%';
+      var e = row.querySelector('[data-btc-edge]');
+      if (e) {
+        e.textContent = (edge >= 0 ? '+' : '\u2212') + Math.abs(edge * 100).toFixed(1);
+        e.className = 'col-num' + (edge <= -0.025 ? ' pm-pos' : '');
+      }
+      var v = row.querySelector('[data-btc-verdict]');
+      if (v) {
+        var was = v.textContent.trim();
+        var now = edge <= -0.025 ? 'CHEAP' : edge >= 0.025 ? 'RICH' : 'FAIR';
+        v.className = 'pm-badge ' + (now === 'CHEAP' ? 'pm-cheap' : now === 'RICH' ? 'pm-rich' : 'pm-fair');
+        v.textContent = now;
+        if (now !== was) { var rk = row.children[1]; if (rk) { rk.className = 'col-num pm-note'; rk.textContent = 're-rank on next bake'; } }
+      }
+    });
+  }
+
   /* ---------- charts ---------- */
   var charts = [];
   function endLabelPlugin(ink) {
@@ -374,17 +459,18 @@
      default so the table stays a table; this opens them all at once, and any single
      cell also opens on click. */
   (function () {
-    var btn = document.getElementById('trs-reason-toggle');
-    var body = document.getElementById('trs-table-body');
-    if (btn && body) {
+    [['trs-reason-toggle', 'trs-table-body'], ['btc-reason-toggle', 'btc-table-body']].forEach(function (pair) {
+      var btn = document.getElementById(pair[0]);
+      var body = document.getElementById(pair[1]);
+      if (!btn || !body) return;
       btn.addEventListener('click', function () {
         var open = body.classList.toggle('reasoning-open');
         btn.setAttribute('aria-expanded', open ? 'true' : 'false');
         btn.innerHTML = (open ? 'Hide reasoning' : 'Show all reasoning') + ' <span class="chev">\u25BC</span>';
-        if (!open) $$('#trs-table-body .pm-sub.is-open').forEach(function (el) { el.classList.remove('is-open'); });
+        if (!open) $$('#' + pair[1] + ' .pm-sub.is-open').forEach(function (el) { el.classList.remove('is-open'); });
       });
-    }
-    $$('#trs-table-body .pm-sub, #track-table .pm-sub, #retired-table .pm-sub').forEach(function (el) {
+    });
+    $$('#trs-table-body .pm-sub, #btc-table-body .pm-sub, #track-table .pm-sub, #retired-table .pm-sub').forEach(function (el) {
       el.addEventListener('click', function () { el.classList.toggle('is-open'); });
     });
   })();
@@ -1144,7 +1230,7 @@
       $$('.page-nav .nav-tab[data-view]').forEach(function (t) { t.classList.remove('active'); });
       tab.classList.add('active');
       var view = tab.getAttribute('data-view');
-      ['polymarket', 'largest', 'treasuries', 'tracking'].forEach(function (v) {
+      ['polymarket', 'largest', 'treasuries', 'bitcoin', 'tracking'].forEach(function (v) {
         var el = document.getElementById('view-' + v);
         if (el) el.hidden = v !== view;
       });

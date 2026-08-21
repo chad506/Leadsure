@@ -568,3 +568,63 @@ code { font-family: ui-monospace, monospace; font-size: 0.85em; background: var(
 }
 .pm-cards .panel-title strong { font-weight: 750; color: #fff; }
 [data-theme="light"] .pm-cards .panel-title strong { color: var(--color-text); }
+
+/* ==== Bitcoin tab (Aug 21 2026) — every #view-treasuries rule, duplicated for #view-bitcoin ==== */
+#view-bitcoin .pm-table td[colspan],
+#view-bitcoin .pm-table td.trs-prose { white-space: normal; min-width: 300px; line-height: 1.55; }
+#view-bitcoin .pm-table td[colspan] { min-width: 0; }
+#view-bitcoin .account-hero { flex-wrap: wrap; }
+#view-bitcoin .account-hero-secondary { flex-wrap: wrap; min-width: 0; }
+#view-bitcoin .account-hero-stat { min-width: 0; flex: 1 1 260px; }
+#view-bitcoin .account-hero-stat-label { white-space: normal; }
+#view-bitcoin .account-hero-stat-value { white-space: normal; overflow-wrap: anywhere; }
+#view-bitcoin .table-section { margin-block: var(--space-6); }
+#view-bitcoin .fund-header { margin-bottom: var(--space-5); }
+#view-bitcoin .pm-table th,
+#view-bitcoin .pm-table td { padding: 11px 12px; vertical-align: top; }
+#view-bitcoin .pm-table td:first-child { white-space: normal; max-width: 46ch; line-height: 1.5; }
+#view-bitcoin .pm-table .pm-note {
+  display: block;
+  margin-top: 3px;
+  line-height: 1.5;
+  font-size: 0.72rem;
+  white-space: normal;
+}
+#view-bitcoin .pm-table td[colspan],
+#view-bitcoin .pm-table td.trs-prose { line-height: 1.65; padding-block: var(--space-3); }
+#view-bitcoin .pm-footnote { max-width: 104ch; line-height: 1.7; margin-top: var(--space-4); }
+#view-bitcoin .pm-cards { margin-top: var(--space-2); }
+#view-bitcoin .section-title { margin-bottom: 2px; }
+#view-bitcoin .table-header-row .price-note { white-space: normal; line-height: 1.5; }
+#view-bitcoin .account-hero-primary { justify-content: center; }
+#view-bitcoin .account-hero-label { white-space: normal; max-width: 30ch; }
+#view-bitcoin .account-hero { align-items: stretch; }
+@media (max-width: 760px) {
+  #view-bitcoin .section-title { white-space: normal; }
+}
+@media (max-width: 760px) {
+  #view-bitcoin .pm-table td:first-child { max-width: none; }
+}
+#view-bitcoin .trs-mkt { max-width: 52ch; overflow: visible; text-overflow: clip; white-space: normal; }
+#view-bitcoin .trs-mkt > a { font-weight: 700; display: inline-block; margin-bottom: 3px; }
+#view-bitcoin .trs-mkt .pm-sub {
+  font-weight: 400;
+  font-size: 0.72rem;
+  line-height: 1.55;
+  color: var(--color-text-muted);
+  white-space: normal;
+  margin-top: 2px;
+}
+#view-bitcoin .trs-mkt .pm-sub strong { color: var(--color-text); }
+#view-bitcoin .trs-mkt .pm-sub {
+  display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden;
+  -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 1.1em), transparent);
+  mask-image: linear-gradient(to bottom, #000 calc(100% - 1.1em), transparent);
+  cursor: pointer;
+}
+#view-bitcoin .trs-mkt .pm-sub:hover { color: var(--color-text); }
+#view-bitcoin #btc-table-body.reasoning-open .pm-sub,
+#view-bitcoin .trs-mkt .pm-sub.is-open {
+  display: block; -webkit-line-clamp: unset; overflow: visible;
+  -webkit-mask-image: none; mask-image: none;
+}
