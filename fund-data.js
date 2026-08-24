@@ -6,14 +6,14 @@
 const SHARED_FINNHUB_KEY = 'd6kqa11r01qmopd1net0d6kqa11r01qmopd1netg';
 
 // Bump DATA_VERSION whenever positions, costs, or prices change — invalidates all localStorage caches
-const DATA_VERSION = '2026-08-21-1';
+const DATA_VERSION = '2026-08-24-1';
 
 // Date when price/prevClose were last set (YYYY-MM-DD in US/Pacific)
 // On a new trading day, pages auto-reset price = prevClose so Today P&L starts at $0
 const PRICES_AS_OF = '2026-07-31';
 
-// Realized P&L from closed positions (CHGG: -$449.07, RIOT: -$1,189.30, U: -$1,336.68, HPP: -$3,496.09, MDB: -$1,301.40, BXP: -$965.15, GPN: -$775.91, AXTI: -$715.96, SPG: -$774.07, DUOL: -$782.97, PL: -$1,712.79, KEEL: -$2,141.57, ACN: -$1,954.75, WOLF: -$1,736.83, GLOB: -$1,380.86, WIX: -$3,709.56, FLEX: -$1,002.41, ON: -$1,382.23, WPP: -$2,817.22, WDAY: -$1,816.46, TASK: -$1,039.00, CWK: -$729.88, NOW: -$669.39, ADBE: -$599.03, FN: -$769.44)
-const SHARED_REALIZED_PNL = -35248.02;
+// Realized P&L from closed positions (CHGG: -$449.07, RIOT: -$1,189.30, U: -$1,336.68, HPP: -$3,496.09, MDB: -$1,301.40, BXP: -$965.15, GPN: -$775.91, AXTI: -$715.96, SPG: -$774.07, DUOL: -$782.97, PL: -$1,712.79, KEEL: -$2,141.57, ACN: -$1,954.75, WOLF: -$1,736.83, GLOB: -$1,380.86, WIX: -$3,709.56, FLEX: -$1,002.41, ON: -$1,382.23, WPP: -$2,817.22, WDAY: -$1,816.46, TASK: -$1,039.00, CWK: -$729.88, NOW: -$669.39, ADBE: -$599.03, FN: -$769.44, GLW: -$457.82, AMKR: -$638.93, IREN: -$748.51)
+const SHARED_REALIZED_PNL = -37093.28;
 
 // Sold positions
 const SOLD_POSITIONS = [
@@ -41,7 +41,10 @@ const SOLD_POSITIONS = [
   {"symbol": "CWK", "name": "Cushman & Wakefield", "direction": "Short", "qty": 373, "costBasis": 13.38, "exitPrice": 15.34, "realizedPnl": -729.88, "entryDate": "Mar 4", "exitDate": "Aug 20"},
   {"symbol": "NOW", "name": "ServiceNow Inc", "direction": "Short", "qty": 44, "costBasis": 114.35, "exitPrice": 128.68, "realizedPnl": -669.39, "entryDate": "Mar 4", "exitDate": "Aug 20"},
   {"symbol": "ADBE", "name": "Adobe Inc", "direction": "Short", "qty": 21, "costBasis": 245.24, "exitPrice": 273.77, "realizedPnl": -599.03, "entryDate": "Mar 18", "exitDate": "Aug 20"},
-  {"symbol": "FN", "name": "Fabrinet", "direction": "Long", "qty": 10, "costBasis": 506.94, "exitPrice": 430.0, "realizedPnl": -769.44, "entryDate": "Mar 11", "exitDate": "Aug 21"}
+  {"symbol": "FN", "name": "Fabrinet", "direction": "Long", "qty": 10, "costBasis": 506.94, "exitPrice": 430.0, "realizedPnl": -769.44, "entryDate": "Mar 11", "exitDate": "Aug 21"},
+  {"symbol": "GLW", "name": "Corning Inc", "direction": "Long", "qty": 31, "costBasis": 159.77, "exitPrice": 145.0, "realizedPnl": -457.82, "entryDate": "Apr 8", "exitDate": "Aug 24"},
+  {"symbol": "AMKR", "name": "Amkor Technology", "direction": "Long", "qty": 91, "costBasis": 55.01, "exitPrice": 47.99, "realizedPnl": -638.93, "entryDate": "Apr 9", "exitDate": "Aug 24"},
+  {"symbol": "IREN", "name": "IREN Ltd", "direction": "Long", "qty": 107, "costBasis": 46.99, "exitPrice": 40.0, "realizedPnl": -748.51, "entryDate": "Apr 14", "exitDate": "Aug 24"}
 ];
 
 // Add-on positions (March rebalance — informational only, already included in POSITIONS totals)
@@ -63,7 +66,7 @@ const ADDON_POSITIONS = [
   {"symbol": "DELL", "name": "Dell Technologies", "direction": "Long", "qty": 8, "costBasis": 405.37, "entryDate": "Jul 31", "note": "Month-end add-on to winner"}
 ];
 
-// Active positions — THE source of truth (51 positions)
+// Active positions — THE source of truth (48 positions)
 const POSITIONS = [
   {"symbol": "BE", "name": "Bloom Energy Corp", "sector": "Energy", "industry": "Electrical Equipment & Parts", "marketCap": 68134483418, "direction": "Long", "qty": 46, "price": 205.81, "costBasis": 198.6, "prevClose": 207.12},
   {"symbol": "CBRE", "name": "CBRE Group Inc", "sector": "Real Estate", "industry": "Real Estate Services", "marketCap": 44219598663, "direction": "Short", "qty": 35, "price": 146.81, "costBasis": 141.82, "prevClose": 149.46},
@@ -100,16 +103,13 @@ const POSITIONS = [
   {"symbol": "TTD", "name": "The Trade Desk Inc", "sector": "Technology", "industry": "Advertising Technology", "marketCap": 6637063326, "direction": "Short", "qty": 242, "price": 18.04, "costBasis": 20.64, "prevClose": 18.28},
   {"symbol": "ACLS", "name": "Axcelis Technologies", "sector": "Technology", "industry": "Semiconductor Equipment", "marketCap": 4313217503, "direction": "Long", "qty": 48, "price": 130.38, "costBasis": 103.86, "prevClose": 125.21},
   {"symbol": "DELL", "name": "Dell Technologies", "sector": "Technology", "industry": "Computer Hardware", "marketCap": 317845718797, "direction": "Long", "qty": 45, "price": 405.37, "costBasis": 273.37, "prevClose": 404.81},
-  {"symbol": "GLW", "name": "Corning Inc", "sector": "Technology", "industry": "Electronic Components", "marketCap": 142740650087, "direction": "Long", "qty": 31, "price": 138.25, "costBasis": 159.77, "prevClose": 135.22},
   {"symbol": "STX", "name": "Seagate Technology", "sector": "Technology", "industry": "Computer Hardware", "marketCap": 219874643133, "direction": "Long", "qty": 14, "price": 856.13, "costBasis": 599.64, "prevClose": 851.68},
-  {"symbol": "AMKR", "name": "Amkor Technology", "sector": "Technology", "industry": "Semiconductor Equipment", "marketCap": 14570495036, "direction": "Long", "qty": 91, "price": 49.87, "costBasis": 55.01, "prevClose": 48.26},
   {"symbol": "HUT", "name": "Hut 8 Corp", "sector": "Technology", "industry": "Bitcoin Mining", "marketCap": 10623733162, "direction": "Long", "qty": 106, "price": 107.63, "costBasis": 76.78, "prevClose": 108.27},
   {"symbol": "ONTO", "name": "Onto Innovation Inc", "sector": "Technology", "industry": "Semiconductor Equipment", "marketCap": 16398650215, "direction": "Long", "qty": 19, "price": 258.58, "costBasis": 256.26, "prevClose": 250.52},
   {"symbol": "WDC", "name": "Western Digital Corp", "sector": "Technology", "industry": "Computer Hardware", "marketCap": 183729360000, "direction": "Long", "qty": 21, "price": 544.84, "costBasis": 400.58, "prevClose": 533.04},
   {"symbol": "INTC", "name": "Intel Corp", "sector": "Technology", "industry": "Semiconductors", "marketCap": 518119667902, "direction": "Long", "qty": 78, "price": 90.2, "costBasis": 64.47, "prevClose": 91.13},
   {"symbol": "APLD", "name": "Applied Digital Corp", "sector": "Technology", "industry": "Data Center Infrastructure", "marketCap": 9051573652, "direction": "Long", "qty": 163, "price": 27.39, "costBasis": 30.61, "prevClose": 27.97},
   {"symbol": "CRDO", "name": "Credo Technology Group Holding Ltd", "sector": "Technology", "industry": "Semiconductors", "marketCap": 48428306258, "direction": "Long", "qty": 32, "price": 206.99, "costBasis": 157.14, "prevClose": 201.08},
-  {"symbol": "IREN", "name": "IREN Ltd", "sector": "Technology", "industry": "Bitcoin Mining / AI Compute", "marketCap": 15830161751, "direction": "Long", "qty": 107, "price": 36.8, "costBasis": 46.99, "prevClose": 38.26},
   {"symbol": "SNDK", "name": "SanDisk Corp", "sector": "Technology", "industry": "Data Storage", "marketCap": 239000592508, "direction": "Long", "qty": 8, "price": 1214.83, "costBasis": 999.93, "prevClose": 1279.96},
   {"symbol": "ALAB", "name": "Astera Labs Inc", "sector": "Technology", "industry": "Semiconductors", "marketCap": 55718211740, "direction": "Long", "qty": 35, "price": 311.23, "costBasis": 213.08, "prevClose": 299.69},
   {"symbol": "DAVE", "name": "Dave Inc", "sector": "Technology", "industry": "Fintech", "marketCap": 4316463213, "direction": "Long", "qty": 18, "price": 372.69, "costBasis": 285.69, "prevClose": 377.64},
