@@ -1,25 +1,25 @@
-/* ==== baked odds history (daily CLOB closes, Jun 27 2026 onward; SUNDAY morning walk Aug 23 13:22 UTC re-read the 'now' point on a SECOND consecutive zero-trade window — the equity tape stayed shut, caps frozen at the Aug 21 closes (NVDA $5,196.2B / AAPL $4,543.5B / GOOGL $4,198.0B, lead 14.37% / $652.7B); T 6/27/91: fairs Dec NVDA 69.43 / AAPL 20.95 / GOOGL 8.68 unchanged — the December book kept walking (73.5/13.60/9.5/0.90), so dec-AAPL WIDENED a THIRD consecutive walk to -7.35 CHEAP on a deepened $2,459 door while dec-NVDA RE-ARMED to +4.07, 0.93 from its +5 trigger; July legs frozen) ==== *//* ==== Polymarket Watch — charts + live refresh ==== */
+/* ==== baked odds history (daily CLOB closes, Jun 27 2026 onward; WEDNESDAY post-print morning walk Aug 27 13:49 UTC re-read the 'now' point on the FIRST LIVE-CAP TAPE since Aug 21 — NVDA opened +7.20% on its print ($224.75, $5,438.9B) against AAPL $4,561.2B / GOOGL $4,145.1B, lead 19.24% / $877.8B; T 3/24/88: fairs Dec NVDA 78.43 / AAPL 15.80 / GOOGL 4.98 — the market and the model CONVERGED: dec-NVDA +0.07, dec-AAPL -2.35, the Apple-Dec lift and the sep2AAPL fade both RETIRED as the print vaporised their edges) ==== *//* ==== Polymarket Watch — charts + live refresh ==== */
 (function () {
   'use strict';
 
-  /* ==== baked odds history (daily CLOB closes, Jun 27 2026 onward; SUNDAY morning walk Aug 23 13:22 UTC re-read the 'now' point — caps still frozen at the Aug 21 Friday closes (NVDA $5,196.2B / AAPL $4,543.5B / GOOGL $4,198.0B, lead 14.37% / $652.7B), so for a THIRD walk the books moved alone: dec mids 73.5/13.60/9.5/0.90, dec-AAPL -7.35 CHEAP (third consecutive widening), dec-NVDA +4.07 re-arming; July legs frozen) ==== */
+  /* ==== baked odds history (daily CLOB closes, Jun 27 2026 onward; WEDNESDAY post-print morning walk Aug 27 13:49 UTC re-read the 'now' point — the caps UNFROZE on the NVDA print (live 13:44Z quotes: NVDA $5,438.9B +7.20% / AAPL $4,561.2B / GOOGL $4,145.1B, lead 19.24% / $877.8B), dec mids 78.5/13.45/8.5/0.55 vs fresh fairs 78.43/15.80/4.98 — every December edge inside the bar; July legs frozen) ==== */
   var H = {
-    decNVDA: [0.725,0.725,0.62,0.645,0.655,0.605,0.585,0.605,0.615,0.595,0.635,0.655,0.655,0.685,0.695,0.705,0.665,0.72,0.655,0.615,0.52,0.555,0.545,0.605,0.61,0.615,0.645,0.625,0.565,0.575,0.51,0.485,0.485,0.575,0.705,0.695,0.725,0.735,0.735],
-    decAAPL: [0.082,0.082,0.0965,0.095,0.108,0.1475,0.143,0.132,0.158,0.1555,0.1705,0.1265,0.1265,0.1405,0.1305,0.13,0.1705,0.1285,0.143,0.2285,0.345,0.328,0.3305,0.235,0.2025,0.1985,0.1985,0.2565,0.2995,0.281,0.353,0.289,0.3565,0.251,0.1645,0.1405,0.1435,0.141,0.136],
-    decGOOGL: [0.115,0.115,0.155,0.165,0.16,0.155,0.165,0.175,0.165,0.165,0.165,0.155,0.155,0.145,0.145,0.145,0.12,0.105,0.12,0.125,0.105,0.105,0.105,0.105,0.125,0.105,0.105,0.105,0.095,0.095,0.105,0.135,0.145,0.13,0.105,0.125,0.115,0.125,0.095],
-    decSPCX: [0.0395,0.0395,0.0355,0.023,0.0225,0.0215,0.027,0.027,0.0235,0.0215,0.0205,0.022,0.0215,0.0185,0.02,0.019,0.0145,0.0135,0.0125,0.012,0.0085,0.0085,0.0085,0.0085,0.009,0.0095,0.0115,0.0125,0.015,0.0105,0.0095,0.017,0.0155,0.0175,0.0115,0.011,0.0115,0.0115,0.009]
+    decNVDA: [0.725,0.725,0.62,0.645,0.655,0.605,0.585,0.605,0.615,0.595,0.635,0.655,0.655,0.685,0.695,0.705,0.665,0.72,0.655,0.615,0.52,0.555,0.545,0.605,0.61,0.615,0.645,0.625,0.565,0.575,0.51,0.485,0.485,0.575,0.705,0.695,0.725,0.735,0.785],
+    decAAPL: [0.082,0.082,0.0965,0.095,0.108,0.1475,0.143,0.132,0.158,0.1555,0.1705,0.1265,0.1265,0.1405,0.1305,0.13,0.1705,0.1285,0.143,0.2285,0.345,0.328,0.3305,0.235,0.2025,0.1985,0.1985,0.2565,0.2995,0.281,0.353,0.289,0.3565,0.251,0.1645,0.1405,0.1435,0.141,0.1345],
+    decGOOGL: [0.115,0.115,0.155,0.165,0.16,0.155,0.165,0.175,0.165,0.165,0.165,0.155,0.155,0.145,0.145,0.145,0.12,0.105,0.12,0.125,0.105,0.105,0.105,0.105,0.125,0.105,0.105,0.105,0.095,0.095,0.105,0.135,0.145,0.13,0.105,0.125,0.115,0.125,0.085],
+    decSPCX: [0.0395,0.0395,0.0355,0.023,0.0225,0.0215,0.027,0.027,0.0235,0.0215,0.0205,0.022,0.0215,0.0185,0.02,0.019,0.0145,0.0135,0.0125,0.012,0.0085,0.0085,0.0085,0.0085,0.009,0.0095,0.0115,0.0125,0.015,0.0105,0.0095,0.017,0.0155,0.0175,0.0115,0.011,0.0115,0.0115,0.0055]
   };
   /* The September rank books listed Jul 29 and this page began recording them on
      Aug 10 (post-close walk, fetched 00:40 UTC Aug 11 — the first print), so the
-     series grows one point per run (twenty-fourth print: Aug 23 SUNDAY morning
-     walk, books fetched 13:22 UTC — the all-zero row lasted exactly one walk:
-     sep2AAPL pushed 75.5 -> 76.5 on a 75.0 x 28 / 78.0 x 997 book, WIDENING the
-     fade to +8.33 while its qualifying door held $222.98 — still under the $300
-     gate; sep2GOOGL slipped 21.0 -> 19.5; sep2NVDA's six-print freeze broke
-     UPWARD, 4.5 -> 5.0, still -4.97 under its 9.97 fair at the mid.
+     series grows one point per run (twenty-fifth print: Aug 27 WEDNESDAY
+     post-print morning walk, books fetched 13:49 UTC after four missed runs —
+     the NVDA print blew the seat apart: sep2AAPL exploded 76.5 -> 80.5 (+4.0, the
+     series' second-largest jump) on a 79.0 x 30 / 82.0 x 33 book, sep2GOOGL
+     collapsed 19.5 -> 14.0 (-5.5), sep2NVDA doubled off its floor, 5.0 -> 7.0 —
+     and the fresh 13:44Z caps price the fade DEAD: fair 79.52, edge +0.98.
      Seeded, not back-filled — no synthetic history. */
-  var SEPH = { sep2AAPL: [0.585,0.565,0.575,0.49,0.51,0.53,0.53,0.565,0.545,0.57,0.57,0.54,0.545,0.57,0.57,0.675,0.645,0.745,0.77,0.805,0.755,0.755,0.755,0.765], sep2GOOGL: [0.31,0.315,0.315,0.32,0.325,0.34,0.34,0.34,0.34,0.34,0.34,0.375,0.36,0.395,0.36,0.265,0.25,0.21,0.18,0.165,0.195,0.21,0.21,0.195], sep2NVDA: [0.085,0.08,0.08,0.095,0.085,0.085,0.08,0.085,0.08,0.075,0.075,0.08,0.075,0.07,0.07,0.05,0.05,0.05,0.05,0.045,0.045,0.045,0.045,0.05] };
-  var SEP_LABELS = ['8/10', '8/11', '8/11 PM', '8/12', '8/12 PM', '8/13', '8/13 PM', '8/14', '8/14 PM', '8/15', '8/15 PM', '8/16', '8/16 PM', '8/17', '8/17 PM', '8/18 PM', '8/18 LATE', '8/19', '8/20', '8/20 PM', '8/21', '8/22', '8/22 PM', '8/23'];
+  var SEPH = { sep2AAPL: [0.585,0.565,0.575,0.49,0.51,0.53,0.53,0.565,0.545,0.57,0.57,0.54,0.545,0.57,0.57,0.675,0.645,0.745,0.77,0.805,0.755,0.755,0.755,0.765,0.805], sep2GOOGL: [0.31,0.315,0.315,0.32,0.325,0.34,0.34,0.34,0.34,0.34,0.34,0.375,0.36,0.395,0.36,0.265,0.25,0.21,0.18,0.165,0.195,0.21,0.21,0.195,0.14], sep2NVDA: [0.085,0.08,0.08,0.095,0.085,0.085,0.08,0.085,0.08,0.075,0.075,0.08,0.075,0.07,0.07,0.05,0.05,0.05,0.05,0.045,0.045,0.045,0.045,0.05,0.07] };
+  var SEP_LABELS = ['8/10', '8/11', '8/11 PM', '8/12', '8/12 PM', '8/13', '8/13 PM', '8/14', '8/14 PM', '8/15', '8/15 PM', '8/16', '8/16 PM', '8/17', '8/17 PM', '8/18 PM', '8/18 LATE', '8/19', '8/20', '8/20 PM', '8/21', '8/22', '8/22 PM', '8/23', '8/27'];
 
   var LABELS = (function () {
     var out = [], d = new Date(Date.UTC(2026, 5, 27));
@@ -1003,7 +1003,7 @@
     { act: 'BUY', tok: '74843373582432484858627201602003648342208168490128239235522790524493414154441', sh: 1370.50, px: 0.1484 } /* 8/21/26 BTC-110k Dec — doubled the rung at a 14.84c avg mid-rip ($203.42) */,
     { act: 'SELL', tok: '74843373582432484858627201602003648342208168490128239235522790524493414154441', sh: 210.00, px: 0.1833 } /* 8/21/26 BTC-110k — a quarter of the add back out 108 min later, 20→17c */,
     { act: 'SELL', tok: '65965214225073605704712365855887384729237451947822407248598722221769498441791', sh: 50.00, px: 0.16 } /* 8/21/26 BTC-120k — 50-sh skim at 16c, +9 over the 7c entry */,
-    { act: 'SELL', tok: '31351186768315326460771976161382920909043553573272353666473916390357183809529', sh: 4.73, px: 0.999 } /* 8/21/26 Yelich RBI NO — THE CARDED RAIL SKIM at 99.9c, the band's top tick; twentieth rail payout, second consecutive carded fill */,
+    { act: 'SELL', tok: '31351186768315326460771976161382920909043553573272353666473916390357183809529', sh: 4.73, px: 0.999 }, /* 8/21/26 Yelich RBI NO — THE CARDED RAIL SKIM at 99.9c, the band's top tick; twentieth rail payout, second consecutive carded fill */,
     { act: 'SELL', tok: '31977324180919863717921382273587438114623773321828830676048293337319126765438', sh: 17.44, px: 0.997 } /* 8/21/26 WTI-140 NO — harvested at 99.7c, the exact tick the ≤99.6c park spent four runs trying to BUY */,
     { act: 'BUY', tok: '27201221676173593121678787264361008606480627771007041356248031697735484721466', sh: 393.88, px: 0.6347 } /* 8/21/26 14:46Z BTC $85k-Dec YES — uncarded fifth December strike, $250.00 at 63.47c */,
     { act: 'SELL', tok: '22950994476993217816620059342676363932633660110705295996162691702412928292772', sh: 2.57, px: 0.98 } /* 8/21/26 15:01Z Judge/Soto walks (Soto) — guard-rail payout TWENTY-ONE, 2.57 sh at 98c */,
@@ -1015,7 +1015,27 @@
     { act: 'BUY', tok: '74843373582432484858627201602003648342208168490128239235522790524493414154441', sh: 298.44, px: 0.1675 } /* 8/21/26 21:48Z BTC $110k-Dec YES — third add to the rung, $50.00; position 2,708.94 sh at an 11.75c blend */,
     { act: 'SELL', tok: '74982300354231902205849663538606152588940436342760335825517353633724464241850', sh: 142.00, px: 0.95 } /* 8/22/26 02:17Z MU >$820 YES — 142 sh at 95c flat into a bid side the prior walk quoted as DEAD (1.1c x 45); 349.33 sh remain */,
     { act: 'SELL', tok: '95689164730031768195988398128003790785419450590110486478840404402798985620715', sh: 187.00, px: 0.94 } /* 8/22/26 02:27Z SPY $730-low Aug NO — uncarded carry trim at 94c, a hair OVER the 93.63c blend; 560.56 sh remain */,
-    { act: 'BUY', tok: '102270650225797845195454805763498397874386067232149902550118294787057200324741', sh: 418.02, px: 0.782 } /* 8/22/26 02:33Z BTC $80k-Aug YES at 78.2c — bought AGAINST the tab's own no-order card, five hours before the leg repriced 80.85 -> 60.1 */
+    { act: 'BUY', tok: '102270650225797845195454805763498397874386067232149902550118294787057200324741', sh: 418.02, px: 0.782 } /* 8/22/26 02:33Z BTC $80k-Aug YES at 78.2c — bought AGAINST the tab's own no-order card, five hours before the leg repriced 80.85 -> 60.1 */,
+    { act: 'SELL', tok: '31977324180919863717921382273587438114623773321828830676048293337319126765438', sh: 13.08, px: 0.9980 } /* WTI $140-high NO — rail payout #22, two clips 99.8c (park limit stayed unbuyable; the harvest side paid instead) */,
+    { act: 'SELL', tok: '90636609665072628934561741191110505683107177678969080679996981652330626258363', sh: 38.38, px: 0.9900 } /* MU >$700 dust sells, 4 clips 99c over three sessions — the residue worked out at the skim line */,
+    { act: 'SELL', tok: '74753385292355732879917809656352834782762051527133442900841490505532116166739', sh: 62.12, px: 0.9980 } /* WTI $130-high NO — rail payout #23, four clips 99.8c at 09:24Z Aug 24 */,
+    { act: 'SELL', tok: '', sh: 418.01, px: 0.9805 } /* BTC Aug-$80k YES — SOLD 96.4-98.8c into the touch spike as Binance printed $80,000; market resolved YES hours later: row FROZEN at 100, final -$8.17 (the rail's price for not riding to par); tok blanked — the dead book still quotes a garbage 75 mid */,
+    { act: 'BUY', tok: '56078938060096976448086754249497300447360333783952000147427828224794011030104', sh: 1573.70, px: 0.3147 } /* BTC Dec-$100k YES add at 31.47c — bought the morning AFTER the $80k touch, 5.8 pts over the next day's own re-sale price */,
+    { act: 'SELL', tok: '31155907477701757690022379073336112499706938908180279820755007284862306962906', sh: 18.75, px: 0.9950 } /* Anthropic 0.9-1.2T NO — rail payout #24, final 18.75 sh at 99.5c; the leg is CLOSED after eight near-par harvests */,
+    { act: 'BUY', tok: '82271942242710769570803784095231328067346679435915271504441012044356319382263', sh: 78.12, px: 0.3265 } /* Seattle Seahawks NFC West YES — uncarded $25.51 token punt, no model on this page */,
+    { act: 'SELL', tok: '72739316523858479816906805619832308458888360975886863074336484009500930856438', sh: 5194.27, px: 0.0576 } /* BTC Aug-$90k YES — Tuesday sweep liquidation leg 4/4 at 5.76c avg */,
+    { act: 'SELL', tok: '58934772812121845536960060739940872473706732919207396740821739825921647791275', sh: 4992.44, px: 0.1004 } /* BTC Aug-$87.5k YES — sweep liquidation leg 3/4 at 10.04c */,
+    { act: 'SELL', tok: '112241751071174396487292868128075924275858867204192436670566953710907627910138', sh: 1880.46, px: 0.2164 } /* BTC Aug-$85k YES — sweep liquidation leg 2/4 at 21.64c */,
+    { act: 'SELL', tok: '58559007481908595732343519640998477965598707756438174409311033318259996889965', sh: 2123.46, px: 0.4465 } /* BTC Aug-$82.5k YES — sweep liquidation leg 1/4 at 44.65c; the four sells recovered $2,155.43 of the $2,829.77 the four legs cost */,
+    { act: 'SELL', tok: '31351186768315326460771976161382920909043553573272353666473916390357183809529', sh: 14.20, px: 0.9990 } /* Yelich RBI NO — rail payout #25, three 4.73-sh clips at 99.9c */,
+    { act: 'SELL', tok: '56078938060096976448086754249497300447360333783952000147427828224794011030104', sh: 5176.89, px: 0.2568 } /* BTC Dec-$100k YES — the >=25c distribution queue-join FILLED: 5,176.89 sh at 25.68c avg ($1,329.33), the largest single print since Aug 6 */,
+    { act: 'SELL', tok: '21209890653812186814248619913047412762177779312349880099050240669177189381593', sh: 70.67, px: 0.5770 } /* Anthropic highest-IPO-cap YES — punt-shelf exit at 57.7c, 7.7 pts over the >=50c re-open trigger; +$33.28 realized on the 10.61c residue basis */,
+    { act: 'SELL', tok: '114360814676723656908472400412863358263807885083510208644030301446128034414560', sh: 39.77, px: 0.9800 } /* SPY $720-low NO — near-band harvest, 39.77 sh at 98c */,
+    { act: 'SELL', tok: '70495113508210767655365291291788468538934663465126471715738169362699788708131', sh: 104.12, px: 0.9900 } /* AMZN $224-low NO — full exit of the carry leg at 99c, +$3.97 realized over the 96.19c fill */,
+    { act: 'SELL', tok: '102587121003409847003377550152130425968333220239163333181571343484358987889222', sh: 79.78, px: 0.9800 } /* MU >$800 YES trim at 98c — the resting offer finally printed */,
+    { act: 'BUY', tok: '56078938060096976448086754249497300447360333783952000147427828224794011030104', sh: 1491.15, px: 0.2735 } /* BTC Dec-$100k YES re-buy at 27.35c — 1.67 pts over the previous night's own distribution sale */,
+    { act: 'SELL', tok: '62174033562645769120246190297623781610533939632822008848983822335275512869792', sh: 38.68, px: 0.9960 } /* James Wood RBI NO — rail payout #26, half the leg at 99.6c */,
+    { act: 'SELL', tok: '74982300354231902205849663538606152588940436342760335825517353633724464241850', sh: 24.43, px: 0.9800 } /* MU >$820 YES trim at 98c — second clip of the resting offer */
   ];
   function refreshTracking() {
     Promise.all(TRACKED.map(function (t, i) {
@@ -1163,7 +1183,11 @@
     { tok: '89706022921501149384847021353587496883277465141816802927673604440172434177565', side: 'BUY', retPx: 0.065 } /* 8/18/26 PM — Alphabet-2nd-August $100 ticket: killed by the caps, not the book — Apple's +1.45% day pulled the #2 gap to 8.66%, cutting the fair 14.8 -> 9.45 over an unmoved 6.5 mid; -5.3 -> -2.95, under the bar */,
     { tok: '54288500488899075246367627195163472475615595062225751818759128802176967336777', side: 'SELL', retPx: 0.885 } /* 8/20/26 — ETH-2k no-thesis card: position closed by the account at 96.81c avg (row 198); scored from the 88.5 retirement mark */,
     { tok: '46552579038506701209087110814172553391939526036683166770317364680747842791908', side: 'BUY', retPx: 0.0795 } /* 8/20/26 — MSFT-3rd-Sept watch epilogue: aged out with the mark ON the T=29 fair (7.95 vs 7.7) */,
-    { tok: '58255742710354753372638105507395301856276470581760095695579319734210276720718', side: 'BUY', retPx: 0.045 } /* 8/21/26 — NVDA-2nd-Sept cheap watch: died by its own model on a closed-market walk — T 29→28 cut the fair 10.05→9.66, the 5.0c-ask edge slipped to -4.66 under the bar; ~$85 door never neared the $500 gate */
+    { tok: '58255742710354753372638105507395301856276470581760095695579319734210276720718', side: 'BUY', retPx: 0.045 } /* 8/21/26 — NVDA-2nd-Sept cheap watch: died by its own model on a closed-market walk — T 29→28 cut the fair 10.05→9.66, the 5.0c-ask edge slipped to -4.66 under the bar; ~$85 door never neared the $500 gate */,
+    { tok: '9875273331604434310973374077817381730908757452538191940842519381772366848', side: 'BUY', retPx: 0.1345 } /* 8/27/26 — Apple-Dec lift (GLOBAL #1 for six runs, -7.35 at its widest): the NVDA print re-marked the caps live (+7.20%) and the fair fell 20.95 -> 15.80 — edge -2.35, under the bar. Zero fills across seven walks of published edge; the frozen-cap edge was never banked and the print says it was never fully real */,
+    { tok: '69436436951640881186918962093978129047876125081246052069821867405322712154087', side: 'SELL', retPx: 0.805 } /* 8/27/26 — sep2AAPL fade (GLOBAL #2, +8.33 at its widest): the print took the mid 76.5 -> 80.5 AND the fair 68.17 -> 79.52 — edge +0.98, dead. The market was pricing the earnings gap the frozen caps could not see; the $300 door gate kept the ticket partial and unposted, which tonight reads as the gate working */,
+    { tok: '', side: 'SELL', retPx: 0 } /* 8/27/26 — MU 860/880 inversion exhibit: the reopened tape normalised the ordering (860 87.0 > 880 82.0 mids on 2,000-sh bids) — anomaly gone, nothing to capture; two-token exhibit, unscoreable */
+
   ]; /* {tok, side ('BUY'|'SELL'), retPx} — indices align with #retired-body rows' data-retired-* attrs */
   function refreshRetired() {
     RETIRED.forEach(function (t, i) {
