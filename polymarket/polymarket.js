@@ -1,24 +1,24 @@
-/* ==== baked odds history (daily CLOB closes, Jun 27 2026 onward; THURSDAY post-close evening walk Aug 27 22:43 UTC re-read the 'now' point on the CLOSE of the print day — NVDA finished +8.74% at $227.98 ($5,517.1B) against AAPL $4,620.3B / GOOGL $4,147.3B, lead 19.41% / $896.8B, the widest close of the series; T 2/23/87: fairs Dec NVDA 78.64 / AAPL 15.54 / GOOGL 4.12 — the December book OVERSHOT the fresh fair into the close (dec-NVDA 80.5, +1.86) while dec-AAPL slid to 11.25 (-4.29, widening back toward the bar it retired under this morning) ==== *//* ==== Polymarket Watch — charts + live refresh ==== */
+/* ==== baked odds history (daily CLOB closes, Jun 27 2026 onward; FRIDAY pre-open walk Aug 28 13:23 UTC re-read the 'now' point with caps frozen at the Aug 27 closes — NVDA $227.98 ($5,517.1B) vs AAPL $4,620.3B / GOOGL $4,147.3B, lead 19.41% / $896.8B; T 2/23/87: fairs Dec NVDA 78.68 / AAPL 15.55 / GOOGL 4.12 on a 0.75 small-leg allowance — the December book held its overshoot (dec-NVDA 80.5, +1.82) while dec-GOOGL walked to 8.5 (+4.38, the complex's largest residual) and dec-AAPL sat at 11.15 (-4.40, 0.60 from the re-entry bar) ==== */
 (function () {
   'use strict';
 
-  /* ==== baked odds history (daily CLOB closes, Jun 27 2026 onward; THURSDAY post-close evening walk Aug 27 22:43 UTC re-read the 'now' point — the print day CLOSED at caps NVDA $5,517.1B (+8.74%) / AAPL $4,620.3B / GOOGL $4,147.3B, lead 19.41% / $896.8B, dec mids 80.5/11.25/7.5/0.5 vs close-cap fairs 78.64/15.54/4.12 — dec-NVDA now +1.86 OVER its fair and dec-AAPL -4.29 under, both still inside the bar; July legs frozen) ==== */
+  /* ==== baked odds history (daily CLOB closes, Jun 27 2026 onward; FRIDAY pre-open walk Aug 28 13:23 UTC re-read the 'now' point — caps frozen at the Aug 27 closes (NVDA $5,517.1B / AAPL $4,620.3B / GOOGL $4,147.3B, lead 19.41% / $896.8B), dec mids 80.5/11.15/8.5/0.45 vs fairs 78.68/15.55/4.12 — dec-NVDA +1.82 still over its fair, dec-AAPL -4.40 under, dec-GOOGL +4.38 the widest residual; July legs frozen) ==== */
   var H = {
     decNVDA: [0.725,0.725,0.62,0.645,0.655,0.605,0.585,0.605,0.615,0.595,0.635,0.655,0.655,0.685,0.695,0.705,0.665,0.72,0.655,0.615,0.52,0.555,0.545,0.605,0.61,0.615,0.645,0.625,0.565,0.575,0.51,0.485,0.485,0.575,0.705,0.695,0.725,0.735,0.805],
-    decAAPL: [0.082,0.082,0.0965,0.095,0.108,0.1475,0.143,0.132,0.158,0.1555,0.1705,0.1265,0.1265,0.1405,0.1305,0.13,0.1705,0.1285,0.143,0.2285,0.345,0.328,0.3305,0.235,0.2025,0.1985,0.1985,0.2565,0.2995,0.281,0.353,0.289,0.3565,0.251,0.1645,0.1405,0.1435,0.141,0.1125],
-    decGOOGL: [0.115,0.115,0.155,0.165,0.16,0.155,0.165,0.175,0.165,0.165,0.165,0.155,0.155,0.145,0.145,0.145,0.12,0.105,0.12,0.125,0.105,0.105,0.105,0.105,0.125,0.105,0.105,0.105,0.095,0.095,0.105,0.135,0.145,0.13,0.105,0.125,0.115,0.125,0.075],
-    decSPCX: [0.0395,0.0395,0.0355,0.023,0.0225,0.0215,0.027,0.027,0.0235,0.0215,0.0205,0.022,0.0215,0.0185,0.02,0.019,0.0145,0.0135,0.0125,0.012,0.0085,0.0085,0.0085,0.0085,0.009,0.0095,0.0115,0.0125,0.015,0.0105,0.0095,0.017,0.0155,0.0175,0.0115,0.011,0.0115,0.0115,0.005]
+    decAAPL: [0.082,0.082,0.0965,0.095,0.108,0.1475,0.143,0.132,0.158,0.1555,0.1705,0.1265,0.1265,0.1405,0.1305,0.13,0.1705,0.1285,0.143,0.2285,0.345,0.328,0.3305,0.235,0.2025,0.1985,0.1985,0.2565,0.2995,0.281,0.353,0.289,0.3565,0.251,0.1645,0.1405,0.1435,0.141,0.1115],
+    decGOOGL: [0.115,0.115,0.155,0.165,0.16,0.155,0.165,0.175,0.165,0.165,0.165,0.155,0.155,0.145,0.145,0.145,0.12,0.105,0.12,0.125,0.105,0.105,0.105,0.105,0.125,0.105,0.105,0.105,0.095,0.095,0.105,0.135,0.145,0.13,0.105,0.125,0.115,0.125,0.085],
+    decSPCX: [0.0395,0.0395,0.0355,0.023,0.0225,0.0215,0.027,0.027,0.0235,0.0215,0.0205,0.022,0.0215,0.0185,0.02,0.019,0.0145,0.0135,0.0125,0.012,0.0085,0.0085,0.0085,0.0085,0.009,0.0095,0.0115,0.0125,0.015,0.0105,0.0095,0.017,0.0155,0.0175,0.0115,0.011,0.0115,0.0115,0.0045]
   };
   /* The September rank books listed Jul 29 and this page began recording them on
      Aug 10 (post-close walk, fetched 00:40 UTC Aug 11 — the first print), so the
-     series grows one point per run (twenty-sixth print: Aug 27 THURSDAY
-     post-close evening walk, books fetched 22:43 UTC — the seat kept drifting
-     the print's way into the close: sep2AAPL 80.5 -> 81.5 (+1.0) against a fair
-     that ran to 83.15 on the closing caps, sep2GOOGL 14.0 -> 12.5 (-1.5) onto a
-     12.70 fair, sep2NVDA gave back half its double, 7.0 -> 6.5 vs 3.25.
-     Seeded, not back-filled — no synthetic history. */
-  var SEPH = { sep2AAPL: [0.585,0.565,0.575,0.49,0.51,0.53,0.53,0.565,0.545,0.57,0.57,0.54,0.545,0.57,0.57,0.675,0.645,0.745,0.77,0.805,0.755,0.755,0.755,0.765,0.805,0.815], sep2GOOGL: [0.31,0.315,0.315,0.32,0.325,0.34,0.34,0.34,0.34,0.34,0.34,0.375,0.36,0.395,0.36,0.265,0.25,0.21,0.18,0.165,0.195,0.21,0.21,0.195,0.14,0.125], sep2NVDA: [0.085,0.08,0.08,0.095,0.085,0.085,0.08,0.085,0.08,0.075,0.075,0.08,0.075,0.07,0.07,0.05,0.05,0.05,0.05,0.045,0.045,0.045,0.045,0.05,0.07,0.065] };
-  var SEP_LABELS = ['8/10', '8/11', '8/11 PM', '8/12', '8/12 PM', '8/13', '8/13 PM', '8/14', '8/14 PM', '8/15', '8/15 PM', '8/16', '8/16 PM', '8/17', '8/17 PM', '8/18 PM', '8/18 LATE', '8/19', '8/20', '8/20 PM', '8/21', '8/22', '8/22 PM', '8/23', '8/27', '8/27 PM'];
+     series grows one point per run (twenty-seventh print: Aug 28 FRIDAY pre-open
+     walk, books fetched 13:23 UTC — the seat ran ON through its own fair overnight:
+     sep2AAPL 81.5 -> 85.5 (+4.0, matching the series' second-largest jump) against
+     an unmoved 83.15 fair — the fade that retired at +0.98 now reads +2.35 the
+     OTHER way; sep2GOOGL 12.5 -> 9.5 (-3.0) under its 12.70 fair, sep2NVDA held
+     6.5 vs 3.25. Seeded, not back-filled — no synthetic history. */
+  var SEPH = { sep2AAPL: [0.585,0.565,0.575,0.49,0.51,0.53,0.53,0.565,0.545,0.57,0.57,0.54,0.545,0.57,0.57,0.675,0.645,0.745,0.77,0.805,0.755,0.755,0.755,0.765,0.805,0.815,0.855], sep2GOOGL: [0.31,0.315,0.315,0.32,0.325,0.34,0.34,0.34,0.34,0.34,0.34,0.375,0.36,0.395,0.36,0.265,0.25,0.21,0.18,0.165,0.195,0.21,0.21,0.195,0.14,0.125,0.095], sep2NVDA: [0.085,0.08,0.08,0.095,0.085,0.085,0.08,0.085,0.08,0.075,0.075,0.08,0.075,0.07,0.07,0.05,0.05,0.05,0.05,0.045,0.045,0.045,0.045,0.05,0.07,0.065,0.065] };
+  var SEP_LABELS = ['8/10', '8/11', '8/11 PM', '8/12', '8/12 PM', '8/13', '8/13 PM', '8/14', '8/14 PM', '8/15', '8/15 PM', '8/16', '8/16 PM', '8/17', '8/17 PM', '8/18 PM', '8/18 LATE', '8/19', '8/20', '8/20 PM', '8/21', '8/22', '8/22 PM', '8/23', '8/27', '8/27 PM', '8/28'];
 
   var LABELS = (function () {
     var out = [], d = new Date(Date.UTC(2026, 5, 27));
@@ -266,7 +266,7 @@
         var RACE = ['AAPL', 'NVDA', 'GOOGL', 'MSFT', 'AMZN'];
         var SMALL = { jul: 0.15, aug: 0.45, dec: 0.80 }; /* untracked competitors, taken from THEIR OWN books, not guessed:
              aug = Tesla 0.15 + Aramco 0.25 + Broadcom 0.05 (Aug legs' own books re-read where quoted; Microsoft and Amazon are tracked names, not small legs);
-             dec = Tesla 0.15 + SpaceX 0.50 + Aramco 0.15 (re-read Aug 27 22:43Z off their OWN books — SpaceX halved again on the post-print books, total 0.80). Re-read every run — a mis-set allowance
+             dec = Tesla 0.15 + SpaceX 0.45 + Aramco 0.15 (re-read Aug 28 13:23Z off their OWN books — SpaceX eased another half-tick overnight, total 0.75). Re-read every run — a mis-set allowance
              moves the leader leg by ~0.6 pt, which is an eighth of the edges this page trades on. */
         var live = RACE.filter(function (s) { return caps[s]; });
         /* a single failed quote would drop a name from the ranking and inflate every survivor
@@ -314,8 +314,8 @@
       fmtAgo();
     }).catch(function () {
       setPills(false);
-      $('#last-updated').textContent = 'Snapshot · Aug 27, 2026 22:43 UTC — Thursday post-close evening walk on the print-day close (live APIs unreachable)';
-      var st = $('#sync-time'); if (st) st.textContent = 'Aug 27, 2026 22:43 UTC — Thursday post-close evening walk: NVDA closed +8.74% at $227.98 (lead 19.41%, the widest close of the series), BTC re-took $80,261, the December BTC ladder repriced CHEAP across its belly, and the window printed two 99c sells ($139.19, rows 251-252); balances re-baked (baked snapshot — live APIs unreachable)';
+      $('#last-updated').textContent = 'Snapshot · Aug 28, 2026 13:23 UTC — Friday pre-open walk (live APIs unreachable)';
+      var st = $('#sync-time'); if (st) st.textContent = 'Aug 28, 2026 13:23 UTC — Friday pre-open walk: caps frozen at the Aug 27 closes (NVDA $227.98, lead 19.41%), sep2AAPL ran to 85.5 (+2.35 OVER its fair), BTC slipped to $79,275 giving the December anchor back to 29.5 (under the 30c line), and the window printed two resting-order sells at 99-99.9c ($360.33, rows 253-254); balances re-baked (baked snapshot — live APIs unreachable)';
     });
   }
 
@@ -705,7 +705,8 @@
     }).catch(function () { /* keep baked snapshot */ });
   }
 
-  var ENGINE_CASH = 0; /* STILL UNOBSERVABLE — Aug 27 2026 Thursday EVENING update (22:43Z): THIRTY-SEVENTH consecutive run at $882.32 ($875.00 native + $7.32 bridged, re-read on-chain this walk). The nine-hour window since the morning walk printed exactly two fills, both SELLS at 99c — the SPY-720-low carry park closed ($118.13, row 251) and the GOOGL-390 nibble closed ($21.06, row 252) — so ~$139.19 more settled engine-side where no public endpoint can read it, on top of the morning's disclosed ~$4,364. Small, and again all one direction: the dark pool absorbs every sale. Floor stays 0; the hero figure remains a FLOOR, not an estimate.
+  var ENGINE_CASH = 0; /* STILL UNOBSERVABLE — Aug 28 2026 Friday PRE-OPEN update (13:23Z): THIRTY-EIGHTH consecutive run at $882.32 ($875.00 native + $7.32 bridged, re-read on-chain this walk). The overnight window printed four fills, all SELLS off resting orders — the WTI-130 rail residue cleared in three clips at 99.9c ($39.75, row 253) and the SPY-730 park trimmed 323.82 sh at 99c ($320.58, row 254) — so ~$360.33 more settled engine-side where no public endpoint can read it, taking the disclosed hole to ~$4,863. Still all one direction: the dark pool absorbs every sale. Floor stays 0; the hero figure remains a FLOOR, not an estimate.
+     Prior note, kept verbatim — Aug 27 2026 Thursday EVENING update (22:43Z): THIRTY-SEVENTH consecutive run at $882.32 ($875.00 native + $7.32 bridged, re-read on-chain this walk). The nine-hour window since the morning walk printed exactly two fills, both SELLS at 99c — the SPY-720-low carry park closed ($118.13, row 251) and the GOOGL-390 nibble closed ($21.06, row 252) — so ~$139.19 more settled engine-side where no public endpoint can read it, on top of the morning's disclosed ~$4,364. Small, and again all one direction: the dark pool absorbs every sale. Floor stays 0; the hero figure remains a FLOOR, not an estimate.
      Prior note, kept verbatim — Aug 23 2026 Sunday MORNING update (13:22Z): THIRTY-FIFTH consecutive run at $882.32 ($875.00 native + $7.32 bridged, re-read on-chain this walk) — and a SECOND consecutive fully empty tape: ZERO trades in the fourteen hours since the Saturday evening snapshot, so nothing moved on-chain or engine-side BY CONSTRUCTION. The -$410.42 fall in the floor is entirely marks — the 10Y-5.0% rung crashing 23.5 -> 15.5 on a shut bond market (-$751) against a BTC bounce that handed back ~$470 — plus $13.01 of Soto-walks value that left the /positions feed with its CLOB mid still printing 97.65 (a feed anomaly this page reports rather than papers over). Floor stays 0; the hero figure remains a FLOOR, not an estimate.
      Prior note, kept verbatim — Aug 22 2026 Saturday EVENING update (23:08Z): THIRTY-FOURTH consecutive run at $882.32 ($875.00 native + $7.32 bridged, re-read on-chain this walk) — and the cleanest window of the whole series: ZERO trades in the ten hours since the morning snapshot, the first fully empty tape since Aug 15, so nothing moved on-chain or engine-side BY CONSTRUCTION. The -$309.62 fall in the floor is entirely marks (the August BTC sweep bleeding to -$1,029 and the December ladder giving back ~$398). Floor stays 0; the hero figure remains a FLOOR, not an estimate.
      Prior note, kept verbatim — Aug 18 2026 Tuesday LATE update (02:04Z Aug 19, second evening pass): TWENTY-EIGHTH
@@ -1037,7 +1038,9 @@
     { act: 'SELL', tok: '62174033562645769120246190297623781610533939632822008848983822335275512869792', sh: 38.68, px: 0.9960 } /* James Wood RBI NO — rail payout #26, half the leg at 99.6c */,
     { act: 'SELL', tok: '74982300354231902205849663538606152588940436342760335825517353633724464241850', sh: 24.43, px: 0.9800 } /* MU >$820 YES trim at 98c — second clip of the resting offer */,
     { act: 'SELL', tok: '114360814676723656908472400412863358263807885083510208644030301446128034414560', sh: 119.32, px: 0.99 } /* 8/27/26 17:51Z SPY $720-low Aug NO — the carry park CLOSED at 99c, two sessions early; ~+$13 realized over the 88c basis */,
-    { act: 'SELL', tok: '102989311994667094556238101108060401526072526012421040716014843890342965446870', sh: 21.27, px: 0.99 } /* 8/27/26 18:59Z GOOGL $390-high Aug NO — the Aug 16 nibble closed at 99c off a 94c entry, +$1.06 */
+    { act: 'SELL', tok: '102989311994667094556238101108060401526072526012421040716014843890342965446870', sh: 21.27, px: 0.99 } /* 8/27/26 18:59Z GOOGL $390-high Aug NO — the Aug 16 nibble closed at 99c off a 94c entry, +$1.06 */,
+    { act: 'SELL', tok: '74753385292355732879917809656352834782762051527133442900841490505532116166739', sh: 39.79, px: 0.999 } /* 8/28/26 01:53-05:55Z WTI $130-high Aug NO — rail payout #27, the residue cleared at 99.9c in three clips */,
+    { act: 'SELL', tok: '95689164730031768195988398128003790785419450590110486478840404402798985620715', sh: 323.82, px: 0.99 } /* 8/28/26 10:50Z SPY $730-low Aug NO — the last low-ladder park trimmed itself at 99c; 236.74 sh remain */
   ];
   function refreshTracking() {
     Promise.all(TRACKED.map(function (t, i) {
