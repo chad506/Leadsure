@@ -1255,7 +1255,7 @@
       $$('.page-nav .nav-tab[data-view]').forEach(function (t) { t.classList.remove('active'); });
       tab.classList.add('active');
       var view = tab.getAttribute('data-view');
-      ['polymarket', 'largest', 'treasuries', 'bitcoin', 'tracking'].forEach(function (v) {
+      ['polymarket', 'largest', 'treasuries', 'bitcoin', 'iran', 'tracking'].forEach(function (v) {
         var el = document.getElementById('view-' + v);
         if (el) el.hidden = v !== view;
       });
