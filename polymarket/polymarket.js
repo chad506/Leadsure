@@ -352,6 +352,12 @@
         e.textContent = (edge >= 0 ? '+' : '\u2212') + Math.abs(edge * 100).toFixed(1);
         e.className = 'col-num' + (edge <= -0.025 ? ' pm-pos' : '');
       }
+      var rvEl = row.querySelector('[data-btc-rv]');
+      if (rvEl && mid > 0) {
+        var rv = fair / mid;
+        rvEl.textContent = (rv >= 10 ? rv.toFixed(1) : rv.toFixed(2)) + '\u00D7';
+        rvEl.className = 'col-num' + (edge <= -0.025 ? ' pm-pos' : '');
+      }
       var v = row.querySelector('[data-btc-verdict]');
       if (v) {
         var was = v.textContent.trim();
