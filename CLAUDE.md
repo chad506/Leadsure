@@ -278,8 +278,18 @@ effectiveness scoring, columns centered, and a totals row at the bottom.
   the ONLY data path for scheduled runs; if it is down, ingest what prior
   sessions disclosed, update ledgers honestly, do NOT restamp sections whose
   books were not re-walked, and say so on the page.
-- **Autodata outage record:** no results since Aug 31 19:23Z; the Sep 1
-  12:45Z/22:45Z crons produced nothing and pokes at 01:05Z and 23:22Z went
-  unanswered — the Action looks stuck or disabled. Fix at
-  https://github.com/chad506/Leadsure/actions (re-enable / cancel a hung run),
-  then delete this bullet once results flow again.
+- **Autodata outage record:** no results since Aug 31 19:23Z — FIVE missed
+  feed runs. Sep 1 12:45Z/22:45Z and Sep 2 12:45Z crons all silent; pokes at
+  Sep 1 01:05Z + 23:22Z, Sep 2 00:54Z, and Sep 2 13:11Z (this one touched
+  fetch/poke, so the paths-filtered push trigger definitely applied) all
+  unanswered. run.sh always writes _fetched_at.txt even when every fetch
+  fails, so the JOB IS NEVER STARTING — the Action itself is stuck or
+  disabled (billing/spending limit or a disabled workflow), not the fetch
+  script. Fix at https://github.com/chad506/Leadsure/actions (re-enable /
+  check Actions billing / cancel a hung run), then delete this bullet once
+  results flow again.
+- **Sep 2 AM caps-only precedent:** with autodata down, public Sep 1 closes
+  (stockanalysis.com history pages via WebSearch→WebFetch — WebFetch DOES
+  work unattended on URLs surfaced verbatim by a WebSearch in the same
+  session) let the run re-true caps + model fairs honestly while leaving
+  mids/books/balances/ledgers untouched and disclosed as stale.
