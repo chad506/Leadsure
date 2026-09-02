@@ -323,6 +323,15 @@
         v.className = 'pm-badge ' + (edge <= -0.025 ? 'pm-cheap' : edge >= 0.025 ? 'pm-rich' : 'pm-fair');
         v.textContent = edge <= -0.025 ? 'CHEAP' : edge >= 0.025 ? 'RICH' : 'FAIR';
       }
+      /* Sep 2 2026: RV (site standard, model value / mid) now re-derives live alongside edge,
+         same format and pm-pos rule as the Bitcoin tab. Non-ladder model rows (SPX, gold,
+         housing) carry data-pc == data-pe == their baked fair so the same path prices them. */
+      var rvEl = row.querySelector('[data-trs-rv]');
+      if (rvEl && mid > 0) {
+        var rv = fair / mid;
+        rvEl.textContent = (rv >= 10 ? rv.toFixed(1) : rv.toFixed(2)) + '×';
+        rvEl.className = 'col-num' + (edge <= -0.025 ? ' pm-pos' : '');
+      }
     });
   }
 
@@ -1024,7 +1033,21 @@
     { act: 'SELL', tok: '95689164730031768195988398128003790785419450590110486478840404402798985620715', sh: 323.82, px: 0.99 } /* 8/28/26 10:50Z SPY $730-low Aug NO — the last low-ladder park trimmed itself at 99c; 236.74 sh remain */,
     { act: 'SELL', tok: '53049739028670365953377531513580183628183853707672301760004000111406343250709', sh: 106.65, px: 0.9448 } /* 8/28/26 17:49+19:52Z MU >$860 YES — THE CARDED >=90c OFFER PRINTED twice (56.25 sh at 94c, 50.4 sh at 95c); 799.91 sh remain, MU closed $932.86 */,
     { act: 'BUY', tok: '27201221676173593121678787264361008606480627771007041356248031697735484721466', sh: 1428.64, px: 0.70 } /* 8/31/26 15:13Z BTC Dec-$85k YES — THE CONCENTRATION OVERRIDE: tripled the leg to 1,822.51 sh @ 68.58c blend, family back over the 20% line at 26.8% the night before the Sep 1 review; $1,021.00 USDC (negRisk ~2% premium over the $1,000.05 price basis) */,
-    { act: 'BUY', tok: '57813774524155463423838033259397133747187306761649300584910471142751787047106', sh: 120.58, px: 0.8293 } /* 9/1/26 01:10Z 10Y-4.8% rung 0 — SEVENTH uncarded add against the rung-0 card's written gates: $100.00 at 82.93c, 8.93 pts over the <=74c add door and roughly double its last-walked $54.01 shelf; position 439.28 sh @ 71.43c blend. Ingested by the Sep 1 PM scheduled run from the prior session's disclosure — autodata was DOWN this run (no results since Aug 31 19:23Z), so the baked mark is the Sep 1 03:59Z walk's 87.5 touch, not a fresh book */
+    { act: 'BUY', tok: '57813774524155463423838033259397133747187306761649300584910471142751787047106', sh: 120.58, px: 0.8293 } /* 9/1/26 01:10Z 10Y-4.8% rung 0 — SEVENTH uncarded add against the rung-0 card's written gates: $100.00 at 82.93c, 8.93 pts over the <=74c add door and roughly double its last-walked $54.01 shelf; position 439.28 sh @ 71.43c blend. Ingested by the Sep 1 PM scheduled run from the prior session's disclosure — autodata was DOWN this run (no results since Aug 31 19:23Z), so the baked mark is the Sep 1 03:59Z walk's 87.5 touch, not a fresh book */,
+    { act: 'BUY', tok: '57813774524155463423838033259397133747187306761649300584910471142751787047106', sh: 70.25, px: 0.8257 } /* 8/31/26 15:56Z 10Y hits 4.8% (YES) — ingested by the Sep 2 00:55Z Treasuries re-bake (row 258) */,
+    { act: 'BUY', tok: '22397766228589110871783272985290872433765236471932774952155419500943165057456', sh: 215.19, px: 0.2788 } /* 8/31/26 15:56Z 10Y hits 5.0% (YES) — ingested by the Sep 2 00:55Z Treasuries re-bake (row 259) */,
+    { act: 'BUY', tok: '22397766228589110871783272985290872433765236471932774952155419500943165057456', sh: 1338.16, px: 0.2989 } /* 8/31/26 16:21Z 10Y hits 5.0% (YES) — ingested by the Sep 2 00:55Z Treasuries re-bake (row 260) */,
+    { act: 'BUY', tok: '25472502502236710744675799561400967135875595061119902215625578202260735017994', sh: 192.31, px: 0.5200 } /* 9/1/26 03:47Z Gold touches $5,000 by December (YES) — ingested by the Sep 2 00:55Z Treasuries re-bake (row 261) */,
+    { act: 'BUY', tok: '8618184031231342643840589970076443003283607991865226846156174312081261691762', sh: 250.00, px: 0.0800 } /* 9/1/26 03:50Z Fed emergency cut before 2027 (YES) — ingested by the Sep 2 00:55Z Treasuries re-bake (row 262) */,
+    { act: 'BUY', tok: '79773570476744632615747480307256906441402089435470166694872527952303027818942', sh: 153.85, px: 0.1300 } /* 9/1/26 03:51Z Gold touches $6,000 by December (YES) — ingested by the Sep 2 00:55Z Treasuries re-bake (row 263) */,
+    { act: 'BUY', tok: '57813774524155463423838033259397133747187306761649300584910471142751787047106', sh: 20.90, px: 0.9091 } /* 9/1/26 03:56Z 10Y hits 4.8% (YES) — ingested by the Sep 2 00:55Z Treasuries re-bake (row 264) */,
+    { act: 'BUY', tok: '22397766228589110871783272985290872433765236471932774952155419500943165057456', sh: 39.99, px: 0.3800 } /* 9/1/26 04:01Z 10Y hits 5.0% (YES) — ingested by the Sep 2 00:55Z Treasuries re-bake (row 265) */,
+    { act: 'BUY', tok: '49955818039428095386956976055681140865441561732095652149645714273344189549953', sh: 65.56, px: 0.1525 } /* 9/1/26 04:36Z SPX touches 6,200 by December (YES) — ingested by the Sep 2 00:55Z Treasuries re-bake (row 266) */,
+    { act: 'BUY', tok: '57813774524155463423838033259397133747187306761649300584910471142751787047106', sh: 10.00, px: 0.8200 } /* 9/1/26 08:28Z 10Y hits 4.8% (YES) — ingested by the Sep 2 00:55Z Treasuries re-bake (row 267) */,
+    { act: 'BUY', tok: '57813774524155463423838033259397133747187306761649300584910471142751787047106', sh: 10.00, px: 0.8100 } /* 9/1/26 08:28Z 10Y hits 4.8% (YES) — ingested by the Sep 2 00:55Z Treasuries re-bake (row 268) */,
+    { act: 'SELL', tok: '57813774524155463423838033259397133747187306761649300584910471142751787047106', sh: 253.27, px: 0.9900 } /* 9/1/26 12:10Z 10Y hits 4.8% (YES) — ingested by the Sep 2 00:55Z Treasuries re-bake (row 269) */,
+    { act: 'BUY', tok: '57813774524155463423838033259397133747187306761649300584910471142751787047106', sh: 110.05, px: 0.9087 } /* 9/1/26 17:29Z 10Y hits 4.8% (YES) — ingested by the Sep 2 00:55Z Treasuries re-bake (row 270) */,
+    { act: 'BUY', tok: '57813774524155463423838033259397133747187306761649300584910471142751787047106', sh: 41.65, px: 0.9604 } /* 9/2/26 00:22Z 10Y hits 4.8% (YES) — ingested by the Sep 2 00:55Z Treasuries re-bake (row 271) */
   ];
   function refreshTracking() {
     Promise.all(TRACKED.map(function (t, i) {
