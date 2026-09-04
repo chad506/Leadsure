@@ -39,6 +39,9 @@ Long Exposure | Short Exposure | Sortino | Sharpe
 | `opus47` | Claude Opus 4.7 | 🌟 | Week 23 (4/28) | 35 |
 | `fable5` | Fable 5 | 🪄 | Week 35 (6/12) | 22 |
 | `opus48` | Claude Opus 4.8 | 💎 | Week 38 (6/22) | 15 |
+| `human` | Human | 🧑 | Week 45 (9/4) | 1 |
+
+`human` = Chad's own discretionary fund buys (periodic, sized at conviction — actual fund qty/price, not the $10k slot formula). Scored on the same leaderboard as the AI models; picks-history counts it separately ("N AI models + Human").
 
 ## Adding New Picks
 

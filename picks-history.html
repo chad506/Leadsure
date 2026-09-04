@@ -152,7 +152,7 @@ window.addEventListener('pageshow',function(e){if(e.persisted)location.reload();
        ============================================ */
 
     // Fund position symbols — picks matching these get highlighted
-    const FUND_SYMBOLS = new Set(['AAOI','ACLS','AEHR','ALAB','AMSC','AMD','APLD','ARM','BE','BMBL','CAT','CBRE','CIEN','COHR','COPX','CORZ','CRDO','CRM','CRWV','CTSH','DAVE','DELL','AGNT','FCG','FVRR','HUT','INTC','INTU','LITE','LZ','MRVL','MU','NBIS','NVDA','ONTO','PSFE','REMX','SITM','SNDK','STX','TSM','TTD','UPWK','VRT','WDC','WULF','Z','CNXC']);
+    const FUND_SYMBOLS = new Set(['ACLS','AEHR','ALAB','AMD','BE','BMBL','CAT','CBRE','COHR','COPX','CORZ','CRDO','CRWV','CTSH','DAVE','DELL','AGNT','FCG','FVRR','HUT','INTC','INTU','LITE','LZ','MRVL','MU','NBIS','NVDA','PSFE','SITM','SNDK','STX','TSM','TTD','UPWK','VRT','WDC','WULF','Z','SPCX']);
     const CLOSED_SYMBOLS = new Set(['CFLT']);  // delisted / position closed — show CLOSED badge, keep last price
 
     // ---- FORMATTERS (same as app.js) ----
@@ -490,7 +490,7 @@ window.addEventListener('pageshow',function(e){if(e.persisted)location.reload();
       const dateEl = document.getElementById('picks-history-date');
       if (dateEl) dateEl.textContent = MODEL_PICKS.date;
       const histDateEl = document.getElementById('history-date');
-      if (histDateEl) histDateEl.textContent = `${allPicks.length} picks across ${MODEL_PICKS.models.length} AI models since March 6, 2026`;
+      if (histDateEl) histDateEl.textContent = `${allPicks.length} picks across ${MODEL_PICKS.models.filter(m => m.id !== 'human').length} AI models + Human since March 6, 2026`;
 
       renderHistoryTable();
       initSort();
