@@ -278,21 +278,31 @@ effectiveness scoring, columns centered, and a totals row at the bottom.
   the ONLY data path for scheduled runs; if it is down, ingest what prior
   sessions disclosed, update ledgers honestly, do NOT restamp sections whose
   books were not re-walked, and say so on the page.
-- **Autodata outage record:** no results since Aug 31 19:23Z — EIGHT missed
-  feed runs. Sep 1, Sep 2 and Sep 3 crons (12:45Z/22:45Z each day) all
-  silent; pokes at Sep 1 01:05Z + 23:22Z, Sep 2 00:54Z + 13:11Z + 23:12Z,
-  and Sep 3 13:15Z + 23:10Z (several touched fetch/poke, so the
-  paths-filtered push trigger definitely applied) all unanswered. run.sh
-  always writes _fetched_at.txt even when every fetch fails, so the JOB IS
-  NEVER STARTING — the Action itself is stuck or disabled (billing/spending
-  limit or a disabled workflow), not the fetch script. Fix at
+- **Autodata outage record:** no results since Aug 31 19:23Z — NINE missed
+  feed runs. Sep 1, Sep 2, Sep 3 crons (12:45Z/22:45Z each day) and the
+  Sep 4 12:45Z cron all silent; pokes at Sep 1 01:05Z + 23:22Z, Sep 2
+  00:54Z + 13:11Z + 23:12Z, Sep 3 13:15Z + 23:10Z, and Sep 4 13:10Z +
+  13:12Z (several touched fetch/poke, so the paths-filtered push trigger
+  definitely applied) all unanswered. run.sh always writes _fetched_at.txt
+  even when every fetch fails, so the JOB IS NEVER STARTING — the Action
+  itself is stuck or disabled (billing/spending limit or a disabled
+  workflow), not the fetch script. Fix at
   https://github.com/chad506/Leadsure/actions (re-enable / check Actions
   billing / cancel a hung run), then delete this bullet once results flow
   again.
 - **Sep 3 AM run never published:** the Sep 3 AM scheduled Cowork session
   poked autodata at 13:15Z but pushed NO commit to main — the Sep 3 PM run
-  carried the whole day. If an AM gap repeats, check that scheduled task's
-  session output for what blocked its publish.
+  carried the whole day. The Sep 4 AM run DID publish (verification pass on
+  the Sep 3 finals), so the gap was a one-off; if an AM gap repeats, check
+  that scheduled task's session output for what blocked its publish.
+- **Sep 4 AM verification-pass precedent:** on a morning when no new close
+  exists (AM runs fire pre-open) and autodata is still down, the honest
+  caps-only move is a VERIFICATION PASS: re-verify the prior session's
+  closes against the history pages (the Sep 4 AM run caught NVDA's final
+  print revised $228.41 → $228.45), re-run the model on any revision with
+  calibration first, restamp only the touched surfaces, and extend the
+  outage chronicle. Premarket quotes may be quoted as color, clearly
+  labeled, never as model inputs.
 - **Sep 2 AM caps-only precedent:** with autodata down, public Sep 1 closes
   (stockanalysis.com history pages via WebSearch→WebFetch — WebFetch DOES
   work unattended on URLs surfaced verbatim by a WebSearch in the same
