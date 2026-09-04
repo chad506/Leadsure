@@ -281,15 +281,18 @@ effectiveness scoring, columns centered, and a totals row at the bottom.
   the ONLY data path for scheduled runs; if it is down, ingest what prior
   sessions disclosed, update ledgers honestly, do NOT restamp sections whose
   books were not re-walked, and say so on the page.
-- **Autodata outage record:** no results since Aug 31 19:23Z — NINE missed
-  feed runs. Sep 1, Sep 2, Sep 3 crons (12:45Z/22:45Z each day) and the
-  Sep 4 12:45Z cron all silent; pokes at Sep 1 01:05Z + 23:22Z, Sep 2
-  00:54Z + 13:11Z + 23:12Z, Sep 3 13:15Z + 23:10Z, and Sep 4 13:10Z +
-  13:12Z (several touched fetch/poke, so the paths-filtered push trigger
-  definitely applied) all unanswered. run.sh always writes _fetched_at.txt
-  even when every fetch fails, so the JOB IS NEVER STARTING — the Action
-  itself is stuck or disabled (billing/spending limit or a disabled
-  workflow), not the fetch script. Fix at
+- **Autodata outage record:** no results since Aug 31 19:23Z — TEN missed
+  feed runs. Every cron Sep 1–4 (12:45Z/22:45Z daily) silent; pokes at
+  Sep 1 01:05Z + 23:22Z, Sep 2 00:54Z + 13:11Z + 23:12Z, Sep 3 13:15Z +
+  23:10Z, Sep 4 13:10Z + 13:12Z + 23:08Z + 23:12Z (several touched
+  fetch/poke, so the paths-filtered push trigger definitely applied — note
+  an EMPTY commit does NOT fire it; a poke must modify fetch/poke) all
+  unanswered. run.sh always writes _fetched_at.txt even when every fetch
+  fails, so the JOB IS NEVER STARTING — the Action itself is stuck or
+  disabled (billing/spending limit or a disabled workflow), not the fetch
+  script. gh/api.github.com is proxy-blocked from cloud sessions (no
+  add_repo tool exists there), so Actions state cannot be read or
+  re-enabled from a scheduled run. Fix at
   https://github.com/chad506/Leadsure/actions (re-enable / check Actions
   billing / cancel a hung run), then delete this bullet once results flow
   again.
@@ -306,6 +309,13 @@ effectiveness scoring, columns centered, and a totals row at the bottom.
   calibration first, restamp only the touched surfaces, and extend the
   outage chronicle. Premarket quotes may be quoted as color, clearly
   labeled, never as model inputs.
+- **Sep 4 PM (fifth caps-only session):** published on the Sep 4 closes —
+  Friday risk-off, lead 14.69% → 18.62%/$875.2B, T 17/81, Dec fairs
+  79.81/16.03/2.91/0.52; dec-AAPL CHEAP badge OFF (−2.28 — the Aug 28
+  re-entry ticket loses model support), dec-NVDA −2.31 (72¢ GTC cancel
+  moot-if-confirmed), dec-GOOGL RICH +5.59 a fourth run, sep2AAPL seat
+  −10.93 under fair (widest yet, first in the re-walk queue). Activity
+  audit blind since Sep 2 00:57Z. Next close Tuesday Sep 8 (Labor Day).
 - **Sep 2 AM caps-only precedent:** with autodata down, public Sep 1 closes
   (stockanalysis.com history pages via WebSearch→WebFetch — WebFetch DOES
   work unattended on URLs surfaced verbatim by a WebSearch in the same
