@@ -75,12 +75,19 @@
   .hy-grid td.hy-liq { background: color-mix(in srgb, var(--color-loss) 32%, transparent); }
   .hy-grid td.hy-liq .hy-cell-o { color: var(--color-loss); letter-spacing: 0.08em; }
   .hy-grid td.hy-beta { box-shadow: inset 0 0 0 2px var(--color-primary); }
-  /* dense grid ($1k × $1 rungs): one number per cell, no wide last column */
+  /* dense grid ($1k × $1 rungs): one number per cell, no wide last column; high-contrast text on the tints */
   .hy-table.hy-grid td:last-child, .hy-table.hy-scen td:last-child { min-width: 0; white-space: nowrap; }
-  .hy-grid-dense th, .hy-grid-dense td { padding: 4px 5px; min-width: 0; font-size: 0.72rem; }
-  .hy-grid-dense td { min-width: 52px; }
-  .hy-grid-dense .hy-cell-o { font-size: 0.74rem; font-weight: 600; }
-  .hy-grid-dense th.hy-grid-row { font-size: 0.74rem; position: sticky; left: 0; z-index: 1; background: var(--color-surface-offset); }
+  .hy-grid-dense th, .hy-grid-dense td { padding: 5px 6px; min-width: 0; font-size: 0.8rem; }
+  .hy-grid-dense td { min-width: 58px; }
+  .hy-grid-dense thead th { font-size: 0.8rem; color: var(--color-text); }
+  .hy-grid-dense .hy-cell-o { font-size: 0.82rem; font-weight: 700; color: var(--color-text); letter-spacing: 0; }
+  .hy-grid-dense td.hy-up { background: color-mix(in srgb, var(--color-gain) 26%, var(--color-surface)); }
+  .hy-grid-dense td.hy-dn { background: color-mix(in srgb, var(--color-loss) 26%, var(--color-surface)); }
+  .hy-grid-dense td.hy-up .hy-cell-o, .hy-grid-dense td.hy-dn .hy-cell-o { color: var(--color-text); }
+  .hy-grid-dense td.hy-liq { background: color-mix(in srgb, var(--color-loss) 62%, var(--color-surface)); }
+  .hy-grid-dense td.hy-liq .hy-cell-o { color: #fff; letter-spacing: 0.06em; }
+  .hy-grid-dense td.hy-beta { box-shadow: inset 0 0 0 2px var(--color-primary); }
+  .hy-grid-dense th.hy-grid-row { font-size: 0.8rem; position: sticky; left: 0; z-index: 1; background: var(--color-surface-offset); color: var(--color-text) !important; }
   .hy-grid-dense th.hy-grid-corner { position: sticky; left: 0; z-index: 3; background: var(--color-surface); }
   #scen-grid-wrap { overflow-x: auto; }   /* no inner vertical scroll box — it trapped the page scroll; the grid scrolls sideways only */
   .hy-grid-dense thead th { position: static; }
