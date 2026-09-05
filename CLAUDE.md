@@ -170,6 +170,10 @@ analysis — **never place, cancel or modify an order from any page or script he
   not marketable at trigger rest as limits. TWAP remainder spread along the path (the tables); sensitivities
   shown for cancelled / path / filled-first. Hold-as-is liquidation by bisection; liquidation = end of
   scenario (the method block explains HL's 20%-chunk close and backstop rule). Funding not charged.
+- **Every liquidation price shown is the EFFECTIVE one** (Chad's standing rule, Sep 5 2026): the price at which the
+  book crosses maintenance on a straight adverse path with every resting order executing on the way (stops, bids,
+  ladders), TWAP remainder excluded. The exchange's liquidationPx (nothing executes) is shown only as "exchange
+  quote" and used for the model check. Chat recalcs follow the same rule — quote the effective number first.
 - Findings/method must keep disclosing: liquidation ≠ zero, TWAP-timing range, beta R² and co-move range,
   funding horizon, stop round-trips.
 - `.hy-findings li strong` is display:block (card titles) — inline emphasis inside findings uses `<em>`.
