@@ -11,7 +11,7 @@
   var API = 'https://api.hyperliquid.xyz/info';
   var REFRESH_S = 60;
   var TAKER = 0.00035, MAKER = 0.00010;
-  var STEPS = 1000;
+  var STEPS = 800, GRID_STEPS = 300;
   var FETCH_TIMEOUT_MS = 20000;
 
   // ---------------------------------------------------------------- formatting
@@ -129,9 +129,10 @@
 
   // with orders along a straight path. opts.twap: 'path' | 'none' | 'first'
   function simulate(book, targets, opts) {
+    // Straight-line path in every moved coin. Each coin's price is monotone along the path, so its orders can be
+    // queued in the order they will be reached and consumed with a cursor — O(steps + orders) per scenario.
     opts = opts || {}; var mode = opts.twap || 'path'; var N = opts.steps || STEPS;
     var st = mkState(book);
-    var pend = book.orders.filter(function (o) { return o.coin in st.sz; }).map(function (o) { var c = {}; for (var k in o) c[k] = o[k]; c.done = false; return c; });
     var tw = book.twaps.filter(function (t) { return t.coin in st.sz; }).map(function (t) { return { coin: t.coin, side: t.side, reduceOnly: t.reduceOnly, rem: Math.max(0, t.sz - t.executed), filled: 0, ntl: 0 }; });
     var stats = {}; for (var c in st.sz) stats[c] = { sold: 0, soldNtl: 0, bought: 0, boughtNtl: 0, twap: 0, twapNtl: 0, ladderSold: 0, ladderNtl: 0, stopSold: 0, stopNtl: 0 };
     var fees = 0, liq = null, liqMaint = null, liqEq = null, liqSz = null;
@@ -148,6 +149,35 @@
       else { s.sold += q; s.soldNtl += q * fillPx; if (kind === 'ladder') { s.ladderSold += q; s.ladderNtl += q * fillPx; } else { s.stopSold += q; s.stopNtl += q * fillPx; } }   // closes part of the position
       return q;
     }
+    function execOrder(o, p, px) {   // o has been reached by the path at price p; returns true if it is consumed
+      var fillPx = 0, fee = MAKER, kind = 'ladder';
+      if (o.isTrigger) {
+        var marketable = !o.isLimitTrigger || (o.side === 'A' ? o.px <= p : o.px >= p);
+        if (!marketable) { o.isTrigger = false; return false; }   // stop-limit / take-profit-limit whose limit is not yet marketable now rests as a plain limit
+        var sl = slipOf(o.coin); fillPx = o.triggerPx * (o.side === 'A' ? 1 - sl : 1 + sl); fee = TAKER; kind = 'stop';
+      } else fillPx = o.side === 'A' ? Math.max(o.px, p) : Math.min(o.px, p);   // a limit already marketable fills at the better price
+      var dir = o.side === 'B' ? 1 : -1, q = o.sz;
+      if (o.reduceOnly) { if (st.sz[o.coin] === 0 || Math.sign(st.sz[o.coin]) === dir) return true; q = Math.min(q, Math.abs(st.sz[o.coin])); }
+      fill(o.coin, dir, q, fillPx, fee, px, false, kind);
+      return true;
+    }
+    // queues: per coin, the orders the path can reach, sorted in the order the path reaches them
+    function firePx(o) { return o.isTrigger ? o.triggerPx : o.px; }
+    function firesDown(o) { return o.isTrigger ? o.trigDir === 'below' : o.side === 'B'; }   // reached by a falling price
+    var queues = {}, immediate = [], converted = [];
+    book.orders.forEach(function (o) {
+      if (!(o.coin in st.sz)) return;
+      var q = {}; for (var k in o) q[k] = o[k];
+      var m0 = st.mark[o.coin], d = (o.coin in targets) ? Math.sign(targets[o.coin] - m0) : 0;
+      var already = firesDown(q) ? firePx(q) >= m0 : firePx(q) <= m0;   // condition already true at today's mark
+      if (already) { immediate.push(q); return; }
+      if (d === 0) return;                                                 // this coin does not move: nothing else on it is reached
+      if (firesDown(q) !== (d < 0)) return;                                // wrong side of the path
+      if (!queues[o.coin]) queues[o.coin] = [];
+      queues[o.coin].push(q);
+    });
+    for (var qc in queues) queues[qc].sort(function (a, b) { return (targets[qc] < st.mark[qc]) ? firePx(b) - firePx(a) : firePx(a) - firePx(b); });
+    var cursor = {}; for (var qc2 in queues) cursor[qc2] = 0;
 
     if (mode === 'first') {
       var px0 = pricesAt(st, targets, 0);
@@ -160,23 +190,17 @@
         tw.forEach(function (t) { if (t.rem <= 0) return; var dir = t.side === 'B' ? 1 : -1; var q = t.rem / N; if (t.reduceOnly) { if (st.sz[t.coin] === 0 || Math.sign(st.sz[t.coin]) === dir) return; q = Math.min(q, Math.abs(st.sz[t.coin])); }
           var f = fill(t.coin, dir, q, px[t.coin], TAKER, px, true); t.filled += f; t.ntl += f * px[t.coin]; });
       }
-      for (var j = 0; j < pend.length; j++) {
-        var o = pend[j]; if (o.done) continue;
-        var p = px[o.coin], fire = false, fillPx = 0, fee = MAKER, kind = 'ladder';
-        if (o.isTrigger) {
-          if (o.trigDir === 'below' ? p <= o.triggerPx : p >= o.triggerPx) {
-            var marketable = !o.isLimitTrigger || (o.side === 'A' ? o.px <= p : o.px >= p);
-            if (marketable) { fire = true; var sl = slipOf(o.coin); fillPx = o.triggerPx * (o.side === 'A' ? 1 - sl : 1 + sl); fee = TAKER; kind = 'stop'; }
-            else { o.isTrigger = false; continue; }   // a stop-limit / take-profit-limit whose limit is not yet marketable now rests as a plain limit
-          }
+      if (i === 1 && immediate.length) { immediate.forEach(function (o) { if (!execOrder(o, px[o.coin], px)) converted.push(o); }); immediate = []; }
+      for (var c3 in queues) {
+        var list = queues[c3], p = px[c3], down = targets[c3] < st.mark[c3];
+        while (cursor[c3] < list.length) {
+          var o = list[cursor[c3]], fp = firePx(o);
+          if (down ? p > fp : p < fp) break;   // not reached yet (and nothing behind it is either)
+          cursor[c3]++;
+          if (!execOrder(o, p, px)) converted.push(o);
         }
-        else if (o.side === 'B' ? p <= o.px : p >= o.px) { fire = true; fillPx = o.side === 'A' ? Math.max(o.px, p) : Math.min(o.px, p); }   // a limit already marketable fills at the better price
-        if (!fire) continue;
-        o.done = true;
-        var dir = o.side === 'B' ? 1 : -1, q = o.sz;
-        if (o.reduceOnly) { if (st.sz[o.coin] === 0 || Math.sign(st.sz[o.coin]) === dir) continue; q = Math.min(q, Math.abs(st.sz[o.coin])); }
-        fill(o.coin, dir, q, fillPx, fee, px, false, kind);
       }
+      if (converted.length) { converted = converted.filter(function (o) { var p2 = px[o.coin]; if (o.side === 'B' ? p2 <= o.px : p2 >= o.px) { execOrder(o, p2, px); return false; } return true; }); }
       var eqNow = equityAt(st, px), mtNow = maintAt(st, px);
       if (eqNow < mtNow) { liq = px; liqMaint = mtNow; liqEq = eqNow; liqSz = {}; for (var cc in st.sz) liqSz[cc] = st.sz[cc]; break; }
     }
@@ -245,7 +269,8 @@
   }
 
   function niceStep(x) { var e = Math.pow(10, Math.floor(Math.log10(x))), m = x / e, best = 1, bd = 1e9; [1, 2, 2.5, 5, 10].forEach(function (c) { var d = Math.abs(Math.log(m / c)); if (d < bd) { bd = d; best = c; } }); return best * e; }
-  function rungs(p, below, above) { var step = niceStep(p * 0.06), k0 = Math.round(p / step), out = []; for (var k = k0 - below; k <= k0 + above; k++) out.push(+(k * step).toPrecision(12)); return { step: step, list: out.filter(function (v) { return v > 0; }) }; }
+  function rungs(p, loF, hiF) { // step ≈ 1.25% of price rounded to a nice number (BTC → $1,000, HYPE → $1); range loF·p … hiF·p
+    var step = niceStep(p * 0.0125), k0 = Math.round(loF * p / step), k1 = Math.round(hiF * p / step), out = []; for (var k = k0; k <= k1; k++) out.push(+(k * step).toPrecision(12)); return { step: step, list: out.filter(function (v) { return v > 0; }) }; }
 
   // ---------------------------------------------------------------- compute everything
   function compute(book) {
@@ -267,7 +292,7 @@
     R.eqAtTrigger = fullP.liq ? fullP.liqMaint : null; R.szAtTrigger = fullP.liq ? fullP.liqSz : null;
     R.comove = {}; if (S) [0, 1, 2, 3].concat([R.beta]).forEach(function (k) { var m = {}; m[P.coin] = 1; m[S.coin] = k; R.comove[k] = effLiq(book, P.coin, m); });
     // rungs
-    R.rP = P.sz > 0 ? rungs(P.mark, 2, 4) : rungs(P.mark, 4, 2); R.rS = S ? (S.sz > 0 ? rungs(S.mark, 3, 5) : rungs(S.mark, 5, 3)) : null;
+    R.rP = P.sz > 0 ? rungs(P.mark, 0.88, 1.38) : rungs(P.mark, 0.62, 1.12); R.rS = S ? (S.sz > 0 ? rungs(S.mark, 0.82, 1.29) : rungs(S.mark, 0.71, 1.18)) : null;
     function tg(c, v) { var t = {}; t[c] = v; return t; }
     R.A = R.rP.list.map(function (x) {
       var row = { x: x, pct: x / P.mark - 1, hold: holdAsIs(book, tg(P.coin, x)), ord: simulate(book, tg(P.coin, x)), none: simulate(book, tg(P.coin, x), { twap: 'none' }), first: simulate(book, tg(P.coin, x), { twap: 'first' }) };
@@ -275,7 +300,7 @@
       return row;
     });
     R.B = S ? R.rS.list.map(function (y) { return { y: y, pct: y / S.mark - 1, hold: holdAsIs(book, tg(S.coin, y)), ord: simulate(book, tg(S.coin, y)) }; }) : null;
-    R.G = S ? R.rP.list.map(function (x) { return R.rS.list.map(function (y) { var t = tg(P.coin, x); t[S.coin] = y; return { x: x, y: y, hold: holdAsIs(book, t), ord: simulate(book, t) }; }); }) : null;
+    R.G = S ? R.rP.list.map(function (x) { return R.rS.list.map(function (y) { var t = tg(P.coin, x); t[S.coin] = y; return { x: x, y: y, hold: holdAsIs(book, t), ord: simulate(book, t, { steps: GRID_STEPS }) }; }); }) : null;
     // after the TWAPs
     var hasTwap = book.twaps.some(function (t) { return t.coin in st0.sz && t.sz - t.executed > 1e-9; });
     R.hasTwap = hasTwap;
@@ -305,7 +330,8 @@
   function render(R) {
     var book = R.book, P = R.P, S = R.S, EQ = book.eq, hasTwap = R.hasTwap;
     var isLong = P.sz > 0, A = isLong ? R.A : R.A.slice().reverse();   // A runs from the loss side to the profit side
-    var top = A[A.length - 1], mid1 = A[Math.min(3, A.length - 1)], mid2 = A[Math.min(4, A.length - 1)], near = A[Math.min(2, A.length - 1)];
+    function rungNear(f) { var target = P.mark * f, best = A[0], bd = Infinity; A.forEach(function (r) { var d = Math.abs(r.x - target); if (d < bd) { bd = d; best = r; } }); return best; }
+    var top = A[A.length - 1], near = rungNear(1), mid1 = rungNear(isLong ? 1.065 : 0.935), mid2 = rungNear(isLong ? 1.13 : 0.87);
     var lo1 = A[0], lo2 = A[1];
     var closeVerb = isLong ? 'sold' : 'bought back', favWord = isLong ? 'up' : 'down', advWord = isLong ? 'down' : 'up', stopVerb = isLong ? 'sell into a fall' : 'buy into a rally';
     var anyShort = book.positions.some(function (p) { return p.sz < 0; });
@@ -383,7 +409,7 @@
       var h = r.hold, o = r.ord, s = o.stats[pName], sold = s.sold, soldAvg = sold ? s.soldNtl / sold : 0, tw = o.twap[pName] ? o.twap[pName].filled : 0, twAvg = tw ? o.twap[pName].ntl / tw : 0;
       var html = '<tr><td class="pm-co"><strong>' + pxf(r.x) + '</strong></td><td class="col-num ' + cls(r.pct) + '">' + pct(r.pct) + '</td>';
       html += h.liq ? liqCell(h, pName, 3) : '<td class="col-num"><strong>' + usd(h.eq) + '</strong></td><td class="col-num ' + cls(h.pnl) + '">' + sgn(h.pnl) + '</td><td class="col-num ' + cls(h.pnl) + '">' + pct(h.pnl / EQ, 0) + '</td>';
-      if (o.liq) html += liqCell(o, pName, 5) + '<td class="col-num">—</td>';
+      if (o.liq) html += liqCell((r.none && r.none.liq) ? r.none : o, pName, 5) + '<td class="col-num">—</td>';
       else html += '<td class="col-num">' + szf(pName, Math.abs(o.sz[pName])) + '</td><td class="col-num">' + (sold ? szf(pName, sold) + ' @ ' + pxf(soldAvg) : 'none') + '</td><td class="col-num">' + (tw ? szf(pName, tw) + ' @ ' + pxf(twAvg) : (hasTwap ? '0' : '—')) + '</td><td class="col-num"><strong>' + usd(o.eq) + '</strong></td><td class="col-num ' + cls(o.pnl) + '">' + sgn(o.pnl) + '</td><td class="col-num ' + cls(o.eq - h.eq) + '">' + sgn(o.eq - h.eq) + '</td>';
       if (S) html += '<td class="col-num">' + pxf(r.yBeta) + '</td><td class="col-num">' + (r.holdBeta.liq ? '<span class="pm-neg">liq ' + pxf(r.holdBeta.liq[pName]) + '</span>' : usd(r.holdBeta.eq)) + '</td><td class="col-num">' + (r.ordBeta.liq ? '<span class="pm-neg">liq ' + pxf(r.ordBeta.liq[pName]) + '</span>' : usd(r.ordBeta.eq)) + '</td>';
       return html + '</tr>';
@@ -411,13 +437,14 @@
     var secG = document.getElementById('scen-sec-grid');
     if (S) {
       secG.hidden = false;
-      document.getElementById('scen-grid-title').textContent = 'Both Legs — Equity With Orders (Hold As-Is Beneath), ' + pName + ' Down the Side, ' + sName + ' Across';
+      document.getElementById('scen-grid-title').textContent = 'Both Legs — Equity With Orders, ' + pName + ' Down the Side in ' + pxf(R.rP.step) + ' Steps, ' + sName + ' Across in ' + pxf(R.rS.step) + ' Steps';
       var betaCol = {}; R.A.forEach(function (r) { var nearest = null, bd = Infinity; R.rS.list.forEach(function (c) { var d = Math.abs(c - r.yBeta); if (d < bd) { bd = d; nearest = c; } }); if (bd <= 0.7 * R.rS.step) betaCol[r.x] = nearest; });
-      var offGrid = R.A.filter(function (r) { return betaCol[r.x] === undefined; }).map(function (r) { return pName + ' ' + pxf(r.x) + ' → ' + sName + ' ' + pxf(r.yBeta); });
-      document.getElementById('scen-grid-note').innerHTML = 'Each cell: equity with orders on a straight path to that ' + pName + '/' + sName + ' pair, and hold-as-is equity underneath. LIQ = the path crosses maintenance margin before arriving. Outlined cells sit closest to the beta-consistent pair (' + sName + ' moving ' + R.beta.toFixed(2) + '× ' + pName + ')' + (offGrid.length ? '; off the grid: ' + offGrid.join(', ') : '') + '.';
+      var offRows = R.A.filter(function (r) { return betaCol[r.x] === undefined; });
+      var offGrid = offRows.length ? [offRows.length + ' row' + (offRows.length === 1 ? '' : 's') + ' (' + pName + ' ' + pxf(offRows[0].x) + (offRows.length > 1 ? '–' + pxf(offRows[offRows.length - 1].x) : '') + ') have their beta-consistent ' + sName + ' beyond the grid’s edge'] : [];
+      document.getElementById('scen-grid-note').innerHTML = 'Each cell: equity with orders on a straight path to that ' + pName + '/' + sName + ' pair, in thousands; hover a cell for the exact figure and the hold-as-is equity. LIQ = the path crosses maintenance margin before arriving. Outlined cells sit closest to the beta-consistent pair (' + sName + ' moving ' + R.beta.toFixed(2) + '× ' + pName + ')' + (offGrid.length ? '; off the grid: ' + offGrid.join(', ') : '') + '. ' + R.G.length + ' × ' + R.G[0].length + ' = ' + (R.G.length * R.G[0].length).toLocaleString('en-US') + ' scenarios, each a full path simulation; the table scrolls sideways. An isolated LIQ next to survivors is real, not noise: a rung that stops just short of a stop’s trigger keeps that leg’s full maintenance, while its neighbour fires the stop.';
       var gh = '<tr><th class="hy-grid-corner">' + pName + ' ↓ · ' + sName + ' →</th>' + R.rS.list.map(function (y) { return '<th>' + pxf(y) + '</th>'; }).join('') + '</tr>';
-      var gr = R.G.map(function (row) { return '<tr><th class="hy-grid-row">' + pxf(row[0].x) + '</th>' + row.map(function (c) { var o = c.ord, h = c.hold, mark = betaCol[c.x] === c.y ? ' hy-beta' : ''; var hv = h.liq ? 'liq' : usd(h.eq); if (o.liq) return '<td class="hy-liq' + mark + '"><span class="hy-cell-o">LIQ</span><span class="hy-cell-h">hold ' + hv + '</span></td>'; return '<td class="' + (o.pnl > 0 ? 'hy-up' : 'hy-dn') + mark + '"><span class="hy-cell-o">' + usd(o.eq) + '</span><span class="hy-cell-h">hold ' + hv + '</span></td>'; }).join('') + '</tr>'; });
-      document.getElementById('scen-grid-wrap').innerHTML = '<table class="pm-table hy-table hy-grid"><thead>' + gh + '</thead><tbody>' + gr.join('\n') + '</tbody></table>';
+      var gr = R.G.map(function (row) { return '<tr><th class="hy-grid-row">' + pxf(row[0].x) + '</th>' + row.map(function (c) { var o = c.ord, h = c.hold, mark = betaCol[c.x] === c.y ? ' hy-beta' : ''; var tip = pName + ' ' + pxf(c.x) + ' · ' + sName + ' ' + pxf(c.y) + ' — with orders ' + (o.liq ? 'liquidated at ' + pName + ' ' + pxf(o.liq[pName]) : usd(o.eq) + ' (' + sgn(o.pnl) + ')') + ' · hold as-is ' + (h.liq ? 'liquidated' : usd(h.eq) + ' (' + sgn(h.pnl) + ')'); if (o.liq) return '<td class="hy-liq' + mark + '" title="' + esc(tip) + '"><span class="hy-cell-o">LIQ</span></td>'; return '<td class="' + (o.pnl > 0 ? 'hy-up' : 'hy-dn') + mark + '" title="' + esc(tip) + '"><span class="hy-cell-o">' + kf(o.eq) + '</span></td>'; }).join('') + '</tr>'; });
+      document.getElementById('scen-grid-wrap').innerHTML = '<table class="pm-table hy-table hy-grid hy-grid-dense"><thead>' + gh + '</thead><tbody>' + gr.join('\n') + '</tbody></table>';
     } else secG.hidden = true;
 
     // Resting orders table

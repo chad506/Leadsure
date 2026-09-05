@@ -153,8 +153,10 @@ analysis — **never place, cancel or modify an order from any page or script he
   browser from `api.hyperliquid.xyz/info` (CORS-open: webData2 → positions, marks, margin tiers, open orders
   with triggers, TWAP states; userFunding; two 60-day candle series) every 60 s and prices the book at price
   rungs two ways — HOLD AS-IS and WITH ORDERS (every resting order/TWAP executes along a straight-line path).
-  Rungs: primary coin (largest notional) 7 rungs at a "nice" step ≈ 6% of price (BTC → $5k, 70k–100k at
-  ~80k); secondary coin 9 rungs; plus a joint grid. Generalised to whatever the account holds (shorts get
+  Rungs (Chad's spec, Sep 5): primary coin (largest notional) in steps ≈ 1.25% of price rounded nice (BTC →
+  $1,000) from 0.88× to 1.38× the mark (70k–110k at ~80k); secondary coin in $1 steps (HYPE) from 0.82× to
+  1.29× (70–110 at ~85); joint grid ≈ 41 × 41 (dense cells, hover for detail, sticky headers, scrolls).
+  simulate() uses per-coin sorted order queues (O(steps + orders)); grid cells run 300 steps, tables 800. Generalised to whatever the account holds (shorts get
   rungs in their favour downward). Maintenance = half the IM at max leverage, cumulative across margin tiers;
   the page prints an **exchange check** every read (model liq vs liquidationPx, model maintenance vs
   crossMaintenanceMarginUsed, model IM vs totalMarginUsed) — if any of those show ✗, the model is wrong,
