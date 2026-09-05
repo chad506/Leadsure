@@ -204,6 +204,28 @@
     return st;
   }
 
+  // EFFECTIVE liquidation: the price at which the book crosses maintenance on a straight adverse path with every resting
+  // order executing on the way (stops, bids, ladders) — i.e. "as if the stops fire". TWAP remainder excluded by default
+  // (it is time-dependent); opts.twap = 'path' includes it spread along the path.
+  function effLiq(book, coin, moves, opts) {
+    var P = book.positions.filter(function (p) { return p.coin === coin; })[0]; if (!P) return null;
+    var adverse = P.sz > 0 ? -1 : 1;                       // a long is hurt by a fall, a short by a rise
+    var targets = {};
+    book.positions.forEach(function (p) { var m = moves[p.coin]; if (m === undefined) return; targets[p.coin] = p.mark * (1 + adverse * m * (P.sz > 0 ? 1 : 1) * 0.6 * (p.coin === coin ? 1 : 1)); });
+    // secondary coins move m × the primary's percentage move, in the same direction
+    for (var c in targets) if (c !== coin) targets[c] = book.positions.filter(function (p) { return p.coin === c; })[0].mark * (1 + adverse * 0.6 * moves[c]);
+    var r = simulate(book, targets, { twap: (opts && opts.twap) || 'none', steps: 4000 });
+    return r.liq ? r.liq[coin] : null;
+  }
+  function bookAfterTwaps(book) {   // a shallow copy of the book with every TWAP remainder filled at today's marks (taker fees), no TWAPs left
+    var stA = afterTwaps(book);
+    var b2 = {}; for (var k in book) b2[k] = book[k];
+    b2.eq = equityAt(stA, stA.mark);
+    b2.positions = book.positions.map(function (p) { var q = {}; for (var k2 in p) q[k2] = p[k2]; q.sz = stA.sz[p.coin]; return q; }).filter(function (p) { return p.sz !== 0; });
+    b2.twaps = [];
+    return b2;
+  }
+
   function stats60(book, c1, c2) {
     var a = book.candles[c1] || [], b = c2 ? (book.candles[c2] || []) : null;
     function lr(x) { var r = []; for (var i = 1; i < x.length; i++) r.push({ t: x[i].t, v: Math.log(x[i].c / x[i - 1].c) }); return r; }
@@ -231,10 +253,15 @@
     R.buf0 = book.eq - R.maint0;
     R.stat = stats60(book, P.coin, S ? S.coin : null);
     R.beta = S ? R.stat.beta : null;
-    R.liqP = liqPrice(st0, P.coin, (function () { var m = {}; m[P.coin] = 1; return m; })());
-    R.liqS = S ? liqPrice(st0, S.coin, (function () { var m = {}; m[S.coin] = 1; return m; })()) : null;
-    R.liqJ = S ? liqPrice(st0, P.coin, (function () { var m = {}; m[P.coin] = 1; m[S.coin] = R.beta; return m; })()) : null;
-    R.comove = {}; if (S) [0, 1, 2, 3].concat([R.beta]).forEach(function (k) { var m = {}; m[P.coin] = 1; m[S.coin] = k; R.comove[k] = liqPrice(st0, P.coin, m); });
+    // raw = the book as it stands (what the exchange quotes); eff = with every resting order executing on the way down ("as if the stops fire")
+    R.rawLiqP = liqPrice(st0, P.coin, (function () { var m = {}; m[P.coin] = 1; return m; })());
+    R.rawLiqS = S ? liqPrice(st0, S.coin, (function () { var m = {}; m[S.coin] = 1; return m; })()) : null;
+    R.rawLiqJ = S ? liqPrice(st0, P.coin, (function () { var m = {}; m[P.coin] = 1; m[S.coin] = R.beta; return m; })()) : null;
+    R.liqP = effLiq(book, P.coin, (function () { var m = {}; m[P.coin] = 1; return m; })());
+    R.liqS = S ? effLiq(book, S.coin, (function () { var m = {}; m[S.coin] = 1; return m; })()) : null;
+    R.liqJ = S ? effLiq(book, P.coin, (function () { var m = {}; m[P.coin] = 1; m[S.coin] = R.beta; return m; })()) : null;
+    R.liqPtw = effLiq(book, P.coin, (function () { var m = {}; m[P.coin] = 1; return m; })(), { twap: 'path' });
+    R.comove = {}; if (S) [0, 1, 2, 3].concat([R.beta]).forEach(function (k) { var m = {}; m[P.coin] = 1; m[S.coin] = k; R.comove[k] = effLiq(book, P.coin, m); });
     // rungs
     R.rP = P.sz > 0 ? rungs(P.mark, 2, 4) : rungs(P.mark, 4, 2); R.rS = S ? (S.sz > 0 ? rungs(S.mark, 3, 5) : rungs(S.mark, 5, 3)) : null;
     function tg(c, v) { var t = {}; t[c] = v; return t; }
@@ -248,9 +275,9 @@
     // after the TWAPs
     var hasTwap = book.twaps.some(function (t) { return t.coin in st0.sz && t.sz - t.executed > 1e-9; });
     R.hasTwap = hasTwap;
-    if (hasTwap) { var stA = afterTwaps(book); R.after = { st: stA, eq: equityAt(stA, stA.mark), maint: maintAt(stA, stA.mark), ntl: 0, liqP: liqPrice(stA, P.coin, (function () { var m = {}; m[P.coin] = 1; return m; })()) };
+    if (hasTwap) { var stA = afterTwaps(book), bA = bookAfterTwaps(book); R.after = { st: stA, eq: equityAt(stA, stA.mark), maint: maintAt(stA, stA.mark), ntl: 0, liqP: effLiq(bA, P.coin, (function () { var m = {}; m[P.coin] = 1; return m; })()) };
       for (var c in stA.sz) R.after.ntl += Math.abs(stA.sz[c]) * stA.mark[c];
-      if (S) { R.after.liqS = liqPrice(stA, S.coin, (function () { var m = {}; m[S.coin] = 1; return m; })()); R.after.liqJ = liqPrice(stA, P.coin, (function () { var m = {}; m[P.coin] = 1; m[S.coin] = R.beta; return m; })()); } }
+      if (S) { R.after.liqS = effLiq(bA, S.coin, (function () { var m = {}; m[S.coin] = 1; return m; })()); R.after.liqJ = effLiq(bA, P.coin, (function () { var m = {}; m[P.coin] = 1; m[S.coin] = R.beta; return m; })()); } }
     // resting summary per coin
     R.rest = {};
     book.positions.forEach(function (p) {
@@ -263,6 +290,7 @@
     R.otherOrders = book.orders.filter(function (o) { return !(o.coin in st0.sz); });
     // exchange checks
     R.checks = book.positions.map(function (p) { var m = {}; m[p.coin] = 1; var lp = liqPrice(st0, p.coin, m); return { coin: p.coin, model: lp, exch: p.liqPxExch }; });
+    R.hasStops = book.positions.some(function (p) { return book.orders.some(function (o) { return o.coin === p.coin && o.isTrigger; }); });
     R.im0 = imAt(st0, st0.mark, st0.sz);
     return R;
   }
@@ -285,14 +313,14 @@
 
     // header stamp
     document.getElementById('last-updated').innerHTML = 'Live · read ' + utc(book.t) + ' (' + pt(book.t) + ') · account 0xD71a…95Bc: ' + usd(EQ) + ' equity, ' +
-      book.positions.map(function (p) { return (p.sz > 0 ? 'long ' : 'short ') + szf(p.coin, Math.abs(p.sz)) + ' ' + p.coin; }).join(' + ') + ' at ' + (book.ntl / EQ).toFixed(1) + '× · liquidation ' + pxf(R.liqP) + ' (' + pName + ' alone)' + (S ? ' / ' + pxf(R.liqJ) + ' (' + sName + ' on beta)' : '') + ' · re-read every ' + REFRESH_S + 's';
+      book.positions.map(function (p) { return (p.sz > 0 ? 'long ' : 'short ') + szf(p.coin, Math.abs(p.sz)) + ' ' + p.coin; }).join(' + ') + ' at ' + (book.ntl / EQ).toFixed(1) + '× · liquidation with the stops firing ' + pxf(R.liqP) + ' (' + pName + ' alone)' + (S ? ' / ' + pxf(R.liqJ) + ' (' + sName + ' on beta)' : '') + ' · exchange quotes ' + pxf(R.rawLiqP) + ' for the book as it stands · re-read every ' + REFRESH_S + 's';
     document.getElementById('scen-title').textContent = 'Portfolio Scenarios — The Book From ' + pxf(R.rP.list[0]) + ' to ' + pxf(top.x) + ' on ' + pName + (S ? ', ' + pxf(R.rS.list[0]) + ' to ' + pxf(R.rS.list[R.rS.list.length - 1]) + ' on ' + sName : '');
 
     // inputs strip
     var inputs = '<span class="hy-input">Book · ' + book.positions.map(function (p) { return '<strong>' + (p.sz > 0 ? 'long ' : 'short ') + szf(p.coin, Math.abs(p.sz)) + ' ' + p.coin + '</strong> at ' + pxf(p.entry) + ' (' + p.levType + ' ' + p.lev + '×)'; }).join(' · ') + '</span>' +
       '<span class="hy-input">Equity · <strong>' + usd(EQ) + '</strong> · ' + usd(book.ntl) + ' notional · ' + (book.ntl / EQ).toFixed(1) + '× effective</span>' +
       '<span class="hy-input">Marks · ' + book.positions.map(function (p) { return '<strong>' + p.coin + ' ' + pxf(p.mark) + '</strong>'; }).join(' · ') + '</span>' +
-      '<span class="hy-input">Liquidation · <strong>' + pxf(R.liqP) + '</strong> ' + pName + ' alone' + (S ? ' · <strong>' + pxf(R.liqJ) + '</strong> if ' + sName + ' follows at β ' + R.beta.toFixed(2) : '') + '</span>' +
+      '<span class="hy-input">Liquidation, stops firing · <strong>' + pxf(R.liqP) + '</strong> ' + pName + ' alone' + (S ? ' · <strong>' + pxf(R.liqJ) + '</strong> if ' + sName + ' follows at β ' + R.beta.toFixed(2) : '') + ' · exchange quotes <strong>' + pxf(R.rawLiqP) + '</strong> if nothing executes</span>' +
       '<span class="hy-input">As of · <strong>' + utc(book.t) + '</strong></span>';
     document.getElementById('scen-inputs').innerHTML = inputs;
 
@@ -321,7 +349,7 @@
     var eqT = R.maint0 + 0; // maintenance at trigger ≈ maintenance now scaled; compute precisely at the trigger price
     (function () { var st = mkState(book); var px = {}; for (var c in st.mark) px[c] = st.mark[c]; px[pName] = R.liqP; eqT = maintAt(st, px); })();
     var downTxt;
-    if (lo1.hold.liq && lo2.hold.liq) downTxt = pxf(lo2.x) + ' and ' + pxf(lo1.x) + ' are both liquidations. ' + pName + ' alone crosses maintenance at ' + pxf(R.liqP) + (S ? '; with ' + sName + ' moving on beta the trigger is ' + pxf(R.liqJ) : '') + '. At the trigger the account is down to its maintenance margin, about <em>' + usd(eqT) + '</em>; the exchange then closes the book by market in 20% chunks and returns what is left, and only a backstop liquidation (equity under two-thirds of maintenance, ≈' + usd(eqT * 2 / 3) + ') takes everything. So one rung down costs roughly ' + Math.round((1 - eqT / EQ) * 100) + '% of the account, not all of it' + (Math.abs(R.liqP - lo2.x) / lo2.x < 0.01 ? ' — and ' + pxf(lo2.x) + ' itself is a knife-edge, ' + usd(Math.abs(R.liqP - lo2.x)) + ' from the hold-as-is trigger' : '') + '.';
+    if (lo1.hold.liq && lo2.hold.liq) downTxt = pxf(lo2.x) + ' and ' + pxf(lo1.x) + ' are both liquidations holding as-is. With the stops firing on the way down, ' + pName + ' alone crosses maintenance at ' + pxf(R.liqP) + (S ? ', or ' + pxf(R.liqJ) + ' with ' + sName + ' moving on beta' : '') + ' (the exchange quotes ' + pxf(R.rawLiqP) + ' for the book as it stands, because a resting stop is not part of the position until it trades). At the trigger the account is down to its maintenance margin, about <em>' + usd(eqT) + '</em>; the exchange then closes the book by market in 20% chunks and returns what is left, and only a backstop liquidation (equity under two-thirds of maintenance, ≈' + usd(eqT * 2 / 3) + ') takes everything. So one rung down costs roughly ' + Math.round((1 - eqT / EQ) * 100) + '% of the account, not all of it' + (Math.abs(R.liqP - lo2.x) / lo2.x < 0.01 ? ' — and ' + pxf(lo2.x) + ' itself is a knife-edge, ' + usd(Math.abs(R.liqP - lo2.x)) + ' from the hold-as-is trigger' : '') + '.';
     else if (lo1.hold.liq) downTxt = pxf(lo2.x) + ' is survived holding (' + usd(lo2.hold.eq) + ', ' + sgn(lo2.hold.pnl) + ') but ' + pxf(lo1.x) + ' is a liquidation: ' + pName + ' alone crosses maintenance at ' + pxf(R.liqP) + (S ? ', or ' + pxf(R.liqJ) + ' with ' + sName + ' moving on beta' : '') + '. At the trigger the account is down to its maintenance margin, about <em>' + usd(eqT) + '</em>; the exchange closes the book by market in 20% chunks and returns what is left, and only a backstop liquidation (equity under two-thirds of maintenance) takes everything.';
     else downTxt = 'Neither rung against the book liquidates it holding as-is: ' + pxf(lo2.x) + ' leaves ' + usd(lo2.hold.eq) + ' and ' + pxf(lo1.x) + ' leaves ' + usd(lo1.hold.eq) + '; the ' + pName + '-alone trigger is ' + pxf(R.liqP) + (S ? ' (' + pxf(R.liqJ) + ' with ' + sName + ' on beta)' : '') + '.';
     if (restP.stops.n) downTxt += ' The stops (' + szf(pName, restP.stops.sz) + ' ' + pName + ' at ' + pxf(restP.stops.lo) + '–' + pxf(restP.stops.hi) + ')' + ((restP.open.n || twRemP) ? ' ' + stopVerb + ' and the ' + [restP.open.n ? 'bids' : null, twRemP ? 'TWAP' : null].filter(Boolean).join(' and ') + ' put part of it back on beyond them' : ' ' + stopVerb) + ' — with orders the two rungs against the book read ' + R.A.slice(0, 2).map(function (r) { return r.ord.liq ? 'liquidated at ' + pxf(r.ord.liq[pName]) : usd(r.ord.eq); }).join(' / ') + '.';
@@ -337,8 +365,8 @@
     k.push(['cyan', 'Equity · notional · leverage', usd(EQ) + ' · ' + usd(book.ntl / 1000) + 'k · ' + (book.ntl / EQ).toFixed(1) + '×']);
     k.push(['cyan', pName + ' leg · entry · open P&amp;L', szf(pName, Math.abs(P.sz)) + ' · ' + pxf(P.entry) + ' · ' + sgn(P.uPnl)]);
     if (S) k.push(['cyan', sName + ' leg · entry · open P&amp;L', szf(sName, Math.abs(S.sz)) + ' · ' + pxf(S.entry) + ' · ' + sgn(S.uPnl)]); else k.push(['cyan', 'Funding · last 24h (− = paid)', sgn(book.fund24)]);
-    k.push(['peach', 'Liq · ' + pName + ' alone' + (S ? ' · on beta · ' + sName + ' alone' : ''), pxf(R.liqP) + (S ? ' · ' + pxf(R.liqJ) + ' · ' + pxf(R.liqS) : '')]);
-    k.push(['peach', 'Maint · buffer · buffer/notional', usd(R.maint0) + ' · ' + usd(R.buf0) + ' · ' + (R.buf0 / book.ntl * 100).toFixed(1) + '%']);
+    k.push(['peach', 'Liq, stops firing · ' + pName + ' alone' + (S ? ' · on beta · ' + sName + ' alone' : ''), pxf(R.liqP) + (S ? ' · ' + pxf(R.liqJ) + ' · ' + (R.liqS === null ? 'none' : pxf(R.liqS)) : '')]);
+    k.push(['peach', 'Exchange quote, nothing executes · ' + pName + (S ? ' · ' + sName : ''), pxf(R.rawLiqP) + (S ? ' · ' + pxf(R.rawLiqS) : '')]);
     k.push(['slate', 'Reduce-only ladders resting', book.positions.map(function (p) { var t = R.rest[p.coin].tp; return t.n ? szf(p.coin, t.sz) + ' ' + p.coin : null; }).filter(Boolean).join(' · ') || 'none']);
     k.push(['slate', 'Stops · TWAP left (' + book.positions.map(function (p) { return p.coin; }).join(' · ') + ')', book.positions.map(function (p) { return szf(p.coin, R.rest[p.coin].stops.sz); }).join(' · ') + ' · ' + book.positions.map(function (p) { return szf(p.coin, R.rest[p.coin].twaps.reduce(function (s, t) { return s + t.rem; }, 0)); }).join(' · ')]);
     k.push(['teal', pxf(top.x) + ' · hold · with orders · gap', kf(top.hold.eq) + ' · ' + kf(top.ord.eq) + ' · ' + kf(gapTop)]);
@@ -408,7 +436,7 @@
     var sensRows = [3, 4, 5, 6].filter(function (i) { return R.A[i]; }).map(function (i) { var r = R.A[i]; return '<tr><td class="pm-co"><strong>' + pxf(r.x) + '</strong></td><td class="col-num">' + (r.none.liq ? 'liq ' + pxf(r.none.liq[pName]) : usd(r.none.eq)) + '</td><td class="col-num"><strong>' + (r.ord.liq ? 'liq ' + pxf(r.ord.liq[pName]) : usd(r.ord.eq)) + '</strong></td><td class="col-num">' + (r.first.liq ? 'liq ' + pxf(r.first.liq[pName]) : usd(r.first.eq)) + '</td></tr>'; });
     var down = R.A.slice(0, 2).map(function (r) { return '<tr><td class="pm-co"><strong>' + pxf(r.x) + '</strong></td><td class="col-num">' + (r.none.liq ? 'liq ' + pxf(r.none.liq[pName]) : usd(r.none.eq)) + '</td><td class="col-num"><strong>' + (r.ord.liq ? 'liq ' + pxf(r.ord.liq[pName]) : usd(r.ord.eq)) + '</strong></td><td class="col-num">' + (r.first.liq ? 'liq ' + pxf(r.first.liq[pName]) : usd(r.first.eq)) + '</td></tr>'; });
     var m = [];
-    m.push('<div class="pm-method-block"><span class="pm-method-h">The book, as read</span><p>webData2 (positions, marks, margin tiers, open orders with triggers, TWAP states), userFunding and two 60-day candle series for 0xD71a…95Bc, fetched from api.hyperliquid.xyz in this browser at ' + utc(book.t) + ' and re-read every ' + REFRESH_S + ' seconds. ' + book.positions.map(function (p) { return (p.sz > 0 ? 'Long ' : 'Short ') + szf(p.coin, Math.abs(p.sz)) + ' ' + p.coin + ' at ' + pxf(p.entry) + ' (' + p.levType + ' ' + p.lev + '×, max ' + p.maxLev + '×)'; }).join('; ') + '; equity ' + usd(EQ, 2) + '; maintenance ' + usd(R.maint0) + ' — half the initial margin at each asset’s maximum leverage, cumulative across the exchange’s margin tiers.</p><div class="hy-check">Exchange check, this read — model liquidation vs the exchange’s liquidationPx: ' + checks.join('; ') + '. Model maintenance ' + usd(R.maint0) + ' vs exchange ' + usd(book.mmExch) + ' <span class="' + (mmOk ? 'ok' : 'bad') + '">' + (mmOk ? '✓' : '✗') + '</span>; initial margin at the account’s leverage settings ' + usd(R.im0) + ' vs exchange margin used ' + usd(book.muExch) + ' <span class="' + (Math.abs(R.im0 - book.muExch) / Math.max(1, book.muExch) < 0.002 ? 'ok' : 'bad') + '">' + (Math.abs(R.im0 - book.muExch) / Math.max(1, book.muExch) < 0.002 ? '✓' : '✗') + '</span>.' + (anyShort ? ' A short leg is open: its rungs run in the book’s favour downward and closes read “bought back”.' : '') + '</div></div>');
+    m.push('<div class="pm-method-block"><span class="pm-method-h">The book, as read</span><p>webData2 (positions, marks, margin tiers, open orders with triggers, TWAP states), userFunding and two 60-day candle series for 0xD71a…95Bc, fetched from api.hyperliquid.xyz in this browser at ' + utc(book.t) + ' and re-read every ' + REFRESH_S + ' seconds. ' + book.positions.map(function (p) { return (p.sz > 0 ? 'Long ' : 'Short ') + szf(p.coin, Math.abs(p.sz)) + ' ' + p.coin + ' at ' + pxf(p.entry) + ' (' + p.levType + ' ' + p.lev + '×, max ' + p.maxLev + '×)'; }).join('; ') + '; equity ' + usd(EQ, 2) + '; maintenance ' + usd(R.maint0) + ' — half the initial margin at each asset’s maximum leverage, cumulative across the exchange’s margin tiers. <strong>Every liquidation price on this page is the effective one — the price at which the book crosses maintenance on a straight path against it with every resting order executing on the way (stops, scale-in bids, ladders); the TWAP remainder is excluded because it depends on time, and with it filling along the path the ' + pName + '-alone figure is ' + pxf(R.liqPtw) + '.</strong> The exchange’s own liquidationPx assumes nothing executes; it is shown as the quote for the book as it stands and used for the check below.</p><div class="hy-check">Exchange check, this read — the model’s liquidation for the book as it stands vs the exchange’s liquidationPx: ' + checks.join('; ') + '. Model maintenance ' + usd(R.maint0) + ' vs exchange ' + usd(book.mmExch) + ' <span class="' + (mmOk ? 'ok' : 'bad') + '">' + (mmOk ? '✓' : '✗') + '</span>; initial margin at the account’s leverage settings ' + usd(R.im0) + ' vs exchange margin used ' + usd(book.muExch) + ' <span class="' + (Math.abs(R.im0 - book.muExch) / Math.max(1, book.muExch) < 0.002 ? 'ok' : 'bad') + '">' + (Math.abs(R.im0 - book.muExch) / Math.max(1, book.muExch) < 0.002 ? '✓' : '✗') + '</span>.' + (anyShort ? ' A short leg is open: its rungs run in the book’s favour downward and closes read “bought back”.' : '') + '</div></div>');
     m.push('<div class="pm-method-block"><span class="pm-method-h">Hold as-is</span><p>Equity at a rung = today’s equity + Σ size × (rung − mark) over the positions that move; the others stay at today’s mark. The rung is marked liquidated if equity falls below maintenance anywhere on the straight path from today’s marks to the rung; the crossing is found by bisection. ROE is the P&amp;L divided by today’s equity.</p></div>');
     m.push('<div class="pm-method-block"><span class="pm-method-h">With orders</span><p>The path is walked in ' + STEPS + ' steps. Every open order on a held coin is carried individually: a resting limit fills at its limit price when the path reaches it (maker fee ' + (MAKER * 100).toFixed(3) + '%); a trigger order fills at its trigger price less ' + (slipOf(P.coin) * 100).toFixed(2) + '% (' + P.coin + ') / 0.10% (others) of slippage when the path crosses the trigger in the stated direction (taker fee ' + (TAKER * 100).toFixed(3) + '%); reduce-only orders never exceed the position and are skipped once it is flat; an opening order or TWAP slice that would exceed initial margin at the account’s leverage settings is skipped, as the exchange would skip it. The remainder of each TWAP is spread evenly along the path, so it fills at the average of today’s price and the rung, and a longer path has bought less of it by any given level. Funding is not charged (the book ' + (book.fund24 < 0 ? 'paid ' + usd(-book.fund24) : 'received ' + usd(book.fund24)) + ' in the last 24 hours). Fee tiers are assumed, not read: the base schedule would lower every with-orders figure by a few tens of dollars.</p></div>');
     if (hasTwap) m.push('<div class="pm-method-block"><span class="pm-method-h">TWAP timing — the biggest single assumption</span><p>The tables use the middle of three cases. Cancelled: the TWAPs stop now. Path (the tables): the remainder fills evenly on the way to the rung. First: it finishes near today’s price before the move — the likelier case for a large move, since the TWAPs end in about ' + Math.round(twMin / 60) + ' hours. With ' + (S ? sName + ' flat' : 'nothing else moving') + ':</p><table class="pm-table hy-table hy-sens"><thead><tr><th>' + pName + '</th><th class="col-num">TWAPs cancelled</th><th class="col-num">Path (tables)</th><th class="col-num">TWAPs first</th></tr></thead><tbody>' + sensRows.join('') + down.join('') + '</tbody></table><p>Today’s liquidation prices expire with the TWAPs: at unchanged prices the finished book is ' + Object.keys(R.after.st.sz).map(function (c) { return szf(c, Math.abs(R.after.st.sz[c])) + ' ' + c; }).join(' + ') + ' (' + usd(R.after.ntl / 1000) + 'k, ' + (R.after.ntl / R.after.eq).toFixed(1) + '×) with triggers ' + pxf(R.after.liqP) + ' (' + pName + ' alone)' + (S ? ' / ' + pxf(R.after.liqJ) + ' (on beta) / ' + pxf(R.after.liqS) + ' (' + sName + ' alone)' : '') + '.</p></div>');
