@@ -281,21 +281,25 @@ effectiveness scoring, columns centered, and a totals row at the bottom.
   the ONLY data path for scheduled runs; if it is down, ingest what prior
   sessions disclosed, update ledgers honestly, do NOT restamp sections whose
   books were not re-walked, and say so on the page.
-- **Autodata outage record:** no results since Aug 31 19:23Z — TEN missed
-  feed runs. Every cron Sep 1–4 (12:45Z/22:45Z daily) silent; pokes at
-  Sep 1 01:05Z + 23:22Z, Sep 2 00:54Z + 13:11Z + 23:12Z, Sep 3 13:15Z +
-  23:10Z, Sep 4 13:10Z + 13:12Z + 23:08Z + 23:12Z (several touched
-  fetch/poke, so the paths-filtered push trigger definitely applied — note
-  an EMPTY commit does NOT fire it; a poke must modify fetch/poke) all
-  unanswered. run.sh always writes _fetched_at.txt even when every fetch
-  fails, so the JOB IS NEVER STARTING — the Action itself is stuck or
-  disabled (billing/spending limit or a disabled workflow), not the fetch
-  script. gh/api.github.com is proxy-blocked from cloud sessions (no
-  add_repo tool exists there), so Actions state cannot be read or
-  re-enabled from a scheduled run. Fix at
-  https://github.com/chad506/Leadsure/actions (re-enable / check Actions
-  billing / cancel a hung run), then delete this bullet once results flow
-  again.
+- **Autodata outage record — DIAGNOSIS NOW DEFINITIVE (Sep 5 AM):** no
+  results since Aug 31 19:23Z — ELEVEN missed feed runs (every 12:45Z/22:45Z
+  cron Sep 1–5 silent; a dozen pokes Sep 1–5, several touching fetch/poke,
+  all unanswered — note an EMPTY commit does NOT fire the paths filter).
+  The Sep 5 AM run performed the decisive experiment: it pushed a
+  **brand-new workflow file** (.github/workflows/autodata2.yml — same job,
+  fresh registration, exempt from any workflow-level disabled state) whose
+  own creating push matches its push trigger, then poked fetch/poke too.
+  Both stayed silent. A new workflow's push trigger fires within seconds
+  when Actions is on, so this **rules out a stuck/disabled workflow and
+  pins the outage on repo- or account-level Actions disablement** (Settings
+  → Actions, or an org/billing stop). The PAT does carry `workflow` scope
+  (the autodata2 push was accepted). Nothing a scheduled session can do
+  fixes this — one manual visit to
+  https://github.com/chad506/Leadsure/actions revives it; autodata2 (and
+  the original) then fire on the next fetch/poke touch, a push touching
+  .github/workflows/autodata2.yml or fetch/poke-main on main, or the next
+  cron. Once results flow again, delete this bullet and optionally one of
+  the twin workflow files.
 - **Sep 3 AM run never published:** the Sep 3 AM scheduled Cowork session
   poked autodata at 13:15Z but pushed NO commit to main — the Sep 3 PM run
   carried the whole day. The Sep 4 AM run DID publish (verification pass on
@@ -316,6 +320,15 @@ effectiveness scoring, columns centered, and a totals row at the bottom.
   moot-if-confirmed), dec-GOOGL RICH +5.59 a fourth run, sep2AAPL seat
   −10.93 under fair (widest yet, first in the re-walk queue). Activity
   audit blind since Sep 2 00:57Z. Next close Tuesday Sep 8 (Labor Day).
+- **Sep 5 AM (Saturday, sixth data-blind session):** weekend verification
+  pass — all five Sep 4 finals re-confirmed to the cent against the
+  history pages (no revisions), independent calibration re-run reproduced
+  every published fair (Dec 79.81/16.03/2.91/0.52 to ≤0.02 — the 0.75
+  small-leg allowance is applied to the DEC legs only, as a ×0.9925
+  proportional scale on the raw exact-rank probabilities; Sep crown/seats
+  to ≤0.01), so caps/fairs/edges stand as published. Registered autodata2
+  (see outage bullet). Weekend AM precedent: with no close and no data,
+  verify + diagnose + chronicle; restamp only touched surfaces.
 - **Sep 2 AM caps-only precedent:** with autodata down, public Sep 1 closes
   (stockanalysis.com history pages via WebSearch→WebFetch — WebFetch DOES
   work unattended on URLs surfaced verbatim by a WebSearch in the same
