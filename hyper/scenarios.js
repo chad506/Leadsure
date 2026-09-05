@@ -46,11 +46,16 @@
     return o.side === 'A' ? 'below' : 'above';
   }
 
+  var cache = { fund: null, fundAt: 0, candles: {}, candlesAt: 0 };
+  function withRetry(fn, tries, delayMs) {
+    return fn().then(null, function (e) { if (tries <= 1) throw e; return new Promise(function (r) { setTimeout(r, delayMs); }).then(function () { return withRetry(fn, tries - 1, delayMs * 3); }); });
+  }
   function load() {
     var t0 = Date.now();
+    var fundP = (cache.fund && t0 - cache.fundAt < 600000) ? Promise.resolve(cache.fund) : post({ type: 'userFunding', user: ADDR, startTime: t0 - 86400000 }).then(function (f) { cache.fund = f; cache.fundAt = t0; return f; });
     return Promise.all([
       post({ type: 'webData2', user: ADDR }),
-      post({ type: 'userFunding', user: ADDR, startTime: t0 - 86400000 })
+      fundP
     ]).then(function (res) {
       var w = res[0], fund = res[1];
       var metaP = (w.meta && w.meta.marginTables) ? Promise.resolve(w.meta) : post({ type: 'meta' });
@@ -77,8 +82,10 @@
                      muExch: +chs.marginSummary.totalMarginUsed, withdrawable: +chs.withdrawable, positions: positions, orders: orders, twaps: twaps, fund24: fund24 };
         // candles for the top two positions (beta, vol)
         var top = positions.slice(0, 2);
+        var fresh = t0 - cache.candlesAt < 3600000 && top.every(function (p) { return cache.candles[p.coin]; });
+        if (fresh) { book.candles = cache.candles; return book; }
         return Promise.all(top.map(function (p) { return post({ type: 'candleSnapshot', req: { coin: p.coin, interval: '1d', startTime: t0 - 61 * 86400000, endTime: t0 } }); }))
-          .then(function (cs) { book.candles = {}; top.forEach(function (p, i) { book.candles[p.coin] = (cs[i] || []).map(function (k) { return { t: +k.t, c: +k.c }; }); }); return book; });
+          .then(function (cs) { book.candles = {}; top.forEach(function (p, i) { book.candles[p.coin] = (cs[i] || []).map(function (k) { return { t: +k.t, c: +k.c }; }); }); cache.candles = book.candles; cache.candlesAt = t0; return book; });
       });
     });
   }
@@ -412,36 +419,44 @@
   }
 
   // ---------------------------------------------------------------- driver
-  var timer = null, countdown = REFRESH_S, busy = false, lastOk = null;
+  var busy = false, lastOk = null, lastAttempt = 0, nextDue = 0, failures = 0, lastStatus = '';
   var dot = document.getElementById('scen-dot'), statusText = document.getElementById('scen-status-text'), btn = document.getElementById('scen-refresh'), cd = document.getElementById('scen-countdown'), errBox = document.getElementById('scen-error');
 
-  function setStatus(kind, text) { dot.className = 'dot ' + kind; statusText.textContent = text; }
+  function setStatus(kind, text) { dot.className = 'dot ' + kind; statusText.textContent = text; lastStatus = text; }
+  function ago(ms) { var sec = Math.max(0, Math.round((Date.now() - ms) / 1000)); return sec < 90 ? sec + ' s ago' : Math.round(sec / 60) + ' min ago'; }
 
   function refresh() {
-    if (busy) return; busy = true; btn.disabled = true; setStatus('busy', 'Reading the account from the Hyperliquid info API…');
-    load().then(function (book) {
-      if (!book.positions.length) { errBox.hidden = true; setStatus('ok', 'Read ' + utc(book.t) + ' — the account has no open perp positions (equity ' + usd(book.eq) + '). Nothing to scenario.'); document.getElementById('last-updated').textContent = 'Live · ' + utc(book.t) + ' · no open positions · equity ' + usd(book.eq); busy = false; btn.disabled = false; countdown = REFRESH_S; return; }
+    if (busy) return; busy = true; btn.disabled = true; lastAttempt = Date.now();
+    setStatus(lastOk ? 'ok' : 'busy', (lastOk ? lastStatus.replace(/ · reading…$/, '') + ' · reading…' : 'Reading the account from the Hyperliquid info API…'));
+    withRetry(load, 3, 2000).then(function (book) {
+      if (!book.positions.length) { errBox.hidden = true; failures = 0; lastOk = book.t; setStatus('ok', 'Read ' + utc(book.t) + ' — the account has no open perp positions (equity ' + usd(book.eq) + '). Nothing to scenario.'); document.getElementById('last-updated').textContent = 'Live · ' + utc(book.t) + ' · no open positions · equity ' + usd(book.eq); busy = false; btn.disabled = false; nextDue = Date.now() + REFRESH_S * 1000; return; }
       var R = compute(book);
       render(R);
-      errBox.hidden = true; lastOk = book.t;
-      setStatus('ok', 'Live · last read ' + utc(book.t) + ' (' + pt(book.t) + ') · ' + book.positions.length + ' position' + (book.positions.length === 1 ? '' : 's') + ', ' + book.orders.length + ' open orders, ' + book.twaps.length + ' TWAP' + (book.twaps.length === 1 ? '' : 's') + ' · ' + R.A.length + (S_count(R)) + ' scenarios priced');
-      busy = false; btn.disabled = false; countdown = REFRESH_S;
+      errBox.hidden = true; lastOk = book.t; failures = 0;
+      setStatus('ok', 'Live · last read ' + utc(book.t).replace(' UTC', ':' + String(new Date(book.t).getUTCSeconds()).padStart(2, '0') + ' UTC') + ' (' + pt(book.t) + ') · ' + book.positions.length + ' position' + (book.positions.length === 1 ? '' : 's') + ', ' + book.orders.length + ' open orders, ' + book.twaps.length + ' TWAP' + (book.twaps.length === 1 ? '' : 's') + ' · ' + R.A.length + (S_count(R)) + ' scenarios priced');
+      busy = false; btn.disabled = false; nextDue = Date.now() + REFRESH_S * 1000;
     }).catch(function (e) {
       console.error(e);
+      failures += 1;
       if (!lastOk) ['scen-a-wrap', 'scen-b-wrap', 'scen-grid-wrap', 'scen-orders-wrap'].forEach(function (id) { var el = document.getElementById(id); if (el) el.innerHTML = '<div class="hy-loading">Waiting for the first successful read.</div>'; });
-      errBox.hidden = false; errBox.textContent = 'Could not read the account: ' + (e && e.message ? e.message : e) + (lastOk ? '. Showing the read from ' + utc(lastOk) + '.' : '. Nothing to show yet — the Hyperliquid info API may be unreachable from this network; try Refresh.');
-      setStatus('err', 'Read failed at ' + utc(Date.now()) + (lastOk ? ' — last good read ' + utc(lastOk) : ''));
-      busy = false; btn.disabled = false; countdown = REFRESH_S;
+      errBox.hidden = false; errBox.textContent = 'Could not read the account (' + failures + ' failed attempt' + (failures === 1 ? '' : 's') + ', three tries each): ' + (e && e.message ? e.message : e) + (lastOk ? '. The numbers on the page are from the read at ' + utc(lastOk) + ' and will update when the API answers again.' : '. Nothing to show yet — the Hyperliquid info API may be unreachable from this network; retrying.');
+      setStatus('err', 'Read failed at ' + utc(Date.now()) + (lastOk ? ' — showing the read from ' + utc(lastOk) : ''));
+      busy = false; btn.disabled = false; nextDue = Date.now() + Math.min(REFRESH_S, 20 * failures) * 1000;
     });
   }
   function S_count(R) { var n = R.A.length; if (R.B) n += R.B.length + R.G.length * R.G[0].length; return n === R.A.length ? '' : ' + ' + (n - R.A.length); }
 
-  btn.addEventListener('click', function () { countdown = REFRESH_S; refresh(); });
-  timer = setInterval(function () {
-    if (document.visibilityState === 'hidden') return;
-    countdown -= 1; cd.textContent = busy ? '' : 'next read in ' + countdown + 's';
-    if (countdown <= 0) { countdown = REFRESH_S; refresh(); }
+  btn.addEventListener('click', function () { refresh(); });
+  setInterval(function () {
+    var now = Date.now();
+    if (!busy) {
+      var left = Math.max(0, Math.round((nextDue - now) / 1000));
+      cd.textContent = (lastOk ? 'read ' + ago(lastOk) + ' · ' : '') + 'next read in ' + left + 's';
+      if (lastOk && now - lastOk > 3 * REFRESH_S * 1000 && dot.className.indexOf('err') < 0) dot.className = 'dot busy';   // amber: the numbers are getting old
+      if (now >= nextDue && document.visibilityState !== 'hidden') refresh();
+      else if (now >= nextDue + 4 * REFRESH_S * 1000) refresh();   // even a hidden tab re-reads every few minutes
+    } else cd.textContent = '';
   }, 1000);
-  document.addEventListener('visibilitychange', function () { if (document.visibilityState === 'visible' && lastOk && Date.now() - lastOk > REFRESH_S * 1000) refresh(); });
+  document.addEventListener('visibilitychange', function () { if (document.visibilityState === 'visible' && !busy && Date.now() >= nextDue) refresh(); });
   refresh();
 })();
