@@ -376,6 +376,17 @@ effectiveness scoring, columns centered, and a totals row at the bottom.
   to ≤0.01), so caps/fairs/edges stand as published. Registered autodata2
   (see outage bullet). Weekend AM precedent: with no close and no data,
   verify + diagnose + chronicle; restamp only touched surfaces.
+- **Sep 5 PM (Saturday, seventh data-blind session):** TWELFTH missed
+  feed run (22:45Z cron silent; 23:08Z fetch/poke poke unanswered — the
+  Actions-disablement diagnosis holds). No Saturday close: Sep 4 finals
+  stand (NVDA, the one print ever revised, re-spot-checked — unchanged).
+  NEW weekend-PM precedent: BTC trades Saturdays, so the run pulled a
+  provenance-safe weekend spot (WebSearch→WebFetch, CoinDesk $79,807,
+  +1.78% since the Sep 1 bake) and published fresh-spot touch fairs
+  (T 117.2d) vs the stale Sep 1 mids as LABELED COLOR in the tape/sync
+  chronicle only ($90k −16.7 directional, widest of the series) — the
+  BTC tab itself keeps its Sep 1 01:27Z stamps; no book was re-walked,
+  no balance re-trued, no card or ledger touched.
 - **Sep 2 AM caps-only precedent:** with autodata down, public Sep 1 closes
   (stockanalysis.com history pages via WebSearch→WebFetch — WebFetch DOES
   work unattended on URLs surfaced verbatim by a WebSearch in the same
