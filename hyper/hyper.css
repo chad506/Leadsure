@@ -80,10 +80,10 @@
   .hy-grid-dense th, .hy-grid-dense td { padding: 4px 5px; min-width: 0; font-size: 0.72rem; }
   .hy-grid-dense td { min-width: 52px; }
   .hy-grid-dense .hy-cell-o { font-size: 0.74rem; font-weight: 600; }
-  .hy-grid-dense th.hy-grid-row { font-size: 0.74rem; position: sticky; left: 0; z-index: 1; }
-  .hy-grid-dense thead th { position: sticky; top: 0; z-index: 2; }
-  .hy-grid-dense th.hy-grid-corner { z-index: 3; }
-  #scen-grid-wrap { max-height: 78vh; overflow: auto; }
+  .hy-grid-dense th.hy-grid-row { font-size: 0.74rem; position: sticky; left: 0; z-index: 1; background: var(--color-surface-offset); }
+  .hy-grid-dense th.hy-grid-corner { position: sticky; left: 0; z-index: 3; background: var(--color-surface); }
+  #scen-grid-wrap { overflow-x: auto; }   /* no inner vertical scroll box — it trapped the page scroll; the grid scrolls sideways only */
+  .hy-grid-dense thead th { position: static; }
   @media (max-width: 700px) { .hy-cards { grid-template-columns: 1fr; } .hy-factors { grid-template-columns: 1fr; } .hy-findings { grid-template-columns: 1fr; } .hy-tk { grid-template-columns: 1fr; gap: 2px; } }
 
   /* ---- Hyper sub-pages: shared nav pill + live scenarios page ---- */
