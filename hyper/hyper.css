@@ -1,0 +1,95 @@
+/* Hyper sub-site styles (leadsure.com/hyper) — shared by index.html, review.html, scenarios.html; loaded after ../base.css, ../style.css, ../dashboard.css, ../polymarket/polymarket.css */
+  /* ---- readability pass: bigger type, more air, no clamps ---- */
+  .dash-main { font-size: 15px; }
+  .hy-lede { font-size: 1.02rem; line-height: 1.65; max-width: 90ch; margin: var(--space-2) 0 var(--space-3); color: var(--color-text); }
+  .hy-lede strong { color: var(--color-primary); }
+  .hy-findings { list-style: none; padding: 0; margin: 0 0 var(--space-3); display: grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); gap: var(--space-2); max-width: 1100px; }
+  .hy-findings li { background: var(--color-surface-offset); border-left: 3px solid var(--color-primary); border-radius: var(--radius-sm); padding: 10px 14px; font-size: 0.95rem; line-height: 1.55; }
+  .hy-findings li strong { display: block; font-family: var(--font-display); font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-primary); margin-bottom: 3px; }
+  .hy-inputs { display: flex; flex-wrap: wrap; gap: var(--space-2); margin: var(--space-2) 0 var(--space-3); }
+  .hy-input { background: var(--color-surface-offset); border-radius: var(--radius-sm); padding: 6px 12px; font-size: 0.9rem; }
+  .hy-input strong { color: var(--color-primary); }
+  .hy-anchor { scroll-margin-top: 80px; }
+  /* factor tables replace the prose hero */
+  .hy-factors { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-4); margin: var(--space-3) 0; }
+  .hy-factor { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: var(--space-3) var(--space-4); }
+  .hy-factor h3 { font-family: var(--font-display); font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-primary); margin: 0 0 var(--space-2); }
+  .hy-factor table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+  .hy-factor td { padding: 5px 6px; border-bottom: 1px solid var(--color-divider); vertical-align: top; }
+  .hy-factor td.n { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .hy-factor td.t { color: var(--color-text-muted); font-size: 0.85rem; white-space: nowrap; }
+  .hy-factor .cap { font-size: 0.85rem; color: var(--color-text-muted); margin-top: var(--space-2); line-height: 1.5; }
+  .hy-warn { border-color: var(--color-loss); }
+  .hy-warn h3 { color: var(--color-loss); }
+  .hy-stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 8px; }
+  .hy-stat { background: var(--color-surface-offset); border-radius: var(--radius-sm); padding: 8px 10px; }
+  .hy-stat .l { font-size: 0.7rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--color-text-muted); }
+  .hy-stat .v { font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; color: var(--color-text); }
+  .hy-stat .v.bad { color: var(--color-loss); }
+  /* cards */
+  .hy-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(480px, 1fr)); gap: var(--space-4); }
+  .hy-card { padding: var(--space-4) !important; }
+  .hy-card-head { display: flex; align-items: center; gap: var(--space-2); flex-wrap: wrap; margin-bottom: var(--space-2); }
+  .hy-num { font-family: var(--font-display); font-weight: 700; color: var(--color-text-muted); }
+  .hy-name { font-family: var(--font-display); font-size: 1.15rem; font-weight: 700; margin: 0; color: var(--color-text); }
+  .hy-headline { font-size: 1rem; line-height: 1.6; font-weight: 500; color: var(--color-text); margin: 0 0 var(--space-3); }
+  .hy-block { margin-top: var(--space-3); }
+  .hy-h { font-family: var(--font-display); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-primary); margin-bottom: 6px; }
+  .hy-why { margin: 0; padding-left: 1.1em; }
+  .hy-why li { font-size: 0.93rem; line-height: 1.55; margin-bottom: 5px; color: var(--color-text); }
+  .hy-why li strong { color: var(--color-text); }
+  .hy-card p { font-size: 0.93rem !important; line-height: 1.6 !important; margin: 0 0 var(--space-2) !important; display: block !important; -webkit-line-clamp: unset !important; overflow: visible !important; color: var(--color-text) !important; max-width: none !important; }
+  .hy-ticket { background: var(--color-surface-offset); border-radius: var(--radius-sm); padding: var(--space-2) var(--space-3); }
+  .hy-tk { display: grid; grid-template-columns: 110px 1fr; gap: 10px; padding: 5px 0; border-bottom: 1px solid var(--color-divider); font-size: 0.92rem; line-height: 1.5; }
+  .hy-tk:last-child { border-bottom: none; }
+  .hy-tk-l { font-family: var(--font-display); font-size: 0.72rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--color-text-muted); padding-top: 3px; }
+  .hy-tk-v { color: var(--color-text); }
+  .hy-card .pm-idea-date { margin-top: var(--space-3); }
+  /* tables */
+  .hy-table th, .hy-table td { font-size: 0.86rem; white-space: nowrap; padding: 8px 10px; }
+  .hy-table td.pm-co { white-space: normal; min-width: 120px; }
+  .hy-table .pm-sub { white-space: normal; max-width: 280px; font-size: 0.78rem; color: var(--color-text-muted); margin-top: 3px; line-height: 1.4; }
+  .hy-table td:last-child { white-space: normal; min-width: 220px; }
+  .hy-book td { white-space: normal; }
+  .pm-table td.col-num, .pm-table th.col-num { text-align: right !important; }
+  .table-header-row .price-note { white-space: normal; line-height: 1.5; font-size: 0.85rem; }
+  [data-longform], [data-longform]:not(.lf-open) { display: block; -webkit-line-clamp: unset; overflow: visible; -webkit-mask-image: none; mask-image: none; }
+  .pm-footnote { font-size: 0.9rem; line-height: 1.6; max-width: 95ch; }
+  .pm-method-block p { font-size: 0.92rem; line-height: 1.6; }
+  .account-hero-value { color: var(--color-text); }
+  .hy-lessons { padding-left: 1.2em; max-width: 95ch; }
+  .hy-lessons li { font-size: 0.95rem; line-height: 1.6; margin-bottom: 8px; }
+  /* Section 3 — portfolio scenarios */
+  .hy-scen th.hy-grp { text-align: center; border-bottom: 1px solid var(--color-border); }
+  .hy-scen td.col-num { white-space: nowrap; }
+  .hy-grid th, .hy-grid td { text-align: center !important; padding: 8px 6px; }
+  .hy-grid th.hy-grid-corner { text-align: left !important; font-size: 0.72rem; color: var(--color-text-muted); white-space: nowrap; }
+  .hy-grid tbody th.hy-grid-row { font-family: var(--font-display); font-weight: 700; white-space: nowrap; color: var(--color-text) !important; background: var(--color-surface-offset); }
+  .hy-grid td { vertical-align: middle; min-width: 86px; }
+  .hy-cell-o { display: block; font-family: var(--font-display); font-weight: 700; font-size: 0.9rem; font-variant-numeric: tabular-nums; }
+  .hy-cell-h { display: block; font-size: 0.7rem; color: var(--color-text-muted); font-variant-numeric: tabular-nums; margin-top: 2px; }
+  .hy-grid td.hy-up { background: color-mix(in srgb, var(--color-gain) 14%, transparent); }
+  .hy-grid td.hy-up .hy-cell-o { color: var(--color-gain); }
+  .hy-grid td.hy-dn { background: color-mix(in srgb, var(--color-loss) 12%, transparent); }
+  .hy-grid td.hy-dn .hy-cell-o { color: var(--color-loss); }
+  .hy-grid td.hy-liq { background: color-mix(in srgb, var(--color-loss) 32%, transparent); }
+  .hy-grid td.hy-liq .hy-cell-o { color: var(--color-loss); letter-spacing: 0.08em; }
+  .hy-grid td.hy-beta { box-shadow: inset 0 0 0 2px var(--color-primary); }
+  @media (max-width: 700px) { .hy-cards { grid-template-columns: 1fr; } .hy-factors { grid-template-columns: 1fr; } .hy-findings { grid-template-columns: 1fr; } .hy-tk { grid-template-columns: 1fr; gap: 2px; } }
+
+  /* ---- Hyper sub-pages: shared nav pill + live scenarios page ---- */
+  .hy-live-pill { display: inline-block; margin-left: 6px; padding: 1px 6px; border-radius: 999px; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.08em; background: var(--color-gain); color: #0b1020; vertical-align: middle; }
+  .hy-status { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); margin: var(--space-2) 0 var(--space-3); font-size: 0.9rem; color: var(--color-text-muted); }
+  .hy-status .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--color-gain); display: inline-block; box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-gain) 25%, transparent); }
+  .hy-status .dot.err { background: var(--color-loss); box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-loss) 25%, transparent); }
+  .hy-status .dot.busy { background: var(--color-primary); box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-primary) 25%, transparent); }
+  .hy-btn { background: var(--color-surface-offset); border: 1px solid var(--color-border); color: var(--color-text); border-radius: var(--radius-sm); padding: 5px 12px; font: inherit; font-size: 0.85rem; cursor: pointer; }
+  .hy-btn:hover { border-color: var(--color-primary); }
+  .hy-btn:disabled { opacity: 0.5; cursor: default; }
+  .hy-loading { padding: var(--space-4); color: var(--color-text-muted); font-size: 0.95rem; }
+  .hy-error { padding: var(--space-3) var(--space-4); border: 1px solid var(--color-loss); border-radius: var(--radius-md); color: var(--color-loss); font-size: 0.95rem; margin: var(--space-3) 0; }
+  .hy-check { font-size: 0.85rem; color: var(--color-text-muted); margin-top: var(--space-2); line-height: 1.5; }
+  .hy-check .ok { color: var(--color-gain); font-weight: 600; }
+  .hy-check .bad { color: var(--color-loss); font-weight: 600; }
+  .hy-sens { width: auto; }
+  .hy-sens th, .hy-sens td { font-size: 0.85rem; padding: 6px 10px; white-space: nowrap; }

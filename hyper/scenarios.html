@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>Hyper — Portfolio Scenarios (Live) | Leadsure</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lato:wght@300;400;700;900&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+<script>
+    var _build = Date.now();
+    document.write('<link rel="stylesheet" href="../base.css?v='+_build+'">');
+    document.write('<link rel="stylesheet" href="../style.css?v='+_build+'">');
+    document.write('<link rel="stylesheet" href="../dashboard.css?v='+_build+'">');
+    document.write('<link rel="stylesheet" href="../polymarket/polymarket.css?v='+_build+'">');
+    document.write('<link rel="stylesheet" href="hyper.css?v='+_build+'">');
+  </script>
+</head>
+<body>
+  <div class="dashboard">
+<header class="dash-header">
+      <div class="header-left">
+        <svg class="logo" width="32" height="32" viewBox="0 0 32 32" fill="none" aria-label="Leadsure Hyper">
+          <rect x="2" y="14" width="12" height="2" rx="1" fill="currentColor" opacity="0.2"/>
+          <rect x="18" y="14" width="12" height="2" rx="1" fill="currentColor" opacity="0.2"/>
+          <path d="M8 12V6" stroke="var(--color-gain)" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M5 9L8 6L11 9" stroke="var(--color-gain)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M24 18V24" stroke="var(--color-loss)" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M21 21L24 24L27 21" stroke="var(--color-loss)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="16" cy="15" r="2.5" fill="var(--color-primary)" opacity="0.6"/>
+        </svg>
+        <div class="header-title-group">
+          <h1 class="header-title">Hyper — Portfolio Scenarios</h1>
+          <div class="header-meta">
+            <span class="status-dot"></span>
+            <span id="last-updated">Live · loading the book from the Hyperliquid info API…</span>
+            <span class="pm-live-pill">LIVE</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <nav class="page-nav" aria-label="Page navigation">
+      <a href="../index.html" class="nav-tab">Home</a>
+      <a href="index.html" class="nav-tab">Regime Book</a>
+      <a href="review.html" class="nav-tab">Trade Review</a>
+      <a href="scenarios.html" class="nav-tab active">Scenarios<span class="hy-live-pill">LIVE</span></a>
+      <a href="../polymarket/" class="nav-tab">Polymarket</a>
+    </nav>
+
+    <main class="dash-main" id="main-content">
+
+      <!-- ===================== PORTFOLIO SCENARIOS (LIVE) ===================== -->
+      <div class="fund-header hy-anchor" id="scenarios">
+        <h2 class="fund-title" id="scen-title">Portfolio Scenarios — The Book, Rung by Rung</h2>
+        <div class="hy-status" id="scen-status"><span class="dot busy" id="scen-dot"></span><span id="scen-status-text">Fetching positions, resting orders, TWAPs, marks and 60 days of candles…</span><button class="hy-btn" id="scen-refresh" type="button" disabled>Refresh now</button><span id="scen-countdown"></span></div>
+        <div id="scen-error" class="hy-error" hidden></div>
+        <div class="hy-inputs" id="scen-inputs"></div>
+        <p class="hy-lede" id="scen-lede"></p>
+        <ul class="hy-findings" id="scen-findings"></ul>
+      </div>
+
+      <section class="kpi-grid" aria-label="Portfolio scenario key stats" id="scen-kpis"></section>
+
+      <section class="table-section" aria-label="Primary scenario ladder" id="scen-sec-a">
+        <div class="table-header-row">
+          <h2 class="section-title" id="scen-a-title"></h2>
+          <span class="price-note" id="scen-a-note"></span>
+        </div>
+        <div class="table-wrapper" id="scen-a-wrap"><div class="hy-loading">Loading…</div></div>
+      </section>
+
+      <section class="table-section" aria-label="Secondary scenario ladder" id="scen-sec-b">
+        <div class="table-header-row">
+          <h2 class="section-title" id="scen-b-title"></h2>
+          <span class="price-note" id="scen-b-note"></span>
+        </div>
+        <div class="table-wrapper" id="scen-b-wrap"><div class="hy-loading">Loading…</div></div>
+      </section>
+
+      <section class="table-section" aria-label="Joint scenario grid" id="scen-sec-grid">
+        <div class="table-header-row">
+          <h2 class="section-title" id="scen-grid-title"></h2>
+          <span class="price-note" id="scen-grid-note"></span>
+        </div>
+        <div class="table-wrapper" id="scen-grid-wrap"><div class="hy-loading">Loading…</div></div>
+      </section>
+
+      <section class="table-section" aria-label="Resting orders and TWAPs" id="scen-sec-orders">
+        <div class="table-header-row">
+          <h2 class="section-title">What Is Resting — The Instructions the Scenarios Execute</h2>
+          <span class="price-note" id="scen-orders-note"></span>
+        </div>
+        <div class="table-wrapper" id="scen-orders-wrap"><div class="hy-loading">Loading…</div></div>
+      </section>
+
+      <section class="table-section" aria-label="Scenario methodology" id="scen-sec-method">
+        <div class="table-header-row"><h2 class="section-title">How the Scenarios Are Built — and What They Leave Out</h2></div>
+        <div class="pm-method" id="scen-method"></div>
+      </section>
+
+    </main>
+
+    <footer class="dash-footer">
+      <span>Leadsure · Hyper — data © Hyperliquid info API · yields Treasury.gov · Fictitious research page, not financial advice</span>
+    </footer>
+  </div>
+  <script src="scenarios.js?v=20260905"></script>
+  <script>
+    (function(){
+      document.querySelectorAll('.page-nav a[href^="#"]').forEach(function(a){a.addEventListener('click',function(){document.querySelectorAll('.page-nav a').forEach(function(x){x.classList.remove('active');});a.classList.add('active');});});
+    })();
+  </script>
+</body>
+</html>

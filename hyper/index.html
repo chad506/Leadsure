@@ -6,7 +6,7 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
-<title>Hyper — Hyperliquid Regime Book, Trade Review &amp; Portfolio Scenarios | Leadsure</title>
+<title>Hyper — Hyperliquid Regime Book | Leadsure</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lato:wght@300;400;700;900&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
@@ -16,90 +16,12 @@
     document.write('<link rel="stylesheet" href="../style.css?v='+_build+'">');
     document.write('<link rel="stylesheet" href="../dashboard.css?v='+_build+'">');
     document.write('<link rel="stylesheet" href="../polymarket/polymarket.css?v='+_build+'">');
+    document.write('<link rel="stylesheet" href="hyper.css?v='+_build+'">');
   </script>
-<style>
-  /* ---- readability pass: bigger type, more air, no clamps ---- */
-  .dash-main { font-size: 15px; }
-  .hy-lede { font-size: 1.02rem; line-height: 1.65; max-width: 90ch; margin: var(--space-2) 0 var(--space-3); color: var(--color-text); }
-  .hy-lede strong { color: var(--color-primary); }
-  .hy-findings { list-style: none; padding: 0; margin: 0 0 var(--space-3); display: grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); gap: var(--space-2); max-width: 1100px; }
-  .hy-findings li { background: var(--color-surface-offset); border-left: 3px solid var(--color-primary); border-radius: var(--radius-sm); padding: 10px 14px; font-size: 0.95rem; line-height: 1.55; }
-  .hy-findings li strong { display: block; font-family: var(--font-display); font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-primary); margin-bottom: 3px; }
-  .hy-inputs { display: flex; flex-wrap: wrap; gap: var(--space-2); margin: var(--space-2) 0 var(--space-3); }
-  .hy-input { background: var(--color-surface-offset); border-radius: var(--radius-sm); padding: 6px 12px; font-size: 0.9rem; }
-  .hy-input strong { color: var(--color-primary); }
-  .hy-anchor { scroll-margin-top: 80px; }
-  /* factor tables replace the prose hero */
-  .hy-factors { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-4); margin: var(--space-3) 0; }
-  .hy-factor { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: var(--space-3) var(--space-4); }
-  .hy-factor h3 { font-family: var(--font-display); font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-primary); margin: 0 0 var(--space-2); }
-  .hy-factor table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
-  .hy-factor td { padding: 5px 6px; border-bottom: 1px solid var(--color-divider); vertical-align: top; }
-  .hy-factor td.n { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
-  .hy-factor td.t { color: var(--color-text-muted); font-size: 0.85rem; white-space: nowrap; }
-  .hy-factor .cap { font-size: 0.85rem; color: var(--color-text-muted); margin-top: var(--space-2); line-height: 1.5; }
-  .hy-warn { border-color: var(--color-loss); }
-  .hy-warn h3 { color: var(--color-loss); }
-  .hy-stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 8px; }
-  .hy-stat { background: var(--color-surface-offset); border-radius: var(--radius-sm); padding: 8px 10px; }
-  .hy-stat .l { font-size: 0.7rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--color-text-muted); }
-  .hy-stat .v { font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; color: var(--color-text); }
-  .hy-stat .v.bad { color: var(--color-loss); }
-  /* cards */
-  .hy-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(480px, 1fr)); gap: var(--space-4); }
-  .hy-card { padding: var(--space-4) !important; }
-  .hy-card-head { display: flex; align-items: center; gap: var(--space-2); flex-wrap: wrap; margin-bottom: var(--space-2); }
-  .hy-num { font-family: var(--font-display); font-weight: 700; color: var(--color-text-muted); }
-  .hy-name { font-family: var(--font-display); font-size: 1.15rem; font-weight: 700; margin: 0; color: var(--color-text); }
-  .hy-headline { font-size: 1rem; line-height: 1.6; font-weight: 500; color: var(--color-text); margin: 0 0 var(--space-3); }
-  .hy-block { margin-top: var(--space-3); }
-  .hy-h { font-family: var(--font-display); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-primary); margin-bottom: 6px; }
-  .hy-why { margin: 0; padding-left: 1.1em; }
-  .hy-why li { font-size: 0.93rem; line-height: 1.55; margin-bottom: 5px; color: var(--color-text); }
-  .hy-why li strong { color: var(--color-text); }
-  .hy-card p { font-size: 0.93rem !important; line-height: 1.6 !important; margin: 0 0 var(--space-2) !important; display: block !important; -webkit-line-clamp: unset !important; overflow: visible !important; color: var(--color-text) !important; max-width: none !important; }
-  .hy-ticket { background: var(--color-surface-offset); border-radius: var(--radius-sm); padding: var(--space-2) var(--space-3); }
-  .hy-tk { display: grid; grid-template-columns: 110px 1fr; gap: 10px; padding: 5px 0; border-bottom: 1px solid var(--color-divider); font-size: 0.92rem; line-height: 1.5; }
-  .hy-tk:last-child { border-bottom: none; }
-  .hy-tk-l { font-family: var(--font-display); font-size: 0.72rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--color-text-muted); padding-top: 3px; }
-  .hy-tk-v { color: var(--color-text); }
-  .hy-card .pm-idea-date { margin-top: var(--space-3); }
-  /* tables */
-  .hy-table th, .hy-table td { font-size: 0.86rem; white-space: nowrap; padding: 8px 10px; }
-  .hy-table td.pm-co { white-space: normal; min-width: 120px; }
-  .hy-table .pm-sub { white-space: normal; max-width: 280px; font-size: 0.78rem; color: var(--color-text-muted); margin-top: 3px; line-height: 1.4; }
-  .hy-table td:last-child { white-space: normal; min-width: 220px; }
-  .hy-book td { white-space: normal; }
-  .pm-table td.col-num, .pm-table th.col-num { text-align: right !important; }
-  .table-header-row .price-note { white-space: normal; line-height: 1.5; font-size: 0.85rem; }
-  [data-longform], [data-longform]:not(.lf-open) { display: block; -webkit-line-clamp: unset; overflow: visible; -webkit-mask-image: none; mask-image: none; }
-  .pm-footnote { font-size: 0.9rem; line-height: 1.6; max-width: 95ch; }
-  .pm-method-block p { font-size: 0.92rem; line-height: 1.6; }
-  .account-hero-value { color: var(--color-text); }
-  .hy-lessons { padding-left: 1.2em; max-width: 95ch; }
-  .hy-lessons li { font-size: 0.95rem; line-height: 1.6; margin-bottom: 8px; }
-  /* Section 3 — portfolio scenarios */
-  .hy-scen th.hy-grp { text-align: center; border-bottom: 1px solid var(--color-border); }
-  .hy-scen td.col-num { white-space: nowrap; }
-  .hy-grid th, .hy-grid td { text-align: center !important; padding: 8px 6px; }
-  .hy-grid th.hy-grid-corner { text-align: left !important; font-size: 0.72rem; color: var(--color-text-muted); white-space: nowrap; }
-  .hy-grid tbody th.hy-grid-row { font-family: var(--font-display); font-weight: 700; white-space: nowrap; color: var(--color-text) !important; background: var(--color-surface-offset); }
-  .hy-grid td { vertical-align: middle; min-width: 86px; }
-  .hy-cell-o { display: block; font-family: var(--font-display); font-weight: 700; font-size: 0.9rem; font-variant-numeric: tabular-nums; }
-  .hy-cell-h { display: block; font-size: 0.7rem; color: var(--color-text-muted); font-variant-numeric: tabular-nums; margin-top: 2px; }
-  .hy-grid td.hy-up { background: color-mix(in srgb, var(--color-gain) 14%, transparent); }
-  .hy-grid td.hy-up .hy-cell-o { color: var(--color-gain); }
-  .hy-grid td.hy-dn { background: color-mix(in srgb, var(--color-loss) 12%, transparent); }
-  .hy-grid td.hy-dn .hy-cell-o { color: var(--color-loss); }
-  .hy-grid td.hy-liq { background: color-mix(in srgb, var(--color-loss) 32%, transparent); }
-  .hy-grid td.hy-liq .hy-cell-o { color: var(--color-loss); letter-spacing: 0.08em; }
-  .hy-grid td.hy-beta { box-shadow: inset 0 0 0 2px var(--color-primary); }
-  @media (max-width: 700px) { .hy-cards { grid-template-columns: 1fr; } .hy-factors { grid-template-columns: 1fr; } .hy-findings { grid-template-columns: 1fr; } .hy-tk { grid-template-columns: 1fr; gap: 2px; } }
-</style>
 </head>
 <body>
   <div class="dashboard">
-    <header class="dash-header">
+<header class="dash-header">
       <div class="header-left">
         <svg class="logo" width="32" height="32" viewBox="0 0 32 32" fill="none" aria-label="Leadsure Hyper">
           <rect x="2" y="14" width="12" height="2" rx="1" fill="currentColor" opacity="0.2"/>
@@ -114,7 +36,7 @@
           <h1 class="header-title">Hyper — Hyperliquid Regime Book</h1>
           <div class="header-meta">
             <span class="status-dot"></span>
-            <span id="last-updated">Sections 1–2 snapshot · Sep 2, 2026 03:56 UTC (Sep 1, 8:56 PM PT) · 233 Hyperliquid perps + 5 live HIP-3 venues walked · inputs: 10-year 4.79%, Sep 16 hike 57.5%, Brent $95 (+4.5%) · Section 3 scenarios · Sep 5, 2026 14:46 UTC (7:46 AM PT) · account 0xD71a…95Bc now: $27,567 equity, long 4.22 BTC + 1,181 HYPE at 15.8×, liquidation 75,285 (BTC alone) / 76,499 (HYPE on beta)</span>
+            <span id="last-updated">Snapshot · Sep 2, 2026 03:56 UTC (Sep 1, 8:56 PM PT) · 233 Hyperliquid perps + 5 live HIP-3 venues walked · inputs: 10-year 4.79%, Sep 16 hike 57.5%, Brent $95 (+4.5%) · the account block below is the Sep 2 snapshot — the live book is on the <a href="scenarios.html">Scenarios</a> page</span>
             <span class="pm-live-pill">SNAPSHOT</span>
           </div>
         </div>
@@ -123,17 +45,17 @@
 
     <nav class="page-nav" aria-label="Page navigation">
       <a href="../index.html" class="nav-tab">Home</a>
-      <a href="#regime" class="nav-tab active">Regime Book</a>
+      <a href="index.html" class="nav-tab active">Regime Book</a>
       <a href="#book" class="nav-tab">The Tickets</a>
       <a href="#screen" class="nav-tab">The Screen</a>
-      <a href="#review" class="nav-tab">Trade Review</a>
-      <a href="#scenarios" class="nav-tab">Scenarios</a>
+      <a href="review.html" class="nav-tab">Trade Review</a>
+      <a href="scenarios.html" class="nav-tab">Scenarios<span class="hy-live-pill">LIVE</span></a>
       <a href="../polymarket/" class="nav-tab">Polymarket</a>
     </nav>
 
     <main class="dash-main" id="main-content">
 
-      <!-- ===================== SECTION 1 ===================== -->
+<!-- ===================== SECTION 1 · REGIME BOOK ===================== -->
       <div class="fund-header hy-anchor" id="regime">
         <h2 class="fund-title">Section 1 · The Regime Book</h2>
         <div class="hy-inputs"><span class="hy-input">Input 1 · <strong>10-year at 4.8%</strong> (closed 4.79% Sep 1; scenario +20 bp → 5.0%)</span><span class="hy-input">Input 2 · <strong>Iran war</strong> (Brent $95.30, +4.5% today; scenario +10% → $105)</span><span class="hy-input">Fed · <strong>Sep 16 hike priced 57.5%</strong></span><span class="hy-input">Account · <strong>$7,537</strong> · short 72.7 ETH · liq 2,467</span></div>
@@ -213,7 +135,7 @@
             <div class="hy-stat"><div class="l">Withdrawable</div><div class="v bad">$0</div></div>
             <div class="hy-stat"><div class="l">Open P&amp;L</div><div class="v bad">−$794</div></div>
           </div>
-          <div class="cap">Opened and re-opened between 01:49Z and 03:31Z on Sep 2, with four 5-ETH covers at 2,417–2,423 in between (−$413 realised in 14 minutes). The direction agrees with this page; the size makes the page moot. See card #0. <em>As of the Sep 2 walk — the ETH short was closed on Sep 3 (−$3.8k realised) and the account is now long 4.22 BTC and 1,181 HYPE; the current book is priced in <a href="#scenarios">Section 3</a>.</em></div>
+          <div class="cap">Opened and re-opened between 01:49Z and 03:31Z on Sep 2, with four 5-ETH covers at 2,417–2,423 in between (−$413 realised in 14 minutes). The direction agrees with this page; the size makes the page moot. See card #0. <em>As of the Sep 2 walk — the ETH short was closed on Sep 3 (−$3.8k realised) and the account is now long 4.22 BTC and 1,181 HYPE; the current book is priced live on the <a href="scenarios.html">Scenarios</a> page.</em></div>
         </div>
       </div>
 
@@ -456,214 +378,6 @@
           <div class="pm-method-block"><span class="pm-method-h">Sizing</span><p>Notionals are set to a $7,537 account after card #0 (ETH cut to ≤10; ≈$5,500 moved to the xyz margin account, ≈$2,000 left in main). Gross $33k, margin ≈$4.9k at the per-leg leverages stated (5× single names, 10× index/FX, 3× XLE), stops on daily closes set per card (≈1.5 daily σ on SKHX, 2–3σ on EWY/DRAM/Brent, wider on the low-vol index, FX and commodities). Five real positions wearing eleven tickers.</p></div>
           <div class="pm-method-block"><span class="pm-method-h">Sources</span><p>Hyperliquid info API (metaAndAssetCtxs for the main perp universe and each HIP-3 dex — xyz, para, mkts, hyna, io; candleSnapshot; clearinghouseState, userFillsByTime, userFunding, userNonFundingLedgerUpdates for the account), fetched in-browser from app.hyperliquid.xyz at Sep 2, 2026 03:56 UTC · Treasury.gov daily par yield curve (2026 CSV) · Polymarket CLOB (the regime inputs’ market prices, from the Treasuries and Iran tabs).</p></div>
           <div class="pm-method-block"><span class="pm-method-h">What would change the book</span><p>(1) The 10-year closing under 4.55% retires every rate leg. (2) A ceasefire print (Polymarket ceasefire-continues-Sep above 90¢) retires the energy longs and the crypto short. (3) Brent funding flipping positive above +10% moves #6 to WTI. (4) If the Korea complex rallies 8% on a daily close with the 10-year flat, the spring-scare betas were a coincidence and the page says so. (5) The screen is re-run on every walk; a coefficient that loses significance loses its card.</p></div>
-        </div>
-      </section>
-
-      <!-- ===================== SECTION 2 ===================== -->
-      <div class="fund-header hy-anchor" id="review">
-        <h2 class="fund-title">Section 2 · Trade Review — What Has Worked and What Has Not</h2>
-        <p class="hy-lede"><strong>Scaffold — the full review is the next job; this is the ledger it will be built on.</strong> The API returns 13,762 fills from Jan 2, 2026 across 37 instruments, plus funding and ledger history back to Aug 2024. The headline: the account makes money scalping BTC and ETH in small size and gives it back three ways — fees on volume, funding on held longs, and HIP-3 stock longs held through drawdowns.</p>
-        <ul class="hy-findings">
-          <li><strong>2026 result</strong>Closed P&amp;L +$617 · fees −$1,689 · funding −$477 → <em>net realised −$1,549</em>, plus −$794 unrealised on the open ETH short.</li>
-          <li><strong>The style</strong>13,762 fills for $6.7M of notional is a $490 average ticket; closing fills win 94.7% of the time (BTC 1,511 to 93, ETH 1,698 to 20). A scalper’s record — tiny profits taken thousands of times — under a 23× swing position.</li>
-          <li><strong>The costs</strong>Fees were 2.7× the net closed profit. August alone cost $1,120 in fees on $4.5M of volume for +$269 of closed P&amp;L.</li>
-          <li><strong>The losers</strong>SNDK −$4,201 (1,602 fills, $0.58M bought long vs $0.01M short), SPCX −$1,953, CL −$603 — longs into the summer rally — and TSLA −$853, PLTR −$512, the two shorts the account tried, both wrong.</li>
-          <li><strong>The winners</strong>BTC +$2,615 (net +$1,377 after fees), BE +$2,165, HYPE +$1,500, ETH +$1,002 (net +$797), NBIS +$413.</li>
-          <li><strong>Funding</strong>−$9,635 all-time since Aug 2024 — ETH −$4,645, HYPE −$2,598, BTC −$1,221. 1.3× the current equity. The account has been the paying side of the perp for two years; the regime book’s tickets are chosen to be on the receiving side.</li>
-        </ul>
-      </div>
-
-      <section class="kpi-grid" aria-label="Trade review key stats">
-        <div class="kpi-card" data-accent="cyan"><div class="kpi-label">Fills 2026 · instruments · avg ticket</div><div class="kpi-value">13,762 · 37 · $490</div></div>
-        <div class="kpi-card" data-accent="peach"><div class="kpi-label">Closed P&amp;L 2026 · fees · funding</div><div class="kpi-value">+$617 · −$1,689 · −$477</div></div>
-        <div class="kpi-card" data-accent="peach"><div class="kpi-label">Net realised 2026 · open uPnL</div><div class="kpi-value">−$1,549 · −$794</div></div>
-        <div class="kpi-card" data-accent="slate"><div class="kpi-label">Best / worst instrument (closed P&amp;L)</div><div class="kpi-value">BTC +$2,615 · SNDK −$4,201</div></div>
-        <div class="kpi-card" data-accent="slate"><div class="kpi-label">Closing-fill win rate · overall · BTC · ETH</div><div class="kpi-value">94.7% · 94.2% · 98.8%</div></div>
-        <div class="kpi-card" data-accent="teal"><div class="kpi-label">Funding all-time (since Aug 2024) · ETH share</div><div class="kpi-value">−$9,635 · −$4,645</div></div>
-        <div class="kpi-card" data-accent="teal"><div class="kpi-label">Deposits · withdrawals (all-time)</div><div class="kpi-value">$211.2k · $38.1k</div></div>
-        <div class="kpi-card" data-accent="cyan"><div class="kpi-label">Equity tonight · margin used · withdrawable</div><div class="kpi-value">$7,537 · $7,016 · $0</div></div>
-      </section>
-
-      <section class="table-section" aria-label="Per-instrument ledger">
-        <div class="table-header-row">
-          <h2 class="section-title">2026 by Instrument</h2>
-          <span class="price-note">Closed P&amp;L is Hyperliquid’s closedPnl on each fill · fees are fill fees · funding is the coin’s all-time funding (the 2026-only total is −$477) · wins/losses count closing fills by sign · lean compares open-long to open-short notional · sorted by volume</span>
-        </div>
-        <div class="table-wrapper">
-          <table class="pm-table hy-table">
-            <thead><tr><th>Instrument</th><th class="col-num">Fills</th><th class="col-num">Volume</th><th class="col-num">Closed P&amp;L</th><th class="col-num">Fees</th><th class="col-num">Net</th><th class="col-num">Funding (all-time)</th><th class="col-num">W / L</th><th>Lean</th><th class="col-num">Active</th></tr></thead>
-            <tbody>
-              <tr><td class="pm-co"><strong>BTC</strong></td><td class="col-num">3,300</td><td class="col-num">$3.61M</td><td class="col-num">+2,615</td><td class="col-num">−1,238</td><td class="col-num pm-pos"><strong>+1,377</strong></td><td class="col-num">-1,221</td><td class="col-num">1511/93</td><td><span class="dir-badge dir-long">LONG</span> <span class="pm-note">L$1.44M/S$0.34M</span></td><td class="col-num pm-note">26-01-02..09-01</td></tr>
-              <tr><td class="pm-co"><strong>xyz:SNDK</strong></td><td class="col-num">1,602</td><td class="col-num">$1.16M</td><td class="col-num">-4,201</td><td class="col-num">−75</td><td class="col-num pm-neg"><strong>-4,276</strong></td><td class="col-num">-73</td><td class="col-num">619/67</td><td><span class="dir-badge dir-long">LONG</span> <span class="pm-note">L$0.58M/S$0.01M</span></td><td class="col-num pm-note">26-06-01..08-20</td></tr>
-              <tr><td class="pm-co"><strong>ETH</strong></td><td class="col-num">2,812</td><td class="col-num">$0.61M</td><td class="col-num">+1,002</td><td class="col-num">−205</td><td class="col-num pm-pos"><strong>+797</strong></td><td class="col-num">-4,645</td><td class="col-num">1698/20</td><td><span class="dir-badge dir-short">SHORT</span> <span class="pm-note">L$0.07M/S$0.31M</span></td><td class="col-num pm-note">26-02-05..09-02</td></tr>
-              <tr><td class="pm-co"><strong>xyz:MU</strong></td><td class="col-num">1,951</td><td class="col-num">$0.38M</td><td class="col-num">+125</td><td class="col-num">−24</td><td class="col-num pm-pos"><strong>+101</strong></td><td class="col-num">-81</td><td class="col-num">522/17</td><td><span class="dir-badge dir-long">LONG</span> <span class="pm-note">L$0.19M/S$0.00M</span></td><td class="col-num pm-note">26-06-05..08-10</td></tr>
-              <tr><td class="pm-co"><strong>HYPE</strong></td><td class="col-num">441</td><td class="col-num">$0.32M</td><td class="col-num">+1,500</td><td class="col-num">−110</td><td class="col-num pm-pos"><strong>+1,390</strong></td><td class="col-num">-2,598</td><td class="col-num">152/42</td><td><span class="dir-badge dir-long">LONG</span> <span class="pm-note">L$0.15M/S$0.00M</span></td><td class="col-num pm-note">26-08-19..09-02</td></tr>
-              <tr><td class="pm-co"><strong>xyz:SKHX</strong></td><td class="col-num">355</td><td class="col-num">$0.08M</td><td class="col-num">+187</td><td class="col-num">−4</td><td class="col-num pm-pos"><strong>+183</strong></td><td class="col-num">-3</td><td class="col-num">120/4</td><td><span class="dir-badge dir-long">LONG</span> <span class="pm-note">L$0.04M/S$0.00M</span></td><td class="col-num pm-note">26-07-28..08-07</td></tr>
-              <tr><td class="pm-co"><strong>xyz:NBIS</strong></td><td class="col-num">689</td><td class="col-num">$0.08M</td><td class="col-num">+413</td><td class="col-num">−4</td><td class="col-num pm-pos"><strong>+409</strong></td><td class="col-num">-62</td><td class="col-num">269/8</td><td><span class="dir-badge dir-long">LONG</span> <span class="pm-note">L$0.04M/S$0.00M</span></td><td class="col-num pm-note">26-06-21..08-21</td></tr>
-              <tr><td class="pm-co"><strong>xyz:SPCX</strong></td><td class="col-num">401</td><td class="col-num">$0.07M</td><td class="col-num">-1,953</td><td class="col-num">−4</td><td class="col-num pm-neg"><strong>-1,957</strong></td><td class="col-num">-3</td><td class="col-num">37/10</td><td><span class="dir-badge dir-long">LONG</span> <span class="pm-note">L$0.03M/S$0.01M</span></td><td class="col-num pm-note">26-06-12..08-21</td></tr>
-              <tr><td class="pm-co"><strong>xyz:BE</strong></td><td class="col-num">364</td><td class="col-num">$0.07M</td><td class="col-num">+2,165</td><td class="col-num">−4</td><td class="col-num pm-pos"><strong>+2,161</strong></td><td class="col-num">-10</td><td class="col-num">167/4</td><td><span class="dir-badge dir-long">LONG</span> <span class="pm-note">L$0.03M/S$0.00M</span></td><td class="col-num pm-note">26-07-28..08-10</td></tr>
-              <tr><td class="pm-co"><strong>xyz:TSLA</strong></td><td class="col-num">293</td><td class="col-num">$0.03M</td><td class="col-num">-853</td><td class="col-num">−2</td><td class="col-num pm-neg"><strong>-855</strong></td><td class="col-num">+21</td><td class="col-num">18/5</td><td><span class="dir-badge dir-short">SHORT</span> <span class="pm-note">L$0.00M/S$0.02M</span></td><td class="col-num pm-note">26-07-23..08-11</td></tr>
-              <tr><td class="pm-co"><strong>xyz:DELL</strong></td><td class="col-num">370</td><td class="col-num">$0.03M</td><td class="col-num">+472</td><td class="col-num">−2</td><td class="col-num pm-pos"><strong>+470</strong></td><td class="col-num">-2</td><td class="col-num">134/2</td><td><span class="dir-badge dir-long">LONG</span> <span class="pm-note">L$0.02M/S$0.00M</span></td><td class="col-num pm-note">26-07-13..08-21</td></tr>
-              <tr><td class="pm-co"><strong>xyz:AAPL</strong></td><td class="col-num">185</td><td class="col-num">$0.03M</td><td class="col-num">+409</td><td class="col-num">−2</td><td class="col-num pm-pos"><strong>+407</strong></td><td class="col-num">+20</td><td class="col-num">50/0</td><td><span class="dir-badge dir-short">SHORT</span> <span class="pm-note">L$0.00M/S$0.02M</span></td><td class="col-num pm-note">26-07-30..08-21</td></tr>
-              <tr><td class="pm-co"><strong>xyz:AMZN</strong></td><td class="col-num">94</td><td class="col-num">$0.03M</td><td class="col-num">+556</td><td class="col-num">−2</td><td class="col-num pm-pos"><strong>+554</strong></td><td class="col-num">-10</td><td class="col-num">58/3</td><td><span class="dir-badge dir-long">LONG</span> <span class="pm-note">L$0.01M/S$0.00M</span></td><td class="col-num pm-note">26-07-16..08-10</td></tr>
-              <tr><td class="pm-co"><strong>xyz:MRVL</strong></td><td class="col-num">150</td><td class="col-num">$0.02M</td><td class="col-num">-316</td><td class="col-num">−1</td><td class="col-num pm-neg"><strong>-317</strong></td><td class="col-num">+0</td><td class="col-num">17/4</td><td><span class="dir-badge dir-long">LONG</span> <span class="pm-note">L$0.01M/S$0.00M</span></td><td class="col-num pm-note">26-06-03..07-01</td></tr>
-              <tr><td class="pm-co"><strong>xyz:PLTR</strong></td><td class="col-num">90</td><td class="col-num">$0.02M</td><td class="col-num">-512</td><td class="col-num">−1</td><td class="col-num pm-neg"><strong>-513</strong></td><td class="col-num">-83</td><td class="col-num">0/2</td><td><span class="dir-badge dir-short">SHORT</span> <span class="pm-note">L$0.00M/S$0.01M</span></td><td class="col-num pm-note">26-08-03..08-07</td></tr>
-              <tr><td class="pm-co"><strong>ENA</strong></td><td class="col-num">10</td><td class="col-num">$0.01M</td><td class="col-num">-74</td><td class="col-num">−6</td><td class="col-num pm-neg"><strong>-80</strong></td><td class="col-num">+86</td><td class="col-num">0/5</td><td><span class="dir-badge dir-long">LONG</span> <span class="pm-note">L$0.01M/S$0.00M</span></td><td class="col-num pm-note">26-08-21..08-22</td></tr>
-              <tr><td class="pm-co"><strong>xyz:CL</strong></td><td class="col-num">146</td><td class="col-num">$0.01M</td><td class="col-num">-603</td><td class="col-num">−1</td><td class="col-num pm-neg"><strong>-604</strong></td><td class="col-num">+8</td><td class="col-num">0/3</td><td><span class="dir-badge dir-long">LONG</span> <span class="pm-note">L$0.01M/S$0.00M</span></td><td class="col-num pm-note">26-07-23..07-28</td></tr>
-              <tr><td class="pm-co"><strong>km:MU</strong></td><td class="col-num">62</td><td class="col-num">$0.01M</td><td class="col-num">+187</td><td class="col-num">−1</td><td class="col-num pm-pos"><strong>+186</strong></td><td class="col-num">-10</td><td class="col-num">36/1</td><td><span class="dir-badge dir-long">LONG</span> <span class="pm-note">L$0.01M/S$0.00M</span></td><td class="col-num pm-note">26-05-26..06-05</td></tr>
-              <tr><td class="pm-co"><strong>xyz:NCLD</strong></td><td class="col-num">21</td><td class="col-num">$0.01M</td><td class="col-num">-219</td><td class="col-num">−1</td><td class="col-num pm-neg"><strong>-220</strong></td><td class="col-num">+2</td><td class="col-num">0/2</td><td><span class="dir-badge dir-short">SHORT</span> <span class="pm-note">L$0.00M/S$0.01M</span></td><td class="col-num pm-note">26-08-10..08-22</td></tr>
-              <tr><td class="pm-co"><strong>km:SEMI</strong></td><td class="col-num">17</td><td class="col-num">$0.01M</td><td class="col-num">+79</td><td class="col-num">−0</td><td class="col-num pm-pos"><strong>+79</strong></td><td class="col-num">-0</td><td class="col-num">12/0</td><td><span class="dir-badge dir-long">BOTH</span> <span class="pm-note">L$0.00M/S$0.00M</span></td><td class="col-num pm-note">26-06-03..06-04</td></tr>
-              <tr><td class="pm-co"><strong>xyz:UNITREE</strong></td><td class="col-num">6</td><td class="col-num">$0.01M</td><td class="col-num">-236</td><td class="col-num">−0</td><td class="col-num pm-neg"><strong>-236</strong></td><td class="col-num">+14</td><td class="col-num">0/2</td><td><span class="dir-badge dir-long">BOTH</span> <span class="pm-note">L$0.00M/S$0.00M</span></td><td class="col-num pm-note">26-08-19..08-19</td></tr>
-              <tr><td class="pm-co"><strong>xyz:NATGAS</strong></td><td class="col-num">41</td><td class="col-num">$0.00M</td><td class="col-num">+21</td><td class="col-num">−0</td><td class="col-num pm-pos"><strong>+21</strong></td><td class="col-num">+6</td><td class="col-num">9/0</td><td><span class="dir-badge dir-long">BOTH</span> <span class="pm-note">L$0.00M/S$0.00M</span></td><td class="col-num pm-note">26-08-10..08-21</td></tr>
-              <tr><td class="pm-co"><strong>xyz:AMD</strong></td><td class="col-num">89</td><td class="col-num">$0.00M</td><td class="col-num">-99</td><td class="col-num">−0</td><td class="col-num pm-neg"><strong>-99</strong></td><td class="col-num">-0</td><td class="col-num">0/1</td><td><span class="dir-badge dir-long">BOTH</span> <span class="pm-note">L$0.00M/S$0.00M</span></td><td class="col-num pm-note">26-06-30..07-02</td></tr>
-              <tr><td class="pm-co"><strong>xyz:XYZ100</strong></td><td class="col-num">13</td><td class="col-num">$0.00M</td><td class="col-num">+52</td><td class="col-num">−0</td><td class="col-num pm-pos"><strong>+52</strong></td><td class="col-num">+74</td><td class="col-num">7/0</td><td><span class="dir-badge dir-long">BOTH</span> <span class="pm-note">L$0.00M/S$0.00M</span></td><td class="col-num pm-note">26-08-03..08-10</td></tr>
-              <tr><td class="pm-co"><strong>xyz:SHAZ</strong></td><td class="col-num">22</td><td class="col-num">$0.00M</td><td class="col-num">-21</td><td class="col-num">−0</td><td class="col-num pm-neg"><strong>-21</strong></td><td class="col-num">-0</td><td class="col-num">0/1</td><td><span class="dir-badge dir-long">BOTH</span> <span class="pm-note">L$0.00M/S$0.00M</span></td><td class="col-num pm-note">26-08-10..08-12</td></tr>
-              <tr><td class="pm-co"><strong>xyz:LYTE</strong></td><td class="col-num">59</td><td class="col-num">$0.00M</td><td class="col-num">-7</td><td class="col-num">−0</td><td class="col-num pm-neg"><strong>-7</strong></td><td class="col-num">+1</td><td class="col-num">33/1</td><td><span class="dir-badge dir-long">BOTH</span> <span class="pm-note">L$0.00M/S$0.00M</span></td><td class="col-num pm-note">26-08-10..08-12</td></tr>
-              <tr><td class="pm-co"><strong>xyz:HIMS</strong></td><td class="col-num">15</td><td class="col-num">$0.00M</td><td class="col-num">-36</td><td class="col-num">−0</td><td class="col-num pm-neg"><strong>-36</strong></td><td class="col-num">+0</td><td class="col-num">0/1</td><td><span class="dir-badge dir-long">BOTH</span> <span class="pm-note">L$0.00M/S$0.00M</span></td><td class="col-num pm-note">26-08-10..08-11</td></tr>
-              <tr><td class="pm-co"><strong>km:USOIL</strong></td><td class="col-num">52</td><td class="col-num">$0.00M</td><td class="col-num">-21</td><td class="col-num">−0</td><td class="col-num pm-neg"><strong>-21</strong></td><td class="col-num">-1</td><td class="col-num">4/6</td><td><span class="dir-badge dir-long">BOTH</span> <span class="pm-note">L$0.00M/S$0.00M</span></td><td class="col-num pm-note">26-03-10..05-26</td></tr>
-              <tr><td class="pm-co"><strong>vntl:ANTHROPIC</strong></td><td class="col-num">39</td><td class="col-num">$0.00M</td><td class="col-num">-65</td><td class="col-num">−1</td><td class="col-num pm-neg"><strong>-66</strong></td><td class="col-num">+5</td><td class="col-num">0/1</td><td><span class="dir-badge dir-long">BOTH</span> <span class="pm-note">L$0.00M/S$0.00M</span></td><td class="col-num pm-note">26-05-16..05-26</td></tr>
-              <tr><td class="pm-co"><strong>xyz:EBAY</strong></td><td class="col-num">29</td><td class="col-num">$0.00M</td><td class="col-num">+21</td><td class="col-num">−0</td><td class="col-num pm-pos"><strong>+21</strong></td><td class="col-num">-1</td><td class="col-num">22/0</td><td><span class="dir-badge dir-long">BOTH</span> <span class="pm-note">L$0.00M/S$0.00M</span></td><td class="col-num pm-note">26-08-10..08-21</td></tr>
-              <tr><td class="pm-co"><strong>xyz:ARM</strong></td><td class="col-num">19</td><td class="col-num">$0.00M</td><td class="col-num">+8</td><td class="col-num">−0</td><td class="col-num pm-pos"><strong>+8</strong></td><td class="col-num">+1</td><td class="col-num">1/0</td><td><span class="dir-badge dir-long">BOTH</span> <span class="pm-note">L$0.00M/S$0.00M</span></td><td class="col-num pm-note">26-06-02..06-03</td></tr>
-              <tr><td class="pm-co"><strong>xyz:SP500</strong></td><td class="col-num">4</td><td class="col-num">$0.00M</td><td class="col-num">+7</td><td class="col-num">−0</td><td class="col-num pm-pos"><strong>+7</strong></td><td class="col-num">+0</td><td class="col-num">1/0</td><td><span class="dir-badge dir-long">BOTH</span> <span class="pm-note">L$0.00M/S$0.00M</span></td><td class="col-num pm-note">26-08-03..08-10</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <section class="table-section" aria-label="Monthly ledger">
-        <div class="table-header-row">
-          <h2 class="section-title">2026 by Month</h2>
-          <span class="price-note">August: 5,183 fills, $4.5M of volume, +$269 closed, −$1,120 in fees — the busiest month was the second-best by closed P&amp;L and the second-worst by net</span>
-        </div>
-        <div class="table-wrapper">
-          <table class="pm-table hy-table">
-            <thead><tr><th>Month</th><th class="col-num">Fills</th><th class="col-num">Volume</th><th class="col-num">Closed P&amp;L</th><th class="col-num">Fees</th><th class="col-num">Net</th></tr></thead>
-            <tbody>
-              <tr><td class="pm-co">Jan</td><td class="col-num">1,376</td><td class="col-num">$0.6M</td><td class="col-num">-1,707</td><td class="col-num">−169</td><td class="col-num pm-neg"><strong>-1,876</strong></td></tr>
-              <tr><td class="pm-co">Feb</td><td class="col-num">2,472</td><td class="col-num">$0.2M</td><td class="col-num">-25</td><td class="col-num">−52</td><td class="col-num pm-neg"><strong>-77</strong></td></tr>
-              <tr><td class="pm-co">Mar</td><td class="col-num">191</td><td class="col-num">$0.0M</td><td class="col-num">-93</td><td class="col-num">−4</td><td class="col-num pm-neg"><strong>-97</strong></td></tr>
-              <tr><td class="pm-co">Apr</td><td class="col-num">5</td><td class="col-num">$0.0M</td><td class="col-num">-2</td><td class="col-num">−0</td><td class="col-num pm-neg"><strong>-2</strong></td></tr>
-              <tr><td class="pm-co">May</td><td class="col-num">116</td><td class="col-num">$0.0M</td><td class="col-num">-90</td><td class="col-num">−1</td><td class="col-num pm-neg"><strong>-91</strong></td></tr>
-              <tr><td class="pm-co">Jun</td><td class="col-num">1,320</td><td class="col-num">$0.1M</td><td class="col-num">+189</td><td class="col-num">−5</td><td class="col-num pm-pos"><strong>+184</strong></td></tr>
-              <tr><td class="pm-co">Jul</td><td class="col-num">2,630</td><td class="col-num">$0.4M</td><td class="col-num">+2,296</td><td class="col-num">−20</td><td class="col-num pm-pos"><strong>+2,276</strong></td></tr>
-              <tr><td class="pm-co">Aug</td><td class="col-num">5,183</td><td class="col-num">$4.5M</td><td class="col-num">+269</td><td class="col-num">−1,120</td><td class="col-num pm-neg"><strong>-851</strong></td></tr>
-              <tr><td class="pm-co">Sep 1–2</td><td class="col-num">469</td><td class="col-num">$0.9M</td><td class="col-num">-220</td><td class="col-num">−318</td><td class="col-num pm-neg"><strong>-538</strong></td></tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="hy-block"><div class="hy-h">Preliminary lessons (to be tested properly in the full review)</div>
-        <ol class="hy-lessons">
-          <li>The account makes money scalping BTC and ETH in small size and gives it back in three ways: fees on volume, funding on held longs, and directional HIP-3 stock longs held through drawdowns. SNDK alone erased 1.6× the year’s BTC profit.</li>
-          <li>The two largest losses are HIP-3 longs in the memory/AI complex (SNDK, SPCX — the sector the Regime Book says is the rate loser), the third is a TSLA short (−$853), then a crude long (CL, −$603) and a PLTR short (−$512) — the two shorts the account has tried both lost. The stock trades have lost in both directions, which points at timing and fees rather than a thesis.</li>
-          <li>The open ETH short is the first large short in the file and the largest position by a factor of ten; it is also the only position that has ever been within 2.2% of liquidation.</li>
-          <li>Funding of −$9,635 all-time is 1.3× the current equity. The Regime Book’s tickets are chosen to be on the receiving side.</li>
-          <li>The full review will add: round-trip reconstruction (entry-to-exit P&amp;L per position rather than per fill), holding-time distribution, P&amp;L by hour of day, and the 2024–25 history the API no longer serves for fills.</li>
-        </ol></div>
-      </section>
-
-
-      <!-- ===================== SECTION 3 ===================== -->
-      <div class="fund-header hy-anchor" id="scenarios">
-        <h2 class="fund-title">Section 3 · Portfolio Scenarios — The Book From 70k to 100k</h2>
-        <div class="hy-inputs"><span class="hy-input">Book · <strong>long 4.215 BTC</strong> at 80,813 · <strong>long 1,181 HYPE</strong> at 85.16 (both cross, 40× / 10×)</span><span class="hy-input">Equity · <strong>$27,567</strong> · $436,473 notional · 15.8× effective</span><span class="hy-input">Marks · <strong>BTC 79,691</strong> · <strong>HYPE 85.17</strong></span><span class="hy-input">Liquidation · <strong>75,285</strong> BTC alone · <strong>76,499</strong> if HYPE follows at β 1.32</span><span class="hy-input">As of · <strong>2026-09-05 14:46 UTC</strong></span></div>
-        <p class="hy-lede">You asked what the Hyperliquid book is worth if BTC goes to 100k in $5k steps, and the same for HYPE. Every rung below is priced two ways. <strong>Hold as-is</strong> marks today’s 4.215 BTC and 1,181 HYPE at the scenario price with nothing executing. <strong>With orders</strong> lets everything resting in the account execute on a straight-line path from today’s marks to the rung: the 3.09-BTC take-profit ladder at 81,000–85,000, the 1,047-HYPE ladder at 85.72–108, the stops (0.6 BTC at 78,980–79,100, 350 HYPE at 83.31–83.55), the scale-in bids, and the remainder of the two buy TWAPs (0.66 BTC and 332 HYPE, ~80 hours left). The gap between the two columns is the price of the order book you have chosen — mostly the take-profit ladders, which cap the upside long before 100k.</p>
-        <ul class="hy-findings">
-          <li><strong>At 100k</strong>Hold as-is is worth <em>$113,171</em> (+$85,604, +311% on today’s equity) with HYPE flat. With your orders it is <em>$68,088</em> (+$40,521): the ladder has sold 3.089 BTC at an average 83,243 and you arrive at 100k holding 1.79 BTC — the 1.13 the ladder leaves plus the TWAP’s 0.66. Depending on when the TWAP fills, the with-orders figure runs $61k–$75k (method block).</li>
-          <li><strong>The ladder’s price</strong>On its own the take-profit ladder costs $5,453 at 85k, $20,900 at 90k and <em>$51,793</em> at 100k against holding; the buy TWAP claws back $6,710 of that at 100k, which is why the with-orders column ends $45,082 behind hold-as-is rather than $51,793. Each rung above 85k adds only +$7,288 with orders versus +$21,075 holding: 1.79 BTC × $5,000 is $8,950, less the TWAP filling $2,500 higher on every longer path.</li>
-          <li><strong>Both legs together</strong>If HYPE follows BTC at its measured beta (1.32× the percentage move, so 113.82 at BTC 100k), hold as-is reaches <em>$147,002</em> and with orders <em>$84,071</em>. The HYPE ladder sells all 1,047 by 108 and forgoes about $22.6k there, offset by the HYPE TWAP’s $4.8k gain — $17,848 net on top of the BTC ladder’s cap.</li>
-          <li><strong>The other side of 80k</strong>75k and 70k are both liquidations. BTC alone crosses maintenance at 75,285; with HYPE moving on beta the trigger is 76,499. At the trigger the account is down to its maintenance margin, about <em>$8,995</em>; the exchange then closes the book by market in 20% chunks and returns what is left, and only a backstop liquidation (equity under two-thirds of maintenance, ≈$5,997) takes everything. So one $5k rung down costs roughly two-thirds of the account, not all of it — and 75,000 itself is a knife-edge, $285 below the hold-as-is trigger. The stops do not change this: they sell 0.6 BTC at ≈79,000, and by 78,200 the bids and the TWAP have bought a third to a half of it back.</li>
-          <li><strong>HYPE on its own</strong>With BTC flat, HYPE at 110 (+29%) is $56,887 holding and $42,376 with orders — the 1,047-HYPE ladder sells out at an average 92.24 and you keep 466. HYPE at 70 (−18%) with BTC flat is $9,654 holding today’s book — survivable, but only $1,323 above the HYPE-alone trigger of 68.82, and if the TWAPs finish first (they have ~80 hours) that trigger moves to 73.87, so 70 becomes a liquidation.</li>
-          <li><strong>The TWAPs</strong>Two buy TWAPs still have 0.66 BTC and 332 HYPE to buy over ~80 hours regardless of price. On the way up they help: cancelling them turns 100k from $68,088 into $61,378 on the page’s path assumption, and had they already filled near today’s price 100k would be worth $74,838 — so at that rung the TWAPs are worth $6.7k–$13.5k. On the way down they buy into the liquidation until initial margin runs out near 77,500. And if prices simply sit still for those 80 hours, the finished TWAPs leave a 4.88 BTC + 1,513 HYPE book at 18.8× whose triggers are 76,322 (BTC alone), 77,320 (on beta) and 73.87 (HYPE alone) — the account’s own instructions raise the BTC trigger by about $1,037.</li>
-        </ul>
-      </div>
-
-      <section class="kpi-grid" aria-label="Portfolio scenario key stats">
-        <div class="kpi-card" data-accent="cyan"><div class="kpi-label">Equity · notional · leverage</div><div class="kpi-value">$27,567 · $436k · 15.8×</div></div>
-        <div class="kpi-card" data-accent="cyan"><div class="kpi-label">BTC leg · entry · open P&amp;L</div><div class="kpi-value">4.215 · 80,813 · −$4,728</div></div>
-        <div class="kpi-card" data-accent="cyan"><div class="kpi-label">HYPE leg · entry · open P&amp;L</div><div class="kpi-value">1,181 · 85.16 · +$6</div></div>
-        <div class="kpi-card" data-accent="peach"><div class="kpi-label">Liq · BTC alone · on beta · HYPE alone</div><div class="kpi-value">75,285 · 76,499 · 68.82</div></div>
-        <div class="kpi-card" data-accent="peach"><div class="kpi-label">Maint · buffer · buffer/notional</div><div class="kpi-value">$9,227 · $18,339 · 4.2%</div></div>
-        <div class="kpi-card" data-accent="slate"><div class="kpi-label">Take-profit ladders resting</div><div class="kpi-value">3.089 BTC · 1,047 HYPE</div></div>
-        <div class="kpi-card" data-accent="slate"><div class="kpi-label">Stops · TWAP left (BTC · HYPE)</div><div class="kpi-value">0.6 · 350 · 0.66 · 332</div></div>
-        <div class="kpi-card" data-accent="teal"><div class="kpi-label">100k · hold · with orders · gap</div><div class="kpi-value">$113k · $68k · $45k</div></div>
-      </section>
-
-      <section class="table-section" aria-label="BTC scenario ladder">
-        <div class="table-header-row">
-          <h2 class="section-title">BTC in $5k Steps — Hold As-Is vs With Orders (HYPE flat at 85.17), Plus HYPE on Beta</h2>
-          <span class="price-note">Hold as-is: today’s positions marked at the rung. With orders: the take-profit ladder, stops, scale-in bids and the TWAP remainder execute on a straight path from 79,691 to the rung; “Sold” is what the ladder and stops sell and the average price; “TWAP adds” is what the buy TWAP fills and its average price. ROE is P&amp;L on today’s $27,567. The last three columns repeat the exercise with HYPE moving 1.32× BTC’s percentage move. On the two downside rungs the stops sell 0.6 BTC at ≈79,000, the bids buy 0.13 back at 78,190–78,435 and the TWAP keeps buying until initial margin runs out — on the page’s path assumption the book is liquidated $90–$320 lower than hold-as-is, not saved; if the TWAP has already filled, the trigger is 75,849, above hold-as-is; with the TWAPs cancelled the 75k rung survives (equity $9,746 against $8,539 of maintenance).</span>
-        </div>
-        <div class="table-wrapper">
-          <table class="pm-table hy-table hy-scen">
-            <thead><tr><th rowspan="2">BTC</th><th rowspan="2" class="col-num">Move</th><th colspan="3" class="hy-grp">Hold as-is</th><th colspan="5" class="hy-grp">With orders</th><th rowspan="2" class="col-num">Orders vs hold</th><th colspan="3" class="hy-grp">HYPE on beta</th></tr>
-            <tr><th class="col-num">Equity</th><th class="col-num">P&amp;L</th><th class="col-num">ROE</th><th class="col-num">BTC held</th><th class="col-num">Sold @ avg</th><th class="col-num">TWAP adds @ avg</th><th class="col-num">Equity</th><th class="col-num">P&amp;L</th><th class="col-num">HYPE</th><th class="col-num">Hold</th><th class="col-num">With orders</th></tr></thead>
-            <tbody>
-                            <tr><td class="pm-co"><strong>70,000</strong></td><td class="col-num pm-neg">−12.2%</td><td class="col-num pm-neg" colspan="3"><strong>Liquidated</strong> at 75,285</td><td class="col-num pm-neg" colspan="5"><strong>Liquidated</strong> at 74,962</td><td class="col-num">—</td><td class="col-num">71.50</td><td class="col-num"><span class="pm-neg">liq 76,499</span></td><td class="col-num"><span class="pm-neg">liq 76,047</span></td></tr>
-              <tr><td class="pm-co"><strong>75,000</strong></td><td class="col-num pm-neg">−5.9%</td><td class="col-num pm-neg" colspan="3"><strong>Liquidated</strong> at 75,285</td><td class="col-num pm-neg" colspan="5"><strong>Liquidated</strong> at 75,197</td><td class="col-num">—</td><td class="col-num">78.55</td><td class="col-num"><span class="pm-neg">liq 76,499</span></td><td class="col-num"><span class="pm-neg">liq 76,224</span></td></tr>
-              <tr><td class="pm-co"><strong>80,000</strong></td><td class="col-num pm-pos">+0.4%</td><td class="col-num"><strong>$28,869</strong></td><td class="col-num pm-pos">+$1,302</td><td class="col-num pm-pos">+5%</td><td class="col-num">4.879</td><td class="col-num">none</td><td class="col-num">0.664 @ 79,846</td><td class="col-num"><strong>$28,943</strong></td><td class="col-num pm-pos">+$1,377</td><td class="col-num pm-pos">+$74</td><td class="col-num">85.61</td><td class="col-num">$29,384</td><td class="col-num">$29,533</td></tr>
-              <tr><td class="pm-co"><strong>85,000</strong></td><td class="col-num pm-pos">+6.7%</td><td class="col-num"><strong>$49,944</strong></td><td class="col-num pm-pos">+$22,378</td><td class="col-num pm-pos">+81%</td><td class="col-num">1.790</td><td class="col-num">3.089 @ 83,243</td><td class="col-num">0.664 @ 82,347</td><td class="col-num"><strong>$46,224</strong></td><td class="col-num pm-pos">+$18,658</td><td class="col-num pm-neg">−$3,720</td><td class="col-num">92.66</td><td class="col-num">$58,788</td><td class="col-num">$53,343</td></tr>
-              <tr><td class="pm-co"><strong>90,000</strong></td><td class="col-num pm-pos">+12.9%</td><td class="col-num"><strong>$71,020</strong></td><td class="col-num pm-pos">+$43,453</td><td class="col-num pm-pos">+158%</td><td class="col-num">1.790</td><td class="col-num">3.089 @ 83,243</td><td class="col-num">0.664 @ 84,848</td><td class="col-num"><strong>$53,512</strong></td><td class="col-num pm-pos">+$25,946</td><td class="col-num pm-neg">−$17,508</td><td class="col-num">99.71</td><td class="col-num">$88,193</td><td class="col-num">$64,574</td></tr>
-              <tr><td class="pm-co"><strong>95,000</strong></td><td class="col-num pm-pos">+19.2%</td><td class="col-num"><strong>$92,095</strong></td><td class="col-num pm-pos">+$64,529</td><td class="col-num pm-pos">+234%</td><td class="col-num">1.790</td><td class="col-num">3.089 @ 83,243</td><td class="col-num">0.664 @ 87,349</td><td class="col-num"><strong>$60,800</strong></td><td class="col-num pm-pos">+$33,234</td><td class="col-num pm-neg">−$31,295</td><td class="col-num">106.77</td><td class="col-num">$117,597</td><td class="col-num">$74,654</td></tr>
-              <tr><td class="pm-co"><strong>100,000</strong></td><td class="col-num pm-pos">+25.5%</td><td class="col-num"><strong>$113,171</strong></td><td class="col-num pm-pos">+$85,604</td><td class="col-num pm-pos">+311%</td><td class="col-num">1.790</td><td class="col-num">3.089 @ 83,243</td><td class="col-num">0.664 @ 89,851</td><td class="col-num"><strong>$68,088</strong></td><td class="col-num pm-pos">+$40,521</td><td class="col-num pm-neg">−$45,082</td><td class="col-num">113.82</td><td class="col-num">$147,002</td><td class="col-num">$84,071</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <section class="table-section" aria-label="HYPE scenario ladder">
-        <div class="table-header-row">
-          <h2 class="section-title">HYPE in $5 Steps — Hold As-Is vs With Orders (BTC flat at 79,691)</h2>
-          <span class="price-note">Same construction. The HYPE ladder is 316 reduce-only sells from 85.72 to 108 (45 by 86, 507 by 90, 757 by 95, 887 by 100, all 1,047 by 108); the stops sell 350 at 83.31–83.55 and the bids buy 120 back at 82.45–83.03. HYPE is 23% of the book’s notional, so a HYPE drop with BTC flat is survivable to 68.82 on today’s book even though HYPE carries 5% maintenance against BTC’s 1.25%; once the TWAPs have finished, that trigger is 73.87.</span>
-        </div>
-        <div class="table-wrapper">
-          <table class="pm-table hy-table hy-scen">
-            <thead><tr><th rowspan="2">HYPE</th><th rowspan="2" class="col-num">Move</th><th colspan="3" class="hy-grp">Hold as-is</th><th colspan="5" class="hy-grp">With orders</th><th rowspan="2" class="col-num">Orders vs hold</th></tr>
-            <tr><th class="col-num">Equity</th><th class="col-num">P&amp;L</th><th class="col-num">ROE</th><th class="col-num">HYPE held</th><th class="col-num">Sold @ avg</th><th class="col-num">TWAP adds @ avg</th><th class="col-num">Equity</th><th class="col-num">P&amp;L</th></tr></thead>
-            <tbody>
-                            <tr><td class="pm-co"><strong>70</strong></td><td class="col-num pm-neg">−17.8%</td><td class="col-num"><strong>$9,654</strong></td><td class="col-num pm-neg">−$17,912</td><td class="col-num pm-neg">−65%</td><td class="col-num">1,145</td><td class="col-num">350 @ 83.32</td><td class="col-num">194 @ 80.74</td><td class="col-num"><strong>$10,678</strong></td><td class="col-num pm-neg">−$16,888</td><td class="col-num pm-pos">+$1,024</td></tr>
-              <tr><td class="pm-co"><strong>75</strong></td><td class="col-num pm-neg">−11.9%</td><td class="col-num"><strong>$15,559</strong></td><td class="col-num pm-neg">−$12,008</td><td class="col-num pm-neg">−44%</td><td class="col-num">1,206</td><td class="col-num">350 @ 83.32</td><td class="col-num">255 @ 81.26</td><td class="col-num"><strong>$15,911</strong></td><td class="col-num pm-neg">−$11,656</td><td class="col-num pm-pos">+$352</td></tr>
-              <tr><td class="pm-co"><strong>80</strong></td><td class="col-num pm-neg">−6.1%</td><td class="col-num"><strong>$21,463</strong></td><td class="col-num pm-neg">−$6,104</td><td class="col-num pm-neg">−22%</td><td class="col-num">1,283</td><td class="col-num">350 @ 83.32</td><td class="col-num">332 @ 82.58</td><td class="col-num"><strong>$21,398</strong></td><td class="col-num pm-neg">−$6,169</td><td class="col-num pm-neg">−$65</td></tr>
-              <tr><td class="pm-co"><strong>85</strong></td><td class="col-num pm-neg">−0.2%</td><td class="col-num"><strong>$27,367</strong></td><td class="col-num pm-neg">−$200</td><td class="col-num pm-neg">−1%</td><td class="col-num">1,513</td><td class="col-num">none</td><td class="col-num">332 @ 85.08</td><td class="col-num"><strong>$27,310</strong></td><td class="col-num pm-neg">−$256</td><td class="col-num pm-neg">−$57</td></tr>
-              <tr><td class="pm-co"><strong>90</strong></td><td class="col-num pm-pos">+5.7%</td><td class="col-num"><strong>$33,271</strong></td><td class="col-num pm-pos">+$5,704</td><td class="col-num pm-pos">+21%</td><td class="col-num">1,006</td><td class="col-num">507 @ 87.16</td><td class="col-num">332 @ 87.59</td><td class="col-num"><strong>$32,600</strong></td><td class="col-num pm-pos">+$5,033</td><td class="col-num pm-neg">−$671</td></tr>
-              <tr><td class="pm-co"><strong>95</strong></td><td class="col-num pm-pos">+11.5%</td><td class="col-num"><strong>$39,175</strong></td><td class="col-num pm-pos">+$11,608</td><td class="col-num pm-pos">+42%</td><td class="col-num">756</td><td class="col-num">757 @ 88.92</td><td class="col-num">332 @ 90.09</td><td class="col-num"><strong>$36,168</strong></td><td class="col-num pm-pos">+$8,601</td><td class="col-num pm-neg">−$3,007</td></tr>
-              <tr><td class="pm-co"><strong>100</strong></td><td class="col-num pm-pos">+17.4%</td><td class="col-num"><strong>$45,079</strong></td><td class="col-num pm-pos">+$17,512</td><td class="col-num pm-pos">+64%</td><td class="col-num">626</td><td class="col-num">887 @ 90.11</td><td class="col-num">332 @ 92.59</td><td class="col-num"><strong>$38,730</strong></td><td class="col-num pm-pos">+$11,164</td><td class="col-num pm-neg">−$6,349</td></tr>
-              <tr><td class="pm-co"><strong>105</strong></td><td class="col-num pm-pos">+23.3%</td><td class="col-num"><strong>$50,983</strong></td><td class="col-num pm-pos">+$23,416</td><td class="col-num pm-pos">+85%</td><td class="col-num">526</td><td class="col-num">987 @ 91.37</td><td class="col-num">332 @ 95.09</td><td class="col-num"><strong>$40,783</strong></td><td class="col-num pm-pos">+$13,217</td><td class="col-num pm-neg">−$10,200</td></tr>
-              <tr><td class="pm-co"><strong>110</strong></td><td class="col-num pm-pos">+29.1%</td><td class="col-num"><strong>$56,887</strong></td><td class="col-num pm-pos">+$29,321</td><td class="col-num pm-pos">+106%</td><td class="col-num">466</td><td class="col-num">1,047 @ 92.24</td><td class="col-num">332 @ 97.59</td><td class="col-num"><strong>$42,376</strong></td><td class="col-num pm-pos">+$14,810</td><td class="col-num pm-neg">−$14,511</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <section class="table-section" aria-label="Joint scenario grid">
-        <div class="table-header-row">
-          <h2 class="section-title">Both Legs — Equity With Orders (Hold As-Is Beneath), BTC Down the Side, HYPE Across</h2>
-          <span class="price-note">Each cell: equity with orders on a straight path to that BTC/HYPE pair, and hold-as-is equity underneath. LIQ = the path crosses maintenance margin before arriving. Outlined cells sit closest to the beta-consistent pair (HYPE moving 1.32× BTC); at BTC 100k the beta-consistent HYPE is 113.82, off the right edge.</span>
-        </div>
-        <div class="table-wrapper">
-          <table class="pm-table hy-table hy-grid">
-            <thead><tr><th class="hy-grid-corner">BTC ↓ · HYPE →</th><th>70</th><th>75</th><th>80</th><th>85</th><th>90</th><th>95</th><th>100</th><th>105</th><th>110</th></tr></thead>
-            <tbody>
-                            <tr><th class="hy-grid-row">70,000</th><td class="hy-liq hy-beta"><span class="hy-cell-o">LIQ</span><span class="hy-cell-h">hold liq</span></td><td class="hy-liq"><span class="hy-cell-o">LIQ</span><span class="hy-cell-h">hold liq</span></td><td class="hy-liq"><span class="hy-cell-o">LIQ</span><span class="hy-cell-h">hold liq</span></td><td class="hy-liq"><span class="hy-cell-o">LIQ</span><span class="hy-cell-h">hold liq</span></td><td class="hy-liq"><span class="hy-cell-o">LIQ</span><span class="hy-cell-h">hold liq</span></td><td class="hy-liq"><span class="hy-cell-o">LIQ</span><span class="hy-cell-h">hold liq</span></td><td class="hy-liq"><span class="hy-cell-o">LIQ</span><span class="hy-cell-h">hold liq</span></td><td class="hy-liq"><span class="hy-cell-o">LIQ</span><span class="hy-cell-h">hold $10,135</span></td><td class="hy-liq"><span class="hy-cell-o">LIQ</span><span class="hy-cell-h">hold $16,039</span></td></tr>
-              <tr><th class="hy-grid-row">75,000</th><td class="hy-liq"><span class="hy-cell-o">LIQ</span><span class="hy-cell-h">hold liq</span></td><td class="hy-liq"><span class="hy-cell-o">LIQ</span><span class="hy-cell-h">hold liq</span></td><td class="hy-liq hy-beta"><span class="hy-cell-o">LIQ</span><span class="hy-cell-h">hold liq</span></td><td class="hy-liq"><span class="hy-cell-o">LIQ</span><span class="hy-cell-h">hold liq</span></td><td class="hy-dn"><span class="hy-cell-o">$13,270</span><span class="hy-cell-h">hold $13,498</span></td><td class="hy-dn"><span class="hy-cell-o">$16,791</span><span class="hy-cell-h">hold $19,402</span></td><td class="hy-dn"><span class="hy-cell-o">$19,354</span><span class="hy-cell-h">hold $25,306</span></td><td class="hy-dn"><span class="hy-cell-o">$21,406</span><span class="hy-cell-h">hold $31,210</span></td><td class="hy-dn"><span class="hy-cell-o">$22,999</span><span class="hy-cell-h">hold $37,114</span></td></tr>
-              <tr><th class="hy-grid-row">80,000</th><td class="hy-dn"><span class="hy-cell-o">$11,983</span><span class="hy-cell-h">hold $10,957</span></td><td class="hy-dn"><span class="hy-cell-o">$17,262</span><span class="hy-cell-h">hold $16,861</span></td><td class="hy-dn"><span class="hy-cell-o">$22,803</span><span class="hy-cell-h">hold $22,765</span></td><td class="hy-up hy-beta"><span class="hy-cell-o">$28,715</span><span class="hy-cell-h">hold $28,669</span></td><td class="hy-up"><span class="hy-cell-o">$34,005</span><span class="hy-cell-h">hold $34,573</span></td><td class="hy-up"><span class="hy-cell-o">$37,573</span><span class="hy-cell-h">hold $40,477</span></td><td class="hy-up"><span class="hy-cell-o">$40,135</span><span class="hy-cell-h">hold $46,382</span></td><td class="hy-up"><span class="hy-cell-o">$42,188</span><span class="hy-cell-h">hold $52,286</span></td><td class="hy-up"><span class="hy-cell-o">$43,781</span><span class="hy-cell-h">hold $58,190</span></td></tr>
-              <tr><th class="hy-grid-row">85,000</th><td class="hy-up"><span class="hy-cell-o">$28,917</span><span class="hy-cell-h">hold $32,032</span></td><td class="hy-up"><span class="hy-cell-o">$34,500</span><span class="hy-cell-h">hold $37,936</span></td><td class="hy-up"><span class="hy-cell-o">$40,084</span><span class="hy-cell-h">hold $43,840</span></td><td class="hy-up"><span class="hy-cell-o">$45,996</span><span class="hy-cell-h">hold $49,745</span></td><td class="hy-up"><span class="hy-cell-o">$51,286</span><span class="hy-cell-h">hold $55,649</span></td><td class="hy-up hy-beta"><span class="hy-cell-o">$54,854</span><span class="hy-cell-h">hold $61,553</span></td><td class="hy-up"><span class="hy-cell-o">$57,417</span><span class="hy-cell-h">hold $67,457</span></td><td class="hy-up"><span class="hy-cell-o">$59,469</span><span class="hy-cell-h">hold $73,361</span></td><td class="hy-up"><span class="hy-cell-o">$61,062</span><span class="hy-cell-h">hold $79,265</span></td></tr>
-              <tr><th class="hy-grid-row">90,000</th><td class="hy-up"><span class="hy-cell-o">$36,205</span><span class="hy-cell-h">hold $53,108</span></td><td class="hy-up"><span class="hy-cell-o">$41,788</span><span class="hy-cell-h">hold $59,012</span></td><td class="hy-up"><span class="hy-cell-o">$47,372</span><span class="hy-cell-h">hold $64,916</span></td><td class="hy-up"><span class="hy-cell-o">$53,284</span><span class="hy-cell-h">hold $70,820</span></td><td class="hy-up"><span class="hy-cell-o">$58,574</span><span class="hy-cell-h">hold $76,724</span></td><td class="hy-up"><span class="hy-cell-o">$62,142</span><span class="hy-cell-h">hold $82,628</span></td><td class="hy-up hy-beta"><span class="hy-cell-o">$64,705</span><span class="hy-cell-h">hold $88,532</span></td><td class="hy-up"><span class="hy-cell-o">$66,757</span><span class="hy-cell-h">hold $94,436</span></td><td class="hy-up"><span class="hy-cell-o">$68,350</span><span class="hy-cell-h">hold $100,340</span></td></tr>
-              <tr><th class="hy-grid-row">95,000</th><td class="hy-up"><span class="hy-cell-o">$43,493</span><span class="hy-cell-h">hold $74,183</span></td><td class="hy-up"><span class="hy-cell-o">$49,076</span><span class="hy-cell-h">hold $80,087</span></td><td class="hy-up"><span class="hy-cell-o">$54,660</span><span class="hy-cell-h">hold $85,991</span></td><td class="hy-up"><span class="hy-cell-o">$60,572</span><span class="hy-cell-h">hold $91,895</span></td><td class="hy-up"><span class="hy-cell-o">$65,862</span><span class="hy-cell-h">hold $97,799</span></td><td class="hy-up"><span class="hy-cell-o">$69,430</span><span class="hy-cell-h">hold $103,703</span></td><td class="hy-up"><span class="hy-cell-o">$71,992</span><span class="hy-cell-h">hold $109,608</span></td><td class="hy-up hy-beta"><span class="hy-cell-o">$74,045</span><span class="hy-cell-h">hold $115,512</span></td><td class="hy-up"><span class="hy-cell-o">$75,638</span><span class="hy-cell-h">hold $121,416</span></td></tr>
-              <tr><th class="hy-grid-row">100,000</th><td class="hy-up"><span class="hy-cell-o">$50,780</span><span class="hy-cell-h">hold $95,258</span></td><td class="hy-up"><span class="hy-cell-o">$56,364</span><span class="hy-cell-h">hold $101,162</span></td><td class="hy-up"><span class="hy-cell-o">$61,948</span><span class="hy-cell-h">hold $107,067</span></td><td class="hy-up"><span class="hy-cell-o">$67,860</span><span class="hy-cell-h">hold $112,971</span></td><td class="hy-up"><span class="hy-cell-o">$73,149</span><span class="hy-cell-h">hold $118,875</span></td><td class="hy-up"><span class="hy-cell-o">$76,718</span><span class="hy-cell-h">hold $124,779</span></td><td class="hy-up"><span class="hy-cell-o">$79,280</span><span class="hy-cell-h">hold $130,683</span></td><td class="hy-up"><span class="hy-cell-o">$81,333</span><span class="hy-cell-h">hold $136,587</span></td><td class="hy-up"><span class="hy-cell-o">$82,926</span><span class="hy-cell-h">hold $142,491</span></td></tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <section class="table-section" aria-label="Scenario methodology">
-        <div class="table-header-row"><h2 class="section-title">How the Scenarios Are Built — and What They Leave Out</h2></div>
-        <div class="pm-method">
-          <div class="pm-method-block"><span class="pm-method-h">The book, as read</span><p>clearinghouseState, frontendOpenOrders, webData2 (TWAP states) and userFunding for 0xD71a…95Bc, fetched in-browser from app.hyperliquid.xyz at 2026-09-05 14:46 UTC. Long 4.21507 BTC at 80,812.7 (40× cross) and 1,180.82 HYPE at 85.1642 (10× cross); equity $27,566.69; maintenance $9,227 (BTC at 1.25% of notional, HYPE at 5% — half the initial margin at each asset’s maximum leverage). The model’s liquidation prices, 75,285 for BTC alone and 68.82 for HYPE alone, reproduce the two liquidationPx figures the exchange reports for the account to the dollar — which pins down the maintenance fractions, though not what happens after the trigger.</p></div>
-          <div class="pm-method-block"><span class="pm-method-h">Hold as-is</span><p>Equity at a rung = today’s equity + 4.21507 × (BTC − 79,691) + 1,180.82 × (HYPE − 85.1693). The rung is marked liquidated if equity falls below maintenance anywhere on the straight path from today’s marks to the rung (for the BTC-alone table, HYPE is held at 85.1693); both are linear in the path, so the crossing is solved exactly. ROE is the P&amp;L divided by today’s equity.</p></div>
-          <div class="pm-method-block"><span class="pm-method-h">With orders</span><p>The path is walked in 2,000 steps. Reduce-only limit sells fill at their limit price when the mark reaches it (the BTC ladder’s cumulative size and notional were read at $500 intervals from 81,000 to 85,000 and the HYPE ladder’s at $0.50–$1 intervals from 85.72 to 108; fills are interpolated within an interval — none of the $5k / $5 rungs falls inside a ladder, but the HYPE-on-beta points of 92.66, 99.71 and 106.77 do, so those cells carry a few dollars of interpolation). Stop-markets fill at their trigger less 0.03% (BTC) / 0.1% (HYPE) of slippage. Scale-in bids fill at their limit. A buy that would exceed initial margin at the account’s leverage settings is skipped, as the exchange would skip it; a reduce-only sell never exceeds the position. Fees are assumed at 0.035% taker (stops, TWAP slices) and 0.010% maker (limit fills) — the base schedule would lower every with-orders figure by $15–25. Funding is not charged.</p></div>
-          <div class="pm-method-block"><span class="pm-method-h">TWAP timing — the biggest single assumption</span><p>The tables spread the remainder of each TWAP (0.664 BTC, 332 HYPE) evenly along the path, so it fills at the average of today’s price and the rung, and a longer path buys less of it by any given level. That is the middle of three cases. With HYPE flat, the with-orders figure at 85k / 90k / 95k / 100k is $44.5k / $50.1k / $55.7k / $61.4k if the TWAPs are cancelled, $46.2k / $53.5k / $60.8k / $68.1k on the path assumption (the tables), and $48.0k / $56.9k / $65.9k / $74.8k if they finish near today’s price before the move — the likelier case for a +25% move, since the TWAPs end in ~80 hours. On the downside the same choice moves the with-orders trigger from 75,197 (tables) to 75,849 (TWAPs done first), and with the TWAPs cancelled the 75k rung is survived; HYPE at 70 with BTC flat is $10,678 on the tables and a liquidation at 71.34 if the TWAPs finish first. Today’s liquidation prices expire with the TWAPs: at unchanged prices the finished book is 4.879 BTC + 1,513 HYPE ($518k, 18.8×) with triggers 76,322 / 77,320 / 73.87.</p></div>
-          <div class="pm-method-block"><span class="pm-method-h">HYPE on beta</span><p>Ordinary least squares of HYPE’s daily log return on BTC’s over the last 60 days gives β 1.32 with correlation 0.68 — an R² of 0.46, so the beta line explains less than half of HYPE’s daily variance. “HYPE on beta” moves HYPE by 1.32× BTC’s simple percentage move (on log returns the 100k point would be 114.9 rather than 113.82). On the three large BTC days of Sep 1–4 HYPE moved 1.2×, 1.3× and 1.7× BTC’s percentage. The joint trigger depends on the co-move actually realised: 75,285 if HYPE sits still, 76,270 at 1×, 76,499 at the measured beta, 76,895 at 2× and 77,327 at 3×.</p></div>
-          <div class="pm-method-block"><span class="pm-method-h">What is not modelled</span><p>Liquidation is treated as the end of the scenario, not as a cash flow: on Hyperliquid a cross account that crosses maintenance is closed by market orders (20% of the position at a time above $100k of notional), any collateral left after the closes stays with the trader, and only a backstop liquidation — equity under two-thirds of maintenance without a successful close on the book — forfeits the lot, so the two downside rungs are worth somewhere between nothing and the ≈$8,995 of maintenance margin the account holds at the trigger. The path is a straight line; a round trip that touches the stops and then rallies (the BTC stops sit 0.7–0.9% below the mark and the HYPE stops 1.9–2.2% below; at this summer’s realised volatility levels that close get touched roughly two days in three) would leave the book smaller on the way up than the table shows. Funding is left out, and its horizon matters: at the last-24h rate of $96 a day the 80-hour TWAP window costs about $320, but a month-long path to 100k costs about $2,900. Nothing here is a forecast of where BTC or HYPE go — the rungs are the question you asked, priced.</p></div>
         </div>
       </section>
 

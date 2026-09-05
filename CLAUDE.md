@@ -137,6 +137,47 @@ Standalone sub-page: Magnolia, WA homes for sale + a Bankrate-style mortgage cal
 
 ---
 
+## Hyper sub-site (leadsure.com/hyper) — three pages, one stylesheet
+
+Hyperliquid pages for Chad's perps account `0xD71a41eC000089ae99873AFB4D15CC7d54Dd95Bc`. Read-only
+analysis — **never place, cancel or modify an order from any page or script here.**
+
+### Files (all in `hyper/`)
+- `hyper.css` — shared styles (loaded after `../base.css`, `../style.css`, `../dashboard.css`,
+  `../polymarket/polymarket.css`). All three pages link it; do not re-inline styles.
+- `index.html` — **Regime Book** (Sep 2, 2026 walk; baked). Rate/war betas for every liquid perp, 12 tickets,
+  72-row screen. Its "account, tonight" block is the Sep 2 snapshot by design (caption points to Scenarios).
+- `review.html` — **Trade Review** (baked scaffold: per-instrument + monthly ledgers, preliminary lessons).
+  The full review (round-trip reconstruction, holding times, P&L by hour) is still open.
+- `scenarios.html` + `scenarios.js` — **Portfolio Scenarios, LIVE.** The page reads the account in the
+  browser from `api.hyperliquid.xyz/info` (CORS-open: webData2 → positions, marks, margin tiers, open orders
+  with triggers, TWAP states; userFunding; two 60-day candle series) every 60 s and prices the book at price
+  rungs two ways — HOLD AS-IS and WITH ORDERS (every resting order/TWAP executes along a straight-line path).
+  Rungs: primary coin (largest notional) 7 rungs at a "nice" step ≈ 6% of price (BTC → $5k, 70k–100k at
+  ~80k); secondary coin 9 rungs; plus a joint grid. Generalised to whatever the account holds (shorts get
+  rungs in their favour downward). Maintenance = half the IM at max leverage, cumulative across margin tiers;
+  the page prints an **exchange check** every read (model liq vs liquidationPx, model maintenance vs
+  crossMaintenanceMarginUsed, model IM vs totalMarginUsed) — if any of those show ✗, the model is wrong,
+  fix it before anything else.
+- Nav on all three: Home | Regime Book | (Tickets, Screen on the regime page only) | Trade Review |
+  Scenarios·LIVE | Polymarket.
+
+### Model conventions (scenarios.js) — keep these when editing
+- Path is straight-line in every moved coin; other coins flat. 1,000 steps. Reduce-only orders never exceed
+  the position; opening orders and TWAP slices are skipped when initial margin (notional ÷ the position's
+  leverage setting) would be exceeded; triggers fill at trigger ± slip (0.03% BTC/ETH, 0.10% others, taker
+  0.035%); limits fill at the better of limit and path price (maker 0.010%); stop-limit / TP-limit that are
+  not marketable at trigger rest as limits. TWAP remainder spread along the path (the tables); sensitivities
+  shown for cancelled / path / filled-first. Hold-as-is liquidation by bisection; liquidation = end of
+  scenario (the method block explains HL's 20%-chunk close and backstop rule). Funding not charged.
+- Findings/method must keep disclosing: liquidation ≠ zero, TWAP-timing range, beta R² and co-move range,
+  funding horizon, stop round-trips.
+- `.hy-findings li strong` is display:block (card titles) — inline emphasis inside findings uses `<em>`.
+  KPI values truncate past ~24 characters.
+- Verifying the live page from a cloud session: api.hyperliquid.xyz is egress-blocked from cloud Bash, so a
+  headless render only shows the error state. Test in the user's Chrome: push a branch, fetch the raw
+  files from raw.githubusercontent.com inside a leadsure.com tab, inject, and read the exchange-check line.
+
 ## Polymarket sub-site (leadsure.com/polymarket)
 
 Live trading dashboard for Chad's Polymarket account. Regenerated twice a day by a
