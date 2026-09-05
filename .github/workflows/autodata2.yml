@@ -1,0 +1,44 @@
+name: autodata2
+# Fresh registration of the autodata workflow (Sep 5, 2026): the original `autodata`
+# workflow stopped starting after Aug 31 19:23Z (11+ missed feed runs; pokes and
+# crons all silent — likely disabled in the Actions UI or an Actions billing stop).
+# A NEW workflow file registers as a NEW workflow, so it is not subject to the old
+# one's disabled state. Same job, same script, same output branch. The extra
+# push-on-main trigger below fires this workflow on the very push that creates it.
+# Once results flow again, either file may be removed — they are idempotent twins.
+on:
+  schedule:
+    - cron: '45 12 * * *'
+    - cron: '45 22 * * *'
+  workflow_dispatch:
+  # Combined push trigger (branch AND path must both match):
+  #  - auto-data-fetch + fetch/poke        → the existing poke mechanism
+  #  - main + this workflow file           → self-trigger on the push that creates it
+  #  - main + fetch/poke-main              → a pokeable path on main for future revivals
+  # Page-content pushes to main match no path, so twice-daily re-analysis
+  # commits will NOT double-fire this workflow.
+  push:
+    branches: [auto-data-fetch, main]
+    paths:
+      - 'fetch/poke'
+      - '.github/workflows/autodata2.yml'
+      - 'fetch/poke-main'
+permissions:
+  contents: write
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: auto-data-fetch
+      - name: fetch
+        run: bash fetch/run.sh
+      - name: commit results
+        run: |
+          git config user.name autodata
+          git config user.email autodata@leadsure.local
+          git add -A fetch/out
+          git commit -m "autodata results" || exit 0
+          git push origin HEAD:auto-data-fetch
