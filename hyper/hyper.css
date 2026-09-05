@@ -109,3 +109,13 @@
   .hy-check .bad { color: var(--color-loss); font-weight: 600; }
   .hy-sens { width: auto; }
   .hy-sens th, .hy-sens td { font-size: 0.85rem; padding: 6px 10px; white-space: nowrap; }
+
+  /* ---- readability on the dark theme: no dim gray body text on the Hyper pages ---- */
+  .table-header-row .price-note { color: var(--color-text); opacity: 0.88; font-size: 0.9rem; line-height: 1.55; }
+  .header-meta #last-updated { color: var(--color-text); opacity: 0.88; font-size: 0.8rem; line-height: 1.45; }
+  .hy-status, .hy-status #scen-countdown { color: var(--color-text); opacity: 0.9; font-size: 0.92rem; }
+  .hy-check { color: var(--color-text); opacity: 0.88; font-size: 0.9rem; }
+  .hy-factor .cap, .hy-table .pm-sub, .pm-footnote, .kpi-label { color: var(--color-text); opacity: 0.8; }
+  .kpi-label { font-size: 0.72rem; }
+  .hy-stat .l, .hy-tk-l, .hy-num, .hy-cell-h { color: var(--color-text); opacity: 0.75; }
+  .pm-method-block p { color: var(--color-text); opacity: 0.95; }
