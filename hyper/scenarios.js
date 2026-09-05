@@ -134,7 +134,7 @@
     var pend = book.orders.filter(function (o) { return o.coin in st.sz; }).map(function (o) { var c = {}; for (var k in o) c[k] = o[k]; c.done = false; return c; });
     var tw = book.twaps.filter(function (t) { return t.coin in st.sz; }).map(function (t) { return { coin: t.coin, side: t.side, reduceOnly: t.reduceOnly, rem: Math.max(0, t.sz - t.executed), filled: 0, ntl: 0 }; });
     var stats = {}; for (var c in st.sz) stats[c] = { sold: 0, soldNtl: 0, bought: 0, boughtNtl: 0, twap: 0, twapNtl: 0, ladderSold: 0, ladderNtl: 0, stopSold: 0, stopNtl: 0 };
-    var fees = 0, liq = null;
+    var fees = 0, liq = null, liqMaint = null, liqEq = null, liqSz = null;
 
     function fill(coin, dir, q, fillPx, fee, px, isTwap, kind) {
       if (q <= 0) return 0;
@@ -177,12 +177,13 @@
         if (o.reduceOnly) { if (st.sz[o.coin] === 0 || Math.sign(st.sz[o.coin]) === dir) continue; q = Math.min(q, Math.abs(st.sz[o.coin])); }
         fill(o.coin, dir, q, fillPx, fee, px, false, kind);
       }
-      if (equityAt(st, px) < maintAt(st, px)) { liq = px; break; }
+      var eqNow = equityAt(st, px), mtNow = maintAt(st, px);
+      if (eqNow < mtNow) { liq = px; liqMaint = mtNow; liqEq = eqNow; liqSz = {}; for (var cc in st.sz) liqSz[cc] = st.sz[cc]; break; }
     }
     var pxT = pricesAt(st, targets, 1), eq = equityAt(st, pxT), m = maintAt(st, pxT), ntl = 0;
     for (var c2 in st.sz) ntl += Math.abs(st.sz[c2]) * pxT[c2];
     var twapOut = {}; tw.forEach(function (t) { if (!twapOut[t.coin]) twapOut[t.coin] = { filled: 0, ntl: 0, rem: 0 }; twapOut[t.coin].filled += t.filled; twapOut[t.coin].ntl += t.ntl; twapOut[t.coin].rem += t.rem; });
-    return { eq: eq, pnl: eq - book.eq, maint: m, ntl: ntl, liq: liq, sz: st.sz, fees: fees, stats: stats, twap: twapOut };
+    return { eq: eq, pnl: eq - book.eq, maint: m, ntl: ntl, liq: liq, liqMaint: liqMaint, liqEq: liqEq, liqSz: liqSz, sz: st.sz, fees: fees, stats: stats, twap: twapOut };
   }
 
   // liquidation solvers on an arbitrary state: coin alone, and joint with the secondary moving beta x the primary's % move
@@ -215,6 +216,7 @@
     // secondary coins move m × the primary's percentage move, in the same direction
     for (var c in targets) if (c !== coin) targets[c] = book.positions.filter(function (p) { return p.coin === c; })[0].mark * (1 + adverse * 0.6 * moves[c]);
     var r = simulate(book, targets, { twap: (opts && opts.twap) || 'none', steps: 4000 });
+    if (opts && opts.full) return r;
     return r.liq ? r.liq[coin] : null;
   }
   function bookAfterTwaps(book) {   // a shallow copy of the book with every TWAP remainder filled at today's marks (taker fees), no TWAPs left
@@ -261,6 +263,8 @@
     R.liqS = S ? effLiq(book, S.coin, (function () { var m = {}; m[S.coin] = 1; return m; })()) : null;
     R.liqJ = S ? effLiq(book, P.coin, (function () { var m = {}; m[P.coin] = 1; m[S.coin] = R.beta; return m; })()) : null;
     R.liqPtw = effLiq(book, P.coin, (function () { var m = {}; m[P.coin] = 1; return m; })(), { twap: 'path' });
+    var fullP = effLiq(book, P.coin, (function () { var m = {}; m[P.coin] = 1; return m; })(), { full: true });
+    R.eqAtTrigger = fullP.liq ? fullP.liqMaint : null; R.szAtTrigger = fullP.liq ? fullP.liqSz : null;
     R.comove = {}; if (S) [0, 1, 2, 3].concat([R.beta]).forEach(function (k) { var m = {}; m[P.coin] = 1; m[S.coin] = k; R.comove[k] = effLiq(book, P.coin, m); });
     // rungs
     R.rP = P.sz > 0 ? rungs(P.mark, 2, 4) : rungs(P.mark, 4, 2); R.rS = S ? (S.sz > 0 ? rungs(S.mark, 3, 5) : rungs(S.mark, 5, 3)) : null;
@@ -346,10 +350,10 @@
       (hasTwap ? ' Depending on when the TWAP fills, the with-orders figure runs ' + (top.none.liq ? 'a liquidation' : kf(top.none.eq)) + '–' + (top.first.liq ? 'a liquidation' : kf(top.first.eq)) + ' (method block).' : '') + '</li>');
     if (restP.tp.n && !top.hold.liq && !top.ord.liq && !mid1.hold.liq && !mid2.hold.liq && !mid1.none.liq && !mid2.none.liq && !top.none.liq) f.push('<li><strong>The ladder’s price</strong>On its own the take-profit ladder costs ' + usd(mid1.hold.eq - mid1.none.eq) + ' at ' + pxf(mid1.x) + ', ' + usd(mid2.hold.eq - mid2.none.eq) + ' at ' + pxf(mid2.x) + ' and <em>' + usd(ladderCostTop) + '</em> at ' + pxf(top.x) + ' against holding' + (hasTwap ? '; the buy TWAP claws back ' + usd(twapGainTop) + ' of that at ' + pxf(top.x) + ', which is why the with-orders column ends ' + usd(gapTop) + ' behind hold-as-is rather than ' + usd(ladderCostTop) : '') + '. Each rung beyond ' + pxf(mid1.x) + ' adds ' + sgn(mid2.ord.eq - mid1.ord.eq) + ' with orders versus ' + sgn(mid2.hold.eq - mid1.hold.eq) + ' holding, because from there on you own ' + szf(pName, Math.abs(mid2.ord.sz[pName])) + ' ' + pName + ' instead of ' + szf(pName, Math.abs(P.sz)) + '.</li>');
     if (S) { var hb = top.holdBeta, ob = top.ordBeta; f.push('<li><strong>Both legs together</strong>If ' + sName + ' follows ' + pName + ' at its measured beta (' + R.beta.toFixed(2) + '× the percentage move, so ' + pxf(top.yBeta) + ' at ' + pName + ' ' + pxf(top.x) + '), hold as-is reaches <em>' + (hb.liq ? 'liquidation at ' + pxf(hb.liq[pName]) : usd(hb.eq)) + '</em> and with orders <em>' + (ob.liq ? 'liquidation at ' + pxf(ob.liq[pName]) : usd(ob.eq)) + '</em>' + ((!hb.liq && !ob.liq) ? ' — the ' + sName + ' ladder' + (restS.tp.n ? ' (' + szf(sName, restS.tp.sz) + ' resting to ' + pxf(restS.tp.hi) + ')' : '') + ' adds ' + usd((hb.eq - ob.eq) - gapTop) + ' of cap on top of the ' + pName + ' ladder’s' : '') + '.</li>'); }
-    var eqT = R.maint0 + 0; // maintenance at trigger ≈ maintenance now scaled; compute precisely at the trigger price
-    (function () { var st = mkState(book); var px = {}; for (var c in st.mark) px[c] = st.mark[c]; px[pName] = R.liqP; eqT = maintAt(st, px); })();
+    var eqT = R.eqAtTrigger; // equity left at the effective trigger = the maintenance margin of the (post-stops) book there
+    if (eqT === null) (function () { var st = mkState(book); var px = {}; for (var c in st.mark) px[c] = st.mark[c]; if (R.rawLiqP) px[pName] = R.rawLiqP; eqT = maintAt(st, px); })();
     var downTxt;
-    if (lo1.hold.liq && lo2.hold.liq) downTxt = pxf(lo2.x) + ' and ' + pxf(lo1.x) + ' are both liquidations holding as-is. With the stops firing on the way down, ' + pName + ' alone crosses maintenance at ' + pxf(R.liqP) + (S ? ', or ' + pxf(R.liqJ) + ' with ' + sName + ' moving on beta' : '') + ' (the exchange quotes ' + pxf(R.rawLiqP) + ' for the book as it stands, because a resting stop is not part of the position until it trades). At the trigger the account is down to its maintenance margin, about <em>' + usd(eqT) + '</em>; the exchange then closes the book by market in 20% chunks and returns what is left, and only a backstop liquidation (equity under two-thirds of maintenance, ≈' + usd(eqT * 2 / 3) + ') takes everything. So one rung down costs roughly ' + Math.round((1 - eqT / EQ) * 100) + '% of the account, not all of it' + (Math.abs(R.liqP - lo2.x) / lo2.x < 0.01 ? ' — and ' + pxf(lo2.x) + ' itself is a knife-edge, ' + usd(Math.abs(R.liqP - lo2.x)) + ' from the hold-as-is trigger' : '') + '.';
+    if (lo1.hold.liq && lo2.hold.liq) downTxt = pxf(lo2.x) + ' and ' + pxf(lo1.x) + ' are both liquidations holding as-is. With the stops firing on the way down, ' + pName + ' alone crosses maintenance at ' + pxf(R.liqP) + (S ? ', or ' + pxf(R.liqJ) + ' with ' + sName + ' moving on beta' : '') + ' (the exchange quotes ' + pxf(R.rawLiqP) + ' for the book as it stands, because a resting stop is not part of the position until it trades)' + (R.szAtTrigger ? '; by then the stops have cut the book to ' + Object.keys(R.szAtTrigger).map(function (c) { return szf(c, Math.abs(R.szAtTrigger[c])) + ' ' + c; }).join(' + ') : '') + '. At the trigger the account is down to its maintenance margin, about <em>' + usd(eqT) + '</em>; the exchange then closes the book by market in 20% chunks and returns what is left, and only a backstop liquidation (equity under two-thirds of maintenance, ≈' + usd(eqT * 2 / 3) + ') takes everything. So one rung down costs roughly ' + Math.round((1 - eqT / EQ) * 100) + '% of the account, not all of it' + (Math.abs(R.liqP - lo2.x) / lo2.x < 0.01 ? ' — and ' + pxf(lo2.x) + ' itself is a knife-edge, ' + usd(Math.abs(R.liqP - lo2.x)) + ' from the hold-as-is trigger' : '') + '.';
     else if (lo1.hold.liq) downTxt = pxf(lo2.x) + ' is survived holding (' + usd(lo2.hold.eq) + ', ' + sgn(lo2.hold.pnl) + ') but ' + pxf(lo1.x) + ' is a liquidation: ' + pName + ' alone crosses maintenance at ' + pxf(R.liqP) + (S ? ', or ' + pxf(R.liqJ) + ' with ' + sName + ' moving on beta' : '') + '. At the trigger the account is down to its maintenance margin, about <em>' + usd(eqT) + '</em>; the exchange closes the book by market in 20% chunks and returns what is left, and only a backstop liquidation (equity under two-thirds of maintenance) takes everything.';
     else downTxt = 'Neither rung against the book liquidates it holding as-is: ' + pxf(lo2.x) + ' leaves ' + usd(lo2.hold.eq) + ' and ' + pxf(lo1.x) + ' leaves ' + usd(lo1.hold.eq) + '; the ' + pName + '-alone trigger is ' + pxf(R.liqP) + (S ? ' (' + pxf(R.liqJ) + ' with ' + sName + ' on beta)' : '') + '.';
     if (restP.stops.n) downTxt += ' The stops (' + szf(pName, restP.stops.sz) + ' ' + pName + ' at ' + pxf(restP.stops.lo) + '–' + pxf(restP.stops.hi) + ')' + ((restP.open.n || twRemP) ? ' ' + stopVerb + ' and the ' + [restP.open.n ? 'bids' : null, twRemP ? 'TWAP' : null].filter(Boolean).join(' and ') + ' put part of it back on beyond them' : ' ' + stopVerb) + ' — with orders the two rungs against the book read ' + R.A.slice(0, 2).map(function (r) { return r.ord.liq ? 'liquidated at ' + pxf(r.ord.liq[pName]) : usd(r.ord.eq); }).join(' / ') + '.';
