@@ -401,6 +401,21 @@ effectiveness scoring, columns centered, and a totals row at the bottom.
   residuals and nudges $85k −9.9 → −10.0 ($90k −16.7, $95k −14.8,
   $100k −14.0; dips $55k +8.3, $50k +8.0) — tape + chronicle only, BTC
   tab stamps untouched. Fill-audit blind a fifth calendar day.
+- **Sep 6 PM (Sunday, ninth data-blind session):** FOURTEENTH missed
+  feed run (Sep 6 22:45Z cron silent; 23:10Z poke touching fetch/poke
+  unanswered — the Actions-disablement diagnosis stands). No Sunday
+  close (Monday is Labor Day): NVDA re-spot-checked $230.36, unchanged —
+  Sep 4 caps/fairs/edges stand as published. Weekend BTC color per the
+  Sep 5 PM precedent, with a SOURCE NOTE: CoinDesk's price page served
+  the same 05:14 EDT snapshot the AM run quoted ($79,832), so this run
+  switched to CoinMarketCap's live read — $79,762 (+0.12%/24h),
+  −0.09% vs the AM print, the weekend's first down-tick — and disclosed
+  the switch on the page. T 116.2d: up-ladder residuals ease a few
+  tenths off their widest prints ($85k −9.7, $90k −16.4, $95k −14.5,
+  $100k −13.7; $60k dip +0.4 ≈ at fair; $55k +8.3, $50k +8.0) — tape +
+  chronicle only, BTC tab stamps untouched. Publish + poke both used the
+  Sep 1 extraheader path (the proxy again refused the URL-embedded
+  credential). Fill-audit blind a fifth calendar day.
 - **Sep 2 AM caps-only precedent:** with autodata down, public Sep 1 closes
   (stockanalysis.com history pages via WebSearch→WebFetch — WebFetch DOES
   work unattended on URLs surfaced verbatim by a WebSearch in the same
