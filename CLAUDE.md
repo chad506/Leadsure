@@ -387,6 +387,20 @@ effectiveness scoring, columns centered, and a totals row at the bottom.
   chronicle only ($90k −16.7 directional, widest of the series) — the
   BTC tab itself keeps its Sep 1 01:27Z stamps; no book was re-walked,
   no balance re-trued, no card or ledger touched.
+- **Sep 6 AM (Sunday, eighth data-blind session):** THIRTEENTH missed
+  feed run (Sep 6 12:45Z cron silent; 13:11Z poke touching fetch/poke
+  unanswered — the Actions-disablement diagnosis stands). No Sunday
+  close, Monday Sep 7 is Labor Day — the Sep 4 finals hold two more
+  sessions. Verification: NVDA $230.36 and AAPL $319.97 re-spot-checked
+  against the history pages (unchanged); independent quadrature re-run
+  reproduced Dec 79.81/16.03/2.91/0.52 (raw 80.41/16.15/2.93/0.52
+  ×0.9925) to ≤0.02 and Sep crown 98.08 to ≤0.01 — caps/fairs/edges
+  stand as published. Weekend BTC color (per the Sep 5 PM precedent):
+  spot $79,832 (CoinDesk, +0.28%/24h), +0.03% vs yesterday — flat spot,
+  but T 117.2 → 116.6 d, so pure theta holds the up-ladder at its widest
+  residuals and nudges $85k −9.9 → −10.0 ($90k −16.7, $95k −14.8,
+  $100k −14.0; dips $55k +8.3, $50k +8.0) — tape + chronicle only, BTC
+  tab stamps untouched. Fill-audit blind a fifth calendar day.
 - **Sep 2 AM caps-only precedent:** with autodata down, public Sep 1 closes
   (stockanalysis.com history pages via WebSearch→WebFetch — WebFetch DOES
   work unattended on URLs surfaced verbatim by a WebSearch in the same
