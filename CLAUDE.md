@@ -430,6 +430,22 @@ effectiveness scoring, columns centered, and a totals row at the bottom.
   $50k +8.0) — tape + chronicle only, BTC tab stamps untouched.
   Fill-audit blind a sixth calendar day. Publish + poke via the Sep 1
   extraheader path.
+- **Sep 7 PM (Labor Day, eleventh data-blind session):** SIXTEENTH missed
+  feed run (Sep 7 22:45Z cron silent; 23:12Z poke touching fetch/poke
+  unanswered — the Actions-disablement diagnosis stands). No close (Labor
+  Day): NVDA $230.36 and AAPL $319.97 re-spot-checked against the history
+  pages (unchanged) — the Sep 4 caps/fairs/edges go into Tuesday's reopen
+  exactly as published; T 17/81 stands. Weekend BTC color with a SECOND
+  source rotation: CoinMarketCap served the AM read back to the cent
+  ($79,652.95 — snapshot diagnosed), so the run quoted CoinGecko live
+  $79,352.36 (−0.60%/24h; Kraken cross-check $79,231), −0.38% vs the AM
+  print, +1.20% over the Sep 1 bake; T 115.2d — a third straight slip
+  pulls the up-ladder a full point off its wides ($85k −8.0, $90k −14.8,
+  $95k −13.1, $100k −12.4; the $60k dip crosses a hair cheap at −0.3,
+  first of the series; $55k +7.9, $50k +7.8) — tape + chronicle only,
+  BTC tab stamps untouched. Calibration re-run reproduced every Sep 7 AM
+  residual exactly before the fresh spot was applied. Fill-audit blind a
+  sixth calendar day. Publish + poke via the Sep 1 extraheader path.
 - **Sep 2 AM caps-only precedent:** with autodata down, public Sep 1 closes
   (stockanalysis.com history pages via WebSearch→WebFetch — WebFetch DOES
   work unattended on URLs surfaced verbatim by a WebSearch in the same
