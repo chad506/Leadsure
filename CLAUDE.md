@@ -416,6 +416,20 @@ effectiveness scoring, columns centered, and a totals row at the bottom.
   chronicle only, BTC tab stamps untouched. Publish + poke both used the
   Sep 1 extraheader path (the proxy again refused the URL-embedded
   credential). Fill-audit blind a fifth calendar day.
+- **Sep 7 AM (Labor Day, tenth data-blind session):** FIFTEENTH missed
+  feed run (Sep 7 12:45Z cron silent; 13:12Z poke touching fetch/poke
+  unanswered — the Actions-disablement diagnosis stands). U.S. markets
+  closed for Labor Day — no close prints today; NVDA $230.36 and AAPL
+  $319.97 re-spot-checked against the history pages (unchanged) — the
+  Sep 4 caps/fairs/edges stand one final session; next close Tuesday
+  Sep 8. Weekend BTC color per the Sep 5 PM precedent: spot $79,652.95
+  (CoinMarketCap live), −0.14% vs the Sunday PM print, +1.58% over the
+  Sep 1 bake; T 115.6d — a second consecutive easing tick takes the
+  up-ladder a few more tenths off its wides ($85k −9.2, $90k −15.9,
+  $95k −14.1, $100k −13.3; the $60k dip at fair +0.3; $55k +8.2,
+  $50k +8.0) — tape + chronicle only, BTC tab stamps untouched.
+  Fill-audit blind a sixth calendar day. Publish + poke via the Sep 1
+  extraheader path.
 - **Sep 2 AM caps-only precedent:** with autodata down, public Sep 1 closes
   (stockanalysis.com history pages via WebSearch→WebFetch — WebFetch DOES
   work unattended on URLs surfaced verbatim by a WebSearch in the same
