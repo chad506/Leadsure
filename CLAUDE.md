@@ -446,6 +446,37 @@ effectiveness scoring, columns centered, and a totals row at the bottom.
   BTC tab stamps untouched. Calibration re-run reproduced every Sep 7 AM
   residual exactly before the fresh spot was applied. Fill-audit blind a
   sixth calendar day. Publish + poke via the Sep 1 extraheader path.
+- **Sep 8 AM: the scheduled session NEVER RAN.** No commit to main and no
+  poke on auto-data-fetch (unlike the Sep 3 gap, which at least poked at
+  13:15Z). Second AM gap of the outage; the Sep 8 PM run carried the
+  reopen alone. If AM gaps recur, inspect that scheduled task's session
+  output for what blocked it — and check the task itself still exists.
+- **Sep 8 PM (the reopen, twelfth data-blind session):** SEVENTEENTH and
+  EIGHTEENTH missed feed runs (both Sep 8 crons silent; the 23:10Z poke
+  touching fetch/poke unanswered — the Actions-disablement diagnosis
+  stands). First closes since Sep 4, all five re-fetched from the history
+  pages (Sep 4 finals re-confirmed beneath them, no revisions): NVDA
+  −2.01% $225.73 ($5,462.7B — the board's biggest loser), AAPL −1.17%
+  $316.22 ($4,644.4B), GOOGL −0.03% $338.36 ($4,119.4B), MSFT −1.15%
+  $493.95 ($3,669.3B), AMZN −0.60% $256.97 ($2,764.3B) — the lead
+  NARROWED 18.62% → 17.62% ($818.2B), Apple's #2 cushion 12.75%, T 16/80.
+  Calibration first (reproduces every Sep 4 PM fair to ≤0.02), then fresh
+  fairs: Dec 78.23/16.87/3.61/0.54/0.00 — dec-GOOGL's RICH badge OFF
+  (+4.89 after four RICH runs; offer-side candidacy withdrawn), dec-NVDA
+  −0.73 (closest-to-fair of the outage; 72¢ GTC cancel moot-if-confirmed),
+  dec-AAPL −3.12 (RV 1.23× — ticket still unsupported), the whole
+  December book inside the ±5 band for the first time in the outage;
+  Sep crown 97.86/2.12/0.01, sep2AAPL 91.12 (−9.62 vs the 81.5 stale
+  mid — narrower than Friday's −10.93, STILL widest and first in the
+  re-walk queue), sep3 85.95-GOOGL/7.38-MSFT/6.67-AAPL; P(±5/wk) 47/42/3.
+  BTC color: spot $78,483.14 (CoinGecko live, −0.80%/24h), −1.10% on the
+  Labor-Day print, +0.09% vs the Sep 1 bake — a full weekend round-trip,
+  so the ladder residuals are now pure theta (T 114.2d: $85k −4.6, $90k
+  −11.6, $95k −10.2, $100k −10.0; $60k dip −2.0 — deepening the series'
+  first cheap print; $55k +6.8, $50k +7.2) — tape + chronicle only, BTC
+  tab stamps untouched. Mids/books/positions/balances untouched (books
+  now FIVE sessions stale); fill-audit blind a seventh calendar day.
+  Publish + poke via the Sep 1 extraheader path.
 - **Sep 2 AM caps-only precedent:** with autodata down, public Sep 1 closes
   (stockanalysis.com history pages via WebSearch→WebFetch — WebFetch DOES
   work unattended on URLs surfaced verbatim by a WebSearch in the same
