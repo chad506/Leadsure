@@ -496,6 +496,34 @@ effectiveness scoring, columns centered, and a totals row at the bottom.
   $50k +7.6; anchor's needed touch +7.8%) — tape + chronicle only,
   BTC tab stamps untouched. Fill-audit blind an eighth calendar day.
   Publish + poke via the Sep 1 extraheader path.
+- **Sep 9 PM (fourteenth data-blind session — the Sep 9 close):**
+  TWENTIETH missed feed run (Sep 9 22:45Z cron silent; a 23:18Z poke
+  touching fetch/poke unanswered — the Actions-disablement diagnosis
+  stands). Caps-only on the Sep 9 closes (history pages; the Sep 8
+  finals re-confirmed beneath them, no revisions): a second straight
+  all-red board with the CHALLENGERS falling hardest — GOOGL −2.28%
+  $330.65 ($4,025.5B, the board's biggest loser), AMZN −1.78% $252.40
+  ($2,715.1B), NVDA −0.91% $223.67 ($5,412.8B), MSFT −0.47% $491.65
+  ($3,652.2B), AAPL −0.28% $315.34 ($4,631.5B, the board's best
+  close) — the lead narrowed again 17.62% → 16.87% ($781.3B) while
+  Apple's #2 cushion WIDENED 12.75% → 15.05% ($606.0B); T 15/79.
+  Calibration first (reproduces every Sep 8 PM fair exactly), then
+  fresh fairs: Dec 77.99/17.85/2.85/0.56/0.00 — dec-GOOGL RICH badge
+  BACK ON (+5.65 after one run inside the band; offer-side candidacy
+  re-opens, fresh-book gated), dec-AAPL −4.10 (RV 1.30× — a step from
+  the −5 re-entry line), dec-NVDA −0.49 (the outage's closest-to-fair
+  print; 72¢ GTC cancel moot-if-confirmed); Sep crown 97.79/2.21/0.00,
+  sep2AAPL 94.22 (−12.72 vs the 81.5 stale mid — the outage's WIDEST
+  residual, first in the re-walk queue), sep3 86.06-GOOGL/10.41-MSFT/
+  3.52-AAPL; P(±5/wk) 48/44/1. BTC color: spot $78,010.44 (CoinGecko
+  live, −0.60%/24h), −1.02% on the AM print, −0.51% UNDER the Sep 1
+  bake — the series' first below-bake read; T 113.2d ($85k −2.6,
+  $90k −9.8, $95k −8.6, $100k −8.6 — the up-ladder's narrowest prints;
+  $60k dip −2.9, the series' deepest cheap print; $55k +6.3,
+  $50k +7.0) — tape + chronicle only, BTC tab stamps untouched.
+  Mids/books/positions/balances untouched (books now SIX sessions
+  stale); fill-audit blind an eighth calendar day. Publish + poke via
+  the Sep 1 extraheader path.
 - **Sep 2 AM caps-only precedent:** with autodata down, public Sep 1 closes
   (stockanalysis.com history pages via WebSearch→WebFetch — WebFetch DOES
   work unattended on URLs surfaced verbatim by a WebSearch in the same
