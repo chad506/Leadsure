@@ -477,6 +477,25 @@ effectiveness scoring, columns centered, and a totals row at the bottom.
   tab stamps untouched. Mids/books/positions/balances untouched (books
   now FIVE sessions stale); fill-audit blind a seventh calendar day.
   Publish + poke via the Sep 1 extraheader path.
+- **Sep 9 AM (thirteenth data-blind session — the AM cadence recovers):**
+  NINETEENTH missed feed run (Sep 9 12:45Z cron silent; 13:12Z poke
+  touching fetch/poke unanswered — the Actions-disablement diagnosis
+  stands). Pre-open verification pass per the Sep 4 AM precedent: all
+  five Sep 8 finals re-confirmed to the cent against the history pages
+  (no revisions); independent quadrature re-run reproduced every Sep 8
+  PM published fair EXACTLY (Dec 78.23/16.87/3.61/0.54/0.00 — raw
+  78.82/17.00/3.64/0.54 ×0.9925; Sep crown 97.86/2.12/0.01, 2nd
+  91.12/6.66/2.13, 3rd 85.95/7.38/6.67; P(±5/wk) 47/42/3) —
+  caps/fairs/edges stand as published, T 16/80. BTC color per the
+  weekend precedent: spot $78,815.99 (CoinGecko live, +0.6%/24h;
+  Kraken cross-check $79,172), +0.42% on the reopen print, +0.51% over
+  the Sep 1 bake; T 114.2 → 113.6d — the overnight bid plus theta
+  re-widens the up-ladder most of what the round-trip compressed
+  ($85k −5.8, $90k −12.6 — back at its bake-day wide, $95k −11.1,
+  $100k −10.7; the $60k dip's cheap print fades to −1.1; $55k +7.4,
+  $50k +7.6; anchor's needed touch +7.8%) — tape + chronicle only,
+  BTC tab stamps untouched. Fill-audit blind an eighth calendar day.
+  Publish + poke via the Sep 1 extraheader path.
 - **Sep 2 AM caps-only precedent:** with autodata down, public Sep 1 closes
   (stockanalysis.com history pages via WebSearch→WebFetch — WebFetch DOES
   work unattended on URLs surfaced verbatim by a WebSearch in the same
