@@ -524,6 +524,31 @@ effectiveness scoring, columns centered, and a totals row at the bottom.
   Mids/books/positions/balances untouched (books now SIX sessions
   stale); fill-audit blind an eighth calendar day. Publish + poke via
   the Sep 1 extraheader path.
+- **Sep 10 AM (fifteenth data-blind session — verification pass; Bitcoin
+  breaks down):** TWENTY-FIRST missed feed run (Sep 10 12:45Z cron silent;
+  13:13Z poke touching fetch/poke unanswered — the Actions-disablement
+  diagnosis stands). Pre-open verification pass per the Sep 4 AM precedent:
+  all five Sep 9 finals re-confirmed to the cent against the history pages
+  (no revisions); independent quadrature re-run reproduced every Sep 9 PM
+  published fair EXACTLY (Dec 77.99/17.85/2.85/0.56/0.00; crown
+  97.79/2.21/0.00; 2nd 94.22/3.50/2.21; 3rd 86.06/10.41/3.52; P(±5/wk)
+  48/44/1) — caps/fairs/edges stand as published, T 15/79. Premarket
+  color: NVDA −1.46% vs AAPL +0.54% (9:09 ET) — a third straight
+  lead-narrowing session if held. BTC color: spot $76,869.85 (CoinGecko
+  live, −3.4%/24h, range 76,748–79,606; the Kraken page printed $77,957 —
+  ~1.4% apart, both quoted and the gap disclosed on the page), −1.46% on
+  the PM print, −1.97% UNDER the Sep 1 bake — the series' deepest
+  below-bake read; T 112.7d — the $85k anchor's stale mid crosses OVER
+  fair for the first time in the series (+1.8), the $60k dip's cheap
+  print breaks the −5 line for the first time (−5.6); $90k −5.7,
+  $95k −5.1, $100k −5.7, $55k +4.5, $50k +6.0 — tape + chronicle only,
+  BTC tab stamps untouched. NOTE the interactive Treasuries session
+  (commit 5cf1b3e1, Sep 10 01:04Z) walked 105 books + the account Sep 9
+  23:30–23:50Z via the reader's Chrome: Treasuries/SPX fill-audit CLOSED
+  (ledger rows 272–298, positions value $13,921.70 at the walk);
+  largest-company mids/books and every balance surface keep their own
+  stamps, sep2AAPL still first in the re-walk queue; the page card-link
+  invariant is now 140. Publish + poke via the Sep 1 extraheader path.
 - **Sep 2 AM caps-only precedent:** with autodata down, public Sep 1 closes
   (stockanalysis.com history pages via WebSearch→WebFetch — WebFetch DOES
   work unattended on URLs surfaced verbatim by a WebSearch in the same
