@@ -549,6 +549,47 @@ effectiveness scoring, columns centered, and a totals row at the bottom.
   largest-company mids/books and every balance surface keep their own
   stamps, sep2AAPL still first in the re-walk queue; the page card-link
   invariant is now 140. Publish + poke via the Sep 1 extraheader path.
+- **Sep 10 PM: the scheduled session NEVER RAN** — no commit, no poke.
+  The outage's FIRST PM gap (the earlier gaps were Sep 3 AM and Sep 8 AM).
+- **Sep 11 AM: the scheduled session NEVER RAN either** — no commit, no
+  poke. Two consecutive dropped sessions; the Sep 11 PM run carried the
+  Sep 10 AND Sep 11 closes alone. If gaps recur, inspect the scheduled
+  task's session output and confirm the task still exists.
+- **Sep 11 PM (sixteenth data-blind session — the APPLE MELT-UP, two
+  closes at once):** TWENTY-SECOND through TWENTY-FOURTH missed feed runs
+  (Sep 10 22:45Z and both Sep 11 crons silent; the 23:09Z poke touching
+  fetch/poke unanswered — the Actions-disablement diagnosis stands).
+  Caps-only on the Sep 11 closes with the Sep 10 closes ingested beneath
+  them (history pages; Sep 9 finals re-confirmed to the cent, no
+  revisions): Thursday AAPL +3.56% to $326.57 vs NVDA −2.26% to $218.36
+  (lead 16.87% → 10.17%); Friday AAPL +1.75% $332.27 ($4,880.2B), GOOGL
+  +1.75% $338.41 ($4,120.0B), AMZN +1.94% $256.78 ($2,762.2B), MSFT
+  +0.64% $495.59 ($3,681.5B), NVDA −0.09% $218.17 ($5,279.7B) — the lead
+  COLLAPSED to 8.19%/$399.5B, the narrowest since the August crown
+  settled (under Aug 28's 12.12%), while Apple's #2 cushion blew out to
+  18.45%/$760.2B; T 13/77. Calibration first (reproduces every Sep 9 PM
+  fair exactly), then fresh fairs: Dec 64.21/30.75/3.73/0.56/0.00 —
+  dec-AAPL −17.00 CHEAP vs the 13.75 stale mid (RV 2.24× — the outage's
+  widest residual; the Aug 28 re-entry ticket's −5 bar
+  beaten ×3, fresh-book gated, now FIRST in the re-walk queue), dec-NVDA
+  +13.29 RICH (the leader's first double-digit rich read; the 72¢ GTC
+  bid now rests ~7.8 pts ABOVE the 64.21 fair — the cancel goes
+  LIVE-if-confirmed), dec-GOOGL RICH badge OFF again (+4.77); September
+  crown falls 97.79 → 86.24 (Apple's crown leg 2.21 → 13.76), seat
+  94.22 → 85.30 — sep2AAPL's residual collapses −12.72 → −3.80 (drops to
+  third in the queue); P(±5/wk) 59/58/3, the outage's highest. BTC color:
+  spot $77,372.48 (CoinGecko live, +0.3%/24h), +0.65% on the Sep 10 AM
+  print, −1.33% vs the Sep 1 bake; T 111.2d ($85k anchor back AT fair
+  +0.1 after Thursday's rich cross; $90k −7.2, $95k −6.3, $100k −6.6;
+  $60k dip eases to −4.0; $55k +5.6, $50k +6.7) — tape + chronicle only,
+  BTC tab stamps untouched. Mids/books/positions/balances untouched
+  (books now EIGHT sessions stale); fill-audit blind a tenth calendar
+  day outside Treasuries/SPX. NOTE for the next session: an interactive
+  Sep 10–11 Oil-tab commit (42c7680a, + ledger rows 299–327) was never
+  pushed — it rides _handoff_push.sh on the Mac and is NOT on origin;
+  this run's edits (hero/KPI/analysis/footnote/tape/chronicle) will need
+  a rebase when that handoff lands. Publish + poke via the Sep 1
+  extraheader path.
 - **Sep 2 AM caps-only precedent:** with autodata down, public Sep 1 closes
   (stockanalysis.com history pages via WebSearch→WebFetch — WebFetch DOES
   work unattended on URLs surfaced verbatim by a WebSearch in the same
