@@ -590,6 +590,40 @@ effectiveness scoring, columns centered, and a totals row at the bottom.
   this run's edits (hero/KPI/analysis/footnote/tape/chronicle) will need
   a rebase when that handoff lands. Publish + poke via the Sep 1
   extraheader path.
+- **Sep 12 AM (Saturday, seventeenth data-blind session — the weekend
+  pass catches a TRIPLE REVISION):** TWENTY-FIFTH missed feed run (Sep 12
+  12:45Z cron silent; a 13:10Z poke touching fetch/poke unanswered — the
+  Actions-disablement diagnosis stands). No Saturday close — but the
+  weekend verification pass re-checked the Sep 11 finals against the
+  history pages and THREE of five were REVISED upward from the Sep 11 PM
+  23:1xZ bake: NVDA $218.17 → $218.29 (−0.03%), GOOGL $338.41 → $338.50
+  (+1.77%), MSFT $495.59 → $495.63 (+0.65%); AAPL $332.27 and AMZN
+  $256.78 confirmed to the cent (quote pages cross-check all three at
+  the Sep 11 4:00 PM EDT close — the PM lesson: a 23:1xZ history-page
+  pull can precede the settled finals; the next-morning pass is what
+  locks them). Calibration first (reproduces every Sep 11 PM fair
+  EXACTLY), then fairs re-ran on the finals: caps $5,282.6B/$4,880.2B/
+  $4,121.1B/$3,681.8B/$2,762.2B, lead 8.19% → 8.25%/$402.4B (still the
+  narrowest since the crown settled), cushion 18.42%/$759.1B, T 13/77;
+  Dec 64.32/30.65/3.73/0.56/0.00 — dec-AAPL −16.90 CHEAP (RV 2.23×,
+  still the outage's widest residual, first in the re-walk queue),
+  dec-NVDA +13.18 RICH (72¢ GTC bid ~7.7 pts above fair — cancel stays
+  LIVE-if-confirmed), dec-GOOGL +4.77 FAIR; crown 86.40/13.59/0.01, seat
+  85.46-AAPL/13.57-NVDA/0.96-GOOGL (sep2AAPL residual −3.96), 3rd
+  93.13-GOOGL/5.90-MSFT/0.95-AAPL; P(±5/wk) 59/58/3 unchanged. Restamped:
+  hero gap + tape, both KPI edge tiles, table note, both group rows, all
+  five Dec rows (caps/gaps/fairs/edges/RV), footnote; sep3NVDA row
+  unchanged (+1.58). BTC color per the weekend precedent: spot
+  $77,278.23 (CoinGecko live, +0.60%/24h; CoinMarketCap cross-check
+  $77,262.64; CoinDesk served a Sep 11 11:34 ET snapshot and was
+  discarded), −0.12% on the PM print, −1.45% vs the Sep 1 bake; T 110.7d
+  ($85k anchor a hair OVER fair +0.5; $90k −6.8, $95k −5.9, $100k −6.2;
+  $60k dip −4.1; $55k +5.6, $50k +6.7; needed touch +10.0%) — tape +
+  chronicle only, BTC tab stamps untouched. Mids/books/positions/
+  balances untouched (books EIGHT sessions stale); fill-audit blind an
+  eleventh calendar day outside Treasuries/SPX. The Oil-tab handoff
+  (42c7680a) is STILL not on origin. Publish + poke via the Sep 1
+  extraheader path.
 - **Sep 2 AM caps-only precedent:** with autodata down, public Sep 1 closes
   (stockanalysis.com history pages via WebSearch→WebFetch — WebFetch DOES
   work unattended on URLs surfaced verbatim by a WebSearch in the same
