@@ -624,6 +624,29 @@ effectiveness scoring, columns centered, and a totals row at the bottom.
   eleventh calendar day outside Treasuries/SPX. The Oil-tab handoff
   (42c7680a) is STILL not on origin. Publish + poke via the Sep 1
   extraheader path.
+- **Sep 12 PM (Saturday, eighteenth data-blind session — the finals
+  hold):** TWENTY-SIXTH missed feed run (Sep 12 22:45Z cron silent; a
+  23:09Z poke touching fetch/poke unanswered — the Actions-disablement
+  diagnosis stands). No Saturday close: the three AM-revised Sep 11
+  finals re-spot-checked against the history pages (NVDA $218.29, GOOGL
+  $338.50, MSFT $495.63 — all unchanged), and an independent quadrature
+  re-run reproduced every Sep 12 AM published fair EXACTLY (Dec
+  64.32/30.65/3.73/0.56/0.00; crown 86.40/13.59/0.01; 2nd
+  85.46/13.57/0.96; 3rd 93.13/5.90/0.95; P(±5/wk) 59/58/3) —
+  caps/fairs/edges stand as published, T 13/77 into Monday. Weekend BTC
+  color per the Sep 5 PM precedent: spot $77,389.61 (CoinGecko live;
+  Coinbase cross-check $77,214.44 — ~0.2% apart, disclosed; CoinGecko's
+  own 24h field printed −1.8% against a tape sitting +0.02% on its own
+  Sep 11 PM read — snapshot-suspect, print-to-print deltas used),
+  +0.14% on the AM print, −1.31% vs the Sep 1 bake; T 110.2d — the
+  small bid hands back the anchor's morning rich cross ($85k +0.5 →
+  +0.1, back AT fair), re-widens the up-ladder a few tenths ($90k −7.1,
+  $95k −6.1, $100k −6.4) and eases the $60k dip to −3.7 ($55k +5.9,
+  $50k +6.8; needed touch +9.8%) — tape + chronicle only, BTC tab
+  stamps untouched. Mids/books/positions/balances untouched (equity
+  books EIGHT sessions stale); fill-audit blind an eleventh calendar
+  day outside Treasuries/SPX. The Oil-tab handoff (42c7680a) is STILL
+  not on origin. Publish + poke via the Sep 1 extraheader path.
 - **Sep 2 AM caps-only precedent:** with autodata down, public Sep 1 closes
   (stockanalysis.com history pages via WebSearch→WebFetch — WebFetch DOES
   work unattended on URLs surfaced verbatim by a WebSearch in the same
