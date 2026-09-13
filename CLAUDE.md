@@ -670,6 +670,32 @@ effectiveness scoring, columns centered, and a totals row at the bottom.
   books EIGHT sessions stale); fill-audit blind a twelfth calendar day
   outside Treasuries/SPX. The Oil-tab handoff (42c7680a) is STILL not
   on origin. Publish + poke via the Sep 1 extraheader path.
+- **Sep 13 PM (Sunday, twentieth data-blind session — the eve of the
+  first post-melt-up close):** TWENTY-EIGHTH missed feed run (Sep 13
+  22:45Z cron silent; a 23:10Z poke touching fetch/poke pushed and
+  unanswered — the Actions-disablement diagnosis stands). No Sunday
+  close: ALL FIVE Sep 11 finals re-spot-checked against the history
+  pages a FOURTH consecutive session (NVDA $218.29, AAPL $332.27,
+  GOOGL $338.50, MSFT $495.63, AMZN $256.78 — every one unchanged),
+  and an independent quadrature re-run reproduced every Sep 12
+  published fair EXACTLY (Dec 64.32/30.65/3.73/0.56/0.00; crown
+  86.40/13.59/0.01; 2nd 85.46/13.57/0.96; 3rd 93.13/5.90/0.95;
+  P(±5/wk) 59/58/3) — caps/fairs/edges go into Monday's close, the
+  first since the melt-up finals, exactly as published; T 13/77.
+  Weekend BTC color with a DOUBLE source rotation: CoinGecko re-served
+  the Sep 13 AM print to the cent ($77,303.56) and CoinMarketCap
+  re-served the Sep 12 AM cross-check ($77,262.64) — both diagnosed
+  snapshot-stale and discarded; the run quoted Kraken live $77,240.00
+  (−0.16%/24h; Coinbase cross-check $76,748.06 — ~0.6% under, the
+  widest cross-source gap since Sep 10, both quoted and disclosed),
+  −0.08% on the AM print, −1.50% vs the Sep 1 bake; T 109.2d — the
+  $85k anchor a hair OVER fair (+0.8, the series' second-widest rich
+  print), $90k −6.4, $95k −5.4, $100k −5.8, the $60k dip −3.9 ($55k
+  +5.8, $50k +6.8; needed touch +10.0%) — tape + chronicle only, BTC
+  tab stamps untouched. Mids/books/positions/balances untouched
+  (equity books EIGHT sessions stale); fill-audit blind a TWELFTH
+  full day outside Treasuries/SPX. The Oil-tab handoff (42c7680a) is
+  STILL not on origin. Publish + poke via the Sep 1 extraheader path.
 - **Sep 2 AM caps-only precedent:** with autodata down, public Sep 1 closes
   (stockanalysis.com history pages via WebSearch→WebFetch — WebFetch DOES
   work unattended on URLs surfaced verbatim by a WebSearch in the same
