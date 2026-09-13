@@ -647,6 +647,29 @@ effectiveness scoring, columns centered, and a totals row at the bottom.
   books EIGHT sessions stale); fill-audit blind an eleventh calendar
   day outside Treasuries/SPX. The Oil-tab handoff (42c7680a) is STILL
   not on origin. Publish + poke via the Sep 1 extraheader path.
+- **Sep 13 AM (Sunday, nineteenth data-blind session — a fifth
+  confirmation of the finals):** TWENTY-SEVENTH missed feed run (Sep 13
+  12:45Z cron silent; a 13:09Z poke touching fetch/poke pushed and
+  unanswered — the Actions-disablement diagnosis stands). No Sunday
+  close: ALL FIVE Sep 11 finals re-spot-checked against the history
+  pages (NVDA $218.29, AAPL $332.27, GOOGL $338.50, MSFT $495.63,
+  AMZN $256.78 — every one unchanged, a third consecutive session of
+  confirmation), and an independent quadrature re-run reproduced every
+  Sep 12 published fair EXACTLY (Dec 64.32/30.65/3.73/0.56/0.00; crown
+  86.40/13.59/0.01; 2nd 85.46/13.57/0.96; 3rd 93.13/5.90/0.95; P(±5/wk)
+  59/58/3) — caps/fairs/edges stand as published, T 13/77 into Monday,
+  the first close since the melt-up finals. Weekend BTC color per the
+  Sep 5 PM precedent: spot $77,303.56 (CoinGecko live, +0.1%/24h, range
+  $77,054.68–$77,479.13; Coinbase cross-check $77,207.06 — ~0.1% apart,
+  disclosed), −0.11% on the PM print and +0.03% on the Sep 12 AM print
+  — a weekend that round-tripped to flat, −1.42% vs the Sep 1 bake;
+  T 109.7d — theta alone re-tips the $85k anchor a hair OVER fair
+  (+0.5), $90k −6.7, $95k −5.7, $100k −6.1, the $60k dip −3.8 ($55k
+  +5.8, $50k +6.8; needed touch +10.0%) — tape + chronicle only, BTC
+  tab stamps untouched. Mids/books/positions/balances untouched (equity
+  books EIGHT sessions stale); fill-audit blind a twelfth calendar day
+  outside Treasuries/SPX. The Oil-tab handoff (42c7680a) is STILL not
+  on origin. Publish + poke via the Sep 1 extraheader path.
 - **Sep 2 AM caps-only precedent:** with autodata down, public Sep 1 closes
   (stockanalysis.com history pages via WebSearch→WebFetch — WebFetch DOES
   work unattended on URLs surfaced verbatim by a WebSearch in the same
