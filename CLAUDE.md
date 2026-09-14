@@ -696,6 +696,34 @@ effectiveness scoring, columns centered, and a totals row at the bottom.
   (equity books EIGHT sessions stale); fill-audit blind a TWELFTH
   full day outside Treasuries/SPX. The Oil-tab handoff (42c7680a) is
   STILL not on origin. Publish + poke via the Sep 1 extraheader path.
+- **Sep 14 AM (Monday pre-open, twenty-first data-blind session — the
+  morning of the first post-melt-up close):** TWENTY-NINTH missed feed
+  run (Sep 14 12:45Z cron silent; a 13:08Z poke touching fetch/poke
+  pushed via the extraheader path and unanswered — the
+  Actions-disablement diagnosis stands). Pre-open verification pass per
+  the Sep 4 AM precedent: ALL FIVE Sep 11 finals re-spot-checked
+  against the history pages a FIFTH consecutive session (NVDA $218.29,
+  AAPL $332.27, GOOGL $338.50, MSFT $495.63, AMZN $256.78 — every one
+  unchanged); independent quadrature re-run reproduced every Sep 12
+  published fair EXACTLY (Dec 64.32/30.65/3.73/0.56/0.00; crown
+  86.40/13.59/0.01; 2nd 85.46/13.57/0.96; 3rd 93.13/5.90/0.95;
+  P(±5/wk) 59/58/3) — caps/fairs/edges go into tonight's close exactly
+  as published, T 13/77. NEW: a violent premarket divergence (9:03 ET,
+  labeled color, never a model input): NVDA −2.87% $212.02 vs AAPL
+  +0.39% $333.57, GOOGL +1.52% $343.64, MSFT +0.46%, AMZN −1.37% —
+  premarket-implied lead 4.73%/$231.6B vs the finals' 8.25%; held to
+  the close it would be the narrowest since the August crown settled.
+  BTC color: CoinGecko live again after the Sep 13 PM double snapshot
+  rotation — spot $77,666.24 (+0.5%/24h; Coinbase cross-check
+  $77,817.62 ~0.2% over, disclosed), +0.55% on the PM print, −0.95% vs
+  the Sep 1 bake; T 108.7d — the overnight bid flips the $85k anchor
+  back UNDER fair (−0.8); $90k −7.7, $95k −6.6, $100k −6.7, $60k dip
+  −2.7, $55k +6.6, $50k +7.3, needed touch +9.4% — tape + chronicle
+  only, BTC tab stamps untouched. Mids/books/positions/balances
+  untouched (equity books EIGHT sessions stale); fill-audit blind a
+  thirteenth calendar day outside Treasuries/SPX. The Oil-tab handoff
+  (42c7680a) is STILL not on origin. Publish + poke via the Sep 1
+  extraheader path.
 - **Sep 2 AM caps-only precedent:** with autodata down, public Sep 1 closes
   (stockanalysis.com history pages via WebSearch→WebFetch — WebFetch DOES
   work unattended on URLs surfaced verbatim by a WebSearch in the same
