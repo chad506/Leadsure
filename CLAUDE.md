@@ -757,6 +757,54 @@ effectiveness scoring, columns centered, and a totals row at the bottom.
   fairs are stale against these prints and say so (Oil = Sep 10 build on
   a 109.29 Brent; Treasuries = Sep 9 close with the 10Y now 4.985;
   Analysis mids Sep 1 — dec-AAPL's 2.23× is 1.31× on the fresh 23.4 mid).
+- **Sep 15 PM (twenty-second data-blind session — TWO CLOSES AGAIN, THE
+  MIDS GO FRESH):** THIRTIETH through THIRTY-SECOND missed feed runs (the
+  Sep 14 22:45Z and both Sep 15 crons silent; a 23:10Z poke touching
+  fetch/poke pushed via the extraheader path and unanswered — the
+  Actions-disablement diagnosis stands). The cadence broke AGAIN: the
+  Sep 14 PM and Sep 15 AM scheduled sessions never ran (no commit, no
+  poke — the outage's SECOND double gap, after Sep 10 PM / Sep 11 AM),
+  so this run carried the Sep 14 AND Sep 15 closes. All five Sep 11
+  finals re-confirmed beneath them (a SIXTH session, unchanged). Monday
+  Sep 14: NVDA −3.36% $210.96 / GOOGL +3.22% $349.39 / AAPL +0.24% —
+  lead 8.25% → 4.36%/$213.2B, THE NARROWEST CLOSE SINCE THE AUGUST CROWN
+  SETTLED. Tuesday Sep 15: NVDA the only green close (+0.57% $212.17,
+  $5,134.5B) over AAPL −0.52% ($4,866.5B), GOOGL −1.26% ($4,200.0B),
+  MSFT −1.68% ($3,691.3B), AMZN −2.02% ($2,672.3B) — lead 5.51%/$268.0B,
+  cushion 15.87%/$666.5B, T 11/75. Calibration reproduced every Sep 12
+  fair EXACTLY, then fresh fairs: Dec 57.90/34.77/5.87/0.70/0.00; crown
+  79.03/20.94/0.03; 2nd 77.75-AAPL/20.87-NVDA/1.38-GOOGL; 3rd
+  96.01-GOOGL/2.58-MSFT/1.31-AAPL/0.10-NVDA; P(±5/wk) 61/60/7 (outage
+  highs). NEW: the Analysis-tab odds column re-marked to the Sep 15
+  01:10Z interactive walk (scripts/leaderboard_books_sep15.csv — first
+  fresh equity mids since Sep 1 03:59Z; one session behind tonight's
+  close, disclosed): dec-AAPL −11.37 CHEAP RV 1.49× on the real 23.4 mid
+  (the stale −16.90 deflates honestly), dec-NVDA +10.60 RICH (72¢ GTC
+  14.1 pts above the 57.90 fair — cancel tops the chores), dec-GOOGL
+  +1.63 inside the band, sep3NVDA premium gone (0.05 bidless vs 0.10,
+  RV 2.00× nominal on a bidless book), sep2AAPL stale-mid residual
+  FLIPS −3.96 → +3.75 (book not in the walk). Tradeable-at-fair
+  re-computed as 5-pt-band lower bounds from the walk summaries
+  (dec-AAPL ≥$1,757, dec-NVDA ≥$3,054 — first non-zero prints since
+  Sep 1). BTC: Coinbase $77,000.77 primary (−0.94%/24h; CMC cross
+  $77,389.10 ~0.5% over; CoinGecko printed $75,643 against its own
+  $78,581 24h high and both cross-sources — discarded, THIRD source
+  rotation), −0.86% on the Sep 14 AM print, −1.80% vs the Sep 1 bake;
+  T 107.2d — residuals vs the walk's OWN fresh mids compress inside ±5
+  for the first time ($85k −0.5 AT fair, $90k −3.7, $95k −4.3,
+  $100k −4.8, $110k −2.3, $60k −3.0, $55k +2.8, $50k +6.4 the one rich
+  print) — most of the stale-era wides were the staleness itself; tape +
+  chronicle only, BTC tab stamps untouched. Updated: hero caps/gap, tape
+  label + prose, Next-Catalyst, 5 KPI tiles, table note, both group
+  rows, all six model rows, footnote, both chronicles + the sync-bar
+  Latest line. Untouched + disclosed: cards/slate (Aug 28 stamps),
+  ledgers (61 fills Sep 10–14 still owed), balances (positions value
+  $17,815.36 at the 01:10Z pass is the freshest print), velocity/SEPH/H
+  series, charts, Leaderboard (its dec-AAPL 1.31×/dec-MSFT 1.02×
+  predate tonight's bake — 1.49×/1.27× now, noted on the page).
+  Script: scripts/verify_sep15pm.py. Publish + poke via the Sep 1
+  extraheader path; no device bridge (scheduled cloud run). No trades
+  placed.
 - **Sep 2 AM caps-only precedent:** with autodata down, public Sep 1 closes
   (stockanalysis.com history pages via WebSearch→WebFetch — WebFetch DOES
   work unattended on URLs surfaced verbatim by a WebSearch in the same
