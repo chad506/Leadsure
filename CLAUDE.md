@@ -724,6 +724,39 @@ effectiveness scoring, columns centered, and a totals row at the bottom.
   thirteenth calendar day outside Treasuries/SPX. The Oil-tab handoff
   (42c7680a) is STILL not on origin. Publish + poke via the Sep 1
   extraheader path.
+- **Sep 15 interactive (01:10Z) — THE OIL TAB IS ON ORIGIN, THE HANDOFF IS
+  MOOT, THE LEADERBOARD IS RE-MARKED:** github.com was reachable again
+  from the interactive session, so the Sep 10–11 Oil-tab commit was
+  rebased onto the Sep 11–14 auto-runs and pushed as 6e13d793 (on top of
+  929b0297); the Mac hand-off files (_handoff_push.sh / _handoff_msg.txt)
+  were never run and are moved to _to_delete/ on the device — ignore any
+  "handoff not on origin" note above. Then ac30fe98: every leaderboard
+  candidate book re-walked through the reader's Chrome (226 CLOB books,
+  00:42–01:10Z), every row's mid replaced, RV = as-baked model value ÷
+  tonight's mid (conditional-book LIFT/INPUT rows carry their odds-space
+  lift onto the new mid; MODEL fairs untouched — no tab re-baked), top
+  50 re-ranked: cut 2.00× (was 1.82×), Iran 27 · Oil 21 · TRS 2, 49 cond
+  / 1 model; 17 rows dropped (16 resolved YES — 10Y 4.85/4.88/4.91/4.94/
+  4.97 Sep, 5Y 4.78, 30Y 5.33, PMMS 6.75, WTI $100 HIGH/LOW + $90 HIGH,
+  gold $4,300 LOW, DXY 99.50 — plus the empty Iran-targets-Oman book,
+  whose shortlist token has no Gamma market: token check pending).
+  Script + book snapshot: scripts/leaderboard_remark_sep15.py,
+  scripts/leaderboard_books_sep15.csv. Recipe notes: Gamma
+  /markets?clob_token_ids= returns [] for resolved markets unless
+  &closed=true is added; javascript_tool output containing "=" (e.g. the
+  BTC.CM= symbol) trips the Cookie/query-string block — replace "=" or
+  write to <pre> and read via get_page_text. Spots at the walk: Brent Nov
+  106.70, WTI Oct 102.46, 10Y 4.985 (Treasury.gov 4.96 Sep 11 / 4.97 Sep
+  14), SPX 7,619.98, BTC $77,794; 10Y-5.0%-before-2027 95.85, invasion
+  trigger 16.5. Account: positions value $17,815.36; 61 fills Sep 10
+  23:33Z – Sep 14 22:35Z swept into the banner but NOT ledgered (10Y-5.0%
+  trimmed 2,190 sh at 88–94¢ to 8,354.07; Apple Sep crown +18,094 at
+  5.7–6.4¢ then 1,800 sold at 15.5–21.7¢; 5.5% rung +741; 5.00-Sep +264;
+  4.97-Sep +208 resolved YES; BTC no-$85k-Sep 116.88; SPY $750/$745
+  weekly lows) — the next ledger bake owes rows for these. Source tabs'
+  fairs are stale against these prints and say so (Oil = Sep 10 build on
+  a 109.29 Brent; Treasuries = Sep 9 close with the 10Y now 4.985;
+  Analysis mids Sep 1 — dec-AAPL's 2.23× is 1.31× on the fresh 23.4 mid).
 - **Sep 2 AM caps-only precedent:** with autodata down, public Sep 1 closes
   (stockanalysis.com history pages via WebSearch→WebFetch — WebFetch DOES
   work unattended on URLs surfaced verbatim by a WebSearch in the same
