@@ -805,6 +805,41 @@ effectiveness scoring, columns centered, and a totals row at the bottom.
   Script: scripts/verify_sep15pm.py. Publish + poke via the Sep 1
   extraheader path; no device bridge (scheduled cloud run). No trades
   placed.
+- **Sep 16 interactive (01:45Z) — LARGEST-COMPANY WALKED + A BEST BETS BLOCK:**
+  twenty CLOB books through the reader's Chrome (five Dec names + SpaceX /
+  Tesla / Aramco tails; the September crown, seat and 3rd-place partitions —
+  crown + seat first walked since Sep 1; gamma /events?slug= discovery, the
+  Sep slugs are `largest-company-end-of-september-1785358369147`,
+  `2nd-largest-company-end-of-september-20260729222928263`,
+  `3rd-largest-company-end-of-september-1785358369147`). Sep 15 finals
+  re-verified against TWO sources (stockanalysis history + CNBC restQuote):
+  **MSFT settled $497.12 / −1.64%, not the $496.91 the PM pass pulled** —
+  cap $3,692.8B; Dec MSFT 0.70 → 0.71, 3rd 95.97-GOOGL / 2.62-MSFT, nothing
+  else moved. Fresh edges: dec-AAPL 23.85 vs 34.77 −10.92 (RV 1.46×, $1,774
+  inside fair−5, $41.8k ≤ fair of which $37.9k is a 34.4–34.5¢ wall); Apple
+  crown 12.6 vs 20.94 −8.34 (RV 1.66×); NVIDIA crown 87.15 vs 79.03 +8.12;
+  sep2AAPL 84.5 vs 77.75 +6.75 (WIDE, fade rule does not arm: $126 ≥ 80.85);
+  sep2NVDA 12.95 vs 20.87 −7.92 on $106. NEW `.pm-bestbets` section under
+  the KPI grid (#1 BUY dec-AAPL YES $300 ≤ 25¢; #2 HOLD the 22,532-sh Sep
+  Apple crown, ADD $100 ≤ 13.0¢, exit-by-resolution disclosed; #3 dec-NVDA
+  NO priced but NO TICKET — the catalyst clause still gates the RICH fade;
+  #4 SELL 274 sh MSFT-3rd at 4.5¢; watch sep2NVDA) with an honesty line
+  (one directional exposure, Sep/Dec legs pay together 11.5%, corr 0.22).
+  **THE dec-NVDA 72¢ GTC "CANCEL" CHORE IS CLOSED** — the market traded
+  through 72 on Sep 14 (6h prints 71 → 66.5) and the activity feed (complete
+  to Aug 4) shows no dec-NVDA fill, so the order cannot be open; stop
+  carrying it. Eight September rows added to the Analysis table (+7 TOKENS
+  in polymarket.js; sums.dec allowance 0.0030 → 0.0015 since dec-AMZN is
+  now summed live); leaderboard KPI 145 → 153 rows carrying RV, top 50
+  unchanged (max Largest RV 1.66× < 2.00× cut). Positions /value read
+  $8,792.51 at 01:50Z (316 positions — the /positions default limit of 200
+  TRUNCATES; page with offset). Three adversarial reviewer passes + a
+  round-2 verify (34 + 5 findings, all applied — NO-side tickets must be
+  quoted in NO-dollars, σ units unified, Sep 15 PM text labeled as kept).
+  Scripts: scripts/largest_sep16.py, largest_books_sep16.txt,
+  bake_largest_sep16.py, bake_largest_sep16_fixes.py. Untouched + disclosed:
+  balances, ledgers (61 fills owed), Aug 28 cards (#1 marked SUPERSEDED),
+  velocity/charts, other tabs. No trades placed.
 - **Sep 2 AM caps-only precedent:** with autodata down, public Sep 1 closes
   (stockanalysis.com history pages via WebSearch→WebFetch — WebFetch DOES
   work unattended on URLs surfaced verbatim by a WebSearch in the same

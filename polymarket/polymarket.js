@@ -75,6 +75,15 @@
     'sep-sep3AAPL': '112996809883883766789820608824059367455551434396689079529794719824285513465225',
     'sep-sep3NVDA': '6369142801468538078435462495249654721381776375778296596920715169671444692617',
     'sep-sepGOOGL': '11286203532633435050461029087857565736892531921887062202100644346193481478173',
+    /* Sep 16 2026: the rest of the September partitions + the two remaining Dec race names, so the
+       Best Bets / Analysis rows added that night refresh live (gamma /events?slug= discovery, YES tokens) */
+    'sep-crownNVDA': '23705583736348706533988510839759433821053113814025766422082583385077433681175',
+    'sep-crownAAPL': '16478316053646921296729034019554519840110001466229869274618614366503964308841',
+    'sep-sep2MSFT': '55280273017462604050110364006593514037065825484513723750243853675453069122185',
+    'sep-sep3GOOGL': '105940453485945394790582500621710713657132376521484683541477221278559910577368',
+    'sep-sep3MSFT': '46552579038506701209087110814172553391939526036683166770317364680747842791908',
+    'dec-MSFT': '391670908629060088409431896998377161667071768186645889213963384874929102170',
+    'dec-AMZN': '23899766443614969608658296541413892746074395565401020148911064394383451718287',
     'dec-NVDA': '11876606915924142133615854761923277060697657209957870741155164849437788272266',
     'dec-AAPL': '9875273331604434310973374077817381730908757452538191940842519381772366848',
     'dec-GOOGL': '62009449847159122385971991480139610869824965029008686522071073076098387124747',
@@ -435,7 +444,7 @@
           var ke = $('#kpi-edge'); if (ke) ke.textContent = lbl[1] + '-' + mon + ' ' + (top.edge >= 0 ? '+' : '−') + Math.abs(top.edge).toFixed(1);
         }
         /* book sums */
-        var sums = { jul: 0.0015, aug: 0.0045, dec: 0.0030 }; /* untracked legs at their own mids: aug = TSLA+ARAMCO+MSFT 0.15c each; dec = ARAMCO 0.15 + AMZN 0.15 (re-read Aug 23 13:22Z off their own books) */
+        var sums = { jul: 0.0015, aug: 0.0045, dec: 0.0015 }; /* untracked legs at their own mids: aug = TSLA+ARAMCO+MSFT 0.15c each; dec = ARAMCO 0.15 only — AMZN joined TOKENS Sep 16 2026 and is summed live (re-read Sep 16 01:45Z off its own book: 0.15) */
         Object.keys(mids).forEach(function (k) { if (!isNaN(mids[k])) sums[k.slice(0, 3)] += mids[k]; });
         ['jul', 'aug', 'dec'].forEach(function (ev) { setText('[data-sum="' + ev + '"]', (sums[ev] * 100).toFixed(2)); });
         /* hero AAPL odds (label reads "AAPL Odds Jul / Aug / Dec") */
