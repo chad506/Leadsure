@@ -840,6 +840,29 @@ effectiveness scoring, columns centered, and a totals row at the bottom.
   bake_largest_sep16.py, bake_largest_sep16_fixes.py. Untouched + disclosed:
   balances, ledgers (61 fills owed), Aug 28 cards (#1 marked SUPERSEDED),
   velocity/charts, other tabs. No trades placed.
+- **Sep 16 AM (twenty-third data-blind session — pre-open verification pass):**
+  THIRTY-THIRD missed feed run (Sep 16 12:45Z cron silent; a 13:08Z poke
+  touching fetch/poke pushed via the extraheader path and unanswered — the
+  Actions-disablement diagnosis stands). The AM cadence recovered after the
+  second double gap. ALL FIVE Sep 15 finals re-confirmed against the history
+  pages (NVDA $212.17, AAPL $331.34, GOOGL $344.98, MSFT $497.12 — the 01:45Z
+  interactive revision now served by the history page itself — AMZN $248.42);
+  independent quadrature re-run reproduced every published fair EXACTLY (Dec
+  57.90/34.77/5.87/0.71/0.00; crown 79.03/20.94/0.03; 2nd 77.75/20.87/1.38;
+  3rd 95.97/2.62/1.31/0.10; P(±5/wk) 61/60/7) — caps/fairs/edges and the
+  Best Bets stand into tonight's close as published; lead 5.51%/$268.0B,
+  T 11/75. Premarket color (9:09–9:12 ET, labeled): NVDA +0.83% $213.93 over
+  AAPL +0.49% $332.95, GOOGL +0.28%, AMZN +0.15%, MSFT −0.38% — implied lead
+  5.87%/$286.9B, a mild re-widening. BTC color: spot $75,868.26 (CoinGecko
+  live, −1.40%/24h, range 75,038–77,163; Coinbase cross $75,826.24 ~0.06%
+  under — the tightest live cross of the series), −1.47% on the PM print, −3.25%
+  vs the Sep 1 bake — the series' FIRST accepted sub-$76k print and deepest below-bake
+  read; T 106.7d: vs the Sep 15 walk mids the $60k dip breaks the −5 line
+  (−5.9), the walked $85k mid swings +4.0 RICH ($90k +0.3, $95k −0.9,
+  $100k −2.0, $110k −0.6, $55k +1.0, $50k +5.4; needed touch +12.0%) — tape +
+  chronicle only, BTC tab stamps untouched. Mids/books/balances keep the
+  Sep 16 01:45Z stamps; ledger still owes the 61 swept fills. Publish + poke
+  via the Sep 1 extraheader path; script scripts/verify_sep16am.py.
 - **Sep 2 AM caps-only precedent:** with autodata down, public Sep 1 closes
   (stockanalysis.com history pages via WebSearch→WebFetch — WebFetch DOES
   work unattended on URLs surfaced verbatim by a WebSearch in the same
