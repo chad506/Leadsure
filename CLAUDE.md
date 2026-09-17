@@ -899,6 +899,31 @@ effectiveness scoring, columns centered, and a totals row at the bottom.
   Mids/books/balances untouched (ladders re-priced, not re-walked);
   ledger still owes the 61 swept fills. Publish + poke via the Sep 1
   extraheader path; script scripts/verify_sep16pm.py.
+- **Sep 17 AM (twenty-fifth data-blind session — pre-open verification pass,
+  the finals lock clean):** THIRTY-FIFTH missed feed run (Sep 17 12:45Z cron
+  silent; a 13:12Z poke touching fetch/poke pushed via the extraheader path
+  and unanswered — the Actions-disablement diagnosis stands). ALL FIVE Sep 16
+  finals re-confirmed to the cent against the history pages (NVDA $213.90,
+  AAPL $332.41, GOOGL $342.87, MSFT $490.30, AMZN $245.96 — the PM pass's
+  ~23:15Z pull survives its morning check with no revisions); independent
+  quadrature re-run reproduced every Sep 16 PM published fair EXACTLY (Dec
+  59.68/34.14/4.95/0.48/0.00; crown 82.25/17.74/0.01; 2nd 81.60/17.72/0.68;
+  3rd 97.76/1.55/0.66/0.03; P(±5/wk) 61/60/5) — caps/fairs/edges and the
+  Best Bets stand into tonight's close as published; lead 6.03%/$294.2B,
+  cushion 16.96%, T 10/74. Premarket color (8:47–9:08 ET, labeled): a broad
+  risk-on tape NVIDIA leads — NVDA +2.10% $218.40, AMZN +2.11%, GOOGL +1.47%,
+  MSFT +1.17%, AAPL +0.52% — implied lead 7.69%/$377.4B vs the finals' 6.03%
+  (held to the close, the widest since the Sep 11 melt-up finals' 8.25%).
+  BTC color: spot $76,424.22 (CoinGecko live, +1.2%/24h, range
+  75,161–76,683; Kraken live cross $76,144.00 ~0.37% under — both live, no
+  snapshot rotation), +0.58% on the PM print — the first up-tick after two
+  consecutive sub-$76k prints — and −2.54% vs the Sep 1 bake; T 105.7d: vs
+  the Sep 15 walk mids the $85k rich print eases +3.7 → +2.0, the $60k dip
+  re-crosses INSIDE the −5 line (−5.5 → −4.2), $90k −1.3, $95k −2.3,
+  $100k −3.1, $110k −1.2, $55k +2.2, $50k +6.1 (needed touch +11.2%) —
+  tape + chronicle only, BTC tab stamps untouched. Mids/books/balances keep
+  the Sep 16 01:45Z stamps; ledger still owes the 61 swept fills. Publish +
+  poke via the Sep 1 extraheader path; script scripts/verify_sep17am.py.
 - **Sep 2 AM caps-only precedent:** with autodata down, public Sep 1 closes
   (stockanalysis.com history pages via WebSearch→WebFetch — WebFetch DOES
   work unattended on URLs surfaced verbatim by a WebSearch in the same
