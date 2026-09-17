@@ -924,6 +924,49 @@ effectiveness scoring, columns centered, and a totals row at the bottom.
   tape + chronicle only, BTC tab stamps untouched. Mids/books/balances keep
   the Sep 16 01:45Z stamps; ledger still owes the 61 swept fills. Publish +
   poke via the Sep 1 extraheader path; script scripts/verify_sep17am.py.
+- **Sep 17 PM (twenty-sixth data-blind session — the outage's first
+  all-green board):** THIRTY-SIXTH missed feed run (Sep 17 22:45Z cron
+  silent; a ~23:10Z poke touching fetch/poke pushed via the extraheader
+  path, cfb79667, and unanswered — the Actions-disablement diagnosis
+  stands). Caps-only on the Sep 17 closes (history pages ~23:2xZ; all five
+  Sep 16 finals re-confirmed beneath them): ALL FIVE GREEN — NVDA +2.54%
+  $219.34 ($5,308.0B, the board's best), AMZN +2.13% ($2,702.1B), MSFT
+  +1.50% ($3,696.8B), AAPL +1.38% $337.00 ($4,949.6B), GOOGL +1.30%
+  ($4,228.6B) — the lead re-widens 6.03% → 7.24%/$358.4B, the widest close
+  since the Sep 11 melt-up finals; cushion 17.05%/$721.1B, T 9/73.
+  Calibration reproduced every Sep 16 PM fair EXACTLY, then fresh fairs:
+  Dec 62.51/31.93/4.40/0.42/0.00; crown 87.80/12.20/0.00; seat
+  87.37-AAPL/12.19-NVDA/0.44-GOOGL; 3rd 98.30-GOOGL/1.25-MSFT/0.43-AAPL/
+  0.01-NVDA; P(±5/wk) 61/59/4. Re-marked against the UNCHANGED Sep 16
+  01:45Z walk ladders (now TWO sessions behind, disclosed; depth-at-fair
+  recomputed from scripts/largest_books_sep16.txt): dec-AAPL −8.08 CHEAP
+  RV 1.34× (#1 stands; $2,090 ≤ fair, $1,244 inside fair−5; σ-band
+  28.4–33.7, break-even σ 1.17%/day, implied drift +4.6%), the
+  Apple-crown CHEAP comes off (+0.40 at the 12.6 mid — the 22,532-sh HOLD
+  marks at fair, the ADD is dead; σ sweep 6.0/12.2/17.6/21.8), crownNVDA
+  −0.65 (first sub-fair print since the walk), sep2AAPL −2.87, sep2NVDA
+  flips over fair (+0.76), sep3GOOGL −5.30 mid-CHEAP on the 92/94 book
+  ($0 inside fair−5, ask −4.30 — a spread artifact, not a ticket, badge
+  ON at the mid convention), sep3MSFT sell strengthens (fair 1.25, RV
+  0.28× at the bid), dec-NVDA +5.99 RICH by a whisker ($981 NO-dollars;
+  catalyst clause gates — no ticket). Joint-payoff MC re-run: Sep+Dec
+  Apple legs pay together 6.6% (was 9.7%), corr 0.18. BTC color:
+  $76,541.77 (CoinGecko live, +0.50%/24h, range 75,602–77,024; Coinbase
+  cross $76,545.18 ~0.004% over — the series' tightest live cross; Kraken
+  re-served the AM cross $76,144.00 to the cent — snapshot-stale,
+  discarded, the series' FIFTH source rotation), +0.15% on the AM print,
+  −2.39% vs the Sep 1 bake; T 105.2d: residuals vs the Sep 15 walk mids
+  inside ±4 everywhere but the $50k tail ($85k +1.6, $90k −1.7, $95k
+  −2.5, $100k −3.2, $110k −1.2, $60k −3.7, $55k +2.5, $50k +6.3) —
+  labeled color, BTC tab stamps untouched. Updated: header tape (PM
+  segment), sync Latest + chronicle, Largest hero (caps/gap/tape
+  label/prose/Next-Catalyst), 2 KPI tiles, Best Bets (all five rows +
+  sec-date + note + honesty line), analysis table (note, both group rows,
+  all 14 model rows, footnote), Top-Trades #1 pointer, CLAUDE.md outage
+  record, scripts/verify_sep17pm.py + bake_sep17pm.py. Untouched +
+  disclosed: balances, ledgers (61 fills owed), Aug 28 cards,
+  velocity/SEPH/H series, charts, other tabs, Leaderboard (Sep 15 01:10Z
+  re-mark). Publish + poke via the Sep 1 extraheader path.
 - **Sep 2 AM caps-only precedent:** with autodata down, public Sep 1 closes
   (stockanalysis.com history pages via WebSearch→WebFetch — WebFetch DOES
   work unattended on URLs surfaced verbatim by a WebSearch in the same
