@@ -967,6 +967,43 @@ effectiveness scoring, columns centered, and a totals row at the bottom.
   disclosed: balances, ledgers (61 fills owed), Aug 28 cards,
   velocity/SEPH/H series, charts, other tabs, Leaderboard (Sep 15 01:10Z
   re-mark). Publish + poke via the Sep 1 extraheader path.
+- **Sep 18 AM (twenty-seventh data-blind session — the morning check
+  catches a MICROSOFT REVISION):** THIRTY-SEVENTH missed feed run (Sep 18
+  12:45Z cron silent; a 13:09Z poke touching fetch/poke pushed via the
+  extraheader path, ac19e8cf, and unanswered — the Actions-disablement
+  diagnosis stands). Pre-open verification pass per the Sep 4/Sep 12 AM
+  precedents: NVDA $219.34, AAPL $337.00, GOOGL $347.33 and AMZN $251.19
+  re-confirmed to the cent against the history pages — **MSFT REVISED
+  $497.66 (+1.50%) → $497.75 (+1.52%), cap $3,697.5B** (the outage's
+  third catch, after Sep 4's NVDA and Sep 12's triple; the ~23:2xZ
+  same-evening pull preceded the settled final again). Calibration
+  reproduced every Sep 17 PM fair EXACTLY on the PM inputs (Dec
+  62.51/31.93/4.40/0.42/0.00; crown 87.80/12.20/0.00; seat
+  87.37/12.19/0.44; 3rd 98.30/1.25/0.43/0.01; P(±5/wk) 61/59/4), then
+  the fairs re-ran on the revision: **the ONLY 2dp move on the board is
+  3rd-MSFT 1.25 → 1.26** (sep3MSFT edge +3.29 at the 4.55 mid, RV
+  0.27× → 0.28×; Best Bets #4 edge +3.24 at the 4.5¢ bid — a hair
+  weaker, unchanged in substance); lead 7.24%/$358.4B, cushion
+  17.05%/$721.1B, T 9/73 and every other fair/edge/Best Bet stand.
+  Premarket color (8:59–9:10 ET, labeled): **GOOGL +2.23% ($355.06)
+  against a flat board** (NVDA −0.15%, AAPL +0.00%, MSFT +0.01%, AMZN
+  +0.14%) — implied lead 7.08%/$350.3B, implied cushion 14.51%/$627.1B
+  vs the finals' 17.05%: an Alphabet bid compresses the cushion and
+  firms the 3rd partition, not the lead. BTC color: spot $77,718.58
+  (CoinGecko live, +1.7%/24h, range 75,972–77,760; Kraken live cross
+  $77,961.00 ~0.31% over — both live, no snapshot rotation), **+1.54%
+  on the PM print — the outage's strongest overnight bid**, −0.89% vs
+  the Sep 1 bake; T 104.7d: vs the Sep 15 walk mids the bid pushes
+  $90k/$95k/$100k back OUTSIDE the −5 line (−5.7/−5.9/−5.9), $85k
+  flips back under fair (−3.0), the $60k dip sits nearly at fair
+  (−0.7), $55k +4.5, $50k +7.3 (needed touch +9.4%) — tape + chronicle
+  only, BTC tab stamps untouched. Restamped: header tape (Sep 18 AM
+  segment), sync Latest + chronicle, Largest tape label + hero prose +
+  Next-Catalyst prepends, Best Bets sec-date/note/#4 row, analysis
+  table note + Sep group row + sep3MSFT/dec-MSFT row cells, footnote.
+  Mids/books/balances keep the Sep 16 01:45Z stamps; ledger still owes
+  the 61 swept fills. Publish + poke via the Sep 1 extraheader path;
+  script scripts/verify_sep18am.py.
 - **Sep 2 AM caps-only precedent:** with autodata down, public Sep 1 closes
   (stockanalysis.com history pages via WebSearch→WebFetch — WebFetch DOES
   work unattended on URLs surfaced verbatim by a WebSearch in the same
