@@ -1004,6 +1004,60 @@ effectiveness scoring, columns centered, and a totals row at the bottom.
   Mids/books/balances keep the Sep 16 01:45Z stamps; ledger still owes
   the 61 swept fills. Publish + poke via the Sep 1 extraheader path;
   script scripts/verify_sep18am.py.
+- **Sep 18 PM (twenty-eighth data-blind session — the quad-witching
+  breakout stands the flagship down; Bitcoin breaks $80k):** THIRTY-EIGHTH
+  missed feed run (Sep 18 22:45Z cron silent; a ~23:09Z poke touching
+  fetch/poke pushed via the extraheader path, 23c95f0e, and unanswered —
+  the Actions-disablement diagnosis stands). Caps-only on the Sep 18
+  expiry closes (history pages ~23:1xZ; all five Sep 17 finals
+  re-confirmed beneath them — **NVDA SOURCE SPLIT disclosed: the history
+  table served $222.06 (+1.24%) while the same site's quote header and
+  overview page printed $222.27 (+1.34%) at-close with the after-hours
+  series keyed off it — the header taken as the working final (the
+  Sep 12/15/18-AM lesson), the next morning pass locks it**): NVDA +1.34%
+  $222.27 ($5,378.9B, 181.7M shares) with AMZN +1.00% ($2,729.2B) and
+  GOOGL +0.64% ($4,255.5B — faded a $357.31 open) against AAPL −0.26%
+  ($4,936.9B) and MSFT −0.80% ($3,668.0B, the board's worst) — the lead
+  re-widens a FOURTH straight close, 7.24% → 8.95%/$442.1B, PAST the
+  Sep 11 melt-up finals' 8.25% (the widest since the Sep 10 close);
+  cushion 16.01%/$681.4B, T 8/72. Calibration reproduced every Sep 18 AM
+  fair EXACTLY, then fresh fairs: Dec 65.98/28.69/4.27/0.30/0.00; crown
+  93.52/6.48/0.00; seat 93.09-AAPL/6.47-NVDA/0.43-GOOGL; 3rd
+  99.13-GOOGL/0.43-MSFT/0.43-AAPL/0.00-NVDA; P(±5/wk) 60/58/4.
+  Re-marked against the UNCHANGED Sep 16 01:45Z walk ladders (now THREE
+  sessions behind and pre-breakout, disclosed): **dec-AAPL −4.84 — the
+  CHEAP badge comes off and Best Bets #1 STANDS DOWN on the stop written
+  into its own ticket** (fair < mid+5; $0 inside fair−5, $1,631 ≤ fair;
+  break-even σ 1.47%/day ≈ no drift view left); **dec-NVDA +2.52 — the
+  RICH badge comes off, the fade dies on its own fair** ($423 NO-dollars
+  at bids ≥ fair): the December book is all-FAIR for the first time
+  since Sep 8; the crown pair INVERTS — crownAAPL +6.12 RICH (the
+  22,532-sh hold marks 2× model on the stale 12.6 mid; rides to
+  resolution on the exit-bid logic, $275 of bids at/over fair) vs
+  crownNVDA −6.37 mid-CHEAP ($2,713 inside fair−5); sep2AAPL −8.59 the
+  pass's widest ($805 inside fair−5); sep3GOOGL's 94.0 ask crosses the
+  line (−5.13, $835); sep2NVDA +6.48 at the mid (+7.83 at the ask) — every September cheap print is a
+  stale pre-breakout ladder: RE-WALK QUEUE, not tickets; sep3MSFT's
+  sell strengthens a fourth session (fair 0.43, RV 0.09×). Joint MC:
+  Sep+Dec Apple legs pay together 3.4% (was 6.6%), corr 0.14. BTC
+  BREAKS $80K: $81,228.07 (CoinGecko live, +6.2%/24h, range
+  76,205–81,304; Kraken live cross $80,996.00 ~0.29% under — both live,
+  no snapshot rotation), +4.52% on the AM print (the outage's strongest
+  bid), +3.59% OVER the Sep 1 bake — the series' first $80k print and
+  first above-bake read since the Sep 9 pre-open; T 104.2d: ladder residuals at the
+  series' wides ($85k −17.0 with fair 85.0, $90k −18.4, $95k −16.9,
+  $100k −15.1, $110k −8.6; dips flip rich $60k +6.8, $55k +9.1,
+  $50k +9.7; needed touch +4.6%) — tape + chronicle only, BTC tab
+  stamps untouched; its re-bake is now the loudest want on the page.
+  Updated: header tape (PM segment), sync Latest + chronicle, Largest
+  hero (caps/gap/tape label/prose/Next-Catalyst), 2 KPI tiles, Best
+  Bets (all five rows + sec-date + note + honesty line), analysis table
+  (note, both group rows, all 14 model rows + caps/gaps, footnote),
+  Top-Trades #1 pointer, CLAUDE.md outage record,
+  scripts/verify_sep18pm.py + bake_sep18pm.py. Untouched + disclosed:
+  balances, ledgers (61 fills Sep 10–14 still owed), Aug 28 cards,
+  velocity/SEPH/H series, charts, other tabs, Leaderboard (Sep 15
+  01:10Z re-mark). Publish + poke via the Sep 1 extraheader path.
 - **Sep 2 AM caps-only precedent:** with autodata down, public Sep 1 closes
   (stockanalysis.com history pages via WebSearch→WebFetch — WebFetch DOES
   work unattended on URLs surfaced verbatim by a WebSearch in the same
