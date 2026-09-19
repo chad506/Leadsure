@@ -1095,6 +1095,37 @@ effectiveness scoring, columns centered, and a totals row at the bottom.
   cells, velocity/SEPH/H series, ledgers (61 fills Sep 10–14 still
   owed), Leaderboard (Sep 15 01:10Z re-mark), all other tabs. Publish +
   poke via the Sep 1 extraheader path.
+- **Sep 19 PM (thirtieth data-blind session — Saturday night: the lock
+  holds, BTC prints the series high):** FORTIETH missed feed run (Sep 19
+  22:45Z cron silent; a ~23:09Z poke touching fetch/poke pushed via the
+  extraheader path, f5146418, and unanswered — the Actions-disablement
+  diagnosis stands). All five Sep 18 finals re-confirmed to the cent a
+  SECOND consecutive session (NVDA $222.27 — vol 189,973,388 settled
+  holds — AAPL $336.13, GOOGL $349.54, MSFT $493.78, AMZN $253.71; the
+  Sep 17 finals a third session, the Sep 16 rows verified beneath).
+  Calibration reproduced every fair EXACTLY (Dec 65.98/28.69/4.27/0.30/
+  0.00; crown 93.52/6.48/0.00; seat 93.09/6.47/0.43; 3rd 99.13/0.43/
+  0.43/0.00; P(±5/wk) 60/58/4) — lead 8.95%/$442.1B, cushion
+  16.01%/$681.4B, T 8/72: the whole board rides into Monday's open
+  unchanged. BTC $81,706.31 — the outage series' highest print
+  (CoinGecko live, +1.3%/24h, range 80,541.19–81,709.43, the night's
+  ONLY live read: Kraken re-served the AM cross to the cent, $81,079.00
+  +4.53% — the sixth snapshot rotation, its second re-serve; Coinbase
+  $81,101.99 and CMC $81,185.72 both Friday-vintage — all three
+  discarded), +0.78% on the AM print, +0.59% over the $80k-break print,
+  +4.20% vs the Sep 1 bake (the widest above-bake read of the series);
+  T 103.2d: every residual vs the Sep 15 walk mids at a fresh series
+  wide ($85k −18.9, $90k −20.1 the first −20, $95k −18.3, $100k −16.2,
+  $110k −9.3; dips $60k +7.9, $55k +9.8, $50k +10.0 the first +10;
+  needed touch +4.0%) — labeled color only, BTC tab stamps untouched.
+  Updated: header tape (Sep 19 PM segment), sync Latest + chronicle,
+  Largest tape label + hero prose + Next-Catalyst prepends, CLAUDE.md
+  outage record, scripts/verify_sep19pm.py + bake_sep19pm.py. Untouched
+  + disclosed: mids/books/balances (Sep 16 01:45Z walk stamps),
+  cards/slate/Best Bets rows (fairs unchanged — verified, not
+  re-baked), KPI/analysis cells, velocity/SEPH/H series, ledgers (61
+  fills Sep 10–14 still owed), Leaderboard (Sep 15 01:10Z re-mark), all
+  other tabs. Publish + poke via the Sep 1 extraheader path.
 - **Sep 2 AM caps-only precedent:** with autodata down, public Sep 1 closes
   (stockanalysis.com history pages via WebSearch→WebFetch — WebFetch DOES
   work unattended on URLs surfaced verbatim by a WebSearch in the same
