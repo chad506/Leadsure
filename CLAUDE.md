@@ -1058,6 +1058,43 @@ effectiveness scoring, columns centered, and a totals row at the bottom.
   balances, ledgers (61 fills Sep 10–14 still owed), Aug 28 cards,
   velocity/SEPH/H series, charts, other tabs, Leaderboard (Sep 15
   01:10Z re-mark). Publish + poke via the Sep 1 extraheader path.
+- **Sep 19 AM (twenty-ninth data-blind session — Saturday: the morning
+  check LOCKS the quad-witching finals):** THIRTY-NINTH missed feed run
+  (Sep 19 12:45Z cron silent; a 13:09Z poke touching fetch/poke pushed
+  via the extraheader path, 05b5790a, and unanswered — the
+  Actions-disablement diagnosis stands). **The NVDA source split
+  RESOLVES TO THE HEADER: the history table that served $222.06
+  (+1.24%) at ~23:10Z settled to $222.27 (+1.34%) overnight — the
+  Sep 12/15/18-AM lesson holds a fourth time.** All five Sep 18 finals
+  re-confirmed to the cent (NVDA $222.27, AAPL $336.13, GOOGL $349.54,
+  MSFT $493.78, AMZN $253.71); the ONLY revision anywhere is NVDA's
+  volume, 181.7M printed at ~23:1xZ → 189,973,388 settled. Calibration
+  reproduced every Sep 18 PM fair EXACTLY on the locked finals (Dec
+  65.98/28.69/4.27/0.30/0.00; crown 93.52/6.48/0.00; seat
+  93.09-AAPL/6.47-NVDA/0.43-GOOGL; 3rd 99.13-GOOGL/0.43-MSFT/0.43-AAPL/
+  0.00-NVDA; P(±5/wk) 60/58/4) — lead 8.95%/$442.1B, cushion
+  16.01%/$681.4B, T 8/72 unchanged on a Saturday: every fair, badge and
+  Best-Bet stance (Best Bets #1 STOOD DOWN, crownAAPL hold rides to
+  resolution, sep3MSFT sell, the stale-ladder cheap trio in the re-walk
+  queue) rides the weekend into Monday's open exactly as published — no
+  close until Sep 21. BTC HOLDS THE BREAK: $81,074.05 (CoinGecko live,
+  +4.3%/24h, range 77,609.21–81,674.72; Kraken live cross $81,079.00
+  +0.01% apart — the series' second-tightest cross (Sep 17 PM's ~0.004%
+  Coinbase cross keeps the record), both live, no snapshot rotation), −0.19% on the PM $80k-break print (the breakout's
+  first overnight hold), +3.39% vs the Sep 1 bake; T 103.7d: up-rungs
+  ease a hair off the wides and stay the story ($85k −16.3, $90k −17.7,
+  $95k −16.3, $100k −14.6, $110k −8.2; dips rich $60k +6.7, $55k +9.0,
+  $50k +9.7; needed touch +4.8%) — labeled color only, BTC tab stamps
+  untouched. Updated: header tape (Sep 19 AM segment), sync Latest +
+  chronicle, Largest tape label + hero prose + Next-Catalyst prepends,
+  NVDA source-note LOCK + settled-volume corrections on every standing
+  surface (hero, analysis note, footnote), CLAUDE.md outage record,
+  scripts/verify_sep19am.py + bake_sep19am.py. Untouched + disclosed:
+  mids/books/balances (Sep 16 01:45Z walk stamps), cards/slate/Best
+  Bets rows (fairs unchanged — verified, not re-baked), KPI/analysis
+  cells, velocity/SEPH/H series, ledgers (61 fills Sep 10–14 still
+  owed), Leaderboard (Sep 15 01:10Z re-mark), all other tabs. Publish +
+  poke via the Sep 1 extraheader path.
 - **Sep 2 AM caps-only precedent:** with autodata down, public Sep 1 closes
   (stockanalysis.com history pages via WebSearch→WebFetch — WebFetch DOES
   work unattended on URLs surfaced verbatim by a WebSearch in the same
