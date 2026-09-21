@@ -1241,6 +1241,57 @@ effectiveness scoring, columns centered, and a totals row at the bottom.
   cells, velocity/SEPH/H series, ledgers (61 fills Sep 10–14 still
   owed), Leaderboard (Sep 15 01:10Z re-mark), all other tabs. Publish +
   poke via the Sep 1 extraheader path.
+- **Sep 21 PM (thirty-fourth data-blind session — THE FIRST POST-BREAKOUT
+  CLOSE):** FORTY-FOURTH missed feed run (Sep 21 22:45Z cron silent; a
+  23:1xZ poke touching fetch/poke pushed via the extraheader path,
+  e1091735 — the plain token path proxy-denied again — and unanswered —
+  the Actions-disablement diagnosis stands). Sep 21 finals (history
+  pages ~23:1xZ, every header 'At close: Sep 21'): NVDA $227.38 +2.30%
+  (108,496,004 sh), AAPL $338.98 +0.85%, GOOGL $354.97 +1.55%, MSFT
+  $501.61 +1.59%, AMZN $258.45 +1.87% — all five GREEN; the Sep 18
+  finals re-confirmed to the cent beneath them a SIXTH session (NVDA's
+  190.0M settled volume holds; ONE revision: AAPL's Sep 18 VOLUME
+  prints 85,934,403 vs the 86,588,203 first recorded — close
+  untouched). Lead re-widens a FIFTH straight close, 8.95% →
+  10.52%/$523.9B (5.51 → 6.03 → 7.24 → 8.95 → 10.52 since the melt-up
+  finals); cushion 16.01% → 15.21%/$657.1B; T 7/71. Fairs re-dealt
+  (calibration exact on the locked Sep 18 inputs first): Dec
+  69.04/25.86/4.07/0.28/0.00; crown 97.07/2.93/0.00; seat
+  96.69-AAPL/2.93-NVDA/0.37-GOOGL; 3rd 99.37-GOOGL/0.37-AAPL/0.25-MSFT;
+  P(±5/wk) 58/56/4. The stale 68.5 dec-NVDA mid sits UNDER the 69.04
+  fair (−0.54) — first time in the fade file's life; no badge flips;
+  the September cheap trio (crownNVDA −9.92, sep2AAPL −12.19,
+  sep3GOOGL −6.37) is four-session-old ladder width — re-walk queue.
+  Best Bets re-marked on the stale Sep 16 01:45Z ladders (disclosed
+  every row): #1 stand-down HOLDS (fair 25.86, −1.96 at the stale
+  touch; re-arm ≤ 20.86), #2 marks 4× model ($672 of stale bids ≥ the
+  2.93 fair; exit ladder unchanged ≈$892), #3's fade loses its last
+  leg ($0 NO-dollars ≤ NO-fair), #4 sell strengthens a fifth session
+  (fair 0.25), watch-row ask 5× fair. BTC TOUCHED THE $85K RUNG — a
+  Monday-afternoon squeeze to an 8-month high: $86,534.71 CoinGecko
+  LIVE (+6.6%/24h, range 80,907.13–87,329.89) with Coinbase LIVE
+  $86,267.46 (+6.53%) ~0.31% under; Kraken AND CMC re-served their
+  13:0xZ AM prints TO THE CENT (81,618.00/+1.48%, 81,478.68/+1.18%,
+  same ranges) — both DISCARDED as snapshot-stale, the morning's roles
+  exactly reversed (the aggregator live, the exchange page stale); wire
+  corroboration: 'past $85,000' Yahoo/The National/Cointelegraph,
+  'tops $86,000' CNBC, 'hits $87,000' CoinDesk live. +6.02% on the AM
+  print, +5.91% OVER the old series high, +10.36% over the Sep 1 bake;
+  T 101.2d — the $85k rung is a RESOLUTION EVENT (no longer a residual
+  line); surviving-rung residuals vs the pre-breakout Sep 15 mids all
+  land past the series wides ($90k −38.3, $95k −34.8, $100k −30.6,
+  $110k −19.0; dips $60k +15.4, $55k +14.0, $50k +12.0) — labeled
+  color; the BTC tab re-bake goes from want to NEED, its Sep 1 stamps
+  stay until a real walk. Updated: hero caps/gap/tape label + prose
+  prepend, KPI edge + Best RV tiles, Best Bets (walk header, note
+  prepend, all five rows, honesty line), analysis table (group heads,
+  caps/gaps, all 14 model rows, footnote prepend), Top Trades #1
+  pointer, header tape (PM segment), sync Latest + chronicle,
+  CLAUDE.md, scripts/verify_sep21pm.py + bake_sep21pm.py. Untouched +
+  disclosed: mids/books/balances (Sep 16 01:45Z stamps), idea
+  cards/slate, velocity/SEPH/H series, charts, ledgers (61 fills
+  Sep 10–14 still owed), Leaderboard (Sep 15 01:10Z re-mark), all
+  other tabs. Publish + poke via the extraheader path.
 - **Sep 2 AM caps-only precedent:** with autodata down, public Sep 1 closes
   (stockanalysis.com history pages via WebSearch→WebFetch — WebFetch DOES
   work unattended on URLs surfaced verbatim by a WebSearch in the same
