@@ -109,7 +109,7 @@ rep("re-confirmed to the cent through the Sep 20 evening pass — four consecuti
     "label-tweak")
 
 # ---- 3b. hero prose prepend ----
-HERO = ("<strong>SEP 21 13:4xZ AM (MONDAY PRE-OPEN): THE LOCK HOLDS A FIFTH PASS — THE FIRST POST-BREAKOUT "
+HERO = ("<strong>SEP 21 13:3xZ AM (MONDAY PRE-OPEN): THE LOCK HOLDS A FIFTH PASS — THE FIRST POST-BREAKOUT "
  "CLOSE IS TODAY.</strong> The morning pass re-confirmed all five Sep 18 finals to the cent a "
  "<strong>fifth consecutive session</strong> (the settled volume holds; the Sep 17 finals a sixth session "
  "beneath them) and reproduced every fair below EXACTLY — the board goes into today&rsquo;s close "
