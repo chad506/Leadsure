@@ -23,7 +23,7 @@ def rep(old, new, tag):
     edits.append(tag)
 
 # ---- 1. header tape: append the Sep 21 AM segment ----
-TAPE = (" · <strong>Sep 21 13:4xZ — MONDAY PRE-OPEN, THE MORNING OF THE FIRST POST-BREAKOUT CLOSE: THE LOCK "
+TAPE = (" · <strong>Sep 21 13:3xZ — MONDAY PRE-OPEN, THE MORNING OF THE FIRST POST-BREAKOUT CLOSE: THE LOCK "
  "HOLDS A FIFTH PASS, THE PREMARKET LEANS WIDER:</strong> autodata is down a <strong>FORTY-THIRD</strong> "
  "consecutive feed run (the Sep 21 12:45Z cron silent; this run&rsquo;s 13:09Z poke touching fetch/poke, "
  "03f77c89, unanswered — the Actions disablement stands, one manual visit to "
@@ -61,7 +61,7 @@ rep("needed touch +5.2%) — labeled color, the BTC tab keeps its Sep 1 01:27Z s
 # ---- 2a. sync Latest head replace ----
 m = re.search(r"<strong>Latest: Sep 20 23:3xZ PM pass \(Sunday night\).*?Leaderboard re-marked Sep 15 01:10Z\.</strong>", html, re.S)
 assert m, "Latest head not found"
-LATEST = ("<strong>Latest: Sep 21 13:4xZ AM pass (Monday pre-open) — the morning of the first post-breakout "
+LATEST = ("<strong>Latest: Sep 21 13:3xZ AM pass (Monday pre-open) — the morning of the first post-breakout "
  "close: all five Sep 18 finals re-confirmed to the cent a FIFTH consecutive session (NVDA&rsquo;s 190.0M "
  "settled volume holds; the Sep 17 finals a sixth session beneath them) and calibration reproduced every "
  "published fair EXACTLY (Dec 65.98 / 28.69, crown 93.52 / 6.48, seat 93.09 / 6.47, 3rd 99.13 / 0.43, "
@@ -82,7 +82,7 @@ html = html[:m.start()] + LATEST + html[m.end():]
 edits.append("latest-head")
 
 # ---- 2b. sync chronicle append ----
-CHRON = (" <strong>Sep 21 13:4xZ AM run (Monday pre-open): the lock holds a fifth pass on the morning of "
+CHRON = (" <strong>Sep 21 13:3xZ AM run (Monday pre-open): the lock holds a fifth pass on the morning of "
  "the first post-breakout close — all five Sep 18 finals re-confirmed to the cent a fifth consecutive "
  "session (the settled volume holds; the Sep 17 finals a sixth session), calibration reproduced every "
  "fair exactly, and the whole board — lead 8.95% / $442.1B, cushion 16.01%, T 8 / 72 — goes into "
@@ -123,7 +123,7 @@ rep("data-longform-label=\"More\"><strong>SEP 20 23:3xZ PM (SUNDAY NIGHT): THE L
     "hero-prepend")
 
 # ---- 3c. Next-Catalyst prepend ----
-NC = ("<strong>Sep 21 13:4xZ AM: the catalyst is HOURS AWAY — today&rsquo;s close is the model&rsquo;s "
+NC = ("<strong>Sep 21 13:3xZ AM: the catalyst is HOURS AWAY — today&rsquo;s close is the model&rsquo;s "
  "first fresh input since the breakout.</strong> Monday pre-open Sep 21, T 8 / 72 — the finals locked "
  "five times over (five-for-five to the cent on every pass, quadrature exact each time; autodata down a "
  "43rd feed run — the fix is still one visit to github.com/chad506/Leadsure/actions). The premarket "
