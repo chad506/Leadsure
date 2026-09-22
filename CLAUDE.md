@@ -1292,6 +1292,51 @@ effectiveness scoring, columns centered, and a totals row at the bottom.
   cards/slate, velocity/SEPH/H series, charts, ledgers (61 fills
   Sep 10–14 still owed), Leaderboard (Sep 15 01:10Z re-mark), all
   other tabs. Publish + poke via the extraheader path.
+- **Sep 22 AM (thirty-fifth data-blind session — the morning check locks
+  the post-breakout close CLEAN):** FORTY-FIFTH missed feed run (Sep 22
+  12:45Z cron silent; a 13:11Z poke touching fetch/poke pushed via the
+  extraheader path, 46479ced, and unanswered — the Actions-disablement
+  diagnosis stands). Pre-open verification pass per the Sep 4/12/17 AM
+  precedents: ALL FIVE Sep 21 finals re-confirmed against the history
+  pages to the cent WITH every volume holding (NVDA $227.38 /
+  108,496,004 — the same-evening pull's volume survives its morning
+  check; AAPL $338.98, GOOGL $354.97, MSFT $501.61, AMZN $258.45; the
+  Sep 18 finals a seventh session beneath them — 190.0M NVDA and revised
+  85.93M AAPL volumes intact; Sep 17 rows verified, MSFT's $497.75
+  revision holds) — ZERO revisions; independent quadrature re-run
+  reproduced every Sep 21 PM published fair EXACTLY (Dec
+  69.04/25.86/4.07/0.28/0.00; crown 97.07/2.93/0.00; seat
+  96.69/2.93/0.37; 3rd 99.37/0.37/0.25; P(±5/wk) 58/56/4) —
+  caps/fairs/edges/Best Bets stand into tonight's close as published;
+  lead 10.52%/$523.9B, cushion 15.21%, T 7/71. Premarket color
+  (9:06–9:11 ET, labeled): MSFT +1.23% $507.76 leads AAPL +0.38% and
+  GOOGL +0.33% against NVDA −0.59% $226.03 and AMZN −0.75% — implied
+  lead 9.45%/$472.3B vs the finals' 10.52%, implied cushion 15.26%: the
+  tape leans NARROWER, the first give-back leaning since the breakout.
+  BTC color: $86,009.01 (CoinGecko LIVE +1.7%/24h, range
+  84,142.22–87,329.89 — the 24h% banks CG's own discarded Monday
+  $84,609 print as baseline, cosmetic; Coinbase LIVE $86,004.64
+  +1.79% — 0.005% apart, the series' second-tightest live cross after
+  Sep 17 PM's ~0.004%; Kraken $85,458.00 +4.61% and CMC $85,406.76
+  +4.98% ~0.6–0.7% under — a LAGGED PAIR: fresh prints, not byte
+  re-serves of the Sep 21 reads, flagged and passed over — a new
+  source-defense shape beside the snapshot re-serve), −0.61% on the
+  Monday-night squeeze print, +5.89% over the $80k-break print, +9.69%
+  over the Sep 1 bake — an eighth consecutive $80k+ print and the
+  series' first $86k morning; T 100.7d: surviving-rung residuals vs the
+  stale Sep 15 walk mids ease off Monday's blow-out and hold far past
+  the old series wides ($90k −36.2, $95k −32.8, $100k −28.8,
+  $110k −17.7; dips $60k +14.8, $55k +13.7, $50k +11.9; needed touch
+  +4.6%) — tape + chronicle only, BTC tab stamps untouched. Updated:
+  header tape (Sep 22 AM segment), sync Latest + chronicle, Largest
+  tape label (LOCKED marker + seventh-session count) + hero prose +
+  Next-Catalyst prepends, CLAUDE.md outage record,
+  scripts/verify_sep22am.py + bake_sep22am.py. Untouched + disclosed:
+  mids/books/balances (Sep 16 01:45Z walk stamps), cards/slate/Best
+  Bets rows (fairs unchanged — verified, not re-baked), KPI/analysis
+  cells, velocity/SEPH/H series, ledgers (61 fills Sep 10–14 still
+  owed), Leaderboard (Sep 15 01:10Z re-mark), all other tabs. Publish +
+  poke via the Sep 1 extraheader path.
 - **Sep 2 AM caps-only precedent:** with autodata down, public Sep 1 closes
   (stockanalysis.com history pages via WebSearch→WebFetch — WebFetch DOES
   work unattended on URLs surfaced verbatim by a WebSearch in the same
