@@ -6,14 +6,14 @@
 const SHARED_FINNHUB_KEY = 'd6kqa11r01qmopd1net0d6kqa11r01qmopd1netg';
 
 // Bump DATA_VERSION whenever positions, costs, or prices change — invalidates all localStorage caches
-const DATA_VERSION = '2026-09-04-1';
+const DATA_VERSION = '2026-10-01-1';
 
 // Date when price/prevClose were last set (YYYY-MM-DD in US/Pacific)
 // On a new trading day, pages auto-reset price = prevClose so Today P&L starts at $0
-const PRICES_AS_OF = '2026-09-04';
+const PRICES_AS_OF = '2026-10-01';
 
-// Realized P&L from closed positions (CHGG: -$449.07, RIOT: -$1,189.30, U: -$1,336.68, HPP: -$3,496.09, MDB: -$1,301.40, BXP: -$965.15, GPN: -$775.91, AXTI: -$715.96, SPG: -$774.07, DUOL: -$782.97, PL: -$1,712.79, KEEL: -$2,141.57, ACN: -$1,954.75, WOLF: -$1,736.83, GLOB: -$1,380.86, WIX: -$3,709.56, FLEX: -$1,002.41, ON: -$1,382.23, WPP: -$2,817.22, WDAY: -$1,816.46, TASK: -$1,039.00, CWK: -$729.88, NOW: -$669.39, ADBE: -$599.03, FN: -$769.44, GLW: -$457.82, AMKR: -$638.93, IREN: -$748.51, CNXC: -$634.64, CRM: -$981.26, APLD: -$751.55, AMSC: -$440.22, REMX: -$901.62, ARM: +$3,779.27, AAOI: -$661.01, CIEN: -$785.92, ONTO: -$37.72)
-const SHARED_REALIZED_PNL = -38507.95;
+// Realized P&L from closed positions (CHGG: -$449.07, RIOT: -$1,189.30, U: -$1,336.68, HPP: -$3,496.09, MDB: -$1,301.40, BXP: -$965.15, GPN: -$775.91, AXTI: -$715.96, SPG: -$774.07, DUOL: -$782.97, PL: -$1,712.79, KEEL: -$2,141.57, ACN: -$1,954.75, WOLF: -$1,736.83, GLOB: -$1,380.86, WIX: -$3,709.56, FLEX: -$1,002.41, ON: -$1,382.23, WPP: -$2,817.22, WDAY: -$1,816.46, TASK: -$1,039.00, CWK: -$729.88, NOW: -$669.39, ADBE: -$599.03, FN: -$769.44, GLW: -$457.82, AMKR: -$638.93, IREN: -$748.51, CNXC: -$634.64, CRM: -$981.26, APLD: -$751.55, AMSC: -$440.22, REMX: -$901.62, ARM: +$3,779.27, AAOI: -$661.01, CIEN: -$785.92, ONTO: -$37.72, VRT: -$71.00, WULF: -$179.30, CORZ: +$44.71)
+const SHARED_REALIZED_PNL = -38713.54;
 
 // Sold positions
 const SOLD_POSITIONS = [
@@ -53,7 +53,10 @@ const SOLD_POSITIONS = [
   {"symbol": "ARM", "name": "Arm Holdings PLC", "direction": "Long", "qty": 70, "costBasis": 173.91, "exitPrice": 227.9, "realizedPnl": 3779.27, "entryDate": "Mar 4", "exitDate": "Sep 4"},
   {"symbol": "AAOI", "name": "Applied Optoelectronics", "direction": "Long", "qty": 43, "costBasis": 115.4, "exitPrice": 100.03, "realizedPnl": -661.01, "entryDate": "Apr 7", "exitDate": "Sep 4"},
   {"symbol": "CIEN", "name": "Ciena Corp", "direction": "Long", "qty": 14, "costBasis": 361.81, "exitPrice": 305.67, "realizedPnl": -785.92, "entryDate": "Mar 18", "exitDate": "Sep 4"},
-  {"symbol": "ONTO", "name": "Onto Innovation Inc", "direction": "Long", "qty": 19, "costBasis": 256.26, "exitPrice": 254.27, "realizedPnl": -37.72, "entryDate": "Apr 10", "exitDate": "Sep 4"}
+  {"symbol": "ONTO", "name": "Onto Innovation Inc", "direction": "Long", "qty": 19, "costBasis": 256.26, "exitPrice": 254.27, "realizedPnl": -37.72, "entryDate": "Apr 10", "exitDate": "Sep 4"},
+  {"symbol": "VRT", "name": "Vertiv Holdings", "direction": "Long", "qty": 20, "costBasis": 251.97, "exitPrice": 248.42, "realizedPnl": -71.0, "entryDate": "Mar 4", "exitDate": "Oct 1"},
+  {"symbol": "WULF", "name": "TeraWulf Inc", "direction": "Long", "qty": 320, "costBasis": 15.61, "exitPrice": 15.04, "realizedPnl": -179.3, "entryDate": "Mar 4", "exitDate": "Oct 1"},
+  {"symbol": "CORZ", "name": "Core Scientific Inc", "direction": "Long", "qty": 309, "costBasis": 16.17, "exitPrice": 16.31, "realizedPnl": 44.71, "entryDate": "Mar 4", "exitDate": "Oct 1"}
 ];
 
 // Add-on positions (March rebalance — informational only, already included in POSITIONS totals)
@@ -73,49 +76,49 @@ const ADDON_POSITIONS = [
   {"symbol": "STX", "name": "Seagate Technology", "direction": "Long", "qty": 4, "costBasis": 856.13, "entryDate": "Jul 31", "note": "Month-end add-on to winner"},
   {"symbol": "WDC", "name": "Western Digital Corp", "direction": "Long", "qty": 6, "costBasis": 544.84, "entryDate": "Jul 31", "note": "Month-end add-on to winner"},
   {"symbol": "DELL", "name": "Dell Technologies", "direction": "Long", "qty": 8, "costBasis": 405.37, "entryDate": "Jul 31", "note": "Month-end add-on to winner"},
-  {"symbol": "SNDK", "name": "SanDisk Corp", "direction": "Long", "qty": 6, "costBasis": 1687.49, "entryDate": "Sep 4", "note": "Added to biggest storage winner (+11.9% day)"}
+  {"symbol": "SNDK", "name": "SanDisk Corp", "direction": "Long", "qty": 6, "costBasis": 1687.49, "entryDate": "Sep 4", "note": "Added to biggest storage winner (+11.9% day)"},
+  {"symbol": "MU", "name": "Micron Technology", "direction": "Long", "qty": 14, "costBasis": 1092.82, "entryDate": "Oct 1", "note": "Added to 2x winner (fill +101% vs cost)"},
+  {"symbol": "AEHR", "name": "Aehr Test Systems", "direction": "Long", "qty": 53, "costBasis": 102.43, "entryDate": "Oct 1", "note": "Added to 2x winner (fill +100% vs cost)"},
+  {"symbol": "DELL", "name": "Dell Technologies", "direction": "Long", "qty": 15, "costBasis": 545.05, "entryDate": "Oct 1", "note": "Added to 2x winner (fill +99% vs cost)"}
 ];
 
-// Active positions — THE source of truth (40 positions)
+// Active positions — THE source of truth (37 positions)
 const POSITIONS = [
-  {"symbol": "BE", "name": "Bloom Energy Corp", "sector": "Energy", "industry": "Electrical Equipment & Parts", "marketCap": 68134483418, "direction": "Long", "qty": 46, "price": 252.87, "costBasis": 198.6, "prevClose": 235.55},
-  {"symbol": "CBRE", "name": "CBRE Group Inc", "sector": "Real Estate", "industry": "Real Estate Services", "marketCap": 44219598663, "direction": "Short", "qty": 35, "price": 147.85, "costBasis": 141.82, "prevClose": 148.74},
-  {"symbol": "CORZ", "name": "Core Scientific Inc", "sector": "Technology", "industry": "Software - Infrastructure", "marketCap": 6476616462, "direction": "Long", "qty": 309, "price": 17.89, "costBasis": 16.17, "prevClose": 17.9},
-  {"symbol": "CRWV", "name": "CoreWeave Inc", "sector": "Technology", "industry": "Cloud Infrastructure", "marketCap": 57171253900, "direction": "Long", "qty": 62, "price": 89.36, "costBasis": 80.17, "prevClose": 84.56},
-  {"symbol": "CTSH", "name": "Cognizant Technology", "sector": "Technology", "industry": "IT Services", "marketCap": 26540173491, "direction": "Short", "qty": 77, "price": 62.31, "costBasis": 64.97, "prevClose": 64.64},
-  {"symbol": "FVRR", "name": "Fiverr International", "sector": "Technology", "industry": "Internet Content & Information", "marketCap": 323987955, "direction": "Short", "qty": 463, "price": 9.25, "costBasis": 10.82, "prevClose": 9.2},
-  {"symbol": "INTU", "name": "Intuit Inc", "sector": "Technology", "industry": "Software - Application", "marketCap": 94781936046, "direction": "Short", "qty": 12, "price": 332.7, "costBasis": 437.9, "prevClose": 344.3},
-  {"symbol": "LITE", "name": "Lumentum Holdings", "sector": "Technology", "industry": "Communication Equipment", "marketCap": 71417296402, "direction": "Long", "qty": 8, "price": 881.255, "costBasis": 652.68, "prevClose": 847.37},
-  {"symbol": "LZ", "name": "LegalZoom.com Inc", "sector": "Technology", "industry": "Specialty Business Services", "marketCap": 971071540, "direction": "Short", "qty": 745, "price": 6.13, "costBasis": 6.71, "prevClose": 6.4},
-  {"symbol": "MU", "name": "Micron Technology", "sector": "Technology", "industry": "Semiconductors", "marketCap": 1093828498426, "direction": "Long", "qty": 16, "price": 1016.59, "costBasis": 542.41, "prevClose": 958.16},
-  {"symbol": "TSM", "name": "Taiwan Semiconductor", "sector": "Technology", "industry": "Semiconductors", "marketCap": 1694640111089, "direction": "Long", "qty": 14, "price": 428.91, "costBasis": 358.83, "prevClose": 417.01},
-  {"symbol": "UPWK", "name": "Upwork Inc", "sector": "Technology", "industry": "Staffing & Employment", "marketCap": 1050437290, "direction": "Short", "qty": 370, "price": 8.79, "costBasis": 13.52, "prevClose": 9.19},
-  {"symbol": "VRT", "name": "Vertiv Holdings", "sector": "Industrials", "industry": "Electrical Equipment & Parts", "marketCap": 93001599805, "direction": "Long", "qty": 20, "price": 280.53, "costBasis": 251.97, "prevClose": 268.83},
-  {"symbol": "WULF", "name": "TeraWulf Inc", "sector": "Technology", "industry": "Capital Markets", "marketCap": 8830390000, "direction": "Long", "qty": 320, "price": 16.51, "costBasis": 15.61, "prevClose": 16.23},
-  {"symbol": "CAT", "name": "Caterpillar Inc", "sector": "Industrials", "industry": "Farm & Heavy Construction Machinery", "marketCap": 394152799102, "direction": "Long", "qty": 7, "price": 813.94, "costBasis": 700.72, "prevClose": 800.14},
-  {"symbol": "FCG", "name": "First Trust Natural Gas ETF", "sector": "Energy", "industry": "Natural Gas ETF", "marketCap": 606577942, "direction": "Long", "qty": 174, "price": 31.43, "costBasis": 28.78, "prevClose": 31.75},
-  {"symbol": "COHR", "name": "Coherent Corp", "sector": "Technology", "industry": "Scientific & Technical Instruments", "marketCap": 63541699475, "direction": "Long", "qty": 20, "price": 281.86, "costBasis": 252.4, "prevClose": 264.41},
-  {"symbol": "COPX", "name": "Global X Copper Miners ETF", "sector": "Materials", "industry": "Copper Miners ETF", "marketCap": 3232889592, "direction": "Long", "qty": 62, "price": 90.66, "costBasis": 80.22, "prevClose": 91.25},
-  {"symbol": "MRVL", "name": "Marvell Technology", "sector": "Technology", "industry": "Semiconductors", "marketCap": 193430522467, "direction": "Long", "qty": 94, "price": 223.55, "costBasis": 118.56, "prevClose": 208.83},
-  {"symbol": "PSFE", "name": "Paysafe Ltd", "sector": "Technology", "industry": "IT Services", "marketCap": 340575280, "direction": "Short", "qty": 666, "price": 6.71, "costBasis": 7.5, "prevClose": 6.79},
-  {"symbol": "Z", "name": "Zillow Group Inc", "sector": "Technology", "industry": "Internet Content & Information", "marketCap": 7729430000, "direction": "Short", "qty": 113, "price": 34.59, "costBasis": 44.4, "prevClose": 35.34},
-  {"symbol": "AGNT", "name": "AGNT Inc (fka eXp World)", "sector": "Real Estate", "industry": "Real Estate Services", "marketCap": 964689386, "direction": "Short", "qty": 811, "price": 4.03, "costBasis": 6.17, "prevClose": 4.04},
-  {"symbol": "NBIS", "name": "Nebius Group", "sector": "Technology", "industry": "Internet Content & Information", "marketCap": 68745867916, "direction": "Long", "qty": 71, "price": 226.39, "costBasis": 126.52, "prevClose": 210.63},
-  {"symbol": "NVDA", "name": "NVIDIA Corp", "sector": "Technology", "industry": "Semiconductors", "marketCap": 5446936073780, "direction": "Long", "qty": 27, "price": 230.36, "costBasis": 185.37, "prevClose": 228.45},
-  {"symbol": "BMBL", "name": "Bumble Inc", "sector": "Technology", "industry": "Software - Application", "marketCap": 355654637, "direction": "Short", "qty": 1429, "price": 2.9, "costBasis": 3.5, "prevClose": 2.87},
-  {"symbol": "AEHR", "name": "Aehr Test Systems", "sector": "Technology", "industry": "Semiconductor Equipment", "marketCap": 4341781877, "direction": "Long", "qty": 97, "price": 86.26, "costBasis": 51.29, "prevClose": 76.27},
-  {"symbol": "TTD", "name": "The Trade Desk Inc", "sector": "Technology", "industry": "Advertising Technology", "marketCap": 6637063326, "direction": "Short", "qty": 242, "price": 14.43, "costBasis": 20.64, "prevClose": 15.09},
-  {"symbol": "ACLS", "name": "Axcelis Technologies", "sector": "Technology", "industry": "Semiconductor Equipment", "marketCap": 4313217503, "direction": "Long", "qty": 48, "price": 115.08, "costBasis": 103.86, "prevClose": 110.37},
-  {"symbol": "DELL", "name": "Dell Technologies", "sector": "Technology", "industry": "Computer Hardware", "marketCap": 317845718797, "direction": "Long", "qty": 45, "price": 524.14, "costBasis": 273.37, "prevClose": 516.39},
-  {"symbol": "STX", "name": "Seagate Technology", "sector": "Technology", "industry": "Computer Hardware", "marketCap": 219874643133, "direction": "Long", "qty": 14, "price": 849.28, "costBasis": 599.64, "prevClose": 798.61},
-  {"symbol": "HUT", "name": "Hut 8 Corp", "sector": "Technology", "industry": "Bitcoin Mining", "marketCap": 10623733162, "direction": "Long", "qty": 106, "price": 93.545, "costBasis": 76.78, "prevClose": 88.09},
-  {"symbol": "WDC", "name": "Western Digital Corp", "sector": "Technology", "industry": "Computer Hardware", "marketCap": 183729360000, "direction": "Long", "qty": 21, "price": 467.46, "costBasis": 400.58, "prevClose": 441.57},
-  {"symbol": "INTC", "name": "Intel Corp", "sector": "Technology", "industry": "Semiconductors", "marketCap": 518119667902, "direction": "Long", "qty": 78, "price": 95.8, "costBasis": 64.47, "prevClose": 91.67},
-  {"symbol": "CRDO", "name": "Credo Technology Group Holding Ltd", "sector": "Technology", "industry": "Semiconductors", "marketCap": 48428306258, "direction": "Long", "qty": 32, "price": 170.57, "costBasis": 157.14, "prevClose": 164.17},
-  {"symbol": "SNDK", "name": "SanDisk Corp", "sector": "Technology", "industry": "Data Storage", "marketCap": 239000592508, "direction": "Long", "qty": 14, "price": 1740, "costBasis": 1294.6, "prevClose": 1554.99},
-  {"symbol": "ALAB", "name": "Astera Labs Inc", "sector": "Technology", "industry": "Semiconductors", "marketCap": 55718211740, "direction": "Long", "qty": 35, "price": 310.4, "costBasis": 213.08, "prevClose": 282.82},
-  {"symbol": "DAVE", "name": "Dave Inc", "sector": "Technology", "industry": "Fintech", "marketCap": 4316463213, "direction": "Long", "qty": 18, "price": 380.69, "costBasis": 285.69, "prevClose": 390.86},
-  {"symbol": "SITM", "name": "SiTime Corp", "sector": "Technology", "industry": "Semiconductors", "marketCap": 21379002379, "direction": "Long", "qty": 10, "price": 612.09, "costBasis": 525.18, "prevClose": 574.465},
-  {"symbol": "AMD", "name": "Advanced Micro Devices Inc", "sector": "Technology", "industry": "Semiconductors", "marketCap": 831011403123, "direction": "Long", "qty": 15, "price": 477.57, "costBasis": 343.96, "prevClose": 456.16},
-  {"symbol": "SPCX", "name": "SpaceX (Space Exploration Technologies)", "sector": "Industrials", "industry": "Space Launch & Satellite Internet", "marketCap": 2026907127240, "direction": "Long", "qty": 200, "price": 147.95, "costBasis": 147.77, "prevClose": 147.77, "entryDate": "2026-09-04"},
+  {"symbol": "BE", "name": "Bloom Energy Corp", "sector": "Energy", "industry": "Electrical Equipment & Parts", "marketCap": 78138107600, "direction": "Long", "qty": 46, "price": 274.05, "costBasis": 198.6, "prevClose": 276.98},
+  {"symbol": "CBRE", "name": "CBRE Group Inc", "sector": "Real Estate", "industry": "Real Estate Services", "marketCap": 37864869360, "direction": "Short", "qty": 35, "price": 130.42, "costBasis": 141.82, "prevClose": 128.47},
+  {"symbol": "CRWV", "name": "CoreWeave Inc", "sector": "Technology", "industry": "Cloud Infrastructure", "marketCap": 46899911594, "direction": "Long", "qty": 62, "price": 87.13, "costBasis": 80.17, "prevClose": 87.12},
+  {"symbol": "CTSH", "name": "Cognizant Technology", "sector": "Technology", "industry": "IT Services", "marketCap": 25652798799, "direction": "Short", "qty": 77, "price": 61.64, "costBasis": 64.97, "prevClose": 57.44},
+  {"symbol": "FVRR", "name": "Fiverr International", "sector": "Technology", "industry": "Internet Content & Information", "marketCap": 306479941, "direction": "Short", "qty": 463, "price": 8.62, "costBasis": 10.82, "prevClose": 8.62},
+  {"symbol": "INTU", "name": "Intuit Inc", "sector": "Technology", "industry": "Software - Application", "marketCap": 72017429831, "direction": "Short", "qty": 12, "price": 282.41, "costBasis": 437.9, "prevClose": 275.71},
+  {"symbol": "LITE", "name": "Lumentum Holdings", "sector": "Technology", "industry": "Communication Equipment", "marketCap": 79888164853, "direction": "Long", "qty": 8, "price": 1041.62, "costBasis": 652.68, "prevClose": 971.26},
+  {"symbol": "LZ", "name": "LegalZoom.com Inc", "sector": "Technology", "industry": "Specialty Business Services", "marketCap": 930824257, "direction": "Short", "qty": 745, "price": 5.77, "costBasis": 6.71, "prevClose": 5.61},
+  {"symbol": "MU", "name": "Micron Technology", "sector": "Technology", "industry": "Semiconductors", "marketCap": 1191780771655, "direction": "Long", "qty": 30, "price": 1078.78, "costBasis": 799.27, "prevClose": 1065.11},
+  {"symbol": "TSM", "name": "Taiwan Semiconductor", "sector": "Technology", "industry": "Semiconductors", "marketCap": 1694640111089, "direction": "Long", "qty": 14, "price": 459.36, "costBasis": 358.83, "prevClose": 456.19},
+  {"symbol": "UPWK", "name": "Upwork Inc", "sector": "Technology", "industry": "Staffing & Employment", "marketCap": 1009106737, "direction": "Short", "qty": 370, "price": 8.37, "costBasis": 13.52, "prevClose": 8.16},
+  {"symbol": "CAT", "name": "Caterpillar Inc", "sector": "Industrials", "industry": "Farm & Heavy Construction Machinery", "marketCap": 377917101966, "direction": "Long", "qty": 7, "price": 824.28, "costBasis": 700.72, "prevClose": 810.79},
+  {"symbol": "FCG", "name": "First Trust Natural Gas ETF", "sector": "Energy", "industry": "Natural Gas ETF", "marketCap": 606577942, "direction": "Long", "qty": 174, "price": 29.13, "costBasis": 28.78, "prevClose": 28.52},
+  {"symbol": "COHR", "name": "Coherent Corp", "sector": "Technology", "industry": "Scientific & Technical Instruments", "marketCap": 54662652030, "direction": "Long", "qty": 20, "price": 317.26, "costBasis": 252.4, "prevClose": 287.81},
+  {"symbol": "COPX", "name": "Global X Copper Miners ETF", "sector": "Materials", "industry": "Copper Miners ETF", "marketCap": 3232889592, "direction": "Long", "qty": 62, "price": 83.31, "costBasis": 80.22, "prevClose": 84.7},
+  {"symbol": "MRVL", "name": "Marvell Technology", "sector": "Technology", "industry": "Semiconductors", "marketCap": 222171388114, "direction": "Long", "qty": 94, "price": 267.76, "costBasis": 118.56, "prevClose": 264.21},
+  {"symbol": "PSFE", "name": "Paysafe Ltd", "sector": "Technology", "industry": "IT Services", "marketCap": 321125151, "direction": "Short", "qty": 666, "price": 5.45, "costBasis": 7.5, "prevClose": 5.63},
+  {"symbol": "Z", "name": "Zillow Group Inc", "sector": "Technology", "industry": "Internet Content & Information", "marketCap": 7729430000, "direction": "Short", "qty": 113, "price": 27.63, "costBasis": 44.4, "prevClose": 27.13},
+  {"symbol": "AGNT", "name": "AGNT Inc (fka eXp World)", "sector": "Real Estate", "industry": "Real Estate Services", "marketCap": 594939868, "direction": "Short", "qty": 811, "price": 3.63, "costBasis": 6.17, "prevClose": 3.67},
+  {"symbol": "NBIS", "name": "Nebius Group", "sector": "Technology", "industry": "Internet Content & Information", "marketCap": 63508100770, "direction": "Long", "qty": 71, "price": 233.89, "costBasis": 126.52, "prevClose": 235.88},
+  {"symbol": "NVDA", "name": "NVIDIA Corp", "sector": "Technology", "industry": "Semiconductors", "marketCap": 5546374180490, "direction": "Long", "qty": 27, "price": 231.98, "costBasis": 185.37, "prevClose": 228.38},
+  {"symbol": "BMBL", "name": "Bumble Inc", "sector": "Technology", "industry": "Software - Application", "marketCap": 337825724, "direction": "Short", "qty": 1429, "price": 2.57, "costBasis": 3.5, "prevClose": 2.63},
+  {"symbol": "AEHR", "name": "Aehr Test Systems", "sector": "Technology", "industry": "Semiconductor Equipment", "marketCap": 3232641833, "direction": "Long", "qty": 150, "price": 101.29, "costBasis": 69.3595, "prevClose": 99.62},
+  {"symbol": "TTD", "name": "The Trade Desk Inc", "sector": "Technology", "industry": "Advertising Technology", "marketCap": 5756037229, "direction": "Short", "qty": 242, "price": 12.2, "costBasis": 20.64, "prevClose": 12.17},
+  {"symbol": "ACLS", "name": "Axcelis Technologies", "sector": "Technology", "industry": "Semiconductor Equipment", "marketCap": 3805989106, "direction": "Long", "qty": 48, "price": 135.79, "costBasis": 103.86, "prevClose": 131.18},
+  {"symbol": "DELL", "name": "Dell Technologies", "sector": "Technology", "industry": "Computer Hardware", "marketCap": 345805852375, "direction": "Long", "qty": 60, "price": 543.25, "costBasis": 341.29, "prevClose": 537.95},
+  {"symbol": "STX", "name": "Seagate Technology", "sector": "Technology", "industry": "Computer Hardware", "marketCap": 209274348646, "direction": "Long", "qty": 14, "price": 931.37, "costBasis": 599.64, "prevClose": 922.34},
+  {"symbol": "HUT", "name": "Hut 8 Corp", "sector": "Technology", "industry": "Bitcoin Mining", "marketCap": 11659729346, "direction": "Long", "qty": 106, "price": 86.1, "costBasis": 76.78, "prevClose": 86.1},
+  {"symbol": "WDC", "name": "Western Digital Corp", "sector": "Technology", "industry": "Computer Hardware", "marketCap": 183729360000, "direction": "Long", "qty": 21, "price": 455.08, "costBasis": 400.58, "prevClose": 454.46},
+  {"symbol": "INTC", "name": "Intel Corp", "sector": "Technology", "industry": "Semiconductors", "marketCap": 611655263788, "direction": "Long", "qty": 78, "price": 121.09, "costBasis": 64.47, "prevClose": 120.23},
+  {"symbol": "CRDO", "name": "Credo Technology Group Holding Ltd", "sector": "Technology", "industry": "Semiconductors", "marketCap": 36083949484, "direction": "Long", "qty": 32, "price": 208.22, "costBasis": 157.14, "prevClose": 194.79},
+  {"symbol": "SNDK", "name": "SanDisk Corp", "sector": "Technology", "industry": "Data Storage", "marketCap": 250525855121, "direction": "Long", "qty": 14, "price": 1779.44, "costBasis": 1294.6, "prevClose": 1739.89},
+  {"symbol": "ALAB", "name": "Astera Labs Inc", "sector": "Technology", "industry": "Semiconductors", "marketCap": 60471703084, "direction": "Long", "qty": 35, "price": 361.63, "costBasis": 213.08, "prevClose": 355.97},
+  {"symbol": "DAVE", "name": "Dave Inc", "sector": "Technology", "industry": "Fintech", "marketCap": 4088394963, "direction": "Long", "qty": 18, "price": 338.67, "costBasis": 285.69, "prevClose": 321.51},
+  {"symbol": "SITM", "name": "SiTime Corp", "sector": "Technology", "industry": "Semiconductors", "marketCap": 19532942320, "direction": "Long", "qty": 10, "price": 684.04, "costBasis": 525.18, "prevClose": 652.03},
+  {"symbol": "AMD", "name": "Advanced Micro Devices Inc", "sector": "Technology", "industry": "Semiconductors", "marketCap": 988643177619, "direction": "Long", "qty": 15, "price": 618.04, "costBasis": 343.96, "prevClose": 611.76},
+  {"symbol": "SPCX", "name": "SpaceX (Space Exploration Technologies)", "sector": "Industrials", "industry": "Space Launch & Satellite Internet", "marketCap": 1993657834927, "direction": "Long", "qty": 200, "price": 150.17, "costBasis": 147.77, "prevClose": 150.86, "entryDate": "2026-09-04"},
 ];
