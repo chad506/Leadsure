@@ -530,18 +530,22 @@ window.addEventListener('pageshow',function(e){if(e.persisted)location.reload();
       });
     });
 
-    // Add add-on informational entries
+    // Add add-on informational entries. Lots of a position that has since been sold are
+    // closed: they carry the sale's exit price/date and are never re-priced live.
     ADDON_POSITIONS.forEach(ap => {
+      const live = POSITIONS.find(p => p.symbol === ap.symbol);
+      const sold = live ? null : SOLD_POSITIONS.find(sp => sp.symbol === ap.symbol);
       FUND_POSITIONS.push({
         symbol: ap.symbol,
         name: ap.name,
         direction: ap.direction,
         qty: ap.qty,
         costBasis: ap.costBasis,
-        currentPrice: POSITIONS.find(p => p.symbol === ap.symbol)?.price || ap.costBasis,
+        currentPrice: live ? live.price : (sold ? sold.exitPrice : ap.costBasis),
         status: 'addon',
+        closed: !!sold,
         entryDate: ap.entryDate,
-        exitDate: null,
+        exitDate: sold ? sold.exitDate : null,
         note: ap.note
       });
     });
@@ -793,7 +797,7 @@ window.addEventListener('pageshow',function(e){if(e.persisted)location.reload();
 
         // Update FUND_POSITIONS with cached prices
         FUND_POSITIONS.forEach(p => {
-          if (p.status !== 'sold' && priceMap[p.symbol]) {
+          if (p.status !== 'sold' && !p.closed && priceMap[p.symbol]) {
             p.currentPrice = priceMap[p.symbol].c;
             updated++;
           }
@@ -823,7 +827,7 @@ window.addEventListener('pageshow',function(e){if(e.persisted)location.reload();
       if (finnhubFetched || !SHARED_FINNHUB_KEY) return;
       finnhubFetched = true;
 
-      const activePositions = FUND_POSITIONS.filter(p => p.status !== 'sold');
+      const activePositions = FUND_POSITIONS.filter(p => p.status !== 'sold' && !p.closed);
       const uniqueSymbols = [...new Set(activePositions.map(p => p.symbol))];
       console.log('[FundResults] Fallback: fetching ' + uniqueSymbols.length + ' symbols from Finnhub (slow)');
 
@@ -848,7 +852,7 @@ window.addEventListener('pageshow',function(e){if(e.persisted)location.reload();
 
       let updated = 0;
       FUND_POSITIONS.forEach(p => {
-        if (p.status !== 'sold' && priceMap[p.symbol]) {
+        if (p.status !== 'sold' && !p.closed && priceMap[p.symbol]) {
           p.currentPrice = priceMap[p.symbol].c;
           updated++;
         }
