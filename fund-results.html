@@ -675,7 +675,7 @@ window.addEventListener('pageshow',function(e){if(e.persisted)location.reload();
           const dirClass = p.direction === 'Long' ? 'dir-long' : 'dir-short';
           const dirLabel = p.direction === 'Long' ? 'LONG' : 'SHORT';
           const rowClass = p.direction === 'Long' ? 'row-long' : 'row-short';
-          const soldClass = p.status === 'sold' ? ' row-sold' : '';
+          const soldClass = (p.status === 'sold' || p.closed) ? ' row-sold' : '';
           const pnlClass = pnl >= 0 ? 'num-positive' : 'num-negative';
           const displayPrice = p.status === 'sold' ? (p.exitPrice || p.currentPrice) : p.currentPrice;
           const notional = displayPrice * p.qty;
@@ -684,7 +684,9 @@ window.addEventListener('pageshow',function(e){if(e.persisted)location.reload();
           if (p.status === 'sold') {
             statusBadge = '<span class="status-badge status-sold">SOLD</span>';
           } else if (p.status === 'addon') {
-            statusBadge = '<span class="status-badge status-addon">ADD-ON</span>';
+            statusBadge = p.closed
+              ? '<span class="status-badge status-addon">ADD-ON \u00b7 CLOSED</span>'
+              : '<span class="status-badge status-addon">ADD-ON</span>';
           } else {
             statusBadge = '<span class="status-badge status-active">ACTIVE</span>';
           }
@@ -713,7 +715,7 @@ window.addEventListener('pageshow',function(e){if(e.persisted)location.reload();
         cardsEl.innerHTML = sorted.map(p => {
           const { pnl, pnlPct } = computePnl(p);
           const borderClass = p.direction === 'Long' ? 'fr-card-long' : 'fr-card-short';
-          const soldCardClass = p.status === 'sold' ? ' fr-card-sold' : '';
+          const soldCardClass = (p.status === 'sold' || p.closed) ? ' fr-card-sold' : '';
           const dirClass = p.direction === 'Long' ? 'dir-long' : 'dir-short';
           const dirLabel = p.direction === 'Long' ? 'LONG' : 'SHORT';
           const pnlClass = pnl >= 0 ? 'num-positive' : 'num-negative';
@@ -723,7 +725,9 @@ window.addEventListener('pageshow',function(e){if(e.persisted)location.reload();
           if (p.status === 'sold') {
             statusBadge = '<span class="status-badge status-sold">SOLD</span>';
           } else if (p.status === 'addon') {
-            statusBadge = '<span class="status-badge status-addon">ADD-ON</span>';
+            statusBadge = p.closed
+              ? '<span class="status-badge status-addon">ADD-ON \u00b7 CLOSED</span>'
+              : '<span class="status-badge status-addon">ADD-ON</span>';
           } else {
             statusBadge = '<span class="status-badge status-active">ACTIVE</span>';
           }
