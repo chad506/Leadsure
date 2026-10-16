@@ -1342,3 +1342,7 @@ effectiveness scoring, columns centered, and a totals row at the bottom.
   work unattended on URLs surfaced verbatim by a WebSearch in the same
   session) let the run re-true caps + model fairs honestly while leaving
   mids/books/balances/ledgers untouched and disclosed as stale.
+
+
+## Password screen (added Oct 16, 2026)
+The whole site sits behind a password screen. Every HTML page must load `<script src="/gate.js"></script>` as the first line inside `<head>`; keep it there when editing or regenerating pages, and add it to any new page. gate.js holds only a hash (G); to change the password, update G in gate.js and PASS_HASH/GATE in leadsure-deals/functions/_middleware.js. robots.txt blocks search engines.
