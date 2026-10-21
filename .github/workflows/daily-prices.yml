@@ -1,0 +1,41 @@
+name: daily-prices
+# Refreshes the closing prices baked into the site every weekday after the US close,
+# so every page (and anyone reading the data files) shows the latest close even
+# before the browser's live Finnhub refresh finishes. Replaces the old Mac launchd job.
+# Script: scripts/daily_prices.py (it does nothing on market holidays).
+on:
+  schedule:
+    - cron: '35 21 * * 1-5'   # 21:35 UTC = 2:35pm PDT / 1:35pm PST, after the 4pm ET close
+    - cron: '50 23 * * 1-5'   # backup; a no-op when prices are already current
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: daily-prices
+  cancel-in-progress: false
+jobs:
+  prices:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Fetch closes and update the data files
+        env:
+          PRICES_MSG_FILE: ${{ runner.temp }}/prices_msg.txt
+        run: python3 scripts/daily_prices.py
+      - name: Commit and push
+        env:
+          PRICES_MSG_FILE: ${{ runner.temp }}/prices_msg.txt
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add fund-data.js model-picks-data.js app3.js
+          if git diff --cached --quiet; then echo "No price changes to commit"; exit 0; fi
+          git commit -F "$PRICES_MSG_FILE"
+          for i in 1 2 3; do
+            if git push origin HEAD:main; then exit 0; fi
+            git pull --rebase origin main
+          done
+          exit 1
