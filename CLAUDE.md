@@ -93,6 +93,14 @@ Week 1 = March 6, 2026. As of 6/17 we are on Week 36. Each set of picks on a new
 - New positions appear at the bottom of the first table in the sheet
 
 ## Prices
+- **Daily close refresh is automated (Oct 21, 2026).** GitHub Action `.github/workflows/daily-prices.yml`
+  runs `scripts/daily_prices.py` every weekday at 21:35 UTC (backup 23:50 UTC): Finnhub closes into
+  fund-data.js POSITIONS price/prevClose, every model pick's livePrice/prevClose, the app3.js
+  spyCurrentPrice/magsCurrentPrice starting values, PRICES_AS_OF and DATA_VERSION; then it commits and pushes.
+  It skips market holidays, skips stale quotes, aborts on too few quotes, and checks the files load in node
+  before committing. Run it by hand from the Actions tab ("Run workflow"). Do not hand-edit closing prices;
+  pull first, since the bot commits to main daily. The old Mac launchd job (scripts/update_picks_prices.py)
+  is retired.
 - `PRICES_AS_OF` in fund-data.js must match today's date (YYYY-MM-DD Pacific time)
 - `prevClose` = prior day's close (compute from sheet's Day Chng $ ÷ qty + current price)
 - Finnhub API key: `d6kqa11r01qmopd1net0d6kqa11r01qmopd1netg`
