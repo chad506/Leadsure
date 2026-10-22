@@ -1,0 +1,74 @@
+# Nightly backup of this repo to Cloudflare Workers KV (free plan).
+# Each night: zip the current main branch, split it into 24 MB parts (KV's
+# per-item limit is 25 MiB), upload the parts plus a manifest, and let them
+# expire automatically after about 3 days. Set up Oct 21, 2026.
+#
+# Keys look like:  <repo>/<YYYY-MM-DD>/part-00, part-01, ...  and  <repo>/<YYYY-MM-DD>/manifest
+# Namespace: leadsure-repo-backups (966d9a8b99a2480f8491dbe036451d7b)
+#
+# To restore: download every part for a day in order, then
+#   cat part-* > snapshot.zip   and check it against the sha256 in the manifest.
+
+name: Nightly backup to Cloudflare KV
+
+on:
+  schedule:
+    - cron: '17 7 * * *'   # 07:17 UTC = 12:17am PT (11:17pm PT in winter)
+  workflow_dispatch:        # lets you run it by hand from the Actions tab
+
+permissions:
+  contents: read
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: a2adda9c56460c7c644abb9b4bd9169b
+      KV_NAMESPACE_ID: 966d9a8b99a2480f8491dbe036451d7b
+      TTL_SECONDS: '266400'   # 3 days + 2 hours, so three nightly copies are always kept
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Zip and split the current snapshot
+        run: |
+          set -euo pipefail
+          if [ -z "${CLOUDFLARE_API_TOKEN}" ]; then
+            echo "CLOUDFLARE_API_TOKEN secret is missing in this repo's Actions secrets"; exit 1
+          fi
+          mkdir -p /tmp/backup
+          git archive --format=zip -o /tmp/backup/snapshot.zip HEAD
+          cd /tmp/backup
+          split -b 24m -d -a 2 snapshot.zip part-
+          ls -la
+
+      - name: Upload parts and manifest
+        run: |
+          set -euo pipefail
+          REPO="${GITHUB_REPOSITORY#*/}"
+          DAY="$(TZ=America/Los_Angeles date +%F)"
+          cd /tmp/backup
+          PARTS=()
+          for f in part-*; do
+            KEY="${REPO}/${DAY}/${f}"
+            echo "Uploading ${KEY} ($(stat -c %s "$f") bytes)"
+            npx --yes wrangler@4 kv key put "$KEY" --path "$f" \
+              --namespace-id "$KV_NAMESPACE_ID" --remote --ttl "$TTL_SECONDS"
+            PARTS+=("\"${f}\"")
+          done
+          cat > manifest.json <<EOF
+          {
+            "repo": "${GITHUB_REPOSITORY}",
+            "day": "${DAY}",
+            "commit": "${GITHUB_SHA}",
+            "created_utc": "$(date -u +%FT%TZ)",
+            "zip_bytes": $(stat -c %s snapshot.zip),
+            "zip_sha256": "$(sha256sum snapshot.zip | cut -d' ' -f1)",
+            "parts": [$(IFS=,; echo "${PARTS[*]}")]
+          }
+          EOF
+          cat manifest.json
+          npx --yes wrangler@4 kv key put "${REPO}/${DAY}/manifest" --path manifest.json \
+            --namespace-id "$KV_NAMESPACE_ID" --remote --ttl "$TTL_SECONDS"
+          echo "Backup complete: ${REPO}/${DAY} (${#PARTS[@]} parts)"
