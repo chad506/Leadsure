@@ -22,7 +22,7 @@ permissions:
 jobs:
   backup:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 60
     env:
       CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
       CLOUDFLARE_ACCOUNT_ID: a2adda9c56460c7c644abb9b4bd9169b
@@ -48,13 +48,22 @@ jobs:
           set -euo pipefail
           REPO="${GITHUB_REPOSITORY#*/}"
           DAY="$(TZ=America/Los_Angeles date +%F)"
+          API="https://api.cloudflare.com/client/v4/accounts/${CLOUDFLARE_ACCOUNT_ID}/storage/kv/namespaces/${KV_NAMESPACE_ID}"
+          put() {  # put <key> <file>
+            local enc
+            enc="$(printf '%s' "$1" | sed 's|/|%2F|g')"
+            curl -sS --fail-with-body --retry 3 --retry-all-errors --max-time 300 \
+              -X PUT "${API}/values/${enc}?expiration_ttl=${TTL_SECONDS}" \
+              -H "Authorization: Bearer ${CLOUDFLARE_API_TOKEN}" \
+              -F "value=@$2;type=application/octet-stream" \
+              -F 'metadata={}'
+            echo
+          }
           cd /tmp/backup
           PARTS=()
           for f in part-*; do
-            KEY="${REPO}/${DAY}/${f}"
-            echo "Uploading ${KEY} ($(stat -c %s "$f") bytes)"
-            npx --yes wrangler@4 kv key put "$KEY" --path "$f" \
-              --namespace-id "$KV_NAMESPACE_ID" --remote --ttl "$TTL_SECONDS"
+            echo "Uploading ${REPO}/${DAY}/${f} ($(stat -c %s "$f") bytes)"
+            put "${REPO}/${DAY}/${f}" "$f"
             PARTS+=("\"${f}\"")
           done
           cat > manifest.json <<EOF
@@ -69,6 +78,5 @@ jobs:
           }
           EOF
           cat manifest.json
-          npx --yes wrangler@4 kv key put "${REPO}/${DAY}/manifest" --path manifest.json \
-            --namespace-id "$KV_NAMESPACE_ID" --remote --ttl "$TTL_SECONDS"
+          put "${REPO}/${DAY}/manifest" manifest.json
           echo "Backup complete: ${REPO}/${DAY} (${#PARTS[@]} parts)"
