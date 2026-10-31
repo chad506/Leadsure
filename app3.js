@@ -12,9 +12,9 @@ const REFRESH_INTERVAL = 120000; // 2 minutes (51 symbols @ 1.1s = ~56s per cycl
 // ---- FUND CONSTANTS ----
 const CASH = 140000.00; // From Google Sheet cell B2
 const SPY_INCEPTION_PRICE = 680.28; // SPY close on Mar 3, 2026 (day before fund inception Mar 4)
-let spyCurrentPrice = 769.36; // Updated live via Finnhub
+let spyCurrentPrice = 755.72; // Updated live via Finnhub
 const MAGS_INCEPTION_PRICE = 61.29; // MAGS (Mag 7 ETF) close on Mar 3, 2026
-let magsCurrentPrice = 69.7; // Updated live via Finnhub
+let magsCurrentPrice = 68.48; // Updated live via Finnhub
 
 // REALIZED_PNL is now in fund-data.js as SHARED_REALIZED_PNL
 const REALIZED_PNL = typeof SHARED_REALIZED_PNL !== 'undefined' ? SHARED_REALIZED_PNL : -1638.37;
